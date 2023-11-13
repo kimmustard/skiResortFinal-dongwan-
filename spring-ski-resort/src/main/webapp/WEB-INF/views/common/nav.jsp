@@ -13,7 +13,7 @@
   <div class="collapse">
     <a class="navbar-brand" href="#">다이스키</a>
        <div class="nav-link" > <a aria-current="page" href="#">Home</a></div>
-       <div class="nav-link"> <a href="#">Pricing</a></div>
+       <div class="nav-link"> <a href="/rental/fee-info">렌탈</a></div>
        <div class="nav-link"> <a href="#">Pricing</a></div>
        <div class="nav-link"> <a href="#">Pricing</a></div>
        <div class="nav-link"> <a href="#">Pricing</a></div>
