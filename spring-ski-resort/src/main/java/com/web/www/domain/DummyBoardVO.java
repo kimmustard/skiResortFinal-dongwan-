@@ -18,4 +18,12 @@ public class DummyBoardVO {
 	private String writer;
 	private String content;
 	private String regAt;
+	
+
+	
+	
+	
+	
+
+
 }
