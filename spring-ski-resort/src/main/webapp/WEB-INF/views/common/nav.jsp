@@ -5,12 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
- 
-<link rel="stylesheet" href="/resources/css/index.css">
-
+ <link rel="stylesheet" href="/resources/css/nav.css">
+ <link rel="stylesheet" href="/resources/css/index.css">
 </head>
 <body>
-<div class="bodyContainer">
+<div class="navContainer">
 	<nav id="hide"></nav>
 	<nav class="navbar" id="navbar">
   <div class="collapse">

@@ -26,7 +26,7 @@
 	    <tr>
 	      <th scope="row">1</th>
 	      <td>Mark</td>
-	      <td>Otto</td>
+	      <td><a href="/notice/detail">제목제목</a></td>
 	      <td>@mdo</td>
 	      <td>@mdo</td>
 	      <td>@mdo</td>
@@ -49,6 +49,9 @@
 	    </tr>
 	  </tbody>
 	</table>
+	<a href="/notice/register">
+	<button type="button">글작성</button>
+	</a>
 </div>
 <%-- <jsp:include page="../common/footer.jsp" /> --%>
 </body>
