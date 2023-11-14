@@ -12,21 +12,17 @@
 	}
 	
 	.h1{
-		margin: 150px;
 		text-align: center;
-		font-weight: 700;
-		font-size: 35px;
 	}
 	
-	.tableContainer, .btnContainer{
+	.tableContainer{
 		margin: 150px;
 		display: flex;
 		justify-content: center;
 	}
 	
-	.rental-table{
-		background-color: red;
-	}
+	
+	
 </style>
 </head>
 <body>
@@ -37,17 +33,41 @@
 	
 		<h1 class="h1">렌탈/요금안내</h1>
 		<div class="tableContainer">
-			<div class="rental-table">
-				<div class="rental-thead">
-					
-				</div>
-			</div>
-			
-			
-			<div class="btnContainer">
-				<a href="/rental/item"><button type="button">장비안내</button></a>
-				<a href="/rental/reserve"><button type="button">예약페이지</button></a>
-			</div>
+			<table class="table table-success table-striped">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>스키/보드</th>
+						<th>헬멧/보호대</th>
+						<th>의류</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th>4시간권</th>
+						<th>15000</th>
+						<th>10000</th>
+						<th>15000</th>
+					</tr>
+					<tr>
+						<th>6시간권</th>
+						<th>20000</th>
+						<th>15000</th>
+						<th>20000</th>
+					</tr>
+					<tr>
+						<th>종일권</th>
+						<th>30000</th>
+						<th>25000</th>
+						<th>30000</th>
+					</tr>
+				</tbody>
+			</table>
+
+		</div>
+		<div class="btnContainer">
+			<a href="/rental/item"><button type="button">장비안내</button></a>
+			<a href="/rental/reserve"><button type="button">예약페이지</button></a>
 		</div>
 	
 	</div>
