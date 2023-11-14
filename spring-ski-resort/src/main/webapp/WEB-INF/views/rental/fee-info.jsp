@@ -16,13 +16,20 @@
 	}
 	
 	.tableContainer{
-		margin: 150px;
+		width: 700px;
+		height: 300px;
+		margin-top: 150px;
+	}
+	
+	.btnContainer{
 		display: flex;
 		justify-content: center;
 	}
 	
-	
-	
+	.btn-outline-info{
+		margin-left: 20px;
+		margin-right: 20px;
+	}
 </style>
 </head>
 <body>
@@ -66,8 +73,8 @@
 
 		</div>
 		<div class="btnContainer">
-			<a href="/rental/item"><button type="button">장비안내</button></a>
-			<a href="/rental/reserve"><button type="button">예약페이지</button></a>
+			<a href="/rental/item"><button type="button" class="btn btn-outline-info">장비안내</button></a>
+			<a href="/rental/reserve"><button type="button" class="btn btn-outline-info">예약페이지</button></a>
 		</div>
 	
 	</div>
