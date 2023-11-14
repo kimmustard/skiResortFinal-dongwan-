@@ -1,14 +1,22 @@
 @charset "UTF-8";
 
 @import url(/resources/css/reset.css);
-
+#hide{
+	width: 100%;
+	height: 96px;
+	position: fixed;
+	transition: opacity 0.5s;
+	background-color: black;
+}
 .navbar {
+
 	width: 100%;
 	height: 0px;
 	background-color: black;
-	transition: height 0.5s;
-	opacity: 0.5;
+	transition: height 0.5s ,opacity 0.5s;
 	position: fixed;
+	
+	
 }
 
 
@@ -36,10 +44,12 @@
 .collapse {
 	display: flex;
 	float: left;
+	justify-content: center;
+	width: 100%;
 }
 
 .collapse>div {
-	margin: auto;
+	
 	height: 50px;
 	width: 75px;
 	color: white;
