@@ -41,5 +41,6 @@
 		<button type="button" class="btn btn-dark">리스트</button>
 	</a>
 	</div>
+<jsp:include page="../common/footer.jsp" />	
 </body>
 </html>

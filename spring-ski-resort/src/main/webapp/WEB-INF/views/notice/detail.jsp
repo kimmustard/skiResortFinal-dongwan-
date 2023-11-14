@@ -39,5 +39,6 @@
 		<button type="button" class="btn btn-dark">수정</button>
 	</a>
 	</div>
+<jsp:include page="../common/footer.jsp" />	
 </body>
 </html>

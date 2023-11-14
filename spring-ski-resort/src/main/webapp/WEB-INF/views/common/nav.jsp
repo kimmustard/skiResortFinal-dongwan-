@@ -20,7 +20,7 @@
        <div class="ski-nav-link"> <a href="#">Pricing</a></div>
        <div class="ski-nav-link"> <a href="#">Pricing</a></div>
        <div class="ski-nav-link"> <a href="#">Pricing</a></div>
-       <div class="nav-link"> <a href="/notice/list">notice</a></div>
+       <div class="ski-nav-link"> <a href="/notice/list">notice</a></div>
        <div class="ski-nav-link"> <a href="/hotel/reservation">예약</a></div>
 
   </div>
