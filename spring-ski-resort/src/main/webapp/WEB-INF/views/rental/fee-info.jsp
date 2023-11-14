@@ -11,9 +11,11 @@
 		height: 1500px;
 	}
 	
-	h1{
+	.h1{
 		margin: 150px;
 		text-align: center;
+		font-weight: 700;
+		font-size: 35px;
 	}
 	
 	.tableContainer, .btnContainer{
@@ -22,6 +24,9 @@
 		justify-content: center;
 	}
 	
+	.rental-table{
+		background-color: red;
+	}
 </style>
 </head>
 <body>
@@ -30,9 +35,13 @@
 
 	<div class="bodyContainer">
 	
-		<h1>렌탈/요금안내</h1>
+		<h1 class="h1">렌탈/요금안내</h1>
 		<div class="tableContainer">
-			
+			<div class="rental-table">
+				<div class="rental-thead">
+					
+				</div>
+			</div>
 			
 			
 			<div class="btnContainer">
