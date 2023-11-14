@@ -9,6 +9,7 @@
 </head>
 <body>
 
+	<nav id="hide"></nav>
 	<nav class="navbar" id="navbar">
   <div class="collapse">
     <a class="navbar-brand" href="#">다이스키</a>
