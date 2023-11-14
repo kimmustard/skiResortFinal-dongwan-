@@ -22,5 +22,15 @@ public class RentalController {
 		
 		return "/rental/fee-info"; 
 	}
+	
+	@GetMapping("/reserve")
+	public String reserveForm() {
+		return "/rental/reserve";
+	}
+	
+	@GetMapping("/item")
+	public String itemForm() {
+		return "/rental/item";
+	}
 
 }
