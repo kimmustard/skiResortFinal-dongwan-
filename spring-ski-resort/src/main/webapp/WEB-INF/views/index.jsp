@@ -2,7 +2,6 @@
 <%@ page session="false"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <html>
 <head>
 <title>Home</title>
@@ -15,7 +14,7 @@
 
 	<jsp:include page="common/nav.jsp"></jsp:include>
 	<div class="ytLandscape">
-		<iframe width="560" height="315"
+		<iframe 
 			src="https://www.youtube.com/embed/h1VWRkX8vD8?si=hXoOA0167YGh5z27&autoplay=1&mute=1&controls=0&loop=1&playlist=h1VWRkX8vD8&modestbranding=1"
 			title="YouTube video player" frameborder="0"
 			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -30,6 +29,9 @@
 		 	<div id="innerItem4">일단 때려박기~~</div> 
 		</div>
 	</div>
+
+	</div>
+
 			<div id="back"></div>
 </body>
 
