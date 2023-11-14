@@ -6,9 +6,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
  <link rel="stylesheet" href="/resources/css/nav.css">
+  <link rel="stylesheet" href="/resources/css/index.css">
 </head>
 <body>
-
+<div class="bodyContainer">
 	<nav id="hide"></nav>
 	<nav class="navbar" id="navbar">
   <div class="collapse">
@@ -18,12 +19,8 @@
        <div class="nav-link"> <a href="#">Pricing</a></div>
        <div class="nav-link"> <a href="#">Pricing</a></div>
        <div class="nav-link"> <a href="#">Pricing</a></div>
-       <div class="nav-link"> <a href="#">Pricing</a></div>
-    
-      
+       <div class="nav-link"> <a href="#">호텔예약</a></div> 
   </div>
-
 </nav>
-</body>
+</div>
 <script type="text/javascript" src="/resources/js/nav.js" ></script>
-</html>

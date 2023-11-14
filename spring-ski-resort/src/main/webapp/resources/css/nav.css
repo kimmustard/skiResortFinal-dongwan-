@@ -1,12 +1,21 @@
 @charset "UTF-8";
 
 @import url(/resources/css/reset.css);
+
+.bodyContainer{
+	width : 100%;
+	position: fixed;
+	top: 0;
+	z-index: 100;
+}
+
 #hide{
 	width: 100%;
 	height: 96px;
-	position: fixed;
 	transition: opacity 0.5s;
 	background-color: black;
+	position: absolute;
+	top: 0;
 }
 .navbar {
 
@@ -14,7 +23,8 @@
 	height: 0px;
 	background-color: black;
 	transition: height 0.5s ,opacity 0.5s;
-	position: fixed;
+	position: absolute;
+	top: 0;
 	
 	
 }
