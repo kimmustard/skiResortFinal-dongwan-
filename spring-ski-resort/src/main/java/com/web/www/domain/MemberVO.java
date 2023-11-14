@@ -27,7 +27,7 @@ public class MemberVO {
 	private String memberAddressDetail;	//상세주소
 	private String memberPhoneNum;	//폰번호
 	private String memberRegAt;	//회원등록일
-	private String memberDel;	//회원탈퇴일자
+	private int memberDel;	//회원탈퇴일자
 	private String memberTerms; //이용약관
 	
 	private String memberLastAt;	//로그아웃시간
