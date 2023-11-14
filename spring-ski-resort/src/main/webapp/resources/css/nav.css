@@ -2,7 +2,7 @@
 
 @import url(/resources/css/reset.css);
 
-.bodyContainer{
+.navContainer{
 	width : 100%;
 	position: fixed;
 	top: 0;
@@ -17,7 +17,7 @@
 	position: absolute;
 	top: 0;
 }
-.navbar {
+.ski-navbar {
 
 	width: 100%;
 	height: 0px;
@@ -30,7 +30,7 @@
 
 
 
-.navbar-brand {
+.ski-navbar-brand {
 	font-size: 25px;
 	text-decoration: none;
 	color: white;
@@ -39,7 +39,7 @@
 	margin-right: 15px;
 }
 
-.nav-link>A {
+.ski-nav-link>A {
 	display: block;
 	height: 50px;
 	width: 75px;
@@ -50,14 +50,14 @@
 	margin-top: 10px;
 }
 
-.collapse {
+.ski-collapse {
 	display: flex;
 	float: left;
 	justify-content: center;
 	width: 100%;
 }
 
-.collapse>div {
+.ski-collapse>div {
 	
 	height: 50px;
 	width: 75px;
