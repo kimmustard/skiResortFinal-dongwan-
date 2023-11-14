@@ -17,6 +17,7 @@
 		margin: 150px;
 	}
 </style>
+ <link rel="stylesheet" href="/resources/css/loginbootstrap.css">
 </head>
 <body>
 	<jsp:include page="../common/nav.jsp"></jsp:include>
@@ -24,14 +25,20 @@
 	<div class="bodyContainer">
 	
 		<div class="loginContainer">
+		
 			<form action="/member/login" method="post">
-				<div>
-					<span>아이디</span><input type="text" name="memberId">
+				
+				<div class="form-group">
+				  <label class="col-form-label mt-4" for="inputDefault">아이디</label>
+				  <input type="text" class="form-control" name="memberId" placeholder="아이디를 입력하세요." id="inputDefault">
 				</div>
-				<div>
-					<span>비밀번호</span><input type="password" name="memberPwd">
-				</div>
-				<button type="submit">로그인</button> 
+				 <div class="form-group">
+			      <label for="exampleInputPassword1" class="form-label mt-4">비밀번호</label>
+			      <input type="password" class="form-control" name="memberPwd" id="exampleInputPassword1" placeholder="Password" autocomplete="off">
+			    </div>
+						
+			
+				<button type="submit" class="btn btn-primary">로그인</button> 
 			</form>
 		</div>	
 		

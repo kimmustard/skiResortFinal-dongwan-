@@ -11,8 +11,8 @@
 	<jsp:include page="../common/nav.jsp"></jsp:include>
 	
 		<div class="bodyContainer">
-		
 			<div class="registerContainer">
+				
 				<form action="/member/register" method="post">
 					<div>
 						<span>아이디</span><input type="text" name="memberId">
