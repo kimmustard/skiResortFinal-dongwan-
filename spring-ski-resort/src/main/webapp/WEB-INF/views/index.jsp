@@ -2,9 +2,17 @@
 <%@ page session="false"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<html>
+<head>
+<title>Home</title>
+<style type="text/css">
+
+</style>
+</head>
+ <link rel="stylesheet" href="/resources/css/index.css">
+<body>
 
 	<jsp:include page="common/nav.jsp"></jsp:include>
-
 	<div class="ytLandscape">
 		<iframe 
 			src="https://www.youtube.com/embed/h1VWRkX8vD8?si=hXoOA0167YGh5z27&autoplay=1&mute=1&controls=0&loop=1&playlist=h1VWRkX8vD8&modestbranding=1"
@@ -20,7 +28,9 @@
 		 	<div id="innerItem3">다른 메뉴를 넣어도 되고</div> 
 		 	<div id="innerItem4">일단 때려박기~~</div> 
 	</div>
+
 	</div>
+
 			<div id="back"></div>
 </body>
 
