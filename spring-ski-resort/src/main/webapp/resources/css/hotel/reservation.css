@@ -1,0 +1,49 @@
+@charset "UTF-8";
+
+.back{
+    width: 100%;
+    height: 100vh;
+    margin-top: 96px;
+}
+.selector{
+    width: 200px;
+    background-color: blue;
+    margin-left: 10%;
+    color: white;
+}
+.calendar {
+	width: 400px;
+    height: 500px;
+    background-color: #ff9c9c;
+   
+}
+.people{
+    width: 400px;
+    height: 50px;
+    background-color: #d6fcb4;
+
+}
+
+.calendar:hover{
+    cursor: pointer	;
+}
+.people:hover{
+    cursor: pointer	;
+}
+.payBtn{
+    width: 400px;
+    height: 50px;
+
+}
+.box{
+    width: 80%;
+    margin-left: 10%;
+    background-color: antiquewhite;
+    padding: 5px;
+}
+
+.box > *{
+    margin-left: 50px;
+    margin-top: 5px;
+
+}
