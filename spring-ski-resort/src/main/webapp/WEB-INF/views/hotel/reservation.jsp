@@ -23,13 +23,14 @@
 		<div class="box">
 			<div class="calendar">달력z</div>
 			<div class="people">인원수</div>
-			<button class="payBtn">결제</button>
+			<button id="payBtn">다음</button>
+			<div id="innerbox"></div>
 		</div>
 	</div>
 
 
 
 
-
+<script defer type="text/javascript" src="/resources/js/hotel/reservation.js" ></script>
 </body>
 </html>
