@@ -2,17 +2,20 @@
 
 @import url(/resources/css/reset.css);
 
-body{
+.bodyContainer{
+	width : 100%;
 	position: fixed;
-	z-index: 100;
 	top: 0;
+	z-index: 100;
 }
+
 #hide{
 	width: 100%;
 	height: 96px;
-
 	transition: opacity 0.5s;
 	background-color: black;
+	position: absolute;
+	top: 0;
 }
 .navbar {
 
@@ -20,8 +23,8 @@ body{
 	height: 0px;
 	background-color: black;
 	transition: height 0.5s ,opacity 0.5s;
-	
-	
+	position: absolute;
+	top: 0;
 	
 }
 
