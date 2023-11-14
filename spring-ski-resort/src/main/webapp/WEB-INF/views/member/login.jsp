@@ -16,6 +16,8 @@
 	.loginContainer{
 		margin: 150px;
 	}
+	
+
 </style>
  <link rel="stylesheet" href="/resources/css/loginbootstrap.css">
 </head>
@@ -25,15 +27,18 @@
 	<div class="bodyContainer">
 	
 		<div class="loginContainer">
-		
 			<form action="/member/login" method="post">
 				
 				<div class="form-group">
-				  <label class="col-form-label mt-4" for="inputDefault">아이디</label>
+				  <label class="col-form-label mt-4" for="inputDefault">
+				  	<span class="loginFont">아이디</span>
+				  </label>
 				  <input type="text" class="form-control" name="memberId" placeholder="아이디를 입력하세요." id="inputDefault">
 				</div>
 				 <div class="form-group">
-			      <label for="exampleInputPassword1" class="form-label mt-4">비밀번호</label>
+			      <label for="exampleInputPassword1" class="form-label mt-4">
+			      	<span class="loginFont">비밀번호</span>
+			      </label>
 			      <input type="password" class="form-control" name="memberPwd" id="exampleInputPassword1" placeholder="Password" autocomplete="off">
 			    </div>
 						
