@@ -18,7 +18,7 @@
        <div class="nav-link"> <a href="#">Pricing</a></div>
        <div class="nav-link"> <a href="#">Pricing</a></div>
        <div class="nav-link"> <a href="#">Pricing</a></div>
-       <div class="nav-link"> <a href="#">Pricing</a></div>
+       <div class="nav-link"> <a href="#">호텔예약</a></div>
     
       
   </div>

@@ -1,4 +1,9 @@
 @charset "UTF-8";
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 25cda052da688c48345f40764334237f56ae0718
 
 .ytLandscape {
     position: relative;
@@ -11,9 +16,9 @@
     height: 100%;
     left: 0;
     right: 0;
-    z-index: -1;
+    z-index: -2;
 }
-#text1{	
+#maintext1{	
 	position: absolute;
 	top:40%;
 	left: 50%;
@@ -21,9 +26,10 @@
     color: white;
     font-weight: 600;
     font-size: 150px;
+    z-index: -1;
     }
 
-#text2{
+#maintext2{
 	position: absolute;
 	left: 50%;
       transform: translate(-50%, -50%);
@@ -31,10 +37,40 @@
 	color: white;
 	font-size:25px;
 	font-weight: 500;
+	z-index: -1;
 }
 
 #text3{
 		position: absolute;
 	left: 50%;
       transform: translate(-50%, -50%);
+}
+
+#wrapper{
+	position :absolute;
+	background-color : black;
+	width: 100%;
+	height :120px;
+	top: 100vh;
+    transform: translateY(-120px);
+    opacity: 0.9;
+    display: flex;
+    z-index: -1;
+	
+}
+#wrapper>div{
+	opacity:1.0;
+	color: white;
+	margin: auto;
+	justify-content: center;
+	
+}
+
+#back{
+	width: 100%;
+	height: 1000px;
+	position: absolute;
+	top: 100vh;
+	background-color: white;
+	z-index: -1;
 }
