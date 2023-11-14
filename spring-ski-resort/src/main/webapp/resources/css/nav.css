@@ -2,7 +2,7 @@
 
 @import url(/resources/css/reset.css);
 
-.bodyContainer{
+.navContainer{
 	width : 100%;
 	position: fixed;
 	top: 0;

@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="/resources/css/index.css">
 </head>
 <body>
-<div class="bodyContainer">
+<div class="navContainer">
 	<nav id="hide"></nav>
 	<nav class="navbar" id="navbar">
   <div class="collapse">
