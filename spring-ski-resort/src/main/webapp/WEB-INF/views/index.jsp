@@ -6,11 +6,8 @@
 <html>
 <head>
 <title>Home</title>
-<style type="text/css">
-
-</style>
-</head>
  <link rel="stylesheet" href="/resources/css/index.css">
+</head>
 <body>
 
 	<jsp:include page="common/nav.jsp"></jsp:include>
@@ -28,6 +25,7 @@
 		 	<div id="innerItem2">날씨를 넣던가</div> 
 		 	<div id="innerItem3">다른 메뉴를 넣어도 되고</div> 
 		 	<div id="innerItem4">일단 때려박기~~</div> 
+		</div>
 	</div>
 			<div id="back"></div>
 </body>
