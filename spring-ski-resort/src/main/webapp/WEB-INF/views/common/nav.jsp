@@ -25,5 +25,5 @@
   </div>
 </nav>
 </div>
-<div class="ski-blank"></div>
+<div class="ski-blank" id="ski-blank"></div>
 <script type="text/javascript" src="/resources/js/nav.js" ></script>
