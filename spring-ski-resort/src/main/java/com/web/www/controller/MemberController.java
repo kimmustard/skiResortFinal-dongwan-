@@ -21,20 +21,11 @@ public class MemberController {
 
 	
 	private final MemberService msv;
-
 	
-	@GetMapping("/register")
-	public String registerForm() {
-		
-		return "/member/register";
-	}
 	
-	@PostMapping("/register")
-	public String register(@ModelAttribute("mvo")MemberVO mvo) {
-		
-		return "/member/register";
-	}
-
+	/**
+	 * @로그인
+	 */
 	@GetMapping("/login")
 	public String loginForm() {
 		
@@ -47,6 +38,26 @@ public class MemberController {
 		return "/";
 	}
 	
+	
+	/**
+	 * @가입
+	 */	
+	@GetMapping("/register")
+	public String registerForm() {
+		
+		return "/member/register";
+	}
+	
+	@PostMapping("/register")
+	public String register(@ModelAttribute("mvo")MemberVO mvo) {
+		
+		return "/member/register";
+	}
+	
+	
+	/**
+	 * @회원관리
+	 */
 	@GetMapping("/detail")
 	public String detailForm(@ModelAttribute("mvo")MemberVO mvo, Model model) {
 		
