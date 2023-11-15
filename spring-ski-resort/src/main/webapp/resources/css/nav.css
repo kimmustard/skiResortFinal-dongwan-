@@ -41,8 +41,6 @@
 
 .ski-nav-link>A {
 	display: block;
-	height: 50px;
-	width: 75px;
 	text-decoration: none;
 	line-height: 25px;
 	font-size: 20px;
@@ -59,10 +57,11 @@
 
 .ski-collapse>div {
 	
-	height: 50px;
-	width: 75px;
+	
 	color: white;
 	padding: 20px;
+	padding-top: 20px;
+    margin-left: 15px;
 }
 .ski-blank{
 	width: 100%;
