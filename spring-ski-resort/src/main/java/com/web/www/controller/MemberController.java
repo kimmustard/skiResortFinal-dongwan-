@@ -1,8 +1,13 @@
 package com.web.www.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.web.www.domain.MemberVO;
 import com.web.www.service.MemberService;
 
 import lombok.RequiredArgsConstructor;
@@ -17,8 +22,39 @@ public class MemberController {
 	
 	private final MemberService msv;
 
+	
+	@GetMapping("/register")
+	public String registerForm() {
+		
+		return "/member/register";
+	}
+	
+	@PostMapping("/register")
+	public String register(@ModelAttribute("mvo")MemberVO mvo) {
+		
+		return "/member/register";
+	}
 
-
-
+	@GetMapping("/login")
+	public String loginForm() {
+		
+		return "/member/login";
+	}
+	
+	@PostMapping("/login")
+	public String login() {
+		
+		return "/";
+	}
+	
+	@GetMapping("/detail")
+	public String detailForm(@ModelAttribute("mvo")MemberVO mvo, Model model) {
+		
+		
+		return "/member/detail";
+	}
+	
+	
+	
 		
 }
