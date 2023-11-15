@@ -33,5 +33,5 @@
 
 			<div id="back"></div>
 </body>
-	<script type="text/javascript" src="/resources/js/index.js"></script>
+	
 </html>
