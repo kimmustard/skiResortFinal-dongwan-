@@ -10,6 +10,7 @@
 </head>
 <body>
 	
+	<a href="#" class="move-top"><i class="bi  bi-arrow-up-short"></i></a> 
 
 <div class="footbox foot-color">
 	<ul class="foot-header">
@@ -24,7 +25,7 @@
 				<li class="foot"><i class="bi bi-instagram"></i></li>
 				<li class="foot"><i class="bi bi-youtube"></i></li>
 				<li class="foot"><i class="bi bi-twitter"></i></li>
-			<li class="foot"><p class="foot-select" id="foot-select">RENTAL SHOP 
+			<li class="foot"><p class="foot-select" id="foot-select">RENTAL SHOP</p>
 			<div class="foot-select-box" id="foot-select-box">
 				<ul>
 					<li>업체1</li>
@@ -50,6 +51,8 @@
 <footer class="footer foot-color">
 	© DAISUSKI RESORT, ALL RIGHTS RESERVED	
 </footer>
+
+
 </body>
 <script type="text/javascript" src="/resources/js/footer.js" ></script>
 
