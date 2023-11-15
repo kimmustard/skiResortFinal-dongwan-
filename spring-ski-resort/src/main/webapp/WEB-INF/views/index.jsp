@@ -5,11 +5,8 @@
 <html>
 <head>
 <title>Home</title>
-<style type="text/css">
-
-</style>
-</head>
  <link rel="stylesheet" href="/resources/css/index.css">
+</head>
 <body>
 
 	<jsp:include page="common/nav.jsp"></jsp:include>
