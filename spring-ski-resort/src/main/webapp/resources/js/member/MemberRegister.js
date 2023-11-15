@@ -5,7 +5,15 @@ document.getElementById('flexCheckDefault').addEventListener('click', () => {
     const checkboxe2 = document.getElementById('flexCheckDefault-2');
     const checkboxe3 = document.getElementById('flexCheckDefault-3');
 
-    checkboxe1.checked;
-    checkboxe2.checked;
-    checkboxe3.checked;
+    if (document.getElementById('flexCheckDefault').checked == true) {
+        checkboxe1.checked = true;
+        checkboxe2.checked = true;
+        checkboxe3.checked = true;
+    } else {
+        checkboxe1.checked = false;
+        checkboxe2.checked = false;
+        checkboxe3.checked = false;
+    }
+
+
 })
