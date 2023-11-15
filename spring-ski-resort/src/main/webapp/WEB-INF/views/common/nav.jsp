@@ -21,7 +21,7 @@
        <div class="ski-nav-link"> <a href="/rental/fee-info">렌탈</a></div>
        <div class="ski-nav-link"> <a href="#">Pricing</a></div>
        <div class="ski-nav-link"> <a href="#">Pricing</a></div>
-       <div class="ski-nav-link"> <a href="/notice/list">notice</a></div>
+       <div class="ski-nav-link"> <a href="/notice/list">고객센터</a></div>
        <div class="ski-nav-link"> <a href="/hotel/reservation">예약</a></div>
 
   </div>

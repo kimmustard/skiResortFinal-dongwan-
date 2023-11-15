@@ -5,10 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<jsp:include page="../common/nav.jsp" />
+<link rel="stylesheet" href="/resources/css/notice/notice_detail.css">
 </head>
+<jsp:include page="../common/nav.jsp" />
 <body>
-	<div class="container">
+	<div class="container notice-container">
 	<br>
 	<h2>공지사항</h2>
 	<br>

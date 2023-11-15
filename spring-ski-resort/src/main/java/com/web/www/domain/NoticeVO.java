@@ -19,5 +19,6 @@ public class NoticeVO {
 	private int noticeCount; //조회수
 	private String noticeRegAt; //등록일
 	private String noticeModAt; //수정일
+	private boolean noticePoint; //중요공지 상단 노출
 
 }
