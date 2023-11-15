@@ -13,8 +13,14 @@
 		justify-content: center;
 	}
 	
-	span{
-		text-align: center;
+	.formContainer form {
+		margin: auto;
+		width: 600px;
+		
+	}
+
+	.formContainer form div {
+		margin-bottom: 20px;
 	}
 </style>
 </head>
@@ -29,6 +35,13 @@
 				<input type="text" class="form-control" name="memberName">
 			</div>
 			<div>
+				<span class="input-group-text">리프트권 구매</span>
+				<input type="radio" class="form-check-input" name="lift">
+				<label>Y</label>
+				<input type="radio" class="form-check-input" name="lift">
+				<label>N</label>
+			</div>
+			<div>
 				<span class="input-group-text">장비선택</span>
 				<input type="checkbox" class="form-check-input">
 				<label class="form-check-label">스키/보드</label>
@@ -37,6 +50,15 @@
 				<input type="checkbox" class="form-check-input">
 				<label class="form-check-label">의류</label>
 			</div>
+			<div>
+				<select class="form-select">
+				  <option selected>시간선택</option>
+				  <option value="1">오전권</option>
+				  <option value="2">오후권</option>
+				  <option value="3">종일권</option>
+				</select>
+			</div>
+			<button type="submit" class="btn btn-outline-primary">예약완료</button>
 		</form>
 	</div>
 </body>

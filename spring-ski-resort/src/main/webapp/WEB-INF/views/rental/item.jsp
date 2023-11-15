@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,6 +35,14 @@
 	.itemImageBox4{
 		background-color: green;
 	}
+	.btnContainer{
+		display: flex;
+		justify-content: center;
+	}
+	.btn-outline-primary{
+		margin-left: 20px;
+		margin-right: 20px;
+	}
 </style>
 </head>
 <body>
@@ -41,6 +50,8 @@
 	
 	<h1 class="h1">장비안내</h1>
 	
+	
+	<form action="/rental/item" method="post" enctype="murtipart/form-datas">
 	<div class="itemContainer">
 		<div class="itemImageBox1">
 			<div>
@@ -62,17 +73,25 @@
 				<!-- 이미지 파일 표시 -->
 			</div>
 		</div>
-	</div>
-	
-	<div>
-  		<input type="file" name="files" id="files" style="display: none;" multiple="multiple">
-  		<button type="button" id="trigger" class="btn btn-outline-primary">파일선택</button>
-	</div>
 
-	<div>
-		<button type="submit" class="btn btn-outline-primary">등록</button>
 	</div>
 	
+	<div class="btnContainer">
+		<div>
+	  		<input type="file" name="files" id="files" style="display: none;" multiple="multiple">
+	  		<button type="button" id="trigger" class="btn btn-outline-primary">파일선택</button>
+		</div>
+		
+		<div>
+			<button type="submit" class="btn btn-outline-primary">등록</button>
+		</div>
+	</div>
+	
+	</form>
+	
+
+	
+	<script type="text/javascript" src="/resources/js/rental/rentalRegister.js"></script>
 	
 </body>
 </html>
