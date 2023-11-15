@@ -10,6 +10,7 @@
 </head>
 <body>
 	
+	<a href="#" class="move-top"><i class="bi  bi-arrow-up-short"></i></a> 
 
 <div class="footbox foot-color">
 	<ul class="foot-header">
@@ -50,6 +51,8 @@
 <footer class="footer foot-color">
 	© DAISUSKI RESORT, ALL RIGHTS RESERVED	
 </footer>
+
+
 </body>
 <script type="text/javascript" src="/resources/js/footer.js" ></script>
 

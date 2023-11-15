@@ -54,3 +54,17 @@
 	padding: 5px;
 	display: none;
 }
+.move-top{
+	position: fixed;
+	color : white;
+	right: 20px;
+	bottom: 10px;
+	font-weight: 200;
+	font-size: 28px;
+	mix-blend-mode: difference;
+}
+.bi-arrow-up-short{
+	border-radius: 100%;
+	border: 1px solid black;
+
+}
