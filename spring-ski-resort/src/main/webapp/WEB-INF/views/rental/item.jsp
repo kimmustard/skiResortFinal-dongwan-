@@ -52,46 +52,47 @@
 	
 	
 	<form action="/rental/item" method="post" enctype="murtipart/form-datas">
-	<div class="itemContainer">
-		<div class="itemImageBox1">
-			<div>
-				<!-- 이미지 파일 표시 -->
+		<div class="itemContainer">
+			<div class="itemImageBox1">
+				<div>
+					<!-- 이미지 파일 표시 -->
+				</div>
 			</div>
-		</div>
-		<div class="itemImageBox2">
-			<div>
-				<!-- 이미지 파일 표시 -->
+			<div class="itemImageBox2">
+				<div>
+					<!-- 이미지 파일 표시 -->
+				</div>
 			</div>
-		</div>
-		<div class="itemImageBox3">
-			<div>
-				<!-- 이미지 파일 표시 -->
+			<div class="itemImageBox3">
+				<div>
+					<!-- 이미지 파일 표시 -->
+				</div>
 			</div>
-		</div>
-		<div class="itemImageBox4">
-			<div>
-				<!-- 이미지 파일 표시 -->
+			<div class="itemImageBox4">
+				<div>
+					<!-- 이미지 파일 표시 -->
+				</div>
 			</div>
-		</div>
-
-	</div>
 	
-	<div class="btnContainer">
-		<div>
-	  		<input type="file" name="files" id="files" style="display: none;" multiple="multiple">
-	  		<button type="button" id="trigger" class="btn btn-outline-primary">파일선택</button>
 		</div>
 		
-		<div>
-			<button type="submit" class="btn btn-outline-primary">등록</button>
+		<div class="btnContainer">
+			<div>
+		  		<input type="file" name="files" id="files" style="display: none;" multiple="multiple">
+		  		<button type="button" id="trigger" class="btn btn-outline-primary">파일선택</button>
+			</div>
+			
+			<div>
+				<button type="submit" class="btn btn-outline-primary">등록</button>
+			</div>
 		</div>
-	</div>
 	
 	</form>
 	
 
 	
 	<script type="text/javascript" src="/resources/js/rental/rentalRegister.js"></script>
+	
 	
 </body>
 </html>

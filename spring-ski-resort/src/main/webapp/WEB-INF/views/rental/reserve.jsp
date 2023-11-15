@@ -55,11 +55,14 @@
 				  <option selected>시간선택</option>
 				  <option value="1">오전권</option>
 				  <option value="2">오후권</option>
-				  <option value="3">종일권</option>
+				  <option value="3">야간권</option>
+				  <option value="4">종일권</option>
 				</select>
 			</div>
 			<button type="submit" class="btn btn-outline-primary">예약완료</button>
 		</form>
 	</div>
+	
+	
 </body>
 </html>

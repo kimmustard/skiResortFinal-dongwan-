@@ -24,7 +24,7 @@
 				<li class="foot"><i class="bi bi-instagram"></i></li>
 				<li class="foot"><i class="bi bi-youtube"></i></li>
 				<li class="foot"><i class="bi bi-twitter"></i></li>
-			<li class="foot"><p class="foot-select" id="foot-select">RENTAL SHOP 
+			<li class="foot"><p class="foot-select" id="foot-select">RENTAL SHOP</p>
 			<div class="foot-select-box" id="foot-select-box">
 				<ul>
 					<li>업체1</li>
@@ -32,7 +32,7 @@
 					<li>업체3</li>
 					<li>업체4</li>
 				</ul>
-			</div></p></li>
+			</div></li>
 			
 			</ul>
 		
