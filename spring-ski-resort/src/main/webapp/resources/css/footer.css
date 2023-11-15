@@ -1,80 +1,56 @@
 @charset "UTF-8";
 
-$target: #fff;
+.footer{
+	padding: 10px 15px;
+}
 
-.footer {
+.footContainer{
+	padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 13px;
+}
+
+
+.foot-color{
+	background-color: black;
+	color: #c5c3c3;
+}
+.footer-hr{
+	margin: 0;
+	color: white;
+	font-size: 30px;
+	font-weight: 300;
+}
+.foot-header{
+	padding: 15px;
+	width: 100%;
+	margin-bottom: 15px;
+}
+.footContainer{
+	padding-bottom: 50px;
+    font-weight: 100;
+    line-height: 25px;
+}
+.foot{
+	float: left;
+	margin-right: 10px;
+}
+.foot-items{
+	float: right;
+}
+.foot-select{
 	
-  	width:100%;
- 	position: relative;
- 	height: 500px;
- 	background-color: black;
- 	bottom: 0;
- 	
+	height: 20px;
+	background-color: white;
 }
-
-.wrapper {
-  position: relative;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%,-50%);
-  width: 235px;
-  height: 70px;
-  white-space: nowrap;
+.foot-select:hover {
+	cursor: pointer;
 }
-
-.focus {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  font-family: Arial;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  filter: blur(3px);
-  font-size: 65px;
-  opacity: 0.6;
-  color: black;
-}
-
-.mask {
-  position: absolute;
-  left: -5px;
-  top: -2px;
-  width: 70px;
-  font-family: Arial;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-size: 65px;
-  clip: rect(0px,70px,75px,0px);
-  background: linear-gradient($target, $target 0) no-repeat,
-    linear-gradient(to right, $target, $target 0) no-repeat,
-    linear-gradient(to right, $target, $target 0) bottom left no-repeat,
-    linear-gradient(to right, $target, $target 0) bottom left no-repeat,
-    linear-gradient($target, $target 0) bottom right no-repeat,
-    linear-gradient($target, $target 0) bottom right no-repeat,
-    linear-gradient($target, $target 0) top right no-repeat,
-    linear-gradient($target, $target 0) top right no-repeat;
-  background-size: 10px 2px, 2px 10px, 2px 10px, 10px 2px, 2px 10px, 10px 2px, 10px 2px, 2px 10px, 10px 2px;
-  color: black;
-  padding: 5px;
-  transform: translateX(0);
-  box-sizing: border-box;
-  animation: mask 2.5s ease infinite alternate;
-}
-
-.text {
-  transform: translateX(0);
-  animation: text 2.5s ease infinite alternate;
-}
-
-@keyframes mask {
-  to {
-    transform: translateX(170px);
-  }
-}
-
-@keyframes text {
-  to {
-    transform: translateX(-170px);
-  }
+.foot-select-box{
+	background-color: white;
+	font-weight: 100;
+	padding: 5px;
+	display: none;
 }
