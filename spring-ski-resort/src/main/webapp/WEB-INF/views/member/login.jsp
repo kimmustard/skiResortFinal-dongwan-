@@ -70,8 +70,9 @@
 				    </div>
 				    <div class="btn-box">
 						<button type="submit" class="btn btn-primary login-btn">로그인</button> 
-						<a href=""><button type="submit" class="btn btn-primary login-btn">회원가입</button></a>
+						<a href="/member/register"><button type="button" class="btn btn-primary login-btn">회원가입</button></a>
 					</div>
+				
 					
 				</div>	
 			
