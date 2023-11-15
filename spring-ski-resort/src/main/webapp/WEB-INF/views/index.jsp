@@ -30,7 +30,7 @@
 		</div>
 	</div>
 
-	</div>
+	
 
 			<div id="back"></div>
 </body>
