@@ -5,10 +5,7 @@
 <html>
 <head>
 <title>Home</title>
-<style type="text/css">
-	
-</style>
-<link rel="stylesheet" href="/resources/css/index.css">
+ <link rel="stylesheet" href="/resources/css/index.css">
 </head>
 <body>
 	<jsp:include page="common/nav.jsp"></jsp:include>
@@ -28,6 +25,7 @@
 		 	<div id="innerItem4">일단 때려박기~~</div> 
 		</div>
 	</div>
+
 
 
 
