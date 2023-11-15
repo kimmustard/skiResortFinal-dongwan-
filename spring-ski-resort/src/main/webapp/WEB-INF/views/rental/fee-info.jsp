@@ -15,10 +15,9 @@
 		text-align: center;
 	}
 	
-	.tableContainer{
+	.rentalTableContainer, .liftTableContainer{
+		margin: 120px auto;
 		width: 700px;
-		height: 300px;
-		margin-top: 150px;
 	}
 	
 	.btnContainer{
@@ -38,9 +37,9 @@
 
 	<div class="bodyContainer">
 	
-		<h1 class="h1">렌탈/요금안내</h1>
-		<div class="tableContainer">
-			<table class="table table-success table-striped">
+		<div class="rentalTableContainer">
+			<h1 class="h1">렌탈/요금안내</h1>
+			<table class="table table-info table-striped">
 				<thead>
 					<tr>
 						<th>#</th>
@@ -71,6 +70,36 @@
 				</tbody>
 			</table>
 
+		</div>
+		
+		<div class="liftTableContainer">
+			<h1 class="h1">리프트권 요금</h1>
+			<table class="table table-info table-striped">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>평일</th>
+						<th>주말/공휴일</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th>2시간권</th>
+						<th>대인 20000 | 소인 10000</th>
+						<th>대인 25000 | 소인 15000</th>
+					</tr>
+					<tr>
+						<th>4시간권</th>
+						<th>대인 30000 | 소인 20000</th>
+						<th>대인 35000 | 소인 25000</th>
+					</tr>
+					<tr>
+						<th>종일권</th>
+						<th>대인 40000 | 소인 30000</th>
+						<th>대인 45000 | 소인 35000</th>
+					</tr>
+				</tbody>
+			</table>
 		</div>
 		<div class="btnContainer">
 			<a href="/rental/item"><button type="button" class="btn btn-outline-info">장비안내</button></a>
