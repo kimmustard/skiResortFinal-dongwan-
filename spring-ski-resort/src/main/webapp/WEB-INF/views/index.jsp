@@ -8,7 +8,6 @@
  <link rel="stylesheet" href="/resources/css/index.css">
 </head>
 <body>
-
 	<jsp:include page="common/nav.jsp"></jsp:include>
 	<div class="ytLandscape">
 		<iframe 
@@ -27,7 +26,8 @@
 		</div>
 	</div>
 
-	
+
+
 
 			<div id="back"></div>
 </body>
