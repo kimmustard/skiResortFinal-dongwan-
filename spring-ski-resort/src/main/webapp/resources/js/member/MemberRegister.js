@@ -1,19 +1,36 @@
-
 document.getElementById('flexCheckDefault').addEventListener('click', () => {
-    console.log("체크완료");
-    const checkboxe1 = document.getElementById('flexCheckDefault-1');
-    const checkboxe2 = document.getElementById('flexCheckDefault-2');
-    const checkboxe3 = document.getElementById('flexCheckDefault-3');
 
     if (document.getElementById('flexCheckDefault').checked == true) {
-        checkboxe1.checked = true;
-        checkboxe2.checked = true;
-        checkboxe3.checked = true;
+        for (let i = 1; i <= 3; i++) {
+            document.getElementById(`flexCheckDefault-${i}`).checked = true;
+            document.getElementById(`terms${i}`).disabled = true;
+        }
     } else {
-        checkboxe1.checked = false;
-        checkboxe2.checked = false;
-        checkboxe3.checked = false;
+        for (let i = 1; i <= 3; i++) {
+            document.getElementById(`flexCheckDefault-${i}`).checked = false;
+            document.getElementById(`terms${i}`).disabled = false;
+        }
     }
+})
 
-
+document.getElementById('flexCheckDefault-1').addEventListener('click', () => {
+    if (document.getElementById('flexCheckDefault-1').checked == true) {
+        document.getElementById(`terms1`).disabled = true;
+    } else {
+        document.getElementById(`terms1`).disabled = false;
+    }
+})
+document.getElementById('flexCheckDefault-2').addEventListener('click', () => {
+    if (document.getElementById('flexCheckDefault-2').checked == true) {
+        document.getElementById(`terms2`).disabled = true;
+    } else {
+        document.getElementById(`terms2`).disabled = false;
+    }
+})
+document.getElementById('flexCheckDefault-3').addEventListener('click', () => {
+    if (document.getElementById('flexCheckDefault-3').checked == true) {
+        document.getElementById(`terms3`).disabled = true;
+    } else {
+        document.getElementById(`terms3`).disabled = false;
+    }
 })

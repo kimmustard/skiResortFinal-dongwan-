@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.web.www.domain.MemberVO;
+import com.web.www.domain.member.MemberVO;
 import com.web.www.service.RentalService;
 
 import lombok.RequiredArgsConstructor;

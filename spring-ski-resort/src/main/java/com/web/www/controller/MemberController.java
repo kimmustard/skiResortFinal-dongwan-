@@ -8,9 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import com.web.www.domain.MemberVO;
+import com.web.www.domain.member.MemberVO;
 import com.web.www.service.MemberService;
 
 import lombok.RequiredArgsConstructor;
@@ -52,14 +51,14 @@ public class MemberController {
 	}
 	
 	@PostMapping("/register")
-	public String register(@ModelAttribute("mvo")MemberVO mvo, @RequestParam("terms")List<String> terms) {
-		for (String term : terms) {
-			log.info("terms =  {}" , term);
-		}
+	public String register(@ModelAttribute("mvo")MemberVO mvo) {
 		log.info("MemberController mvo = {}", mvo);
-		return "/";
+		
+		int isOk = msv.insertMember(mvo);
+		
+		return "index";
 	}
-	
+
 	
 	/**
 	 * @회원관리
@@ -67,11 +66,12 @@ public class MemberController {
 	@GetMapping("/detail")
 	public String detailForm(@ModelAttribute("mvo")MemberVO mvo, Model model) {
 		
-		
 		return "/member/detail";
 	}
 	
 	
 	
 		
+	
+	
 }

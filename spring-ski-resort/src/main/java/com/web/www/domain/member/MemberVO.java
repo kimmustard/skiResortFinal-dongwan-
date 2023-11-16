@@ -1,4 +1,4 @@
-package com.web.www.domain;
+package com.web.www.domain.member;
 
 import java.util.List;
 
@@ -27,12 +27,9 @@ public class MemberVO {
 	private String memberAddress;	//주소
 	private String memberAddressDetail;	//상세주소
 	private String memberPhoneNum;	//폰번호
-	private String memberRegAt;	//회원등록일
-	private int memberDel;	//회원탈퇴일자
-	
-	private String memberLastAt;	//로그아웃시간
-	private String memberPwdModAt;	//비밀번호 변경일	
-	
+	private String memberTerms1; //이용약관
+	private String memberTerms2; //이용약관
+	private String memberTerms3; //이용약관
 	
 	
 }

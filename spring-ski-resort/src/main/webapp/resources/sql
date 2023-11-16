@@ -1,15 +1,23 @@
 ##test member dummy SQL 
 
-member_num        bigint       
-member_id           varchar(100) 
-member_pwd         varchar(100)
-member_alias         varchar(100) 
-member_name          varchar(50)  
-member_email          varchar(50) 
-member_birth          varchar(50) 
-member_address         varchar(50)  
-member_address_detail varchar(50) 
-member_phone_num      varchar(25)  
-member_reg_at          datetime  
-member_last_at       datetime    
-member_pwd_mod_at     datetime  
+## member table 11-16
+create table member(
+member_num bigint not null auto_increment,
+member_id varchar(100) not null,
+member_pwd varchar(100) not null,
+member_alias varchar(100) not null,
+member_name varchar(50) not null, 
+member_email varchar(50) not null,
+member_birth varchar(50) not null,
+member_address varchar(50) not null, 
+member_address_detail varchar(50),
+member_phone_num varchar(25)  not null,
+member_reg_at datetime default now(),
+member_last_at datetime default now(),
+member_pwd_mod_at datetime default now(),
+member_del varchar(1) default 'N',
+member_terms1 varchar(15) default 'non-check',
+member_terms2 varchar(15) default 'non-check',
+member_terms3 varchar(15) default 'non-check',
+primary key(member_num)
+);
