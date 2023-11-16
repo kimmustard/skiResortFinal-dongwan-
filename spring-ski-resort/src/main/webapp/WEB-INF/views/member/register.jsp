@@ -129,20 +129,23 @@
 						    <hr>
 						    <div class="termsBox">
 						    	<div class="tbBox tb-1">
-							    	<input class="form-check-input" name="terms" type="checkbox" value="1" id="flexCheckDefault-1">
+							    	<input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault-1">
+							    	<input type="hidden" name="terms" value="0">
 							    	<label class="form-check-label" for="flexCheckDefault-1">
 							          만 14세 이상입니다. (필수)
 							        </label>
 						        </div>
 						        <div class="tbBox tb-2">
-							        <input class="form-check-input" name="terms" type="checkbox" value="1" id="flexCheckDefault-2">
+							        <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault-2">
+							    	<input type="hidden" name="terms" value="0">
 							    	<label class="form-check-label" for="flexCheckDefault-2">
 							          이용약관 (필수)
 							        </label>
 							        <button type="button" class="btn btn-primary">약관보기</button>
 						        </div>
 						        <div class="tbBox tb-3">
-							        <input class="form-check-input" name="terms" type="checkbox" value="1" id="flexCheckDefault-3">
+							        <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault-3">
+							    	<input type="hidden" name="terms" value="0">
 							    	<label class="form-check-label" for="flexCheckDefault-3">
 							          마케팅 동의 (선택)
 							        </label>

@@ -1,11 +1,14 @@
 package com.web.www.controller;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.web.www.domain.MemberVO;
 import com.web.www.service.MemberService;
@@ -49,9 +52,12 @@ public class MemberController {
 	}
 	
 	@PostMapping("/register")
-	public String register(@ModelAttribute("mvo")MemberVO mvo) {
-		
-		return "/member/register";
+	public String register(@ModelAttribute("mvo")MemberVO mvo, @RequestParam("terms")List<String> terms) {
+		for (String term : terms) {
+			log.info("terms =  {}" , term);
+		}
+		log.info("MemberController mvo = {}", mvo);
+		return "/";
 	}
 	
 	

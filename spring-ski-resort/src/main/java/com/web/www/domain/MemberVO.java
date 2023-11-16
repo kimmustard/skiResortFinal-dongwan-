@@ -1,5 +1,7 @@
 package com.web.www.domain;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,7 +29,6 @@ public class MemberVO {
 	private String memberPhoneNum;	//폰번호
 	private String memberRegAt;	//회원등록일
 	private int memberDel;	//회원탈퇴일자
-	private String memberTerms; //이용약관
 	
 	private String memberLastAt;	//로그아웃시간
 	private String memberPwdModAt;	//비밀번호 변경일	
