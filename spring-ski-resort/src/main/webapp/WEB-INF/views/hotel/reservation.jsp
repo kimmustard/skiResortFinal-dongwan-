@@ -24,7 +24,17 @@
 			<div class="calendar">달력z</div>
 			<div class="people">인원수</div>
 			<button id="payBtn">다음</button>
-			<div id="innerbox"></div>
+			<div id="innerbox" style="display: none;">
+				<input type="radio" name="room" value="방">방
+				<input type="radio" name="room" value="방">방
+				<input type="radio" name="room" value="방">방
+				<input type="radio" name="room" value="방">방
+				<input type="radio" name="room" value="방">방
+				<input type="radio" name="room" value="방">방
+				
+				<button id="closeBtn">닫기</button>
+				<button type="submit">결제</button>
+			</div>
 		</div>
 	</div>
 
