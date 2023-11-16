@@ -23,15 +23,7 @@
 	</div>
 	
 	<!-- 카테고리 라인 -->
-	<!-- <ul class="notice-ul-category">
-		<li>전체</li>
-		<li>공지사항</li>
-		<li>이벤트</li>
-		<li>보도자료</li>
-		<li>쇼핑몰</li>
-		<li>채용정보</li>
-		<li>기타</li>
-	</ul> -->
+	<div class="notice-category">
 	<ul class="nav nav-tabs" id="myTab" role="tablist">
 	  <li class="nav-item" role="presentation">
 	    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">
@@ -49,44 +41,57 @@
 	    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">
 	    보도자료</button>
 	  </li>
+	  <li class="nav-item" role="presentation">
+	    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">
+	    쇼핑몰</button>
+	  </li>
+	  <li class="nav-item" role="presentation">
+	    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">
+	    채용정보</button>
+	  </li>
+	  <li class="nav-item" role="presentation">
+	    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">
+	    기타</button>
+	  </li>
 	</ul>
+	</div>
 	
 	
-
+	<!-- 리스트 테이블 라인 -->
 	<table class="table"  >
 	  <thead >
-	    <tr>
-	      <th scope="col">No.</th>
-	      <th scope="col">카테고리</th>
-	      <th scope="col">제목</th>
-	      <th scope="col">작성자</th>
-	      <th scope="col">등록일</th>
-	      <th scope="col">조회</th>
+	    <tr class="notice-table-tr">
+	      <th scope="col" class="notice-table-td">번호</th>
+	      <th scope="col" class="notice-table-td">카테고리</th>
+	      <th scope="col" class="notice-table-td">제목</th>
+	      <th scope="col" class="notice-table-td">작성자</th>
+	      <th scope="col" class="notice-table-td">등록일</th>
+	      <th scope="col" class="notice-table-td">조회</th>
 	    </tr>
 	  </thead>
 	  <tbody>
-	    <tr>
-	      <th scope="row">1</th>
-	      <td>Mark</td>
-	      <td><a href="/notice/detail">제목제목</a></td>
-	      <td>@mdzdo</td>
-	      <td>@mdo</td>
+	    <tr class="notice-table-tr">
+	      <th scope="row" class="notice-table-td">1</th>
+	      <td class="notice-table-td">Mark</td>
+	      <td class="notice-table-td"><a href="/notice/detail">제목제목</a></td>
+	      <td class="notice-table-td">@mdzdo</td>
+	      <td class="notice-table-td">@mdo</td>
 	    </tr>
-	    <tr>
-	      <th scope="row">2</th>
-	      <td>Jacob</td>
-	      <td>Thornton</td>
-	      <td>Thornton</td>
-	      <td>Thornton</td>
-	      <td>@fat</td>
+	    <tr class="notice-table-tr">
+	      <th scope="row" class="notice-table-td">2</th>
+	      <td class="notice-table-td">Jacob</td>
+	      <td class="notice-table-td">Thornton</td>
+	      <td class="notice-table-td">Thornton</td>
+	      <td class="notice-table-td">Thornton</td>
+	      <td class="notice-table-td">@fat</td>
 	    </tr>
-	    <tr>
-	      <th scope="row">3</th>	      
-	      <td>@twitter</td>
-	      <td>@twitter</td>
-	      <td>@twitter</td>
-	      <td>@twitter</td>
-	      <td>@twitter</td>
+	    <tr class="notice-table-tr">
+	      <th scope="row" class="notice-table-td">3</th>	      
+	      <td class="notice-table-td">@twitter</td>
+	      <td class="notice-table-td">@twitter</td>
+	      <td class="notice-table-td">@twitter</td>
+	      <td class="notice-table-td">@twitter</td>
+	      <td class="notice-table-td">@twitter</td>
 	    </tr>
 	  </tbody>
 	</table>

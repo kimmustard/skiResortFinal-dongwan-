@@ -42,6 +42,15 @@
 	color: white;
 }
 
-.notice-ul-category{
-	display: flex;
+.notice-category{
+	margin-bottom: 20px;
+}
+
+.notice-table-tr{
+	border-bottom: 1px solid #e3dbd7;
+	
+}
+
+.notice-table-td{
+	height: 60px;
 }
