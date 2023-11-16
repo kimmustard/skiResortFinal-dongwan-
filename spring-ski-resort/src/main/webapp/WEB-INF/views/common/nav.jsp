@@ -22,6 +22,13 @@
        <div class="ski-nav-link"><a href="#">Pricing</a></div>
        <div class="ski-nav-link"> <a href="/notice/list">고객센터</a></div>
        <div class="ski-nav-link"><a href="/hotel/reservation">예약</a></div>
+       <ul class="ski-side-navbar">
+       	<li><a href="">로그인</a></li>
+       	<li><a href="">회원가입</a></li>
+       	<li><a href="">회원가입</a></li>
+       	<li><a href="">회원가입</a></li>
+       	<li><a href="">회원가입</a></li>
+       </ul>
   </div>
 </nav>
 </div>
