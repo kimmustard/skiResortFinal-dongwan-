@@ -34,3 +34,13 @@ document.getElementById('flexCheckDefault-3').addEventListener('click', () => {
         document.getElementById(`terms3`).disabled = false;
     }
 })
+
+
+$(function() {
+	$("#memberBirth") .datetimepicker({ 
+		locale: "ko",
+		format: "YYYY-MM-DD",
+		defaultDate: moment()
+	});
+
+});

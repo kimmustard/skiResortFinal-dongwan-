@@ -23,7 +23,7 @@ public class MemberVO {
 	private String memberAlias;	//닉네임
 	private String memberName;	//실명
 	private String memberEmail;	//이메일
-	private int memberBirth;	//생일
+	private String memberBirth;	//생일
 	private String memberAddress;	//주소
 	private String memberAddressDetail;	//상세주소
 	private String memberPhoneNum;	//폰번호
