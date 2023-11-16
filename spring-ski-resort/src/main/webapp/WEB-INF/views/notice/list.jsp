@@ -58,40 +58,41 @@
 	
 	
 	<!-- 리스트 테이블 라인 -->
-	<table class="table"  >
+	<table class="table notice-table"  >
 	  <thead >
 	    <tr class="notice-table-tr">
-	      <th scope="col" class="notice-table-td">번호</th>
-	      <th scope="col" class="notice-table-td">카테고리</th>
-	      <th scope="col" class="notice-table-td">제목</th>
-	      <th scope="col" class="notice-table-td">작성자</th>
-	      <th scope="col" class="notice-table-td">등록일</th>
-	      <th scope="col" class="notice-table-td">조회</th>
+	      <th scope="col" class="notice-table-th-no"><div class="notice-table-td-child">번호</div></th>
+	      <th scope="col" class="notice-table-th-cago"><div class="notice-table-td-child">카테고리</div></th>
+	      <th scope="col" class="notice-table-th-title"><div class="notice-table-td-child">제목</div></th>
+	      <th scope="col" class="notice-table-th-writer"><div class="notice-table-td-child">작성자</div></th>
+	      <th scope="col" class="notice-table-th-reg"><div class="notice-table-td-child">등록일</div></th>
+	      <th scope="col" class="notice-table-th-count"><div class="notice-table-td-child">조회</div></th>
 	    </tr>
 	  </thead>
 	  <tbody>
 	    <tr class="notice-table-tr">
-	      <th scope="row" class="notice-table-td">1</th>
-	      <td class="notice-table-td">Mark</td>
-	      <td class="notice-table-td"><a href="/notice/detail">제목제목</a></td>
-	      <td class="notice-table-td">@mdzdo</td>
-	      <td class="notice-table-td">@mdo</td>
+	      <td class="notice-table-td"><div class="notice-table-td-child">1</div></td>
+	      <td class="notice-table-td"><div class="notice-table-td-child">공지사항</div></td>
+	      <td class="notice-table-td"><div class="notice-table-td-child-title"><a href="/notice/detail">공지사항 입니다</a></div></td>
+	      <td class="notice-table-td"><div class="notice-table-td-child">admin</div></td>
+	      <td class="notice-table-td"><div class="notice-table-td-child">2023.11.16</div></td>
+	      <td class="notice-table-td"><div class="notice-table-td-child">11</div></td>
 	    </tr>
 	    <tr class="notice-table-tr">
-	      <th scope="row" class="notice-table-td">2</th>
-	      <td class="notice-table-td">Jacob</td>
-	      <td class="notice-table-td">Thornton</td>
-	      <td class="notice-table-td">Thornton</td>
-	      <td class="notice-table-td">Thornton</td>
-	      <td class="notice-table-td">@fat</td>
+	      <td class="notice-table-td"><div class="notice-table-td-child">2</div></td>
+	      <td class="notice-table-td"><div class="notice-table-td-child">이벤트</div></td>
+	      <td class="notice-table-td"><div class="notice-table-td-child-title">이벤트 입니다</div></td>
+	      <td class="notice-table-td"><div class="notice-table-td-child">admin</div></td>
+	      <td class="notice-table-td"><div class="notice-table-td-child">2023.11.16</div></td>
+	      <td class="notice-table-td"><div class="notice-table-td-child">22</div></td>
 	    </tr>
 	    <tr class="notice-table-tr">
-	      <th scope="row" class="notice-table-td">3</th>	      
-	      <td class="notice-table-td">@twitter</td>
-	      <td class="notice-table-td">@twitter</td>
-	      <td class="notice-table-td">@twitter</td>
-	      <td class="notice-table-td">@twitter</td>
-	      <td class="notice-table-td">@twitter</td>
+	      <td class="notice-table-td"><div class="notice-table-td-child">3</div></td>	      
+	      <td class="notice-table-td"><div class="notice-table-td-child">보도자료</div></td>
+	      <td class="notice-table-td"><div class="notice-table-td-child-title">기사잘 떴습니다</div></td>
+	      <td class="notice-table-td"><div class="notice-table-td-child">admin</div></td>
+	      <td class="notice-table-td"><div class="notice-table-td-child">2023.11.16</div></td>
+	      <td class="notice-table-td"><div class="notice-table-td-child">33</div></td>
 	    </tr>
 	  </tbody>
 	</table>
