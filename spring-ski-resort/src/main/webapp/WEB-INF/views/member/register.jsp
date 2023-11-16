@@ -50,6 +50,10 @@
 		margin-left: 30px;
 		margin-right: 30px;
 	}
+	
+	.member-Calrendar{
+		width: 300px;
+	}
 </style>
 </head>
 <body>
@@ -107,12 +111,17 @@
 								</div>
 						    </div>
 						    
-						    <div class="form-group registerBox rb-8">
+						    <!-- 생년월일 -->
+						    
+						    
+						    <div class="form-group registerBox rb-9">
 								 <label class="col-form-label mt-4" for="inputMemberName">이름</label>
 								 <input type="text" class="form-control" name="memberName" placeholder="실명 입력" id="inputMemberName">
 							</div>   
 						    
-						    <div class="form-group registerBox rb-9">
+						    
+						    
+						    <div class="form-group registerBox rb10">
 								 <label class="col-form-label mt-4" for="inputMemberPhone">핸드폰 번호</label>
 								 <input type="text" class="form-control" name="memberPhoneNum" placeholder="핸드폰 번호 입력" id="inputMemberPhone">
 								 <small class="form-text text-muted">"-" 제외 후 핸드폰 번호 입력</small>
@@ -176,5 +185,15 @@
 	<jsp:include page="../common/footer.jsp"></jsp:include>
 	
 	<script type="text/javascript" src="/resources/js/member/MemberRegister.js" defer></script>
+	
+	
+	
+	<!-- 캘린더 -->
+	<script src="/resources/Member_calendar/js/jquery-3.3.1.min.js"></script>
+    <script src="/resources/Member_calendar/js/popper.min.js"></script>
+    <script src="/resources/Member_calendar/js/bootstrap.min.js"></script>
+    <script src="/resources/Member_calendar/js/picker.js"></script>
+    <script src="/resources/Member_calendar/js/picker.date.js"></script>
+    <script src="/resources/Member_calendar/js/main.js"></script>
 </body>
 </html>
