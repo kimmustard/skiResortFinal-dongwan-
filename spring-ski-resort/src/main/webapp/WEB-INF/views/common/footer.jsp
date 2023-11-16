@@ -26,7 +26,8 @@
 				<li class="foot"><i class="bi bi-youtube"></i></li>
 				<li class="foot"><i class="bi bi-twitter"></i></li>
 			<li class="foot"><p class="foot-select" id="foot-select">RENTAL SHOP</p>
-			<div class="foot-select-box" id="foot-select-box">
+			<div class="foot-select-box" id="foot-select-box" style="display:none; ">
+			
 				<ul>
 					<li>업체1</li>
 					<li>업체2</li>
