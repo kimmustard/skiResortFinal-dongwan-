@@ -44,7 +44,7 @@
 	
 
 </style>
- <link rel="stylesheet" href="/resources/css/loginbootstrap.css">
+<link rel="stylesheet" href="/resources/css/loginbootstrap.css">
 </head>
 <body>
 	<jsp:include page="../common/nav.jsp"></jsp:include>

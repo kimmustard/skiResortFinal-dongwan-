@@ -2,8 +2,10 @@ package com.web.www.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.web.www.domain.member.MemberVO;
 import com.web.www.service.RentalService;
 
 import lombok.RequiredArgsConstructor;
@@ -24,7 +26,8 @@ public class RentalController {
 	}
 	
 	@GetMapping("/reserve")
-	public String reserveForm() {
+	public String reserveForm(@ModelAttribute("mvo")MemberVO mvo) {
+		log.info("MemberController mvo = {}" , mvo);
 		return "/rental/reserve";
 	}
 	
