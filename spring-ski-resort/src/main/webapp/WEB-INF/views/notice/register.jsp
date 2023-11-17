@@ -11,22 +11,22 @@
 </head>
 <body>
 <div class="container">
-	<form action="/board/register" method="post" enctype="multipart/form-data">
+	<form action="/notice/register" method="post">
 		<div class="mb-3">
 		  <label for="exampleFormControlInput1" class="form-label">제목</label>
-		  <input type="text" class="form-control" name="title" id="exampleFormControlInput1" placeholder="제목입력">
+		  <input type="text" class="form-control" name="noticeTitle" id="exampleFormControlInput1" placeholder="제목입력">
 		</div>
 		<div class="mb-3">
 		  <label for="exampleFormControlInput1" class="form-label">카테고리</label>
-		  <input type="text" class="form-control" name="title" id="exampleFormControlInput1">
+		  <input type="text" class="form-control" name="noticeCategory" id="exampleFormControlInput1" value="공지사항">
 		</div>
 		<div class="mb-3">
 		  <label for="exampleFormControlInput1" class="form-label">작성자</label>
-		  <input type="text" class="form-control" name="writer" id="exampleFormControlInput1" value="" readonly="readonly">
+		  <input type="text" class="form-control" name="noticeWriter" id="exampleFormControlInput1" value="운영자" readonly="readonly">
 		</div>
 		<div class="mb-3">
 		  <label for="exampleFormControlTextarea1" class="form-label">내용</label>
-		  <textarea class="form-control" name="content" id="exampleFormControlTextarea1" rows="3"></textarea>
+		  <textarea class="form-control" name="noticeContent" id="exampleFormControlTextarea1" rows="3"></textarea>
 		</div>
 		<div class="mb-3">
 		  <input type="file" class="form-control" name="files" id="files" style="display: none;" multiple="multiple">

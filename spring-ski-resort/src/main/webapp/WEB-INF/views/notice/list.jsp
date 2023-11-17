@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,17 +10,15 @@
 </head>
 <body>
 <jsp:include page="../common/nav.jsp" />
-	<div class="notice-img-container" style="background-image: url(&quot;https://www.hansbiz.co.kr/news/photo/201612/59818_87104_137.jpg;);">
-		
+	<div class="notice-img-container" style="background-image: url('https://a.cdn-hotels.com/gdcs/production68/d766/4cc034a7-aeb1-4edd-b2a9-f7feaac49aec.jpg')">	
 	</div>
-<div class="container notice-container" >
-
 	
+<div class="container notice-container" id="notice-container">
+
 	<div class="notice-menu-container">
 		<!-- 검색 라인  -->
 		<div class="notice-search-container">
 		<div class="dropdown notice-search-category">
-			  <!-- <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"> -->
 			  <button class="notice-search-category dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
 			    전체
 			  </button>
@@ -29,7 +28,6 @@
 			    <li><a class="dropdown-item" href="#">전체</a></li>
 			  </ul>
 			</div>
-			<!-- <div class="notice-search-category">제목</div> -->
 			<div class="notice-input-container">
 				<input placeholder="검색어를 입력해 주세요." type="text" class="notice-search-input">
 			</div>
@@ -37,6 +35,7 @@
 				<button class="notice-search-button">검색</button>
 			</div>
 		</div>
+		
 		
 		<!-- 카테고리 라인 -->
 		<div class="notice-category">
@@ -86,14 +85,23 @@
 		    </tr>
 		  </thead>
 		  <tbody>
+		  <c:forEach items="${list }" var="nvo">
 		    <tr class="notice-table-tr">
-		      <td class="notice-table-td"><div class="notice-table-td-child">1</div></td>
-		      <td class="notice-table-td"><div class="notice-table-td-child">공지사항</div></td>
-		      <td class="notice-table-td"><div class="notice-table-td-child-title"><a href="/notice/detail">공지사항 입니다</a></div></td>
-		      <td class="notice-table-td"><div class="notice-table-td-child">admin</div></td>
-		      <td class="notice-table-td"><div class="notice-table-td-child">2023.11.16</div></td>
-		      <td class="notice-table-td"><div class="notice-table-td-child">11</div></td>
+		      <td class="notice-table-td"><div class="notice-table-td-child">${nvo.noticeNum }</div></td>
+		      <td class="notice-table-td"><div class="notice-table-td-child">${nvo.noticeCategory }</div></td>
+		      <td class="notice-table-td"><div class="notice-table-td-child-title"><a href="/notice/detail?noticeNum=${nvo.noticeNum }">${nvo.noticeTitle }</a></div></td>
+		      <td class="notice-table-td"><div class="notice-table-td-child">${nvo.noticeWriter }</div></td>
+		      <td class="notice-table-td"><div class="notice-table-td-child">${nvo.noticeRegAt }</div></td>
+		      <td class="notice-table-td"><div class="notice-table-td-child">${nvo.noticeCount }</div></td>
 		    </tr>
+		  </c:forEach>
+		  
+		  
+		  
+		  
+		  
+		  
+		  
 		    <tr class="notice-table-tr">
 		      <td class="notice-table-td"><div class="notice-table-td-child">2</div></td>
 		      <td class="notice-table-td"><div class="notice-table-td-child">이벤트</div></td>
