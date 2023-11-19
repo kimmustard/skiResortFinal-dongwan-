@@ -1,7 +1,11 @@
 package com.web.www.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -42,14 +46,19 @@ public class MemberController {
 	 * @가입
 	 */	
 	@GetMapping("/register")
-	public String registerForm() {
-		
+	public String registerForm(Model model) {
+		model.addAttribute("mvo", new MemberVO());
 		return "/member/register";
 	}
 	
 	@PostMapping("/register")
-	public String register(@ModelAttribute("mvo")MemberVO mvo) {
+	public String register(@Validated @ModelAttribute("mvo")MemberVO mvo, BindingResult bindingResult) {
 		log.info("MemberController mvo = {}", mvo);
+		
+		if(bindingResult.hasErrors()) {
+			log.info("에러발생 = {}", bindingResult.getFieldError());
+			return "/member/register";
+		}
 		
 		int isOk = msv.insertMember(mvo);
 		

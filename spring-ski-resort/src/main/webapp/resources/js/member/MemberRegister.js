@@ -1,3 +1,5 @@
+
+//약관
 document.getElementById('flexCheckDefault').addEventListener('click', () => {
 
     if (document.getElementById('flexCheckDefault').checked == true) {
@@ -34,6 +36,21 @@ document.getElementById('flexCheckDefault-3').addEventListener('click', () => {
         document.getElementById(`terms3`).disabled = false;
     }
 })
+
+//비밀번호 확인
+document.getElementById('exampleInputPassword2').addEventListener('keyup', () => {
+    pwd1 = document.getElementById('exampleInputPassword1').value;
+    pwd2 = document.getElementById('exampleInputPassword2').value;
+    if (pwd1 == pwd2) {
+        document.getElementById('exampleInputPassword2').className = 'form-control is-valid';
+        console.log(document.getElementById('exampleInputPassword2').className);
+    } else {
+        document.getElementById('exampleInputPassword2').className = 'form-control is-invalid';
+        console.log(document.getElementById('exampleInputPassword2').className);
+    }
+})
+
+
 
 //달력
 $(function() {

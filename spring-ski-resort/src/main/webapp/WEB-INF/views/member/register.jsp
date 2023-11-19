@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
+    <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -86,7 +88,9 @@
 	margin-left: 20px;
 	}
 	
-	
+	.errorFont{
+	color: red;
+	}
 </style>
 </head>
 <body>
@@ -99,39 +103,49 @@
 	<div class="registerContainer">
 		
 		<div class="registerBody">
-			<form action="/member/register" method="post">
-			
+			<form:form action="/member/register" modelAttribute="mvo" method="post">
+			<c:set var="idError"><form:errors class="errorFont" path="memberId" /></c:set>
+			<c:set var="pwdError"><form:errors class="errorFont" path="memberPwd" /></c:set>
+			<c:set var="aliasError"><form:errors class="errorFont" path="memberAlias" /></c:set>
+			<c:set var="emailError"><form:errors class="errorFont" path="memberEmail" /></c:set>
+			<c:set var="addressError"><form:errors class="errorFont" path="memberAddress" /></c:set>
+			<c:set var="nameError"><form:errors class="errorFont" path="memberName" /></c:set>
+			<c:set var="phoneNumError"><form:errors class="errorFont" path="memberPhoneNum" /></c:set>
 				
 				<div class="registerMainBox">
 				
 					<div class="form-group registerBox rb-1">
 							<label class="form-label mt-4" for="inputMemberId">아이디</label>
 					    <div class="input-group mb-3">
-					      <input type="text" class="form-control test55" id="inputMemberId" name="memberId" placeholder="아이디를 입력하세요" aria-label="Recipient's username" aria-describedby="button-addon2">
+					      <form:input type="text" path="memberId" class="form-control ${empty idError ? '' : 'is-invalid'}" id="inputMemberId" name="memberId" placeholder="아이디" aria-label="Recipient's username" aria-describedby="button-addon2"/>
 					      <button class="btn btn-primary" type="button">중복확인</button>
 					    </div>
+					      <form:errors class="errorFont" path="memberId"></form:errors>
 				    </div>
 				    
 					<div class="form-group registerBox rb-2">
-				      <label for="exampleInputPassword1" class="form-label mt-4">Password</label>
-				      <input type="password" class="form-control" name="memberPwd" id="exampleInputPassword1" placeholder="비밀번호" autocomplete="off">
-				      <label for="exampleInputPassword2" class="form-label mt-4">Password check</label>
-				      <input type="password" class="form-control" id="exampleInputPassword2" placeholder="비밀번호 확인" autocomplete="off">
+					    <label for="exampleInputPassword1" class="form-label mt-4">Password</label>
+					    <form:input type="password" path="memberPwd" class="form-control ${empty pwdError ? '' : 'is-invalid'}" name="memberPwd" id="exampleInputPassword1" placeholder="비밀번호" autocomplete="off" />
+					    <form:errors class="errorFont" path="memberPwd"></form:errors>
+					    <label for="exampleInputPassword2" class="form-label mt-4">Password check</label>
+						<input type="password" class="form-control" id="exampleInputPassword2" placeholder="비밀번호 확인" autocomplete="off" />
 				    </div>
 
 					<div class="form-group registerBox rb-4">
 							<label class="form-label mt-4" for="inputMemberAlias">닉네임</label>
 					    <div class="input-group mb-3">
-					      <input type="text" class="form-control" name="memberAlias" id="inputMemberAlias" placeholder="닉네임" aria-label="Recipient's username" aria-describedby="button-addon2">
+					      <form:input type="text" class="form-control ${empty aliasError ? '' : 'is-invalid'}" path="memberAlias" name="memberAlias" id="inputMemberAlias" placeholder="닉네임" aria-label="Recipient's username" aria-describedby="button-addon2" />
 					      <button class="btn btn-primary" type="button">중복확인</button>
 					    </div>
+					      <form:errors class="errorFont" path="memberAlias"></form:errors>
 				    </div>
 				    
 					<div class="form-group row registerBox rb-5">
 					     <label for="exampleInputEmail1" class="form-label mt-4">Email</label>
 					     <div>
-					     <input type="email" class="form-control" name="memberEmail" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="이메일">
+					     <form:input type="email" path="memberEmail" class="form-control ${empty emailError ? '' : 'is-invalid'}" name="memberEmail" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="이메일" />
 					     <small id="emailHelp" class="form-text text-muted">이메일 양식대로 입력해주세요.</small>
+					     <form:errors class="errorFont" path="memberEmail"></form:errors>
 				   		 </div>
 				    </div>
 				    <!-- 주소 -->
@@ -140,15 +154,16 @@
 					<label class="form-label mt-4" for="inputMemberAddress">주소</label>
 					<div class="addressBox">
 						<div class="input-group mb-3 postNum">
-					    <input type="text" class="form-control" id="inputMemberPostcode" readonly="readonly" placeholder="우편번호">
+					    <input type="text" class="form-control " id="inputMemberPostcode" readonly="readonly" placeholder="우편번호">
 						</div>
 					    <div class="input-group mb-3 adressNum">
-					      <input type="text" class="form-control" name="memberAddress" id="inputMemberAddress" readonly="readonly" placeholder="주소를 입력해주세요." aria-label="Recipient's username" aria-describedby="button-addon2">
+					      <form:input type="text" path="memberAddress" class="form-control ${empty addressError ? '' : 'is-invalid'}" name="memberAddress" id="inputMemberAddress" readonly="readonly" placeholder="주소를 입력해주세요." aria-label="Recipient's username" aria-describedby="button-addon2" />
 					      <button class="btn btn-primary" type="button" id="button-addon2" onclick="sample6_execDaumPostcode()">주소 찾기</button>
 					    </div>
 				    </div>
+					<form:errors class="errorFont" path="memberAddress"></form:errors>
 				    <div class="form-group registerBox rb-7">
-						<input type="text" class="form-control" name="memberAddressDetail" id="inputMemberAddressDetail" placeholder="상세주소 입력...">
+						<input type="text" class="form-control" name="memberAddressDetail" id="inputMemberAddressDetail" placeholder="상세주소 입력..." />
 					</div>
 			    </div>
 			    
@@ -159,29 +174,32 @@
 					<div class="input-group-prepend">
 						<span class="input-group-text">생년월일</span>
 					</div>
-					<input type="text" name="memberBirth" value="" class="form-control form-control-sm" size="9"
-						onkeydown="if (event.keyCode == 13) { find_text(); }">
+					<form:input type="text" path="memberBirth" name="memberBirth" value="" class="form-control form-control-sm" size="9"
+						onkeydown="if (event.keyCode == 13) { find_text(); }" />
 					<div class="input-group-append">
 						<span class="input-group-text">
 							<div class="input-group-addon"><i class="far fa-calendar-alt fa-lg"></i></div>
 						</span>
 					</div>
+					 <form:errors class="errorFont" path="memberBirth"></form:errors>
 				</div>
 		
 			
 			    
 			    <div class="form-group registerBox rb-9">
 					 <label class="col-form-label mt-4" for="inputMemberName">이름</label>
-					 <input type="text" class="form-control" name="memberName" placeholder="실명 입력" id="inputMemberName">
+					 <form:input type="text" path="memberName" class="form-control ${empty nameError ? '' : 'is-invalid'}" name="memberName" placeholder="실명 입력" id="inputMemberName" />
+					 <form:errors class="errorFont" path="memberName"></form:errors>
 				</div>   
 			    
 			    
 			    
 			    <div class="form-group registerBox rb10">
 					 <label class="col-form-label mt-4" for="inputMemberPhone">핸드폰 번호</label>
-					 <input type="text" class="form-control" name="memberPhoneNum" placeholder="핸드폰 번호 입력" id="inputMemberPhone">
+					 <form:input type="text" path="memberPhoneNum" class="form-control ${empty phoneNumError ? '' : 'is-invalid'}" name="memberPhoneNum" placeholder="핸드폰 번호 입력" id="inputMemberPhone" />
 					 <small class="form-text text-muted">"-" 제외 후 핸드폰 번호 입력</small>
 					 <small class="form-text text-muted">ex) 01012345678</small>
+					  <form:errors class="errorFont" path="memberPhoneNum"></form:errors>
 				</div>    
 				
 			</div>
@@ -199,18 +217,20 @@
 						  약관 상세보기
 						</button>
 				    </div>
+					    <form:errors class="errorFont" path="memberTerms1"></form:errors><br>
+					    <form:errors class="errorFont" path="memberTerms2"></form:errors>
 				    <hr>
 				    <div class="termsBox">
 				    	<div class="tbBox tb-1">
 					    	<input class="form-check-input" name="memberTerms1" type="checkbox" value="terms1check" id="flexCheckDefault-1">
-					    	<input type="hidden" name="memberTerms1" id="terms1" value="non-check" >
+					    	<form:input type="hidden" path="memberTerms1" name="memberTerms1" id="terms1" value="" />
 					    	<label class="form-check-label" for="flexCheckDefault-1">
 					          만 14세 이상입니다. (필수)
 					        </label>
 				        </div>
 				        <div class="tbBox tb-2">
 					        <input class="form-check-input" name="memberTerms2" type="checkbox" value="terms2check" id="flexCheckDefault-2">
-					    	<input type="hidden" name="memberTerms2" id="terms2" value="non-check">
+					    	<form:input type="hidden" path="memberTerms2" name="memberTerms2" id="terms2" value="" />
 					    	<label class="form-check-label" for="flexCheckDefault-2">
 					          이용약관 (필수)
 					        </label>
@@ -231,7 +251,7 @@
 					<button type="submit" class="btn btn-primary bb-1">가입완료</button> 
 					<a href="/"><button type="button" class="btn btn-primary bb-2">메인으로</button></a>
 				</div>
-			</form>
+			</form:form>
 			
 		</div>
 	</div>	
