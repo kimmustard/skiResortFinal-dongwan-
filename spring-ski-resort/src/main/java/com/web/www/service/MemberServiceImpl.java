@@ -39,6 +39,11 @@ public class MemberServiceImpl implements MemberService {
 	public int checkId(String memberId) {
 		return mdao.checkId(memberId);
 	}
+	
+	@Override
+	public int checkEmail(String memberEmail) {
+		return mdao.checkEmail(memberEmail);
+	}
 
 
 }

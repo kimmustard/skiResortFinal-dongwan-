@@ -18,5 +18,9 @@
 	<select id="checkId" resultType="int">
 		select count(member_id) from member where member_id = #{memberId}
 	</select>
+	
+	<select id="checkEmail" resultType="int">
+		select count(member_email) from member where member_email = #{memberEmail}
+	</select>
 
   </mapper>

@@ -16,10 +16,12 @@ public interface MemberDAO {
 	
 	
 	/**
-	 * 검증 메서드 repository
-	 * @param memberId
+	 * 중복 검증 메서드 repository
+	 * @param memberId, memberEmail
 	 * @return
 	 */
 	int checkId(String memberId);
+
+	int checkEmail(String memberEmail);
 
 }

@@ -58,7 +58,7 @@ document.getElementById('exampleInputPassword2').addEventListener('keyup', () =>
 
 //달력
 $(function() {
-	$("#memberBirth") .datetimepicker({ 
+	$("#memberBirth").datetimepicker({ 
 		locale: "ko",
 		format: "YYYY-MM-DD",
 		defaultDate: moment()
@@ -72,13 +72,10 @@ document.getElementById('MemberIdCheck').addEventListener('click', () => {
     const id = document.getElementById('inputMemberId').value;
     idCheck(id).then(result => {
         if (result > 0) {
-            console.log('아이디가 이미 존재합니다.')
             document.getElementById('inputMemberId').className = 'form-control is-invalid';
             document.getElementById('duplicateIdCheck').innerText = '아이디가 이미 존재합니다.';
             document.getElementById('duplicateIdCheck').style.color = 'red';
-
         } else {
-            console.log('사용가능')
             document.getElementById('inputMemberId').className = 'form-control is-valid';
             document.getElementById('duplicateIdCheck').innerText = '사용가능';
             document.getElementById('duplicateIdCheck').style.color = 'green';
@@ -89,7 +86,7 @@ document.getElementById('MemberIdCheck').addEventListener('click', () => {
 
 async function idCheck(id) {
     try {
-        const url = "/member/check/" + id;
+        const url = "/member/check/id/" + id;
         const config = {
             method: 'get'
         };
@@ -135,9 +132,57 @@ async function registerLastCheck(event) {
 
     
 /*이메일 인증*/
-document.getElementById('MemberEmailCheck').addEventListener('click', () => {
-    console.log('이메일 인증체크');   
+// 인증 로직
+async function emailCheck(email) {
+    try {
+        const url = "/member/check/email/" + email;
+        const config = {
+            method: 'get'
+        };
+        const resp = await fetch(url, config);
+        const result = await resp.text();
+        return result;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+document.getElementById('modalEmailCheckBtn').addEventListener('click', () => {
+    const email = document.getElementById('modalEmailCheck').value;
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    
+    if (!emailPattern.test(email)) {
+            document.getElementById('modalEmailCheck').className = 'form-control is-invalid';
+            document.getElementById('emailDuplicateCheck').innerText = '유효하지 않은 이메일입니다.';
+            document.getElementById('emailDuplicateCheck').style.color = 'red';
+            return;
+    }
+
+    emailCheck(email).then(result => {
+        if (result > 0) {
+            document.getElementById('modalEmailCheck').className = 'form-control is-invalid';
+            document.getElementById('emailDuplicateCheck').innerText = '가입된 이메일이 이미 존재합니다.';
+            document.getElementById('emailDuplicateCheck').style.color = 'red';
+        } else {
+            document.getElementById('modalEmailCheck').className = 'form-control is-valid';
+            document.getElementById('emailDuplicateCheck').innerText = '이메일을 확인해 주세요.';
+            document.getElementById('emailDuplicateCheck').style.color = 'green';
+            document.getElementById('modalEmailCheckBtn').disabled = true;
+            emailNumStartTimer();
+            
+            
+        }
+    })
+
 })
+
+
+function emailNumStartTimer() {
+    let timer;
+    let timeLeft = 180;
+
+
+}
 
 
 

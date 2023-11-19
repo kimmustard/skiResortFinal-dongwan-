@@ -28,7 +28,7 @@
 	}
 	.registerContainer{
 		margin-top: 100px;
-		width: 800px;
+		width: 700px;
 		position: absolute;
 		top:40%;
 		left: 50%;
@@ -44,6 +44,7 @@
 		flex-direction:	column;
 	}
 	.registerBox{
+		margin-top: -10px;
 		width: 300px;
 	}
 
@@ -82,6 +83,10 @@
 	}
 	.addressBox>.adressNum{
 		width: 300px;
+	}
+	
+	.rb-7, .rb-8{
+		margin-top: 10px;
 	}
 	
 	.terms-btn{
@@ -143,13 +148,17 @@
 				    </div>
 				    
 					<div class="form-group registerBox rb-5">
-					     <label for="exampleInputEmail1" class="form-label mt-4">Email</label>
+					     <label for="inputMemberEmail" class="form-label mt-4">Email</label>
 					     <div class="input-group mb-3">
-						     <form:input type="email" path="memberEmail" class="form-control ${empty emailError ? '' : 'is-invalid'}" name="memberEmail" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="이메일" />
-						     <button class="btn btn-primary" type="button" id="MemberEmailCheck">이메일 인증</button>
+						     <form:input type="email" path="memberEmail" readonly="true" class="form-control" name="memberEmail" id="inputMemberEmail" aria-describedby="emailHelp" placeholder="이메일" />
+						     <button type="button" class="btn btn-primary" id="MemberEmailCheck" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+							 	이메일 인증
+							 </button>
 				   		 </div>
 						 <form:errors class="errorFont" path="memberEmail"></form:errors>
 				    </div>
+				    
+				    
 				    <!-- 주소 -->
 
 			    <div class="form-group registerBox rb-6">
@@ -171,8 +180,7 @@
 			    
 			    <!-- 생년월일 -->
 				
-				
-				<div class="input-group input-group-sm date registerBox rb-" id="memberBirth">
+				<div class="input-group input-group-sm date registerBox rb-8" id="memberBirth">
 					<div class="input-group-prepend">
 						<span class="input-group-text">생년월일</span>
 					</div>
@@ -257,6 +265,51 @@
 			
 		</div>
 	</div>	
+	
+	
+	<!-- 이메일 인증 팝업 -->
+	<!-- Modal -->
+	<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h1 class="modal-title fs-5" id="staticBackdropLabel">이메일 인증하기</h1>
+	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	      </div>
+	      <div class="modal-body">
+	        <div class="form-group registerBox rb-5">
+			     <label for="modalEmailCheck" class="form-label mt-4">Email</label>
+			     <div class="input-group mb-3">
+				     <input type="email" class="form-control" id="modalEmailCheck" aria-describedby="emailHelp" placeholder="이메일" />
+				     <button type="button" class="btn btn-primary" id="modalEmailCheckBtn">
+					 	인증번호 받기
+					 </button>
+			  		 </div>
+				 <div id="emailDuplicateCheck"></div>
+			   </div>
+	      </div>
+	      <div class="modal-body" id="modal-body2">
+	        <div class="form-group registerBox rb-5">
+			     <label for="modalEmailCheck" class="form-label mt-4">인증번호</label>
+			     <div class="input-group mb-3">
+				     <input type="text" class="form-control ${empty emailError ? '' : 'is-invalid'}" id="" aria-describedby="emailHelp" placeholder="이메일" />
+				     <button type="button" class="btn btn-primary" id="">
+					 	확인
+					 </button>
+			  	 </div>
+				 
+			</div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-primary">Understood</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
+	
+	
+	
 	
 	<!-- 약관 팝업창 -->
 	<!-- Modal -->

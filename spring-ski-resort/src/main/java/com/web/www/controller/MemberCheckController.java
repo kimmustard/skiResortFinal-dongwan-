@@ -21,9 +21,17 @@ public class MemberCheckController {
 
 	private final MemberService msv;
 	
-	@GetMapping(value = "/{id}", produces = MediaType.TEXT_PLAIN_VALUE)
+	@GetMapping(value = "/id/{id}", produces = MediaType.TEXT_PLAIN_VALUE)
 	public ResponseEntity<String> duplicateId(@PathVariable("id")String MemberId){
 		int isOk = msv.checkId(MemberId);
+		
+		return isOk > 0 ? new ResponseEntity<String> ("1", HttpStatus.OK) : 
+			new ResponseEntity<String> ("0", HttpStatus.NOT_FOUND);
+	}
+	
+	@GetMapping(value = "/email/{email}", produces = MediaType.TEXT_PLAIN_VALUE)
+	public ResponseEntity<String> duplicateEmail(@PathVariable("email")String MemberEmail){
+		int isOk = msv.checkEmail(MemberEmail);
 		
 		return isOk > 0 ? new ResponseEntity<String> ("1", HttpStatus.OK) : 
 			new ResponseEntity<String> ("0", HttpStatus.NOT_FOUND);

@@ -15,11 +15,12 @@ public interface MemberService {
 	
 	
 	/**
-	 * 검증 메서드 service
-	 * @param memberId
+	 * 중복 검증 메서드 service
+	 * @param memberId , memberEmail
 	 * @return isOk
 	 */
 	int checkId(String memberId);
+	int checkEmail(String memberEmail);
 
 	
 
