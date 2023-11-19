@@ -274,7 +274,7 @@
 	    <div class="modal-content">
 	      <div class="modal-header">
 	        <h1 class="modal-title fs-5" id="staticBackdropLabel">이메일 인증하기</h1>
-	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	        <button type="button" class="btn-close" id="modalClose" data-bs-dismiss="modal" aria-label="Close"></button>
 	      </div>
 	      <div class="modal-body">
 	        <div class="form-group registerBox rb-5">
@@ -286,22 +286,12 @@
 					 </button>
 			  		 </div>
 				 <div id="emailDuplicateCheck"></div>
-			   </div>
 	      </div>
 	      <div class="modal-body" id="modal-body2">
-	        <div class="form-group registerBox rb-5">
-			     <label for="modalEmailCheck" class="form-label mt-4">인증번호</label>
-			     <div class="input-group mb-3">
-				     <input type="text" class="form-control ${empty emailError ? '' : 'is-invalid'}" id="" aria-describedby="emailHelp" placeholder="이메일" />
-				     <button type="button" class="btn btn-primary" id="">
-					 	확인
-					 </button>
-			  	 </div>
-				 
-			</div>
+	       
 	      </div>
 	      <div class="modal-footer">
-	        <button type="button" class="btn btn-primary">Understood</button>
+	        <button type="button" class="btn btn-primary" id="emailCheckSuccess">인증완료</button>
 	      </div>
 	    </div>
 	  </div>
