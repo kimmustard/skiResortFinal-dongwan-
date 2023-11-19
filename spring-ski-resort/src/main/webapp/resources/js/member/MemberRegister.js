@@ -41,14 +41,18 @@ document.getElementById('flexCheckDefault-3').addEventListener('click', () => {
 document.getElementById('exampleInputPassword2').addEventListener('keyup', () => {
     pwd1 = document.getElementById('exampleInputPassword1').value;
     pwd2 = document.getElementById('exampleInputPassword2').value;
+    if (pwd1 == null || pwd1 == '') {
+        document.getElementById('exampleInputPassword2').className = 'form-control';
+        return;
+    }
+
     if (pwd1 == pwd2) {
         document.getElementById('exampleInputPassword2').className = 'form-control is-valid';
-        console.log(document.getElementById('exampleInputPassword2').className);
     } else {
         document.getElementById('exampleInputPassword2').className = 'form-control is-invalid';
-        console.log(document.getElementById('exampleInputPassword2').className);
     }
 })
+
 
 
 
@@ -61,6 +65,81 @@ $(function() {
 	});
 
 });
+
+//중복 인증관련
+/*아이디 중복*/
+document.getElementById('MemberIdCheck').addEventListener('click', () => {
+    const id = document.getElementById('inputMemberId').value;
+    idCheck(id).then(result => {
+        if (result > 0) {
+            console.log('아이디가 이미 존재합니다.')
+            document.getElementById('inputMemberId').className = 'form-control is-invalid';
+            document.getElementById('duplicateIdCheck').innerText = '아이디가 이미 존재합니다.';
+            document.getElementById('duplicateIdCheck').style.color = 'red';
+
+        } else {
+            console.log('사용가능')
+            document.getElementById('inputMemberId').className = 'form-control is-valid';
+            document.getElementById('duplicateIdCheck').innerText = '사용가능';
+            document.getElementById('duplicateIdCheck').style.color = 'green';
+        }
+    });
+    
+})
+
+async function idCheck(id) {
+    try {
+        const url = "/member/check/" + id;
+        const config = {
+            method: 'get'
+        };
+        const resp = await fetch(url, config);
+        const result = await resp.text();
+        return result;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+//form 태그 호출 전 마지막 체크 함수
+async function registerLastCheck(event) {
+    event.preventDefault(); // 폼 제출 방지
+
+    // 아이디 중복체크
+    const id = document.getElementById('inputMemberId').value;
+    console.log(id);
+    try {
+        const result = await idCheck(id);
+        if (result > 0) {
+            alert('아이디 중복 체크를 해주세요.');
+            return false;
+        }
+
+        // 비밀번호체크
+        const pwd1 = document.getElementById('exampleInputPassword1').value;
+        const pwd2 = document.getElementById('exampleInputPassword2').value;
+        if (pwd1 != pwd2) {
+            alert('비밀번호를 확인해주세요.');
+            return false;
+        }
+
+        // 중복 체크 및 비밀번호 체크 통과 시에 폼 제출
+        event.target.submit(); // 폼 제출
+    } catch (error) {
+        console.error(error); // 오류 처리
+        return false;
+    }
+}
+
+
+
+    
+/*이메일 인증*/
+document.getElementById('MemberEmailCheck').addEventListener('click', () => {
+    console.log('이메일 인증체크');   
+})
+
+
 
 
 // 주소 api

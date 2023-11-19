@@ -91,6 +91,8 @@
 	.errorFont{
 	color: red;
 	}
+	
+	
 </style>
 </head>
 <body>
@@ -103,7 +105,7 @@
 	<div class="registerContainer">
 		
 		<div class="registerBody">
-			<form:form action="/member/register" modelAttribute="mvo" method="post">
+			<form:form action="/member/register" modelAttribute="mvo" method="post" onsubmit="return registerLastCheck(event);">
 			<c:set var="idError"><form:errors class="errorFont" path="memberId" /></c:set>
 			<c:set var="pwdError"><form:errors class="errorFont" path="memberPwd" /></c:set>
 			<c:set var="aliasError"><form:errors class="errorFont" path="memberAlias" /></c:set>
@@ -118,9 +120,10 @@
 							<label class="form-label mt-4" for="inputMemberId">아이디</label>
 					    <div class="input-group mb-3">
 					      <form:input type="text" path="memberId" class="form-control ${empty idError ? '' : 'is-invalid'}" id="inputMemberId" name="memberId" placeholder="아이디" aria-label="Recipient's username" aria-describedby="button-addon2"/>
-					      <button class="btn btn-primary" type="button">중복확인</button>
+					      <button class="btn btn-primary" type="button" id="MemberIdCheck">중복확인</button>
 					    </div>
 					      <form:errors class="errorFont" path="memberId"></form:errors>
+					   	  <small class="" id="duplicateIdCheck"></small>
 				    </div>
 				    
 					<div class="form-group registerBox rb-2">
@@ -133,20 +136,19 @@
 
 					<div class="form-group registerBox rb-4">
 							<label class="form-label mt-4" for="inputMemberAlias">닉네임</label>
-					    <div class="input-group mb-3">
+					    <div>
 					      <form:input type="text" class="form-control ${empty aliasError ? '' : 'is-invalid'}" path="memberAlias" name="memberAlias" id="inputMemberAlias" placeholder="닉네임" aria-label="Recipient's username" aria-describedby="button-addon2" />
-					      <button class="btn btn-primary" type="button">중복확인</button>
 					    </div>
 					      <form:errors class="errorFont" path="memberAlias"></form:errors>
 				    </div>
 				    
-					<div class="form-group row registerBox rb-5">
+					<div class="form-group registerBox rb-5">
 					     <label for="exampleInputEmail1" class="form-label mt-4">Email</label>
-					     <div>
-					     <form:input type="email" path="memberEmail" class="form-control ${empty emailError ? '' : 'is-invalid'}" name="memberEmail" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="이메일" />
-					     <small id="emailHelp" class="form-text text-muted">이메일 양식대로 입력해주세요.</small>
-					     <form:errors class="errorFont" path="memberEmail"></form:errors>
+					     <div class="input-group mb-3">
+						     <form:input type="email" path="memberEmail" class="form-control ${empty emailError ? '' : 'is-invalid'}" name="memberEmail" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="이메일" />
+						     <button class="btn btn-primary" type="button" id="MemberEmailCheck">이메일 인증</button>
 				   		 </div>
+						 <form:errors class="errorFont" path="memberEmail"></form:errors>
 				    </div>
 				    <!-- 주소 -->
 

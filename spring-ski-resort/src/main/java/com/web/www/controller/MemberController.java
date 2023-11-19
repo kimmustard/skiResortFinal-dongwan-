@@ -65,7 +65,6 @@ public class MemberController {
 		return "index";
 	}
 
-	
 	/**
 	 * @회원관리
 	 */

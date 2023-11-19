@@ -22,5 +22,23 @@ public class MemberServiceImpl implements MemberService {
 		return mdao.insertMember(mvo);
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	@Override
+	public int checkId(String memberId) {
+		return mdao.checkId(memberId);
+	}
+
 
 }
