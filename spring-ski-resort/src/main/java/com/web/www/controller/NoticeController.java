@@ -33,8 +33,6 @@ public class NoticeController {
 	
 	@PostMapping("/register")
 	public String noticeRegister(NoticeVO nvo, Model m) {
-		log.info(">>> 레지스터확인 >> "+nvo);
-		log.info(">>> 레지스터확인 >> "+m);
 		int isOk = nsv.noticeRegister(nvo);
 		log.info(">>>>> notice register >> "+(isOk > 0? "OK" : "Fail"));
 		return "redirect:/notice/list";
@@ -63,12 +61,12 @@ public class NoticeController {
 	
 	@PostMapping("/modify")
 	public String noticeModify(NoticeVO nvo) {
-		log.info(">>> 수정확인 >> "+nvo);
 		int isOk = nsv.noticeModify(nvo);
 		log.info(">>>>> notice modify >> "+(isOk > 0? "OK" : "Fail"));
-		return "redirect:/notice/detail?noticeNum="+nvo.getNoticeNum();
+		return "redirect:/notice/list";
 	}
 	
+	@GetMapping("/remove")
 	public String remove(@RequestParam("noticeNum")long noticeNum, RedirectAttributes re) {
 		int isOk = nsv.remove(noticeNum);
 		log.info(">>>>> notice remove >> "+(isOk > 0? "OK" : "Fail"));

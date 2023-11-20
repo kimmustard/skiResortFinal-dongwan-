@@ -19,16 +19,20 @@
 	<form action="/notice/modify" method="post">
 		<table class="table table-hover">
 			<tr>
+				<th>번호</th>
+				<td><input type="hidden" name="noticeNum" value="${nvo.noticeNum}" readonly="readonly"></td>
+			</tr>	
+			<tr>
 				<th>카테고리</th>
-				<td>${nvo.noticeCategory}</td>
+				<td><input type="text" name="noticeCategory" value="${nvo.noticeCategory}"></td>
 			</tr>	
 			<tr>
 				<th>제목</th>
-				<td><input type="text" value="${nvo.noticeTitle }"> </td>
+				<td><input type="text" name="noticeTitle" value="${nvo.noticeTitle }"></td>
 			</tr>	
 			<tr>
 				<th>작성자</th>
-				<td>${nvo.noticeWriter }</td>
+				<td><input type="hidden" name="noticeWriter">${nvo.noticeWriter }</td>
 			</tr>
 			<tr>
 				<th>등록일</th>
@@ -40,15 +44,16 @@
 			</tr>
 			<tr>
 				<th>내용</th>
-				<td><textarea rows="5" cols="50">${nvo.noticeContent }</textarea></td>
+				<td><textarea rows="5" cols="50" name="noticeContent">${nvo.noticeContent }</textarea></td>
 			</tr>
 	
 		</table>	
 			<button type="submit" class="btn btn-dark" id="regBtn">수정완료</button>
-			<a href="/notice/list">
-				<button type="button" class="btn btn-dark">취소</button>
-			</a>
-	</form>		
+			<a href="/notice/list"><button type="button" class="btn btn-dark">취소</button></a>
+	</form>
+			<a href="/notice/remove?noticeNum=${nvo.noticeNum }">
+			<button type="button" class="btn btn-danger">삭제하기</button>
+			</a>		
 	</div>
 <jsp:include page="../common/footer.jsp" />	
 </body>
