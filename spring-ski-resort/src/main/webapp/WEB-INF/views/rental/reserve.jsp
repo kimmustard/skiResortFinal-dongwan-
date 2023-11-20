@@ -35,28 +35,33 @@
 				<input type="text" class="form-control" name="memberName">
 			</div>
 			<div>
-				<span class="input-group-text">리프트권 구매</span>
-				<input type="radio" class="form-check-input" name="lift">
-				<label>Y</label>
-				<input type="radio" class="form-check-input" name="lift">
-				<label>N</label>
-			</div>
-			<div>
-				<span class="input-group-text">장비선택</span>
-				<input type="checkbox" class="form-check-input">
-				<label class="form-check-label">스키/보드</label>
-				<input type="checkbox" class="form-check-input">
-				<label class="form-check-label">헬멧/보호대</label>
-				<input type="checkbox" class="form-check-input">
-				<label class="form-check-label">의류</label>
+				<select class="form-select">
+				  <option selected>리프트권 선택</option>
+				  <option value="1">리프트 오전권</option>
+				  <option value="2">리프트 오후권</option>
+				  <option value="3">리프트 주간권</option>
+				  <option value="4">리프트 야간권</option>
+				  <option value="5">리프트 종일권</option>
+				  <option value="6">리프트 시즌권</option>
+				</select>
 			</div>
 			<div>
 				<select class="form-select">
-				  <option selected>시간선택</option>
-				  <option value="1">오전권</option>
-				  <option value="2">오후권</option>
-				  <option value="3">야간권</option>
-				  <option value="4">종일권</option>
+				  <option selected>장비 선택</option>
+				  <option value="item1">일반장비SET</option>
+				  <option value="item2">중급장비SET</option>
+				  <option value="item3">프리미엄장비SET</option>
+				</select>
+			</div>
+			<div>
+				<select class="form-select">
+				  <option selected>시간 선택</option>
+				  <option value="1">렌탈 오전권</option>
+				  <option value="2">렌탈 오후권</option>
+				  <option value="3">렌탈 주간권</option>
+				  <option value="4">렌탈 야간권</option>
+				  <option value="5">렌탈 종일권</option>
+				  <option value="6">렌탈 시즌권</option>
 				</select>
 			</div>
 			<a href="/rental/fee-info"><button type="button" class="btn btn-outline-primary">이전으로</button></a>
