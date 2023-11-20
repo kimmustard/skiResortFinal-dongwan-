@@ -11,6 +11,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.csrf.CsrfFilter;
+import org.springframework.web.filter.CharacterEncodingFilter;
 
 import com.web.www.security.CustomAuthMemberService;
 import com.web.www.security.LoginFailureHandler;
@@ -60,13 +62,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	//시큐리티 필터 체인
 		@Override
 		protected void configure(HttpSecurity http) throws Exception {
-			http.csrf().disable();
+			CharacterEncodingFilter filter = new CharacterEncodingFilter();
+			filter.setEncoding("UTF-8");
+			filter.setForceEncoding(true);		
+			http.addFilterBefore(filter, CsrfFilter.class);
+			
 			
 			//http의 승인요청 담당
 			http.authorizeRequests()
 			.antMatchers("/member/list").hasRole("ADMIN")
-			.antMatchers("/","/board/*","/upload/**","/resources/**","/member/*","/rental/*","/hotel/*").permitAll()	//게스트 이용가능한 URL매핑
-			.anyRequest().authenticated();	// 나머지 사용자 처리
+			.antMatchers("/","/board/*","/upload/**","/resources/**","/member/*","/rental/*","/hotel/*","/member/check/**").permitAll()	//게스트 이용가능한 URL매핑
+			.anyRequest().authenticated()	// 나머지 사용자 처리
+			.and()
+			.csrf().ignoringAntMatchers("/member/check/**");
 			
 			
 			//커스텀 페이지 구성

@@ -26,7 +26,6 @@
        	<li><a href="/member/login">로그인</a></li>
        	<li><a href="/member/register">회원가입</a></li>
        	<li><a href="/member/detail">회원정보</a></li>
-       	<li><a href="">고객지원</a></li>
        </ul>
   </div>
 </nav>

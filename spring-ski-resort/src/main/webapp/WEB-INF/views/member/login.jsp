@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -53,6 +54,7 @@
 	
 		<div class="loginContainer">
 			<form action="/member/login" method="post">
+			<sec:csrfInput/>
 				<div class="login-box">
 				
 					<div class="form-group">
@@ -81,6 +83,7 @@
 		
 	</div>
 	
+	<script type="text/javascript" src="/resources/js/csrftoken.js" ></script>
 	<jsp:include page="../common/footer.jsp"></jsp:include>
 </body>
 </html>

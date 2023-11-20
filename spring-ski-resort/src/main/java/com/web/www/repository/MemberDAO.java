@@ -7,11 +7,13 @@ import com.web.www.security.AuthVO;
 
 public interface MemberDAO {
 	/**
-	 * @param 멤버 회원가입 객체 MemberVO mvo
+	 * @param insertMember 멤버 회원가입 객체 MemberVO mvo
+	 * @Param insertAuthInit 가입이후 권한부여
 	 * @return Low
 	 */
 	int insertMember(MemberVO mvo);
 
+	int insertAuthInit(String memberId);
 	
 	
 	
@@ -28,6 +30,10 @@ public interface MemberDAO {
 	
 	List<AuthVO> selectAuths(String username);
 	
+	//시큐리티 LastLogin 체크 
+	int updateLastLogin(String authEmail);
+	
+	
 	/**
 	 * 중복 검증 메서드 repository
 	 * @param memberId, memberEmail
@@ -36,5 +42,19 @@ public interface MemberDAO {
 	int checkId(String memberId);
 
 	int checkEmail(String memberEmail);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }

@@ -12,7 +12,12 @@ public interface MemberService {
 	
 	
 	
-	
+	/**
+	 * 시큐리티
+	 * @param UserDetail 이후 "인증된"이메일
+	 * @return DB테이블 내 LastLogin 날짜 갱신
+	 */
+	boolean updateLastLogin(String authEmail);
 	
 	/**
 	 * 중복 검증 메서드 service
@@ -22,6 +27,5 @@ public interface MemberService {
 	int checkId(String memberId);
 	int checkEmail(String memberEmail);
 
-	
 
 }

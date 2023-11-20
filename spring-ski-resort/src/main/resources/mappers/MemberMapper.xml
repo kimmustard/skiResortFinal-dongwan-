@@ -31,5 +31,16 @@
 	<select id="selectAuths" resultType="com.web.www.security.AuthVO">
 		select * from auth_member where member_id = #{memberId}
 	</select>
+	
+	<!-- 시큐리티 LastLogin 날짜 갱신 -->
+	<update id="updateLastLogin">
+		update member set member_last_at = now() where member_id = #{memberId}
+	</update>
+	
+	<!-- 시큐리티 권한부여 -->
+	<insert id="insertAuthInit">
+		insert into auth_member(member_id, auth)
+		values(#{memberId}, 'ROLE_USER')
+	</insert>
 
   </mapper>
