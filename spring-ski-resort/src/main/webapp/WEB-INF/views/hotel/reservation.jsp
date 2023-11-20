@@ -7,9 +7,10 @@
 <title>Insert title here</title>
 </head>
 <link rel="stylesheet" href="/resources/css/hotel/reservation.css">
+
 <body>
 	<jsp:include page="../common/nav.jsp"></jsp:include>
-	
+
 	<div class="back">
 		<div class="selector">
 			<div>
@@ -22,19 +23,19 @@
 
 		<div class="box">
 			<form action="">
-				<div class="calendar"><input id="input-id" type="text" />달력z</div>
+				<div class="calendar">
+					<input id="input-id" type="text" />달력z
+				</div>
 				<div class="people">인원수</div>
 				<button id="payBtn" type="button">다음</button>
 				<div id="innerbox" style="display: none;">
-					<input type="radio" name="room" value="방">방 
-					<input type="radio" name="room" value="방">방 
-					<input type="radio" name="room" value="방">방 
-					<input type="radio" name="room" value="방">방 
-					<input type="radio" name="room" value="방">방
+					<input type="radio" name="room" value="방">방 <input
+						type="radio" name="room" value="방">방 <input type="radio"
+						name="room" value="방">방 <input type="radio" name="room"
+						value="방">방 <input type="radio" name="room" value="방">방
 					<input type="radio" name="room" value="방">방
 					<button id="closeBtn">닫기</button>
-					<input type="checkbox"> 
-					<input type="checkbox">
+					<input type="checkbox"> <input type="checkbox">
 					<button type="submit">결제</button>
 				</div>
 			</form>
@@ -44,7 +45,9 @@
 
 
 
-<script type="text/javascript"></script>
-<script defer type="text/javascript" src="/resources/js/hotel/reservation.js" ></script>
+	
+	<script defer type="text/javascript"
+		src="/resources/js/hotel/reservation.js"></script>
+
 </body>
 </html>
