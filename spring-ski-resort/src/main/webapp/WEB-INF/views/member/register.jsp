@@ -223,7 +223,8 @@
 				        <label class="form-check-label" for="flexCheckDefault">
 				          전체동의
 				        </label>
-				        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+				        <!-- 약관 보기 버튼 -->
+						<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#termsModal">
 						  약관 상세보기
 						</button>
 				    </div>
@@ -266,52 +267,16 @@
 		</div>
 	</div>	
 	
-	
-	<!-- 이메일 인증 팝업 -->
-	<!-- Modal -->
-	<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-	  <div class="modal-dialog">
+		<!-- 약관 모달 -->
+	<div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-lg">
 	    <div class="modal-content">
 	      <div class="modal-header">
-	        <h1 class="modal-title fs-5" id="staticBackdropLabel">이메일 인증하기</h1>
-	        <button type="button" class="btn-close" id="modalClose" data-bs-dismiss="modal" aria-label="Close"></button>
+	        <h5 class="modal-title" id="termsModalLabel">이용약관</h5>
+	        <button type="button" class="btn-close" data-bs-dismiss="modal" id="modalCloseClick" aria-label="Close"></button>
 	      </div>
 	      <div class="modal-body">
-	        <div class="form-group registerBox rb-5">
-			     <label for="modalEmailCheck" class="form-label mt-4">Email</label>
-			     <div class="input-group mb-3">
-				     <input type="email" class="form-control" id="modalEmailCheck" aria-describedby="emailHelp" placeholder="이메일" />
-				     <button type="button" class="btn btn-primary" id="modalEmailCheckBtn">
-					 	인증번호 받기
-					 </button>
-			  		 </div>
-				 <div id="emailDuplicateCheck"></div>
-	      </div>
-	      <div class="modal-body" id="modal-body2">
-	       
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-primary" id="emailCheckSuccess">인증완료</button>
-	      </div>
-	    </div>
-	  </div>
-	</div>
-	
-	
-	
-	
-	
-	<!-- 약관 팝업창 -->
-	<!-- Modal -->
-	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	  <div class="modal-dialog">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <h1 class="modal-title fs-5" id="exampleModalLabel">이용약관 상세</h1>
-	        <button type="button" class="btn-close" id="modalCloseClick" data-bs-dismiss="modal" aria-label="Close"></button>
-	      </div>
-	      <div class="modal-body">
-			가. 수집하는 개인정보의 항목첫째, 회사는 회원가 입, 원활한 고객상담, 각종 서비스의 제공을 위해 최초 회원가입 당시 아래와 같은 최소한의 개인정보를 필수항목으로 수집하고 있습니다. <br>
+	        가. 수집하는 개인정보의 항목첫째, 회사는 회원가 입, 원활한 고객상담, 각종 서비스의 제공을 위해 최초 회원가입 당시 아래와 같은 최소한의 개인정보를 필수항목으로 수집하고 있습니다. <br>
 			회원가입<br>
 			- 이름, 생년월일, 성별, 아이디, 비밀번호, 별명, 연락처(메일주소, 휴대폰 번호 중 선택), 가입인증정보<br>
 			만14세 미만 아동 회원가입<br><br>
@@ -333,11 +298,8 @@
 			- 홈페이지, 서면양식, 팩스, 전화, 상담 게시판, 이메일, 이벤트 응모, 배송요청<br>
 			- 협력회사로부터의 제공<br>
 			- 생성정보 수집 툴을 통한 수집<br><br>
-			
-			
 	      </div>
-	      
-	      <div class="modal-footer">
+	     	<div class="modal-footer">
 		      <div class="form-check all-check" >
 		      	<input class="form-check-input" type="checkbox" id="ModalflexCheckDefault">
 			        <label class="form-check-label" for="ModalflexCheckDefault">
@@ -347,8 +309,41 @@
 	      </div>
 	    </div>
 	  </div>
-</div>
+	</div>
 	
+	
+	<!-- 이메일 인증 팝업 -->
+	<!-- Modal -->
+	<div class="modal fade" id="staticBackdrop" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+	  <div class="modal-dialog" tabindex="-1">
+	    <div class="modal-content" tabindex="-1">
+	      <div class="modal-header" tabindex="-1">
+	        <h1 class="modal-title fs-5" id="staticBackdropLabel" tabindex="-1">이메일 인증하기</h1>
+	        <button type="button" class="btn-close" id="modalClose" data-bs-dismiss="modal" aria-label="Close" tabindex="-1"></button>
+	      </div>
+	      <div class="modal-body" tabindex="-1">
+	        <div class="form-group registerBox rb-5" tabindex="-1">
+			     <label for="modalEmailCheck" class="form-label mt-4" tabindex="-1">Email</label>
+			     <div class="input-group mb-3" tabindex="-1">
+				     <input type="email" class="form-control" id="modalEmailCheck" aria-describedby="emailHelp" placeholder="이메일"  tabindex="-1" />
+				     <button type="button" class="btn btn-primary" id="modalEmailCheckBtn" tabindex="-1">
+					 	인증번호 받기
+					 </button>
+			  		 </div>
+				 <div id="emailDuplicateCheck" tabindex="-1"></div>
+	      </div>
+	      <div class="modal-body" id="modal-body2" tabindex="-1">
+	       
+	      </div>
+	      <div class="modal-footer" tabindex="-1">
+	        <input type="button" class="btn btn-primary" id="emailCheckSuccess" value="인증완료" tabindex="-1">
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
+	
+
 </div>
 
 

@@ -57,12 +57,12 @@ document.getElementById('exampleInputPassword2').addEventListener('keyup', () =>
 
 
 //달력
-$(function() {
-	$("#memberBirth") .datetimepicker({ 
-		locale: "ko",
-		format: "YYYY-MM-DD",
-		defaultDate: moment()
-	});
+$(function () {
+    $("#memberBirth").datetimepicker({
+        locale: "ko",
+        format: "YYYY-MM-DD",
+        defaultDate: moment()
+    });
 
 });
 
@@ -81,7 +81,7 @@ document.getElementById('MemberIdCheck').addEventListener('click', () => {
             document.getElementById('duplicateIdCheck').style.color = 'green';
         }
     });
-    
+
 })
 
 async function idCheck(id) {
@@ -130,7 +130,7 @@ async function registerLastCheck(event) {
 
 
 
-    
+
 /*이메일 인증*/
 // 중복체크
 async function emailCheck(email) {
@@ -164,16 +164,17 @@ async function emailNumCheck(email) {
 document.getElementById('modalEmailCheckBtn').addEventListener('click', () => {
     const email = document.getElementById('modalEmailCheck').value;
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    document.getElementById('emailCheckSuccess').disabled = 'true';
+
+    document.getElementById('emailCheckSuccess').disabled = 'disabled';
 
     if (!emailPattern.test(email)) {
-            document.getElementById('modalEmailCheck').className = 'form-control is-invalid';
-            document.getElementById('emailDuplicateCheck').innerText = '유효하지 않은 이메일입니다.';
-            document.getElementById('emailDuplicateCheck').style.color = 'red';
-            return;
+        document.getElementById('modalEmailCheck').className = 'form-control is-invalid';
+        document.getElementById('emailDuplicateCheck').innerText = '유효하지 않은 이메일입니다.';
+        document.getElementById('emailDuplicateCheck').style.color = 'red';
+        return;
     }
 
-   
+
     emailCheck(email).then(result => {
 
         if (result > 0) {
@@ -186,11 +187,11 @@ document.getElementById('modalEmailCheckBtn').addEventListener('click', () => {
             document.getElementById('emailDuplicateCheck').style.color = 'green';
             document.getElementById('modalEmailCheckBtn').disabled = true;
 
-            
-            
+
+
             let modalEmailNum = document.getElementById('modal-body2');
             modalEmailNum.innerHTML = '';
-            
+
             let str = `<div class="form-group registerBox rb-5">`;
             str += `<label for="modalEmailCheck" class="form-label mt-4">인증번호</label>`;
             str += `<div class="input-group mb-3">`;
@@ -200,7 +201,7 @@ document.getElementById('modalEmailCheckBtn').addEventListener('click', () => {
             str += `<div id="modalEmailMessage"></div>`;
             str += `</div>`;
             modalEmailNum.innerHTML += str;
-            
+
             let serverAuthKey = 0;
             emailNumCheck(email).then(result => {
                 serverAuthKey = result;
@@ -215,7 +216,7 @@ document.getElementById('modalEmailCheckBtn').addEventListener('click', () => {
                     document.getElementById('userAuthKey').className = 'form-control is-valid';
                     document.getElementById('modalEmailMessage').innerText = '인증완료 버튼을 누르세요.';
                     document.getElementById('modalEmailMessage').style.color = 'green';
-                    document.getElementById('emailCheckSuccess').disabled = 'false';
+                    document.getElementById('emailCheckSuccess').disabled = false;
                     document.getElementById('inputMemberEmail').value = email;
 
                 } else {
@@ -232,7 +233,7 @@ document.getElementById('modalEmailCheckBtn').addEventListener('click', () => {
 
     })
 
-    document.getElementById('inputMemberEmail').addEventListener('click', () => {
+    document.getElementById('emailCheckSuccess').addEventListener('click', () => {
         document.getElementById('modalClose').click();
     })
 
