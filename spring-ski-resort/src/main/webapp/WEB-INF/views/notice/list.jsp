@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -91,7 +92,7 @@
 		      <td class="notice-table-td"><div class="notice-table-td-child">${nvo.noticeCategory }</div></td>
 		      <td class="notice-table-td"><div class="notice-table-td-child-title"><a href="/notice/detail?noticeNum=${nvo.noticeNum }">${nvo.noticeTitle }</a></div></td>
 		      <td class="notice-table-td"><div class="notice-table-td-child">${nvo.noticeWriter }</div></td>
-		      <td class="notice-table-td"><div class="notice-table-td-child">${nvo.noticeRegAt }</div></td>
+		      <td class="notice-table-td"><div class="notice-table-td-child">${fn:replace((fn:substring(nvo.noticeRegAt,0,10)),'-','.') }</div></td>
 		      <td class="notice-table-td"><div class="notice-table-td-child">${nvo.noticeCount }</div></td>
 		    </tr>
 		  </c:forEach>
@@ -125,6 +126,14 @@
 		</a>
 	</div>	
 </div>
+
+
+<!-- 스크립트 라인  -->
+<script type="text/javascript">
+	
+</script>
+<script type="text/javascript" src="/resources/js/notice/noticeList.js"></script>
+
 <jsp:include page="../common/footer.jsp" />
 </body>
 </html>

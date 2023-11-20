@@ -1,45 +1,54 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/resources/css/notice/notice_detail.css">
 </head>
 <body>
+<jsp:include page="../common/nav.jsp" />
+<div class="notice-img-container" style="background-image: url('https://a.cdn-hotels.com/gdcs/production68/d766/4cc034a7-aeb1-4edd-b2a9-f7feaac49aec.jpg')">	</div>
+
 	<div class="container">
 	<br>
 	<h2>공지사항</h2>
 	<br>
-	<table class="table table-hover">
-		<tr>
-			<th>제목</th>
-			<td><input type="text" value=""> </td>
-		</tr>	
-		<tr>
-			<th>카테고리</th>
-			<td>이벤트</td>
-		</tr>	
-		<tr>
-			<th>등록일</th>
-			<td>2023.11.14</td>
-		</tr>
-		<tr>
-			<th>수정일</th>
-			<td>2023.11.14</td>
-		</tr>
-		<tr>
-			<th>내용</th>
-			<td><textarea rows="5" cols="50"></textarea></td>
-		</tr>
-
-	</table>	
+	<form action="/notice/modify" method="post">
+		<table class="table table-hover">
+			<tr>
+				<th>카테고리</th>
+				<td>${nvo.noticeCategory}</td>
+			</tr>	
+			<tr>
+				<th>제목</th>
+				<td><input type="text" value="${nvo.noticeTitle }"> </td>
+			</tr>	
+			<tr>
+				<th>작성자</th>
+				<td>${nvo.noticeWriter }</td>
+			</tr>
+			<tr>
+				<th>등록일</th>
+				<td>${nvo.noticeRegAt }</td>
+			</tr>
+			<tr>
+				<th>마지막 수정일</th>
+				<td>${nvo.noticeModAt }</td>
+			</tr>
+			<tr>
+				<th>내용</th>
+				<td><textarea rows="5" cols="50">${nvo.noticeContent }</textarea></td>
+			</tr>
 	
-	<a href="/notice/list">
-		<button type="button" class="btn btn-dark">리스트</button>
-	</a>
+		</table>	
+			<button type="submit" class="btn btn-dark" id="regBtn">수정완료</button>
+			<a href="/notice/list">
+				<button type="button" class="btn btn-dark">취소</button>
+			</a>
+	</form>		
 	</div>
 <jsp:include page="../common/footer.jsp" />	
 </body>

@@ -10,8 +10,7 @@
 </head>
 <body>
 <jsp:include page="../common/nav.jsp" />
-	<div class="notice-img-container" style="background-image: url('https://a.cdn-hotels.com/gdcs/production68/d766/4cc034a7-aeb1-4edd-b2a9-f7feaac49aec.jpg')">	
-	</div>
+	<div class="notice-img-container" style="background-image: url('https://a.cdn-hotels.com/gdcs/production68/d766/4cc034a7-aeb1-4edd-b2a9-f7feaac49aec.jpg')">	</div>
 	
 	<div class="container notice-container">
 	<br>
@@ -44,7 +43,7 @@
 	<a href="/notice/list">
 		<button type="button" class="btn btn-dark">리스트</button>
 	</a>
-	<a href="/notice/modify">
+	<a href="/notice/modify?noticeNum=${nvo.noticeNum }">
 		<button type="button" class="btn btn-dark">수정</button>
 	</a>
 	</div>

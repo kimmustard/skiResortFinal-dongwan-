@@ -12,4 +12,6 @@ public interface NoticeDAO {
 
 	List<NoticeVO> selectList();
 
+	int update(NoticeVO nvo);
+
 }

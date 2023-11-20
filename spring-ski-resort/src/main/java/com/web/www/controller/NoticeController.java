@@ -32,6 +32,8 @@ public class NoticeController {
 	
 	@PostMapping("/register")
 	public String noticeRegister(NoticeVO nvo, Model m) {
+		log.info(">>> 레지스터확인 >> "+nvo);
+		log.info(">>> 레지스터확인 >> "+m);
 		int isOk = nsv.noticeRegister(nvo);
 		log.info(">>>>> notice register >> "+(isOk > 0? "OK" : "Fail"));
 		return "redirect:/notice/list";
@@ -52,15 +54,18 @@ public class NoticeController {
 		
 	}
 	
-	@GetMapping("/detail")
+	@GetMapping({"/detail","/modify"})
 	public void noticeDetail(Model m, @RequestParam("noticeNum")long noticeNum) {
 		NoticeVO nvo = nsv.noticeDetail(noticeNum);
 		m.addAttribute("nvo",nvo);
 	}
 	
-	@GetMapping("/modify")
-	public String noticeModify() {
-		return "/notice/modify";
+	@PostMapping("/modify")
+	public String noticeModify(NoticeVO nvo) {
+		log.info(">>> 수정확인 >> "+nvo);
+		int isOk = nsv.noticeModify(nvo);
+		log.info(">>>>> notice modify >> "+(isOk > 0? "OK" : "Fail"));
+		return "/redirect:/notice/detail?noticeNum="+nvo.getNoticeNum();
 	}
 
 }

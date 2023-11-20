@@ -39,4 +39,12 @@ public class NoticeServiceImpl implements NoticeService{
 		return ndao.selectList();
 	}
 
+
+	@Override
+	public int noticeModify(NoticeVO nvo) {
+		log.info(">>>>> notice modify service >> ");
+		int isOk = ndao.update(nvo);
+		return isOk;
+	}
+
 }

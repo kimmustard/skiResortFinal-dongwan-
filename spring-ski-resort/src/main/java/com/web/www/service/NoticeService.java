@@ -12,4 +12,6 @@ public interface NoticeService {
 
 	List<NoticeVO> noticeList();
 
+	int noticeModify(NoticeVO nvo);
+
 }
