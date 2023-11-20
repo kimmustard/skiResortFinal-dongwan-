@@ -97,7 +97,7 @@
 			</div>
 			<div class="rentaltableBox1">
 				<div>
-					<p>오전(08:00 ~ 12:00)</p>
+					<p>오전(09:00 ~ 13:00)</p>
 				</div>
 			</div>
 			<div class="rentaltableBox2">
@@ -117,7 +117,7 @@
 			</div>
 			<div class="rentaltableBox1">
 				<div>
-					<p>오후(12:00 ~ 18:00)</p>
+					<p>오후(13:00 ~ 19:00)</p>
 				</div>
 			</div>
 			<div class="rentaltableBox2">
@@ -133,6 +133,26 @@
 			<div class="rentaltableBox4">
 				<div>
 					<p>대인35000 | 소인 25000</p>
+				</div>
+			</div>
+			<div class="rentaltableBox1">
+				<div>
+					<p>주간(09:00 ~ 18:00)</p>
+				</div>
+			</div>
+			<div class="rentaltableBox2">
+				<div>
+					<p>대인30000 | 소인 20000</p>
+				</div>
+			</div>
+			<div class="rentaltableBox3">
+				<div>
+					<p>대인35000 | 소인 25000</p>
+				</div>
+			</div>
+			<div class="rentaltableBox4">
+				<div>
+					<p>대인40000 | 소인 30000</p>
 				</div>
 			</div>
 			<div class="rentaltableBox1">
@@ -157,7 +177,7 @@
 			</div>
 			<div class="rentaltableBox1">
 				<div>
-					<p>종일(08:00 ~ 22:00)</p>
+					<p>종일(09:00 ~ 22:00)</p>
 				</div>
 			</div>
 			<div class="rentaltableBox2">
