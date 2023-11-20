@@ -22,11 +22,12 @@ public class HotelController {
 	/*
 	 * 예약페이지 매핑
 	 */
-	
 	@GetMapping("/reservation")
 	public String reservForm() {
 		log.info("reserv Check!");
 		
 		return "/hotel/reservation";
 	}
+	
+	
 }

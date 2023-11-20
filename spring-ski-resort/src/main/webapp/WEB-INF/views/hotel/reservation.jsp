@@ -13,7 +13,7 @@
 	<div class="back">
 		<div class="selector">
 			<div>
-				<a href="">스키/리프트권</a>
+				<a href="#">스키/리프트권</a>
 			</div>
 			<div>
 				<a href="">호텔예약</a>
@@ -21,26 +21,30 @@
 		</div>
 
 		<div class="box">
-			<div class="calendar">달력z</div>
-			<div class="people">인원수</div>
-			<button id="payBtn">다음</button>
-			<div id="innerbox" style="display: none;">
-				<input type="radio" name="room" value="방">방
-				<input type="radio" name="room" value="방">방
-				<input type="radio" name="room" value="방">방
-				<input type="radio" name="room" value="방">방
-				<input type="radio" name="room" value="방">방
-				<input type="radio" name="room" value="방">방
-				
-				<button id="closeBtn">닫기</button>
-				<button type="submit">결제</button>
-			</div>
+			<form action="">
+				<div class="calendar"><input id="input-id" type="text" />달력z</div>
+				<div class="people">인원수</div>
+				<button id="payBtn" type="button">다음</button>
+				<div id="innerbox" style="display: none;">
+					<input type="radio" name="room" value="방">방 
+					<input type="radio" name="room" value="방">방 
+					<input type="radio" name="room" value="방">방 
+					<input type="radio" name="room" value="방">방 
+					<input type="radio" name="room" value="방">방
+					<input type="radio" name="room" value="방">방
+					<button id="closeBtn">닫기</button>
+					<input type="checkbox"> 
+					<input type="checkbox">
+					<button type="submit">결제</button>
+				</div>
+			</form>
 		</div>
 	</div>
 
 
 
 
+<script type="text/javascript"></script>
 <script defer type="text/javascript" src="/resources/js/hotel/reservation.js" ></script>
 </body>
 </html>
