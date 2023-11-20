@@ -59,6 +59,7 @@
 				  <option value="4">종일권</option>
 				</select>
 			</div>
+			<a href="/rental/fee-info"><button type="button" class="btn btn-outline-primary">이전으로</button></a>
 			<button type="submit" class="btn btn-outline-primary">예약완료</button>
 		</form>
 	</div>
