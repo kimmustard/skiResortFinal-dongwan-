@@ -54,7 +54,6 @@
 	
 		<div class="loginContainer">
 			<form action="/member/login" method="post">
-			<sec:csrfInput/>
 				<div class="login-box">
 				
 					<div class="form-group">
