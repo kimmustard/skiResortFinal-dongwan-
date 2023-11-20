@@ -6,6 +6,10 @@ window.onload = function(){
 	
         document.getElementById("ski-blank").style.height="96px";
     }
+    if((document.getElementById('notice-container'))){
+        document.getElementById("ski-blank").style.height="0px";
+    }
+    
 }
 
 document.getElementById("ski-navbar").addEventListener("mouseover",()=>{

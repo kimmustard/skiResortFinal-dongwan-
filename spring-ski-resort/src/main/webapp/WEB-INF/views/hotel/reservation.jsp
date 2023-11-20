@@ -21,7 +21,7 @@
 		</div>
 
 		<div class="box">
-			<div class="calendar">달력z</div>
+			<div class="calendar">달력</div>
 			<div class="people">인원수</div>
 			<button id="payBtn">다음</button>
 			<div id="innerbox"></div>

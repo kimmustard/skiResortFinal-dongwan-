@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+.notice-img-container{
+	height: 60vh;
+	background-size: cover;
+	background-position: 0px -20vh;
+	max-width: 100%;
+}
+
+.notice-container{
+	padding-top: 120px;
+	margin-bottom: 300px;
+}
