@@ -41,9 +41,6 @@ public class MemberVO {
 	@NotBlank(message="이메일을 정확히 입력해주세요.")
 	private String memberEmail;	//이메일
 	
-	@NotBlank(message="생년월일을 선택해주세요.")
-	private String memberBirth;	//생일
-	
 	@NotBlank(message="주소를 입력해주세요.")
 	private String memberAddress;	//주소
 	

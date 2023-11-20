@@ -12,9 +12,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
+import com.web.www.oauth.NaverLoginBO;
+
 
 @EnableWebMvc
-@ComponentScan(basePackages= {"com.web.www.controller", "com.web.www.handler"})
+@ComponentScan(basePackages= {"com.web.www.controller", "com.web.www.handler", "com.web.www.oauth"})
 public class ServletConfiguration implements WebMvcConfigurer{
 	
 	
@@ -37,6 +39,11 @@ public class ServletConfiguration implements WebMvcConfigurer{
 		registry.viewResolver(viewResolver);
 	}
 
+	//네이버로그인 api
+	@Bean
+    public NaverLoginBO naverLoginBO() {
+        return new NaverLoginBO();
+    }
 
 	// bean name으로 multipartResolver를 설정하면 된다.
 	@Bean(name = "multipartResolver")

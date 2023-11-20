@@ -3,6 +3,7 @@ package com.web.www.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.web.www.domain.member.MemberVO;
+import com.web.www.oauth.NaverLoginBO;
 import com.web.www.repository.MemberDAO;
 import com.web.www.service.MemberService;
 
@@ -27,7 +29,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
-@RequestMapping("/member")
+@RequestMapping("/member/*")
 @RequiredArgsConstructor
 public class MemberController {
 
@@ -39,10 +41,19 @@ public class MemberController {
 	 */
 	private final MemberDAO mdao;
 	private final BCryptPasswordEncoder bcEncoder;
-	
 
+	/**
+	 * 네이버
+	 * @return
+	 */
+	 /* NaverLoginBO */
+    private final NaverLoginBO naverLoginBO;
+    private String apiResult = null;
+	
 	@GetMapping("/login")
-	public String loginForm() {
+	public String loginForm(Model model, HttpSession session) {
+		String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
+		model.addAttribute("url", naverAuthUrl);
 		return "/member/login";
 	}
 	

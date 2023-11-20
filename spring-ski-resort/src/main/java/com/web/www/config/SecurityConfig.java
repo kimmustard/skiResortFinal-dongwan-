@@ -68,12 +68,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			filter.setEncoding("UTF-8");
 			filter.setForceEncoding(true);		
 			http.addFilterBefore(filter, CsrfFilter.class);
-			
-			
+		
 			//http의 승인요청 담당
 			http.authorizeRequests()
 			.antMatchers("/member/list").hasRole("ADMIN")
-			.antMatchers("/","/board/*","/upload/**","/resources/**","/member/*","/rental/*","/hotel/*","/member/check/**").permitAll()	//게스트 이용가능한 URL매핑
+			.antMatchers("/","/board/*","/upload/**","/resources/**",
+					"/member/*","/rental/*","/hotel/*","/member/check/**","/oauth/**").permitAll()	//게스트 이용가능한 URL매핑
 			.anyRequest().authenticated();	// 나머지 사용자 처리
 		
 			

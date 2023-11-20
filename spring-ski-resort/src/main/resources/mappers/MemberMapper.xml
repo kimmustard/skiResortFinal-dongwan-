@@ -7,11 +7,11 @@
 	<insert id="insertMember">
 		insert into member(member_id, member_pwd, 
 		member_alias, member_name, member_email,
-		member_birth, member_address, member_address_detail,
+		member_address, member_address_detail,
 		member_phone_num, member_terms1, member_terms2, member_terms3)
 			
 		values(#{memberId}, #{memberPwd}, #{memberAlias}, #{memberName}, #{memberEmail},
-	  	#{memberBirth}, #{memberAddress}, #{memberAddressDetail}, #{memberPhoneNum}, 
+	  	#{memberAddress}, #{memberAddressDetail}, #{memberPhoneNum}, 
 	  	#{memberTerms1},#{memberTerms2},#{memberTerms3})
 	</insert>
 

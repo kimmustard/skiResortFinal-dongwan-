@@ -177,23 +177,6 @@
 						<input type="text" class="form-control" name="memberAddressDetail" id="inputMemberAddressDetail" placeholder="상세주소 입력..." />
 					</div>
 			    </div>
-			    
-			    <!-- 생년월일 -->
-				
-				<div class="input-group input-group-sm date registerBox rb-8" id="memberBirth">
-					<div class="input-group-prepend">
-						<span class="input-group-text">생년월일</span>
-					</div>
-					<form:input type="text" path="memberBirth" name="memberBirth" value="" class="form-control form-control-sm" size="9"
-						onkeydown="if (event.keyCode == 13) { find_text(); }" />
-					<div class="input-group-append">
-						<span class="input-group-text">
-							<div class="input-group-addon"><i class="far fa-calendar-alt fa-lg"></i></div>
-						</span>
-					</div>
-					 <form:errors class="errorFont" path="memberBirth"></form:errors>
-				</div>
-		
 			
 			    
 			    <div class="form-group registerBox rb-9">
