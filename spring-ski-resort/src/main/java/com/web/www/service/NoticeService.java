@@ -14,4 +14,6 @@ public interface NoticeService {
 
 	int noticeModify(NoticeVO nvo);
 
+	int remove(long noticeNum);
+
 }

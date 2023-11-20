@@ -14,4 +14,6 @@ public interface NoticeDAO {
 
 	int update(NoticeVO nvo);
 
+	int delete(long noticeNum);
+
 }

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.web.www.domain.board.NoticeVO;
 import com.web.www.service.NoticeService;
@@ -65,7 +66,14 @@ public class NoticeController {
 		log.info(">>> 수정확인 >> "+nvo);
 		int isOk = nsv.noticeModify(nvo);
 		log.info(">>>>> notice modify >> "+(isOk > 0? "OK" : "Fail"));
-		return "/redirect:/notice/detail?noticeNum="+nvo.getNoticeNum();
+		return "redirect:/notice/detail?noticeNum="+nvo.getNoticeNum();
+	}
+	
+	public String remove(@RequestParam("noticeNum")long noticeNum, RedirectAttributes re) {
+		int isOk = nsv.remove(noticeNum);
+		log.info(">>>>> notice remove >> "+(isOk > 0? "OK" : "Fail"));
+		re.addFlashAttribute("isOk", isOk);
+		return "redirect:/notice/list";
 	}
 
 }

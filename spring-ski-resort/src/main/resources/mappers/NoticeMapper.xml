@@ -21,4 +21,8 @@
 		notice_category=#{noticeCategory}, notice_title=#{noticeTitle}, notice_content=#{noticeContent}, notice_mod_at=now()
 		where notice_num = #{noticeNum} 
 	</update>
+	
+	<delete id="delete">
+		delete from notice where notice_num = #{noticeNum}
+	</delete>
 </mapper>
