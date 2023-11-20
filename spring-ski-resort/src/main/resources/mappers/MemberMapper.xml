@@ -22,5 +22,14 @@
 	<select id="checkEmail" resultType="int">
 		select count(member_email) from member where member_email = #{memberEmail}
 	</select>
+	
+	<!-- 시큐리티 userDetail클래스 DB 선접근 mapper -->
+	<select id="selectMemberId" resultType="com.web.www.domain.member.MemberVO">
+		select * from member where member_id = #{memberId}
+	</select>
+	
+	<select id="selectAuths" resultType="com.web.www.security.AuthVO">
+		select * from auth_member where member_id = #{memberId}
+	</select>
 
   </mapper>

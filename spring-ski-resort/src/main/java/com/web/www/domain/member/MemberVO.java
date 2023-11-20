@@ -1,7 +1,11 @@
 package com.web.www.domain.member;
 
+import java.util.List;
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+
+import com.web.www.security.AuthVO;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -54,6 +58,6 @@ public class MemberVO {
 	@NotBlank(message="이용약관은 반드시 체크 되어야 합니다.")
 	private String memberTerms2; //이용약관
 	private String memberTerms3; //이용약관
-	
-	
+	 
+	private List<AuthVO> authList;	//여러개의 권한을 리스트로 관리
 }
