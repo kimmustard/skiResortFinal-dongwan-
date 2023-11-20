@@ -2,6 +2,8 @@ package com.web.www.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -24,6 +26,7 @@ public class ServletConfiguration implements WebMvcConfigurer{
 		registry.addResourceHandler("/upload/**").addResourceLocations("file:///D:\\_myweb\\_java\\fileupload\\");
 
 	}
+	
 
 	@Override
 	public void configureViewResolvers(ViewResolverRegistry registry) {
@@ -33,6 +36,7 @@ public class ServletConfiguration implements WebMvcConfigurer{
 		viewResolver.setSuffix(".jsp");
 		registry.viewResolver(viewResolver);
 	}
+	
 
 	// bean name으로 multipartResolver를 설정하면 된다.
 	@Bean(name = "multipartResolver")
