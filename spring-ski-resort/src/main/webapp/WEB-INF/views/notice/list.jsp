@@ -95,32 +95,37 @@
 		      <td class="notice-table-td"><div class="notice-table-td-child">${fn:replace((fn:substring(nvo.noticeRegAt,0,10)),'-','.') }</div></td>
 		      <td class="notice-table-td"><div class="notice-table-td-child">${nvo.noticeCount }</div></td>
 		    </tr>
-		  </c:forEach>
-		  
-		  
-		  
-		  
-		  
-		  
-		  
-		    <tr class="notice-table-tr">
-		      <td class="notice-table-td"><div class="notice-table-td-child">2</div></td>
-		      <td class="notice-table-td"><div class="notice-table-td-child">이벤트</div></td>
-		      <td class="notice-table-td"><div class="notice-table-td-child-title">이벤트 입니다</div></td>
-		      <td class="notice-table-td"><div class="notice-table-td-child">admin</div></td>
-		      <td class="notice-table-td"><div class="notice-table-td-child">2023.11.16</div></td>
-		      <td class="notice-table-td"><div class="notice-table-td-child">22</div></td>
-		    </tr>
-		    <tr class="notice-table-tr">
-		      <td class="notice-table-td"><div class="notice-table-td-child">3</div></td>	      
-		      <td class="notice-table-td"><div class="notice-table-td-child">보도자료</div></td>
-		      <td class="notice-table-td"><div class="notice-table-td-child-title">기사잘 떴습니다</div></td>
-		      <td class="notice-table-td"><div class="notice-table-td-child">admin</div></td>
-		      <td class="notice-table-td"><div class="notice-table-td-child">2023.11.16</div></td>
-		      <td class="notice-table-td"><div class="notice-table-td-child">33</div></td>
-		    </tr>
+		  </c:forEach>  
 		  </tbody>
 		</table>
+		
+		
+		<!-- 페이징 라인 -->
+		  <nav aria-label="Page navigation example">
+		  	<!-- 이전 -->
+		  	<ul class="pagination">
+		  		<li class="page-item ${(ph.prev eq false) ? 'disabled' : '' }">
+			  		<a class="page-link" href="/notice/list?pageNo=${ph.startPage-1 }&qty=${ph.npvo.qty}&type=${ph.npvo.type}&keyword=${ph.npvo.keyword}" aria-label="Previous">
+			  		<span aria-hidden="true">&laquo;</span>
+			  		</a>
+		  		</li>
+		  		<c:forEach begin="${ph.startPage }" end="${ph.endPage }" var="i">
+  					<li>
+  						<a class="page-link" href="/notice/list?pageNo=${i }&qty=${ph.npvo.qty}&type=${ph.npvo.type}&keyword=${ph.npvo.keyword}">${i }</a>
+  					</li>
+  				</c:forEach>
+  			<!-- 다음 -->
+  				<li class="page-item ${(ph.next eq false) ? 'disabled' : ''}">
+  					<a class="page-link" href="/notice/list?pageNo=${ph.endPage + 1 }&qty=${ph.npvo.qty}&type=${ph.npvo.type}&keyword=${ph.npvo.keyword}" aria-label="Next">
+        			<span aria-hidden="true">&raquo;</span>
+    				</a>
+  				</li>	
+		  	</ul>
+		  </nav>
+		
+		
+		<br>
+		
 		<a href="/notice/register">
 		<button type="button">글작성</button>
 		</a>

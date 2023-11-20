@@ -23,12 +23,12 @@
 				<td><input type="hidden" name="noticeNum" value="${nvo.noticeNum}" readonly="readonly"></td>
 			</tr>	
 			<tr>
-				<th>카테고리</th>
-				<td><input type="text" name="noticeCategory" value="${nvo.noticeCategory}"></td>
-			</tr>	
-			<tr>
 				<th>제목</th>
 				<td><input type="text" name="noticeTitle" value="${nvo.noticeTitle }"></td>
+			</tr>	
+			<tr>
+				<th>카테고리</th>
+				<td><input type="text" name="noticeCategory" value="${nvo.noticeCategory}"></td>
 			</tr>	
 			<tr>
 				<th>작성자</th>

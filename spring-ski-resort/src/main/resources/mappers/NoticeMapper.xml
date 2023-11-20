@@ -5,7 +5,7 @@
 <mapper namespace="com.web.www.repository.NoticeDAO">
 	<insert id="insert" parameterType="com.web.www.domain.board.NoticeVO">
 		insert into notice(notice_writer, notice_category, notice_title, notice_content, member_num)
-		values(#{noticeWriter}, #{noticeCategory}, #{noticeTitle}, #{noticeContent}, 1)
+		values(#{noticeWriter}, #{noticeCategory}, #{noticeTitle}, #{noticeContent}, 2)
 	</insert>
 	
 	<select id="selectDetail" resultType="com.web.www.domain.board.NoticeVO">
@@ -13,7 +13,8 @@
 	</select>
 	
 	<select id="selectList" resultType="com.web.www.domain.board.NoticeVO">
-		select * from notice order by notice_num desc
+		select * from notice 
+		order by notice_num desc limit #{pageStart}, #{qty}
 	</select>
 	
 	<update id="update">
@@ -25,4 +26,9 @@
 	<delete id="delete">
 		delete from notice where notice_num = #{noticeNum}
 	</delete>
+	
+	<select id="getTotalCount" resultType="int">
+		select count(notice_num) from notice
+	</select>
+	
 </mapper>

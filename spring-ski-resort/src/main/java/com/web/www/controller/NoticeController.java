@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.web.www.domain.board.NoticePagingVO;
 import com.web.www.domain.board.NoticeVO;
+import com.web.www.handler.NoticePagingHandler;
 import com.web.www.service.NoticeService;
 
 import lombok.RequiredArgsConstructor;
@@ -46,11 +48,19 @@ public class NoticeController {
 //		return "/notice/list";
 //	}
 	
+//	@GetMapping("/list")
+//	public void noticeList(Model m) {
+//		List<NoticeVO> list = nsv.noticeList();
+//		m.addAttribute("list", list);	
+//	}
+	
+	//페이징 추가
 	@GetMapping("/list")
-	public void noticeList(Model m) {
-		List<NoticeVO> list = nsv.noticeList();
-		m.addAttribute("list", list);
-		
+	public void noticeList(Model m, NoticePagingVO npvo) {
+		m.addAttribute("list", nsv.noticeList(npvo));
+		int totalCount = nsv.getTotalCount(npvo);
+		NoticePagingHandler ph = new NoticePagingHandler(npvo, totalCount);
+		m.addAttribute("ph",ph);
 	}
 	
 	@GetMapping({"/detail","/modify"})
