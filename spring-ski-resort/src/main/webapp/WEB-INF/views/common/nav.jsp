@@ -33,8 +33,15 @@
 	       	<li><a href="/member/register">회원가입</a></li>
 	    </sec:authorize>
         <sec:authorize access="isAuthenticated()">
+        	<sec:authentication property="principal.mvo.memberId" var="authId"/>
         	<sec:authentication property="principal.mvo.memberEmail" var="authEmail"/>
-       		<li>${authEmail}</li>
+        	<sec:authentication property="principal.mvo.memberType" var="authType"/>
+        	<c:if test="${authType == 'normal' }">
+       		<li>${authId}님 환영합니다.</li>
+        	</c:if>
+        	<c:if test="${authType == 'naver' }">
+       		<li>(네이버)${authEmail}님 환영합니다.</li>
+        	</c:if>
 	       	<li><a href="/member/detail">회원정보</a></li>
 	       	<li><a href="/member/logout">로그아웃</a></li>
 		

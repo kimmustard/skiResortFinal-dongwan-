@@ -22,7 +22,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.web.www.domain.member.MemberVO;
 import com.web.www.domain.member.RegisterMemberDTO;
 import com.web.www.repository.MemberDAO;
-import com.web.www.security.AuthMember;
 import com.web.www.service.MemberService;
 
 import lombok.RequiredArgsConstructor;
@@ -50,7 +49,7 @@ public class MemberController {
 	
 	@PostMapping("/login")
 	public String login(HttpSession ses, RedirectAttributes rttr) {
-		rttr.addAttribute("email", ses.getAttribute("memberId"));
+		rttr.addAttribute("memberId", ses.getAttribute("memberId"));
 		rttr.addAttribute("errMsg", ses.getAttribute("errMsg"));
 		return "redirect:/member/login";
 	}

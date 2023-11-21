@@ -31,6 +31,7 @@ public class MemberVO {
 	private String memberTerms1; //이용약관
 	private String memberTerms2; //이용약관
 	private String memberTerms3; //이용약관
+	private String memberType;	//일반회원 | 소셜회원
 	
 	private List<AuthVO> authList;	//여러개의 권한을 리스트로 관리
 	

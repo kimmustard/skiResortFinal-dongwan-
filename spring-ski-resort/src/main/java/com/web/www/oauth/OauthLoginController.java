@@ -75,26 +75,20 @@ public class OauthLoginController {
 		if(msv.socialSearch(mvo.getMemberId()) == null) {
 			int isOk = msv.socialRegister(mvo);
 		}
-		
+		//네이버 회원 색인
+		mvo.setMemberType("naver");
 		AuthMember OauthUser =  new AuthMember(mvo);
 		
 		Authentication authentication = 
 				new UsernamePasswordAuthenticationToken(OauthUser, null, OauthUser.getAuthorities());
 		SecurityContextHolder.getContext().setAuthentication(authentication);
-		
 		rttr.addAttribute("memberEmail", session.getAttribute("memberEmail"));
+		log.info("@@@@@@@@@@ 테스트= {}", session.getAttribute("memeberType"));
 		
 		return "redirect:/"; 
 		
 	}
 	
-//	//	로그아웃
-//	@RequestMapping(value = "/logout", method = { RequestMethod.GET, RequestMethod.POST })	
-//	public String logout(HttpSession session)throws IOException {			
-//		log.info("OAuth logout check !!!!");		
-//		session.invalidate(); 	        			
-//		return "redirect:/";
-//	}
 	
 
 }

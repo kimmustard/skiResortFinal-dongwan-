@@ -51,10 +51,10 @@
 	<insert id="socialRegister">
 		insert into member(member_id, member_pwd,
 		member_alias, member_name, member_email,
-		member_phone_num)
+		member_phone_num, member_type)
 			
 		values(#{memberId}, #{memberPwd}, #{memberAlias}, #{memberName}, #{memberEmail},
-	  	#{memberPhoneNum})
+	  	#{memberPhoneNum}, 'naver')
 	</insert>
 	
 
