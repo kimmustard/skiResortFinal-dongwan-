@@ -17,6 +17,10 @@
 		order by notice_num desc limit #{pageStart}, #{qty}
 	</select>
 	
+	<update id="readCount">
+		update notice set notice_count = notice_count + #{cnt} where notice_num = #{noticeNum}
+	</update>
+	
 	<update id="update">
 		update notice set 
 		notice_category=#{noticeCategory}, notice_title=#{noticeTitle}, notice_content=#{noticeContent}, notice_mod_at=now()

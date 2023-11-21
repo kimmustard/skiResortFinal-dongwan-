@@ -18,15 +18,17 @@
 
 	<div class="notice-menu-container">
 		<!-- 검색 라인  -->
+		<form action="/notice/list" method="get">
 		<div class="notice-search-container">
-		<div class="dropdown notice-search-category">
-			  <button class="notice-search-category dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+			<div class="dropdown notice-search-category">
+			<c:set value="${ph.npvo.type }" var="type"></c:set>
+			  <button class="notice-search-category dropdown-toggle" name="type" type="button" data-bs-toggle="dropdown" aria-expanded="false">
 			    전체
 			  </button>
 			  <ul class="dropdown-menu">
-			    <li><a class="dropdown-item" href="#">제목</a></li>
-			    <li><a class="dropdown-item" href="#">내용</a></li>
-			    <li><a class="dropdown-item" href="#">전체</a></li>
+			    <li class="dropdown-item">제목</li>
+			    <li class="dropdown-item">내용</li>
+			    <li class="dropdown-item">전체</li>
 			  </ul>
 			</div>
 			<div class="notice-input-container">
@@ -36,6 +38,7 @@
 				<button class="notice-search-button">검색</button>
 			</div>
 		</div>
+		</form>
 		
 		
 		<!-- 카테고리 라인 -->

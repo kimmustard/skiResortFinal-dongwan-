@@ -2,6 +2,8 @@ package com.web.www.repository;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.web.www.domain.board.NoticePagingVO;
 import com.web.www.domain.board.NoticeVO;
 
@@ -18,5 +20,7 @@ public interface NoticeDAO {
 	int delete(long noticeNum);
 
 	int getTotalCount(NoticePagingVO npvo);
+
+	void readCount(@Param("noticeNum")long noticeNum, @Param("cnt")int cnt);
 
 }

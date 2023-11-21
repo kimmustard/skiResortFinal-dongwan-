@@ -30,6 +30,7 @@ public class NoticeServiceImpl implements NoticeService{
 	@Override
 	public NoticeVO noticeDetail(long noticeNum) {
 		log.info(">>>>> notice detail service >> ");
+		ndao.readCount(noticeNum,1);
 		return ndao.selectDetail(noticeNum);
 	}
 
@@ -50,6 +51,7 @@ public class NoticeServiceImpl implements NoticeService{
 	@Override
 	public int noticeModify(NoticeVO nvo) {
 		log.info(">>>>> notice modify service >> ");
+		ndao.readCount(nvo.getNoticeNum(), -2);
 		int isOk = ndao.update(nvo);
 		return isOk;
 	}
