@@ -26,7 +26,7 @@ h3 {
 	<!-- 네이버 로그인 화면으로 이동 시키는 URL -->
 	<!-- 네이버 로그인 화면에서 ID, PW를 올바르게 입력하면 callback 메소드 실행 요청 -->
 	<div id="naver_id_login" style="text-align: center">
-		<a href="${url}"> <img width="223" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png" /></a>
+		<a href="${naverUrl}"> <img width="223" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png" /></a>
 	</div>
 	<br>
 </body>

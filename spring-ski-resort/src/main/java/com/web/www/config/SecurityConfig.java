@@ -73,7 +73,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			http.authorizeRequests()
 			.antMatchers("/member/list").hasRole("ADMIN")
 			.antMatchers("/","/board/*","/upload/**","/resources/**",
-					"/member/*","/rental/*","/hotel/*","/member/check/**","/oauth/**").permitAll()	//게스트 이용가능한 URL매핑
+					"/member/*","/rental/*","/hotel/*","/member/check/**","/oauth/*","/oauth/naver/*").permitAll()	//게스트 이용가능한 URL매핑
 			.anyRequest().authenticated();	// 나머지 사용자 처리
 		
 			
