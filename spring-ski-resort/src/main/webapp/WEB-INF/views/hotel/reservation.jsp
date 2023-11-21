@@ -46,6 +46,7 @@
 		</div>
 
 		<div class="box">
+
 			<form action="">
 				<div class="container mt-3">
 					<label for="dateRangePicker">날짜를 선택하세요:</label> <input type="text"
@@ -67,6 +68,7 @@
 					<button type="submit">결제</button>
 				</div>
 			</form>
+
 		</div>
 	</div>
 
