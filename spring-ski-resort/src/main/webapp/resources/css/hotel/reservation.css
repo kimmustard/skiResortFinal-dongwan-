@@ -55,3 +55,44 @@
     height: 100%;
     background-color: aqua;
 }
+
+.daterangepicker {
+    width: 600px !important; /* 전체 너비로 설정 */
+    max-width: none !important; /* 최대 너비 설정 해제 */
+    margin: 0 !important; /* 여백 제거 */
+}
+.daterangepicker .drp-calendar {
+    display: none;
+    max-width: 1000px;
+}
+
+.daterangepicker .ranges, .daterangepicker .drp-calendar {
+     float: left; 
+     width: 50%;
+}
+.daterangepicker .calendar-table th, .daterangepicker .calendar-table td {
+	font-size: 15px;
+	height: 40px;
+}
+.daterangepicker.show-calendar .ranges {
+    margin-top: 0px; 
+}
+
+.daterangepicker select.hourselect, .daterangepicker select.minuteselect, .daterangepicker select.secondselect, .daterangepicker select.ampmselect {
+	font-size: 15px;
+	height: 35px;
+	background-color: #357ebd;
+	color: white;
+	border-radius: 7px;
+}
+.daterangepicker .drp-selected {
+  
+    font-size: 15px;
+   
+}
+.daterangepicker .drp-buttons .btn {
+   
+ font-size: 15px; 
+ font-weight:normal; 
+
+}
