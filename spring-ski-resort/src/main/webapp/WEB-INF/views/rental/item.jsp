@@ -12,13 +12,16 @@
 	}
 	.itemContainer{
 		display: flex;
-		flex-direction: row;
+		flex-wrap: wrap;
 		justify-content: center;
+		height: 1200px;
+		background-color: gray;
 	}
 	
 	.itemImageBox1,.itemImageBox2,
-	.itemImageBox3,.itemImageBox4{
-		width: 200px;
+	.itemImageBox3,.itemImageBox4,
+	.itemImageBox5,.itemImageBox6{
+		width: calc(15% - 40px);
 		height: 200px;
 		margin: 0 20px;
 		margin-top: 100px;
@@ -35,6 +38,12 @@
 	.itemImageBox4{
 		background-color: green;
 	}
+	.itemImageBox5{
+		background-color: orange;
+	}
+	.itemImageBox6{
+		background-color: purple;
+	}
 	.btnContainer{
 		display: flex;
 		justify-content: center;
@@ -43,6 +52,19 @@
 		margin-left: 20px;
 		margin-right: 20px;
 	}
+	
+	.itemLinkBox1{
+		width: 100px;
+		background-color: navy;
+	}
+	.itemLinkBox2{
+		width: 100px;
+		background-color: lime;
+	}
+	.itemLinkBox3{
+		width: 100px;
+		background-color: aqua;
+	}
 </style>
 </head>
 <body>
@@ -50,6 +72,22 @@
 	
 	<h1 class="h1">장비안내</h1>
 	
+	<div class="itemLinkBox1">
+		<div class="itemLink">
+			<a href="">스키장비</a>
+		</div>
+	</div>
+	
+	<div class="itemLinkBox2">
+		<div class="itemLink">
+			<a href="">보드장비</a>
+		</div>
+	</div>
+	<div class="itemLinkBox3">
+		<div class="itemLink">
+			<a href="">의류</a>
+		</div>
+	</div>
 	
 	<form action="/rental/item" method="post" enctype="murtipart/form-datas">
 		<div class="itemContainer">
@@ -73,8 +111,20 @@
 					<!-- 이미지 파일 표시 -->
 				</div>
 			</div>
+			<div class="itemImageBox5">
+				<div>
+					<!-- 이미지 파일 표시 -->
+				</div>
+			</div>
+			<div class="itemImageBox6">
+				<div>
+					<!-- 이미지 파일 표시 -->
+				</div>
+			</div>
 	
 		</div>
+		
+		<!-- 페이징 기능 들어갈지말지 -->
 		
 		<div class="btnContainer">
 			<div>

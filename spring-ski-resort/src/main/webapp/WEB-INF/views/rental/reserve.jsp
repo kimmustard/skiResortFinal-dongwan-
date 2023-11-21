@@ -37,12 +37,13 @@
 			<div>
 				<select class="form-select">
 				  <option selected>리프트권 선택</option>
-				  <option value="1">리프트 오전권</option>
-				  <option value="2">리프트 오후권</option>
-				  <option value="3">리프트 주간권</option>
-				  <option value="4">리프트 야간권</option>
-				  <option value="5">리프트 종일권</option>
-				  <option value="6">리프트 시즌권</option>
+				  <option value="lift1">리프트 오전권</option>
+				  <option value="lift2">리프트 오후권</option>
+				  <option value="lift3">리프트 주간권</option>
+				  <option value="lift4">리프트 야간권</option>
+				  <option value="lift5">리프트 종일권</option>
+				  <option value="lift6">리프트 시즌권</option>
+				  <option value="liftX">선택안함</option>
 				</select>
 			</div>
 			<div>
@@ -51,17 +52,18 @@
 				  <option value="item1">일반장비SET</option>
 				  <option value="item2">중급장비SET</option>
 				  <option value="item3">프리미엄장비SET</option>
+				  <option value="itemX">선택안함</option>
 				</select>
 			</div>
 			<div>
 				<select class="form-select">
 				  <option selected>시간 선택</option>
-				  <option value="1">렌탈 오전권</option>
-				  <option value="2">렌탈 오후권</option>
-				  <option value="3">렌탈 주간권</option>
-				  <option value="4">렌탈 야간권</option>
-				  <option value="5">렌탈 종일권</option>
-				  <option value="6">렌탈 시즌권</option>
+				  <option value="rental1">렌탈 오전권</option>
+				  <option value="rental2">렌탈 오후권</option>
+				  <option value="rental3">렌탈 주간권</option>
+				  <option value="rental4">렌탈 야간권</option>
+				  <option value="rental5">렌탈 종일권</option>
+				  <option value="rental6">렌탈 시즌권</option>
 				</select>
 			</div>
 			<a href="/rental/fee-info"><button type="button" class="btn btn-outline-primary">이전으로</button></a>
