@@ -1,5 +1,7 @@
 package com.web.www.controller;
 
+import java.security.Principal;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -22,6 +24,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.web.www.domain.member.MemberVO;
 import com.web.www.domain.member.RegisterMemberDTO;
 import com.web.www.repository.MemberDAO;
+import com.web.www.security.AuthMember;
 import com.web.www.service.MemberService;
 
 import lombok.RequiredArgsConstructor;
@@ -43,7 +46,10 @@ public class MemberController {
 	private final BCryptPasswordEncoder bcEncoder;
 	
 	@GetMapping("/login")
-	public String loginForm() {
+	public String loginForm(Principal principal) {
+		if(principal != null) {
+			return "/";
+		}
 		return "/member/login";
 	}
 	
@@ -71,15 +77,17 @@ public class MemberController {
 		
 		mvo.setMemberPwd(bcEncoder.encode(mvo.getMemberPwd()));
 		int isOk = msv.insertMember(mvo);
-		log.info("register check mvo@@@@ = {}" , mvo);
 		return "index";
 	}
 
 	@GetMapping("/detail")
-	public String detailForm() {
+	public String detailForm(Authentication auth) {
+//		AuthMember mvo = (AuthMember) auth.getPrincipal();
 
 		return "/member/detail";
 	}
+	
+	
 	
 	
 	

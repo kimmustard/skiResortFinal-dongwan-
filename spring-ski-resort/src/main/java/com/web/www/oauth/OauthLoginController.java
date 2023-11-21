@@ -1,6 +1,7 @@
 package com.web.www.oauth;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 import javax.servlet.http.HttpSession;
 
@@ -33,12 +34,18 @@ import lombok.extern.slf4j.Slf4j;
 public class OauthLoginController {
 
 	private final MemberService msv;
+	//OauthParser
+	private final OauthParser parser;
 	
 	/**
 	 * @네이버
 	 */
 	private final NaverLoginBO naverLoginBO;
-	private final OauthParser parser;
+	
+	/**
+	 * @카카오
+	 */
+	private final KakaoLoginBO kakaoLoginBO;
 
 	// 로그인 첫 화면 요청 메소드
 	@ResponseBody
@@ -82,13 +89,28 @@ public class OauthLoginController {
 		Authentication authentication = 
 				new UsernamePasswordAuthenticationToken(OauthUser, null, OauthUser.getAuthorities());
 		SecurityContextHolder.getContext().setAuthentication(authentication);
-		rttr.addAttribute("memberEmail", session.getAttribute("memberEmail"));
-		log.info("@@@@@@@@@@ 테스트= {}", session.getAttribute("memeberType"));
 		
 		return "redirect:/"; 
 		
 	}
 	
-	
+	/**
+	 * @카카오
+	 */
+	@RequestMapping(value="/kakao/callback", method=RequestMethod.GET)
+	public String kakaoLogin(@RequestParam(value = "code", required = false) String code) throws Exception {
+		System.out.println("#########" + code);
+		String access_Token = kakaoLoginBO.getAccessToken(code);
+        
+		// 위에서 만든 코드 아래에 코드 추가
+		HashMap<String, Object> userInfo = parser.getUserInfo(access_Token);
+		System.out.println("###access_Token#### : " + access_Token);
+		System.out.println("###nickname#### : " + userInfo.get("nickname"));
+		System.out.println("###email#### : " + userInfo.get("email"));
+        
+		return "redirect:/";
+    	}
+		
+}	
 
-}
+
