@@ -22,7 +22,7 @@ public class NaverLoginBO {
     //state: 애플리케이션이 생성한 상태 토큰
     private final static String CLIENT_ID = "wbyV5UzOmdLiaWVfikic";       //네이버API Client ID
     private final static String CLIENT_SECRET = "vm6txnLuMf"; 
-    private final static String REDIRECT_URI = "http://localhost:8089/oauth/naver/callback";
+    private final static String REDIRECT_URI = "http://localhost:8089/member/naver/callback";
     private final static String SESSION_STATE = "oauth_state";
     /* 프로필 조회 API URL */
     private final static String PROFILE_API_URL = "https://openapi.naver.com/v1/nid/me";/// Api 종류 기본 !!
@@ -84,7 +84,7 @@ public class NaverLoginBO {
     /* Access Token을 이용하여 네이버 사용자 프로필 API를 호출 */
     public String getUserProfile(OAuth2AccessToken oauthToken) throws IOException{
 
-        OAuth20Service oauthService =new ServiceBuilder()
+        OAuth20Service oauthService = new ServiceBuilder()
                 .apiKey(CLIENT_ID)
                 .apiSecret(CLIENT_SECRET)
                 .callback(REDIRECT_URI).build(NaverLoginApi.instance());
