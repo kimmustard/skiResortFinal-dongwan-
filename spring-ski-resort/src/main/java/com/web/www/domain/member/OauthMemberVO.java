@@ -18,8 +18,8 @@ import lombok.ToString;
 @ToString
 public class OauthMemberVO {
 	
-	private long memberNum;	
 	private String memberId;	//소셜 회원아이디는 난수로 들어갑니다.
+	private String memberPwd;	//비번
 	private String memberName;
 	private String memberAlias;
 	private String memberEmail;

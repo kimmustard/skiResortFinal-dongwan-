@@ -1,11 +1,14 @@
 package com.web.www.service;
 
 import com.web.www.domain.member.MemberVO;
+import com.web.www.domain.member.OauthMemberVO;
 
 public interface MemberService {
 
 	int insertMember(MemberVO mvo);
 	
+	//소셜 유저 로그인
+	int socialRegister(OauthMemberVO omvo);
 	
 	
 	
@@ -26,6 +29,20 @@ public interface MemberService {
 	 */
 	int checkId(String memberId);
 	int checkEmail(String memberEmail);
+	
+	/**
+	 * 시큐리티 Oauth2.0 인증
+	 * @param 소셜 memberId DB에 없으면 유저를 등록해준다. 권한까지 부여함
+	 * @return OauthMemberVO omvo
+	 */
+	OauthMemberVO socialSearch(String memberId);
+
+
+
+
+
+
+
 
 
 }

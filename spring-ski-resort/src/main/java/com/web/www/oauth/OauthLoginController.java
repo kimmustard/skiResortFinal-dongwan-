@@ -9,6 +9,9 @@ import javax.servlet.http.HttpSession;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.springframework.expression.ParseException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +21,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.github.scribejava.core.model.OAuth2AccessToken;
+import com.web.www.domain.member.OauthMemberVO;
 import com.web.www.handler.OauthParser;
+import com.web.www.security.OauthCustomMember;
+import com.web.www.service.MemberService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -30,11 +36,13 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 public class OauthLoginController {
 
+	private final MemberService msv;
+	
 	/**
 	 * @네이버
 	 */
 	private final NaverLoginBO naverLoginBO;
-
+	private final OauthParser parser;
 
 	// 로그인 첫 화면 요청 메소드
 	@ResponseBody
@@ -49,46 +57,45 @@ public class OauthLoginController {
 
 	// 네이버 로그인 성공시 callback호출 메소드 
 	
+	
 	@RequestMapping(value = "/naver/callback", method = {RequestMethod.GET, RequestMethod.POST }) 
 	public String callback(Model model, @RequestParam String code, @RequestParam String state, HttpSession session) 
 			throws IOException, org.json.simple.parser.ParseException{ 
-		
-		 log.info("callback check !!!!!!!!!!");
-			
-		 OAuth2AccessToken oauthToken; 
-		 oauthToken = naverLoginBO.getAccessToken(session, code, state);
-		 
-		 //1. 로그인 사용자 정보를 읽어온다..
-		 String apiResult = null;
-		 apiResult = naverLoginBO.getUserProfile(oauthToken);
-		 log.info("네이버 로그인 정보 = {}" , apiResult);
-		 
-		 //String형식의 json데이터 /**apiResult json 구조 {"resultcode":"00", "message":"success","response":{"id":"33666449","nickname":"shinn****","age":"20-29","gender":"M","email":"sh@naver.com","name":"\uc2e0\ubc94\ud638"}}**/ 
-		
-
-		 OauthParser user = new OauthParser(apiResult);
-		 log.info("id = {}", user.getId());
-		 log.info("alias = {}", user.getAlias());
-		 log.info("name = {}", user.getName());
-		 log.info("phoneNum = {}", user.getPhoneNum());
-		 log.info("email = {}", user.getEmail());
-		 
-//		 //4.파싱 닉네임 세션으로 저장
-//		 session.setAttribute("sessionId", id); 
-//		 //세션 생성
-//		 model.addAttribute("result", apiResult); 
-		 
-		 return "index"; 
-		 
-	 }
 	
-	//로그아웃
-//	@RequestMapping(value = "/logout", method = { RequestMethod.GET, RequestMethod.POST })	
-//	public String logout(HttpSession session)throws IOException {			
-//		System.out.println("여기는 logout");			
-//		session.invalidate(); 	        			
-//		return "redirect:index.jsp";		
-//	}
+		OAuth2AccessToken oauthToken; 
+		oauthToken = naverLoginBO.getAccessToken(session, code, state);
+		
+		//1. 로그인 사용자 정보를 읽어온다..
+		String apiResult = null;
+		apiResult = naverLoginBO.getUserProfile(oauthToken);
+		log.info("네이버 로그인 정보 = {}" , apiResult);		
+		
+		//JSON 유저 정보 파싱 -> 유저VO에 담기
+		OauthMemberVO omvo = parser.naverUser(apiResult);
+		log.info("네이버로그인 정보 = {}", omvo);	
+		
+		//DB에 소셜유저 검증
+		if(msv.socialSearch(omvo.getMemberId()) == null) {
+			int isOk = msv.socialRegister(omvo);
+		}
+		
+		OauthCustomMember OauthUser =  new OauthCustomMember(omvo);
+		
+		Authentication authentication = 
+				new UsernamePasswordAuthenticationToken(OauthUser, null, OauthUser.getAuthorities());
+		SecurityContextHolder.getContext().setAuthentication(authentication);
+		
+		return "redirect:/"; 
+		
+	}
+	
+	//	로그아웃
+	@RequestMapping(value = "/logout", method = { RequestMethod.GET, RequestMethod.POST })	
+	public String logout(HttpSession session)throws IOException {			
+		log.info("OAuth logout check !!!!");		
+		session.invalidate(); 	        			
+		return "redirect:/";
+	}
 	
 
 }

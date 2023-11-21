@@ -3,6 +3,7 @@ package com.web.www.service;
 import org.springframework.stereotype.Service;
 
 import com.web.www.domain.member.MemberVO;
+import com.web.www.domain.member.OauthMemberVO;
 import com.web.www.repository.MemberDAO;
 
 import lombok.RequiredArgsConstructor;
@@ -22,6 +23,11 @@ public class MemberServiceImpl implements MemberService {
 		return mdao.insertAuthInit(mvo.getMemberId());
 	}
 
+	@Override
+	public int socialRegister(OauthMemberVO omvo) {
+		mdao.socialRegister(omvo);	//소셜유저 가입
+		return mdao.insertAuthInit(omvo.getMemberId());
+	}
 	
 	
 	
@@ -49,6 +55,19 @@ public class MemberServiceImpl implements MemberService {
 	public int checkEmail(String memberEmail) {
 		return mdao.checkEmail(memberEmail);
 	}
+
+
+	/**
+	 * 시큐리티 OAuth인증
+	 */
+
+	@Override
+	public OauthMemberVO socialSearch(String memberId) {
+		return mdao.socialSearch(memberId);
+	}
+
+
+
 
 
 

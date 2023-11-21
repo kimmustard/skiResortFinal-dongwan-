@@ -3,6 +3,7 @@ package com.web.www.repository;
 import java.util.List;
 
 import com.web.www.domain.member.MemberVO;
+import com.web.www.domain.member.OauthMemberVO;
 import com.web.www.security.AuthVO;
 
 public interface MemberDAO {
@@ -15,6 +16,8 @@ public interface MemberDAO {
 
 	int insertAuthInit(String memberId);
 	
+	//소셜 유저 가입
+	void socialRegister(OauthMemberVO omvo);
 	
 	
 	
@@ -42,6 +45,9 @@ public interface MemberDAO {
 	int checkId(String memberId);
 
 	int checkEmail(String memberEmail);
+
+	OauthMemberVO socialSearch(String memberId);
+
 
 
 

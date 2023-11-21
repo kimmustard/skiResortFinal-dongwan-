@@ -43,4 +43,18 @@
 		values(#{memberId}, 'ROLE_USER')
 	</insert>
 
+	<!-- 시큐리티 Oauth 유저(소셜) 선접근 -->
+	<select id="socialSearch" resultType="com.web.www.domain.member.OauthMemberVO">
+		select * from member where member_id = #{memberId}
+	</select>
+	<insert id="socialRegister">
+		insert into member(member_id,
+		member_alias, member_name, member_email,
+		member_phone_num)
+			
+		values(#{memberId}, #{memberAlias}, #{memberName}, #{memberEmail},
+	  	#{memberPhoneNum})
+	</insert>
+	
+
   </mapper>

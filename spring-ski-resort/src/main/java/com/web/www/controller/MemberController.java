@@ -2,6 +2,8 @@ package com.web.www.controller;
 
 
 
+import java.security.Principal;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -44,7 +46,7 @@ public class MemberController {
 	private final BCryptPasswordEncoder bcEncoder;
 	
 	@GetMapping("/login")
-	public String loginForm(Model model, HttpSession session) {
+	public String loginForm() {
 		return "/member/login";
 	}
 	
@@ -75,7 +77,7 @@ public class MemberController {
 	}
 
 	@GetMapping("/detail")
-	public String detailForm(@ModelAttribute("mvo")MemberVO mvo, Model model) {
+	public String detailForm(@ModelAttribute("mvo")MemberVO mvo, Model model, Principal principal) {
 		
 		return "/member/detail";
 	}
