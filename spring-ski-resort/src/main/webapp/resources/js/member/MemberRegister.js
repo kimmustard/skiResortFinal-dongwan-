@@ -54,18 +54,6 @@ document.getElementById('exampleInputPassword2').addEventListener('keyup', () =>
 })
 
 
-
-
-//달력
-$(function () {
-    $("#memberBirth").datetimepicker({
-        locale: "ko",
-        format: "YYYY-MM-DD",
-        defaultDate: moment()
-    });
-
-});
-
 //중복 인증관련
 /*아이디 중복*/
 document.getElementById('MemberIdCheck').addEventListener('click', () => {

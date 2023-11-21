@@ -9,7 +9,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Component;
 
-import com.web.www.domain.member.OauthMemberVO;
+import com.web.www.domain.member.MemberVO;
 import com.web.www.security.AuthVO;
 
 import lombok.extern.slf4j.Slf4j;
@@ -18,7 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 @Component
 public class OauthParser {
 	
-	public OauthMemberVO naverUser(String apiResult) throws ParseException {
+	public MemberVO naverUser(String apiResult) throws ParseException {
 		//2. String형식인 apiResult를 json형태로 바꿈 
 		JSONParser parser = new JSONParser(); 
 		Object obj = parser.parse(apiResult); 
@@ -34,14 +34,18 @@ public class OauthParser {
 		String phoneNum = (String)response_obj.get("mobile");
 		String name = (String)response_obj.get("name");
 		
+		//pwd 임시로 채울 미니 난수생성
+		String pwd = String.valueOf((int)(Math.random() * 899999) + 100000);
+		log.info("pwd@@@@@@@@@@@@ = {}", pwd);
+		
 		//멤버 객체
-		OauthMemberVO omvo = new OauthMemberVO();
-		omvo.setMemberId(id);
-		omvo.setMemberPwd(UUID.randomUUID().toString());
-		omvo.setMemberAlias(alias);
-		omvo.setMemberEmail(email);
-		omvo.setMemberPhoneNum(phoneNum);
-		omvo.setMemberName(name);
+		MemberVO mvo = new MemberVO();
+		mvo.setMemberId(id);
+		mvo.setMemberPwd(pwd);
+		mvo.setMemberAlias(alias);
+		mvo.setMemberEmail(email);
+		mvo.setMemberPhoneNum(phoneNum);
+		mvo.setMemberName(name);
 		
 		//권한 부여
 		AuthVO auth = new AuthVO();
@@ -50,9 +54,9 @@ public class OauthParser {
 				
 		List<AuthVO> authList = new ArrayList<>();
 		authList.add(auth);
-		omvo.setAuthList(authList);
+		mvo.setAuthList(authList);
 		
-		return omvo;
+		return mvo;
 	}
 	
 	

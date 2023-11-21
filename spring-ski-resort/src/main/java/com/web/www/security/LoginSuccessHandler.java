@@ -28,12 +28,12 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 
 	@Setter
 	@Getter
-	private String authEmail;
+	private String authId;
 	
 	@Setter
 	@Getter
 	private String authUrl;
-	
+
 	//리다이렉트로 데이터를 가져가는 역할 (RedirectStrategy)
 	private RedirectStrategy rdstg = new DefaultRedirectStrategy();
 	
@@ -46,16 +46,19 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
 			Authentication authentication) throws IOException, ServletException {
-		
-		
-		setAuthEmail(authentication.getName());	//인증에 성공하여 권한을 가진 아이디
+
+		setAuthId(authentication.getName());	//인증에 성공하여 권한을 가진 아이디
 		setAuthUrl("/");
-		
-		boolean isOk = msv.updateLastLogin(getAuthEmail());
+		boolean isOk = msv.updateLastLogin(getAuthId());
 		
 		//내부에서로그인 세션이 저장됨
 		HttpSession ses = request.getSession();
 		log.info("LoginSuccessHandler Session = {}", ses.toString());
+		
+		//로그인시 추가정보
+		AuthMember authMember = (AuthMember) authentication.getPrincipal();
+		ses.setAttribute("memberEmail", authMember.getMvo().getMemberEmail());
+		
 		
 		//시큐리티에서 로그인 값이 없다면 null로 저장될 수 있음.
 		if(!isOk || ses == null) {

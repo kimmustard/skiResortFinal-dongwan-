@@ -22,14 +22,14 @@ import lombok.extern.slf4j.Slf4j;
 @Component
 public class LoginFailureHandler implements AuthenticationFailureHandler {
 
-	private String authEmail;
+	private String authId;
 	private String errorMessage;
-	
+
 	@Override
 	public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
 			AuthenticationException exception) throws IOException, ServletException {
 		
-		setAuthEmail(request.getParameter("email"));
+		setAuthId(request.getParameter("memberId"));
 		
 		/**
 		 * Exception 발생 메세지 저장
@@ -41,7 +41,7 @@ public class LoginFailureHandler implements AuthenticationFailureHandler {
 			setErrorMessage(exception.getMessage().toString());
 		}
 		log.info("LoginFailureHanlder error Message = {}", errorMessage);
-		request.setAttribute("email", getAuthEmail());
+		request.setAttribute("memberId", getAuthId());
 		request.setAttribute("errMsg", getErrorMessage());
 		request.getRequestDispatcher("/member/login?error")
 			.forward(request, response);

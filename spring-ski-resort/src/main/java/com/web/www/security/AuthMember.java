@@ -9,6 +9,9 @@ import org.springframework.security.core.userdetails.User;
 
 import com.web.www.domain.member.MemberVO;
 
+import lombok.Getter;
+
+@Getter
 public class AuthMember extends User{
 	
 	private static final long serialVersionUID = 1L;

@@ -64,6 +64,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		protected void configure(HttpSecurity http) throws Exception {
 			http.csrf().disable();
 			
+			//OAuth접근시 UTF-8 필터 필요
 			CharacterEncodingFilter filter = new CharacterEncodingFilter();
 			filter.setEncoding("UTF-8");
 			filter.setForceEncoding(true);		

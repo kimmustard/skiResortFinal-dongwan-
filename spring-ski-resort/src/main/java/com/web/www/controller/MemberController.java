@@ -1,13 +1,10 @@
 package com.web.www.controller;
 
-
-
-import java.security.Principal;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -23,8 +20,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.web.www.domain.member.MemberVO;
-import com.web.www.oauth.NaverLoginBO;
+import com.web.www.domain.member.RegisterMemberDTO;
 import com.web.www.repository.MemberDAO;
+import com.web.www.security.AuthMember;
 import com.web.www.service.MemberService;
 
 import lombok.RequiredArgsConstructor;
@@ -51,25 +49,26 @@ public class MemberController {
 	}
 	
 	@PostMapping("/login")
-	public String login(HttpServletRequest request, RedirectAttributes rttr) {
-		rttr.addAttribute("memberId", request.getAttribute("memberId"));
-		rttr.addAttribute("memberEmail", request.getAttribute("memberEmail"));
-		rttr.addAttribute("errMsg", request.getAttribute("errMsg"));
+	public String login(HttpSession ses, RedirectAttributes rttr) {
+		rttr.addAttribute("email", ses.getAttribute("memberId"));
+		rttr.addAttribute("errMsg", ses.getAttribute("errMsg"));
 		return "redirect:/member/login";
 	}
 	
 	@GetMapping("/register")
 	public String registerForm(Model model) {
-		model.addAttribute("mvo", new MemberVO());
+		model.addAttribute("mvo", new RegisterMemberDTO());
 		return "/member/register";
 	}
 	
 	@PostMapping("/register")
-	public String register(@Validated @ModelAttribute("mvo")MemberVO mvo, BindingResult bindingResult) {
+	public String register(@Validated @ModelAttribute("mvo")RegisterMemberDTO mvoDTO, BindingResult bindingResult) {
 
 		if(bindingResult.hasErrors()) {
 			return "/member/register";
 		}
+		ModelMapper modelMapper = new ModelMapper();
+		MemberVO mvo = modelMapper.map(mvoDTO, MemberVO.class);
 		
 		mvo.setMemberPwd(bcEncoder.encode(mvo.getMemberPwd()));
 		int isOk = msv.insertMember(mvo);
@@ -78,8 +77,8 @@ public class MemberController {
 	}
 
 	@GetMapping("/detail")
-	public String detailForm(@ModelAttribute("mvo")MemberVO mvo, Model model, Principal principal) {
-		
+	public String detailForm() {
+
 		return "/member/detail";
 	}
 	

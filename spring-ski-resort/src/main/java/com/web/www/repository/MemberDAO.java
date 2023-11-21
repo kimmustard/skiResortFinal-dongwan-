@@ -3,7 +3,6 @@ package com.web.www.repository;
 import java.util.List;
 
 import com.web.www.domain.member.MemberVO;
-import com.web.www.domain.member.OauthMemberVO;
 import com.web.www.security.AuthVO;
 
 public interface MemberDAO {
@@ -16,9 +15,13 @@ public interface MemberDAO {
 
 	int insertAuthInit(String memberId);
 	
-	//소셜 유저 가입
-	void socialRegister(OauthMemberVO omvo);
+	/**
+	 * 소셜 유저 등록과 등록전 중복확인 메서드입니다.
+	 * @param mvo, memberId
+	 */
+	void socialRegister(MemberVO mvo);
 	
+	MemberVO socialSearch(String memberId);
 	
 	
 	
@@ -46,7 +49,6 @@ public interface MemberDAO {
 
 	int checkEmail(String memberEmail);
 
-	OauthMemberVO socialSearch(String memberId);
 
 
 

@@ -1,14 +1,9 @@
 package com.web.www.oauth;
 
-
-import java.io.BufferedReader;
 import java.io.IOException;
 
 import javax.servlet.http.HttpSession;
 
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.springframework.expression.ParseException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -22,9 +17,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.github.scribejava.core.model.OAuth2AccessToken;
-import com.web.www.domain.member.OauthMemberVO;
+import com.web.www.domain.member.MemberVO;
 import com.web.www.handler.OauthParser;
-import com.web.www.security.OauthCustomMember;
+import com.web.www.security.AuthMember;
 import com.web.www.service.MemberService;
 
 import lombok.RequiredArgsConstructor;
@@ -67,40 +62,39 @@ public class OauthLoginController {
 		OAuth2AccessToken oauthToken; 
 		oauthToken = naverLoginBO.getAccessToken(session, code, state);
 		
-		//1. 로그인 사용자 정보를 읽어온다..
+		//로그인 사용자 정보를 읽어옵니다.
 		String apiResult = null;
 		apiResult = naverLoginBO.getUserProfile(oauthToken);
 		log.info("네이버 로그인 정보 = {}" , apiResult);		
 		
 		//JSON 유저 정보 파싱 -> 유저VO에 담기
-		OauthMemberVO omvo = parser.naverUser(apiResult);
-		log.info("네이버로그인 정보 = {}", omvo);	
+		MemberVO mvo = parser.naverUser(apiResult);
+		log.info("네이버로그인 정보 = {}", mvo);	
 		
-		//DB에 소셜유저 검증
-		if(msv.socialSearch(omvo.getMemberId()) == null) {
-			int isOk = msv.socialRegister(omvo);
+		//DB에 소셜유저 검증 (없으면 DB에 저장 || 있으면 pass)
+		if(msv.socialSearch(mvo.getMemberId()) == null) {
+			int isOk = msv.socialRegister(mvo);
 		}
 		
-		OauthCustomMember OauthUser =  new OauthCustomMember(omvo);
+		AuthMember OauthUser =  new AuthMember(mvo);
 		
 		Authentication authentication = 
 				new UsernamePasswordAuthenticationToken(OauthUser, null, OauthUser.getAuthorities());
 		SecurityContextHolder.getContext().setAuthentication(authentication);
 		
-		rttr.addAttribute("memberId", session.getAttribute("memberId"));
 		rttr.addAttribute("memberEmail", session.getAttribute("memberEmail"));
 		
 		return "redirect:/"; 
 		
 	}
 	
-	//	로그아웃
-	@RequestMapping(value = "/logout", method = { RequestMethod.GET, RequestMethod.POST })	
-	public String logout(HttpSession session)throws IOException {			
-		log.info("OAuth logout check !!!!");		
-		session.invalidate(); 	        			
-		return "redirect:/";
-	}
+//	//	로그아웃
+//	@RequestMapping(value = "/logout", method = { RequestMethod.GET, RequestMethod.POST })	
+//	public String logout(HttpSession session)throws IOException {			
+//		log.info("OAuth logout check !!!!");		
+//		session.invalidate(); 	        			
+//		return "redirect:/";
+//	}
 	
 
 }
