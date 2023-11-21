@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.github.scribejava.core.model.OAuth2AccessToken;
 import com.web.www.domain.member.OauthMemberVO;
@@ -59,7 +60,8 @@ public class OauthLoginController {
 	
 	
 	@RequestMapping(value = "/naver/callback", method = {RequestMethod.GET, RequestMethod.POST }) 
-	public String callback(Model model, @RequestParam String code, @RequestParam String state, HttpSession session) 
+	public String callback(Model model, @RequestParam String code, @RequestParam String state, 
+			HttpSession session, RedirectAttributes rttr) 
 			throws IOException, org.json.simple.parser.ParseException{ 
 	
 		OAuth2AccessToken oauthToken; 
@@ -84,6 +86,9 @@ public class OauthLoginController {
 		Authentication authentication = 
 				new UsernamePasswordAuthenticationToken(OauthUser, null, OauthUser.getAuthorities());
 		SecurityContextHolder.getContext().setAuthentication(authentication);
+		
+		rttr.addAttribute("memberId", session.getAttribute("memberId"));
+		rttr.addAttribute("memberEmail", session.getAttribute("memberEmail"));
 		
 		return "redirect:/"; 
 		

@@ -53,6 +53,7 @@ public class MemberController {
 	@PostMapping("/login")
 	public String login(HttpServletRequest request, RedirectAttributes rttr) {
 		rttr.addAttribute("memberId", request.getAttribute("memberId"));
+		rttr.addAttribute("memberEmail", request.getAttribute("memberEmail"));
 		rttr.addAttribute("errMsg", request.getAttribute("errMsg"));
 		return "redirect:/member/login";
 	}

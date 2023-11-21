@@ -24,12 +24,17 @@
        <div class="ski-nav-link"> <a href="/notice/list">고객센터</a></div>
        <div class="ski-nav-link"><a href="/hotel/reservation">예약</a></div>
        <ul class="ski-side-navbar">
+       <sec:authorize access="isAnonymous()">
        	
-       	<li><a href="/member/login">로그인</a></li>
-       	<li><a href="/member/register">회원가입</a></li>
-       	<li><a href="/member/detail">회원정보</a></li>
-       	<li><a href="/member/logout">로그아웃</a></li>
-  
+	       	<li><a href="/member/login">로그인</a></li>
+	       	<li><a href="/member/register">회원가입</a></li>
+       	</sec:authorize>
+       <sec:authorize access="isAuthenticated()">
+       <sec:authentication property="principal.omvo.memberEmail" var="authEmail"/>
+       		<li>${authEmail}님 안녕하세요.</li>
+	       	<li><a href="/member/detail">회원정보</a></li>
+	       	<li><a href="/member/logout">로그아웃</a></li>
+       	</sec:authorize>
        </ul>
   </div>
 </nav>
