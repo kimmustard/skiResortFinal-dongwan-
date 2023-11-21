@@ -38,7 +38,7 @@
 	<div class="back">
 		<div class="selector">
 			<div>
-				<a href="#">스키/리프트권</a>
+				<a href="/rental/reserve">스키/리프트권</a>
 			</div>
 			<div>
 				<a href="">호텔예약</a>

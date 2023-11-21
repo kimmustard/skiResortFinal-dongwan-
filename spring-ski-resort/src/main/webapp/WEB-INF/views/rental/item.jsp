@@ -124,7 +124,6 @@
 	
 		</div>
 		
-		<!-- 페이징 기능 들어갈지말지 -->
 		
 		<div class="btnContainer">
 			<div>
@@ -139,6 +138,7 @@
 	
 	</form>
 	
+	<!-- 페이징 기능 들어갈지말지 -->
 
 	
 	<script type="text/javascript" src="/resources/js/rental/rentalRegister.js"></script>
