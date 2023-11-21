@@ -48,9 +48,7 @@ public class MemberController {
 	private final BCryptPasswordEncoder bcEncoder;
 	
 	@GetMapping("/login")
-	public String loginForm(Model model, HttpSession session) {
-		String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
-		model.addAttribute("url", naverAuthUrl);
+	public String loginForm() {
 		return "/member/login";
 	}
 	

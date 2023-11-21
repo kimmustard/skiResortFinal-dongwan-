@@ -309,3 +309,27 @@ document.getElementById('ModalflexCheckDefault').addEventListener('click', () =>
     document.getElementById('modalCloseClick').click();
     document.getElementById('flexCheckDefault').click();
 })
+
+
+
+
+document.getElementById('naver_id_login').addEventListener('click', () => {
+    naverLoginApi().then(result => {
+
+    })
+})
+
+function naverLoginApi() {
+    try {
+        const url = "oauth/navergo"
+        const config = {
+            method : 'get'
+        }
+        const resp = fetch(url, config);
+        const result = resp.text();
+        return result;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
