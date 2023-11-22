@@ -11,7 +11,7 @@ public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitiali
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
-		return new Class[] {RootConfig.class, MailConfig.class};
+		return new Class[] {RootConfig.class, MailConfig.class, SecurityConfig.class};
 	}
 
 	@Override
@@ -33,6 +33,8 @@ public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitiali
 		encodingFilter.setForceEncoding(true); // 응답시 인코딩 처리 (response)
 		return new Filter[] {encodingFilter};
 	}
+	
+	
 
 	@Override
 	protected void customizeRegistration(Dynamic registration) {

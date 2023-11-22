@@ -34,7 +34,7 @@ public class MemberEmailHandler {
 		makeRandomNumber();
 		String setFrom = ".com"; // email-config에 설정한 자신의 이메일 주소를 입력 
 		String toMail = email;
-		String title = "회원 가입 인증 이메일 입니다."; // 이메일 제목 
+		String title = "다이스키 리조트 회원가입 인증(key)이메일 입니다."; // 이메일 제목 
 		String content = 
 				"다이스키 리조트 홈페이지를 방문해주셔서 감사합니다." + 	//html 형식으로 작성 ! 
                 "<br><br>" + 
