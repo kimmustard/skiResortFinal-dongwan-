@@ -39,11 +39,6 @@ public class ServletConfiguration implements WebMvcConfigurer{
 		registry.viewResolver(viewResolver);
 	}
 
-	//네이버로그인 api
-	@Bean
-    public NaverLoginBO naverLoginBO() {
-        return new NaverLoginBO();
-    }
 
 	// bean name으로 multipartResolver를 설정하면 된다.
 	@Bean(name = "multipartResolver")

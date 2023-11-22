@@ -9,6 +9,13 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.social.google.api.Google;
+import org.springframework.social.google.api.impl.GoogleTemplate;
+import org.springframework.social.google.connect.GoogleConnectionFactory;
+import org.springframework.social.oauth2.AccessGrant;
+import org.springframework.social.oauth2.GrantType;
+import org.springframework.social.oauth2.OAuth2Operations;
+import org.springframework.social.oauth2.OAuth2Parameters;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,13 +48,12 @@ public class OauthLoginController {
 	
 	/**
 	 * @네이버
-	 */
-	private final NaverLoginBO naverLoginBO;
-	
-	/**
 	 * @카카오
 	 */
+	private final NaverLoginBO naverLoginBO;
 	private final KakaoLoginBO kakaoLoginBO;
+	private final GoogleLoginBO googleLoginBO;
+	
 
 	// 로그인 첫 화면 요청 메소드
 	@ResponseBody
@@ -68,8 +74,7 @@ public class OauthLoginController {
 			HttpSession session, RedirectAttributes rttr) 
 			throws IOException, org.json.simple.parser.ParseException{ 
 	
-		OAuth2AccessToken oauthToken; 
-		oauthToken = naverLoginBO.getAccessToken(session, code, state);
+		OAuth2AccessToken oauthToken = naverLoginBO.getAccessToken(session, code, state);
 		
 		//로그인 사용자 정보를 읽어옵니다.
 		String apiResult = null;
@@ -109,7 +114,7 @@ public class OauthLoginController {
 		return kakaoAuthUrl; 
 	 }
 	
-	@RequestMapping(value="/kakao/callback", method=RequestMethod.GET)
+	@GetMapping("/kakao/callback")
 	public String kakaoLogin(@RequestParam(value = "code", required = false) String code) throws Exception {
 		String access_Token = kakaoLoginBO.getAccessToken(code);
         
@@ -126,6 +131,44 @@ public class OauthLoginController {
 		return "redirect:/";
     	}
 	
+	/**
+	 * @구글
+	 */
+	// 로그인 첫 화면 요청 메소드
+	@ResponseBody
+	@RequestMapping("/google/login")
+	public String login() {
+		//구글 code 발행
+		String googleAuthUrl = googleLoginBO.getGoogleUrl();
+
+		log.info("구글@@@@@@:" + googleAuthUrl);
+
+		return googleAuthUrl;
+	}
+
+	// 구글 Callback호출 메소드
+	@RequestMapping(value = "/google/callback", method = { RequestMethod.GET, RequestMethod.POST })
+	public String googleCallback(Model model, @RequestParam String code) throws IOException {
+	     // Step 1: Exchange authorization code for access token
+		
+		String access_Token = googleLoginBO.getAccessToken(code);
+        Google google = new GoogleTemplate(access_Token);
+
+        // Step 3: Use GoogleTemplate to get user information
+        String[] fields = {"id", "email", "given_name", "family_name"};
+        for (String str : fields) {
+			log.info("정보1 = {}", str);
+		}
+
+        // Handle the user profile as needed
+	    log.info("test@@@@@@@@@@@ = {}", access_Token);
+		return "redirect:/";
+	}
+
+
+
+	
+	
 
 	
 	//정보가 세팅된 소셜유저 가입, 인증권한 세팅 메서드 
@@ -139,6 +182,8 @@ public class OauthLoginController {
 				new UsernamePasswordAuthenticationToken(OauthUser, null, OauthUser.getAuthorities());
 		SecurityContextHolder.getContext().setAuthentication(authentication);
 	}
+	
+	
 		
 }	
 

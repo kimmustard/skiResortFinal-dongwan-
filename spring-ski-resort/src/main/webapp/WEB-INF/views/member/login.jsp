@@ -87,6 +87,12 @@
 			<div id="naver_id_login" style="text-align: center">
 				<a href="#"><img width="223" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png" /></a>
 			</div>
+			
+			<div id="google_id_login" style="text-align:center">
+				<a href="#"><img width="223" src="/resources/etc/web_neutral_sq_SI@1x.png"/></a>
+			</div>
+
+
 			<br>
 			
 		</div>	

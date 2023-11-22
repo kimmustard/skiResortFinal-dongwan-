@@ -1,5 +1,5 @@
-package com.web.www.handler;
 
+package com.web.www.handler;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -141,6 +141,11 @@ public class OauthParser {
 		
 		return null;
 		
+	}
+	
+	public MemberVO googleUser(String code) {
+		
+		return null;
 	}
 	
 }
