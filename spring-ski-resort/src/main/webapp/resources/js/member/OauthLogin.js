@@ -37,13 +37,14 @@ async function KakaoLoginPage() {
         console.log(error);
     }
 }
+
 document.getElementById('google_id_login').addEventListener('click', () => {
-    KakaoLoginPage().then(result => {
+    GoogleLoginPage().then(result => {
         window.location.href = result;
     })
 })
 
-async function KakaoLoginPage() {
+async function GoogleLoginPage() {
     try {
         const url = "/oauth/google/login";
         const config = {
