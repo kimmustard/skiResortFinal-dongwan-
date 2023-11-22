@@ -5,6 +5,8 @@ import java.util.HashMap;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -30,6 +32,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
 @RequestMapping("/oauth/*")
+@PropertySource("classpath:OAuthProperties.properties")
 @RequiredArgsConstructor
 public class OauthLoginController {
 
@@ -81,14 +84,11 @@ public class OauthLoginController {
 			log.info("네이버 소셜 mvo가 생성되지 않았습니다. Oauth Controller 코드를 확인 해주세요");
 			return "redirect:/";
 		}
-		
-		
+
 		//DB에 소셜유저 검증 (없으면 DB에 저장 || 있으면 pass)
 		if(msv.socialSearch(mvo.getMemberId()) == null) {
 			int isOk = msv.socialRegister(mvo);
 		}
-		//네이버 회원 색인
-		mvo.setMemberType("naver");
 		AuthMember OauthUser =  new AuthMember(mvo);
 		
 		Authentication authentication = 
@@ -103,20 +103,24 @@ public class OauthLoginController {
 	 * @카카오
 	 */
 	
+	@Value("${oauth.kakao.url}")
+	private String clientUrl;
+	
+	
 	// 로그인 첫 화면 요청 메소드
 	@ResponseBody
 	@GetMapping("/kakao/login") 
-	public String kakaoLogin(HttpSession session) { 
+	public String kakaoLogin() { 
 		
 		/* 네이버아이디로 인증 URL을 생성하기 위하여 naverLoginBO클래스의 getAuthorizationUrl메소드 호출 */ 
-		String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
-		log.info("네이버 url = {}" , naverAuthUrl); //네이버 
-		return naverAuthUrl; 
+		String kakaoAuthUrl = clientUrl;
+		log.info("카카오 url = {}" , kakaoAuthUrl); //네이버 
+		return kakaoAuthUrl; 
 	 }
 	
 	@RequestMapping(value="/kakao/callback", method=RequestMethod.GET)
 	public String kakaoLogin(@RequestParam(value = "code", required = false) String code) throws Exception {
-		System.out.println("#########" + code);
+		log.info("######### = {}" , code);
 		String access_Token = kakaoLoginBO.getAccessToken(code);
         
 		// JSON 유저 정보 파싱 -> 유저VO에 담기
@@ -125,13 +129,12 @@ public class OauthLoginController {
 			log.info("카카오 소셜 mvo가 생성되지 않았습니다. Oauth Controller 코드를 확인 해주세요");
 			return "redirect:/";
 		}
-		
+
 		//DB에 소셜유저 검증 (없으면 DB에 저장 || 있으면 pass)
 		if(msv.socialSearch(mvo.getMemberId()) == null) {
 			int isOk = msv.socialRegister(mvo);
 		}
-		//네이버 회원 색인
-		mvo.setMemberType("kakao");
+	
 		AuthMember OauthUser =  new AuthMember(mvo);
 		
 		Authentication authentication = 

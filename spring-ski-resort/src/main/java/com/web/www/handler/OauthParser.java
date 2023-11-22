@@ -52,7 +52,7 @@ public class OauthParser {
 			mvo.setMemberEmail(email);
 			mvo.setMemberPhoneNum(phoneNum);
 			mvo.setMemberName(name);
-			
+			mvo.setMemberType("naver");
 			//권한 부여
 			AuthVO auth = new AuthVO();
 			auth.setMemberId(id);
@@ -120,6 +120,7 @@ public class OauthParser {
 			mvo.setMemberEmail(email);
 			mvo.setMemberPhoneNum(phoneNum);
 			mvo.setMemberName(name);
+			mvo.setMemberType("kakao");
 			
 			//권한 부여
 			AuthVO auth = new AuthVO();
