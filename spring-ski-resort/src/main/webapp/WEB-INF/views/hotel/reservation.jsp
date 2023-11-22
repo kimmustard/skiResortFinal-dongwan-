@@ -11,21 +11,26 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
     <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-
+   <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
     <!-- Bootstrap 4 JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
     <!-- Moment.js -->
-    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/locale/ko.js"></script> <!-- 한국어 locale 파일 추가 -->
 
     <!-- DateRangePicker CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker@3.1.0/daterangepicker.css" />
+   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
     <!-- DateRangePicker JS -->
-    <script src="https://cdn.jsdelivr.net/npm/daterangepicker@3.1.0/daterangepicker.min.js"></script>
+   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+   
+   
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+	
+	
+	
+	
 	
 	<link rel="stylesheet" href="/resources/css/hotel/reservation.css">
 
@@ -47,7 +52,12 @@
 
 		<div class="box">
 
-			<form action="">
+			<form action="/hotel/reservation" method="post">
+			<!--실제 값을 저장하는 애들 화면에는 없음-->
+			<input name="hotelReservePeople" id="hotelReservePeople" placeholder="성인인원" >
+			<input name="hotelReserveChild" id="hotelReserveChild" value="0" placeholder="어린이인원">
+			<input name="hotelReserveStayStart" id="hotelReserveStayStart" placeholder="투숙시작일">
+			<input name="hotelReserveStayEnd" id="hotelReserveStayEnd" placeholder="투숙종료일">
 				
 				<div class="date-group">
 					<div class="input-group calendar">
@@ -108,14 +118,18 @@
 				
 				
 				<button id="payBtn" type="button">다음</button>
+				
+			
 				<div id="innerbox" style="display: none;">
-					<input type="radio" name="room" value="방">방 <input
-						type="radio" name="room" value="방">방 <input type="radio"
-						name="room" value="방">방 <input type="radio" name="room"
-						value="방">방 <input type="radio" name="room" value="방">방
-					<input type="radio" name="room" value="방">방
-					<button id="closeBtn">닫기</button>
+			
+					<input type="radio" name="hotelRoomNum" value="1">방1 <input
+						type="radio" name="hotelRoomNum" value="2">방2 <input type="radio"
+						name="hotelRoomNum" value="3">방3 <input type="radio" name="room"
+						value="방">방 <input type="radio" name="hotelRoomNum" value="4">방4
+					<input type="radio" name="hotelRoomNum" value="5">방5
+					<button id="closeBtn" type="button">닫기</button>
 					<input type="checkbox"> <input type="checkbox">
+					<input type="text" name="hotelReserveFee" placeholder="요금">	
 					<button type="submit">결제</button>
 				</div>
 			</form>

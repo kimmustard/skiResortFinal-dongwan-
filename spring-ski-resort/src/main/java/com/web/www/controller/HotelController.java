@@ -2,8 +2,10 @@ package com.web.www.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.web.www.domain.RoomInfoVO;
 import com.web.www.service.HotelService;
 
 import lombok.RequiredArgsConstructor;
@@ -28,6 +30,11 @@ public class HotelController {
 		
 		return "/hotel/reservation";
 	}
-	
+	@PostMapping("/reservation")
+	public String reservation(RoomInfoVO rivo){
+		int isOk = hsv.updateRoomInfo(rivo);
+		log.info(rivo+"<<<<<<<");
+		return "/hotel/reservation";
+	}
 	
 }

@@ -1,6 +1,15 @@
 document.getElementById("payBtn").addEventListener('click',()=>{
-   
+    let hotelReservePeople= document.getElementById('hotelReservePeople').value;
+    let hotelReserveStayStart= document.getElementById('hotelReserveStayStart').value;
+    let hotelReserveStayEnd= document.getElementById('hotelReserveStayEnd').value;
+    if(hotelReservePeople==""){
+        alert("인원을 선택해주세요");
+    }else if(hotelReserveStayStart==""){
+        alert("정확한 날짜를 선택해주세요");
+    }
+    else{
         document.getElementById("innerbox").style.display="block";
+    }
    
    
 })
@@ -27,7 +36,8 @@ function getDayOfWeek(date) {
 }
 
 	function toggleApplyButton(selector, isEnabled) {
-    const applyButton = $(selector).closest('.daterangepicker').find('.applyBtn');
+        console.log(" tqtqqtq ");
+    const applyButton = $(selector).find('.daterangepicker .applyBtn');
     if (isEnabled) {
         applyButton.removeAttr('disabled');
     } else {
@@ -48,7 +58,16 @@ function getDayOfWeek(date) {
             startDate: moment().startOf('hour'),
     		endDate: moment().startOf('hour').add(32, 'hour'),
             opens: 'center', 
-            autoUpdateInput: false, 
+            autoUpdateInput: false,
+            isInvalidDate: function () {
+              
+               if(this.endDate != null){
+                    if(this.startDate.format('YYYY-MM-DD')==this.endDate.format('YYYY-MM-DD')){
+                        console.log(dd);
+                    }
+               }
+                return  false;
+            }, 
             locale: {
                 format: 'YYYY-MM-DD',
                 applyLabel: '적용',
@@ -57,15 +76,21 @@ function getDayOfWeek(date) {
                 toLabel: '종료일',
                 customRangeLabel: '사용자 정의 범위'
             }
-        }, function (start, end, label) {
+            
+        }, 
+        
+        function (start, end, label) {
+     
             var dateRange = start.format('YYYY-MM-DD') + ' ~ ' + end.format('YYYY-MM-DD');
-          if(start.format('YYYY-MM-DD')==end.format('YYYY-MM-DD')){
-              toggleApplyButton('#dateRangePicker', false);
-            }
             updateCustomText(dateRange, 'dateRangePicker');
+            updatehotelReserveStay(start.format('YYYY-MM-DD'),end.format('YYYY-MM-DD'));
           
         });
-        
+        $('#dateRangePicker').on('change.daterangepicker', function (ev, picker) {
+        console.log('날짜 선택됨:', picker.startDate.format('YYYY-MM-DD'), '부터', picker.endDate.format('YYYY-MM-DD'));
+        // 여기에 원하는 동작을 추가하세요.
+    });
+        toggleApplyButton('#dateRangePicker', false);
         // 초기화면에도 적용하기 위해 한 번 호출
         var initialDateRange = $('#dateRangePicker').val();
         updateCustomText(initialDateRange, 'result1');
@@ -88,8 +113,16 @@ function getDayOfWeek(date) {
         } );
 
     });
+
+    //투숙일  input 
+    function updatehotelReserveStay(startDate,endDate){
+        document.getElementById('hotelReserveStayStart').value=startDate;
+        document.getElementById('hotelReserveStayEnd').value=endDate;
+    }
+
+
     
-    //성인 버튼 조작
+   //성인 버튼 조작
     document.getElementById("adult+Btn").addEventListener('click',()=>{
        let cnt =  parseInt(document.getElementById('audlt-Count').innerText); 
        if(cnt<30){
@@ -132,8 +165,12 @@ function getDayOfWeek(date) {
      childAgeSelectCreater();
      })
     
+
     function AllPeopleCount(){
         $('#people').attr('placeholder',`성인 : ${document.getElementById('audlt-Count').innerText}명 · 아동 ${document.getElementById('child-Count').innerText}명 ` );
+        document.getElementById('hotelReservePeople').value = document.getElementById('audlt-Count').innerText;
+        document.getElementById('hotelReserveChild').value = document.getElementById('child-Count').innerText;
+
     }
     function childAgeSelectCreater(){
        
@@ -153,5 +190,5 @@ function getDayOfWeek(date) {
      
     }
 document.getElementById('people').addEventListener('click',()=>{
-    document.getElementById('peoplelist').style.display="block";s
+    document.getElementById('peoplelist').style.display="block";
 })
