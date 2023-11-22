@@ -8,6 +8,10 @@
 		values(#{noticeWriter}, #{noticeCategory}, #{noticeTitle}, #{noticeContent}, 2)
 	</insert>
 	
+	<select id="selectOneNoticeNum" resultType="long">
+		select max(notice_num) from notice
+	</select>
+	
 	<select id="selectDetail" resultType="com.web.www.domain.board.NoticeVO">
 		select * from notice where notice_num = #{noticeNum}
 	</select>

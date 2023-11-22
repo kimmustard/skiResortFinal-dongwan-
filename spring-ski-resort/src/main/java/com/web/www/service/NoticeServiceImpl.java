@@ -4,8 +4,11 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.web.www.domain.board.NoticePagingVO;
+import com.web.www.domain.board.PagingVO;
+import com.web.www.domain.board.NoticeDTO;
+import com.web.www.domain.board.FileVO;
 import com.web.www.domain.board.NoticeVO;
+import com.web.www.repository.FileDAO;
 import com.web.www.repository.NoticeDAO;
 
 import lombok.RequiredArgsConstructor;
@@ -18,11 +21,32 @@ public class NoticeServiceImpl implements NoticeService{
 	
 	private final NoticeDAO ndao;
 	
+	private final FileDAO fdao;
+	
 
+//	@Override
+//	public int noticeRegister(NoticeVO nvo) {
+//		log.info(">>>>> notice register service >> ");
+//		int isOk = ndao.insert(nvo);
+//		return isOk;
+//	}
+	
+	
 	@Override
-	public int noticeRegister(NoticeVO nvo) {
-		log.info(">>>>> notice register service >> ");
-		int isOk = ndao.insert(nvo);
+	public int noticeRegister(NoticeDTO ndto) {
+		int isOk = ndao.insert(ndto.getNvo());
+		if(ndto.getFlist()==null) {
+			isOk*=1;
+			return isOk;
+		}
+		if(isOk > 0 && ndto.getFlist().size() > 0) {
+			long noticeNum = ndao.selectOneNoticeNum(); //가장 마지막에 등록된 notice_num
+			//모든 파일에 bno set
+			for(FileVO fvo : ndto.getFlist()) {
+				fvo.setNoticeNum(noticeNum);
+				isOk*=fdao.insertNoticeFile(fvo);
+			}
+		}
 		return isOk;
 	}
 
@@ -42,7 +66,7 @@ public class NoticeServiceImpl implements NoticeService{
 //	}
 	
 	@Override
-	public List<NoticeVO> noticeList(NoticePagingVO npvo) {
+	public List<NoticeVO> noticeList(PagingVO npvo) {
 		log.info(">>>>> notice List service >> ");
 		return ndao.selectList(npvo);
 	}
@@ -66,9 +90,12 @@ public class NoticeServiceImpl implements NoticeService{
 
 
 	@Override
-	public int getTotalCount(NoticePagingVO npvo) {
+	public int getTotalCount(PagingVO npvo) {
 		log.info(">>>>> notice totalCount service >> ");
 		return ndao.getTotalCount(npvo);
 	}
+
+
+	
 
 }

@@ -8,11 +8,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.web.www.domain.board.NoticePagingVO;
+import com.web.www.domain.board.PagingVO;
+import com.web.www.domain.board.NoticeDTO;
+import com.web.www.domain.board.FileVO;
 import com.web.www.domain.board.NoticeVO;
-import com.web.www.handler.NoticePagingHandler;
+import com.web.www.handler.FileHandler;
+import com.web.www.handler.PagingHandler;
 import com.web.www.service.NoticeService;
 
 import lombok.RequiredArgsConstructor;
@@ -26,6 +30,7 @@ public class NoticeController {
 	
 	private final NoticeService nsv;
 	
+	private final FileHandler fh;
 	
 	
 	@GetMapping("/register")
@@ -33,9 +38,23 @@ public class NoticeController {
 		return "/notice/register";
 	}
 	
+//	@PostMapping("/register")
+//	public String noticeRegister(NoticeVO nvo, Model m) {
+//		int isOk = nsv.noticeRegister(nvo);
+//		log.info(">>>>> notice register >> "+(isOk > 0? "OK" : "Fail"));
+//		return "redirect:/notice/list";
+//	}
+	
+	//파일업로드 추가
 	@PostMapping("/register")
-	public String noticeRegister(NoticeVO nvo, Model m) {
-		int isOk = nsv.noticeRegister(nvo);
+	public String noticeRegister(NoticeVO nvo, RedirectAttributes re,
+			@RequestParam(name="files", required = false)MultipartFile[] files) {
+		List<FileVO> flist = null;
+		if(files[0].getSize() > 0) {
+			String category ="notice";
+			flist = fh.uploadFiles(files,category);
+		}
+		int isOk = nsv.noticeRegister(new NoticeDTO(nvo, flist));
 		log.info(">>>>> notice register >> "+(isOk > 0? "OK" : "Fail"));
 		return "redirect:/notice/list";
 	}
@@ -56,10 +75,10 @@ public class NoticeController {
 	
 	//페이징 추가
 	@GetMapping("/list")
-	public void noticeList(Model m, NoticePagingVO npvo) {
+	public void noticeList(Model m, PagingVO npvo) {
 		m.addAttribute("list", nsv.noticeList(npvo));
 		int totalCount = nsv.getTotalCount(npvo);
-		NoticePagingHandler ph = new NoticePagingHandler(npvo, totalCount);
+		PagingHandler ph = new PagingHandler(npvo, totalCount);
 		m.addAttribute("ph",ph);
 	}
 	

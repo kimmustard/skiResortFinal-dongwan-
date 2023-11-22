@@ -7,7 +7,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class NoticePagingVO {
+public class PagingVO {
 	
 	private int pageNo;
 	private int qty;
@@ -15,11 +15,11 @@ public class NoticePagingVO {
 	private String keyword;
 	
 	
-	public NoticePagingVO() {
+	public PagingVO() {
 		this(1,10);
 	}
 
-	public NoticePagingVO(int pageNo, int qty) {
+	public PagingVO(int pageNo, int qty) {
 		this.pageNo = pageNo;
 		this.qty = qty;
 	}
