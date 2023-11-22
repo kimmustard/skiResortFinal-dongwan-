@@ -42,20 +42,22 @@
 		<if test="type != null">
 			<trim prefix="where (" suffix=")" prefixOverrides="OR">
 				<foreach collection="typeToArray" item="type">
-					<choose>
-						<when test="type == 't'.toString()">
-							notice_title like concat('%', #{keyword}, '%')
-						</when>
-						<when test="type == 'w'.toString()">
-							notice_writer like concat(#{keyword})
-						</when>
-						<when test="type == 'c'.toString()">
-							notice_content like concat('%', #{keyword}, '%')
-						</when>
-						<when test="type == 'g'.toString()">
-							notice_category like concat('%', #{keyword}, '%')
-						</when>
-					</choose>
+					<trim prefix="OR">
+						<choose>
+							<when test="type == 't'.toString()">
+								notice_title like concat('%', #{keyword}, '%')
+							</when>
+							<when test="type == 'w'.toString()">
+								notice_writer like concat(#{keyword})
+							</when>
+							<when test="type == 'c'.toString()">
+								notice_content like concat('%', #{keyword}, '%')
+							</when>
+							<when test="type == 'g'.toString()">
+								notice_category like concat('%', #{keyword}, '%')
+							</when>
+						</choose>
+					</trim>	
 				</foreach>
 			</trim>
 		</if>

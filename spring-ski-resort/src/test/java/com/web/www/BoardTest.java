@@ -1,13 +1,18 @@
+package com.web.www;
+
 import javax.inject.Inject;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.web.www.domain.board.NoticeVO;
 import com.web.www.repository.NoticeDAO;
 
+
+@WebAppConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {com.web.www.config.RootConfig.class})
 public class BoardTest {

@@ -23,10 +23,10 @@
 		<div class="notice-search-container">
 			<div class="dropdown notice-search-category">
 			  <select class="notice-search-category dropdown-toggle" name="type" data-bs-toggle="dropdown" aria-expanded="false">
-			   	<option class="dropdown-item" value="twc" ${typed eq 'twc' ? 'selected' : '' }>전체</option>
+			   	<option class="dropdown-item" value="tcw" ${typed eq 'tcw' ? 'selected' : '' }>전체</option>
 			   	<option class="dropdown-item" value="t" ${typed eq 't' ? 'selected' : '' }>제목</option>
-			   	<option class="dropdown-item" value="w" ${typed eq 'w' ? 'selected' : '' }>작성자</option>
 			   	<option class="dropdown-item" value="c" ${typed eq 'c' ? 'selected' : '' }>내용</option>
+			   	<option class="dropdown-item" value="w" ${typed eq 'w' ? 'selected' : '' }>작성자</option>
 			  </select>
 			  <!-- <button class="notice-search-category dropdown-toggle" name="type" type="button" data-bs-toggle="dropdown" aria-expanded="false">
 			   		제목
@@ -38,7 +38,7 @@
 			  </ul> -->
 			</div>
 			<div class="notice-input-container">
-				<input placeholder="검색어를 입력해 주세요." name="keyword" type="search" value="${ph.npvo.keyword }" class="notice-search-input">
+				<input placeholder="검색어를 입력해 주세요." name="keyword" type="search" value="" class="notice-search-input">
 				<input type="hidden" name="pageNo" value="1">
 				<input type="hidden" name="qty" value="${ph.npvo.qty }">
 			</div>
@@ -51,24 +51,28 @@
 		
 		<!-- 카테고리 라인 -->
 		<div class="notice-category">
-		<ul class="nav nav-tabs" id="myTab" role="tablist">
+		<ul class="nav nav-tabs" id="myTab" role="tablist">	
 			  <li class="nav-item" role="presentation">
-			    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">
+			  	<form action="/notice/list" method="get">
+			  	<input type="hidden" name="type" value="g" ${typed eq 'g' ? 'selected' : '' }>
+			  	<input type="hidden" name="keyword" type="search" value="">
+			    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="submit" role="tab" aria-controls="home-tab-pane" aria-selected="true">
 			    전체</button>
+			    </form>
 			  </li>
 		  <li class="nav-item" role="presentation">
-			  <form action="/notice/list" method="get">
+			  	<form action="/notice/list" method="get">
 			  	<input type="hidden" name="type" value="g" ${typed eq 'g' ? 'selected' : '' }>
 			  	<input type="hidden" name="keyword" type="search" value="공지사항"> 
 			    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="submit" role="tab" aria-controls="profile-tab-pane" aria-selected="false">
 			    공지사항</button>
-			  </form>
+			  	</form>
 		  </li>
 		  <li class="nav-item" role="presentation">
 		  		<form action="/notice/list" method="get">
 		  		<input type="hidden" name="type" value="g" ${typed eq 'g' ? 'selected' : '' }>
 			  	<input type="hidden" name="keyword" type="search" value="이벤트">
-			    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">
+			    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="submit" role="tab" aria-controls="contact-tab-pane" aria-selected="false">
 			    이벤트</button>
 			    </form>
 		  </li>
@@ -76,7 +80,7 @@
 		  		<form action="/notice/list" method="get">
 		  		<input type="hidden" name="type" value="g" ${typed eq 'g' ? 'selected' : '' }>
 			  	<input type="hidden" name="keyword" type="search" value="보도자료">
-			    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">
+			    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="submit" role="tab" aria-controls="contact-tab-pane" aria-selected="false">
 			    보도자료</button>
 			    </form>
 		  </li>
@@ -84,7 +88,7 @@
 		  		<form action="/notice/list" method="get">
 		  		<input type="hidden" name="type" value="g" ${typed eq 'g' ? 'selected' : '' }>
 			  	<input type="hidden" name="keyword" type="search" value="쇼핑몰">
-			    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">
+			    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="submit" role="tab" aria-controls="contact-tab-pane" aria-selected="false">
 			    쇼핑몰</button>
 			    </form>
 		  </li>
@@ -92,7 +96,7 @@
 		 		<form action="/notice/list" method="get">
 		  		<input type="hidden" name="type" value="g" ${typed eq 'g' ? 'selected' : '' }>
 			  	<input type="hidden" name="keyword" type="search" value="채용정보">
-			    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">
+			    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="submit" role="tab" aria-controls="contact-tab-pane" aria-selected="false">
 			    채용정보</button>
 			    </form>
 		  </li>
@@ -100,7 +104,7 @@
 		  		<form action="/notice/list" method="get">
 		  		<input type="hidden" name="type" value="g" ${typed eq 'g' ? 'selected' : '' }>
 			  	<input type="hidden" name="keyword" type="search" value="기타">
-			    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">
+			    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="submit" role="tab" aria-controls="contact-tab-pane" aria-selected="false">
 			    기타</button>
 			    </form>
 		  </li>
@@ -140,7 +144,7 @@
 		  	<!-- 이전 -->
 		  	<ul class="pagination">
 		  		<li class="page-item ${(ph.prev eq false) ? 'disabled' : '' }">
-			  		<a class="page-link" href="/notice/list?pageNo=${ph.startPage-1 }&qty=${ph.npvo.qty}&type=${ph.npvo.type}&keyword=${ph.npvo.keyword}" aria-label="Previous">
+			  		<a class="page-link" href="/notice/list?pageNo=${ph.startPage - 1 }&qty=${ph.npvo.qty}&type=${ph.npvo.type}&keyword=${ph.npvo.keyword}" aria-label="Previous">
 			  		<span aria-hidden="true">&laquo;</span>
 			  		</a>
 		  		</li>
