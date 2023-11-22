@@ -1,9 +1,8 @@
 package com.web.www.config;
 
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -13,10 +12,13 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
+import com.web.www.oauth.NaverLoginBO;
+
 
 @EnableWebMvc
-@ComponentScan(basePackages= {"com.web.www.controller", "com.web.www.handler"})
+@ComponentScan(basePackages= {"com.web.www.controller", "com.web.www.handler", "com.web.www.oauth"})
 public class ServletConfiguration implements WebMvcConfigurer{
+	
 	
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
@@ -36,7 +38,12 @@ public class ServletConfiguration implements WebMvcConfigurer{
 		viewResolver.setSuffix(".jsp");
 		registry.viewResolver(viewResolver);
 	}
-	
+
+	//네이버로그인 api
+	@Bean
+    public NaverLoginBO naverLoginBO() {
+        return new NaverLoginBO();
+    }
 
 	// bean name으로 multipartResolver를 설정하면 된다.
 	@Bean(name = "multipartResolver")

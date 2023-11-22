@@ -54,18 +54,6 @@ document.getElementById('exampleInputPassword2').addEventListener('keyup', () =>
 })
 
 
-
-
-//달력
-$(function () {
-    $("#memberBirth").datetimepicker({
-        locale: "ko",
-        format: "YYYY-MM-DD",
-        defaultDate: moment()
-    });
-
-});
-
 //중복 인증관련
 /*아이디 중복*/
 document.getElementById('MemberIdCheck').addEventListener('click', () => {
@@ -211,19 +199,23 @@ document.getElementById('modalEmailCheckBtn').addEventListener('click', () => {
                 console.log('사용자키 : ' + document.getElementById('userAuthKey').value);
                 console.log('서버키 : ' + serverAuthKey);
                 console.log('인증완료!');
-                if (serverAuthKey == document.getElementById('userAuthKey').value) {
+                if (serverAuthKey != document.getElementById('userAuthKey').value ||
+                    document.getElementById('userAuthKey').value == '' ||
+                    document.getElementById('userAuthKey').value == null) {
+
+                    console.log('인증실패!');
+                    document.getElementById('userAuthKey').className = 'form-control is-invalid';
+                    document.getElementById('modalEmailMessage').innerText = '인증번호를 확인해주세요.';
+                    document.getElementById('modalEmailMessage').style.color = 'red';
+
+                } else {
+
                     document.getElementById('modalEmailCheckBtn2').disabled = true;
                     document.getElementById('userAuthKey').className = 'form-control is-valid';
                     document.getElementById('modalEmailMessage').innerText = '인증완료 버튼을 누르세요.';
                     document.getElementById('modalEmailMessage').style.color = 'green';
                     document.getElementById('emailCheckSuccess').disabled = false;
                     document.getElementById('inputMemberEmail').value = email;
-
-                } else {
-                    console.log('인증실패!');
-                    document.getElementById('userAuthKey').className = 'form-control is-invalid';
-                    document.getElementById('modalEmailMessage').innerText = '인증번호를 확인해주세요.';
-                    document.getElementById('modalEmailMessage').style.color = 'red';
 
                 }
             })
@@ -305,3 +297,5 @@ document.getElementById('ModalflexCheckDefault').addEventListener('click', () =>
     document.getElementById('modalCloseClick').click();
     document.getElementById('flexCheckDefault').click();
 })
+
+
