@@ -50,7 +50,7 @@ public class OauthLoginController {
 	// 로그인 첫 화면 요청 메소드
 	@ResponseBody
 	@GetMapping("/naver/login") 
-	public String login(HttpSession session) { 
+	public String naverLogin(HttpSession session) { 
 		
 		/* 네이버아이디로 인증 URL을 생성하기 위하여 naverLoginBO클래스의 getAuthorizationUrl메소드 호출 */ 
 		String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
@@ -102,6 +102,18 @@ public class OauthLoginController {
 	/**
 	 * @카카오
 	 */
+	
+	// 로그인 첫 화면 요청 메소드
+	@ResponseBody
+	@GetMapping("/kakao/login") 
+	public String kakaoLogin(HttpSession session) { 
+		
+		/* 네이버아이디로 인증 URL을 생성하기 위하여 naverLoginBO클래스의 getAuthorizationUrl메소드 호출 */ 
+		String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
+		log.info("네이버 url = {}" , naverAuthUrl); //네이버 
+		return naverAuthUrl; 
+	 }
+	
 	@RequestMapping(value="/kakao/callback", method=RequestMethod.GET)
 	public String kakaoLogin(@RequestParam(value = "code", required = false) String code) throws Exception {
 		System.out.println("#########" + code);

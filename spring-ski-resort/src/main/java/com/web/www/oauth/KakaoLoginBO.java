@@ -11,10 +11,21 @@ import java.net.URL;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
+
 @Component
+@PropertySource("classpath:MailProperties.properties")
 public class KakaoLoginBO {
+	
+	@Value("${email.id}")
+	private String email;
+	
+	@Value("${email.pwd}")
+	private String pwd;
+
 	
 	public String getAccessToken (String authorize_code) throws ParseException {
 		String access_Token = "";
