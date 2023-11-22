@@ -82,3 +82,8 @@
 	color: white;
 	opacity: 0.7;
 }
+
+.ski-navbar-brand:hover{
+	text-decoration: none;
+	color: white;
+}
