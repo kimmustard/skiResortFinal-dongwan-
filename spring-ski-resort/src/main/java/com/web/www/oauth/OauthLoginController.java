@@ -77,6 +77,11 @@ public class OauthLoginController {
 		//JSON 유저 정보 파싱 -> 유저VO에 담기
 		MemberVO mvo = parser.naverUser(apiResult);
 		log.info("네이버로그인 정보 = {}", mvo);	
+		if(mvo == null) {
+			log.info("네이버 소셜 mvo가 생성되지 않았습니다. Oauth Controller 코드를 확인 해주세요");
+			return "redirect:/";
+		}
+		
 		
 		//DB에 소셜유저 검증 (없으면 DB에 저장 || 있으면 pass)
 		if(msv.socialSearch(mvo.getMemberId()) == null) {
@@ -102,12 +107,25 @@ public class OauthLoginController {
 		System.out.println("#########" + code);
 		String access_Token = kakaoLoginBO.getAccessToken(code);
         
-		// 위에서 만든 코드 아래에 코드 추가
-		HashMap<String, Object> userInfo = parser.getUserInfo(access_Token);
-		System.out.println("###access_Token#### : " + access_Token);
-		System.out.println("###nickname#### : " + userInfo.get("nickname"));
-		System.out.println("###email#### : " + userInfo.get("email"));
-        
+		// JSON 유저 정보 파싱 -> 유저VO에 담기
+		MemberVO mvo = parser.kakaoUser(access_Token);
+		if(mvo == null) {
+			log.info("카카오 소셜 mvo가 생성되지 않았습니다. Oauth Controller 코드를 확인 해주세요");
+			return "redirect:/";
+		}
+		
+		//DB에 소셜유저 검증 (없으면 DB에 저장 || 있으면 pass)
+		if(msv.socialSearch(mvo.getMemberId()) == null) {
+			int isOk = msv.socialRegister(mvo);
+		}
+		//네이버 회원 색인
+		mvo.setMemberType("kakao");
+		AuthMember OauthUser =  new AuthMember(mvo);
+		
+		Authentication authentication = 
+				new UsernamePasswordAuthenticationToken(OauthUser, null, OauthUser.getAuthorities());
+		SecurityContextHolder.getContext().setAuthentication(authentication);
+		
 		return "redirect:/";
     	}
 		

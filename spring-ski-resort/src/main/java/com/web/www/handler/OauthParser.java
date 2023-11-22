@@ -23,52 +23,58 @@ import lombok.extern.slf4j.Slf4j;
 @Component
 public class OauthParser {
 	
-	public MemberVO naverUser(String apiResult) throws ParseException {
+	public MemberVO naverUser(String apiResult) {
 		//2. String형식인 apiResult를 json형태로 바꿈 
 		JSONParser parser = new JSONParser(); 
-		Object obj = parser.parse(apiResult); 
-		JSONObject jsonObj = (JSONObject) obj; 
+		Object obj;
+		try {
+			obj = parser.parse(apiResult);
+			JSONObject jsonObj = (JSONObject) obj; 
+			
+			//3. 데이터 파싱 
+			//Top레벨 단계 _response 파싱
+			JSONObject response_obj = (JSONObject)jsonObj.get("response"); 
+			//response의 nickname값 파싱 String
+			String id = (String)response_obj.get("id");
+			String alias = (String)response_obj.get("nickname");
+			String email = (String)response_obj.get("email");
+			String phoneNum = (String)response_obj.get("mobile");
+			String name = (String)response_obj.get("name");
+			
+			//pwd 임시로 채울 미니 난수생성
+			String pwd = String.valueOf((int)(Math.random() * 899999) + 100000);
+			
+			//멤버 객체
+			MemberVO mvo = new MemberVO();
+			mvo.setMemberId(id);
+			mvo.setMemberPwd(pwd);
+			mvo.setMemberAlias(alias);
+			mvo.setMemberEmail(email);
+			mvo.setMemberPhoneNum(phoneNum);
+			mvo.setMemberName(name);
+			
+			//권한 부여
+			AuthVO auth = new AuthVO();
+			auth.setMemberId(id);
+			auth.setAuth("ROLE_USER");
+			
+			List<AuthVO> authList = new ArrayList<>();
+			authList.add(auth);
+			mvo.setAuthList(authList);
+			
+			
+			return mvo;
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
 		
-		//3. 데이터 파싱 
-		//Top레벨 단계 _response 파싱
-		JSONObject response_obj = (JSONObject)jsonObj.get("response"); 
-		//response의 nickname값 파싱 String
-		String id = (String)response_obj.get("id");
-		String alias = (String)response_obj.get("nickname");
-		String email = (String)response_obj.get("email");
-		String phoneNum = (String)response_obj.get("mobile");
-		String name = (String)response_obj.get("name");
-		
-		//pwd 임시로 채울 미니 난수생성
-		String pwd = String.valueOf((int)(Math.random() * 899999) + 100000);
-		log.info("pwd@@@@@@@@@@@@ = {}", pwd);
-		
-		//멤버 객체
-		MemberVO mvo = new MemberVO();
-		mvo.setMemberId(id);
-		mvo.setMemberPwd(pwd);
-		mvo.setMemberAlias(alias);
-		mvo.setMemberEmail(email);
-		mvo.setMemberPhoneNum(phoneNum);
-		mvo.setMemberName(name);
-		
-		//권한 부여
-		AuthVO auth = new AuthVO();
-		auth.setMemberId(id);
-		auth.setAuth("ROLE_USER");
-				
-		List<AuthVO> authList = new ArrayList<>();
-		authList.add(auth);
-		mvo.setAuthList(authList);
-		
-		return mvo;
+		return null;
 	}
 	
 	
-	public HashMap<String, Object> getUserInfo(String access_Token) throws ParseException {
+	public MemberVO kakaoUser(String access_Token) throws ParseException {
 		
-		// 요청하는 클라이언트마다 가진 정보가 다를 수 있기에 HashMap타입으로 선언
-		HashMap<String, Object> userInfo = new HashMap<String, Object>();
 		String reqURL = "https://kapi.kakao.com/v2/user/me";
 		try {
 			URL url = new URL(reqURL);
@@ -94,20 +100,44 @@ public class OauthParser {
 			JSONParser parser = new JSONParser();
 			Object obj = parser.parse(result); 
 			JSONObject jsonObj = (JSONObject) obj; 
-
 			JSONObject properties = (JSONObject)jsonObj.get("properties");
 			JSONObject kakao_account = (JSONObject)jsonObj.get("kakao_account");
+			log.info("properties@@@@@@@@@@@@@@@ = {}",properties );
 			
-			String nickname = (String) properties.get("nickname");
+			String id = String.valueOf(jsonObj.get("id"));
+			String alias = (String) properties.get("nickname");
 			String email = (String) kakao_account.get("email");
-
-			userInfo.put("nickname", nickname);
-			userInfo.put("email", email);
+			String name = (String) kakao_account.get("name");
+			String phoneNum = (String) kakao_account.get("phone_number");
+			
+			//pwd 임시로 채울 미니 난수생성
+			String pwd = String.valueOf((int)(Math.random() * 899999) + 100000);
+			
+			MemberVO mvo = new MemberVO();
+			mvo.setMemberId(id);
+			mvo.setMemberPwd(pwd);
+			mvo.setMemberAlias(alias);
+			mvo.setMemberEmail(email);
+			mvo.setMemberPhoneNum(phoneNum);
+			mvo.setMemberName(name);
+			
+			//권한 부여
+			AuthVO auth = new AuthVO();
+			auth.setMemberId(id);
+			auth.setAuth("ROLE_USER");
+					
+			List<AuthVO> authList = new ArrayList<>();
+			authList.add(auth);
+			mvo.setAuthList(authList);
+		
+			return mvo;
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return userInfo;
+		
+		return null;
+		
 	}
 	
 }
