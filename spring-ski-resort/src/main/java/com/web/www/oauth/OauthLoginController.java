@@ -1,7 +1,6 @@
 package com.web.www.oauth;
 
 import java.io.IOException;
-import java.util.HashMap;
 
 import javax.servlet.http.HttpSession;
 
@@ -84,16 +83,8 @@ public class OauthLoginController {
 			log.info("네이버 소셜 mvo가 생성되지 않았습니다. Oauth Controller 코드를 확인 해주세요");
 			return "redirect:/";
 		}
-
-		//DB에 소셜유저 검증 (없으면 DB에 저장 || 있으면 pass)
-		if(msv.socialSearch(mvo.getMemberId()) == null) {
-			int isOk = msv.socialRegister(mvo);
-		}
-		AuthMember OauthUser =  new AuthMember(mvo);
-		
-		Authentication authentication = 
-				new UsernamePasswordAuthenticationToken(OauthUser, null, OauthUser.getAuthorities());
-		SecurityContextHolder.getContext().setAuthentication(authentication);
+		//정보가 세팅된 소셜유저 가입, 인증권한 세팅 메서드 
+		socialUserCreateMemberAndAuthSet(mvo);
 		
 		return "redirect:/"; 
 		
@@ -120,7 +111,6 @@ public class OauthLoginController {
 	
 	@RequestMapping(value="/kakao/callback", method=RequestMethod.GET)
 	public String kakaoLogin(@RequestParam(value = "code", required = false) String code) throws Exception {
-		log.info("######### = {}" , code);
 		String access_Token = kakaoLoginBO.getAccessToken(code);
         
 		// JSON 유저 정보 파싱 -> 유저VO에 담기
@@ -130,19 +120,25 @@ public class OauthLoginController {
 			return "redirect:/";
 		}
 
+		//정보가 세팅된 소셜유저 가입, 인증권한 세팅 메서드
+		socialUserCreateMemberAndAuthSet(mvo);
+		
+		return "redirect:/";
+    	}
+	
+
+	
+	//정보가 세팅된 소셜유저 가입, 인증권한 세팅 메서드 
+	private void socialUserCreateMemberAndAuthSet(MemberVO mvo) {
 		//DB에 소셜유저 검증 (없으면 DB에 저장 || 있으면 pass)
 		if(msv.socialSearch(mvo.getMemberId()) == null) {
 			int isOk = msv.socialRegister(mvo);
 		}
-	
 		AuthMember OauthUser =  new AuthMember(mvo);
-		
 		Authentication authentication = 
 				new UsernamePasswordAuthenticationToken(OauthUser, null, OauthUser.getAuthorities());
 		SecurityContextHolder.getContext().setAuthentication(authentication);
-		
-		return "redirect:/";
-    	}
+	}
 		
 }	
 

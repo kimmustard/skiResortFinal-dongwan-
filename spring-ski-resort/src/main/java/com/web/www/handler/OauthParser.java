@@ -6,7 +6,6 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import org.json.simple.JSONObject;
@@ -102,13 +101,16 @@ public class OauthParser {
 			JSONObject jsonObj = (JSONObject) obj; 
 			JSONObject properties = (JSONObject)jsonObj.get("properties");
 			JSONObject kakao_account = (JSONObject)jsonObj.get("kakao_account");
-			log.info("properties@@@@@@@@@@@@@@@ = {}",properties );
 			
 			String id = String.valueOf(jsonObj.get("id"));
 			String alias = (String) properties.get("nickname");
 			String email = (String) kakao_account.get("email");
 			String name = (String) kakao_account.get("name");
 			String phoneNum = (String) kakao_account.get("phone_number");
+			
+			//카카오 전화번호는 +82 XXXX 방식으로 넘어오기 때문에 번호 replace가 필요함
+			String formattedPhoneNumber = "0" + phoneNum.substring(4);
+			log.info("########### = {}", formattedPhoneNumber);
 			
 			//pwd 임시로 채울 미니 난수생성
 			String pwd = String.valueOf((int)(Math.random() * 899999) + 100000);
@@ -118,7 +120,7 @@ public class OauthParser {
 			mvo.setMemberPwd(pwd);
 			mvo.setMemberAlias(alias);
 			mvo.setMemberEmail(email);
-			mvo.setMemberPhoneNum(phoneNum);
+			mvo.setMemberPhoneNum(formattedPhoneNumber);
 			mvo.setMemberName(name);
 			mvo.setMemberType("kakao");
 			
