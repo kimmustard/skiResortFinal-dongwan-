@@ -1,7 +1,10 @@
 package com.web.www.oauth;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -9,13 +12,6 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.social.google.api.Google;
-import org.springframework.social.google.api.impl.GoogleTemplate;
-import org.springframework.social.google.connect.GoogleConnectionFactory;
-import org.springframework.social.oauth2.AccessGrant;
-import org.springframework.social.oauth2.GrantType;
-import org.springframework.social.oauth2.OAuth2Operations;
-import org.springframework.social.oauth2.OAuth2Parameters;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,12 +38,12 @@ import lombok.extern.slf4j.Slf4j;
 public class OauthLoginController {
 
 	private final MemberService msv;
-	//OauthParser
 	private final OauthParser parser;
 	
 	/**
 	 * @네이버
 	 * @카카오
+	 * @구글
 	 */
 	private final NaverLoginBO naverLoginBO;
 	private final KakaoLoginBO kakaoLoginBO;
@@ -83,10 +79,7 @@ public class OauthLoginController {
 		//JSON 유저 정보 파싱 -> 유저VO에 담기
 		MemberVO mvo = parser.naverUser(apiResult);
 		log.info("네이버로그인 정보 = {}", mvo);	
-		if(mvo == null) {
-			log.info("네이버 소셜 mvo가 생성되지 않았습니다. Oauth Controller 코드를 확인 해주세요");
-			return "redirect:/";
-		}
+		
 		//정보가 세팅된 소셜유저 가입, 인증권한 세팅 메서드 
 		socialUserCreateMemberAndAuthSet(mvo);
 		
@@ -113,16 +106,12 @@ public class OauthLoginController {
 		return kakaoAuthUrl; 
 	 }
 	
-	@GetMapping("/kakao/callback")
+	@RequestMapping(value = "/kakao/callback", method = {RequestMethod.GET, RequestMethod.POST }) 
 	public String kakaoLogin(@RequestParam(value = "code", required = false) String code) throws Exception {
 		String access_Token = kakaoLoginBO.getAccessToken(code);
         
 		// JSON 유저 정보 파싱 -> 유저VO에 담기
 		MemberVO mvo = parser.kakaoUser(access_Token);
-		if(mvo == null) {
-			log.info("카카오 소셜 mvo가 생성되지 않았습니다. Oauth Controller 코드를 확인 해주세요");
-			return "redirect:/";
-		}
 
 		//정보가 세팅된 소셜유저 가입, 인증권한 세팅 메서드
 		socialUserCreateMemberAndAuthSet(mvo);
@@ -136,39 +125,27 @@ public class OauthLoginController {
 	// 로그인 첫 화면 요청 메소드
 	@ResponseBody
 	@RequestMapping("/google/login")
-	public String login() {
+	public String login(HttpServletRequest request) {
 		//구글 code 발행
 		String googleAuthUrl = googleLoginBO.getGoogleUrl();
 
-		log.info("구글@@@@@@:" + googleAuthUrl);
-
-		return googleAuthUrl;
+		return  googleAuthUrl;
 	}
 
 	// 구글 Callback호출 메소드
 	@RequestMapping(value = "/google/callback", method = { RequestMethod.GET, RequestMethod.POST })
-	public String googleCallback(Model model, @RequestParam String code) throws IOException {
-	     // Step 1: Exchange authorization code for access token
+	public String googleCallback(HttpServletRequest request, Model model, @RequestParam String code) throws IOException {
 		
-		String access_Token = googleLoginBO.getAccessToken(code);
-        Google google = new GoogleTemplate(access_Token);
-
-        // Step 3: Use GoogleTemplate to get user information
-        String[] fields = {"id", "email", "given_name", "family_name"};
-        for (String str : fields) {
-			log.info("정보1 = {}", str);
-		}
-
-        // Handle the user profile as needed
-	    log.info("test@@@@@@@@@@@ = {}", access_Token);
+		Map<String, String> userInfo = googleLoginBO.getAccessToken(code);
+	
+		// JSON 유저 정보 파싱 -> 유저VO에 담기
+		MemberVO mvo = parser.googleUser(userInfo);
+		
+		//정보가 세팅된 소셜유저 가입, 인증권한 세팅 메서드
+		socialUserCreateMemberAndAuthSet(mvo);
+	
 		return "redirect:/";
 	}
-
-
-
-	
-	
-
 	
 	//정보가 세팅된 소셜유저 가입, 인증권한 세팅 메서드 
 	private void socialUserCreateMemberAndAuthSet(MemberVO mvo) {
@@ -176,12 +153,11 @@ public class OauthLoginController {
 		if(msv.socialSearch(mvo.getMemberId()) == null) {
 			int isOk = msv.socialRegister(mvo);
 		}
-		AuthMember OauthUser =  new AuthMember(mvo);
+		AuthMember OauthUser = new AuthMember(mvo);
 		Authentication authentication = 
 				new UsernamePasswordAuthenticationToken(OauthUser, null, OauthUser.getAuthorities());
 		SecurityContextHolder.getContext().setAuthentication(authentication);
 	}
-	
 	
 		
 }	

@@ -7,6 +7,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -142,10 +143,38 @@ public class OauthParser {
 		return null;
 		
 	}
-	
-	public MemberVO googleUser(String code) {
+
+	public MemberVO googleUser(Map<String, String> userInfo) {
 		
-		return null;
+		
+		String id = userInfo.get("id");
+		String alias = userInfo.get("given_name");
+		String email = userInfo.get("email");
+		String name = userInfo.get("name");
+		
+		//pwd 임시로 채울 미니 난수생성
+		String pwd = String.valueOf((int)(Math.random() * 899999) + 100000);
+		
+		MemberVO mvo = new MemberVO();
+		mvo.setMemberId(id);
+		mvo.setMemberPwd(pwd);
+		mvo.setMemberAlias(alias);
+		mvo.setMemberEmail(email);
+		mvo.setMemberName(name);
+		mvo.setMemberPhoneNum("");
+		mvo.setMemberType("google");
+	
+		//권한 부여
+		AuthVO auth = new AuthVO();
+		auth.setMemberId(id);
+		auth.setAuth("ROLE_USER");
+				
+		List<AuthVO> authList = new ArrayList<>();
+		authList.add(auth);
+		mvo.setAuthList(authList);
+	
+		return mvo;
+	
 	}
 	
 }

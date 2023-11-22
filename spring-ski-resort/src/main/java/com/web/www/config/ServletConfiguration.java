@@ -12,8 +12,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
-import com.web.www.oauth.NaverLoginBO;
-
 
 @EnableWebMvc
 @ComponentScan(basePackages= {"com.web.www.controller", "com.web.www.handler", "com.web.www.oauth"})
