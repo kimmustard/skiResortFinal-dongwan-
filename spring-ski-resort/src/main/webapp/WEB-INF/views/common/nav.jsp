@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +13,9 @@
 
 </head>
 <body>
+	<sec:authorize access="isAuthenticated()">
+		
+	</sec:authorize>
 <div class="navContainer">
 	<nav id="hide"></nav>
 
@@ -23,10 +28,27 @@
        <div class="ski-nav-link"> <a href="/notice/list">고객센터</a></div>
        <div class="ski-nav-link"><a href="/hotel/reservation">예약</a></div>
        <ul class="ski-side-navbar">
-       	<li><a href="/member/login">로그인</a></li>
-       	<li><a href="/member/register">회원가입</a></li>
-       	<li><a href="/member/detail">회원정보</a></li>
-       	<li><a href="">고객지원</a></li>
+       	<sec:authorize access="isAnonymous()">
+	       	<li><a href="/member/login">로그인</a></li>
+	       	<li><a href="/member/register">회원가입</a></li>
+	    </sec:authorize>
+        <sec:authorize access="isAuthenticated()">
+        	<sec:authentication property="principal.mvo.memberId" var="authId"/>
+        	<sec:authentication property="principal.mvo.memberEmail" var="authEmail"/>
+        	<sec:authentication property="principal.mvo.memberAlias" var="authAlias"/>
+        	<sec:authentication property="principal.mvo.memberType" var="authType"/>
+        	<c:if test="${authType == 'normal' }">
+       		<li>${authId}님 환영합니다.</li>
+	       	<li><a href="/member/detail">회원정보</a></li>
+        	</c:if>
+        	<c:if test="${authType == 'naver' }">
+       		<li>(네이버)${authEmail}님 환영합니다.</li>
+       		<li>${authAlias }</li>
+        	</c:if>
+	       	<li><a href="/member/logout">로그아웃</a></li>
+		
+		</sec:authorize>
+     
        </ul>
   </div>
 </nav>
