@@ -41,6 +41,7 @@ public class FileHandler {
 			FileVO fvo = new FileVO();
 			fvo.setSaveDir(today);
 			fvo.setFileSize(file.getSize());
+			fvo.setFileIsok("Y");
 			
 			String originalFileName = file.getOriginalFilename();
 			log.info(">>>>> originalFileName >>> "+ originalFileName);

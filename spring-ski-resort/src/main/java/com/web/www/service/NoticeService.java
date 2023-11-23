@@ -10,7 +10,7 @@ public interface NoticeService {
 
 	int noticeRegister(NoticeDTO noticeDTO);
 
-	NoticeVO noticeDetail(long noticeNum);
+	NoticeDTO noticeDetail(long noticeNum);
 
 	List<NoticeVO> noticeList(PagingVO npvo);
 
@@ -19,5 +19,9 @@ public interface NoticeService {
 	int remove(long noticeNum);
 
 	int getTotalCount(PagingVO npvo);
+
+	int noticeFileModify(NoticeDTO ndto);
+
+	int noticeRemoveFile(String uuid);
 
 }

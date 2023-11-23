@@ -9,4 +9,12 @@
 		values(#{uuid}, #{saveDir}, #{fileName}, #{fileIsok}, #{fileType}, #{fileSize}, #{noticeNum})
 	</insert>
 	
+	<select id="getNoticeFileList" resultType="com.web.www.domain.FileVO">
+		select * from file where notice_num = #{noticeNum} order by file_reg_at asc
+	</select>
+	
+	<delete id="noticeRemoveFile">
+		delete from file where notice_num = #{noticeNum}
+	</delete>
+	
 </mapper>

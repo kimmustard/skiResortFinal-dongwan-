@@ -2,9 +2,13 @@ package com.web.www.controller;
 
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -49,7 +53,7 @@ public class NoticeController {
 	@PostMapping("/register")
 	public String noticeRegister(NoticeVO nvo, RedirectAttributes re,
 			@RequestParam(name="files", required = false)MultipartFile[] files) {
-		log.info(" >>>>> 레지스터확인 "+nvo+" "+files);
+		log.info(" >>>>> register "+nvo+" "+files);
 		List<FileVO> flist = null;
 		if(files[0].getSize() > 0) {
 			String category ="notice";
@@ -83,18 +87,44 @@ public class NoticeController {
 		m.addAttribute("ph",ph);
 	}
 	
+//	@GetMapping({"/detail","/modify"})
+//	public void noticeDetail(Model m, @RequestParam("noticeNum")long noticeNum) {
+//		NoticeVO nvo = nsv.noticeDetail(noticeNum);
+//		m.addAttribute("nvo",nvo);
+//	}
+	
+	//파일업로드 추가
 	@GetMapping({"/detail","/modify"})
 	public void noticeDetail(Model m, @RequestParam("noticeNum")long noticeNum) {
-		NoticeVO nvo = nsv.noticeDetail(noticeNum);
-		m.addAttribute("nvo",nvo);
+		NoticeDTO ndto = nsv.noticeDetail(noticeNum);
+		m.addAttribute("ndto",ndto);
 	}
 	
+//	@PostMapping("/modify")
+//	public String noticeModify(NoticeVO nvo) {
+//		int isOk = nsv.noticeModify(nvo);
+//		log.info(">>>>> notice modify >> "+(isOk > 0? "OK" : "Fail"));
+//		return "redirect:/notice/list";
+//	}
+	
+	//파일업로드 추가
 	@PostMapping("/modify")
-	public String noticeModify(NoticeVO nvo) {
-		int isOk = nsv.noticeModify(nvo);
+	public String noticeModify(NoticeVO nvo, RedirectAttributes re,
+			@RequestParam(name="files", required = false)MultipartFile[] files) {
+		log.info(" >>>>> modify "+nvo+" "+files);
+		
+		List<FileVO> flist = null;
+		if(files[0].getSize() > 0) {
+			String category ="notice";
+			flist = fh.uploadFiles(files,category);
+		}
+		NoticeDTO ndto = new NoticeDTO(nvo, flist);
+		int isOk = nsv.noticeFileModify(ndto);
 		log.info(">>>>> notice modify >> "+(isOk > 0? "OK" : "Fail"));
-		return "redirect:/notice/list";
+		re.addFlashAttribute("isOk",isOk);
+		return "redirect:/notice/detail?noticeNum="+nvo.getNoticeNum();
 	}
+	
 	
 	@GetMapping("/remove")
 	public String remove(@RequestParam("noticeNum")long noticeNum, RedirectAttributes re) {
@@ -102,6 +132,13 @@ public class NoticeController {
 		log.info(">>>>> notice remove >> "+(isOk > 0? "OK" : "Fail"));
 		re.addFlashAttribute("isOk", isOk);
 		return "redirect:/notice/list";
+	}
+	
+	@DeleteMapping(value = "/file/{uuid}")
+	public ResponseEntity<String> noticeRemoveFile(@PathVariable("uuid") String uuid){
+		int isOk = nsv.noticeRemoveFile(uuid);
+		return isOk > 0 ? new ResponseEntity<String>("1", HttpStatus.OK)
+				: new ResponseEntity<String>("0", HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
 	

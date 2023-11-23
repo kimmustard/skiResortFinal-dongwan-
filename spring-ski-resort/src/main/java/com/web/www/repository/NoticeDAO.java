@@ -25,4 +25,6 @@ public interface NoticeDAO {
 
 	long selectOneNoticeNum();
 
+	int noticeFileModify(NoticeVO nvo);
+
 }
