@@ -33,6 +33,7 @@
     <!-- DateRangePicker JS -->
     <script src="https://cdn.jsdelivr.net/npm/daterangepicker@3.1.0/daterangepicker.min.js"></script>
 
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 	
 <link rel="stylesheet" href="/resources/css/hotel/reservation.css">
 
@@ -51,14 +52,18 @@
 		</div>
 		
 		<div class="box">
-			<h1>스키/리프트권 예약</h1>
+			<h1>장비렌탈/리프트권 예약</h1>
 			<form action="/rental/reserve" method="post">
-				<div class="container mt-3">
-					<label for="dateRangePicker">날짜를 선택하세요:</label> <input type="text"
-						class="form-control" id="dateRangePicker">
+				<input name="rentalReserveStart" id="rentalReserveStart" placeholder="렌탈이용날짜">
+			
+				<div class="date-group">
+					<div class="input-group calendar">
+	              	 	<div class="input-group-prepend">
+	                		 <span class="input-group-text"><i class="bi bi-calendar"></i></span>
+	                	</div>
+						<input type="text" class="form-control" id="dateRangePicker" placeholder="날짜를 선택하세요" readonly="readonly">
+					</div>
 				</div>
-	
-				<div id="result1" class="container mt-3"></div>
 					
 				<div class="peopleNum">
 					<label for="numberOfPeople">인원수:</label>
