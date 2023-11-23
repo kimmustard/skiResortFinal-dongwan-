@@ -49,7 +49,7 @@ public class NoticeController {
 	@PostMapping("/register")
 	public String noticeRegister(NoticeVO nvo, RedirectAttributes re,
 			@RequestParam(name="files", required = false)MultipartFile[] files) {
-		log.info(" >>>>> "+nvo+" "+files);
+		log.info(" >>>>> 레지스터확인 "+nvo+" "+files);
 		List<FileVO> flist = null;
 		if(files[0].getSize() > 0) {
 			String category ="notice";
