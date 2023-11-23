@@ -8,98 +8,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-	<!-- bootstrap 4.6, jquery, .. -->
-	<link  href="/resources/Member-datetime/css/bootstrap.min.css" rel="stylesheet">
-	<script src="/resources/Member-datetime/js/jquery-3.5.1.min.js"></script>
-	<script src="/resources/Member-datetime/js/popper.min.js"></script>
-	<script src="/resources/Member-datetime/js/bootstrap.min.js"></script>
 
-    <!-- datetimepicker3 -->
-	<script src="/resources/Member-datetime/js/moment-with-locales.min.js"></script>
-	<script src="/resources/Member-datetime/js/bootstrap-datetimepicker.min.js"></script>
-	<link  href="/resources/Member-datetime/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
-
-    <!-- font-awesome icon -->
-	<link  href="/resources/Member-datetime/css/fontawesome-all.css" rel="stylesheet">
-	<style type="text/css">
-	.bodyContainer{
-		width: 100%;
-		height: 1500px;
-		position: relative;
-	}
-	.registerContainer{
-		margin-top: 100px;
-		width: 700px;
-		position: absolute;
-		top:40%;
-		left: 50%;
-	    transform: translate(-50%, -50%);
-	    background-color: white;
-	}
-	.registerBody{
-		margin: 50px;
-		display: flex;
-		justify-content: center;
-	}
-	.registerMainBox{
-		flex-direction:	column;
-	}
-	.registerBox{
-		margin-top: -10px;
-		width: 300px;
-	}
-
-	.termsMainBox{
-		margin-top: 50px;
-	}
-	.termsBox{
-		margin-left: 20px;
-	}
 	
-	.tbBox{
-		margin-bottom: 10px;
-	}
-	
-	.btnMainBox{
-		display: flex;
-		justify-content: center;
-		margin-top: 50px;
-	}
-	
-	.bb-1, .bb-2{
-		margin-left: 30px;
-		margin-right: 30px;
-	}
-	
-	.member-Calrendar{
-		width: 300px;
-	}
-	
-	.addressBox{
-		display: flex;	
-		width: 500px;
-	}
-	.addressBox>.postNum{
-		width: 150px;
-	}
-	.addressBox>.adressNum{
-		width: 300px;
-	}
-	
-	.rb-7, .rb-8{
-		margin-top: 10px;
-	}
-	
-	.terms-btn{
-	margin-left: 20px;
-	}
-	
-	.errorFont{
-	color: red;
-	}
-	
-	
-</style>
+	<link  href="/resources/css/member/register.css" rel="stylesheet">
 </head>
 <body>
 <jsp:include page="../common/nav.jsp"></jsp:include>
@@ -123,25 +34,21 @@
 				<div class="registerMainBox">
 				
 					<div class="form-group registerBox rb-1">
-							<label class="form-label mt-4" for="inputMemberId">아이디</label>
 					    <div class="input-group mb-3">
 					      <form:input type="text" path="memberId" class="form-control ${empty idError ? '' : 'is-invalid'}" id="inputMemberId" name="memberId" placeholder="아이디" aria-label="Recipient's username" aria-describedby="button-addon2"/>
-					      <button class="btn btn-primary" type="button" id="MemberIdCheck">중복확인</button>
+					      <button class="btn btn-primary" type="button" id="MemberIdCheck" style="display: none">중복확인</button>
 					    </div>
 					      <form:errors class="errorFont" path="memberId"></form:errors>
 					   	  <small class="" id="duplicateIdCheck"></small>
 				    </div>
 				    
 					<div class="form-group registerBox rb-2">
-					    <label for="exampleInputPassword1" class="form-label mt-4">Password</label>
 					    <form:input type="password" path="memberPwd" class="form-control ${empty pwdError ? '' : 'is-invalid'}" name="memberPwd" id="exampleInputPassword1" placeholder="비밀번호" autocomplete="off" />
 					    <form:errors class="errorFont" path="memberPwd"></form:errors>
-					    <label for="exampleInputPassword2" class="form-label mt-4">Password check</label>
 						<input type="password" class="form-control" id="exampleInputPassword2" placeholder="비밀번호 확인" autocomplete="off" />
 				    </div>
 
 					<div class="form-group registerBox rb-4">
-							<label class="form-label mt-4" for="inputMemberAlias">닉네임</label>
 					    <div>
 					      <form:input type="text" class="form-control ${empty aliasError ? '' : 'is-invalid'}" path="memberAlias" name="memberAlias" id="inputMemberAlias" placeholder="닉네임" aria-label="Recipient's username" aria-describedby="button-addon2" />
 					    </div>
@@ -149,7 +56,6 @@
 				    </div>
 				    
 					<div class="form-group registerBox rb-5">
-					     <label for="inputMemberEmail" class="form-label mt-4">Email</label>
 					     <div class="input-group mb-3">
 						     <form:input type="email" path="memberEmail" readonly="true" class="form-control" name="memberEmail" id="inputMemberEmail" aria-describedby="emailHelp" placeholder="이메일" />
 						     <button type="button" class="btn btn-primary" id="MemberEmailCheck" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -163,7 +69,6 @@
 				    <!-- 주소 -->
 
 			    <div class="form-group registerBox rb-6">
-					<label class="form-label mt-4" for="inputMemberAddress">주소</label>
 					<div class="addressBox">
 						<div class="input-group mb-3 postNum">
 					    <input type="text" class="form-control " id="inputMemberPostcode" readonly="readonly" placeholder="우편번호">
@@ -181,7 +86,6 @@
 			
 			    
 			    <div class="form-group registerBox rb-9">
-					 <label class="col-form-label mt-4" for="inputMemberName">이름</label>
 					 <form:input type="text" path="memberName" class="form-control ${empty nameError ? '' : 'is-invalid'}" name="memberName" placeholder="실명 입력" id="inputMemberName" />
 					 <form:errors class="errorFont" path="memberName"></form:errors>
 				</div>   
@@ -189,7 +93,6 @@
 			    
 			    
 			    <div class="form-group registerBox rb10">
-					 <label class="col-form-label mt-4" for="inputMemberPhone">핸드폰 번호</label>
 					 <form:input type="text" path="memberPhoneNum" class="form-control ${empty phoneNumError ? '' : 'is-invalid'}" name="memberPhoneNum" placeholder="핸드폰 번호 입력" id="inputMemberPhone" />
 					 <small class="form-text text-muted">"-" 제외 후 핸드폰 번호 입력</small>
 					 <small class="form-text text-muted">ex) 01012345678</small>

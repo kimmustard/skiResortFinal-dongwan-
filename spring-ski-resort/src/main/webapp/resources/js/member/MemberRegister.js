@@ -298,4 +298,19 @@ document.getElementById('ModalflexCheckDefault').addEventListener('click', () =>
     document.getElementById('flexCheckDefault').click();
 })
 
+//
+
+document.getElementById('inputMemberId').addEventListener('change', () => {
+    document.getElementById('MemberIdCheck').click();
+   
+})
+
+document.getElementById('inputMemberId').addEventListener('click', () => {
+	console.log("ss")
+    document.getElementById('MemberEmailCheck').click();
+   
+})
+
+
+
 

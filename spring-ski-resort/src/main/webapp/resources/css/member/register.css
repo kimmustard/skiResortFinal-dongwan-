@@ -1,0 +1,76 @@
+@charset "UTF-8";
+.bodyContainer{
+		width: 100%;
+		position: relative;
+	}
+	.registerContainer{
+		width: 100%;
+		position: absolute;
+		top: 2%;
+	}
+	.registerBody{
+		margin: 50px;
+		display: flex;
+		justify-content: center;
+	}
+	.registerMainBox{
+		flex-direction:	column;
+	}
+	
+	.registerBox{
+		margin-top: 10px;
+		width: 300px;
+	}
+	#exampleInputPassword2{
+		margin-top: 10px;
+	}
+
+	.termsMainBox{
+		margin-top: 50px;
+	}
+	.termsBox{
+		margin-left: 20px;
+	}
+	
+	.tbBox{
+		margin-bottom: 10px;
+	}
+	
+	.btnMainBox{
+		display: flex;
+		justify-content: center;
+		margin-top: 50px;
+	}
+	
+	.bb-1, .bb-2{
+		margin-left: 30px;
+		margin-right: 30px;
+	}
+	
+	.member-Calrendar{
+		width: 300px;
+	}
+	
+	.addressBox{
+		display: flex;	
+		width: 500px;
+	}
+	.addressBox>.postNum{
+		width: 150px;
+	}
+	.addressBox>.adressNum{
+		width: 300px;
+	}
+	
+	.rb-7, .rb-8{
+		margin-top: 10px;
+	}
+	
+	.terms-btn{
+	margin-left: 20px;
+	}
+	
+	.errorFont{
+	color: red;
+	}
+	
