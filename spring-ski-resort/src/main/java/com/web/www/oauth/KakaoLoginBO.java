@@ -20,7 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Component
 @Slf4j
-@PropertySource("classpath:OAuthProperties.properties")
+@PropertySource("classpath:outApiProperties.properties")
 public class KakaoLoginBO {
 	
 	@Value("${oauth.kakao.id}")
