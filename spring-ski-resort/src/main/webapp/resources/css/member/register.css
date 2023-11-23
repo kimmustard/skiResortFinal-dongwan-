@@ -1,19 +1,28 @@
 @charset "UTF-8";
 .bodyContainer{
+	
 		width: 100%;
 		position: relative;
+		
 	}
+.bodyContainer>video{
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: -1;
+}
 	.registerContainer{
 		width: 100%;
-		position: absolute;
-		top: 2%;
 	}
 	.registerBody{
-		margin: 50px;
+		
 		display: flex;
 		justify-content: center;
+		opacity: 0.9;
+		
 	}
 	.registerMainBox{
+		margin-top:100px;
 		flex-direction:	column;
 	}
 	
@@ -27,19 +36,25 @@
 
 	.termsMainBox{
 		margin-top: 50px;
+		background-color: white;
+		border: solid 1px;
+		border-radius: 5px;
+		border-color: #dee2e6;
+		padding: 10px;
 	}
 	.termsBox{
 		margin-left: 20px;
 	}
 	
 	.tbBox{
-		margin-bottom: 10px;
+		
 	}
 	
 	.btnMainBox{
 		display: flex;
 		justify-content: center;
 		margin-top: 50px;
+		margin-bottom: 25px;
 	}
 	
 	.bb-1, .bb-2{
@@ -55,11 +70,9 @@
 		display: flex;	
 		width: 500px;
 	}
-	.addressBox>.postNum{
-		width: 150px;
-	}
+	
 	.addressBox>.adressNum{
-		width: 300px;
+		width: 208px;
 	}
 	
 	.rb-7, .rb-8{
@@ -72,5 +85,36 @@
 	
 	.errorFont{
 	color: red;
+	}
+	.dropdown-menu {
+    
+    --bs-dropdown-min-width: 0;
+	}
+	
+	.num-select:hover{
+	
+      	border-color: #0d6efd;
+    	color: #6c757d;
+	}
+	.num-select:focus{
+		box-shadow: 13,110,253;
+	}
+	.num-select {
+	    background-color: white;
+      
+   		border : solid 1px;
+      border-color: #dee2e6;
+      border-radius: 5px;
+	 padding-left: 3px;
+	}
+	.postNum{
+		width: 92px;
+	}
+	.post{
+		width: 92px;
+	}
+	
+	#inputMemberPhone{
+		display: none;
 	}
 	

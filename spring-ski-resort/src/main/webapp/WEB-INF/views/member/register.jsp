@@ -10,10 +10,10 @@
 <title>Insert title here</title>
 
 	
+<jsp:include page="../common/nav.jsp"></jsp:include>
 	<link  href="/resources/css/member/register.css" rel="stylesheet">
 </head>
 <body>
-<jsp:include page="../common/nav.jsp"></jsp:include>
 
 <div class="bodyContainer">
 <video width="100%" height="auto" autoplay loop muted>
@@ -34,8 +34,8 @@
 				<div class="registerMainBox">
 				
 					<div class="form-group registerBox rb-1">
-					    <div class="input-group mb-3">
-					      <form:input type="text" path="memberId" class="form-control ${empty idError ? '' : 'is-invalid'}" id="inputMemberId" name="memberId" placeholder="아이디" aria-label="Recipient's username" aria-describedby="button-addon2"/>
+					    <div class=" mb-3">
+					      <form:input type="text" path="memberId"  onkeyup='chaekId()' class="form-control ${empty idError ? '' : 'is-invalid'}" id="inputMemberId" name="memberId" placeholder="아이디" aria-label="Recipient's username" aria-describedby="button-addon2"/>
 					      <button class="btn btn-primary" type="button" id="MemberIdCheck" style="display: none">중복확인</button>
 					    </div>
 					      <form:errors class="errorFont" path="memberId"></form:errors>
@@ -56,26 +56,24 @@
 				    </div>
 				    
 					<div class="form-group registerBox rb-5">
-					     <div class="input-group mb-3">
 						     <form:input type="email" path="memberEmail" readonly="true" class="form-control" name="memberEmail" id="inputMemberEmail" aria-describedby="emailHelp" placeholder="이메일" />
-						     <button type="button" class="btn btn-primary" id="MemberEmailCheck" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+						     <button type="button" class="btn btn-primary" id="MemberEmailCheck" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="display: none;">
 							 	이메일 인증
 							 </button>
-				   		 </div>
 						 <form:errors class="errorFont" path="memberEmail"></form:errors>
 				    </div>
 				    
 				    
 				    <!-- 주소 -->
 
-			    <div class="form-group registerBox rb-6">
+			    <div class="registerBox rb-6">
 					<div class="addressBox">
-						<div class="input-group mb-3 postNum">
-					    <input type="text" class="form-control " id="inputMemberPostcode" readonly="readonly" placeholder="우편번호">
+						<div class="mb-3 postNum">
+					    <input type="text" class="form-control post" onclick="clickAddr()" id="inputMemberPostcode" readonly="readonly" placeholder="우편번호">
 						</div>
-					    <div class="input-group mb-3 adressNum">
-					      <form:input type="text" path="memberAddress" class="form-control ${empty addressError ? '' : 'is-invalid'}" name="memberAddress" id="inputMemberAddress" readonly="readonly" placeholder="주소를 입력해주세요." aria-label="Recipient's username" aria-describedby="button-addon2" />
-					      <button class="btn btn-primary" type="button" id="button-addon2" onclick="sample6_execDaumPostcode()">주소 찾기</button>
+					    <div class="adressNum">
+					       <form:input type="text" path="memberAddress" onclick="clickAddr()"  class="form-control ${empty addressError ? '' : 'is-invalid'}" name="memberAddress"  id="inputMemberAddress" placeholder="주소를 입력해주세요." aria-label="Recipient's username" aria-describedby="button-addon2" />
+					      <button class="btn btn-primary" type="button"  id="button-addon2" onclick="sample6_execDaumPostcode()" style="display: none;" >주소 찾기</button>
 					    </div>
 				    </div>
 					<form:errors class="errorFont" path="memberAddress"></form:errors>
@@ -86,16 +84,34 @@
 			
 			    
 			    <div class="form-group registerBox rb-9">
-					 <form:input type="text" path="memberName" class="form-control ${empty nameError ? '' : 'is-invalid'}" name="memberName" placeholder="실명 입력" id="inputMemberName" />
+					 <form:input type="text" path="memberName" class="form-control ${empty nameError ? '' : 'is-invalid'}" name="memberName" placeholder="이름" id="inputMemberName" />
 					 <form:errors class="errorFont" path="memberName"></form:errors>
 				</div>   
 			    
 			    
 			    
 			    <div class="form-group registerBox rb10">
-					 <form:input type="text" path="memberPhoneNum" class="form-control ${empty phoneNumError ? '' : 'is-invalid'}" name="memberPhoneNum" placeholder="핸드폰 번호 입력" id="inputMemberPhone" />
-					 <small class="form-text text-muted">"-" 제외 후 핸드폰 번호 입력</small>
-					 <small class="form-text text-muted">ex) 01012345678</small>
+			    
+			    <div class="input-group mb-3">
+					 <select class="num-select" id="phoneNum1" onchange="printNum()">
+			    		<option value="010">010</option>
+			    		<option value="011">011</option>
+			    		<option value="016">016</option>
+			    		<option value="017">017</option>
+			    		<option value="018">018</option>
+			    		<option value="019">019</option>
+			    		<option value="070">070</option>
+			    		<option value="053">053</option>
+			    	</select>
+			    	<input type="text" re class="form-control" placeholder="휴대번호" onkeyup='printNum()' id="phoneNum2" maxlength='8' 
+			    	oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+				</div>
+			    
+			    
+			    
+			    	
+					 <form:input type="text" path="memberPhoneNum" class="form-control ${empty phoneNumError ? '' : 'is-invalid'}" name="memberPhoneNum"  id="inputMemberPhone" />
+				
 					  <form:errors class="errorFont" path="memberPhoneNum"></form:errors>
 				</div>    
 				
