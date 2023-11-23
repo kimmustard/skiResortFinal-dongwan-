@@ -11,10 +11,21 @@ import java.net.URL;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
+import lombok.extern.slf4j.Slf4j;
+
+
 @Component
+@Slf4j
+@PropertySource("classpath:OAuthProperties.properties")
 public class KakaoLoginBO {
+	
+	@Value("${oauth.kakao.id}")
+	private String clientId;
+
 	
 	public String getAccessToken (String authorize_code) throws ParseException {
 		String access_Token = "";
@@ -35,7 +46,7 @@ public class KakaoLoginBO {
 			StringBuilder sb = new StringBuilder();
 			sb.append("grant_type=authorization_code");
             
-			sb.append("&client_id=8711ead6eddb9ad848f7308bbeb5fd07"); //본인이 발급받은 key
+			sb.append("&client_id="+clientId); //본인이 발급받은 key
 			sb.append("&redirect_uri=http://localhost:8089/oauth/kakao/callback"); // 본인이 설정한 주소
             
 			sb.append("&code=" + authorize_code);
@@ -44,7 +55,7 @@ public class KakaoLoginBO {
             
 			// 결과 코드가 200이라면 성공
 			int responseCode = conn.getResponseCode();
-			System.out.println("responseCode : " + responseCode);
+			log.info("responseCode = {} ", responseCode);
             
 			// 요청을 통해 얻은 JSON타입의 Response 메세지 읽어오기
 			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
@@ -54,7 +65,7 @@ public class KakaoLoginBO {
 			while ((line = br.readLine()) != null) {
 				result += line;
 			}
-			System.out.println("response body : " + result);
+			log.info("response body = {} ", result);
             
 			// Gson 라이브러리에 포함된 클래스로 JSON파싱 객체 생성
 			JSONParser parser = new JSONParser();
@@ -64,8 +75,8 @@ public class KakaoLoginBO {
 			access_Token = (String)jsonObj.get("access_token");
 			refresh_Token = (String)jsonObj.get("refresh_token");
    
-			System.out.println("access_token : " + access_Token);
-			System.out.println("refresh_token : " + refresh_Token);
+			log.info("access_token = {} " , access_Token);
+			log.info("refresh_token = {} " , refresh_Token);
             
 			br.close();
 			bw.close();

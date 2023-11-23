@@ -24,7 +24,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.web.www.domain.member.MemberVO;
 import com.web.www.domain.member.RegisterMemberDTO;
 import com.web.www.repository.MemberDAO;
-import com.web.www.security.AuthMember;
 import com.web.www.service.MemberService;
 
 import lombok.RequiredArgsConstructor;

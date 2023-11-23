@@ -20,7 +20,7 @@
 	</select>
 	
 	<select id="checkEmail" resultType="int">
-		select count(member_email) from member where member_email = #{memberEmail}
+		select count(member_email) from member where member_email = #{memberEmail} and member_type = 'normal'
 	</select>
 	
 	<!-- 시큐리티 userDetail클래스 DB 선접근 mapper -->
@@ -54,7 +54,7 @@
 		member_phone_num, member_type)
 			
 		values(#{memberId}, #{memberPwd}, #{memberAlias}, #{memberName}, #{memberEmail},
-	  	#{memberPhoneNum}, 'naver')
+	  	#{memberPhoneNum}, #{memberType})
 	</insert>
 	
 
