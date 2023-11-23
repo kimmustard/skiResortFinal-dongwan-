@@ -1,20 +1,32 @@
-package com.web.www.weather;
+package com.web.www;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 
-import lombok.extern.slf4j.Slf4j;
+import com.web.www.weather.RegionRead;
+import com.web.www.weather.RegionVO;
+import com.web.www.weather.WeatherDAO;
 
-@Slf4j
-public class RegionRead {
+@WebAppConfiguration
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = {com.web.www.config.RootConfig.class})
+public class WeatherTest {
 	
-	 public static void main(String[] args) {
-	        
-
-	        try {
+	@Autowired
+	WeatherDAO wdao;
+	
+	@Test
+	void test() {
+		  try {
 	            // 클래스패스에서 프로퍼티 파일 로드
 	            InputStream input = RegionRead.class.getClassLoader().getResourceAsStream("WeatherProperties.properties");
 
@@ -36,15 +48,14 @@ public class RegionRead {
 	                re.setRegionGrandChild(parts[3]);
 	                re.setNx(Integer.parseInt(parts[4]));
 	                re.setNy(Integer.parseInt(parts[5]));
-	                log.info("re = {}@@@@@@@@@@", re);
-	                
+	                wdao.insertRegion(re);
 	                
 	            }
 	            
 	        } catch (IOException e) {
 	            e.printStackTrace();
 	        }
-
-	    }
+	}
+	
 
 }

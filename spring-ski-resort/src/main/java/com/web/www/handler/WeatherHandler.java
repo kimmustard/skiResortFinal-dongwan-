@@ -9,7 +9,6 @@ import java.net.URLEncoder;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 import org.json.simple.JSONArray;
