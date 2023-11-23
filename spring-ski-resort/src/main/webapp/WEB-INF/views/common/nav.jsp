@@ -47,6 +47,9 @@
         	<c:if test="${authType == 'kakao' }">
        		<li>(카카오)${authEmail}님 환영합니다.</li>
         	</c:if>
+        	<c:if test="${authType == 'google' }">
+       		<li>(구글)${authEmail}님 환영합니다.</li>
+        	</c:if>
 	       	<li><a href="/member/logout">로그아웃</a></li>
 		
 		</sec:authorize>

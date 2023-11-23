@@ -29,7 +29,6 @@ public class GoogleLoginBO {
 	private String google_client_secret;  
 	
 	public String getGoogleUrl() {
-		String tokenURL = "https://oauth2.googleapis.com/token";
 		String redirect_uri = "http://localhost:8089/oauth/google/callback";
 		String login_url = "https://accounts.google.com/o/oauth2/v2/auth?response_type=code"
 	    		+ "&client_id=" + google_client_id
@@ -42,10 +41,6 @@ public class GoogleLoginBO {
 	public Map<String, String> getAccessToken(String code) {
 		String tokenURL = "https://oauth2.googleapis.com/token";
 		String redirect_uri = "http://localhost:8089/oauth/google/callback";
-		String login_url = "https://accounts.google.com/o/oauth2/v2/auth?response_type=code"
-	    		+ "&client_id=" + google_client_id
-	            + "&redirect_uri=" + redirect_uri
-	            + "&scope=email profile";
 		
 		MultiValueMap<String, String> parameter = new LinkedMultiValueMap<>();
 	    parameter.add("grant_type", "authorization_code");
