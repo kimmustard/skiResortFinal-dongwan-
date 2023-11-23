@@ -44,3 +44,6 @@ notice_point varchar(1) default 'N',
 primary key(notice_num),
 foreign key(member_num) references member(member_num)
 );
+
+
+
