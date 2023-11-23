@@ -24,7 +24,7 @@ import lombok.extern.slf4j.Slf4j;
 public class KakaoLoginBO {
 	
 	@Value("${oauth.kakao.id}")
-	private String clientId;
+	private String kakao_clientId;
 
 	
 	public String getAccessToken (String authorize_code) throws ParseException {
@@ -46,7 +46,7 @@ public class KakaoLoginBO {
 			StringBuilder sb = new StringBuilder();
 			sb.append("grant_type=authorization_code");
             
-			sb.append("&client_id="+clientId); //본인이 발급받은 key
+			sb.append("&client_id="+kakao_clientId); //본인이 발급받은 key
 			sb.append("&redirect_uri=http://localhost:8089/oauth/kakao/callback"); // 본인이 설정한 주소
             
 			sb.append("&code=" + authorize_code);

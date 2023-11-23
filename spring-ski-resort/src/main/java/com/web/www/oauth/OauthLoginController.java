@@ -90,7 +90,7 @@ public class OauthLoginController {
 	 */
 	
 	@Value("${oauth.kakao.url}")
-	private String clientUrl;
+	private String kakao_clientUrl;
 	
 	
 	// 로그인 첫 화면 요청 메소드
@@ -99,7 +99,7 @@ public class OauthLoginController {
 	public String kakaoLogin() { 
 		
 		/* 네이버아이디로 인증 URL을 생성하기 위하여 naverLoginBO클래스의 getAuthorizationUrl메소드 호출 */ 
-		String kakaoAuthUrl = clientUrl;
+		String kakaoAuthUrl = kakao_clientUrl;
 		log.info("카카오 url = {}" , kakaoAuthUrl); //네이버 
 		return kakaoAuthUrl; 
 	 }
@@ -120,7 +120,7 @@ public class OauthLoginController {
 	/**
 	 * @구글
 	 */
-	// 로그인 첫 화면 요청 메소드
+	
 	@ResponseBody
 	@RequestMapping("/google/login")
 	public String login(HttpServletRequest request) {
