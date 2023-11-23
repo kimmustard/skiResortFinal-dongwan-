@@ -5,27 +5,28 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+import javax.inject.Inject;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import com.web.www.repository.WeatherDAO;
 import com.web.www.weather.RegionRead;
 import com.web.www.weather.RegionVO;
-import com.web.www.weather.WeatherDAO;
 
 @WebAppConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {com.web.www.config.RootConfig.class})
 public class WeatherTest {
 	
-	@Autowired
-	WeatherDAO wdao;
+	@Inject
+	private WeatherDAO wdao;
 	
 	@Test
-	void test() {
+	public void test() {
 		  try {
 	            // 클래스패스에서 프로퍼티 파일 로드
 	            InputStream input = RegionRead.class.getClassLoader().getResourceAsStream("WeatherProperties.properties");
