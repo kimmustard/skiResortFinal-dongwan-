@@ -15,6 +15,7 @@ tmp/
 *.swp
 *~.nib
 local.properties
+outApiProperties.properties
 .settings/
 .loadpath
 .recommenders
