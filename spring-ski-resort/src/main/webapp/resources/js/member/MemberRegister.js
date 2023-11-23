@@ -305,7 +305,7 @@ document.getElementById('inputMemberId').addEventListener('change', () => {
    
 })
 
-document.getElementById('inputMemberId').addEventListener('click', () => {
+document.getElementById('inputMemberEmail').addEventListener('click', () => {
 	console.log("ss")
     document.getElementById('MemberEmailCheck').click();
    
