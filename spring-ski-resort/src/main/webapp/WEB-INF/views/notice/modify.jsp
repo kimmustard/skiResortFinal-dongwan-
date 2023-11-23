@@ -11,6 +11,7 @@
 <body>
 <jsp:include page="../common/nav.jsp" />
 <div class="notice-img-container" style="background-image: url('https://a.cdn-hotels.com/gdcs/production68/d766/4cc034a7-aeb1-4edd-b2a9-f7feaac49aec.jpg')">	</div>
+<br><br><br><br><br><br><br>
 
 	<div class="container">
 	<br>
@@ -23,12 +24,72 @@
 				<td><input type="hidden" name="noticeNum" value="${nvo.noticeNum}" readonly="readonly"></td>
 			</tr>	
 			<tr>
-				<th>카테고리</th>
-				<td><input type="text" name="noticeCategory" value="${nvo.noticeCategory}"></td>
-			</tr>	
-			<tr>
 				<th>제목</th>
 				<td><input type="text" name="noticeTitle" value="${nvo.noticeTitle }"></td>
+			</tr>	
+			<tr>
+				<th><label for="exampleFormControlInput1" class="form-label">카테고리</label></th>
+				<td>
+					<div class="mb-3">
+					  <select class="form-select" name="noticeCategory" id="inputGroupSelect01">
+					  	<option ${nvo.noticeCategory ne null }>${nvo.noticeCategory }</option>
+					  	<c:choose>
+					  		<c:when test="${nvo.noticeCategory == '공지사항'}">
+					  		<option value="이벤트">이벤트</option>
+					  		<option value="보도자료">보도자료</option>
+					  		<option value="쇼핑몰">쇼핑몰</option>
+					  		<option value="채용정보">채용정보</option>
+					  		<option value="기타">기타</option>
+					  		</c:when>
+					  	</c:choose>
+					  	<c:choose>
+					  		<c:when test="${nvo.noticeCategory == '이벤트'}">
+					  		<option value="공지사항">공지사항</option>
+					  		<option value="보도자료">보도자료</option>
+					  		<option value="쇼핑몰">쇼핑몰</option>
+					  		<option value="채용정보">채용정보</option>
+					  		<option value="기타">기타</option>
+					  		</c:when>
+					  	</c:choose>
+					  	<c:choose>
+					  		<c:when test="${nvo.noticeCategory == '보도자료'}">
+					  		<option value="공지사항">공지사항</option>
+					  		<option value="이벤트">이벤트</option>
+					  		<option value="쇼핑몰">쇼핑몰</option>
+					  		<option value="채용정보">채용정보</option>
+					  		<option value="기타">기타</option>
+					  		</c:when>
+					  	</c:choose>
+					  	<c:choose>
+					  		<c:when test="${nvo.noticeCategory == '쇼핑몰'}">
+					  		<option value="공지사항">공지사항</option>
+					  		<option value="이벤트">이벤트</option>
+					  		<option value="보도자료">보도자료</option>
+					  		<option value="채용정보">채용정보</option>
+					  		<option value="기타">기타</option>
+					  		</c:when>
+					  	</c:choose>
+					  	<c:choose>
+					  		<c:when test="${nvo.noticeCategory == '채용정보'}">
+					  		<option value="공지사항">공지사항</option>
+					  		<option value="이벤트">이벤트</option>
+					  		<option value="보도자료">보도자료</option>
+					  		<option value="쇼핑몰">쇼핑몰</option>
+					  		<option value="기타">기타</option>
+					  		</c:when>
+					  	</c:choose>
+					  	<c:choose>
+					  		<c:when test="${nvo.noticeCategory == '기타'}">
+					  		<option value="공지사항">공지사항</option>
+					  		<option value="이벤트">이벤트</option>
+					  		<option value="보도자료">보도자료</option>
+					  		<option value="쇼핑몰">쇼핑몰</option>
+					  		<option value="채용정보">채용정보</option>
+					  		</c:when>
+					  	</c:choose>
+					  </select>
+					</div>
+				</td>
 			</tr>	
 			<tr>
 				<th>작성자</th>
@@ -55,6 +116,8 @@
 			<button type="button" class="btn btn-danger">삭제하기</button>
 			</a>		
 	</div>
+
+<br><br><br><br><br><br><br><br><br><br><br><br>	
 <jsp:include page="../common/footer.jsp" />	
 </body>
 </html>

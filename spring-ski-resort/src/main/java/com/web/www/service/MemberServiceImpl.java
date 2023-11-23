@@ -18,23 +18,33 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public int insertMember(MemberVO mvo) {
-		
-		return mdao.insertMember(mvo);
+		mdao.insertMember(mvo);	//가입
+		return mdao.insertAuthInit(mvo.getMemberId());
 	}
 
+	@Override
+	public int socialRegister(MemberVO mvo) {
+		mdao.socialRegister(mvo);	//소셜유저 가입
+		return mdao.insertAuthInit(mvo.getMemberId());
+	}
 	
 	
 	
 	
 	
+	/**
+	 * 시큐리티 LastLogin 체크
+	 */
+	
+	@Override
+	public boolean updateLastLogin(String authEmail) {
+		return mdao.updateLastLogin(authEmail) > 0 ? true : false;
+	}
 	
 	
-	
-	
-	
-	
-	
-	
+	/**
+	 * @회원가입 Id / Email 중복체크입니다.
+	 */
 	@Override
 	public int checkId(String memberId) {
 		return mdao.checkId(memberId);
@@ -44,6 +54,30 @@ public class MemberServiceImpl implements MemberService {
 	public int checkEmail(String memberEmail) {
 		return mdao.checkEmail(memberEmail);
 	}
+
+
+	/**
+	 * 시큐리티 OAuth인증
+	 */
+
+	@Override
+	public MemberVO socialSearch(String memberId) {
+		return mdao.socialSearch(memberId);
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }
