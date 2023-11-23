@@ -21,7 +21,7 @@ import net.coobird.thumbnailator.Thumbnails;
 public class FileHandler {
 	
 	public List<FileVO> uploadFiles(MultipartFile[] files, String category){
-		String UP_DIR="D:\\_myweb\\\\_java\\"+category;
+		String UP_DIR="D:\\_myweb\\_java\\"+category;
 		//D:\\_myweb\\_java\\notice\\202x\\월\일\\uuid_fileName.jpg
 		//D:\\_myweb\\_java\\hotel\\202x\\월\일\\uuid_fileName.jpg
 		//D:\\_myweb\\_java\\rental\\202x\\월\일\\uuid_fileName.jpg

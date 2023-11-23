@@ -136,6 +136,7 @@ public class NoticeController {
 	
 	@DeleteMapping(value = "/file/{uuid}")
 	public ResponseEntity<String> noticeRemoveFile(@PathVariable("uuid") String uuid){
+		log.info(">>>>파일삭제확인 uuid >>"+uuid);
 		int isOk = nsv.noticeRemoveFile(uuid);
 		return isOk > 0 ? new ResponseEntity<String>("1", HttpStatus.OK)
 				: new ResponseEntity<String>("0", HttpStatus.INTERNAL_SERVER_ERROR);
