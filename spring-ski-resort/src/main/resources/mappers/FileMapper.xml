@@ -5,7 +5,8 @@
 <mapper namespace="com.web.www.repository.FileDAO">
 	
 	<insert id="insertNoticeFile">
-		insert into file(uuid, save_dir, file_name, file_type, )
+		insert into file(uuid, save_dir, file_name, file_isok, file_type, file_size, notice_num)
+		values(#{uuid}, #{saveDir}, #{fileName}, #{fileIsok}, #{fileType}, #{fileSize}, #{noticeNum})
 	</insert>
 	
 </mapper>

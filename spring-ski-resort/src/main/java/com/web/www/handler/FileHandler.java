@@ -11,7 +11,7 @@ import org.apache.tika.Tika;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.web.www.domain.board.FileVO;
+import com.web.www.domain.FileVO;
 
 import lombok.extern.slf4j.Slf4j;
 import net.coobird.thumbnailator.Thumbnails;

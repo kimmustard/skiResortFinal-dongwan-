@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.web.www.domain.board.PagingVO;
+import com.web.www.domain.FileVO;
 import com.web.www.domain.board.NoticeDTO;
-import com.web.www.domain.board.FileVO;
 import com.web.www.domain.board.NoticeVO;
 import com.web.www.repository.FileDAO;
 import com.web.www.repository.NoticeDAO;

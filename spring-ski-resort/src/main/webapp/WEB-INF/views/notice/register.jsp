@@ -44,7 +44,7 @@
 		<div class="mb-3">
 		  <input type="file" class="form-control" name="files" id="files" style="display: none;" multiple="multiple">
 		  <!-- input button trigger 용도의 button -->
-		  <button type="button" id="trigger" class="btn btn-outline-primary">File Upload</button>
+		  <button type="button" id="trigger" class="btn btn-outline-primary">이미지파일 등록</button>
 		</div>
 		
 		<div class="mb-3" id="fileZone">
@@ -57,6 +57,7 @@
 </div>
 
 <br><br><br><br><br><br><br><br><br><br><br><br>
+<script type="text/javascript" src="/resources/js/notice/noticeFileUpload.js"></script>
 <jsp:include page="../common/footer.jsp" />
 </body>
 </html>

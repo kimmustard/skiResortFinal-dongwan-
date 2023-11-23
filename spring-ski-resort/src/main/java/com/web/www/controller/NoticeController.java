@@ -12,8 +12,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.web.www.domain.board.PagingVO;
+import com.web.www.domain.FileVO;
 import com.web.www.domain.board.NoticeDTO;
-import com.web.www.domain.board.FileVO;
 import com.web.www.domain.board.NoticeVO;
 import com.web.www.handler.FileHandler;
 import com.web.www.handler.PagingHandler;
@@ -49,6 +49,7 @@ public class NoticeController {
 	@PostMapping("/register")
 	public String noticeRegister(NoticeVO nvo, RedirectAttributes re,
 			@RequestParam(name="files", required = false)MultipartFile[] files) {
+		log.info(" >>>>> "+nvo+" "+files);
 		List<FileVO> flist = null;
 		if(files[0].getSize() > 0) {
 			String category ="notice";
@@ -102,5 +103,7 @@ public class NoticeController {
 		re.addFlashAttribute("isOk", isOk);
 		return "redirect:/notice/list";
 	}
+	
+	
 
 }

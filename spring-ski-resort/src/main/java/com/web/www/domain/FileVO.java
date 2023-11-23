@@ -1,4 +1,4 @@
-package com.web.www.domain.board;
+package com.web.www.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,9 +18,9 @@ public class FileVO {
 	private String fileName;
 	private String fileIsok;
 	private int fileType;
-	private long noticeNum;
 	private long fileSize;
 	private String regDate;
+	private long noticeNum;
 	
 	
 //			create table file(
