@@ -1,3 +1,12 @@
+--리프트권 테이블
+create table member_lift(
+member_lift_num varchar(200) not null,
+rental_main_num bigint not null,
+rental_lift_ticket varchar(50),
+rental_lift_adult_fee int,
+rental_lift_kid_fee int,
+primary key(member_lift_num));
+
 --렌탈 테이블
 create table rental(
 rental_main_num bigint not null auto_increment,
@@ -7,33 +16,21 @@ reatal_main_isreturn varchar(1) default 'N',
 rental_main_lift varchar(1) default 'N',
 primary key(rental_main_num));
 
---요금 테이블
+--예약정보 테이블
 create table rental_reserve(
-member_lift_num varchar(50) not null,
 rental_main_num bigint not null,
 rental_list_item_num bigint not null,
 rental_reserve_ticket varchar(50),
-rental_reserve_lift_adult_fee int,
-rental_reserve_lift_kid_fee int,
 rental_reserve_item_adult_fee int,
 rental_reserve_item_kid_fee int,
-rental_reserve_start datetime,
-rental_reserve_end datetime);
+rental_reserve_start datetime);
 
 --장비목록 테이블
 create table rental_items(
 rental_list_item_num bigint not null auto_increment,
-rental_main_num bigint not null,
 rental_list_low_item varchar(50),
 rental_list_mid_item varchar(50),
 rental_list_premium_item varchar(50),
+rental_list_adult_fee int,
+rental_list_kid_fee int,
 primary key(rental_list_item_num));
-
---장비이미지 테이블
-create table rental_img(
-rental_list_item_num bigint not null,
-rental_file_save varchar(200) not null,
-rental_file_name varchar(200) not null,
-rental_file_isok varchar(1) default 'N',
-rental_file_size varchar(200),
-rental_file_reg_at datetime default now());

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +8,7 @@
 <title>예약 페이지</title>
 <style type="text/css">
 	
-	.peopleNum{
+	.peopleList{
 		width: 120px;
 		
 	}
@@ -63,14 +64,24 @@
 	                	</div>
 						<input type="text" class="form-control" id="dateRangePicker" placeholder="날짜를 선택하세요" readonly="readonly">
 					</div>
+					<div class="input-group mb-3">
+  						<span class="input-group-text" id="basic-addon1"><i class="bi bi-person-fill"></i></span>
+  						<input type="text" id="people" class="form-control people" placeholder="인원수" aria-label="Username" readonly="readonly" aria-describedby="basic-addon1">
+					</div>
 				</div>
 					
-				<div class="peopleNum">
-					<label for="numberOfPeople">인원수:</label>
+				<div class="peopleList" id="peopleList" style="display: none;">
+					<label for="adult">성인:</label>
 					<div class="input-group">
-				        <button id="decrementBtn" class="btn btn-outline-primary" type="button">-</button>
-				        <input type="text" class="form-control" id="numberOfPeople" name="numberOfPeople" value="1" readonly>
-				        <button id="incrementBtn" class="btn btn-outline-primary" type="button">+</button>
+				        <button id="adultDecrementBtn" class="btn btn-outline-primary" type="button">-</button>
+				        <input type="text" class="form-control" id="adultPeople" name="adultPeople" value="0" readonly="readonly">
+				        <button id="adultIncrementBtn" class="btn btn-outline-primary" type="button">+</button>
+    				</div>
+					<label for="kid">어린이:</label>
+					<div class="input-group">
+				        <button id="kidDecrementBtn" class="btn btn-outline-primary" type="button">-</button>
+				        <input type="text" class="form-control" id="kidPeople" name="kidPeople" value="0" readonly="readonly">
+				        <button id="kidIncrementBtn" class="btn btn-outline-primary" type="button">+</button>
     				</div>
 				</div>
 				<button id="payBtn" type="button" class="btn btn-outline-primary">다음</button>
@@ -125,9 +136,7 @@
 	
 	
 	<script type="text/javascript" src="/resources/js/rental/reserve.js"></script>
-	
-	<script defer type="text/javascript"
-		src="/resources/js/hotel/reservation.js"></script>
+
 	
 </body>
 </html>
