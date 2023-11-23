@@ -8,7 +8,9 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -99,7 +101,8 @@ public class WeatherHandler {
 		JSONObject weather;
 		String day="";
 		String time="";
-        
+        Map<String, WeatherVO> WeatherMap = new HashMap<>();
+		
         for(int i=0; i<parse_item.size(); i++) {
         	WeatherVO wvo = new WeatherVO();
         	weather = (JSONObject) parse_item.get(i);
@@ -108,10 +111,10 @@ public class WeatherHandler {
         	String fcstTime = (String) weather.get("fcstTime");
         	category = (String)weather.get("category"); 
         	
-        	wvo.setFcst_Value(fcstValue);
-        	wvo.setFcst_Date(fcstDate);
-        	wvo.setFcst_Time(fcstTime);
-        	wvo.setCategory(category);
+//        	wvo.setFcst_Value(fcstValue);
+//        	wvo.setFcst_Date(fcstDate);
+//        	wvo.setFcst_Time(fcstTime);
+//        	wvo.setCategory(category);
 			// 출력
 			if(!day.equals(fcstDate.toString())) {
 				day=fcstDate.toString();
@@ -120,10 +123,8 @@ public class WeatherHandler {
 				time=fcstTime.toString();
 				System.out.println(day+"  "+time);
 			}
-			System.out.print("\tcategory : "+ category);
-			System.out.print(", fcst_Value : "+ fcstValue);
-			System.out.print(", fcstDate : "+ fcstDate);
-			System.out.println(", fcstTime : "+ fcstTime);
+			log.info("테스트 wvo = {}", wvo);
+			
         }
         
         
