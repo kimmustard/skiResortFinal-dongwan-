@@ -10,7 +10,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 
 @Configuration
-@PropertySource("classpath:MailProperties.properties")
+@PropertySource("classpath:outApiProperties.properties")
 public class MailConfig {
 
 	@Value("${email.id}")
