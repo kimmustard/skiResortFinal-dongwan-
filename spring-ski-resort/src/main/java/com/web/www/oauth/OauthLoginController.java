@@ -62,8 +62,6 @@ public class OauthLoginController {
 	 }
 
 	// 네이버 로그인 성공시 callback호출 메소드 
-	
-	
 	@RequestMapping(value = "/naver/callback", method = {RequestMethod.GET, RequestMethod.POST }) 
 	public String callback(Model model, @RequestParam String code, @RequestParam String state, 
 			HttpSession session, RedirectAttributes rttr) 

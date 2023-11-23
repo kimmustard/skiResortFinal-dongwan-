@@ -18,9 +18,8 @@ import com.web.www.domain.member.MemberVO;
 import com.web.www.security.AuthVO;
 
 import lombok.extern.slf4j.Slf4j;
-
 @Slf4j
-@Component
+@Component("oauthHandlerParser")
 public class OauthParser {
 	
 	public MemberVO naverUser(String apiResult) {
