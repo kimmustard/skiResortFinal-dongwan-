@@ -19,10 +19,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Component
-<<<<<<< HEAD
-=======
 @PropertySource("classpath:outApiProperties.properties")
->>>>>>> 2588bce5b9d82c6edc5b1314c0f832cdcb0129fc
 public class GoogleLoginBO {
 	//로그인 전용 url 호출
 	
