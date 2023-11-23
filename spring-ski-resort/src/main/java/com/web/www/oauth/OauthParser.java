@@ -1,13 +1,13 @@
-package com.web.www.handler;
 
+package com.web.www.oauth;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -18,9 +18,8 @@ import com.web.www.domain.member.MemberVO;
 import com.web.www.security.AuthVO;
 
 import lombok.extern.slf4j.Slf4j;
-
 @Slf4j
-@Component
+@Component("oauthHandlerParser")
 public class OauthParser {
 	
 	public MemberVO naverUser(String apiResult) {
@@ -52,7 +51,7 @@ public class OauthParser {
 			mvo.setMemberEmail(email);
 			mvo.setMemberPhoneNum(phoneNum);
 			mvo.setMemberName(name);
-			
+			mvo.setMemberType("naver");
 			//권한 부여
 			AuthVO auth = new AuthVO();
 			auth.setMemberId(id);
@@ -102,13 +101,16 @@ public class OauthParser {
 			JSONObject jsonObj = (JSONObject) obj; 
 			JSONObject properties = (JSONObject)jsonObj.get("properties");
 			JSONObject kakao_account = (JSONObject)jsonObj.get("kakao_account");
-			log.info("properties@@@@@@@@@@@@@@@ = {}",properties );
 			
 			String id = String.valueOf(jsonObj.get("id"));
 			String alias = (String) properties.get("nickname");
 			String email = (String) kakao_account.get("email");
 			String name = (String) kakao_account.get("name");
 			String phoneNum = (String) kakao_account.get("phone_number");
+			
+			//카카오 전화번호는 +82 XXXX 방식으로 넘어오기 때문에 번호 replace가 필요함
+			String formattedPhoneNumber = "0" + phoneNum.substring(4);
+			log.info("########### = {}", formattedPhoneNumber);
 			
 			//pwd 임시로 채울 미니 난수생성
 			String pwd = String.valueOf((int)(Math.random() * 899999) + 100000);
@@ -118,8 +120,9 @@ public class OauthParser {
 			mvo.setMemberPwd(pwd);
 			mvo.setMemberAlias(alias);
 			mvo.setMemberEmail(email);
-			mvo.setMemberPhoneNum(phoneNum);
+			mvo.setMemberPhoneNum(formattedPhoneNumber);
 			mvo.setMemberName(name);
+			mvo.setMemberType("kakao");
 			
 			//권한 부여
 			AuthVO auth = new AuthVO();
@@ -138,6 +141,39 @@ public class OauthParser {
 		
 		return null;
 		
+	}
+
+	public MemberVO googleUser(Map<String, String> userInfo) {
+		
+		
+		String id = userInfo.get("id");
+		String alias = userInfo.get("given_name");
+		String email = userInfo.get("email");
+		String name = userInfo.get("name");
+		
+		//pwd 임시로 채울 미니 난수생성
+		String pwd = String.valueOf((int)(Math.random() * 899999) + 100000);
+		
+		MemberVO mvo = new MemberVO();
+		mvo.setMemberId(id);
+		mvo.setMemberPwd(pwd);
+		mvo.setMemberAlias(alias);
+		mvo.setMemberEmail(email);
+		mvo.setMemberName(name);
+		mvo.setMemberPhoneNum("");
+		mvo.setMemberType("google");
+	
+		//권한 부여
+		AuthVO auth = new AuthVO();
+		auth.setMemberId(id);
+		auth.setAuth("ROLE_USER");
+				
+		List<AuthVO> authList = new ArrayList<>();
+		authList.add(auth);
+		mvo.setAuthList(authList);
+	
+		return mvo;
+	
 	}
 	
 }
