@@ -12,7 +12,7 @@
 <div class="notice-img-container" style="background-image: url('https://a.cdn-hotels.com/gdcs/production68/d766/4cc034a7-aeb1-4edd-b2a9-f7feaac49aec.jpg')">	</div>
 <br><br><br><br><br><br><br>
 <div class="container">
-	<form action="/notice/register" method="post">
+	<form action="/notice/register" method="post" enctype="multipart/form-data">
 	
 		<div class="mb-3">
 		  <label for="exampleFormControlInput1" class="form-label">제목</label>
