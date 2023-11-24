@@ -22,15 +22,18 @@ import com.web.www.weather.RegionVO;
 @ContextConfiguration(classes = {com.web.www.config.RootConfig.class})
 public class WeatherTest {
 	
+	/**
+	 * @실행전_MemberEmailHandler
+	 * @Component_주석_처리후_실행
+	 */
+	
 	@Inject
 	private WeatherDAO wdao;
 	
 	@Test
 	public void test12() {
 		  try {
-			  
-			  
-			  
+			 
 	            // 클래스패스에서 프로퍼티 파일 로드
 	            InputStream input = RegionRead.class.getClassLoader().getResourceAsStream("WeatherProperties.properties");
 

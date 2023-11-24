@@ -3,7 +3,7 @@ create table region(
 region_num bigint not null auto_increment,
 region_parent varchar(15) not null,
 region_child varchar(15) not null,
-region_grand_parent varchar(15) not null,
+region_grand_child varchar(15) not null,
 nx int,
 ny int,
 primary key(region_num)
