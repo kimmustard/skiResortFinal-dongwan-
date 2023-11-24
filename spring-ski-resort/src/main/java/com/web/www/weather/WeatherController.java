@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.json.simple.parser.ParseException;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -45,7 +46,7 @@ public class WeatherController {
 	}
 	
 	//첫 날씨표시
-	@GetMapping("/default")
+	@GetMapping(value = "/default", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<WeatherVO> defaultWeather() {
 		RegionDTO rdto = new RegionDTO();
 		rdto.setRegionChild("홍천군");

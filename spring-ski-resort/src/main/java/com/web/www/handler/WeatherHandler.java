@@ -98,8 +98,6 @@ public class WeatherHandler {
         JSONObject items = (JSONObject) body.get("items");
         JSONArray parse_item = (JSONArray) items.get("item");
         log.info("items = {}", items);
-
-        Map<String, WeatherVO> WeatherMap = new HashMap<>();
         
         WeatherVO wvo = new WeatherVO();
         
