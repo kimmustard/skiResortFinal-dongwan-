@@ -12,7 +12,11 @@
 	z-index: -1;
 }
 	.registerContainer{
+	
 		width: 100%;
+		position: fixed;
+		z-index: 0;
+		margin-top: 10px;
 	}
 	.registerBody{
 		
