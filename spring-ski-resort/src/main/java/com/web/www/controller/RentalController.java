@@ -31,6 +31,7 @@ public class RentalController {
 		return "/rental/reserve";
 	}
 	
+	
 	@GetMapping("/item")
 	public String itemForm() {
 		return "/rental/item";

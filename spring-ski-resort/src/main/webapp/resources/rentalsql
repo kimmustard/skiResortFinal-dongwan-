@@ -5,6 +5,9 @@ rental_main_num bigint not null,
 rental_lift_ticket varchar(50),
 rental_lift_adult_fee int,
 rental_lift_kid_fee int,
+rental_lift_adult int,
+rental_lift_kid int,
+rental_lift_start datetime,
 primary key(rental_lift_num));
 
 alter table rental_lift add constraint fk_lift foreign key(rental_main_num)

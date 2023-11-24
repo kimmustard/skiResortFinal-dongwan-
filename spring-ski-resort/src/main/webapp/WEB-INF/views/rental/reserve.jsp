@@ -15,7 +15,7 @@
 </style>
 </head>
 
-<!-- Bootstrap 4 CSS -->
+	<!-- Bootstrap 4 CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
     <!-- jQuery -->
@@ -36,7 +36,7 @@
 
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 	
-<link rel="stylesheet" href="/resources/css/hotel/reservation.css">
+	<link rel="stylesheet" href="/resources/css/rental/reserve.css">
 
 <body>
 	<jsp:include page="../common/nav.jsp" />
@@ -53,9 +53,9 @@
 		</div>
 		
 		<div class="box">
-			<h1>장비렌탈/리프트권 예약</h1>
+			<h1>리프트권 예약</h1>
 			<form action="/rental/reserve" method="post">
-				<input name="rentalReserveStart" id="rentalReserveStart" placeholder="렌탈이용날짜">
+				<input name="rentalLiftStart" id="rentalLiftStart" placeholder="렌탈이용날짜">
 			
 				<div class="date-group">
 					<div class="input-group calendar">
@@ -74,58 +74,51 @@
 					<label for="adult">성인:</label>
 					<div class="input-group">
 				        <button id="adultDecrementBtn" class="btn btn-outline-primary" type="button">-</button>
-				        <input type="text" class="form-control" id="adultPeople" name="adultPeople" value="0" readonly="readonly">
+				        <input type="text" class="form-control" id="adultPeople" name="rentalLiftAdult" value="0" readonly="readonly">
 				        <button id="adultIncrementBtn" class="btn btn-outline-primary" type="button">+</button>
     				</div>
 					<label for="kid">어린이:</label>
 					<div class="input-group">
 				        <button id="kidDecrementBtn" class="btn btn-outline-primary" type="button">-</button>
-				        <input type="text" class="form-control" id="kidPeople" name="kidPeople" value="0" readonly="readonly">
+				        <input type="text" class="form-control" id="kidPeople" name="rentalLiftKid" value="0" readonly="readonly">
 				        <button id="kidIncrementBtn" class="btn btn-outline-primary" type="button">+</button>
     				</div>
 				</div>
-				<button id="payBtn" type="button" class="btn btn-outline-primary">다음</button>
+				<button id="nextBtn" type="button" class="btn btn-outline-primary">다음</button>
 				
-				<div id="innerbox" style="display: none;">
+				<div id="innerbox" class="reserveBox" style="display: none;">
 					<div class="input-group mb-3">
-						<span class="input-group-text">이름</span>
-						<input type="text" class="form-control" name="memberName">
+						<span class="input-group-text">리프트권 선택</span>
 					</div>
-					<div>
-						<select class="form-select">
-						  <option selected>리프트권 선택</option>
-						  <option value="lift1">리프트 오전권</option>
-						  <option value="lift2">리프트 오후권</option>
-						  <option value="lift3">리프트 주간권</option>
-						  <option value="lift4">리프트 야간권</option>
-						  <option value="lift5">리프트 종일권</option>
-						  <option value="lift6">리프트 시즌권</option>
-						  <option value="liftX">선택안함</option>
-						</select>
+					<div class="form-check">
+					  <input class="form-check-input" type="radio" name="rentalLiftTicket" id="morningTicket">오전권
 					</div>
-					<div>
-						<select class="form-select">
-						  <option selected>시간 선택</option>
-						  <option value="rental1">렌탈 오전권</option>
-						  <option value="rental2">렌탈 오후권</option>
-						  <option value="rental3">렌탈 주간권</option>
-						  <option value="rental4">렌탈 야간권</option>
-						  <option value="rental5">렌탈 종일권</option>
-						  <option value="rental6">렌탈 시즌권</option>
-						  <option value="rentalX">선택안함</option>
-						</select>
+					<div class="form-check">
+					  <input class="form-check-input" type="radio" name="rentalLiftTicket" id="afternoonTicket">오후권
 					</div>
-					<div>
-						<select class="form-select">
-						  <option selected>장비 선택</option>
-						  <option value="item1">일반장비SET</option>
-						  <option value="item2">중급장비SET</option>
-						  <option value="item3">프리미엄장비SET</option>
-						</select>
+					<div class="form-check">
+					  <input class="form-check-input" type="radio" name="rentalLiftTicket" id="dayTimeTicket">주간권
+					</div>
+					<div class="form-check">
+					  <input class="form-check-input" type="radio" name="rentalLiftTicket" id="nightTimeTicket">야간권
+					</div>
+					<div class="form-check">
+					  <input class="form-check-input" type="radio" name="rentalLiftTicket" id="allDayTicket">종일권
+					</div>
+					<div class="form-check">
+					  <input class="form-check-input" type="radio" name="rentalLiftTicket" id="seasonTicket">시즌권
+					</div>
+					
+					<div class="input-group mb-3">
+						<span class="input-group-text">요금(성인)</span>
+						<input type="text" class="form-control" name="rentalLiftAdultFee" value="0" readonly="readonly">
+					</div>
+					<div class="input-group mb-3">
+						<span class="input-group-text">요금(어린이)</span>
+						<input type="text" class="form-control" name="rentalLiftKidFee" value="0" readonly="readonly">
 					</div>
 					
 					<a href="/rental/reserve"><button type="button" class="btn btn-outline-primary">이전으로</button></a>
-					<button type="button" id="closeBtn" class="btn btn-outline-primary">닫기</button>
 					<button type="submit" class="btn btn-outline-primary">결제</button>
 				</div>
 				
