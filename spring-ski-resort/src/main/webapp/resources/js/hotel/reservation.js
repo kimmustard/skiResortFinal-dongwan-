@@ -25,7 +25,7 @@ document.getElementById("closeBtn").addEventListener('click',()=>{
      if( getDayOfWeek(startDate)=="Invalid date"){
 
      }else{
-   	 var customText = "예약 날짜 : " + dateRange + " (" + getDayOfWeek(startDate) + " ~ " + getDayOfWeek(endDate) + ")";
+   	 var customText = dateRange + " (" + getDayOfWeek(startDate) + " ~ " + getDayOfWeek(endDate) + ")";
           $('#' + resultId).attr('placeholder',customText);
      }
 }
@@ -152,7 +152,7 @@ function getDayOfWeek(date) {
       
        document.getElementById('child-Count').innerText =cnt;
        AllPeopleCount();
-       childAgeSelectCreater();
+     //  childAgeSelectCreater();
      })
      
       document.getElementById("child-Btn").addEventListener('click',()=>{
@@ -162,7 +162,7 @@ function getDayOfWeek(date) {
     }
         document.getElementById('child-Count').innerText =cnt;
      AllPeopleCount();
-     childAgeSelectCreater();
+   //  childAgeSelectCreater();
      })
     
 
@@ -172,23 +172,49 @@ function getDayOfWeek(date) {
         document.getElementById('hotelReserveChild').value = document.getElementById('child-Count').innerText;
 
     }
-    function childAgeSelectCreater(){
-       
-        let select ="";
-        for(let i = 1; i<=parseInt(document.getElementById('child-Count').innerText); i++){
-            
-            select+= `<select class="child-age-selecr">`;
-            select+=`<option value="">나이(필수 입력)</option>`;
-            for(let  i =0 ; i <17; i++){
-                select+= `<option value="${i}">${i}</option>`;
-            
-        }
-        select += `</select>`;   
-         }
-         console.log(select);
-         document.getElementById('chile-age').innerHTML = select;
-     
-    }
+   // function childAgeSelectCreater(){
+    //   
+     //   let select ="";
+     //   for(let i = 1; i<=parseInt(document.getElementById('child-Count').innerText); i++){
+     //       
+      //      select+= `<select class="child-age-selecr">`;
+    //        select+=`<option value="">나이(필수 입력)</option>`;
+  //          for(let  i =0 ; i <17; i++){
+   //             select+= `<option value="${i}">${i}</option>`;
+   //         
+  //      }
+  //      select += `</select>`;   
+  //       }
+   //      console.log(select);
+   //      document.getElementById('chile-age').innerHTML = select;
+   //  
+  //  }
 document.getElementById('people').addEventListener('click',()=>{
     document.getElementById('peoplelist').style.display="block";
 })
+
+
+document.getElementById('peoplelistClose').addEventListener('click',()=>{
+    document.getElementById('peoplelist').style.display="none";
+})
+
+  var targetArea1 = document.getElementById('peoplelist');
+  var targetArea2 = document.getElementById('people');
+document.addEventListener('click', function(event) {
+	
+  if (!targetArea1.contains(event.target) || !targetArea2.contains(event.target)) {
+   		console.log("tq");
+     document.getElementById('peoplelist').style.display="none";
+  }
+});
+
+targetArea1.addEventListener('click', function(event) {
+  event.stopPropagation(); 
+});
+targetArea2.addEventListener('click', function(event) {
+  event.stopPropagation(); 
+});
+
+
+
+ 

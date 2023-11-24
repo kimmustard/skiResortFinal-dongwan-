@@ -251,7 +251,6 @@
 </div>
 
 
-<jsp:include page="../common/footer.jsp"></jsp:include>
 
 <script type="text/javascript" src="/resources/js/member/MemberRegister.js"></script>
 
