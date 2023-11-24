@@ -71,7 +71,7 @@
 }
 
 .daterangepicker {
-    width: 600px !important; /* 전체 너비로 설정 */
+    width: 300px !important; /* 전체 너비로 설정 */
     max-width: none !important; /* 최대 너비 설정 해제 */
     margin: 0 !important; /* 여백 제거 */
 }
@@ -82,7 +82,7 @@
 
 .daterangepicker .ranges, .daterangepicker .drp-calendar {
      float: left; 
-     width: 50%;
+     width: 100%;
 }
 .daterangepicker .calendar-table th, .daterangepicker .calendar-table td {
 	font-size: 15px;

@@ -3,6 +3,7 @@ package com.web.www.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.web.www.domain.member.MemberVO;
@@ -29,6 +30,11 @@ public class RentalController {
 	public String reserveForm(@ModelAttribute("mvo")MemberVO mvo) {
 		log.info("MemberController mvo = {}" , mvo);
 		return "/rental/reserve";
+	}
+	
+	@PostMapping("/reserve")
+	public String reservePost() {
+		return "";
 	}
 	
 	

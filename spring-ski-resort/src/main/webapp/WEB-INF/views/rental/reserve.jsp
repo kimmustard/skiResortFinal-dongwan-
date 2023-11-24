@@ -55,14 +55,14 @@
 		<div class="box">
 			<h1>리프트권 예약</h1>
 			<form action="/rental/reserve" method="post">
-				<input name="rentalLiftStart" id="rentalLiftStart" placeholder="렌탈이용날짜">
-			
+				<input type="hidden" name="rentalLiftStart" id="rentalLiftStart" placeholder="렌탈이용날짜">
+				
 				<div class="date-group">
 					<div class="input-group calendar">
 	              	 	<div class="input-group-prepend">
 	                		 <span class="input-group-text"><i class="bi bi-calendar"></i></span>
 	                	</div>
-						<input type="text" class="form-control" id="dateRangePicker" placeholder="날짜를 선택하세요" readonly="readonly">
+						<input type="text" name="rentalLiftStart" class="form-control" id="dateRangePicker" placeholder="날짜를 선택하세요" readonly="readonly">
 					</div>
 					<div class="input-group mb-3">
   						<span class="input-group-text" id="basic-addon1"><i class="bi bi-person-fill"></i></span>
