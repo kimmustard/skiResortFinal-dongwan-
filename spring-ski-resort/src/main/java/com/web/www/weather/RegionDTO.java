@@ -13,8 +13,13 @@ import lombok.ToString;
 @NoArgsConstructor
 public class RegionDTO {
 	
-	private long regionNum; //지역번호
-	private String nx; // x좌표
-	private String ny; // y좌표
+    private Long regionNum; // 지역 순번
+    private String regionParent; // 시, 도
+    private String regionChild; // 시, 군, 구
+    private String regionGrandChild;
+    private String nx; // x좌표
+    private String ny; // y좌표
+    
+
 	
 }

@@ -17,8 +17,8 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Component;
 
-import com.web.www.domain.etc.WeatherVO;
 import com.web.www.weather.RegionDTO;
+import com.web.www.weather.WeatherVO;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -66,7 +66,7 @@ public class WeatherHandler {
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("GET");
         conn.setRequestProperty("Content-type", "application/json");
-        System.out.println("Response code: " + conn.getResponseCode());
+        log.info("Response code = {} ", conn.getResponseCode());
         
         BufferedReader rd;
         if(conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
@@ -87,8 +87,6 @@ public class WeatherHandler {
 
         //=======이 밑에 부터는 json에서 데이터 파싱해 오는 부분이다=====//
         
-        log.info("날씨정보@@@@@@@@@@@@@@@ = {}",result);
-        
         JSONParser parser = new JSONParser(); 
 		Object obj = (JSONObject) parser.parse(result); 
 		
@@ -100,35 +98,65 @@ public class WeatherHandler {
         JSONObject items = (JSONObject) body.get("items");
         JSONArray parse_item = (JSONArray) items.get("item");
         log.info("items = {}", items);
-        
-    	String category;
-		JSONObject weather;
-		String day="";
-		String time="";
+
         Map<String, WeatherVO> WeatherMap = new HashMap<>();
-		
+        
+        WeatherVO wvo = new WeatherVO();
+        
         for(int i=0; i<parse_item.size(); i++) {
-        	weather = (JSONObject) parse_item.get(i);
+        	JSONObject weather = (JSONObject) parse_item.get(i);
         	String fcstValue = (String) weather.get("fcstValue");
         	String fcstDate = (String) weather.get("fcstDate");
         	String fcstTime = (String) weather.get("fcstTime");
-        	category = (String)weather.get("category"); 
+        	String category = (String)weather.get("category"); 
         	
-        	wvo.setCategory(category);
-        	wvo.setFcst_Value(fcstValue);
-        	wvo.setFcst_Date(fcstDate);
-        	wvo.setFcst_Time(fcstTime);
+        	
         	
         	//카테고리 별 밸류값 분류
-        	if(category.equals("TMP")) {
-        		//1시간 기온
-        	}else if()
-			
-			
-			
+        	if(category.equals("TMP")) {	//1시간 기온
+        		wvo.setWeatherTemp(fcstValue);
+        	}else if(category.equals("SKY")) {	//하늘상태
+        		
+        		if(fcstValue.equals("1")) {
+        			wvo.setWeatherSkyStatus("맑음");
+        		}else if(fcstValue.equals("3")) {
+        			wvo.setWeatherSkyStatus("구름많음");
+        		}else if(fcstValue.equals("4")) {
+        			wvo.setWeatherSkyStatus("흐림");
+        		}else {
+        			wvo.setWeatherSkyStatus("정보없음");
+        		}
+        		
+        	}else if(category.equals("PTY")) {	//강수형태
+        		wvo.setWeatherRainStatus(fcstValue);
+        		
+        		if(fcstValue.equals("0")) {
+        			wvo.setWeatherRainStatus("없음");
+        		}else if(fcstValue.equals("1")) {
+        			wvo.setWeatherRainStatus("비");
+        		}else if(fcstValue.equals("2")) {
+        			wvo.setWeatherRainStatus("비/눈");
+        		}else if(fcstValue.equals("3")) {
+        			wvo.setWeatherRainStatus("눈");
+        		}else if(fcstValue.equals("4")) {
+        			wvo.setWeatherRainStatus("소나기");
+        		}else {
+        			wvo.setWeatherRainStatus("정보없음");
+        		}
+        		
+        	}else if(category.equals("POP")) {	//강수확률
+        		wvo.setWeatherPer(fcstValue);
+        	}else if(category.equals("PCP")) {	//강수량
+        		wvo.setWeatherAmount(fcstValue);
+        	}
+        	
+        	wvo.setWeatherDate(fcstDate);
+        	wvo.setWeatherTime(fcstTime);
+        	wvo.setRegionNum(rdto.getRegionNum());
+        	
         }
+        return wvo;
         
-		return null;
         
         
 

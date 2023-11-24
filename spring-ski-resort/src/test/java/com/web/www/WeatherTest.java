@@ -50,6 +50,7 @@ public class WeatherTest {
 	                // 각 라인을 콤마로 분리하여 키와 값을 얻음
 	                String[] parts = line.split(",");
 	                RegionVO re = new RegionVO();
+	                re.setRegionNum(Long.parseLong(parts[0]));
 	                re.setRegionParent(parts[1]);
 	                re.setRegionChild(parts[2]);
 	                re.setRegionGrandChild(parts[3]);

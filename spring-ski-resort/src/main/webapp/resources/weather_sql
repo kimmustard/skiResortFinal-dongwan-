@@ -1,6 +1,6 @@
 ## 지역 테이블
 create table region(
-region_num bigint not null auto_increment,
+region_num bigint,
 region_parent varchar(15) not null,
 region_child varchar(15) not null,
 region_grand_child varchar(15) not null,
@@ -18,9 +18,10 @@ weahter_high_temp varchar(10),
 weather_row_temp varchar(10),
 weather_rain_status varchar(10),
 weather_amount varchar(10),
-weather_last datetime,
+weather_date varchar(10),
+weather_time varchar(10),
 weather_humid varchar(10),
-weahter_temp varchar(10),
+weather_temp varchar(10),
 primary key(region_num)
 );
 
