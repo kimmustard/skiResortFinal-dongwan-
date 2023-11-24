@@ -48,7 +48,7 @@
 								<c:choose>
 									<c:when test="${fvo.fileType > 0 }">
 										<div>
-										<img alt="" src="/upload/${fn: replace(fvo.saveDir,'\\','/')}/${fvo.uuid}_${fvo.fileName}">
+										<img alt="이미지x" src="/upload/${fn: replace(fvo.saveDir,'\\','/')}/${fvo.uuid}_${fvo.fileName}">
 										</div>
 									</c:when>
 								</c:choose>

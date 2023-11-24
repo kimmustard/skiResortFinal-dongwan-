@@ -23,7 +23,7 @@
 		<table class="table table-hover">
 			<tr>
 				<th>번호</th>
-				<td><input type="hidden" name="noticeNum" value="${nvo.noticeNum}" readonly="readonly"></td>
+				<td><input type="text" name="noticeNum" value="${nvo.noticeNum}" readonly="readonly"></td>
 			</tr>	
 			<tr>
 				<th>제목</th>

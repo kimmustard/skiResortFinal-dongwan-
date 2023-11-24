@@ -39,7 +39,8 @@ public class FileHandler {
 		
 		for(MultipartFile file : files) {
 			FileVO fvo = new FileVO();
-			fvo.setSaveDir(today);
+			String setDir = category+File.separator+today;
+			fvo.setSaveDir(setDir);
 			fvo.setFileSize(file.getSize());
 			fvo.setFileIsok("Y");
 			

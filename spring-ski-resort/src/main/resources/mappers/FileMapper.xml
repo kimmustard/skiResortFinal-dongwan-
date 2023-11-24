@@ -14,7 +14,7 @@
 	</select>
 	
 	<delete id="noticeRemoveFile">
-		delete from file where notice_num = #{noticeNum}
+		delete from file where uuid = #{uuid}
 	</delete>
 	
 </mapper>

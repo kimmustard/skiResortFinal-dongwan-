@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +11,8 @@
 </head>
 <body>
 <jsp:include page="../common/nav.jsp" />
+        	
+        	
 <div class="notice-img-container" style="background-image: url('https://a.cdn-hotels.com/gdcs/production68/d766/4cc034a7-aeb1-4edd-b2a9-f7feaac49aec.jpg')">	</div>
 <br><br><br><br><br><br><br>
 <div class="container">
@@ -33,7 +37,21 @@
 		
 		<div class="mb-3">
 		  <label for="exampleFormControlInput1" class="form-label">작성자</label>
-		  <input type="text" class="form-control" name="noticeWriter" id="exampleFormControlInput1" value="운영자" readonly="readonly">
+		  <sec:authorize access="isAuthenticated()"> <!-- 로그인 -->
+			<sec:authentication property="principal.mvo.memberId" var="authId"/>
+			<sec:authentication property="principal.mvo.memberEmail" var="authEmail"/>
+			<sec:authentication property="principal.mvo.memberAlias" var="authAlias"/>
+			<sec:authentication property="principal.mvo.memberType" var="authType"/>
+			  <c:if test="${authType == 'normal' }">
+			  	<input type="text" class="form-control" name="noticeWriter" id="exampleFormControlInput1" value="${authId }" readonly="readonly">
+			  </c:if>
+			  <c:if test="${authType != 'normal' }">
+			  	<input type="text" class="form-control" name="noticeWriter" id="exampleFormControlInput1" value="${authEmail }" readonly="readonly">
+			  </c:if>
+		  </sec:authorize>
+		  <sec:authorize access="isAnonymous()"> <!-- 로그인 x -->
+		  	<input type="text" class="form-control" name="noticeWriter" id="exampleFormControlInput1" value="비회원" readonly="readonly">
+		  </sec:authorize>
 		</div>
 		
 		<div class="mb-3">
