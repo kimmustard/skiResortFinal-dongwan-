@@ -4,18 +4,23 @@ region_num bigint not null auto_increment,
 region_parent varchar(15) not null,
 region_child varchar(15) not null,
 region_grand_child varchar(15) not null,
-nx int,
-ny int,
+nx varchar(10),
+ny varchar(10),
 primary key(region_num)
 );
 
 ## 날씨 테이블
 create table weather(
 region_num bigint,
-weather_per int,
-weather_sky varchar(10),
-weahter_high_temp int,
-weather_row_temp int,
+weather_per varchar(10),
+weather_sky_status varchar(10),
+weahter_high_temp varchar(10),
+weather_row_temp varchar(10),
+weather_rain_status varchar(10),
+weather_amount varchar(10),
+weather_last datetime,
+weather_humid varchar(10),
+weahter_temp varchar(10),
 primary key(region_num)
 );
 

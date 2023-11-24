@@ -9,4 +9,8 @@
   	values(#{regionParent}, #{regionChild}, #{regionGrandChild}, #{nx}, #{ny})
   </insert>
   
+  <select id="getRegion" resultType="com.web.www.weather.RegionDTO">
+	select * from region where region_grand_child = #{regionGrandChild}
+  </select>
+  
 </mapper>

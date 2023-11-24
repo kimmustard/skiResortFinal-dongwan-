@@ -18,32 +18,37 @@ import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Component;
 
 import com.web.www.domain.etc.WeatherVO;
+import com.web.www.weather.RegionDTO;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Component
 @Slf4j
 public class WeatherHandler {
-	
-	//오늘 날씨 계산기
-	String str = LocalDate.now()
-						  .format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
-						  .replaceAll("[^0-9]", "");
-	
-	private String nx = "73";	//위도
-    private String ny = "134";	//경도
-    private String baseDate = str;	//조회하고싶은 날짜
-    private String baseTime = "0500";	//조회하고싶은 시간
-    private String type = "json";	//조회하고 싶은 type(json, xml 중 고름)
     
-    
-    public void weatherParser() throws IOException, ParseException{
-
-    	//		참고문서에 있는 url주소
+    public WeatherVO weatherParser(RegionDTO rdto) throws IOException, ParseException{
+    	
+    	log.info("weatherParser 진입@@@@@@@@@@@");
+    	log.info("weatherParser 진입@@@@@@@@@@@");
+    	
+    	
+    	/**
+    	 * @공식문서 API url,key 정보 입력
+    	 */
         String apiUrl = "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst";
-        
-        //         홈페이지에서 받은 키
         String serviceKey = "UET%2FDPGx91mRuA4f2s%2BPcV5n%2BBw5%2BWvhYpd%2BElBlMe229wafGbuz3whtGBHW5GqJp5k1%2FdwR8bQgTSj%2Fx8kwwA%3D%3D";
+       
+        
+        //오늘 날씨 계산기
+        String dateTime = LocalDate.now()
+        		.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
+        		.replaceAll("[^0-9]", "");
+        
+        String nx = rdto.getNx();	//위도
+        String ny = rdto.getNy();	//경도
+        String baseDate = dateTime;	//조회하고싶은 날짜
+        String baseTime = "0500";	//조회하고싶은 시간
+        String type = "json";	//조회하고 싶은 type(json, xml 중 고름)
 
         StringBuilder urlBuilder = new StringBuilder(apiUrl);
         urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") + "="+serviceKey);
@@ -103,28 +108,27 @@ public class WeatherHandler {
         Map<String, WeatherVO> WeatherMap = new HashMap<>();
 		
         for(int i=0; i<parse_item.size(); i++) {
-        	WeatherVO wvo = new WeatherVO();
         	weather = (JSONObject) parse_item.get(i);
         	String fcstValue = (String) weather.get("fcstValue");
         	String fcstDate = (String) weather.get("fcstDate");
         	String fcstTime = (String) weather.get("fcstTime");
         	category = (String)weather.get("category"); 
         	
-//        	wvo.setFcst_Value(fcstValue);
-//        	wvo.setFcst_Date(fcstDate);
-//        	wvo.setFcst_Time(fcstTime);
-//        	wvo.setCategory(category);
-			// 출력
-			if(!day.equals(fcstDate.toString())) {
-				day=fcstDate.toString();
-			}
-			if(!time.equals(fcstTime.toString())) {
-				time=fcstTime.toString();
-				System.out.println(day+"  "+time);
-			}
-			log.info("테스트 wvo = {}", wvo);
+        	wvo.setCategory(category);
+        	wvo.setFcst_Value(fcstValue);
+        	wvo.setFcst_Date(fcstDate);
+        	wvo.setFcst_Time(fcstTime);
+        	
+        	//카테고리 별 밸류값 분류
+        	if(category.equals("TMP")) {
+        		//1시간 기온
+        	}else if()
+			
+			
 			
         }
+        
+		return null;
         
         
 

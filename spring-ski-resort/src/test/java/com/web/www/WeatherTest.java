@@ -53,8 +53,8 @@ public class WeatherTest {
 	                re.setRegionParent(parts[1]);
 	                re.setRegionChild(parts[2]);
 	                re.setRegionGrandChild(parts[3]);
-	                re.setNx(Integer.parseInt(parts[4]));
-	                re.setNy(Integer.parseInt(parts[5]));
+	                re.setNx(parts[4]);
+	                re.setNy(parts[5]);
 	                wdao.insertRegion(re);
 	                
 	            }
