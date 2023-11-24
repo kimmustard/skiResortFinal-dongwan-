@@ -15,6 +15,8 @@ public class RegionRead {
 	        
 
 	        try {
+	        	
+	        	
 	            // 클래스패스에서 프로퍼티 파일 로드
 	            InputStream input = RegionRead.class.getClassLoader().getResourceAsStream("WeatherProperties.properties");
 
