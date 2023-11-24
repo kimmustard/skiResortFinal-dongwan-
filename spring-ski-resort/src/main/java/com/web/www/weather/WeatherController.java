@@ -22,6 +22,11 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 public class WeatherController {
 	
+	
+	/**
+	 * @WeatherDAO 날씨 Repository입니다.
+	 * @WeatherHandler 날씨 api 획득/파싱 관련 클래스입니다.
+	 */
 	private final WeatherDAO wdao;
 	private final WeatherHandler wh;
 	

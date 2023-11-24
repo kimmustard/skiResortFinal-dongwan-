@@ -86,11 +86,7 @@ public class MemberController {
 		return "/member/detail";
 	}
 	
-	
-	
-	
-	
-	
+
 	/**
 	 * @param request (회원정보)
 	 * @param response (응답정보)

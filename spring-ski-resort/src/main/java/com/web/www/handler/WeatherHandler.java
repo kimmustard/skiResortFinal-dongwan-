@@ -7,6 +7,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
@@ -39,16 +40,37 @@ public class WeatherHandler {
         String serviceKey = "UET%2FDPGx91mRuA4f2s%2BPcV5n%2BBw5%2BWvhYpd%2BElBlMe229wafGbuz3whtGBHW5GqJp5k1%2FdwR8bQgTSj%2Fx8kwwA%3D%3D";
        
         
-        //오늘 날씨 계산기
-        String dateTime = LocalDate.now()
-        		.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
-        		.replaceAll("[^0-9]", "");
+        /**
+         * 기상청 날씨 API는 새벽 2시 이전 값을 가져올 수 없다.
+         * 만약 가지고 오려고하면 에러가 뜬다. 
+         * 이문제를 방지하기 위해 그전날인 23시값을 가져오게 한다.
+         */
+      
+        LocalDate now = LocalDate.now();
+        LocalTime now_time = LocalTime.now();
+        DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("yyyyMMdd");
+        DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("HH00");
+        log.info("지금날짜@@ = {}",now);
+        log.info("지금시간@@ = {}",now_time);
+        
+        int before = Integer.parseInt(now_time.format(formatter2));
+        int after = 210;
+        
+        log.info("비포bore = {}", before );
+        
+        if(before > after) {
+            now = now.minusDays(1);
+            now_time = now_time.of(23, 0);
+        }
         
         String nx = rdto.getNx();	//위도
         String ny = rdto.getNy();	//경도
-        String baseDate = dateTime;	//조회하고싶은 날짜
-        String baseTime = "0500";	//조회하고싶은 시간
+        String baseDate = now.format(formatter1);	//조회하고싶은 날짜
+        String baseTime = now_time.format(formatter2);	//조회하고싶은 시간
         String type = "json";	//조회하고 싶은 type(json, xml 중 고름)
+        
+        log.info("날짜체크@@@@@ = {}", baseDate);
+        log.info("시간체크@@@@@ = {}", baseTime);
 
         StringBuilder urlBuilder = new StringBuilder(apiUrl);
         urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") + "="+serviceKey);
