@@ -18,7 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 public class RentalController {
 	
 	private final RentalService rsv;
-	
+
 	@GetMapping("/fee-info")
 	public String rentalForm() {
 		
@@ -30,6 +30,7 @@ public class RentalController {
 		log.info("MemberController mvo = {}" , mvo);
 		return "/rental/reserve";
 	}
+	
 	
 	@GetMapping("/item")
 	public String itemForm() {

@@ -47,7 +47,7 @@
 		<img alt="" src="https://www.chamonix.com/sites/default/files/styles/full_screen/public/media/images/%C2%A9%20Daniel_Ronnback.webp?h=ea95bb15&itok=9owM8byS">
 		<!-- <div class="selector">
 			<div>
-				<a href="#">스키/리프트권</a>
+				<a href="/rental/reserve">스키/리프트권</a>
 			</div>
 			<div>
 				<a href="">호텔예약</a>
