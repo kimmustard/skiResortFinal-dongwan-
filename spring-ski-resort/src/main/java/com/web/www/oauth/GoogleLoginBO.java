@@ -3,6 +3,7 @@ package com.web.www.oauth;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -22,30 +23,29 @@ import lombok.extern.slf4j.Slf4j;
 @PropertySource("classpath:outApiProperties.properties")
 public class GoogleLoginBO {
 	//로그인 전용 url 호출
-	
-	private static String client_id = "1028808068261-1tj0vod2otlaetbsibbb8kp70o695740.apps.googleusercontent.com";
-	private static String client_secret = "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";
-	private static String tokenURL = "https://oauth2.googleapis.com/token";
-	private static String redirect_uri = "http://localhost:8089/oauth/google/callback";
-	private static String login_url = "https://accounts.google.com/o/oauth2/v2/auth?response_type=code"
-    		+ "&client_id=" + client_id
-            + "&redirect_uri=" + redirect_uri
-            + "&scope=email profile";
-	
+	@Value("${oauth.google.id}")
+	private String google_client_id;     
+	@Value("${oauth.google.secret}")
+	private String google_client_secret;  
 	
 	public String getGoogleUrl() {
-
+		String redirect_uri = "http://localhost:8089/oauth/google/callback";
+		String login_url = "https://accounts.google.com/o/oauth2/v2/auth?response_type=code"
+	    		+ "&client_id=" + google_client_id
+	            + "&redirect_uri=" + redirect_uri
+	            + "&scope=email profile";
 		return login_url;
 	}
 	
 	
 	public Map<String, String> getAccessToken(String code) {
-		
+		String tokenURL = "https://oauth2.googleapis.com/token";
+		String redirect_uri = "http://localhost:8089/oauth/google/callback";
 		
 		MultiValueMap<String, String> parameter = new LinkedMultiValueMap<>();
 	    parameter.add("grant_type", "authorization_code");
-	    parameter.add("client_id", client_id);
-	    parameter.add("client_secret", client_secret);
+	    parameter.add("client_id", google_client_id);
+	    parameter.add("client_secret", google_client_secret);
 	    parameter.add("code", code);
 	    parameter.add("redirect_uri", redirect_uri);
 
