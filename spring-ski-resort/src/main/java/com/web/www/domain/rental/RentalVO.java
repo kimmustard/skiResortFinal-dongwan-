@@ -1,4 +1,4 @@
-package com.web.www.domain;
+package com.web.www.domain.rental;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
