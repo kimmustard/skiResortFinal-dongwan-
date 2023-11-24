@@ -3,6 +3,8 @@ package com.web.www.weather;
 import java.io.IOException;
 
 import org.json.simple.parser.ParseException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +27,7 @@ public class WeatherController {
 	
 	//날씨정보 갱신
 	@GetMapping("/test")
-	public String testWeather() throws IOException, ParseException {
+	public void testWeather() throws IOException, ParseException {
 		// XX도, XX시/군 ,XX동순으로 입력합니다.
 		// 테스트용으로 "홍천읍"을 디폴트로 사용합니다.
 		String regionGrandChild = "홍천읍";
@@ -38,21 +40,19 @@ public class WeatherController {
 		WeatherVO wvo = wh.weatherParser(rdto);
 		log.info("parsing success @@@@@ = {}", wvo);
 		wdao.initWeather();
-		wdao.insertWeather(wvo);
-		
-		return "test";
+		int isOk = wdao.insertWeather(wvo);
+		log.info(isOk > 0 ? "등록완료" : "에러발생");
 	}
 	
+	//첫 날씨표시
 	@GetMapping("/default")
-	public String defaultWeather(Model model) {
+	public ResponseEntity<WeatherVO> defaultWeather() {
 		RegionDTO rdto = new RegionDTO();
 		rdto.setRegionChild("홍천군");
 		rdto.setRegionGrandChild("홍천읍");
-		log.info("ㅁㄴㅇㅁㄴㅇㅁㄴㅇ = {}", rdto);
 		WeatherVO wvo = wdao.selectDefaultWeather(rdto);
 		log.info("해당날씨 출력정보 @@@@@@@@@@@@wvo = {}", wvo);
-		model.addAttribute("weather", wvo);
 		
-		return ResponseEntity<WeatherVO> ;
+		return new ResponseEntity<WeatherVO>(wvo , HttpStatus.OK) ;
 	}
 }

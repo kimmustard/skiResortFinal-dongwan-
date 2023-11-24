@@ -11,7 +11,7 @@ public interface WeatherDAO {
 
 	RegionDTO getRegion(String regionGrandChild);
 
-	void insertWeather(WeatherVO wvo);
+	int insertWeather(WeatherVO wvo);
 	
 	//특정지역 날씨검색
 	WeatherVO selectDefaultWeather(RegionDTO rdto);
