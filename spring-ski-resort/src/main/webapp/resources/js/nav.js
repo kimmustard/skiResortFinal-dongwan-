@@ -14,6 +14,11 @@ window.onload = function(){
     if((document.getElementById('MemberIdCheck'))){
         document.getElementById("ski-blank").style.height="0px";
     }
+    if((document.getElementById('hotelReservePeople'))){
+        document.getElementById("ski-blank").style.height="0px";
+    }
+    
+   
     
 }
 
