@@ -19,13 +19,25 @@ window.onload = function () {
     }
 
 
-    weatherSearch().then(result => {
+    weatherSearch().then(weatherInfo => {
         if (document.getElementById("innerItem2") == null) {
             return;
         }
-        const obj = JSON.stringify(result.regionNum);
-        console.log(obj.regionNum);
-        document.getElementById("innerItem2").innerText = obj.regionNum;
+        /*
+        regionNum; //지역번호
+        weatherHighTemp; // 최고온도 (지원안함)
+        weatherLowTemp; // 최저온도(지원안함)
+        weatherTemp; // 현재기온
+        weatherSkyStatus; // 하늘 상태 (1맑음 2구름조금 3구름많음 4흐림)
+        weatherRainStatus; //강수형태 (0없음,1비,2눈/비,3눈,4소나기)
+        weatherAmount; // 강수량
+        weatherPer; //강수량
+        weatherDate; // 마지막 갱신 날짜
+        weatherTime;	// 마지막 갱신 시간
+        */
+        const obj = weatherInfo.regionNum;
+        console.log(obj);
+        document.getElementById("innerItem2").innerHTML = ``
     })
 
 
