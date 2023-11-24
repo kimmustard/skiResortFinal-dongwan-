@@ -28,6 +28,8 @@ member_id varchar(100) not null,
 auth varchar(50) not null
 );
 
+<<<<<<< HEAD
+=======
 
 ## notice table 11-22
 create table notice(
@@ -47,3 +49,4 @@ foreign key(member_num) references member(member_num)
 
 
 
+>>>>>>> origin/main
