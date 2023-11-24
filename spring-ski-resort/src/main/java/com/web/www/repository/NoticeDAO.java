@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.web.www.domain.board.NoticePagingVO;
+import com.web.www.domain.board.PagingVO;
 import com.web.www.domain.board.NoticeVO;
 
 public interface NoticeDAO {
@@ -13,14 +13,18 @@ public interface NoticeDAO {
 
 	NoticeVO selectDetail(long noticeNum);
 
-	List<NoticeVO> selectList(NoticePagingVO npvo);
+	List<NoticeVO> selectList(PagingVO npvo);
 
 	int update(NoticeVO nvo);
 
 	int delete(long noticeNum);
 
-	int getTotalCount(NoticePagingVO npvo);
+	int getTotalCount(PagingVO npvo);
 
 	void readCount(@Param("noticeNum")long noticeNum, @Param("cnt")int cnt);
+
+	long selectOneNoticeNum();
+
+	int noticeFileModify(NoticeVO nvo);
 
 }
