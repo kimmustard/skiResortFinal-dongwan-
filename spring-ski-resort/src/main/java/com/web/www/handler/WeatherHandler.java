@@ -37,7 +37,7 @@ public class WeatherHandler {
 	@Value("${weather.key}")
 	private String weather_Key;
     
-   public WeatherVO weatherParser(RegionDTO rdto) throws IOException, ParseException{
+	public WeatherVO weatherParser(RegionDTO rdto) throws IOException, ParseException{
     	
         /**
          * 기상청 날씨 데이터는 하루에 8번 갱신한다.
@@ -52,44 +52,44 @@ public class WeatherHandler {
         LocalDate now = LocalDate.now();
         LocalTime nowTime = LocalTime.now();
         DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("yyyyMMdd");
-        DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("HH00");
+        DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("HHmm");
 
-        int currentHour = Integer.parseInt(nowTime.format(formatter2));
         /**
          * @currentHour 현재시간 비례해서 api시간 가져오기
+         * String으로 최종 변환된 정보는 baseTime 담김
          */
+        int currentHour = Integer.parseInt(nowTime.format(formatter2));
+        
+        
+        String baseTime;
+        
         if (currentHour <= 211) {
             now = now.minusDays(1);
-            currentHour = 2300;
-        } else if (currentHour <= 511) {
-            currentHour = 200;
-        } else if (currentHour <= 811) {
-            currentHour = 500;
-        } else if (currentHour <= 1111) {
-            currentHour = 800;
-        } else if (currentHour <= 1411) {
-            currentHour = 1100;
-        } else if (currentHour <= 1711) {
-            currentHour = 1400;
-        } else if (currentHour <= 2011) {
-            currentHour = 1700;
-        } else if (currentHour <= 2311) {
-            currentHour = 2000;
+            baseTime = "2300";
+        } else if (currentHour < 511) {
+        	baseTime = "0200";
+        } else if (currentHour < 811) {
+        	baseTime = "0500";
+        } else if (currentHour < 1111) {
+        	baseTime = "0800";
+        } else if (currentHour < 1411) {
+        	baseTime = "1100";
+        } else if (currentHour < 1711) {
+        	baseTime = "1400";
+        } else if (currentHour < 2011) {
+        	baseTime = "1700";
+        } else if (currentHour < 2311) {
+        	baseTime = "2000";
         } else {
             now = now.minusDays(1);
-            currentHour = 2300;
+            baseTime = "2300";
         }
         
-        log.info("API 정보를 가져올 시간@@ = " + currentHour);
-
+        
         String nx = rdto.getNx();	//위도
         String ny = rdto.getNy();	//경도
         String baseDate = now.format(formatter1);	//조회하고싶은 날짜
-        String baseTime = String.valueOf(currentHour);	//조회하고싶은 시간
         String type = "json";	//조회하고 싶은 type(json, xml 중 고름)
-        
-        log.info("날짜체크@@@@@ = {}", baseDate);
-        log.info("시간체크@@@@@ = {}", baseTime);
 
         StringBuilder urlBuilder = new StringBuilder(weather_Url);
         urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") + "="+weather_Key);
@@ -99,10 +99,11 @@ public class WeatherHandler {
         urlBuilder.append("&" + URLEncoder.encode("base_time","UTF-8") + "=" + URLEncoder.encode(baseTime, "UTF-8")); /* 조회하고싶은 시간 AM 02시부터 3시간 단위 */
         urlBuilder.append("&" + URLEncoder.encode("dataType","UTF-8") + "=" + URLEncoder.encode(type, "UTF-8"));	/* 타입 */
 
-        /*
-         * GET방식으로 전송해서 파라미터 받아오기
-         */
         URL url = new URL(urlBuilder.toString());
+        
+        /**
+         * @HttpURLConnection GET방식으로 전송해서 파라미터 받아오기
+         */
 
         HttpURLConnection conn = createHttpURLConnection(url);
         
@@ -123,8 +124,9 @@ public class WeatherHandler {
         conn.disconnect();
         String result= sb.toString();
 
-        //받아온 api정보를 JSON simple을 이용하여 파싱 시작
-        
+        /**
+         * @JSONsimple 라이브러리를 이용하여 파싱 시작
+         */
         JSONParser parser = new JSONParser(); 
 		Object obj = (JSONObject) parser.parse(result); 
 		
@@ -141,13 +143,11 @@ public class WeatherHandler {
         
         for(int i=0; i<parse_item.size(); i++) {
         	JSONObject weather = (JSONObject) parse_item.get(i);
-        	String fcstValue = (String) weather.get("fcstValue");
-        	String fcstDate = (String) weather.get("fcstDate");
-        	String fcstTime = (String) weather.get("fcstTime");
         	String category = (String)weather.get("category"); 
-        	
-        	
-        	
+        	String fcstValue = (String) weather.get("fcstValue");
+//        	String fcstDate = (String) weather.get("fcstDate"); (사용안해서 제외)
+//        	String fcstTime = (String) weather.get("fcstTime"); (사용안해서 제외)
+
         	//카테고리 별 밸류값 분류
         	if(category.equals("TMP")) {	//1시간 기온
         		wvo.setWeatherTemp(fcstValue);
@@ -186,8 +186,8 @@ public class WeatherHandler {
         		wvo.setWeatherAmount(fcstValue);
         	}
         	
-        	wvo.setWeatherDate(fcstDate);
-        	wvo.setWeatherTime(fcstTime);
+        	wvo.setWeatherDate(baseDate);
+        	wvo.setWeatherTime(baseTime);
         	wvo.setRegionNum(rdto.getRegionNum());
         	
         }
