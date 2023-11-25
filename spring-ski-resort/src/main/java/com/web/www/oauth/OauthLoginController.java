@@ -64,7 +64,7 @@ public class OauthLoginController {
 		return naverAuthUrl; 
 	 }
 
-	// 네이버 로그인 성공시 callback 호출
+	// 네이버 callback 호출
 	@RequestMapping(value = "/naver/callback", method = {RequestMethod.GET, RequestMethod.POST }) 
 	public String callback(Model model, @RequestParam String code, @RequestParam String state, 
 			HttpSession session, RedirectAttributes rttr) 
@@ -74,12 +74,10 @@ public class OauthLoginController {
 		
 		//로그인 사용자 정보를 읽어옵니다.
 		String apiResult = null;
-		apiResult = naverLoginBO.getUserProfile(oauthToken);
-		log.info("네이버 로그인 정보 = {}" , apiResult);		
+		apiResult = naverLoginBO.getUserProfile(oauthToken);	
 		
 		//JSON 유저 정보 파싱 -> 유저VO에 담기
 		MemberVO mvo = parser.naverUser(apiResult);
-		log.info("네이버로그인 정보 = {}", mvo);	
 		
 		//정보가 세팅된 소셜유저 가입, 인증권한 세팅 메서드 
 		socialUserCreateMemberAndAuthSet(mvo);
@@ -103,10 +101,9 @@ public class OauthLoginController {
 		
 		/* 카카오 아이디로 인증 URL을 생성하기 위하여 kakaoLoginBO클래스의 getAuthorizationUrl메서드 호출 */ 
 		String kakaoAuthUrl = kakao_clientUrl;
-		log.info("카카오 url = {}" , kakaoAuthUrl); //네이버 
 		return kakaoAuthUrl; 
 	 }
-	
+	// 카카오 callback 호출
 	@RequestMapping(value = "/kakao/callback", method = {RequestMethod.GET, RequestMethod.POST }) 
 	public String kakaoLogin(@RequestParam(value = "code", required = false) String code) throws Exception {
 		String access_Token = kakaoLoginBO.getAccessToken(code);

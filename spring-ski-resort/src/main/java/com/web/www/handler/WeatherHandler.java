@@ -4,18 +4,19 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.ProtocolException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.HashMap;
-import java.util.Map;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 import com.web.www.weather.RegionDTO;
@@ -25,55 +26,73 @@ import lombok.extern.slf4j.Slf4j;
 
 @Component
 @Slf4j
+@PropertySource("classpath:outApiProperties.properties")
 public class WeatherHandler {
+	
+	/**
+	 * @공식문서 API url,key 정보 입력
+	 */
+	@Value("${weather.url}")
+	private String weather_Url;
+	@Value("${weather.key}")
+	private String weather_Key;
     
-    public WeatherVO weatherParser(RegionDTO rdto) throws IOException, ParseException{
+   public WeatherVO weatherParser(RegionDTO rdto) throws IOException, ParseException{
     	
-    	log.info("weatherParser 진입@@@@@@@@@@@");
-    	log.info("weatherParser 진입@@@@@@@@@@@");
-    	
-    	
-    	/**
-    	 * @공식문서 API url,key 정보 입력
-    	 */
-        String apiUrl = "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst";
-        String serviceKey = "UET%2FDPGx91mRuA4f2s%2BPcV5n%2BBw5%2BWvhYpd%2BElBlMe229wafGbuz3whtGBHW5GqJp5k1%2FdwR8bQgTSj%2Fx8kwwA%3D%3D";
-       
-        
         /**
+         * 기상청 날씨 데이터는 하루에 8번 갱신한다.
+         * (2시 5시 8시 11시 14시 17시 20시 23시)
+         * 더 자세히 말하자면 실제 갱신시간은 2시10분 5시10분 8시10분.. 이다.
+         * 
          * 기상청 날씨 API는 새벽 2시 이전 값을 가져올 수 없다.
          * 만약 가지고 오려고하면 에러가 뜬다. 
          * 이문제를 방지하기 위해 그전날인 23시값을 가져오게 한다.
          */
       
         LocalDate now = LocalDate.now();
-        LocalTime now_time = LocalTime.now();
+        LocalTime nowTime = LocalTime.now();
         DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("yyyyMMdd");
         DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("HH00");
-        log.info("지금날짜@@ = {}",now);
-        log.info("지금시간@@ = {}",now_time);
-        
-        int before = Integer.parseInt(now_time.format(formatter2));
-        int after = 210;
-        
-        log.info("비포bore = {}", before );
-        
-        if(before > after) {
+
+        int currentHour = Integer.parseInt(nowTime.format(formatter2));
+        /**
+         * @currentHour 현재시간 비례해서 api시간 가져오기
+         */
+        if (currentHour <= 211) {
             now = now.minusDays(1);
-            now_time = now_time.of(23, 0);
+            currentHour = 2300;
+        } else if (currentHour <= 511) {
+            currentHour = 200;
+        } else if (currentHour <= 811) {
+            currentHour = 500;
+        } else if (currentHour <= 1111) {
+            currentHour = 800;
+        } else if (currentHour <= 1411) {
+            currentHour = 1100;
+        } else if (currentHour <= 1711) {
+            currentHour = 1400;
+        } else if (currentHour <= 2011) {
+            currentHour = 1700;
+        } else if (currentHour <= 2311) {
+            currentHour = 2000;
+        } else {
+            now = now.minusDays(1);
+            currentHour = 2300;
         }
         
+        log.info("API 정보를 가져올 시간@@ = " + currentHour);
+
         String nx = rdto.getNx();	//위도
         String ny = rdto.getNy();	//경도
         String baseDate = now.format(formatter1);	//조회하고싶은 날짜
-        String baseTime = now_time.format(formatter2);	//조회하고싶은 시간
+        String baseTime = String.valueOf(currentHour);	//조회하고싶은 시간
         String type = "json";	//조회하고 싶은 type(json, xml 중 고름)
         
         log.info("날짜체크@@@@@ = {}", baseDate);
         log.info("시간체크@@@@@ = {}", baseTime);
 
-        StringBuilder urlBuilder = new StringBuilder(apiUrl);
-        urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") + "="+serviceKey);
+        StringBuilder urlBuilder = new StringBuilder(weather_Url);
+        urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") + "="+weather_Key);
         urlBuilder.append("&" + URLEncoder.encode("nx","UTF-8") + "=" + URLEncoder.encode(nx, "UTF-8")); //경도
         urlBuilder.append("&" + URLEncoder.encode("ny","UTF-8") + "=" + URLEncoder.encode(ny, "UTF-8")); //위도
         urlBuilder.append("&" + URLEncoder.encode("base_date","UTF-8") + "=" + URLEncoder.encode(baseDate, "UTF-8")); /* 조회하고싶은 날짜*/
@@ -85,10 +104,7 @@ public class WeatherHandler {
          */
         URL url = new URL(urlBuilder.toString());
 
-        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-        conn.setRequestMethod("GET");
-        conn.setRequestProperty("Content-type", "application/json");
-        log.info("Response code = {} ", conn.getResponseCode());
+        HttpURLConnection conn = createHttpURLConnection(url);
         
         BufferedReader rd;
         if(conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
@@ -107,7 +123,7 @@ public class WeatherHandler {
         conn.disconnect();
         String result= sb.toString();
 
-        //=======이 밑에 부터는 json에서 데이터 파싱해 오는 부분이다=====//
+        //받아온 api정보를 JSON simple을 이용하여 파싱 시작
         
         JSONParser parser = new JSONParser(); 
 		Object obj = (JSONObject) parser.parse(result); 
@@ -176,11 +192,16 @@ public class WeatherHandler {
         	
         }
         return wvo;
-        
-        
-        
 
     }
+
+	private static HttpURLConnection createHttpURLConnection(URL url) throws IOException, ProtocolException {
+		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        conn.setRequestMethod("GET");
+        conn.setRequestProperty("Content-type", "application/json");
+        log.info("Response code = {} ", conn.getResponseCode());
+		return conn;
+	}
 
     
 }
