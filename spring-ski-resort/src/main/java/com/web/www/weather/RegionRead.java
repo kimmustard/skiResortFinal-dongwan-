@@ -26,7 +26,7 @@ public class RegionRead {
                 return;
             }
 
-            // 프로퍼티 읽기
+            // 프로퍼티스 읽기
             BufferedReader reader = new BufferedReader(new InputStreamReader(input));
             String line;
 

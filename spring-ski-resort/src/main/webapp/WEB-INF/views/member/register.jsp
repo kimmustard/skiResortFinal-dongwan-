@@ -103,7 +103,7 @@
 			    		<option value="070">070</option>
 			    		<option value="053">053</option>
 			    	</select>
-			    	<input type="text" re class="form-control" placeholder="휴대번호" onkeyup='printNum()' id="phoneNum2" maxlength='8' 
+			    	<input type="text" class="form-control" placeholder="휴대번호" onkeyup='printNum()' id="phoneNum2" maxlength='8' 
 			    	oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
 				</div>
 			    

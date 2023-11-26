@@ -30,7 +30,8 @@ public class WeatherSweeper {
 	
 	/**
 	 * 스케줄링 시간 3시간 쿨타임
-	 * @Async 스케줄러는 default 싱글 스레드이기 때문에 작업속도 때문에 비동기 사용
+	 * @Scheduled는 default 싱글 스레드이기 때문에 실행시 작업속도 영향이 무조건 가기 때문에
+	 * @Async 비동기 애노테이션을 사용함.
 	 * 기존 핸들러에서 발생한 체크예외는 (throws IOException, ParseException) 
 	 * 언체크예외로 변경하여 종속성을 삭제한다.
 	 */

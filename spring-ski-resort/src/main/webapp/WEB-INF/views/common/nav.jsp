@@ -38,19 +38,22 @@
         	<sec:authentication property="principal.mvo.memberAlias" var="authAlias"/>
         	<sec:authentication property="principal.mvo.memberType" var="authType"/>
         	<c:if test="${authType == 'normal' }">
-       		<li>${authId}님 환영합니다.</li>
-	       	<li><a href="/member/detail">회원정보</a></li>
+	       		<li>${authId}님 환영합니다.</li>
+		       	<li><a href="/member/detail">| 회원정보</a></li>
         	</c:if>
         	<c:if test="${authType == 'naver' }">
-       		<li>(네이버)${authEmail}님 환영합니다.</li>
+	       		<li>(네이버)${authEmail}님 환영합니다.</li>
+	       		<li><a href="#">| 회원정보</a></li>
         	</c:if>
         	<c:if test="${authType == 'kakao' }">
-       		<li>(카카오)${authEmail}님 환영합니다.</li>
+	       		<li>(카카오)${authEmail}님 환영합니다.</li>
+	       		<li><a href="#">| 회원정보</a></li>
         	</c:if>
         	<c:if test="${authType == 'google' }">
-       		<li>(구글)${authEmail}님 환영합니다.</li>
+	       		<li>(구글)${authEmail}님 환영합니다.</li>
+		       	<li><a href="#">| 회원정보</a></li>
         	</c:if>
-	       	<li><a href="/member/logout">로그아웃</a></li>
+	       	<li><a href="/member/logout">| 로그아웃</a></li>
 		
 		</sec:authorize>
      

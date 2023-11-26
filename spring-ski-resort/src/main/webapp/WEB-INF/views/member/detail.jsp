@@ -5,130 +5,164 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link  href="/resources/css/member/detail.css" rel="stylesheet">
 </head>
 <body>
 	
-		<jsp:include page="../common/nav.jsp"></jsp:include>
-	
-		<div class="bodyContainer">
-			<div class="registerContainer">
-				
-				<div class="registerBody">
-					<form action="/member/register" method="post">
-					
-						
-						<div class="registerMainBox">
-						
-							<div class="form-group registerBox rb-1">
-	 							<label class="form-label mt-4" for="inputMemberId">아이디</label>
-							    <div class="input-group mb-3">
-							      <input type="text" class="form-control test55" id="inputMemberId" name="memberId" placeholder="아이디를 입력하세요" aria-label="Recipient's username" aria-describedby="button-addon2">
-							      <button class="btn btn-primary" type="button">중복확인</button>
-							    </div>
-						    </div>
-						    
-							<div class="form-group registerBox rb-2">
-						      <label for="exampleInputPassword1" class="form-label mt-4">Password</label>
-						      <input type="password" class="form-control" name="memberPwd" id="exampleInputPassword1" placeholder="비밀번호" autocomplete="off">
-						      <label for="exampleInputPassword2" class="form-label mt-4">Password check</label>
-						      <input type="password" class="form-control" id="exampleInputPassword2" placeholder="비밀번호 확인" autocomplete="off">
-						    </div>
+<jsp:include page="../common/nav.jsp"></jsp:include>
 
-							<div class="form-group registerBox rb-4">
-	 							<label class="form-label mt-4" for="inputMemberAlias">닉네임</label>
-							    <div class="input-group mb-3">
-							      <input type="text" class="form-control" name="memberAlias" id="inputMemberAlias" placeholder="닉네임" aria-label="Recipient's username" aria-describedby="button-addon2">
-							      <button class="btn btn-primary" type="button">중복확인</button>
-							    </div>
-						    </div>
-						    
-							<div class="form-group row registerBox rb-5">
-							     <label for="exampleInputEmail1" class="form-label mt-4">Email</label>
-							     <div>
-							     <input type="email" class="form-control" name="memberEmail" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="이메일">
-							     <small id="emailHelp" class="form-text text-muted">이메일 양식대로 입력해주세요.</small>
-						   		 </div>
-						    </div>
-						    <!-- 주소 -->
-						    <div class="form-group registerBox rb-6">
-	 							<label class="form-label mt-4" for="inputMemberAddress">주소</label>
-							    <div class="input-group mb-3">
-							      <input type="text" class="form-control" name="memberAddress" id="inputMemberAddress" placeholder="주소를 입력해주세요." aria-label="Recipient's username" aria-describedby="button-addon2">
-							      <button class="btn btn-primary" type="button" id="button-addon2">주소 찾기</button>
-							    </div>
-							    <div class="form-group registerBox rb-7">
-									<input type="text" class="form-control" name="memberAddressDetail" placeholder="상세주소 입력...">
-								</div>
-						    </div>
-						    
-						    <div class="form-group registerBox rb-8">
-								 <label class="col-form-label mt-4" for="inputMemberName">이름</label>
-								 <input type="text" class="form-control" name="memberName" placeholder="실명 입력" id="inputMemberName">
-							</div>   
-						    
-						    <div class="form-group registerBox rb-9">
-								 <label class="col-form-label mt-4" for="inputMemberPhone">핸드폰 번호</label>
-								 <input type="text" class="form-control" name="memberPhoneNum" placeholder="핸드폰 번호 입력" id="inputMemberPhone">
-								 <small class="form-text text-muted">"-" 제외 후 핸드폰 번호 입력</small>
-								 <small class="form-text text-muted">ex) 01012345678</small>
-							</div>    
-							
-						</div>
-						
-						
-						<!-- 체크박스 -->
-						<div class="termsMainBox">
-							
-						 	<div class="form-check all-check">
-						        <input class="form-check-input" type="checkbox" id="flexCheckDefault">
-						        <label class="form-check-label" for="flexCheckDefault">
-						          전체동의
-						        </label>
-						    </div>
-						    <hr>
-						    <div class="termsBox">
-						    	<div class="tbBox tb-1">
-							    	<input class="form-check-input" name="memberTerms1" type="checkbox" value="terms1check" id="flexCheckDefault-1">
-							    	<input type="hidden" name="memberTerms1" id="terms1" value="non-check" >
-							    	<label class="form-check-label" for="flexCheckDefault-1">
-							          만 14세 이상입니다. (필수)
-							        </label>
-						        </div>
-						        <div class="tbBox tb-2">
-							        <input class="form-check-input" name="memberTerms2" type="checkbox" value="terms2check" id="flexCheckDefault-2">
-							    	<input type="hidden" name="memberTerms2" id="terms2" value="non-check">
-							    	<label class="form-check-label" for="flexCheckDefault-2">
-							          이용약관 (필수)
-							        </label>
-							        <button type="button" class="btn btn-primary">약관보기</button>
-						        </div>
-						        <div class="tbBox tb-3">
-							        <input class="form-check-input" name="memberTerms3" type="checkbox" value="terms3check" id="flexCheckDefault-3">
-							    	<input type="hidden" name="memberTerms3" id="terms3" value="non-check">
-							    	<label class="form-check-label" for="flexCheckDefault-3">
-							          마케팅 동의 (선택)
-							        </label>
-						        </div>
-						    
-						    </div>
-	
-						</div>
+	<div class="bodyContainer">
+		<div class="mauntain1">
+			<img alt="그림없음" height="1000px" src="/resources/etc/snow_mauntain.png">
+		</div>
+		<div class="mauntain2">
+			<img alt="그림없음" height="1000px" src="/resources/etc/snow_mauntain.png">
+		</div>
+		<div class="detailContainer">
+		
+				
+				<div class="detailMainBody1">
+					<div class="category-title">
+						<a href="#">
+							<span class="category-span-main">
+								<i class="bi bi-house-door-fill"></i> 메인으로
+							</span>	
+						</a>
+					</div>
+					<ul class="MainBody1-category">
 					
+					
+						<li><span class="category-span-main">개인정보</span></li>
+						<li>
+							<a href="#"> 
+								<span class="category-span">
+									<i class="bi bi-person-bounding-box"></i> 내 프로필
+								</span> 
+							</a>
+						</li>
+						<li>
+							<a href="#"> 
+								<span class="category-span">
+									<i class="bi bi-key-fill"></i> 비밀번호 변경
+								</span> 
+							</a>
+						</li>
+						<li>
+							<a href="#"> 
+								<span class="category-span">
+									<i class="bi bi-list-stars"></i> 결제내역
+								</span> 
+							</a>
+						</li>
+						<li>
+							<a href="#"> 
+								<span class="category-span">
+									<i class="bi bi-list-stars"></i> 환불신청
+								</span> 
+							</a>
+						</li>
+					</ul>
+					<ul class="MainBody2-category">
+						<li class="category-span-main">회원 서비스</li>
 						
-						
-						<div class="btnMainBox">
-							<button type="submit" class="btn btn-primary bb-1">가입완료</button> 
-							<a href="/"><button type="button" class="btn btn-primary bb-2">메인으로</button></a>
+						<li>
+							<a href="#"> 
+								<span class="category-span">
+									<i class="bi bi-box-arrow-left"></i> 로그아웃
+								</span> 
+							</a>
+						</li>
+						<li>
+							<a href="#"> 
+								<span class="category-span">
+									<i class="bi bi-person-fill-slash"></i> 회원탈퇴
+								</span> 
+							</a>
+						</li>
+					</ul>
+				</div>
+				
+				<div class="detailMainBody2_3">
+				
+					<div class="detailMainBody2">
+						<div class="detailSubBox1">
+								<ul>
+									<li>
+										<span class="sb1-span">다이스키 정규회원입니다.</span>
+									</li>
+									<li>
+										<label for="sb1-input1" class="sb1-span" onclick="focusInput('sb1-input1')">아이디</label><br>
+										<input class="sb1-input" id="sb1-input1" value="${mvo.memberId }">
+									</li>
+									<li>
+										<label for="sb1-input2" class="sb1-span" onclick="focusInput('sb1-input2')">이름</label><br>
+										<input class="sb1-input" id="sb1-input2" value="${mvo.memberName }">
+									</li>
+									<li>
+										<label for="sb1-input3" class="sb1-span" onclick="focusInput('sb1-input3')">별명</label><br>
+										<input class="sb1-input" id="sb1-input3" value="${mvo.memberAlias }">
+									</li>
+									<li>
+										<label for="sb1-input4" class="sb1-span" onclick="focusInput('sb1-input4')">이메일</label><br>
+										<input class="sb1-input" id="sb1-input4" value="${mvo.memberEmail }">
+									</li>
+	
+								</ul>
+								<div class="modify-btn">
+									<button type="submit" class="btn btn-primary">수정하기</button> 
+								</div>
 						</div>
-					</form>
+						<div class="detailSubBox2">
+							<ul>
+								<li><span>활동 정보</span></li>
+								<li>
+									<span>가입일</span><br>
+									<div></div>
+								</li>
+								<li>
+									<span>로그인</span><br>
+									<div></div>
+								</li>
+								<li>
+									<span>최종 로그인 IP</span><br>
+									<div></div>
+								</li>
+								<li>
+									<span>문의 내역</span><br>
+									<div></div>
+								</li>
+								<li>
+									<span>환불 내역</span><br>
+									<div></div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					
+					<div class="detailMainBody3">
+						<div class="detailSubBox3">
+							<a href="#"><span>내역 상세조회</span></a>
+							<div>
+								<span>결제/환불 내역</span>
+							</div>	
+						</div>
+					</div>
 					
 				</div>
-			</div>	
-			
-		</div>
+	</div>	
+</div>	<!-- modify body -->
 	
-	<jsp:include page="../common/footer.jsp"></jsp:include>
-	
+
+
+<jsp:include page="../common/footer.jsp"></jsp:include>
+<script>
+	function focusInput(inputId) {
+	    // 라벨 클릭시 인풋창 뒤로 focus하게하는 스크립트
+	    var inputElement = document.getElementById(inputId);
+	    inputElement.focus();
+	    inputElement.setSelectionRange(inputElement.value.length, inputElement.value.length);
+	}
+</script>
 
 </body>
 </html>

@@ -2,6 +2,8 @@ package com.web.www.repository;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.web.www.domain.member.MemberVO;
 import com.web.www.security.AuthVO;
 
@@ -41,6 +43,17 @@ public interface MemberDAO {
 	
 	
 	/**
+	 * @param 로그인된 회원 아이디
+	 * @return 로그인된 회원 검증후 DB에서 회원정보 찾아옴
+	 */
+	MemberVO getUser(@Param("memberId") String memberId, @Param("memberType")String memberType);
+	
+	
+	
+	
+	
+	
+	/**
 	 * 중복 검증 메서드 repository
 	 * @param memberId, memberEmail
 	 * @return
@@ -48,6 +61,7 @@ public interface MemberDAO {
 	int checkId(String memberId);
 
 	int checkEmail(String memberEmail);
+
 
 
 
