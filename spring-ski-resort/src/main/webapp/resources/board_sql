@@ -2,7 +2,7 @@
 ## notice table 11-22
 create table notice(
 notice_num bigint not null auto_increment,
-member_num bigint not null,
+member_num bigint,
 notice_writer varchar(50) not null,
 notice_category varchar(20) not null,
 notice_title varchar(100) not null,
@@ -29,3 +29,10 @@ file_reg_at datetime default now(),
 primary key(uuid),
 foreign key(notice_num) references notice(notice_num)
 );
+
+
+*11-25
+- not null 지웠음.
+notice table에서 member_num
+- notice_del 칼럼 추가.
+alter table notice add notice_del varchar(1) default 'N';

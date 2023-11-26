@@ -127,8 +127,8 @@ public class NoticeController {
 	
 	
 	@GetMapping("/remove")
-	public String remove(@RequestParam("noticeNum")long noticeNum, RedirectAttributes re) {
-		int isOk = nsv.remove(noticeNum);
+	public String noticeRemove(@RequestParam("noticeNum")long noticeNum, RedirectAttributes re) {
+		int isOk = nsv.noticeRemove(noticeNum);
 		log.info(">>>>> notice remove >> "+(isOk > 0? "OK" : "Fail"));
 		re.addFlashAttribute("isOk", isOk);
 		return "redirect:/notice/list";
