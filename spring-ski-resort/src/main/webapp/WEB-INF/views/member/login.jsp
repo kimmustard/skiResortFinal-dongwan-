@@ -42,7 +42,12 @@
 	.login-btn{
 		width: 100px;
 	}
-	
+	.bodyContainer>video{
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: -1;
+}
 
 </style>
 <link rel="stylesheet" href="/resources/css/loginbootstrap.css">
@@ -51,7 +56,9 @@
 	<jsp:include page="../common/nav.jsp"></jsp:include>
 	
 	<div class="bodyContainer">
-	
+	<video width="100%" height="auto" autoplay loop muted>
+	<source src="https://www.chamonix.com/sites/default/files/media/videos/homepage-vallorcine%201.mp4" type="video/mp4">
+	</video>
 		<div class="loginContainer">
 			<form action="/member/login" method="post">
 				<div class="login-box">
