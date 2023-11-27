@@ -22,7 +22,9 @@
 		<div id="wrapper">
 		 	<div id="innerItem1">뭘 넣을진 z모르지만</div> 
 		 	<div id="innerItem2">날씨를 넣던가</div> 
-		 	<div id="innerItem3">다른 메뉴를 넣어도 되고</div> 
+		 	<div id="innerItem3">
+		 		<img alt="없음" width="60px" height="60px" src="/resources/etc/icons/weather/해.png">
+		 	</div> 
 		 	<div id="innerItem4">일단 때려박기~~</div> 
 		</div>
 	</div>
