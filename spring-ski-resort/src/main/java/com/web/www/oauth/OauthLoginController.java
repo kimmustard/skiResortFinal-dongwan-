@@ -1,7 +1,6 @@
 package com.web.www.oauth;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -41,16 +40,20 @@ public class OauthLoginController {
 	private final OauthParser parser;
 	
 	/**
-	 * @네이버
-	 * @카카오
-	 * @구글
+	 * @NaverLoginBO 네이버 비즈니스 오브젝트(BO)입니다.  
+	 * @카카오 카카오 비즈니스 오브젝트(BO)입니다.
+	 * @구글	구글 비즈니스 오브젝트입니다(BO)입니다.
 	 */
 	private final NaverLoginBO naverLoginBO;
 	private final KakaoLoginBO kakaoLoginBO;
 	private final GoogleLoginBO googleLoginBO;
 	
 
-	// 로그인 첫 화면 요청 메소드
+	/**
+	 * @네이버
+	 */
+	
+	// 로그인 첫 화면 요청
 	@ResponseBody
 	@GetMapping("/naver/login") 
 	public String naverLogin(HttpSession session) { 
@@ -61,7 +64,7 @@ public class OauthLoginController {
 		return naverAuthUrl; 
 	 }
 
-	// 네이버 로그인 성공시 callback호출 메소드 
+	// 네이버 callback 호출
 	@RequestMapping(value = "/naver/callback", method = {RequestMethod.GET, RequestMethod.POST }) 
 	public String callback(Model model, @RequestParam String code, @RequestParam String state, 
 			HttpSession session, RedirectAttributes rttr) 
@@ -71,12 +74,10 @@ public class OauthLoginController {
 		
 		//로그인 사용자 정보를 읽어옵니다.
 		String apiResult = null;
-		apiResult = naverLoginBO.getUserProfile(oauthToken);
-		log.info("네이버 로그인 정보 = {}" , apiResult);		
+		apiResult = naverLoginBO.getUserProfile(oauthToken);	
 		
 		//JSON 유저 정보 파싱 -> 유저VO에 담기
 		MemberVO mvo = parser.naverUser(apiResult);
-		log.info("네이버로그인 정보 = {}", mvo);	
 		
 		//정보가 세팅된 소셜유저 가입, 인증권한 세팅 메서드 
 		socialUserCreateMemberAndAuthSet(mvo);
@@ -93,17 +94,16 @@ public class OauthLoginController {
 	private String kakao_clientUrl;
 	
 	
-	// 로그인 첫 화면 요청 메소드
+	// 로그인 첫 화면 요청
 	@ResponseBody
 	@GetMapping("/kakao/login") 
 	public String kakaoLogin() { 
 		
-		/* 네이버아이디로 인증 URL을 생성하기 위하여 naverLoginBO클래스의 getAuthorizationUrl메소드 호출 */ 
+		/* 카카오 아이디로 인증 URL을 생성하기 위하여 kakaoLoginBO클래스의 getAuthorizationUrl메서드 호출 */ 
 		String kakaoAuthUrl = kakao_clientUrl;
-		log.info("카카오 url = {}" , kakaoAuthUrl); //네이버 
 		return kakaoAuthUrl; 
 	 }
-	
+	// 카카오 callback 호출
 	@RequestMapping(value = "/kakao/callback", method = {RequestMethod.GET, RequestMethod.POST }) 
 	public String kakaoLogin(@RequestParam(value = "code", required = false) String code) throws Exception {
 		String access_Token = kakaoLoginBO.getAccessToken(code);
@@ -120,7 +120,7 @@ public class OauthLoginController {
 	/**
 	 * @구글
 	 */
-	
+	// 로그인 첫 화면 요청
 	@ResponseBody
 	@RequestMapping("/google/login")
 	public String login(HttpServletRequest request) {
@@ -130,7 +130,7 @@ public class OauthLoginController {
 		return  googleAuthUrl;
 	}
 
-	// 구글 Callback호출 메소드
+	// 구글 Callback호출
 	@RequestMapping(value = "/google/callback", method = { RequestMethod.GET, RequestMethod.POST })
 	public String googleCallback(HttpServletRequest request, Model model, @RequestParam String code) throws IOException {
 		

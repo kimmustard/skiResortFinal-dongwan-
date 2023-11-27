@@ -15,7 +15,7 @@ public class WeatherVO {
 	
 	private long regionNum; //지역번호
 	private String weatherHighTemp; // 최고온도 TMN
-	private String weatherLowTemp; // 최고온도
+	private String weatherLowTemp; // 최저온도
 	private String weatherTemp; // 현재기온
 	private String weatherSkyStatus; // 하늘 상태
 	private String weatherRainStatus; //강수형태

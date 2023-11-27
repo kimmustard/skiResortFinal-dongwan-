@@ -24,6 +24,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.web.www.domain.member.MemberVO;
 import com.web.www.domain.member.RegisterMemberDTO;
 import com.web.www.repository.MemberDAO;
+import com.web.www.security.AuthMember;
 import com.web.www.service.MemberService;
 
 import lombok.RequiredArgsConstructor;
@@ -80,17 +81,28 @@ public class MemberController {
 	}
 
 	@GetMapping("/detail")
-	public String detailForm(Authentication auth) {
-//		AuthMember mvo = (AuthMember) auth.getPrincipal();
-
+	public String detailForm(HttpSession ses, Model model) {
+		
+		String memberId = (String)ses.getAttribute("memberId");
+		String memberType = (String)ses.getAttribute("memberType");
+		MemberVO mvo = mdao.getUser(memberId , memberType);
+		log.info("디테일 체크 = {}", mvo);
+		
+		
+		model.addAttribute("mvo",mvo);
 		return "/member/detail";
 	}
 	
+	@PostMapping("/detail")
+	public String detail(MemberVO mvo, Model model, HttpServletRequest reqeust, HttpServletResponse response) {
+		
+		
+		
+		
+		return "/member/login";
+	}
 	
-	
-	
-	
-	
+
 	/**
 	 * @param request (회원정보)
 	 * @param response (응답정보)
