@@ -108,7 +108,7 @@ public class NoticeServiceImpl implements NoticeService{
 	}
 
 	@Override
-	public int remove(long noticeNum) {
+	public int noticeRemove(long noticeNum) {
 		log.info(">>>>> notice remove service >> ");
 		int isOk = ndao.delete(noticeNum);
 		return isOk;
