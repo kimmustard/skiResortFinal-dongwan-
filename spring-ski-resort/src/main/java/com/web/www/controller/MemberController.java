@@ -93,15 +93,16 @@ public class MemberController {
 	
 	@PostMapping("/detail")
 	public String detail(@Validated @ModelAttribute("mvo") ModifyMemberDTO mvo,
-			BindingResult bindingResult, Model model, HttpServletRequest request, HttpServletResponse response) {
+			BindingResult bindingResult, HttpServletRequest request, HttpServletResponse response,
+			RedirectAttributes rttr) {
 		log.info("mvo########### = {}" , mvo);
 		
 		if(bindingResult.hasErrors()) {
 			return "redirect:/member/detail";
 		}
-		int isOk = msv.modifyMember(mvo);
 		
-		
+		int isMod = msv.modifyMember(mvo);
+		rttr.addFlashAttribute("isMod", isMod);
 		logout(request, response);
 		return "redirect:/member/login";
 	}
