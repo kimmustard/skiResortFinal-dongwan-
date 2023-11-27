@@ -63,8 +63,8 @@
 
 .category-span{
 	color: #f6f9ff;
-	font-family: 'Jua', sans-serif;
-	font-size: 15pt;
+	font-family: 'Nanum Gothic', sans-serif;
+	font-size: 13pt;
 	font-weight: 400;
 	display: block;
 }
@@ -79,9 +79,11 @@
 
 .category-span-main{
 	color: #f6f9ff;
-	font-family: 'Jua', sans-serif;
-	font-size: 20pt;
+	font-family: 'Nanum Gothic', sans-serif;
+	font-size: 15pt;
 	font-weight: 500;
+	display: block;
+	width: 170px;
 }
 
 .category-span, .category-span-main {
