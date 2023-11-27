@@ -3,6 +3,8 @@ package com.web.www.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -39,7 +41,9 @@ public class NoticeController {
 	
 	
 	@GetMapping("/register")
-	public String noticeRegister() {
+	public String noticeRegister(HttpSession ses) {
+		String memberId = (String) ses.getAttribute("memberId");	
+		log.info("@@@@@ = {}", memberId);
 		return "/notice/register";
 	}
 	

@@ -52,8 +52,6 @@
 			<sec:authentication property="principal.mvo.memberEmail" var="authEmail"/>
 			<sec:authentication property="principal.mvo.memberAlias" var="authAlias"/>
 			<sec:authentication property="principal.mvo.memberType" var="authType"/>
-			<sec:authentication property="principal.mvo.memberNum" var="authNum"/>
-				<input type="text" name="memberNum" value="${authNum }"><!-- foreign key memberNum 추가 -->
 			  <c:if test="${authType == 'normal' }">
 			  	<input type="text" class="form-control" name="noticeWriter" id="exampleFormControlInput1" value="${authId }" readonly="readonly">
 			  </c:if>

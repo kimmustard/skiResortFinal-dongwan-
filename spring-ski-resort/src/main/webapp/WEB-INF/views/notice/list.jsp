@@ -166,7 +166,7 @@
 		<br>
 		
 		<a href="/notice/register">
-		<button type="button">글작성</button>
+			<button type="button">글작성</button>
 		</a>
 	</div>	
 </div>
