@@ -16,7 +16,7 @@ public interface NoticeService {
 
 	int noticeModify(NoticeVO nvo);
 
-	int remove(long noticeNum);
+	int noticeRemove(long noticeNum);
 
 	int getTotalCount(PagingVO npvo);
 

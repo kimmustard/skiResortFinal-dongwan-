@@ -1,5 +1,6 @@
 package com.web.www.controller;
 
+
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -17,10 +18,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.web.www.domain.board.PagingVO;
 import com.web.www.domain.FileVO;
 import com.web.www.domain.board.NoticeDTO;
 import com.web.www.domain.board.NoticeVO;
+import com.web.www.domain.board.PagingVO;
 import com.web.www.handler.FileHandler;
 import com.web.www.handler.PagingHandler;
 import com.web.www.service.NoticeService;
@@ -40,16 +41,13 @@ public class NoticeController {
 	
 	
 	@GetMapping("/register")
-	public String noticeRegister() {
+	public String noticeRegister(HttpSession ses) {
+		String memberId = (String) ses.getAttribute("memberId");	
+		log.info("@@@@@ = {}", memberId);
 		return "/notice/register";
 	}
 	
-//	@PostMapping("/register")
-//	public String noticeRegister(NoticeVO nvo, Model m) {
-//		int isOk = nsv.noticeRegister(nvo);
-//		log.info(">>>>> notice register >> "+(isOk > 0? "OK" : "Fail"));
-//		return "redirect:/notice/list";
-//	}
+
 	
 	//파일업로드 추가
 	@PostMapping("/register")
@@ -67,18 +65,6 @@ public class NoticeController {
 	}
 	
 	
-//	@GetMapping("/list")
-//	public String noticeList(Model m) {
-//		List<NoticeVO> list = nsv.noticeList();
-//		m.addAttribute("list", list);
-//		return "/notice/list";
-//	}
-	
-//	@GetMapping("/list")
-//	public void noticeList(Model m) {
-//		List<NoticeVO> list = nsv.noticeList();
-//		m.addAttribute("list", list);	
-//	}
 	
 	//페이징 추가
 	@GetMapping("/list")
@@ -89,11 +75,7 @@ public class NoticeController {
 		m.addAttribute("ph",ph);
 	}
 	
-//	@GetMapping({"/detail","/modify"})
-//	public void noticeDetail(Model m, @RequestParam("noticeNum")long noticeNum) {
-//		NoticeVO nvo = nsv.noticeDetail(noticeNum);
-//		m.addAttribute("nvo",nvo);
-//	}
+
 	
 	//파일업로드 추가
 	@GetMapping({"/detail","/modify"})
@@ -102,12 +84,6 @@ public class NoticeController {
 		m.addAttribute("ndto",ndto);
 	}
 	
-//	@PostMapping("/modify")
-//	public String noticeModify(NoticeVO nvo) {
-//		int isOk = nsv.noticeModify(nvo);
-//		log.info(">>>>> notice modify >> "+(isOk > 0? "OK" : "Fail"));
-//		return "redirect:/notice/list";
-//	}
 	
 	//파일업로드 추가
 	@PostMapping("/modify")
@@ -129,8 +105,8 @@ public class NoticeController {
 	
 	
 	@GetMapping("/remove")
-	public String remove(@RequestParam("noticeNum")long noticeNum, RedirectAttributes re) {
-		int isOk = nsv.remove(noticeNum);
+	public String noticeRemove(@RequestParam("noticeNum")long noticeNum, RedirectAttributes re) {
+		int isOk = nsv.noticeRemove(noticeNum);
 		log.info(">>>>> notice remove >> "+(isOk > 0? "OK" : "Fail"));
 		re.addFlashAttribute("isOk", isOk);
 		return "redirect:/notice/list";
@@ -145,5 +121,46 @@ public class NoticeController {
 	}
 	
 	
+	
+	
+	
+	
+//	@PostMapping("/register")
+//	public String noticeRegister(NoticeVO nvo, Model m) {
+//		int isOk = nsv.noticeRegister(nvo);
+//		log.info(">>>>> notice register >> "+(isOk > 0? "OK" : "Fail"));
+//		return "redirect:/notice/list";
+//	}
 
+	
+//	@GetMapping("/list")
+//	public String noticeList(Model m) {
+//		List<NoticeVO> list = nsv.noticeList();
+//		m.addAttribute("list", list);
+//		return "/notice/list";
+//	}
+	
+	
+//	@GetMapping("/list")
+//	public void noticeList(Model m) {
+//		List<NoticeVO> list = nsv.noticeList();
+//		m.addAttribute("list", list);	
+//	}
+	
+	
+//	@GetMapping({"/detail","/modify"})
+//	public void noticeDetail(Model m, @RequestParam("noticeNum")long noticeNum) {
+//		NoticeVO nvo = nsv.noticeDetail(noticeNum);
+//		m.addAttribute("nvo",nvo);
+//	}
+	
+	
+//	@PostMapping("/modify")
+//	public String noticeModify(NoticeVO nvo) {
+//		int isOk = nsv.noticeModify(nvo);
+//		log.info(">>>>> notice modify >> "+(isOk > 0? "OK" : "Fail"));
+//		return "redirect:/notice/list";
+//	}
+	
+	
 }
