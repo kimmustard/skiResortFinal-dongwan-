@@ -25,7 +25,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.github.scribejava.core.model.OAuth2AccessToken;
 import com.web.www.domain.member.MemberVO;
 import com.web.www.security.AuthMember;
-import com.web.www.security.LoginSuccessHandler;
 import com.web.www.security.OauthSuccessHandler;
 import com.web.www.service.MemberService;
 

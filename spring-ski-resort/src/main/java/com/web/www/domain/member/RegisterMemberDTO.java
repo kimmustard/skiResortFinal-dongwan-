@@ -2,6 +2,7 @@ package com.web.www.domain.member;
 
 import java.util.List;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -22,6 +23,7 @@ public class RegisterMemberDTO {
 
 	private long memberNum;	//회원번호
 	
+	@Size(min=3, max=12, message="ID는 3~12자 내로 입력해주세요.")
 	@NotBlank(message="아이디를 정확히 입력해주세요.")
 	private String memberId;	//아이디
 	
@@ -36,6 +38,7 @@ public class RegisterMemberDTO {
 	@NotBlank(message="실명을 입력해주세요.")
 	private String memberName;	//실명
 	
+	@Email
 	@NotBlank(message="이메일을 정확히 입력해주세요.")
 	private String memberEmail;	//이메일
 	

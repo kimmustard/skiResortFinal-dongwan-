@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
    <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+   <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -88,6 +89,7 @@
 				
 					<div class="detailMainBody2">
 						<div class="detailSubBox1">
+								<form action="/member/detail" modelAttribute="mvo" method="post">
 								<ul>
 									<sec:authorize access="isAuthenticated()">
 						        	<sec:authentication property="principal.mvo.memberId" var="authId"/>
@@ -101,7 +103,8 @@
 									</li>
 									<li>
 										<label for="sb1-input1" class="sb1-span" onclick="focusInput('sb1-input1')">아이디</label><br>
-										<input class="sb1-input" id="sb1-input1" value="${mvo.memberId }" readonly="readonly">
+										<input class="sb1-input" id="sb1-input1" name="memberId" value="${mvo.memberId }" readonly="readonly">
+										<input type="hidden" name="memberType" value=${mvo.memberType }>
 									</li>
 									<li>
 										<label for="sb1-input2" class="sb1-span" onclick="focusInput('sb1-input2')">이름</label><br>
@@ -109,25 +112,25 @@
 									</li>
 									<li>
 										<label for="sb1-input3" class="sb1-span" onclick="focusInput('sb1-input3')">별명</label><br>
-										<input class="sb1-input" id="sb1-input3" value="${mvo.memberAlias }">
+										<input class="sb1-input" path="memberAlias" id="sb1-input3" name="memberAlias" value="${mvo.memberAlias }">
 									</li>
 									<li>
 										<label for="sb1-input4" class="sb1-span" onclick="focusInput('sb1-input4')">이메일</label><br>
-										<input class="sb1-input" id="sb1-input4" value="${mvo.memberEmail }">
+										<input class="sb1-input" id="sb1-input4" path="memberEmail" name="memberEmail" value="${mvo.memberEmail }" readonly="readonly" />
 									</li>
 									<li>
 										<label for="sb1-input5" class="sb1-span" onclick="focusInput('sb1-input2')">핸드폰번호</label><br>
-										<input class="sb1-input" id="sb1-input5" value="${mvo.memberPhoneNum }">
+										<input class="sb1-input" id="sb1-input5" path="memberPhoneNum" name="memberPhoneNum" value="${mvo.memberPhoneNum }">
 									</li>
 									<li>
 										<label for="inputMemberAddress" class="sb1-span" onclick="focusInput('sb1-input2')">주소</label><br>
 										<input type="hidden" id="inputMemberPostcode">
-										<input class="sb1-input" id="inputMemberAddress" value="${mvo.memberAddress }">
-										<button onclick="sample6_execDaumPostcode()">주소찾기</button>
+										<input class="sb1-input" id="inputMemberAddress" name="memberAddress" onclick="clickAddr()" value="${mvo.memberAddress }">
+										<button class="btn btn-primary" type="button"  id="button-addon2" onclick="sample6_execDaumPostcode()" style="display: none;" >주소 찾기</button>
 									</li>
 									<li>
 										<label for="inputMemberAddressDetail" class="sb1-span" onclick="focusInput('sb1-input3')">상세주소</label><br>
-										<input class="sb1-input" id="inputMemberAddressDetail" value="${mvo.memberAddressDetail}">
+										<input class="sb1-input" id="inputMemberAddressDetail" name="memberAddressDetail" value="${mvo.memberAddressDetail}">
 									</li>
 									</c:if>
 									<c:if test="${authType != 'normal' }">
@@ -135,8 +138,10 @@
 										<span class="sb1-span">다이스키 소셜(${mvo.memberType})회원입니다.</span>
 									</li>
 									<li>
+										<input type="hidden" name="memberId" value=${mvo.memberId }>
+										<input type="hidden" name="memberType" value=${mvo.memberType }>
 										<label for="sb1-input1" class="sb1-span" onclick="focusInput('sb1-input1')">아이디</label><br>
-										<input class="sb1-input" id="sb1-input1" value="${mvo.memberEmail }" readonly="readonly">
+										<input class="sb1-input" id="sb1-input1" name="memberEmail" value="${mvo.memberEmail }" readonly="readonly">
 									</li>
 									<li>
 										<label for="sb1-input2" class="sb1-span" onclick="focusInput('sb1-input2')">이름</label><br>
@@ -144,11 +149,11 @@
 									</li>
 									<li>
 										<label for="sb1-input3" class="sb1-span" onclick="focusInput('sb1-input3')">별명</label><br>
-										<input class="sb1-input" id="sb1-input3" value="${mvo.memberAlias }">
+										<input class="sb1-input" id="sb1-input3" name="memberAlias" value="${mvo.memberAlias }">
 									</li>
 									<li>
 										<label for="sb1-input4" class="sb1-span" onclick="focusInput('sb1-input2')">핸드폰번호</label><br>
-										<input class="sb1-input" id="sb1-input4" value="${mvo.memberPhoneNum }" placeholder="핸드폰번호를 입력해주세요."><br>
+										<input class="sb1-input" id="sb1-input4" name="memberPhoneNum" value="${mvo.memberPhoneNum }" placeholder="핸드폰번호를 입력해주세요."><br>
 										<c:if test="${authType == 'google'}">
 											<small style="color: red">구글 회원은 반드시 핸드폰번호를 기입해주세요.</small>
 										</c:if>
@@ -156,12 +161,12 @@
 									<li>
 										<label for="inputMemberAddress" class="sb1-span" onclick="focusInput('sb1-input2')">주소</label><br>
 										<input type="hidden" id="inputMemberPostcode">
-										<input class="sb1-input" id="inputMemberAddress" value="${mvo.memberAddress }" placeholder="주소를 입력해주세요.">
-										<button onclick="sample6_execDaumPostcode()">주소찾기</button>
+										<input class="sb1-input" id="inputMemberAddress" name="memberAddress" onclick="clickAddr()" value="${mvo.memberAddress }" placeholder="주소를 입력해주세요.">
+										<button class="btn btn-primary" type="button"  id="button-addon2" onclick="sample6_execDaumPostcode()" style="display: none;" >주소 찾기</button>
 									</li>
 									<li>
 										<label for="inputMemberAddressDetail" class="sb1-span" onclick="focusInput('sb1-input3')">상세주소</label><br>
-										<input class="sb1-input" id="inputMemberAddressDetail" value="${mvo.memberAddressDetail}" placeholder="상세주소를 입력해주세요.">
+										<input class="sb1-input" id="inputMemberAddressDetail" name="memberAddressDetail" value="${mvo.memberAddressDetail}" placeholder="상세주소를 입력해주세요.">
 									</li>
 									</c:if>
 									
@@ -170,6 +175,7 @@
 								<div class="modify-btn">
 									<button type="submit" class="btn btn-primary">수정하기</button> 
 								</div>
+								</form>
 						</div>
 						<div class="detailSubBox2">
 							<ul>
@@ -213,6 +219,9 @@
 </script>
 
 <!-- 주소 scrpit -->
+<script type="text/javascript" src="/resources/js/member/MemberDetail.js"></script>
+
+
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript" src="/resources/js/member/MemberAddress.js"></script>
 

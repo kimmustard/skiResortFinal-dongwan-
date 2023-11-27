@@ -1,6 +1,7 @@
 package com.web.www.service;
 
 import com.web.www.domain.member.MemberVO;
+import com.web.www.domain.member.ModifyMemberDTO;
 
 public interface MemberService {
 
@@ -9,11 +10,10 @@ public interface MemberService {
 	//소셜 유저 로그인
 	int socialRegister(MemberVO omvo);
 	
+	int modifyMember(ModifyMemberDTO mvo);
 	
 	
-	
-	
-	
+
 	/**
 	 * 시큐리티
 	 * @param UserDetail 이후 "인증된"이메일
@@ -35,6 +35,7 @@ public interface MemberService {
 	 * @return OauthMemberVO omvo
 	 */
 	MemberVO socialSearch(String memberId);
+
 
 
 
