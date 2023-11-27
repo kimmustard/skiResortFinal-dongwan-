@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+   <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -66,7 +68,7 @@
 						<li class="category-span-main">회원 서비스</li>
 						
 						<li>
-							<a href="#"> 
+							<a href="/member/logoutSub"> 
 								<span class="category-span">
 									<i class="bi bi-box-arrow-left"></i> 로그아웃
 								</span> 
@@ -87,16 +89,23 @@
 					<div class="detailMainBody2">
 						<div class="detailSubBox1">
 								<ul>
+									<sec:authorize access="isAuthenticated()">
+						        	<sec:authentication property="principal.mvo.memberId" var="authId"/>
+						        	<sec:authentication property="principal.mvo.memberEmail" var="authEmail"/>
+						        	<sec:authentication property="principal.mvo.memberAlias" var="authAlias"/>
+						        	<sec:authentication property="principal.mvo.memberType" var="authType"/>
+								
+									<c:if test="${authType == 'normal' }">
 									<li>
 										<span class="sb1-span">다이스키 정규회원입니다.</span>
 									</li>
 									<li>
 										<label for="sb1-input1" class="sb1-span" onclick="focusInput('sb1-input1')">아이디</label><br>
-										<input class="sb1-input" id="sb1-input1" value="${mvo.memberId }">
+										<input class="sb1-input" id="sb1-input1" value="${mvo.memberId }" readonly="readonly">
 									</li>
 									<li>
 										<label for="sb1-input2" class="sb1-span" onclick="focusInput('sb1-input2')">이름</label><br>
-										<input class="sb1-input" id="sb1-input2" value="${mvo.memberName }">
+										<input class="sb1-input" id="sb1-input2" value="${mvo.memberName }" readonly="readonly">
 									</li>
 									<li>
 										<label for="sb1-input3" class="sb1-span" onclick="focusInput('sb1-input3')">별명</label><br>
@@ -106,7 +115,57 @@
 										<label for="sb1-input4" class="sb1-span" onclick="focusInput('sb1-input4')">이메일</label><br>
 										<input class="sb1-input" id="sb1-input4" value="${mvo.memberEmail }">
 									</li>
-	
+									<li>
+										<label for="sb1-input5" class="sb1-span" onclick="focusInput('sb1-input2')">핸드폰번호</label><br>
+										<input class="sb1-input" id="sb1-input5" value="${mvo.memberPhoneNum }">
+									</li>
+									<li>
+										<label for="inputMemberAddress" class="sb1-span" onclick="focusInput('sb1-input2')">주소</label><br>
+										<input type="hidden" id="inputMemberPostcode">
+										<input class="sb1-input" id="inputMemberAddress" value="${mvo.memberAddress }">
+										<button onclick="sample6_execDaumPostcode()">주소찾기</button>
+									</li>
+									<li>
+										<label for="inputMemberAddressDetail" class="sb1-span" onclick="focusInput('sb1-input3')">상세주소</label><br>
+										<input class="sb1-input" id="inputMemberAddressDetail" value="${mvo.memberAddressDetail}">
+									</li>
+									</c:if>
+									<c:if test="${authType != 'normal' }">
+									<li>
+										<span class="sb1-span">다이스키 소셜(${mvo.memberType})회원입니다.</span>
+									</li>
+									<li>
+										<label for="sb1-input1" class="sb1-span" onclick="focusInput('sb1-input1')">아이디</label><br>
+										<input class="sb1-input" id="sb1-input1" value="${mvo.memberEmail }" readonly="readonly">
+									</li>
+									<li>
+										<label for="sb1-input2" class="sb1-span" onclick="focusInput('sb1-input2')">이름</label><br>
+										<input class="sb1-input" id="sb1-input2" value="${mvo.memberName }" readonly="readonly">
+									</li>
+									<li>
+										<label for="sb1-input3" class="sb1-span" onclick="focusInput('sb1-input3')">별명</label><br>
+										<input class="sb1-input" id="sb1-input3" value="${mvo.memberAlias }">
+									</li>
+									<li>
+										<label for="sb1-input4" class="sb1-span" onclick="focusInput('sb1-input2')">핸드폰번호</label><br>
+										<input class="sb1-input" id="sb1-input4" value="${mvo.memberPhoneNum }" placeholder="핸드폰번호를 입력해주세요."><br>
+										<c:if test="${authType == 'google'}">
+											<small style="color: red">구글 회원은 반드시 핸드폰번호를 기입해주세요.</small>
+										</c:if>
+									</li>
+									<li>
+										<label for="inputMemberAddress" class="sb1-span" onclick="focusInput('sb1-input2')">주소</label><br>
+										<input type="hidden" id="inputMemberPostcode">
+										<input class="sb1-input" id="inputMemberAddress" value="${mvo.memberAddress }" placeholder="주소를 입력해주세요.">
+										<button onclick="sample6_execDaumPostcode()">주소찾기</button>
+									</li>
+									<li>
+										<label for="inputMemberAddressDetail" class="sb1-span" onclick="focusInput('sb1-input3')">상세주소</label><br>
+										<input class="sb1-input" id="inputMemberAddressDetail" value="${mvo.memberAddressDetail}" placeholder="상세주소를 입력해주세요.">
+									</li>
+									</c:if>
+									
+									</sec:authorize>
 								</ul>
 								<div class="modify-btn">
 									<button type="submit" class="btn btn-primary">수정하기</button> 
@@ -116,16 +175,13 @@
 							<ul>
 								<li><span>활동 정보</span></li>
 								<li>
-									<span>가입일</span><br>
-									<div></div>
+									<div><span>가입일 </span>${mvo.memberRegAt }</div>
 								</li>
 								<li>
-									<span>로그인</span><br>
-									<div></div>
+									<div><span>마지막 로그인 </span>${mvo.memberLastAt }</div>
 								</li>
 								<li>
-									<span>최종 로그인 IP</span><br>
-									<div></div>
+									<div><span>비밀번호 변경일 </span>${mvo.memberPwdModAt }</div>
 								</li>
 							</ul>
 						</div>
@@ -155,6 +211,10 @@
 	    inputElement.setSelectionRange(inputElement.value.length, inputElement.value.length);
 	}
 </script>
+
+<!-- 주소 scrpit -->
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script type="text/javascript" src="/resources/js/member/MemberAddress.js"></script>
 
 </body>
 </html>

@@ -33,6 +33,10 @@ public class MemberVO {
 	private String memberTerms3; //이용약관
 	private String memberType;	//일반회원 | 소셜회원
 	
+	private String memberRegAt;	//회원가입날짜
+	private String memberLastAt;	//마지막 로그인 날짜
+	private String memberPwdModAt;	//마지막 비밀번호 변경 날짜
+	
 	private List<AuthVO> authList;	//여러개의 권한을 리스트로 관리
 	
 	
