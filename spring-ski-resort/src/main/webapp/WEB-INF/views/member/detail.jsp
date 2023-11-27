@@ -127,14 +127,6 @@
 									<span>최종 로그인 IP</span><br>
 									<div></div>
 								</li>
-								<li>
-									<span>문의 내역</span><br>
-									<div></div>
-								</li>
-								<li>
-									<span>환불 내역</span><br>
-									<div></div>
-								</li>
 							</ul>
 						</div>
 					</div>
