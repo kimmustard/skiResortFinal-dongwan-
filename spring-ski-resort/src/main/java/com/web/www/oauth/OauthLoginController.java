@@ -151,7 +151,7 @@ public class OauthLoginController {
 		if(msv.socialSearch(mvo.getMemberId()) == null) {
 			int isOk = msv.socialRegister(mvo);
 		}
-		AuthMember OauthUser = new AuthMember(mvo);
+		AuthMember OauthUser = new AuthMember(mvo);	//id , 비번만
 		Authentication authentication = 
 				new UsernamePasswordAuthenticationToken(OauthUser, null, OauthUser.getAuthorities());
 		SecurityContextHolder.getContext().setAuthentication(authentication);
