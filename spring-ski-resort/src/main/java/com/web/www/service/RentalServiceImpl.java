@@ -17,7 +17,7 @@ public class RentalServiceImpl implements RentalService{
 	@Override
 	public int liftReserve(RentalLiftVO rlivo) {
 		RentalVO rvo = new RentalVO();
-		rdao.rental(rvo.getMemberNum());
+		rdao.rental(rvo);
 		return rdao.liftReserve(rlivo);
 	}
 
