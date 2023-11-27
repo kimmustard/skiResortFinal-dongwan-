@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.web.www.domain.member.MemberVO;
+import com.web.www.domain.rental.RentalLiftVO;
 import com.web.www.service.RentalService;
 
 import lombok.RequiredArgsConstructor;
@@ -33,8 +34,13 @@ public class RentalController {
 	}
 	
 	@PostMapping("/reserve")
-	public String reservePost() {
-		return "";
+	public String liftReservePost(@ModelAttribute("rlivo") RentalLiftVO rlivo,
+			@ModelAttribute("mvo") MemberVO mvo) {
+		log.info("rlivo = {}",rlivo);
+		log.info("mvo = {}",mvo);
+		int isOk = rsv.liftReserve(rlivo);
+		log.info((isOk > 0)? "ok":"fail");
+		return "index";
 	}
 	
 	

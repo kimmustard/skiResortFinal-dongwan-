@@ -3,5 +3,14 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.web.www.repository.RentalDAO">
+	<insert id="liftReserve">
+		insert into rental_lift values(#{rentalLiftNum},#{rentalMainNum},#{rentalLiftTicket},
+		#{rentalLiftAdultFee},#{rentalLiftKidFee},#{rentalLiftAdult},
+		#{rentalLiftKid},#{rentalLiftStart})
+	</insert>
 	
+	<insert id="rental">
+		insert into rental(rental_main_num,member_num,rental_main_lift)
+		values(#{rentalMainNum},#{memberNum},'Y')
+	</insert>
 </mapper>

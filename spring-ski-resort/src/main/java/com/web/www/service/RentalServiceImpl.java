@@ -13,4 +13,10 @@ public class RentalServiceImpl implements RentalService{
 
 	private final RentalDAO rdao;
 
+	@Override
+	public int liftReserve(RentalLiftVO rlivo) {
+		rdao.rental(rlivo.getRentalMainNum());
+		return rdao.liftReserve(rlivo);
+	}
+
 }
