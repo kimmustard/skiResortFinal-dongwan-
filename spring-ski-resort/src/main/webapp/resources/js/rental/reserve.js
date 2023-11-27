@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
             };
 
             // 달력 표시
-            $(this).daterangepicker(options, function (start, end, label) {
+            $(this).daterangepicker(options, function (start) {
                 // 선택한 날짜로 "rentalReserveStart" 입력 필드 업데이트
                 document.getElementById('rentalLiftStart').value = start.format('YYYY-MM-DD');
             });
@@ -161,22 +161,6 @@ document.addEventListener('DOMContentLoaded', function () {
     season.addEventListener('change', function () {
         updateFees();
     })
-});
-
-
-document.addEventListener('DOMContentLoaded', function () {
-    let dateRangePicker = document.getElementById('dateRangePicker');
-    let rentalLiftStart = document.getElementById('rentalLiftStart');
-
-    if (dateRangePicker && rentalLiftStart) {
-        dateRangePicker.addEventListener('input', function () {
-            rentalLiftStart.value = this.value;
-        });
-
-        dateRangePicker.addEventListener('cancel.daterangepicker', function () {
-            rentalLiftStart.value = '';
-        });
-    }
 });
 
 function updatePeopleCount(inputElement, increment) {

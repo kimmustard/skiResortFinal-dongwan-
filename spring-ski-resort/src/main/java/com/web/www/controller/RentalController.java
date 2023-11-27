@@ -34,9 +34,8 @@ public class RentalController {
 	}
 	
 	@PostMapping("/reserve")
-	public String liftReservePost(@ModelAttribute("rlivo") RentalLiftVO rlivo, MemberVO mvo) {
+	public String liftReservePost(@ModelAttribute("rlivo") RentalLiftVO rlivo) {
 		log.info("rlivo = {}",rlivo);
-		log.info("mvo = {}",mvo);
 		int isOk = rsv.liftReserve(rlivo);
 		log.info((isOk > 0)? "ok":"fail");
 		return "index";

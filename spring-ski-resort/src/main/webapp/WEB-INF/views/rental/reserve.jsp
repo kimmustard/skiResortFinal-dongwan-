@@ -122,22 +122,22 @@
 						<span class="input-group-text">리프트권 선택</span>
 					</div>
 					<div class="form-check">
-					  <input class="form-check-input" type="radio" name="rentalLiftTicket" value="morningTicket" id="morningTicket">오전권
+					  <input class="form-check-input" type="radio" name="rentalLiftTicket" value="오전권" id="morningTicket">오전권
 					</div>
 					<div class="form-check">
-					  <input class="form-check-input" type="radio" name="rentalLiftTicket" value="afternoonTicket" id="afternoonTicket">오후권
+					  <input class="form-check-input" type="radio" name="rentalLiftTicket" value="오후권" id="afternoonTicket">오후권
 					</div>
 					<div class="form-check">
-					  <input class="form-check-input" type="radio" name="rentalLiftTicket" value="dayTimeTicket" id="dayTimeTicket">주간권
+					  <input class="form-check-input" type="radio" name="rentalLiftTicket" value="주간권" id="dayTimeTicket">주간권
 					</div>
 					<div class="form-check">
-					  <input class="form-check-input" type="radio" name="rentalLiftTicket" value="nightTimeTicket" id="nightTimeTicket">야간권
+					  <input class="form-check-input" type="radio" name="rentalLiftTicket" value="야간권" id="nightTimeTicket">야간권
 					</div>
 					<div class="form-check">
-					  <input class="form-check-input" type="radio" name="rentalLiftTicket" value="allDayTicket" id="allDayTicket">종일권
+					  <input class="form-check-input" type="radio" name="rentalLiftTicket" value="종일권" id="allDayTicket">종일권
 					</div>
 					<div class="form-check">
-					  <input class="form-check-input" type="radio" name="rentalLiftTicket" value="seasonTicket" id="seasonTicket">시즌권
+					  <input class="form-check-input" type="radio" name="rentalLiftTicket" value="시즌권" id="seasonTicket">시즌권
 					</div>
 					
 					<div class="input-group mb-3">

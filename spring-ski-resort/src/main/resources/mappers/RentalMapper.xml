@@ -5,13 +5,8 @@
 <mapper namespace="com.web.www.repository.RentalDAO">
 	<insert id="liftReserve">
 		insert into rental_lift(rental_lift_num,rental_lift_ticket,rental_lift_adult_fee,
-		rental_lift_kid_fee,rental_lift_adult,rental_lift_kid)
-		values(#{rentalLiftNum},#{rentalLiftTicket},
-		#{rentalLiftAdultFee},#{rentalLiftKidFee},#{rentalLiftAdult},#{rentalLiftKid})
-	</insert>
-	
-	<insert id="rental">
-		insert into rental(member_num,rental_lift_num,rental_main_lift)
-		values(#{memberNum},#{rentalLiftNum},'Y')
+		rental_lift_kid_fee,rental_lift_adult,rental_lift_kid,rental_lift_start)
+		values(#{rentalLiftNum},#{rentalLiftTicket},#{rentalLiftAdultFee},
+		#{rentalLiftKidFee},#{rentalLiftAdult},#{rentalLiftKid},#{rentalLiftStart})
 	</insert>
 </mapper>
