@@ -6,6 +6,6 @@ public interface RentalDAO {
 
 	int liftReserve(RentalLiftVO rlivo);
 
-	void rental(long rentalMainNum);
+	void rental(long memberNum);
 
 }

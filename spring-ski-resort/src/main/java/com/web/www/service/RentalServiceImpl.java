@@ -3,6 +3,7 @@ package com.web.www.service;
 import org.springframework.stereotype.Service;
 
 import com.web.www.domain.rental.RentalLiftVO;
+import com.web.www.domain.rental.RentalVO;
 import com.web.www.repository.RentalDAO;
 
 import lombok.RequiredArgsConstructor;
@@ -15,7 +16,8 @@ public class RentalServiceImpl implements RentalService{
 
 	@Override
 	public int liftReserve(RentalLiftVO rlivo) {
-		rdao.rental(rlivo.getRentalMainNum());
+		RentalVO rvo = new RentalVO();
+		rdao.rental(rvo.getMemberNum());
 		return rdao.liftReserve(rlivo);
 	}
 
