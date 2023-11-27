@@ -3,7 +3,9 @@ package com.web.www.oauth;
 import java.io.IOException;
 import java.util.Map;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -23,6 +25,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.github.scribejava.core.model.OAuth2AccessToken;
 import com.web.www.domain.member.MemberVO;
 import com.web.www.security.AuthMember;
+import com.web.www.security.LoginSuccessHandler;
+import com.web.www.security.OauthSuccessHandler;
 import com.web.www.service.MemberService;
 
 import lombok.RequiredArgsConstructor;
@@ -38,6 +42,9 @@ public class OauthLoginController {
 
 	private final MemberService msv;
 	private final OauthParser parser;
+	
+	//Oauth 로그인성공시 로그인 세션객체 세팅 클래스 
+	private final OauthSuccessHandler osh;
 	
 	/**
 	 * @NaverLoginBO 네이버 비즈니스 오브젝트(BO)입니다.  
@@ -66,9 +73,9 @@ public class OauthLoginController {
 
 	// 네이버 callback 호출
 	@RequestMapping(value = "/naver/callback", method = {RequestMethod.GET, RequestMethod.POST }) 
-	public String callback(Model model, @RequestParam String code, @RequestParam String state, 
+	public String callback(HttpServletRequest request, HttpServletResponse response, Model model, @RequestParam String code, @RequestParam String state, 
 			HttpSession session, RedirectAttributes rttr) 
-			throws IOException, org.json.simple.parser.ParseException{ 
+			throws IOException, org.json.simple.parser.ParseException, ServletException{ 
 	
 		OAuth2AccessToken oauthToken = naverLoginBO.getAccessToken(session, code, state);
 		
@@ -80,7 +87,7 @@ public class OauthLoginController {
 		MemberVO mvo = parser.naverUser(apiResult);
 		
 		//정보가 세팅된 소셜유저 가입, 인증권한 세팅 메서드 
-		socialUserCreateMemberAndAuthSet(mvo);
+		socialUserCreateMemberAndAuthSet(mvo,request ,response);
 		
 		return "redirect:/"; 
 		
@@ -105,14 +112,14 @@ public class OauthLoginController {
 	 }
 	// 카카오 callback 호출
 	@RequestMapping(value = "/kakao/callback", method = {RequestMethod.GET, RequestMethod.POST }) 
-	public String kakaoLogin(@RequestParam(value = "code", required = false) String code) throws Exception {
+	public String kakaoLogin(HttpServletRequest request, HttpServletResponse response, @RequestParam(value = "code", required = false) String code) throws Exception {
 		String access_Token = kakaoLoginBO.getAccessToken(code);
         
 		// JSON 유저 정보 파싱 -> 유저VO에 담기
 		MemberVO mvo = parser.kakaoUser(access_Token);
 
 		//정보가 세팅된 소셜유저 가입, 인증권한 세팅 메서드
-		socialUserCreateMemberAndAuthSet(mvo);
+		socialUserCreateMemberAndAuthSet(mvo, request, response);
 		
 		return "redirect:/";
     	}
@@ -132,7 +139,8 @@ public class OauthLoginController {
 
 	// 구글 Callback호출
 	@RequestMapping(value = "/google/callback", method = { RequestMethod.GET, RequestMethod.POST })
-	public String googleCallback(HttpServletRequest request, Model model, @RequestParam String code) throws IOException {
+	public String googleCallback(HttpServletRequest request, HttpServletResponse response, 
+			Model model, @RequestParam String code) throws IOException, ServletException {
 		
 		Map<String, String> userInfo = googleLoginBO.getAccessToken(code);
 	
@@ -140,21 +148,29 @@ public class OauthLoginController {
 		MemberVO mvo = parser.googleUser(userInfo);
 		
 		//정보가 세팅된 소셜유저 가입, 인증권한 세팅 메서드
-		socialUserCreateMemberAndAuthSet(mvo);
+		socialUserCreateMemberAndAuthSet(mvo,request, response);
 	
 		return "redirect:/";
 	}
 	
 	//정보가 세팅된 소셜유저 가입, 인증권한 세팅 메서드 
-	private void socialUserCreateMemberAndAuthSet(MemberVO mvo) {
+	private void socialUserCreateMemberAndAuthSet(MemberVO mvo, 
+			HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		//DB에 소셜유저 검증 (없으면 DB에 저장 || 있으면 pass)
+		
+		
 		if(msv.socialSearch(mvo.getMemberId()) == null) {
 			int isOk = msv.socialRegister(mvo);
 		}
-		AuthMember OauthUser = new AuthMember(mvo);	//id , 비번만
+
+		AuthMember OauthUser = new AuthMember(mvo);
+		log.info("OauthUser = {}" , OauthUser);
 		Authentication authentication = 
 				new UsernamePasswordAuthenticationToken(OauthUser, null, OauthUser.getAuthorities());
 		SecurityContextHolder.getContext().setAuthentication(authentication);
+
+		//세션 넣는 작업
+		osh.onAuthenticationSuccess(request, response, SecurityContextHolder.getContext().getAuthentication());
 	}
 	
 		

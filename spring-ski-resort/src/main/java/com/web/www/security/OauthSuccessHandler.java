@@ -16,6 +16,7 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
 import org.springframework.security.web.savedrequest.RequestCache;
 import org.springframework.security.web.savedrequest.SavedRequest;
+import org.springframework.stereotype.Component;
 
 import com.web.www.service.MemberService;
 
@@ -24,7 +25,9 @@ import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class LoginSuccessHandler implements AuthenticationSuccessHandler {
+@Component
+public class OauthSuccessHandler implements AuthenticationSuccessHandler {
+	
 
 	@Setter
 	@Getter
@@ -33,12 +36,6 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 	@Setter
 	@Getter
 	private String authUrl;
-
-	//리다이렉트로 데이터를 가져가는 역할 (RedirectStrategy)
-	private RedirectStrategy rdstg = new DefaultRedirectStrategy();
-	
-	//실제 로그인 정보, 경로 등을 저장 (세션 객체)
-	private RequestCache reqCache = new HttpSessionRequestCache();
 	
 	//로그인 기록용
 	@Autowired
@@ -50,7 +47,8 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 
 		setAuthId(authentication.getName());	//인증에 성공하여 권한을 가진 아이디
 		setAuthUrl("/");
-		boolean isOk = msv.updateLastLogin(getAuthId());
+
+		boolean isOk = msv.updateLastLogin(authId);
 		
 		//내부에서로그인 세션이 저장됨
 		HttpSession ses = request.getSession();
@@ -58,7 +56,6 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 		
 		//로그인시 추가정보 (객체에서 필요한 정보가 있다면 직접 추가해주세요.)
 		AuthMember authMember = (AuthMember) authentication.getPrincipal();
-		ses.setAttribute("memberNum", authMember.getMvo().getMemberNum());
 		ses.setAttribute("memberId", authMember.getMvo().getMemberId());
 		ses.setAttribute("memberAlias", authMember.getMvo().getMemberAlias());
 		ses.setAttribute("memberName", authMember.getMvo().getMemberName());
@@ -76,11 +73,6 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 			 */
 			ses.removeAttribute(WebAttributes.AUTHENTICATION_EXCEPTION);
 		}
-		SavedRequest saveReq = reqCache.getRequest(request, response);
-		rdstg.sendRedirect(request, response, (saveReq != null ? saveReq.getRedirectUrl() : getAuthUrl()));
-
 	}
-	
-	
 
 }
