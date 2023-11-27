@@ -2,7 +2,7 @@
 ## notice table 11-22
 create table notice(
 notice_num bigint not null auto_increment,
-member_num bigint not null,
+member_num bigint,
 notice_writer varchar(50) not null,
 notice_category varchar(20) not null,
 notice_title varchar(100) not null,
@@ -28,4 +28,32 @@ file_size bigint,
 file_reg_at datetime default now(),
 primary key(uuid),
 foreign key(notice_num) references notice(notice_num)
+);
+
+
+*11-25
+- notice table에서 member_num의 not null 지웠음.
+ALTER TABLE notice MODIFY COLUMN member_num bigint NULL;
+
+- notice_del 칼럼 추가.
+alter table notice add notice_del varchar(1) default 'N';
+
+
+## qna table 11-27
+create table qna(
+qna_num bigint not null auto_increment,
+member_num bigint,
+qna_writer varchar(50) not null,
+qna_category varchar(50) not null,
+qna_title varchar(100) not null,
+qna_content text,
+qna_count int default 0,
+qna_pwd varchar(100),
+qna_ans_num bigint,
+qna_isok varchar(1) default 'N',
+qna_del varchar(1) default 'N',
+qna_reg_at datetime default now(),
+qna_mod_at datetime default now(),
+qna_ans_reg_at datetime default now(),
+primary key(qna_num)
 );

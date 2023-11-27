@@ -23,18 +23,7 @@ public class FileVO {
 	private long noticeNum;
 	
 	
-//			create table file(
-//			uuid varchar(200) not null,
-//			notice_num bigint,
-//			save_dir varchar(200) not null,
-//			file_name varchar(100) not null,
-//			file_isok varchar(1) default 'N',
-//			file_type tinyint(1) default 0,
-//			file_size bigint,
-//			file_reg_at datetime default now(),
-//			primary key(uuid),
-//			foreign key(notice_num) references notice(notice_num)
-//			);
+
 	
 	
 

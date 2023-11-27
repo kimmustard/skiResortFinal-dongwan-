@@ -162,8 +162,7 @@ public class OauthLoginController {
 		if(msv.socialSearch(mvo.getMemberId()) == null) {
 			int isOk = msv.socialRegister(mvo);
 		}
-		
-		
+
 		AuthMember OauthUser = new AuthMember(mvo);
 		log.info("OauthUser = {}" , OauthUser);
 		Authentication authentication = 

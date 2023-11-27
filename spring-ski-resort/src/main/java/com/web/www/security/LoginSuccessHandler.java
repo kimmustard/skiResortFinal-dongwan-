@@ -58,12 +58,12 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 		
 		//로그인시 추가정보 (객체에서 필요한 정보가 있다면 직접 추가해주세요.)
 		AuthMember authMember = (AuthMember) authentication.getPrincipal();
+		ses.setAttribute("memberNum", authMember.getMvo().getMemberNum());
 		ses.setAttribute("memberId", authMember.getMvo().getMemberId());
 		ses.setAttribute("memberAlias", authMember.getMvo().getMemberAlias());
 		ses.setAttribute("memberName", authMember.getMvo().getMemberName());
 		ses.setAttribute("memberPhoneNum", authMember.getMvo().getMemberPhoneNum());
 		ses.setAttribute("memberType", authMember.getMvo().getMemberType());
-		
 		
 		//시큐리티에서 로그인 값이 없다면 null로 저장될 수 있음.
 		if(!isOk || ses == null) {
