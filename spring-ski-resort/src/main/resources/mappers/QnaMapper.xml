@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.web.www.repository.QnaDAO">
+	<insert id="insert" parameterType="com.web.www.domain.board.QnaVO">
+		insert into qna(qna_writer, qna_category, qna_title, qna_content)
+		values(#{qnaWriter}, #{qnaCategory}, #{qnaTitle}, #{qnaContent})
+	</insert>
+	
+	<select id="selectOneQnaNum" resultType="long">
+		select max(qna_num) from qna
+	</select>
+	
+	<select id="selectList" resultType="com.web.www.domain.board.QnaVO">
+		select * from qna where qna_del='N'
+		<include refid="search"></include>
+		order by qna_num desc limit #{pageStart}, #{qty}
+	</select>
+	
+	<select id="getTotalCount" resultType="int">
+		select count(qna_num) from qna where qna_del='N' <include refid="search"></include>
+	</select>
+	
+	
+	
+	<sql id="search">
+		<if test="type != null">
+			<trim prefix="and (" suffix=")" prefixOverrides="OR">
+				<foreach collection="typeToArray" item="type">
+					<trim prefix="OR">
+						<choose>
+							<when test="type == 't'.toString()">
+								qna_title like concat('%', #{keyword}, '%')
+							</when>
+							<when test="type == 'c'.toString()">
+								qna_content like concat('%', #{keyword}, '%')
+							</when>
+							<when test="type == 'g'.toString()">
+								qna_category like concat('%', #{keyword}, '%')
+							</when>
+						</choose>
+					</trim>	
+				</foreach>
+			</trim>
+		</if>
+	</sql>
+
+</mapper>

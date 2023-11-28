@@ -17,4 +17,9 @@
 		delete from file where uuid = #{uuid}
 	</delete>
 	
+	<insert id="insertQnaFile">
+		insert into file(uuid, save_dir, file_name, file_isok, file_type, file_size, qna_num)
+		values(#{uuid}, #{saveDir}, #{fileName}, #{fileIsok}, #{fileType}, #{fileSize}, #{qnaNum})
+	</insert>
+	
 </mapper>

@@ -2,30 +2,188 @@
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+    <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="/resources/css/notice/notice_list.css">
 <jsp:include page="../common/nav.jsp" />
+<link rel="stylesheet" href="/resources/css/qna/qna_list.css">
 </head>
 <body>
-	<div class="notice-img-container" style="background-image: url('https://a.cdn-hotels.com/gdcs/production68/d766/4cc034a7-aeb1-4edd-b2a9-f7feaac49aec.jpg')">	</div>
-	
-<div class="container notice-container" id="notice-container">
-<div>자주하는 질문(FAQ)</div>
-<br>
-<div>내가 작성한 질문(Q&A)</div>
-	<a href="/qna/register">
-		<button type="button">글작성</button>
-	</a>
+<div class="qna-img-container" style="background-image: url('https://www.princehotels.com/shinfurano/wp-content/uploads/sites/40/2022/11/2022_11_1920_ski_2-1.jpg')">	</div>
+<br><br><br><br><br><br><br>	
 
+<div class="container qna-container" id="qna-container">
+<c:set value="${ph.pgvo.type }" var="typed"></c:set>
+<h1>고객문의</h1>
+<h4>Q&A</h4>
 
-
-
-
+	<div class="qna-menu-container">
+		<!-- MY Q&A -->
+		<div class="qna-myqna">
+			<form action="/qna/list" method="get">
+			  	<input type="hidden" name="type" value="g" ${typed eq 'g' ? 'selected' : '' }>
+			  	<input type="hidden" name="keyword" type="search" value="">
+			    <button class="btn btn-outline-success" type="submit">
+			    MY Q&A</button>
+			</form>
+		</div>
+		<a href="/qna/register">
+			<button class="btn btn-outline-dark type="button">문의글작성</button>
+		</a>
+		<br>
+		
+		
+		
+		<!-- 검색 라인  -->
+		<form action="/qna/list" method="get">
+		<div class="qna-search-container">
+			<div class="dropdown qna-search-category">
+			  <select class="qna-search-category dropdown-toggle" name="type" data-bs-toggle="dropdown" aria-expanded="false">
+			   	<option class="dropdown-item" value="tcw" ${typed eq 'tc' ? 'selected' : '' }>전체</option>
+			   	<option class="dropdown-item" value="t" ${typed eq 't' ? 'selected' : '' }>제목</option>
+			   	<option class="dropdown-item" value="c" ${typed eq 'c' ? 'selected' : '' }>내용</option>
+			  </select>
+			</div>
+			<div class="qna-input-container">
+				<input placeholder="검색어를 입력해 주세요." name="keyword" type="search" value="" class="qna-search-input">
+				<input type="hidden" name="pageNo" value="1">
+				<input type="hidden" name="qty" value="${ph.pgvo.qty }">
+			</div>
+			<div class="qna-button-container">
+				<button class="qna-search-button" type="submit">검색</button>
+			</div>
+		</div>
+		</form>
+		
+		
+		<!-- 카테고리 라인 -->
+		<div class="qna-category">
+			<ul class="nav justify-content-center">
+			  <li class="nav-item">
+			  	<form action="/qna/list" method="get">
+			  	<input type="hidden" name="type" value="g" ${typed eq 'g' ? 'selected' : '' }>
+			  	<input type="hidden" name="keyword" type="search" value="">
+			  	<button class="nav-link" type="submit">All</button>
+			  	</form>
+			  </li>
+			  <li class="nav-item">
+			  	<form action="/qna/list" method="get">
+			  	<input type="hidden" name="type" value="g" ${typed eq 'g' ? 'selected' : '' }>
+			  	<input type="hidden" name="keyword" type="search" value="스키장">
+			  	<button class="nav-link" type="submit">Ski</button>
+			  	</form>
+			  </li>
+			  <li class="nav-item">
+			  	<form action="/qna/list" method="get">
+			  	<input type="hidden" name="type" value="g" ${typed eq 'g' ? 'selected' : '' }>
+			  	<input type="hidden" name="keyword" type="search" value="호텔">
+			    <button class="nav-link" type="submit">Hotel</button>
+			    </form>
+			  </li>
+			  <li class="nav-item">
+			  	<form action="/qna/list" method="get">
+			  	<input type="hidden" name="type" value="g" ${typed eq 'g' ? 'selected' : '' }>
+			  	<input type="hidden" name="keyword" type="search" value="렌탈">
+			    <button class="nav-link" type="submit">Rental</button>
+			    </form>
+			  </li>
+			  <li class="nav-item">
+			  	<form action="/qna/list" method="get">
+			  	<input type="hidden" name="type" value="g" ${typed eq 'g' ? 'selected' : '' }>
+			  	<input type="hidden" name="keyword" type="search" value="교통">
+			    <button class="nav-link" type="submit">Traffic</button>
+			    </form>
+			  </li>
+			  <li class="nav-item">
+			  	<form action="/qna/list" method="get">
+			  	<input type="hidden" name="type" value="g" ${typed eq 'g' ? 'selected' : '' }>
+			  	<input type="hidden" name="keyword" type="search" value="예약">
+			    <button class="nav-link" type="submit">Reservation</button>
+			    </form>
+			  </li>
+			  <li class="nav-item">
+			  	<form action="/qna/list" method="get">
+			  	<input type="hidden" name="type" value="g" ${typed eq 'g' ? 'selected' : '' }>
+			  	<input type="hidden" name="keyword" type="search" value="결제">
+			    <button class="nav-link" type="submit">Payment</button>
+			    </form>
+			  </li>
+			  <li class="nav-item">
+			  	<form action="/qna/list" method="get">
+			  	<input type="hidden" name="type" value="g" ${typed eq 'g' ? 'selected' : '' }>
+			  	<input type="hidden" name="keyword" type="search" value="기타">
+			    <button class="nav-link" type="submit">Other</button>
+			    </form>
+			  </li>
+			</ul>
+		</div>
+		<br><br>
+		
+		
+		<!-- 리스트 테이블 라인 -->
+		<table class="table qna-table"  >
+		  <thead >
+		    <tr class="qna-table-tr">
+		      <th scope="col" class="qna-table-th-no"><div class="qna-table-td-child">번호</div></th>
+		      <th scope="col" class="qna-table-th-cago"><div class="qna-table-td-child">범주</div></th>
+		      <th scope="col" class="qna-table-th-title"><div class="qna-table-td-child">제목</div></th>
+		      <th scope="col" class="qna-table-th-isok"><div class="qna-table-td-child">상태</div></th>
+		      <th scope="col" class="qna-table-th-reg"><div class="qna-table-td-child">등록일</div></th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		  <c:forEach items="${list }" var="qvo">
+		    <tr class="qna-table-tr">
+		      <td class="qna-table-td"><div class="qna-table-td-child">${qvo.qnaNum }</div></td>
+		      <td class="qna-table-td"><div class="qna-table-td-child">${qvo.qnaCategory }</div></td>
+		      <td class="qna-table-td"><div class="qna-table-td-child-title"><a href="/qna/detail?qnaNum=${qvo.qnaNum }">${qvo.qnaTitle }</a></div></td>
+		      <td class="qna-table-td"><div class="qna-table-td-child">${qvo.qnaIsok }</div></td>
+		      <td class="qna-table-td"><div class="qna-table-td-child">${fn:replace((fn:substring(qvo.qnaRegAt,0,10)),'-','.') }</div></td>
+		    </tr>
+		  </c:forEach>  
+		  </tbody>
+		</table>
+		
+		
+		<!-- 페이징 라인 -->
+		  <nav aria-label="Page navigation example">
+		  	<!-- 이전 -->
+		  	<ul class="pagination">
+		  		<li class="page-item ${(ph.prev eq false) ? 'disabled' : '' }">
+			  		<a class="page-link" href="/qna/list?pageNo=${ph.startPage - 1 }&qty=${ph.pgvo.qty}&type=${ph.pgvo.type}&keyword=${ph.pgvo.keyword}" aria-label="Previous">
+			  		<span aria-hidden="true">&laquo;</span>
+			  		</a>
+		  		</li>
+		  		<c:forEach begin="${ph.startPage }" end="${ph.endPage }" var="i">
+  					<li>
+  						<a class="page-link" href="/qna/list?pageNo=${i }&qty=${ph.pgvo.qty}&type=${ph.pgvo.type}&keyword=${ph.pgvo.keyword}">${i }</a>
+  					</li>
+  				</c:forEach>
+  			<!-- 다음 -->
+  				<li class="page-item ${(ph.next eq false) ? 'disabled' : ''}">
+  					<a class="page-link" href="/qna/list?pageNo=${ph.endPage + 1 }&qty=${ph.pgvo.qty}&type=${ph.pgvo.type}&keyword=${ph.pgvo.keyword}" aria-label="Next">
+        			<span aria-hidden="true">&raquo;</span>
+    				</a>
+  				</li>	
+		  	</ul>
+		  </nav>
+		
+		
+		<br>
+		
+	</div>	
 </div>
+
+
+<!-- 스크립트 라인  -->
+<script type="text/javascript">
+	
+</script>
+
+
 <jsp:include page="../common/footer.jsp" />
 </body>
 </html>

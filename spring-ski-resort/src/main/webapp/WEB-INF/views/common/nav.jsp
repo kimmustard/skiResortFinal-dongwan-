@@ -24,7 +24,7 @@
     <a class="ski-navbar-brand" href="/">다이스키</a>
        <div class="ski-nav-link"><a href="/rental/fee-info">렌탈</a></div>
        <div class="ski-nav-link"><a href="#">Pricing</a></div>
-       <div class="ski-nav-link"><a href="/qna/list">FAQ Q&A</a></div>
+       <div class="ski-nav-link"><a href="/qna/list">Q&A</a></div>
        <div class="ski-nav-link"><a href="/notice/list">공지사항</a></div>
        <div class="ski-nav-link"><a href="/hotel/reservation">예약</a></div>
        <ul class="ski-side-navbar">

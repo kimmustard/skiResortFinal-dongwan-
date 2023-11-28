@@ -12,4 +12,6 @@ public interface FileDAO {
 
 	int noticeRemoveFile(String uuid);
 
+	int insertQnaFile(FileVO fvo);
+
 }
