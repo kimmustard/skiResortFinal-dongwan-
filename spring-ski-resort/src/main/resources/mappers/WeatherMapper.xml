@@ -32,6 +32,11 @@
   	IN (SELECT region_num FROM region WHERE region_child = #{regionChild} and region_grand_child = #{regionGrandChild});
   </select>
   
+  <!-- 날씨리스트 10개 획득 110번~ 119번-->
+  <select id="selectWeatherList" resultType="com.web.www.weather.WeatherVO">
+	select * from weather where region_num BETWEEN 110 and 119;
+  </select>
+  
   <!-- 스케쥴러 해당지역 날씨테이블 삭제 -->
   
 </mapper>

@@ -8,21 +8,20 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
-<link rel="stylesheet" href="/resources/css/loginbootstrap.css">
-<link rel="stylesheet" href="/resources/css/member/login.css">
+<link  href="/resources/css/member/login.css" rel="stylesheet">
 </head>
 <body>
 	<jsp:include page="../common/nav.jsp"></jsp:include>
 	
+<form action="/member/login" method="post">
 	<div class="bodyContainer">
 	<video width="100%" height="auto" autoplay loop muted>
 	<source src="https://www.chamonix.com/sites/default/files/media/videos/homepage-vallorcine%201.mp4" type="video/mp4">
 	</video>
+		<span id="Title-1">ダイスキー</span>
+		<span id="Title-2">DAISUKI resort</span>
 		<div class="loginContainer">
-			<form action="/member/login" method="post">
-				<div class="login-box">
-				
+			<div class="login-box">
 					<div class="form-group">
 						  <label class="col-form-label mt-4" for="inputDefault">
 						  	<span class="loginFont">아이디</span>
@@ -40,32 +39,48 @@
 						<button type="submit" class="btn btn-primary login-btn">로그인</button> 
 						<a href="/member/register"><button type="button" class="btn btn-primary login-btn">회원가입</button></a>
 					</div>
-				
 					
-				</div>	
+					<div class="a-box">
+						<a href="#">아이디 찾기</a>
+						<a href="#">비밀번호 찾기</a>
+					</div>
+					
 			
-			</form>
-			<div id="kakao_id_login" style="text-align: center">
-				<a href="#">
-				<img width="223" height="52" src="/resources/etc/kakao_login_medium_narrow.png" /></a>
-       		</div>
-
+			</div>	
 			
-			<div id="naver_id_login" style="text-align: center">
-				<a href="#"><img width="223" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png" /></a>
+			<div class="social-Box">
+			
+				<div id="kakao_id_login" style="text-align: center">
+					<a href="#">
+					<img width="223" height="52" src="/resources/etc/kakao_login_medium_narrow.png" /></a>
+	       		</div>
+	
+				
+				<div id="naver_id_login" style="text-align: center">
+					<a href="#"><img width="223" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png" /></a>
+				</div>
+				
+				<div id="google_id_login" style="text-align:center">
+					<a href="#"><img width="223" src="/resources/etc/web_neutral_sq_SI@1x.png"/></a>
+				</div>
+			
 			</div>
-			
-			<div id="google_id_login" style="text-align:center">
-				<a href="#"><img width="223" src="/resources/etc/web_neutral_sq_SI@1x.png"/></a>
-			</div>
-
 
 			<br>
 			
 		</div>	
 		
 	</div>
+</form>
 	<jsp:include page="../common/footer.jsp"></jsp:include>
+	<script type="text/javascript">
+		const isMod = `<c:out value="${isMod}" />`;
+		if(isMod == 1){
+			alert('회원 정보수정이 완료되었습니다. 안전을 위해 로그아웃이 진행됩니다.');
+		}
+	</script>
+	
+	<script type="text/javascript" src="/resources/js/member/MemberLogin.js"></script>
 	<script type="text/javascript" src="/resources/js/member/OauthLogin.js"></script>
 </body>
 </html>
