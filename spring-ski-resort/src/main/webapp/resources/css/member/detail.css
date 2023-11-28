@@ -45,10 +45,10 @@
 	
 }
 
-.detailSubBox1>ul>li{
+.detailSubBox1>form>ul>li{
 	margin: 20px 20px 20px 50px;
 }
-.detailSubBox2>ul>li{
+.detailSubBox2>form>ul>li{
 	margin: 20px 20px 20px 50px;
 }
 
@@ -157,3 +157,13 @@
 	text-align: center;
 }
 
+#sb1-input1{
+	background-color: #c59eef;
+	border-bottom-right-radius: 10px;
+	border-top-right-radius: 10px;
+}
+#sb1-input2{
+	background-color: #c59eef;
+	border-bottom-right-radius: 10px;
+	border-top-right-radius: 10px;
+}

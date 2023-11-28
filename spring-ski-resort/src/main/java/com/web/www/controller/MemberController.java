@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.web.www.domain.member.MemberVO;
+import com.web.www.domain.member.ModifyMemberDTO;
 import com.web.www.domain.member.RegisterMemberDTO;
 import com.web.www.repository.MemberDAO;
 import com.web.www.service.MemberService;
@@ -85,20 +86,25 @@ public class MemberController {
 		String memberId = (String)ses.getAttribute("memberId");
 		String memberType = (String)ses.getAttribute("memberType");
 		MemberVO mvo = mdao.getUser(memberId , memberType);
-		log.info("디테일 체크 = {}", mvo);
-		
 		
 		model.addAttribute("mvo",mvo);
 		return "/member/detail";
 	}
 	
 	@PostMapping("/detail")
-	public String detail(MemberVO mvo, Model model, HttpServletRequest reqeust, HttpServletResponse response) {
+	public String detail(@Validated @ModelAttribute("mvo") ModifyMemberDTO mvo,
+			BindingResult bindingResult, HttpServletRequest request, HttpServletResponse response,
+			RedirectAttributes rttr) {
+		log.info("mvo########### = {}" , mvo);
 		
+		if(bindingResult.hasErrors()) {
+			return "redirect:/member/detail";
+		}
 		
-		
-		
-		return "/member/login";
+		int isMod = msv.modifyMember(mvo);
+		rttr.addFlashAttribute("isMod", isMod);
+		logout(request, response);
+		return "redirect:/member/login";
 	}
 	
 	

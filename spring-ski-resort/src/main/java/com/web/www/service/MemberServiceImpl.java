@@ -3,6 +3,7 @@ package com.web.www.service;
 import org.springframework.stereotype.Service;
 
 import com.web.www.domain.member.MemberVO;
+import com.web.www.domain.member.ModifyMemberDTO;
 import com.web.www.repository.MemberDAO;
 
 import lombok.RequiredArgsConstructor;
@@ -28,6 +29,13 @@ public class MemberServiceImpl implements MemberService {
 		return mdao.insertAuthInit(mvo.getMemberId());
 	}
 	
+	@Override
+	public int modifyMember(ModifyMemberDTO mvo) {
+		if(mvo.getMemberType() != "normal") {
+			return mdao.socialModifyMember(mvo);
+		}
+		return mdao.normalModifyMember(mvo);
+	}
 	
 	
 	
@@ -64,6 +72,7 @@ public class MemberServiceImpl implements MemberService {
 	public MemberVO socialSearch(String memberId) {
 		return mdao.socialSearch(memberId);
 	}
+
 
 
 
