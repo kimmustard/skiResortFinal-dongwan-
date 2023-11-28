@@ -6,13 +6,10 @@ window.onload = function () {
 
         document.getElementById("ski-navbar").style.opacity = 0.5;
     }
-  
 
 
-    weatherSearch().then(weatherInfo => {
-        if (document.getElementById("innerItem2") == null) {
-            return;
-        }
+    weatherListSearch().then(result => {
+        console.log(result);
         /*
         regionNum; //지역번호
         weatherHighTemp; // 최고온도 (지원안함)
@@ -34,11 +31,8 @@ window.onload = function () {
         document.getElementById("innerItem2");
         document.getElementById("innerItem2");
         document.getElementById("innerItem2");
-      
-     
-    
-    })
 
+    });
 
 
 }
@@ -48,6 +42,23 @@ async function weatherSearch() {
 
     try {
         const url = "/weather/default";
+        const config = {
+            method: 'get'
+        };
+        const resp = await fetch(url, config);
+        const result = await resp.json();
+        return result;
+    } catch (error) {
+        console.log(error);
+    }
+
+}
+
+//날씨리스트 불러오기
+async function weatherListSearch() {
+
+    try {
+        const url = "/weather/list";
         const config = {
             method: 'get'
         };

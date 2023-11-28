@@ -18,6 +18,8 @@ public interface WeatherDAO {
 	
 	//특정지역 날씨검색
 	WeatherVO selectDefaultWeather(RegionDTO rdto);
+	
+	List<WeatherVO> selectWeatherList();
 
 
 }
