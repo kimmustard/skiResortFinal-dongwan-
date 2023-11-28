@@ -20,7 +20,10 @@
 			<h1 id="maintext2">Daisuski</h1>
 			
 		<div id="wrapper">
-		 	<div id="innerItem1">뭘 넣을진 z모르지만</div> 
+		 	<div id="innerItem1">날씨정보<br>
+		 		Weather Report
+		 		
+		 	</div> 
 		 	<div id="innerItem2">날씨를 넣던가</div> 
 		 	<div id="innerItem3">
 		 		<img alt="없음" width="60px" height="60px" src="/resources/etc/icons/weather/해.png">
@@ -33,7 +36,6 @@
 	<div class="index-content">
 		내용 추가하면 알아서 길이 늘어나요
 		
-		<span>${s }</span>
 	</div>		
 			
 		

@@ -1,5 +1,4 @@
 @charset "UTF-8";
-
 #Title-1{
 	position: absolute;
 	top: 650px;
@@ -71,11 +70,10 @@
 
 
 
-
-
 .bodyContainer>video{
 position: absolute;
 left: 0;
 top: 0;
 z-index: -1;
 }
+

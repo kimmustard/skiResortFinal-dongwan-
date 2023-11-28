@@ -8,7 +8,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<<<<<<< HEAD
 <link  href="/resources/css/member/login.css" rel="stylesheet">
+=======
+
+<link rel="stylesheet" href="/resources/css/loginbootstrap.css">
+<link rel="stylesheet" href="/resources/css/member/login.css">
+>>>>>>> origin/main
 </head>
 <body>
 	<jsp:include page="../common/nav.jsp"></jsp:include>
