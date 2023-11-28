@@ -57,7 +57,7 @@
 		<div class="box">
 			<form action="/hotel/reservation" method="post" id="form">
 			<div id="box">
-			<p class="fs-3 hotelText">호텔예약/<a class="move-rental" href="/rental/reserve">렌탈장비예약</a></p>
+			<p class="fs-3 hotelText">호텔예약/<a class="move-rental" href="/rental/reserve">리프트권 예약</a></p>
 			<div class="input-box">
 			<!--실제 값을 저장하는 애들 화면에는 없음-->
 			<input name="hotelReservePeople" id="hotelReservePeople" placeholder="성인인원" type="hidden">
@@ -73,12 +73,13 @@
 					<input type="text" class="form-control" id="dateRangePicker" placeholder="날짜를 선택하세요" readonly="readonly">
 					</div>
 				</div>
-				<div class="input-box">
+				<div class="input-group">
 					<div class="input-group mb-3">
   						<span class="input-group-text" id="basic-addon1"><i class="bi bi-person-fill"></i></span>
   						<input type="text" id="people" class="form-control people" placeholder="인원수" aria-label="Username" readonly="readonly" aria-describedby="basic-addon1">
 						<button id="payBtn" type="button" class=" btn btn-light">다음</button>
-					</div>
+				</div>
+					
   				<div class="peoplelist"  id="peoplelist" style="display: none;">
   					<div class="list-Btn-Box">
   						성인    
