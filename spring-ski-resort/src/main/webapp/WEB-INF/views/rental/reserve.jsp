@@ -31,12 +31,20 @@
     <!-- DateRangePicker CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker@3.1.0/daterangepicker.css" />
 
+
     <!-- DateRangePicker JS -->
     <script src="https://cdn.jsdelivr.net/npm/daterangepicker@3.1.0/daterangepicker.min.js"></script>
+   	<!-- GppgleFont -->
+   	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Hahmlet&display=swap" rel="stylesheet">
+
 
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 	
 	<link rel="stylesheet" href="/resources/css/rental/reserve.css">
+	
+	
 
 <body>
 	<jsp:include page="../common/nav.jsp" />
@@ -45,7 +53,7 @@
 		<img data-v-c62ee4ac="" src="https://cdn.shymbulak-dev.com/media-test/77032ae86d50f5d61c9cec8b2f30ae39.jpg" alt="" style="width: 100%; height: 100vh;">
 		
 		<div class="box">
-			<p class="fs-2">리프트권 예약</p>
+			<p class="fs-3  rentalText"><a class="move-hotel" href="/hotel/reservation">호텔예약</a>/리프트권 예약</p>
 			<form action="/rental/reserve" method="post">
 				<div class="input-box">
 					<input type="hidden" name="rentalLiftStart" id="rentalLiftStart" placeholder="렌탈이용날짜">
@@ -60,11 +68,11 @@
 							<input type="text" class="form-control" id="dateRangePicker" placeholder="날짜를 선택하세요" readonly="readonly">
 						</div>
 					</div>
-					<div class="input-box">
+					<div class="input-box1">
 						<div class="input-group mb-3">
 							<span class="input-group-text" id="basic-addon1"><i class="bi bi-person-fill"></i></span>
 							<input type="text" id="people" class="form-control people" placeholder="인원수" aria-label="Username" readonly="readonly" aria-describedby="basic-addon1">
-							<button id="nextBtn" type="button" class="btn btn-outline-primary">다음</button>
+							<button id="nextBtn" type="button" class="btn btn-light">다음</button>
 						</div>
 						<div class="peopleList"  id="peopleList" style="display: none;">
 		  					<div class="list-Btn-Box">
