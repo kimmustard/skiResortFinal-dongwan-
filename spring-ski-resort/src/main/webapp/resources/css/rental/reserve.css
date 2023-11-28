@@ -2,20 +2,42 @@
 
 .back{
     width: 100%;
-    height: 100vh;
-  
 }
-.selector{
-    width: 200px;
-    background-color: blue;
-    margin-left: 10%;
-    color: white;
+
+.back img{
+	width: 100%;
 }
+
 .date-group{
-	width: 475px;
+	width: 400px;
 }
+
+.input-box>.input-group{
+	width: 400px;
+}
+.input-box{
+	position: relative;
+}
+
 .people {
     caret-color: transparent;
+}
+
+.peopleList{
+	position : relative;
+	color : #6c757d;
+	margin : 0;
+	background-color: white;
+	width: 250px;
+	position: absolute;
+	top: 40px;
+	left: 100px;
+	border: solid 1px;
+	border-color: #dee2e6;
+	border-radius: 10px;
+	padding-left: 5px;
+	padding-top: 10px;
+	height: 200px;
 }
 
 #dateRangePicker{
@@ -41,19 +63,24 @@
 .people:hover{
     cursor: pointer	;
 }
-#nextBtn{
-	position : absolute;
-    right: 5px;
-    bottom: 5px;
-
-}
-.box{
-    width: 80%;
-    margin-left: 10%;
-    background-color: antiquewhite;
-    padding: 5px;
+.input-group .btn {
     position: relative;
-    height: 600px;
+    z-index: 0;
+}
+
+.box{
+    width: 930px;
+    padding: 5px;
+    background-color: white;
+    position: relative;
+    height: 200px;
+    border-radius: 10px;
+    left: 50%;
+   	transform: translateX(-50%);
+   	opacity: 0.9;
+   	top:20%;
+   	position: absolute;
+
 }
 
 .box > *{
@@ -65,13 +92,19 @@
     position: absolute;
     left: 0;
     top: 0;
+    padding: 10px;
     width: 100%;
-    height: 100%;
-    background-color: aqua;
+    height: 375px;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.reserveBox .input-group{
+	width: 400px;
 }
 
 .daterangepicker {
-    width: 600px !important; /* 전체 너비로 설정 */
+    width: 300px !important; /* 전체 너비로 설정 */
     max-width: none !important; /* 최대 너비 설정 해제 */
     margin: 0 !important; /* 여백 제거 */
 }
@@ -82,7 +115,7 @@
 
 .daterangepicker .ranges, .daterangepicker .drp-calendar {
      float: left; 
-     width: 50%;
+     width: 100%;
 }
 .daterangepicker .calendar-table th, .daterangepicker .calendar-table td {
 	font-size: 15px;
@@ -111,6 +144,76 @@
 
 }
 
+.people-Btn{
+	display: flex;
+	float: right;
+	border :solid 1px;
+	width: 126px;
+	height: 42px;
+	border-radius: 5px;
+
+}
+.people-Btn>div{
+	
+	width: 100%;
+    text-align: center;
+	
+}
+.people-Btn>div>button{
+	
+		border: 0px;
+		width: 40px;
+		height: 100%;
+		margin: 0;
+		padding: 0;
+		border-radius: 5px;
+		color: #006ce4;
+		font-size: 25px;
+		background-color: none;
+		   display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    	background-color: white;
+    
+   
+}
+.people-Btn>div>button>svg{
+	fill: #006ce4;
+}
+.people-Btn>div>button:hover{
+	background-color:  #dbecff;
+}
+
+
 .form-control:read-only{
 	background-color: white;
+}
+
+.input-box{
+		display: flex;
+		margin-left: 5px;
+	}
+	
+#peoplelistClose{
+	width:80%;
+	position: absolute;
+	bottom: 10px;
+	left: 50%;
+	transform: translateX(-50%);
+	
+}
+
+
+.list-Btn-Box{
+		margin-left: 10px;
+		height: 40px;
+	    line-height: 40px;
+	    margin-top: 10px;
+	    margin-right: 10px;
+}
+	
+.btn-outline-primary:hover {
+		background-color:  #dbecff;
+		color: #dee2e6;
 }

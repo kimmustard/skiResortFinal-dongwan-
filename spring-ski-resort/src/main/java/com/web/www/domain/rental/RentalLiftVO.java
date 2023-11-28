@@ -4,7 +4,6 @@ import java.util.UUID;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -12,10 +11,9 @@ import lombok.ToString;
 @Setter
 @ToString
 @AllArgsConstructor
-@NoArgsConstructor
+
 public class RentalLiftVO {
-	private String rentalLiftNum; // 리프트권 일련번호
-	private long rentalMainNum; // 렌탈 예약번호
+	private String rentalLiftNum; // 리프트권 일련번호(pk)
 	private String rentalLiftTicket; // 리프트권 종류
 	private int rentalLiftAdultFee; // 리프트권 성인요금
 	private int rentalLiftKidFee; // 리프트권 어린이요금
@@ -23,7 +21,7 @@ public class RentalLiftVO {
 	private int rentalLiftKid; // 인원수(어린이)
 	private String rentalLiftStart; // 시작일
 	
-	public RentalLiftVO(String rentalLiftNum) {
+	public RentalLiftVO() {
 		this.rentalLiftNum = UUID.randomUUID().toString();
 	}
 }
