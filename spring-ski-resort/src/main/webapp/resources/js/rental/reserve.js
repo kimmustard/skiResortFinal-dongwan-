@@ -1,17 +1,14 @@
 document.getElementById("nextBtn").addEventListener('click', () => {
     let rentalLiftStart = document.getElementById('rentalLiftStart').value;
-    let adultPeople = document.getElementById('adultPeople').value;
-    let kidPeople = document.getElementById('kidPeople').value;
-    if (adultPeople == "0" && kidPeople == "0") {
+    let rentalLiftAdult = document.getElementById('rentalLiftAdult').value;
+    let rentalLiftKid = document.getElementById('rentalLiftKid').value;
+    if (rentalLiftAdult == "0" && rentalLiftKid == "0") {
         alert('인원수를 입력해주세요!');
     } else if (rentalLiftStart == "") {
         alert('날짜를 선택해주세요!');
     } else {
         document.getElementById("innerbox").style.display = "block";
-        document.getElementById('adultDecrementBtn').style.display = "none";
-        document.getElementById('adultIncrementBtn').style.display = "none";
-        document.getElementById('kidDecrementBtn').style.display = "none";
-        document.getElementById('kidIncrementBtn').style.display = "none";
+        document.getElementById('nextBtn').style.display = 'none';
     }
 })
 
@@ -36,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
             };
 
             // 달력 표시
-            $(this).daterangepicker(options, function (start, end, label) {
+            $(this).daterangepicker(options, function (start) {
                 // 선택한 날짜로 "rentalReserveStart" 입력 필드 업데이트
                 document.getElementById('rentalLiftStart').value = start.format('YYYY-MM-DD');
             });
@@ -58,37 +55,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    let adultDecrementBtn = document.getElementById('adultDecrementBtn');
-    let adultIncrementBtn = document.getElementById('adultIncrementBtn');
-    let adultPeopleInput = document.getElementById('adultPeople');
-
-    let kidDecrementBtn = document.getElementById('kidDecrementBtn');
-    let kidIncrementBtn = document.getElementById('kidIncrementBtn');
-    let kidPeopleInput = document.getElementById('kidPeople');
-
-    if (adultDecrementBtn && adultIncrementBtn && adultPeopleInput &&
-        kidDecrementBtn && kidIncrementBtn && kidPeopleInput) {
-
-        adultDecrementBtn.addEventListener('click', function () {
-            updatePeopleCount(adultPeopleInput, -1);
-            updateFees();
-        });
-
-        adultIncrementBtn.addEventListener('click', function () {
-            updatePeopleCount(adultPeopleInput, 1);
-            updateFees();
-        });
-
-        kidDecrementBtn.addEventListener('click', function () {
-            updatePeopleCount(kidPeopleInput, -1);
-            updateFees();
-        });
-
-        kidIncrementBtn.addEventListener('click', function () {
-            updatePeopleCount(kidPeopleInput, 1);
-            updateFees();
-        });
-    }
 
     let morning = document.getElementById('morningTicket');
     let afternoon = document.getElementById('afternoonTicket');
@@ -102,75 +68,75 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function updateFees() {
         // 오전권
-        if (morning.checked && parseInt(adultPeopleInput.value) == 1) {
+        if (morning.checked && parseInt(rentalLiftAdult.value) == 1) {
             rentalLiftAdultFeeInput.value = '40000';
-        } else if (morning.checked && parseInt(adultPeopleInput.value) >= 2) {
-            rentalLiftAdultFeeInput.value = parseInt(40000 * adultPeopleInput.value);
+        } else if (morning.checked && parseInt(rentalLiftAdult.value) >= 2) {
+            rentalLiftAdultFeeInput.value = parseInt(40000 * rentalLiftAdult.value);
         }
-        if (morning.checked && parseInt(kidPeopleInput.value) == 1) {
+        if (morning.checked && parseInt(rentalLiftKid.value) == 1) {
             rentalLiftKidFeeInput.value = '30000';
-        } else if (morning.checked && parseInt(kidPeopleInput.value) >= 2) {
-            rentalLiftKidFeeInput.value = parseInt(30000 * kidPeopleInput.value);
+        } else if (morning.checked && parseInt(rentalLiftKid.value) >= 2) {
+            rentalLiftKidFeeInput.value = parseInt(30000 * rentalLiftKid.value);
         }
 
         // 오후권
-        if (afternoon.checked && parseInt(adultPeopleInput.value) == 1) {
+        if (afternoon.checked && parseInt(rentalLiftAdult.value) == 1) {
             rentalLiftAdultFeeInput.value = '50000';
-        } else if (afternoon.checked && parseInt(adultPeopleInput.value) >= 2) {
-            rentalLiftAdultFeeInput.value = parseInt(50000 * adultPeopleInput.value);
+        } else if (afternoon.checked && parseInt(rentalLiftAdult.value) >= 2) {
+            rentalLiftAdultFeeInput.value = parseInt(50000 * rentalLiftAdult.value);
         }
-        if (afternoon.checked && parseInt(kidPeopleInput.value) == 1) {
+        if (afternoon.checked && parseInt(rentalLiftKid.value) == 1) {
             rentalLiftKidFeeInput.value = '40000';
-        } else if (afternoon.checked && parseInt(kidPeopleInput.value) >= 2) {
-            rentalLiftKidFeeInput.value = parseInt(40000 * kidPeopleInput.value);
+        } else if (afternoon.checked && parseInt(rentalLiftKid.value) >= 2) {
+            rentalLiftKidFeeInput.value = parseInt(40000 * rentalLiftKid.value);
         }
 
         // 주간권
-        if (dayTime.checked && parseInt(adultPeopleInput.value) == 1) {
+        if (dayTime.checked && parseInt(rentalLiftAdult.value) == 1) {
             rentalLiftAdultFeeInput.value = '60000';
-        } else if (dayTime.checked && parseInt(adultPeopleInput.value) >= 2) {
-            rentalLiftAdultFeeInput.value = parseInt(60000 * adultPeopleInput.value);
+        } else if (dayTime.checked && parseInt(rentalLiftAdult.value) >= 2) {
+            rentalLiftAdultFeeInput.value = parseInt(60000 * rentalLiftAdult.value);
         }
-        if (dayTime.checked && parseInt(kidPeopleInput.value) == 1) {
+        if (dayTime.checked && parseInt(rentalLiftKid.value) == 1) {
             rentalLiftKidFeeInput.value = '50000';
-        } else if (dayTime.checked && parseInt(kidPeopleInput.value) >= 2) {
-            rentalLiftKidFeeInput.value = parseInt(50000 * kidPeopleInput.value);
+        } else if (dayTime.checked && parseInt(rentalLiftKid.value) >= 2) {
+            rentalLiftKidFeeInput.value = parseInt(50000 * rentalLiftKid.value);
         }
 
         // 야간권
-        if (nightTime.checked && parseInt(adultPeopleInput.value) == 1) {
+        if (nightTime.checked && parseInt(rentalLiftAdult.value) == 1) {
             rentalLiftAdultFeeInput.value = '40000';
-        } else if (nightTime.checked && parseInt(adultPeopleInput.value) >= 2) {
-            rentalLiftAdultFeeInput.value = parseInt(40000 * adultPeopleInput.value);
+        } else if (nightTime.checked && parseInt(rentalLiftAdult.value) >= 2) {
+            rentalLiftAdultFeeInput.value = parseInt(40000 * rentalLiftAdult.value);
         }
-        if (nightTime.checked && parseInt(kidPeopleInput.value) == 1) {
+        if (nightTime.checked && parseInt(rentalLiftKid.value) == 1) {
             rentalLiftKidFeeInput.value = '30000';
-        } else if (nightTime.checked && parseInt(kidPeopleInput.value) >= 2) {
-            rentalLiftKidFeeInput.value = parseInt(30000 * kidPeopleInput.value);
+        } else if (nightTime.checked && parseInt(rentalLiftKid.value) >= 2) {
+            rentalLiftKidFeeInput.value = parseInt(30000 * rentalLiftKid.value);
         }
 
         // 종일권
-        if (allDay.checked && parseInt(adultPeopleInput.value) == 1) {
+        if (allDay.checked && parseInt(rentalLiftAdult.value) == 1) {
             rentalLiftAdultFeeInput.value = '75000';
-        } else if (allDay.checked && parseInt(adultPeopleInput.value) >= 2) {
-            rentalLiftAdultFeeInput.value = parseInt(75000 * adultPeopleInput.value);
+        } else if (allDay.checked && parseInt(rentalLiftAdult.value) >= 2) {
+            rentalLiftAdultFeeInput.value = parseInt(75000 * rentalLiftAdult.value);
         }
-        if (allDay.checked && parseInt(kidPeopleInput.value) == 1) {
+        if (allDay.checked && parseInt(rentalLiftKid.value) == 1) {
             rentalLiftKidFeeInput.value = '65000';
-        } else if (allDay.checked && parseInt(kidPeopleInput.value) >= 2) {
-            rentalLiftKidFeeInput.value = parseInt(65000 * kidPeopleInput.value);
+        } else if (allDay.checked && parseInt(rentalLiftKid.value) >= 2) {
+            rentalLiftKidFeeInput.value = parseInt(65000 * rentalLiftKid.value);
         }
 
         // 시즌권
-        if (season.checked && parseInt(adultPeopleInput.value) == 1) {
+        if (season.checked && parseInt(rentalLiftAdult.value) == 1) {
             rentalLiftAdultFeeInput.value = '380000';
-        } else if (season.checked && parseInt(adultPeopleInput.value) >= 2) {
-            rentalLiftAdultFeeInput.value = parseInt(380000 * adultPeopleInput.value);
+        } else if (season.checked && parseInt(rentalLiftAdult.value) >= 2) {
+            rentalLiftAdultFeeInput.value = parseInt(380000 * rentalLiftAdult.value);
         }
-        if (season.checked && parseInt(kidPeopleInput.value) == 1) {
+        if (season.checked && parseInt(rentalLiftKid.value) == 1) {
             rentalLiftKidFeeInput.value = '350000';
-        } else if (season.checked && parseInt(kidPeopleInput.value) >= 2) {
-            rentalLiftKidFeeInput.value = parseInt(350000 * kidPeopleInput.value);
+        } else if (season.checked && parseInt(rentalLiftKid.value) >= 2) {
+            rentalLiftKidFeeInput.value = parseInt(350000 * rentalLiftKid.value);
         }
 
     }
@@ -197,22 +163,6 @@ document.addEventListener('DOMContentLoaded', function () {
     })
 });
 
-
-document.addEventListener('DOMContentLoaded', function () {
-    let dateRangePicker = document.getElementById('dateRangePicker');
-    let rentalLiftStart = document.getElementById('rentalLiftStart');
-
-    if (dateRangePicker && rentalLiftStart) {
-        dateRangePicker.addEventListener('input', function () {
-            rentalLiftStart.value = this.value;
-        });
-
-        dateRangePicker.addEventListener('cancel.daterangepicker', function () {
-            rentalLiftStart.value = '';
-        });
-    }
-});
-
 function updatePeopleCount(inputElement, increment) {
     let currentCount = parseInt(inputElement.value, 10);
     let newCount = currentCount + increment;
@@ -222,3 +172,73 @@ function updatePeopleCount(inputElement, increment) {
 
     inputElement.value = newCount;
 }
+
+//성인 버튼 조작
+document.getElementById("adult+Btn").addEventListener('click', () => {
+    let cnt = parseInt(document.getElementById('adult-Count').innerText);
+    if (cnt < 30) {
+        cnt += 1;
+    }
+
+    document.getElementById('adult-Count').innerText = cnt;
+    AllPeopleCount();
+})
+
+document.getElementById("adult-Btn").addEventListener('click', () => {
+    let cnt = parseInt(document.getElementById('adult-Count').innerText);
+    if (cnt > 1) {
+        cnt -= 1;
+    }
+    document.getElementById('adult-Count').innerText = cnt;
+    AllPeopleCount();
+})
+
+
+//어린이 버튼 조작
+document.getElementById("child+Btn").addEventListener('click', () => {
+    let cnt = parseInt(document.getElementById('child-Count').innerText);
+    if (cnt < 10) {
+        cnt += 1;
+    }
+
+    document.getElementById('child-Count').innerText = cnt;
+    AllPeopleCount();
+    //  childAgeSelectCreater();
+})
+
+document.getElementById("child-Btn").addEventListener('click', () => {
+    let cnt = parseInt(document.getElementById('child-Count').innerText);
+    if (cnt > 0) {
+        cnt -= 1;
+    }
+    document.getElementById('child-Count').innerText = cnt;
+    AllPeopleCount();
+    //  childAgeSelectCreater();
+})
+
+//인원수 세주는거
+function AllPeopleCount() {
+    $('#people').attr('placeholder', `성인 : ${document.getElementById('adult-Count').innerText}명 · 아동 ${document.getElementById('child-Count').innerText}명 `);
+    document.getElementById('rentalLiftAdult').value = document.getElementById('adult-Count').innerText;
+    document.getElementById('rentalLiftKid').value = document.getElementById('child-Count').innerText;
+
+}
+
+//peoplelist 사라지는 이벤트
+document.getElementById('peoplelistClose').addEventListener('click', () => {
+    document.getElementById('peopleList').style.display = "none";
+})
+var targetArea1 = document.getElementById('peopleList');
+var targetArea2 = document.getElementById('people');
+document.addEventListener('click', function (event) {
+    if (!targetArea1.contains(event.target) || !targetArea2.contains(event.target)) {
+        console.log("tq");
+        document.getElementById('peopleList').style.display = "none";
+    }
+});
+targetArea1.addEventListener('click', function (event) {
+    event.stopPropagation();
+});
+targetArea2.addEventListener('click', function (event) {
+    event.stopPropagation();
+});

@@ -55,7 +55,7 @@
 		</div> -->
 
 		<div class="box">
-			<form action="/hotel/reservation" method="post">
+			<form action="/hotel/reservation" method="post" id="form">
 			<div id="box">
 			<p class="fs-3 hotelText">호텔예약/<a class="move-rental" href="/rental/reserve">렌탈장비예약</a></p>
 			<div class="input-box">
@@ -170,12 +170,13 @@
 					<div class="paybox input-group mb-3">
 						<input type="text" id="pay1" class="form-control" placeholder="요금" readonly="readonly">	
 						<input type="hidden" id="pay2" class="form-control" name="hotelReserveFee" placeholder="요금">	
-						<button type="submit" class="btn btn-outline-secondary">결제</button>
+						<button type="button" class="btn btn-outline-secondary" id="submitBtn">결제</button>
 					 </div>
 					</div>
 					
 						<button id="closeBtn" type="button" class="btn btn-outline-secondary">이전</button>
 				</div>
+				
 			</form>
 			
 			

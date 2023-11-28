@@ -38,7 +38,7 @@ public class WeatherController {
 		rdto.setRegionGrandChild("홍천읍");
 		WeatherVO wvo = wdao.selectDefaultWeather(rdto);
 		
-		return new ResponseEntity<WeatherVO>(wvo , HttpStatus.OK) ;
+		return new ResponseEntity<WeatherVO>(wvo , HttpStatus.OK);
 	}
 	
 	//날씨 리스트(지역 110~ 119까지)
