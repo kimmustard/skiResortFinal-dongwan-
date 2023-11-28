@@ -8,7 +8,8 @@
 /* 왼쪽 카테고리 */
 .mainCategory{
 	margin-top: 96px;
-	width: 300px;	
+	width: 300px;
+	background-color: 
 }
 
 .category-body{
@@ -45,12 +46,15 @@
 /* ViewBox1 */
 .mainViewBox1{
 	height: 700px;
-	background-color: gray;
 }
 
 .modifyViewBox{
-	padding-left: 200px;
-	padding-top: 80px;
+    /* padding-left: 200px; */
+    /* padding-top: 80px; */
+    margin: auto;
+    /* margin-top: 7px; */
+    width: 350px;
+    padding-top: 20px;
 }
 .modifyBox{
 	margin-top: 20px;
@@ -74,25 +78,47 @@
 }
 
 .mainViewBody2{
-	background-color: blue;
 	width: 950px;
 	margin-top: 96px;
 }
 
 .mainViewBox2{
 	height: 304px;
-	background-color: red;
-	
+}
+
+.mainViewBox3{
+	padding: 50px;
+    padding-left: 50px;
+    height: 1004px;
 }
 
 .infoViewBox{
-	padding-left: 200px;
-	padding-top: 80px;
+	padding: 50px;
+    margin: auto;
+    margin-left: 180px;
 }
 
 .infoBox{
 	margin-top: 20px;
 	margin-bottom: 20px;
 }
+
+.ibox5{
+	border: 1px solid black;
+	height: 400px;
+	margin-bottom: 50px;
+}
+.ibox6{
+	border: 1px solid black;
+	height: 400px;
+}
+
+.iboxList{
+	display: flex;
+	justify-content: space-between;
+	padding: 50px 50px 10px 50px;
+	border-bottom: 1px solid black;
+}
+
 
 

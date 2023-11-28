@@ -211,15 +211,23 @@
 				
 			<div class="mainViewBody2">
 				<div class="mainViewBox3">
-					<a href="#"><span>문의내역</span></a>
-					<div>
-						<span>문의 내역 테스트</span>
+					<div class="infoBox ibox5">
+						<div class="iboxList iboxList1">
+							<div>
+								<span id="iboxTitle">문의 내역 테스트</span>
+							</div>
+							<a href="#"><span>문의내역</span></a>
+						</div>
 					</div>	
 			
 				
-					<a href="#"><span>내역조회</span></a>
-					<div>
-						<span>결제/환불 내역</span>
+					<div class="infoBox ibox6">
+						<div class="iboxList iboxList2">
+							<div>
+								<span>결제/환불 내역</span>	
+							</div>
+							<a href="#"><span>내역조회</span></a>
+						</div>
 					</div>	
 				</div>
 			</div>
