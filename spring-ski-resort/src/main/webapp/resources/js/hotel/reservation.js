@@ -247,4 +247,14 @@ function roomSelectEvent(num){
     // }
     
 }
+document.getElementById('submitBtn').addEventListener('click',()=>{
+    if(pay1.value==""){
+        alert("방을 선택해주세요");
+    }
+    else{
+        document.getElementById('form').submit();
+    }
+})
+
+
  
