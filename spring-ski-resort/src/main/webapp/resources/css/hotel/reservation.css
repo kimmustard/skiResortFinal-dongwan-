@@ -257,6 +257,7 @@
     width: 680px;
     height: 480px;
     border: solid 1px black;
+    user-select: none;
     
 }.room-image{
 	width: 500px;

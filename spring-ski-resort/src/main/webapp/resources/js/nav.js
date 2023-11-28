@@ -1,22 +1,12 @@
 window.onload = function () {
 
-    setTimeout(() => document.getElementById("hide").style.opacity = 0, 5000)
+
     setTimeout(() => document.getElementById("ski-navbar").style.opacity = 0.5, 5000)
     if (!(document.getElementById('maintext1'))) {
 
-        document.getElementById("ski-blank").style.height = "96px";
-        document.getElementById("hide").style.height = "0px";
         document.getElementById("ski-navbar").style.opacity = 0.5;
     }
-    if ((document.getElementById('notice-container'))) {
-        document.getElementById("ski-blank").style.height = "0px";
-    }
-    if ((document.getElementById('MemberIdCheck'))) {
-        document.getElementById("ski-blank").style.height = "0px";
-    }
-    if ((document.getElementById('hotelReservePeople'))) {
-        document.getElementById("ski-blank").style.height = "0px";
-    }
+  
 
 
     weatherSearch().then(weatherInfo => {
@@ -35,26 +25,14 @@ window.onload = function () {
         weatherDate; // 마지막 갱신 날짜
         weatherTime;	// 마지막 갱신 시간
         */
-        const obj = weatherInfo.regionNum;
+        const obj = weatherInfo.weatherDate;
         console.log(obj);
-        document.getElementById("innerItem2").innerHTML = ``
+        document.getElementById("innerItem2").innerHTML += ``
     })
 
 
 
 }
-
-document.getElementById("ski-navbar").addEventListener("mouseover", () => {
-    document.getElementById("ski-navbar").style.height = "96px"
-
-})
-document.getElementById("ski-navbar").addEventListener("mouseout", () => {
-    document.getElementById("ski-navbar").style.height = "0px"
-
-
-
-
-})
 
 //날씨정보 불러오기
 async function weatherSearch() {
@@ -72,3 +50,12 @@ async function weatherSearch() {
     }
 
 }
+
+document.getElementById("ski-navbar").addEventListener("mouseover", () => {
+    document.getElementById("ski-navbar").style.height = "96px"
+
+})
+document.getElementById("ski-navbar").addEventListener("mouseout", () => {
+    document.getElementById("ski-navbar").style.height = "0px"
+
+})

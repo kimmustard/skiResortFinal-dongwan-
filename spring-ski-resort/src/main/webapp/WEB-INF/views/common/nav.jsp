@@ -17,9 +17,9 @@
 		
 	</sec:authorize>
 <div class="navContainer">
-	<nav id="hide"></nav>
 
 	<nav class="ski-navbar" id="ski-navbar">
+	<nav id="hide"></nav>
   <div class="ski-collapse">
     <a class="ski-navbar-brand" href="/">다이스키</a>
        <div class="ski-nav-link"><a href="/rental/fee-info">렌탈</a></div>
@@ -61,5 +61,5 @@
   </div>
 </nav>
 </div>
-<div class="ski-blank" id="ski-blank"></div>
+<!-- <div class="ski-blank" id="ski-blank"></div> -->
 <script type="text/javascript" src="/resources/js/nav.js" ></script>

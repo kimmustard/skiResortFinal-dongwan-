@@ -8,49 +8,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style type="text/css">
-	.bodyContainer{
-		width: 100%;
-		height: 1000px;
-		position: relative;
-	}
-	
-	.loginContainer{
-		width: 500px;
-		background-color: #593196;
-		position: absolute;
-		top:40%;
-		left: 50%;
-	    transform: translate(-50%, -50%);
-	}
-	
-	.login-box{
-		margin: 50px;
-		margin-left: 100px;
-		width: 300px;
-		height: 300px;
-	}
-	
-	.btn-box{
-		width: 300px;
-		display: flex;
-		justify-content: space-around;
-		margin-top: 50px;
-	}
-	
-	
-	.login-btn{
-		width: 100px;
-	}
-	.bodyContainer>video{
-	position: absolute;
-	left: 0;
-	top: 0;
-	z-index: -1;
-}
 
-</style>
 <link rel="stylesheet" href="/resources/css/loginbootstrap.css">
+<link rel="stylesheet" href="/resources/css/member/login.css">
 </head>
 <body>
 	<jsp:include page="../common/nav.jsp"></jsp:include>
