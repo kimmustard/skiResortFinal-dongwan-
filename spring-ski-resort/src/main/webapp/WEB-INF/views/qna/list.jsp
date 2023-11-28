@@ -29,15 +29,19 @@
 				<form action="/qna/list" method="get">
 					<c:if test="${authType == 'normal' }">
 					  <input type="hidden" name="type" value="w" ${typed eq 'w' ? 'selected' : '' }>
-					  <input type="hidden" name="keyword" type="search" value="${authId }">
+					  <input type="hidden" name="keyword" type="search" value="${authId}">
+					  <button class="btn btn-outline-success" type="submit">
+					  MY Q&A</button>
 					</c:if>
+				</form>
+				<form action="/qna/list" method="get">
 					<c:if test="${authType != 'normal' }">
 					  <input type="hidden" name="type" value="w" ${typed eq 'w' ? 'selected' : '' }>
 					  <input type="hidden" name="keyword" type="search" value="${authEmail }">
-					</c:if>
-					  <button class="btn btn-outline-success" type="submit">
+					 <button class="btn btn-outline-success" type="submit">
 					  MY Q&A</button>
-				</form>
+					</c:if>
+				</form>	
 			</div>
 		</sec:authorize>
 		

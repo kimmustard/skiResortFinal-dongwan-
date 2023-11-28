@@ -2,6 +2,8 @@ package com.web.www.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -17,8 +19,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.web.www.domain.FileVO;
 import com.web.www.domain.board.PagingVO;
-import com.web.www.domain.board.QnaVO;
 import com.web.www.domain.board.QnaDTO;
+import com.web.www.domain.board.QnaVO;
 import com.web.www.handler.FileHandler;
 import com.web.www.handler.PagingHandler;
 import com.web.www.service.QnaService;
@@ -61,7 +63,9 @@ public class QnaController {
 	
 	
 	@GetMapping("/list")
-	public void qnaList(Model m, PagingVO pgvo) {
+	public void qnaList(HttpSession ses, Model m, PagingVO pgvo) {
+		String str = (String) ses.getAttribute("memberId");
+		log.info("######", str);
 		m.addAttribute("list", qsv.qnaList(pgvo));
 		int totalCount = qsv.getTotalCount(pgvo);
 		PagingHandler ph = new PagingHandler(pgvo, totalCount);
