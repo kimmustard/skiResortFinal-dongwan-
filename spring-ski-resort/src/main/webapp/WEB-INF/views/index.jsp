@@ -19,16 +19,12 @@
 			<h1 id="maintext1">好き</h1>
 			<h1 id="maintext2">Daisuski</h1>
 			
+			
 		<div id="wrapper">
-		 	<div id="innerItem1">날씨정보<br>
-		 		Weather Report<br>
-		 		
-		 	</div> 
-		 	<div id="innerItem2">날씨를 넣던가</div> 
-		 	<div id="innerItem3">
-		 		<img alt="없음" width="60px" height="60px" src="/resources/etc/icons/weather/해.png">
-		 	</div> 
-		 	<div id="innerItem4">일단 때려박기~~</div> 
+		 	<div id="innerItem1"></div> 
+			<div id="innerItem2"></div> 
+			<div id="innerItem3"></div> 
+		 	<div id="innerItem4"></div> 
 		</div>
 	</div>
 	

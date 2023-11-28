@@ -73,3 +73,35 @@
 .index-content{
 	padding: 15px 0;
 }
+.weathericon{
+	color: white;
+	font-size: 40px;
+}
+.weather-info{
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	margin-left: 5px;
+	font-size: 20px;
+	
+}
+#innerItem1{
+	width: 600px;
+}
+#innerItem4{
+	width: 700px;
+}
+#innerItem2{
+	margin-left: 0;
+	margin-right: 0;
+	
+}
+#innerItem3{
+	
+	margin-left: 0;
+	margin-right: 0;
+
+}
+.weather-area{
+	font-size: 25px;
+}
