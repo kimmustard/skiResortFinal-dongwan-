@@ -21,7 +21,7 @@
 			
 		<div id="wrapper">
 		 	<div id="innerItem1">날씨정보<br>
-		 		Weather Report
+		 		Weather Report<br>
 		 		
 		 	</div> 
 		 	<div id="innerItem2">날씨를 넣던가</div> 

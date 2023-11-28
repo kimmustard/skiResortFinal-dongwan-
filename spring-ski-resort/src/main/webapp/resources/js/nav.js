@@ -25,9 +25,18 @@ window.onload = function () {
         weatherDate; // 마지막 갱신 날짜
         weatherTime;	// 마지막 갱신 시간
         */
-        const obj = weatherInfo.weatherDate;
-        console.log(obj);
-        document.getElementById("innerItem2").innerHTML += ``
+        console.log(weatherInfo.regionNum); 
+        const weatherDate = weatherInfo.weatherDate.slice(0,4)+"년"+weatherInfo.weatherDate.slice(4,6)+"월"+weatherInfo.weatherDate.slice(6,8)+"일";
+        var week_array = new Array('일', '월', '화', '수', '목', '금', '토');
+        var today_num = new Date().getDay();
+        const weatherTime = weatherInfo.weatherTime.slice(0,2)+":"+ weatherInfo.weatherTime.slice(2,4);
+        document.getElementById("innerItem1").innerText+=weatherDate+"["+week_array[today_num]+"]"+weatherTime+"갱신";
+        document.getElementById("innerItem2");
+        document.getElementById("innerItem2");
+        document.getElementById("innerItem2");
+      
+     
+    
     })
 
 

@@ -37,7 +37,7 @@ public class WeatherController {
 		rdto.setRegionGrandChild("홍천읍");
 		WeatherVO wvo = wdao.selectDefaultWeather(rdto);
 		
-		return new ResponseEntity<WeatherVO>(wvo , HttpStatus.OK) ;
+		return new ResponseEntity<WeatherVO>(wvo , HttpStatus.OK);
 	}
 	
 	//서버 실행시 지역 테이블 초기설정
