@@ -9,4 +9,9 @@
 		values(#{rentalLiftNum},#{rentalLiftTicket},#{rentalLiftAdultFee},
 		#{rentalLiftKidFee},#{rentalLiftAdult},#{rentalLiftKid},#{rentalLiftStart})
 	</insert>
+	
+	<insert id="rental">
+		insert into rental(member_num,rental_lift_num,rental_main_lift)
+		values(#{memberNum},#{rentalLiftNum},'Y')
+	</insert>
 </mapper>

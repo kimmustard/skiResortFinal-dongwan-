@@ -1,5 +1,7 @@
 package com.web.www.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.web.www.domain.member.MemberVO;
 import com.web.www.domain.rental.RentalLiftVO;
+import com.web.www.domain.rental.RentalVO;
 import com.web.www.service.RentalService;
 
 import lombok.RequiredArgsConstructor;
@@ -34,9 +37,15 @@ public class RentalController {
 	}
 	
 	@PostMapping("/reserve")
-	public String liftReservePost(@ModelAttribute("rlivo") RentalLiftVO rlivo) {
+	public String liftReservePost(@ModelAttribute("rlivo") RentalLiftVO rlivo, HttpSession ses) {
 		log.info("rlivo = {}",rlivo);
+		long memberNum = (long)ses.getAttribute("memberNum");
+		log.info("memberNum = {}",memberNum);
+		RentalVO rvo = new RentalVO();
+		rvo.setMemberNum(memberNum);
+		rvo.setRentalLiftNum(rlivo.getRentalLiftNum());
 		int isOk = rsv.liftReserve(rlivo);
+		isOk = rsv.rental(rvo);
 		log.info((isOk > 0)? "ok":"fail");
 		return "index";
 	}

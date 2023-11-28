@@ -57,7 +57,7 @@
 		              	 	<div class="input-group-prepend">
 		                		 <span class="input-group-text"><i class="bi bi-calendar"></i></span>
 		                	</div>
-							<input type="text" name="rentalLiftStart" class="form-control" id="dateRangePicker" placeholder="날짜를 선택하세요" readonly="readonly">
+							<input type="text" class="form-control" id="dateRangePicker" placeholder="날짜를 선택하세요" readonly="readonly">
 						</div>
 					</div>
 					<div class="input-box">
