@@ -39,11 +39,14 @@ public class RentalController {
 	@PostMapping("/reserve")
 	public String liftReservePost(@ModelAttribute("rlivo") RentalLiftVO rlivo, HttpSession ses) {
 		log.info("rlivo = {}",rlivo);
-		long memberNum = (long)ses.getAttribute("memberNum");
-		log.info("memberNum = {}",memberNum);
+		String memberEmail = (String)ses.getAttribute("memberEmail");
+		String memberType = (String)ses.getAttribute("memberType");
+		log.info("memberEmail = {}",memberEmail);
+		log.info("memberType = {}",memberType);
 		RentalVO rvo = new RentalVO();
-		rvo.setMemberNum(memberNum);
 		rvo.setRentalLiftNum(rlivo.getRentalLiftNum());
+		rvo.setMemberEmail(memberEmail);
+		rvo.setMemberType(memberType);
 		int isOk = rsv.liftReserve(rlivo);
 		isOk = rsv.rental(rvo);
 		log.info((isOk > 0)? "ok":"fail");

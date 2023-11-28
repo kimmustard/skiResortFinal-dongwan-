@@ -60,6 +60,7 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 		AuthMember authMember = (AuthMember) authentication.getPrincipal();
 		ses.setAttribute("memberNum", authMember.getMvo().getMemberNum());
 		ses.setAttribute("memberId", authMember.getMvo().getMemberId());
+		ses.setAttribute("memberEmail", authMember.getMvo().getMemberEmail());
 		ses.setAttribute("memberAlias", authMember.getMvo().getMemberAlias());
 		ses.setAttribute("memberName", authMember.getMvo().getMemberName());
 		ses.setAttribute("memberPhoneNum", authMember.getMvo().getMemberPhoneNum());

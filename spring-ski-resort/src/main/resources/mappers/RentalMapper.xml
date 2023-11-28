@@ -11,7 +11,7 @@
 	</insert>
 	
 	<insert id="rental">
-		insert into rental(member_num,rental_lift_num,rental_main_lift)
-		values(#{memberNum},#{rentalLiftNum},'Y')
+		insert into rental(rental_lift_num,member_email,rental_main_lift,member_type)
+		values(#{rentalLiftNum},#{memberEmail},'Y',#{memberType})
 	</insert>
 </mapper>
