@@ -15,7 +15,7 @@ import lombok.ToString;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class qnaDTO {
+public class QnaDTO {
 	
 	private QnaVO qvo;
 	private List<FileVO> flist;

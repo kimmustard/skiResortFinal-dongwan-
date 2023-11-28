@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import com.web.www.domain.FileVO;
 import com.web.www.domain.board.PagingVO;
 import com.web.www.domain.board.QnaVO;
-import com.web.www.domain.board.qnaDTO;
+import com.web.www.domain.board.QnaDTO;
 import com.web.www.repository.FileDAO;
 import com.web.www.repository.QnaDAO;
 
@@ -25,7 +25,7 @@ public class QnaServiceImpl implements QnaService{
 	
 	
 	@Override
-	public int qnaRegister(qnaDTO qdto) {
+	public int qnaRegister(QnaDTO qdto) {
 		int isOk = qdao.insert(qdto.getQvo());
 		if(qdto.getFlist()==null) {
 			isOk*=1;
@@ -56,6 +56,35 @@ public class QnaServiceImpl implements QnaService{
 	public int getTotalCount(PagingVO pgvo) {
 		log.info(">>>>> qna totalCount service >> ");
 		return qdao.getTotalCount(pgvo);
+	}
+
+
+
+	@Override
+	public QnaDTO qnaDetail(long qnaNum) {
+		log.info(">>>>> qna detail service >> ");
+		QnaDTO qdto = new QnaDTO(qdao.selectDetail(qnaNum), fdao.getQnaFileList(qnaNum));
+		return qdto;
+	}
+
+
+
+	@Override
+	public int qnaFileModify(QnaDTO qdto) {
+		log.info(">>>>> Qna file modify service >> ");
+		int isOk = qdao.QnaFileModify(qdto.getQvo());
+		if(qdto.getFlist()==null) {
+			isOk*=1;
+		}else {
+			if(isOk > 0 && qdto.getFlist().size() > 0) {
+				long QnaNum = qdto.getQvo().getQnaNum();
+				for(FileVO fvo : qdto.getFlist()) {
+					fvo.setQnaNum(QnaNum);
+					isOk *= fdao.insertQnaFile(fvo);
+				}
+			}
+		}
+		return isOk;
 	}
 
 }

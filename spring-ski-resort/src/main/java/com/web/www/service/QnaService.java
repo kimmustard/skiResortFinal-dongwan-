@@ -4,14 +4,18 @@ import java.util.List;
 
 import com.web.www.domain.board.PagingVO;
 import com.web.www.domain.board.QnaVO;
-import com.web.www.domain.board.qnaDTO;
+import com.web.www.domain.board.QnaDTO;
 
 public interface QnaService {
 
-	int qnaRegister(qnaDTO qnaDTO);
+	int qnaRegister(QnaDTO qnaDTO);
 
 	List<QnaVO> qnaList(PagingVO pgvo);
 
 	int getTotalCount(PagingVO pgvo);
+
+	QnaDTO qnaDetail(long qnaNum);
+
+	int qnaFileModify(QnaDTO qdto);
 
 }

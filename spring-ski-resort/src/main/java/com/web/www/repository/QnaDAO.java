@@ -15,4 +15,8 @@ public interface QnaDAO {
 
 	int getTotalCount(PagingVO pgvo);
 
+	QnaVO selectDetail(long qnaNum);
+
+	int QnaFileModify(QnaVO qvo);
+
 }

@@ -14,7 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.web.www.domain.FileVO;
 import com.web.www.domain.board.PagingVO;
 import com.web.www.domain.board.QnaVO;
-import com.web.www.domain.board.qnaDTO;
+import com.web.www.domain.board.QnaDTO;
 import com.web.www.handler.FileHandler;
 import com.web.www.handler.PagingHandler;
 import com.web.www.service.QnaService;
@@ -49,7 +49,7 @@ public class QnaController {
 			String category ="qna";
 			flist = fh.uploadFiles(files,category);
 		}
-		int isOk = qsv.qnaRegister(new qnaDTO(qvo, flist));
+		int isOk = qsv.qnaRegister(new QnaDTO(qvo, flist));
 		log.info(">>>>> qna register >> "+(isOk > 0? "OK" : "Fail"));
 		return "redirect:/qna/list";
 	}
@@ -65,6 +65,33 @@ public class QnaController {
 	}
 	
 	
+	
+	//파일업로드 추가
+	@GetMapping({"/detail","/modify"})
+	public void qnaDetail(Model m, @RequestParam("qnaNum")long qnaNum) {
+		QnaDTO qdto = qsv.qnaDetail(qnaNum);
+		m.addAttribute("qdto",qdto);
+	}
+	
+	
+	
+	//파일업로드 추가
+		@PostMapping("/modify")
+		public String qnaModify(QnaVO qvo, RedirectAttributes re,
+				@RequestParam(name="files", required = false)MultipartFile[] files) {
+			log.info(" >>>>> modify "+qvo+" "+files);
+			
+			List<FileVO> flist = null;
+			if(files[0].getSize() > 0) {
+				String category ="qna";
+				flist = fh.uploadFiles(files,category);
+			}
+			QnaDTO qdto = new QnaDTO(qvo, flist);
+			int isOk = qsv.qnaFileModify(qdto);
+			log.info(">>>>> qna modify >> "+(isOk > 0? "OK" : "Fail"));
+			re.addFlashAttribute("isOk",isOk);
+			return "redirect:/qna/detail?qnaNum="+qvo.getQnaNum();
+		}
 	
 
 }

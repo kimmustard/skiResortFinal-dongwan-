@@ -30,7 +30,7 @@
 		  	<option value="렌탈">렌탈</option>
 		  	<option value="교통">교통</option>
 		  	<option value="예약">예약</option>
-		  	<option value="결재">결제</option>
+		  	<option value="결제">결제</option>
 		  	<option value="기타">기타</option>
 		  </select>
 		</div>

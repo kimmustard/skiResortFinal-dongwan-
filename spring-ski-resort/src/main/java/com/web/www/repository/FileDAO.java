@@ -14,4 +14,6 @@ public interface FileDAO {
 
 	int insertQnaFile(FileVO fvo);
 
+	List<FileVO> getQnaFileList(long qnaNum);
+
 }

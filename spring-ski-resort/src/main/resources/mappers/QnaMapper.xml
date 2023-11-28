@@ -22,7 +22,15 @@
 		select count(qna_num) from qna where qna_del='N' <include refid="search"></include>
 	</select>
 	
+	<select id="selectDetail" resultType="com.web.www.domain.board.QnaVO">
+		select * from qna where qna_del='N' and qna_num=#{qnaNum}
+	</select>
 	
+	<update id="QnaFileModify">
+		update qna set 
+		qna_category=#{qnaCategory}, qna_title=#{qnaTitle}, qna_content=#{qnaContent}, qna_mod_at=now()
+		where qna_num = #{qnaNum}
+	</update>
 	
 	<sql id="search">
 		<if test="type != null">

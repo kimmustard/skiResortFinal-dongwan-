@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.web.www.repository.FileDAO">
-	
+	<!-- notice 코드 라인 -->
 	<insert id="insertNoticeFile">
 		insert into file(uuid, save_dir, file_name, file_isok, file_type, file_size, notice_num)
 		values(#{uuid}, #{saveDir}, #{fileName}, #{fileIsok}, #{fileType}, #{fileSize}, #{noticeNum})
@@ -17,9 +17,15 @@
 		delete from file where uuid = #{uuid}
 	</delete>
 	
+	
+	<!-- Q&A 코드 라인 -->
 	<insert id="insertQnaFile">
 		insert into file(uuid, save_dir, file_name, file_isok, file_type, file_size, qna_num)
 		values(#{uuid}, #{saveDir}, #{fileName}, #{fileIsok}, #{fileType}, #{fileSize}, #{qnaNum})
 	</insert>
+	
+	<select id="getQnaFileList" resultType="com.web.www.domain.FileVO">
+		select * from file where qna_num = #{qnaNum} order by file_reg_at asc
+	</select>
 	
 </mapper>
