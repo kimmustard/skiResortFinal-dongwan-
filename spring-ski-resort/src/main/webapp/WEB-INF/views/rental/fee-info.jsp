@@ -6,9 +6,10 @@
 <meta charset="UTF-8">
 <title>렌탈/요금안내</title>
 <style type="text/css">
-	.bodyContainer1{
+	.bodyContainer{
 		width: 100%;
-		height: 1500px;
+		height: 100%;
+		margin-top: 100px;
 	}
 	
 	.h1{

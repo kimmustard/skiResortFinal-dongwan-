@@ -57,6 +57,7 @@ public class OauthSuccessHandler implements AuthenticationSuccessHandler {
 		//로그인시 추가정보 (객체에서 필요한 정보가 있다면 직접 추가해주세요.)
 		AuthMember authMember = (AuthMember) authentication.getPrincipal();
 		ses.setAttribute("memberId", authMember.getMvo().getMemberId());
+		ses.setAttribute("memberEmail", authMember.getMvo().getMemberEmail());
 		ses.setAttribute("memberAlias", authMember.getMvo().getMemberAlias());
 		ses.setAttribute("memberName", authMember.getMvo().getMemberName());
 		ses.setAttribute("memberPhoneNum", authMember.getMvo().getMemberPhoneNum());

@@ -42,71 +42,100 @@
 	<jsp:include page="../common/nav.jsp" />
 	
 	<div class="back">
-
-		<div class="selector">
-			<div>
-				<a href="">스키/리프트권</a>
-			</div>
-			<div>
-				<a href="/hotel/reservation">호텔예약</a>
-			</div>
-		</div>
+		<img data-v-c62ee4ac="" src="https://cdn.shymbulak-dev.com/media-test/77032ae86d50f5d61c9cec8b2f30ae39.jpg" alt="" style="width: 100%; height: 100vh;">
 		
 		<div class="box">
-			<h1>리프트권 예약</h1>
+			<p class="fs-2">리프트권 예약</p>
 			<form action="/rental/reserve" method="post">
-				<input name="rentalLiftStart" id="rentalLiftStart" placeholder="렌탈이용날짜">
-			
-				<div class="date-group">
-					<div class="input-group calendar">
-	              	 	<div class="input-group-prepend">
-	                		 <span class="input-group-text"><i class="bi bi-calendar"></i></span>
-	                	</div>
-						<input type="text" class="form-control" id="dateRangePicker" placeholder="날짜를 선택하세요" readonly="readonly">
-					</div>
-					<div class="input-group mb-3">
-  						<span class="input-group-text" id="basic-addon1"><i class="bi bi-person-fill"></i></span>
-  						<input type="text" id="people" class="form-control people" placeholder="인원수" aria-label="Username" readonly="readonly" aria-describedby="basic-addon1">
-					</div>
-				</div>
+				<div class="input-box">
+					<input type="hidden" name="rentalLiftStart" id="rentalLiftStart" placeholder="렌탈이용날짜">
+					<input name="rentalLiftAdult" id="rentalLiftAdult" value="0" placeholder="성인인원" type="hidden">
+					<input name="rentalLiftKid" id="rentalLiftKid" value="0" placeholder="어린이인원" type="hidden">
 					
-				<div class="peopleList" id="peopleList" style="display: none;">
-					<label for="adult">성인:</label>
-					<div class="input-group">
-				        <button id="adultDecrementBtn" class="btn btn-outline-primary" type="button">-</button>
-				        <input type="text" class="form-control" id="adultPeople" name="rentalLiftAdult" value="0" readonly="readonly">
-				        <button id="adultIncrementBtn" class="btn btn-outline-primary" type="button">+</button>
-    				</div>
-					<label for="kid">어린이:</label>
-					<div class="input-group">
-				        <button id="kidDecrementBtn" class="btn btn-outline-primary" type="button">-</button>
-				        <input type="text" class="form-control" id="kidPeople" name="rentalLiftKid" value="0" readonly="readonly">
-				        <button id="kidIncrementBtn" class="btn btn-outline-primary" type="button">+</button>
-    				</div>
+					<div class="date-group">
+						<div class="input-group calendar">
+		              	 	<div class="input-group-prepend">
+		                		 <span class="input-group-text"><i class="bi bi-calendar"></i></span>
+		                	</div>
+							<input type="text" class="form-control" id="dateRangePicker" placeholder="날짜를 선택하세요" readonly="readonly">
+						</div>
+					</div>
+					<div class="input-box">
+						<div class="input-group mb-3">
+							<span class="input-group-text" id="basic-addon1"><i class="bi bi-person-fill"></i></span>
+							<input type="text" id="people" class="form-control people" placeholder="인원수" aria-label="Username" readonly="readonly" aria-describedby="basic-addon1">
+							<button id="nextBtn" type="button" class="btn btn-outline-primary">다음</button>
+						</div>
+						<div class="peopleList"  id="peopleList" style="display: none;">
+		  					<div class="list-Btn-Box">
+		  						성인    
+		  						<div class="people-Btn"> 
+			  						<div>
+			  							<button type="button" id="adult-Btn">
+			  								<svg style="width: 14px; height: 14px; xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.25 12.75H3.75a.75.75 0 0 1 0-1.5h16.5a.75.75 0 0 1 0 1.5z"></path></svg>
+			  							</button>
+			  						</div> 
+			  						 
+			  						<div id="adult-Count">
+			  							0
+			  						</div> 
+			  						
+			  						<div>
+			  							<button type="button" id="adult+Btn">
+			  							<svg style="width: 14px; height: 14px; xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.25 11.25h-7.5v-7.5a.75.75 0 0 0-1.5 0v7.5h-7.5a.75.75 0 0 0 0 1.5h7.5v7.5a.75.75 0 0 0 1.5 0v-7.5h7.5a.75.75 0 0 0 0-1.5z"></path></svg>
+			  							</button>
+			  						</div> 
+		  						</div> 
+		  					</div>
+		  					
+		  					<div class="list-Btn-Box">
+		  						어린이
+		  						<div class="people-Btn"> 
+			  						<div>
+			  							<button type="button" id="child-Btn">
+			  								<svg style="width: 14px; height: 14px; xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.25 12.75H3.75a.75.75 0 0 1 0-1.5h16.5a.75.75 0 0 1 0 1.5z"></path></svg>
+			  							</button>
+			  						</div> 
+			  						 
+			  						<div id="child-Count">
+			  							0
+			  						</div> 
+			  						<div>
+			  							<button type="button" id="child+Btn">
+			  							<svg style="width: 14px; height: 14px; xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.25 11.25h-7.5v-7.5a.75.75 0 0 0-1.5 0v7.5h-7.5a.75.75 0 0 0 0 1.5h7.5v7.5a.75.75 0 0 0 1.5 0v-7.5h7.5a.75.75 0 0 0 0-1.5z"></path></svg>
+			  							</button>
+			  						</div> 
+		  						</div> 
+		  					</div>
+	  						<div>
+	  							<button id="peoplelistClose" type="button" class="btn btn-outline-primary">닫기</button>
+	  						</div>
+	  					
+	  					</div>
+					</div>	
 				</div>
-				<button id="nextBtn" type="button" class="btn btn-outline-primary">다음</button>
+				
+				
 				
 				<div id="innerbox" class="reserveBox" style="display: none;">
-					<div class="input-group mb-3">
-						<span class="input-group-text">리프트권 선택</span>
+					<p class="fs-2">리프트권 선택</p>
+					<div class="form-check">
+					  <input class="form-check-input" type="radio" name="rentalLiftTicket" value="오전권" id="morningTicket">오전권
 					</div>
 					<div class="form-check">
-					  <input class="form-check-input" type="radio" name="rentalLiftTicket" id="morningTicket">오전권
+					  <input class="form-check-input" type="radio" name="rentalLiftTicket" value="오후권" id="afternoonTicket">오후권
 					</div>
 					<div class="form-check">
-					  <input class="form-check-input" type="radio" name="rentalLiftTicket" id="afternoonTicket">오후권
+					  <input class="form-check-input" type="radio" name="rentalLiftTicket" value="주간권" id="dayTimeTicket">주간권
 					</div>
 					<div class="form-check">
-					  <input class="form-check-input" type="radio" name="rentalLiftTicket" id="dayTimeTicket">주간권
+					  <input class="form-check-input" type="radio" name="rentalLiftTicket" value="야간권" id="nightTimeTicket">야간권
 					</div>
 					<div class="form-check">
-					  <input class="form-check-input" type="radio" name="rentalLiftTicket" id="nightTimeTicket">야간권
+					  <input class="form-check-input" type="radio" name="rentalLiftTicket" value="종일권" id="allDayTicket">종일권
 					</div>
 					<div class="form-check">
-					  <input class="form-check-input" type="radio" name="rentalLiftTicket" id="allDayTicket">종일권
-					</div>
-					<div class="form-check">
-					  <input class="form-check-input" type="radio" name="rentalLiftTicket" id="seasonTicket">시즌권
+					  <input class="form-check-input" type="radio" name="rentalLiftTicket" value="시즌권" id="seasonTicket">시즌권
 					</div>
 					
 					<div class="input-group mb-3">
@@ -129,6 +158,8 @@
 	
 	
 	<script type="text/javascript" src="/resources/js/rental/reserve.js"></script>
+	
+	<jsp:include page="../common/footer.jsp"></jsp:include>
 
 	
 </body>
