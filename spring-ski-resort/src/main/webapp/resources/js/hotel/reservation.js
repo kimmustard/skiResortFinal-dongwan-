@@ -168,13 +168,15 @@ function getDayOfWeek(date) {
    //  childAgeSelectCreater();
      })
     
-
+//인원수 세주는거
     function AllPeopleCount(){
         $('#people').attr('placeholder',`성인 : ${document.getElementById('audlt-Count').innerText}명 · 아동 ${document.getElementById('child-Count').innerText}명 ` );
         document.getElementById('hotelReservePeople').value = document.getElementById('audlt-Count').innerText;
         document.getElementById('hotelReserveChild').value = document.getElementById('child-Count').innerText;
 
     }
+    
+    
    // function childAgeSelectCreater(){
     //   
      //   let select ="";
@@ -198,20 +200,18 @@ document.getElementById('people').addEventListener('click',()=>{
 })
 
 
+//peoplelist 사라지는 이벤트
 document.getElementById('peoplelistClose').addEventListener('click',()=>{
     document.getElementById('peoplelist').style.display="none";
 })
-
   var targetArea1 = document.getElementById('peoplelist');
   var targetArea2 = document.getElementById('people');
 document.addEventListener('click', function(event) {
-	
   if (!targetArea1.contains(event.target) || !targetArea2.contains(event.target)) {
    		
      document.getElementById('peoplelist').style.display="none";
   }
 });
-
 targetArea1.addEventListener('click', function(event) {
   event.stopPropagation(); 
 });
