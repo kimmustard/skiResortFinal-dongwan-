@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.web.www.domain.member.MemberVO;
+import com.web.www.domain.member.ModifyMemberDTO;
 import com.web.www.security.AuthVO;
 
 public interface MemberDAO {
@@ -16,6 +17,13 @@ public interface MemberDAO {
 	int insertMember(MemberVO mvo);
 
 	int insertAuthInit(String memberId);
+	
+	/**
+	 * @param mvo
+	 * @return 일반/소셜회원별 정보수정
+	 */
+	int socialModifyMember(ModifyMemberDTO mvo);
+	int normalModifyMember(ModifyMemberDTO mvo);
 	
 	/**
 	 * 소셜 유저 등록과 등록전 중복확인 메서드입니다.
@@ -61,6 +69,8 @@ public interface MemberDAO {
 	int checkId(String memberId);
 
 	int checkEmail(String memberEmail);
+
+
 
 
 
