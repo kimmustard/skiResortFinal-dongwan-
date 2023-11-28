@@ -101,125 +101,121 @@
 			</ul>
 		</div>
 		
-		<form action="/rental/item" method="post" enctype="murtipart/form-datas">
-			<div class="ItemContainer">
-				
-				<div class="skiItemList" id="skiItemList">
-					<div class="itemImageBox1">
-						<div>
-							<!-- 이미지 파일 표시 -->
-							스키장비
-						</div>
-					</div>
-					<div class="itemImageBox2">
-						<div>
-							<!-- 이미지 파일 표시 -->
-						</div>
-					</div>
-					<div class="itemImageBox3">
-						<div>
-							<!-- 이미지 파일 표시 -->
-						</div>
-					</div>
-					<div class="itemImageBox4">
-						<div>
-							<!-- 이미지 파일 표시 -->
-						</div>
-					</div>
-					<div class="itemImageBox5">
-						<div>
-							<!-- 이미지 파일 표시 -->
-						</div>
-					</div>
-					<div class="itemImageBox6">
-						<div>
-							<!-- 이미지 파일 표시 -->
-						</div>
-					</div>
-				</div>
-				
-				
-				<div class="boardItemList" id="boardItemList" style="display: none;">
-					<div class="itemImageBox1">
-						<div>
-							<!-- 이미지 파일 표시 -->
-							보드장비
-						</div>
-					</div>
-					<div class="itemImageBox2">
-						<div>
-							<!-- 이미지 파일 표시 -->
-						</div>
-					</div>
-					<div class="itemImageBox3">
-						<div>
-							<!-- 이미지 파일 표시 -->
-						</div>
-					</div>
-					<div class="itemImageBox4">
-						<div>
-							<!-- 이미지 파일 표시 -->
-						</div>
-					</div>
-					<div class="itemImageBox5">
-						<div>
-							<!-- 이미지 파일 표시 -->
-						</div>
-					</div>
-					<div class="itemImageBox6">
-						<div>
-							<!-- 이미지 파일 표시 -->
-						</div>
-					</div>
-				</div>
-				
-				<div class="wearItemList" id="wearItemList" style="display: none;">
-					<div class="itemImageBox1">
-						<div>
-							<!-- 이미지 파일 표시 -->
-							의류
-						</div>
-					</div>
-					<div class="itemImageBox2">
-						<div>
-							<!-- 이미지 파일 표시 -->
-						</div>
-					</div>
-					<div class="itemImageBox3">
-						<div>
-							<!-- 이미지 파일 표시 -->
-						</div>
-					</div>
-					<div class="itemImageBox4">
-						<div>
-							<!-- 이미지 파일 표시 -->
-						</div>
-					</div>
-					<div class="itemImageBox5">
-						<div>
-							<!-- 이미지 파일 표시 -->
-						</div>
-					</div>
-					<div class="itemImageBox6">
-						<div>
-							<!-- 이미지 파일 표시 -->
-						</div>
-					</div>
-				</div>
-			</div>
-	
-			<div class="btnContainer">
-				<div>
-			  		<input type="file" name="files" id="files" style="display: none;" multiple="multiple">
-			  		<button type="button" id="trigger" class="btn btn-outline-primary">파일선택</button>
-				</div>
-				
-				<div>
-					<button type="submit" class="btn btn-outline-primary">등록</button>
-				</div>
-			</div>
 		
-		</form>
+		<div class="ItemContainer">
+			
+			<div class="skiItemList" id="skiItemList">
+				<div class="itemImageBox1">
+					<div>
+						<!-- 이미지 파일 표시 -->
+						스키장비
+					</div>
+				</div>
+				<div class="itemImageBox2">
+					<div>
+						<!-- 이미지 파일 표시 -->
+					</div>
+				</div>
+				<div class="itemImageBox3">
+					<div>
+						<!-- 이미지 파일 표시 -->
+					</div>
+				</div>
+				<div class="itemImageBox4">
+					<div>
+						<!-- 이미지 파일 표시 -->
+					</div>
+				</div>
+				<div class="itemImageBox5">
+					<div>
+						<!-- 이미지 파일 표시 -->
+					</div>
+				</div>
+				<div class="itemImageBox6">
+					<div>
+						<!-- 이미지 파일 표시 -->
+					</div>
+				</div>
+			</div>
+			
+			
+			<div class="boardItemList" id="boardItemList" style="display: none;">
+				<div class="itemImageBox1">
+					<div>
+						<!-- 이미지 파일 표시 -->
+						보드장비
+					</div>
+				</div>
+				<div class="itemImageBox2">
+					<div>
+						<!-- 이미지 파일 표시 -->
+					</div>
+				</div>
+				<div class="itemImageBox3">
+					<div>
+						<!-- 이미지 파일 표시 -->
+					</div>
+				</div>
+				<div class="itemImageBox4">
+					<div>
+						<!-- 이미지 파일 표시 -->
+					</div>
+				</div>
+				<div class="itemImageBox5">
+					<div>
+						<!-- 이미지 파일 표시 -->
+					</div>
+				</div>
+				<div class="itemImageBox6">
+					<div>
+						<!-- 이미지 파일 표시 -->
+					</div>
+				</div>
+			</div>
+			
+			<div class="wearItemList" id="wearItemList" style="display: none;">
+				<div class="itemImageBox1">
+					<div>
+						<!-- 이미지 파일 표시 -->
+						의류
+					</div>
+				</div>
+				<div class="itemImageBox2">
+					<div>
+						<!-- 이미지 파일 표시 -->
+					</div>
+				</div>
+				<div class="itemImageBox3">
+					<div>
+						<!-- 이미지 파일 표시 -->
+					</div>
+				</div>
+				<div class="itemImageBox4">
+					<div>
+						<!-- 이미지 파일 표시 -->
+					</div>
+				</div>
+				<div class="itemImageBox5">
+					<div>
+						<!-- 이미지 파일 표시 -->
+					</div>
+				</div>
+				<div class="itemImageBox6">
+					<div>
+						<!-- 이미지 파일 표시 -->
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="btnContainer">
+			
+			
+			<a href="/rental/item-register"><button type="button" class="btn btn-outline-primary">파일등록페이지</button></a>
+			
+		</div>
+		
+		
 		
 		<!-- 페이징 기능 들어갈지말지 -->
 	
@@ -228,7 +224,7 @@
 	
 	
 	<script type="text/javascript" src="/resources/js/rental/item.js"></script>
-	<script type="text/javascript" src="/resources/js/rental/rentalRegister.js"></script>
+	
 	
 	
 	<jsp:include page="../common/footer.jsp"></jsp:include>

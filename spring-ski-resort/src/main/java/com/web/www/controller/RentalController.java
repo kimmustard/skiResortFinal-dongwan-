@@ -58,5 +58,11 @@ public class RentalController {
 	public String itemForm() {
 		return "/rental/item";
 	}
+	
+	@GetMapping("/item-register")
+	public String itemRegisterForm() {
+		
+		return "/rental/item-register";
+	}
 
 }
