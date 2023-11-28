@@ -1,169 +1,95 @@
 @charset "UTF-8";
 
-.detailContainer{
+.bodyContainer{
 	width: 100%;
-	height: 1000px;
+	height: 1100px;
 	display: flex;
 }
-.detailMainBody1{
-	width : 15%;
-	background-color: #646264;
-	border-radius: 0 20px 20px 0;
-}
-.detailMainBody2_3{
-	border-radius: 20px 0 0 20px;
-	width: 100%;
-	display: flex;
+/* 왼쪽 카테고리 */
+.mainCategory{
+	margin-top: 96px;
+	width: 300px;	
 }
 
-.mauntain1{
-	position: absolute;
-	left: 0px;
-	bottom: 700px;
-	width: 500px;
-	height: 100px;
-	z-index: -1;
-}
-.mauntain2{
-	position: absolute;
-	right: 500px;
-	width: 500px;
-	height: 100px;
-	z-index: -2;
-}
-
-
-.detailMainBody2, .detailMainBody3{
-	width : 100%;
-}
-
-.detailSubBox1, .detailSubBox2, .detailSubBox3{
-	margin: 25px;
-}
-
-.detailSubBox1{
-	
-}
-
-.detailSubBox1>form>ul>li{
-	margin: 20px 20px 20px 50px;
-}
-.detailSubBox2>form>ul>li{
-	margin: 20px 20px 20px 50px;
+.category-body{
+	margin: 50px;
 }
 
 .category-title{
 	margin-top: 50px;
-	text-align: center;
-}
-
-.category-title>a{
-	text-decoration: none;
-}
-
-
-/*왼쪽 카테고리 탭*/
-
-.category-span{
-	color: #f6f9ff;
-	font-family: 'Nanum Gothic', sans-serif;
-	font-size: 13pt;
-	font-weight: 400;
-	display: block;
-}
-
-.category-span:hover{
-	color: #f6f9ff;
-	background-color: #4154f1;
-	border-radius: 10px;
-	transition: 0.5s;
-	font-weight: 400;
-}
-
-.category-span-main{
-	color: #f6f9ff;
-	font-family: 'Nanum Gothic', sans-serif;
-	font-size: 15pt;
-	font-weight: 500;
-	display: block;
-	width: 170px;
-}
-
-.category-span, .category-span-main {
-    display: inline-block; /* inline 요소를 block 요소로 변경하여 width와 height 설정이 가능하도록 함 */
-    padding: 10px; /* 클릭 영역을 패딩으로 늘림 */
-    cursor: pointer; /* 마우스를 올렸을 때 포인터 모양으로 변경 */
-}
-
-.category-span-main {
-    padding: 15px; /* 클릭 영역을 더 크게 조정 */
-}
-
-.MainBody1-category{
-	text-align: center;
-	margin: 30px;
 	margin-bottom: 100px;
 }
-.MainBody1-category>li{
-	margin-bottom: 30px;
-}
-.MainBody1-category>li>a{
-	text-decoration: none;
-	color: black;
-	font-size: 20px;
-	font-weight: 700;
+
+.category-Box1>.category{
+	margin-bottom: 50px;
 }
 
-.MainBody2-category{
-	text-align: center;
-	margin: 50px;
-}
-.MainBody2-category>li{
-	margin-bottom: 30px;
-}
-.MainBody2-category>li>a{
-	text-decoration: none;
-	color: black;
-	font-size: 20px;
-	font-weight: 700;
+.category-Box2>.category{
+	margin-bottom: 50px;
 }
 
-/*오른쪽 프로필 div*/
 
-.sub-title{
-	font-family: 'Jua', sans-serif;
-	font-weight: 400;
-	font-size: 25px;
-	margin-top: 50px;
+
+/* 오른쪽 화면 */
+.mainView{
+	width: 100%;
+	display: flex;
 }
 
-.sb1-span{
-	font-family: 'Jua', sans-serif;
-	font-size: 20px;
-	font-weight: 500;
-	color: gray;
+
+.mainViewBody1{
+	width: 700px;
 }
-.sb1-input{
-	font-size: 17px;
+
+/* ViewBox1 */
+.mainViewBox1{
+	background-color: gray;
+	height: 700px;
+}
+
+.modifyViewBox{
 	width: 500px;
-	margin-top: 20px;
-	border-width: 0 0 1px;
+	height: 600px;
+	margin: 100px;
 }
-.sb1-input:focus{
-	outline:none;
+.modifyBox{
+	margin-bottom: 20px;
+}
+
+.modifyBox>label{
+	margin-bottom: 10px;
+}
+
+.modifyBox>input{
+	width: 350px;
 }
 
 .modify-btn{
-	text-align: center;
+	float: right;
+	margin-right: 100px;
+}
+.modify-btn>button{
+	width: 200px;
 }
 
-#sb1-input1{
-	background-color: #c59eef;
-	border-bottom-right-radius: 10px;
-	border-top-right-radius: 10px;
+.mainViewBody2{
+	background-color: blue;
+	width: 950px;
+	margin-top: 96px;
 }
-#sb1-input2{
-	background-color: #c59eef;
-	border-bottom-right-radius: 10px;
-	border-top-right-radius: 10px;
+
+.mainViewBox2{
+	height: 304px;
+	background-color: red;
+	
 }
+
+.infoViewBox{
+}
+
+.infoBox{
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+
