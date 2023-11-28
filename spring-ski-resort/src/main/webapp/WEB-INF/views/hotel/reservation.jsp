@@ -169,7 +169,7 @@
 						</div>
 					<div class="paybox input-group mb-3">
 						<input type="text" id="pay1" class="form-control" placeholder="요금" readonly="readonly">	
-						<input type="text" id="pay2" class="form-control" name="hotelReserveFee" placeholder="요금">	
+						<input type="hidden" id="pay2" class="form-control" name="hotelReserveFee" placeholder="요금">	
 						<button type="submit" class="btn btn-outline-secondary">결제</button>
 					 </div>
 					</div>
