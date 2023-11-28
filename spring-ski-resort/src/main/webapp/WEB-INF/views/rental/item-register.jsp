@@ -17,6 +17,15 @@
 	position: relative;
 	left: 50%;
 	transform: translateX(-50%);
+	position: absolute;
+}
+
+.inputContainer{
+	margin-top: 15px;
+}
+
+.inputContainer > p,input{
+	margin: 15px;
 }
 </style>
 </head>
@@ -34,6 +43,10 @@
 					<input class="form-check-input" type="radio" name="rentalListItemType" value="일반장비SET" id="lowItem">일반장비SET
 					<input class="form-check-input" type="radio" name="rentalListItemType" value="중급장비SET" id="midItem">중급장비SET
 					<input class="form-check-input" type="radio" name="rentalListItemType" value="프리미엄장비SET" id="premiumItem">프리미엄장비SET
+					<p class="fs-4">장비명</p>
+					<input class="form-control" type="text">
+					<p class="fs-4">요금</p>
+					<input class="form-control" type="text">
 				</div>
 				
 				
