@@ -19,4 +19,6 @@ public interface QnaDAO {
 
 	int QnaFileModify(QnaVO qvo);
 
+	int delete(long qnaNum);
+
 }

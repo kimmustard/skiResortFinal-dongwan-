@@ -22,14 +22,36 @@
 
 	<div class="qna-menu-container">
 		<!-- MY Q&A -->
+		<sec:authorize access="isAuthenticated()"> <!-- 로그인 시 -->
+			<sec:authentication property="principal.mvo.memberId" var="authId"/>
+			<sec:authentication property="principal.mvo.memberEmail" var="authEmail"/>
+			<div class="qna-myqna">
+				<form action="/qna/list" method="get">
+					<c:if test="${authType == 'normal' }">
+					  <input type="hidden" name="type" value="w" ${typed eq 'w' ? 'selected' : '' }>
+					  <input type="hidden" name="keyword" type="search" value="${authId }">
+					</c:if>
+					<c:if test="${authType != 'normal' }">
+					  <input type="hidden" name="type" value="w" ${typed eq 'w' ? 'selected' : '' }>
+					  <input type="hidden" name="keyword" type="search" value="${authEmail }">
+					</c:if>
+					  <button class="btn btn-outline-success" type="submit">
+					  MY Q&A</button>
+				</form>
+			</div>
+		</sec:authorize>
+		
+		<sec:authorize access="isAnonymous()"> <!-- 로그인 x -->
 		<div class="qna-myqna">
 			<form action="/qna/list" method="get">
-			  	<input type="hidden" name="type" value="g" ${typed eq 'g' ? 'selected' : '' }>
-			  	<input type="hidden" name="keyword" type="search" value="">
-			    <button class="btn btn-outline-success" type="submit">
-			    MY Q&A</button>
+				<input type="hidden" name="type" value="w" ${typed eq 'w' ? 'selected' : '' }>
+				<input type="hidden" name="keyword" type="search" value="비회원">
+				<button class="btn btn-outline-success" type="submit">
+				MY Q&A</button>
 			</form>
-		</div>
+		</div>	
+		</sec:authorize>
+		
 		<a href="/qna/register">
 			<button class="btn btn-outline-dark type="button">문의글작성</button>
 		</a>

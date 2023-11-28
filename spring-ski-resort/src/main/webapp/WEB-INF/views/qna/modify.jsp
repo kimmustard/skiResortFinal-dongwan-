@@ -192,8 +192,8 @@
 	</div>
 
 <br><br><br><br><br><br><br><br><br><br><br><br>	
-<script type="text/javascript" src="/resources/js/notice/noticeFileModify.js"></script>
-<script type="text/javascript" src="/resources/js/notice/noticeFileUpload.js"></script>
+<script type="text/javascript" src="/resources/js/qna/qnaFileModify.js"></script>
+<script type="text/javascript" src="/resources/js/qna/qnaFileUpload.js"></script>
 <jsp:include page="../common/footer.jsp" />	
 
 </body>

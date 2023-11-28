@@ -7,11 +7,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="/resources/css/notice/notice_list.css">
+<link rel="stylesheet" href="/resources/css/qna/qna_list.css">
 <jsp:include page="../common/nav.jsp" />  
 </head>
 <body>
-<div class="notice-img-container" style="background-image: url('https://www.princehotels.com/shinfurano/wp-content/uploads/sites/40/2022/11/2022_11_1920_ski_2-1.jpg')">	</div>
+<div class="qna-img-container" style="background-image: url('https://www.princehotels.com/shinfurano/wp-content/uploads/sites/40/2022/11/2022_11_1920_ski_2-1.jpg')">	</div>
 <br><br><br><br><br><br><br>
 <div class="container">   	
 
@@ -75,7 +75,7 @@
 </div>
 
 <br><br><br><br><br><br><br><br><br><br><br><br>
-<script type="text/javascript" src="/resources/js/notice/noticeFileUpload.js"></script>
+<script type="text/javascript" src="/resources/js/qna/qnaFileUpload.js"></script>
 <jsp:include page="../common/footer.jsp" />
 </body>
 </html>

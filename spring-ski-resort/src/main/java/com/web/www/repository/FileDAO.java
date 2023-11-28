@@ -16,4 +16,10 @@ public interface FileDAO {
 
 	List<FileVO> getQnaFileList(long qnaNum);
 
+	int qnaRemoveFile(String uuid);
+
+	void deleteAllFileQna(long qnaNum);
+
+	void deleteAllFileNotice(long noticeNum);
+
 }

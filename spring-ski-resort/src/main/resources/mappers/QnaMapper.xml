@@ -32,6 +32,12 @@
 		where qna_num = #{qnaNum}
 	</update>
 	
+	<update id="delete">
+		update qna set qna_del='Y' where qna_num=#{qnaNum}
+	</update>
+	
+	
+	
 	<sql id="search">
 		<if test="type != null">
 			<trim prefix="and (" suffix=")" prefixOverrides="OR">
@@ -46,6 +52,9 @@
 							</when>
 							<when test="type == 'g'.toString()">
 								qna_category like concat('%', #{keyword}, '%')
+							</when>
+							<when test="type == 'w'.toString()">
+								qna_writer like concat(#{keyword})
 							</when>
 						</choose>
 					</trim>	

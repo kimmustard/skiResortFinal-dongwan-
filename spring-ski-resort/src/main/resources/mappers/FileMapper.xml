@@ -10,12 +10,17 @@
 	</insert>
 	
 	<select id="getNoticeFileList" resultType="com.web.www.domain.FileVO">
-		select * from file where notice_num = #{noticeNum} order by file_reg_at asc
+		select * from file where notice_num = #{noticeNum} and file_isok='Y' 
+		order by file_reg_at asc
 	</select>
 	
-	<delete id="noticeRemoveFile">
-		delete from file where uuid = #{uuid}
-	</delete>
+	<update id="noticeRemoveFile">
+		update file set file_isok='N' where uuid=#{uuid}
+	</update>
+	
+	<update id="deleteAllFileNotice">
+		update file set file_isok='N' where notice_num=#{noticeNum}
+	</update>
 	
 	
 	<!-- Q&A 코드 라인 -->
@@ -25,7 +30,16 @@
 	</insert>
 	
 	<select id="getQnaFileList" resultType="com.web.www.domain.FileVO">
-		select * from file where qna_num = #{qnaNum} order by file_reg_at asc
+		select * from file where qna_num = #{qnaNum} and file_isok='Y' 
+		order by file_reg_at asc
 	</select>
+	
+	<update id="qnaRemoveFile">
+		update file set file_isok='N' where uuid=#{uuid}
+	</update>
+	
+	<update id="deleteAllFileQna">
+		update file set file_isok='N' where qna_num=#{qnaNum}
+	</update>
 	
 </mapper>

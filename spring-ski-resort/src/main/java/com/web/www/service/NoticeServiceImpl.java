@@ -110,6 +110,7 @@ public class NoticeServiceImpl implements NoticeService{
 	@Override
 	public int noticeRemove(long noticeNum) {
 		log.info(">>>>> notice remove service >> ");
+		fdao.deleteAllFileNotice(noticeNum);
 		int isOk = ndao.delete(noticeNum);
 		return isOk;
 	}

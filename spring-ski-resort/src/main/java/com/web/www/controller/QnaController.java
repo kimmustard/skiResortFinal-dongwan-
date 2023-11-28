@@ -2,9 +2,13 @@ package com.web.www.controller;
 
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -91,6 +95,26 @@ public class QnaController {
 			log.info(">>>>> qna modify >> "+(isOk > 0? "OK" : "Fail"));
 			re.addFlashAttribute("isOk",isOk);
 			return "redirect:/qna/detail?qnaNum="+qvo.getQnaNum();
+		}
+		
+		
+		
+		@GetMapping("/remove")
+		public String qnaRemove(@RequestParam("qnaNum")long qnaNum, RedirectAttributes re) {
+			int isOk = qsv.qnaRemove(qnaNum);
+			log.info(">>>>> qna remove >> "+(isOk > 0? "OK" : "Fail"));
+			re.addFlashAttribute("isOk", isOk);
+			return "redirect:/qna/list";
+		}
+		
+		
+		
+		@DeleteMapping(value = "/file/{uuid}")
+		public ResponseEntity<String> qnaRemoveFile(@PathVariable("uuid") String uuid){
+			log.info(">>>>qna file uuid >>"+uuid);
+			int isOk = qsv.qnaRemoveFile(uuid);
+			return isOk > 0 ? new ResponseEntity<String>("1", HttpStatus.OK)
+					: new ResponseEntity<String>("0", HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	
 

@@ -18,4 +18,8 @@ public interface QnaService {
 
 	int qnaFileModify(QnaDTO qdto);
 
+	int qnaRemove(long qnaNum);
+
+	int qnaRemoveFile(String uuid);
+
 }

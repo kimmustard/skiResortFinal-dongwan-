@@ -87,4 +87,22 @@ public class QnaServiceImpl implements QnaService{
 		return isOk;
 	}
 
+
+
+	@Override
+	public int qnaRemove(long qnaNum) {
+		log.info(">>>>> qna remove service >> ");
+		int isOk = qdao.delete(qnaNum);
+		fdao.deleteAllFileQna(qnaNum);
+		return isOk;
+	}
+
+
+
+	@Override
+	public int qnaRemoveFile(String uuid) {
+		log.info(">>>>> qna remove file service >> ");
+		return fdao.qnaRemoveFile(uuid);
+	}
+
 }
