@@ -42,10 +42,10 @@
 	<jsp:include page="../common/nav.jsp" />
 	
 	<div class="back">
-
+		<img data-v-c62ee4ac="" src="https://cdn.shymbulak-dev.com/media-test/77032ae86d50f5d61c9cec8b2f30ae39.jpg" alt="" style="width: 100%; height: 100vh;">
 		
 		<div class="box">
-			<h1>리프트권 예약</h1>
+			<p class="fs-2">리프트권 예약</p>
 			<form action="/rental/reserve" method="post">
 				<div class="input-box">
 					<input type="hidden" name="rentalLiftStart" id="rentalLiftStart" placeholder="렌탈이용날짜">
@@ -118,9 +118,7 @@
 				
 				
 				<div id="innerbox" class="reserveBox" style="display: none;">
-					<div class="input-group mb-3">
-						<span class="input-group-text">리프트권 선택</span>
-					</div>
+					<p class="fs-2">리프트권 선택</p>
 					<div class="form-check">
 					  <input class="form-check-input" type="radio" name="rentalLiftTicket" value="오전권" id="morningTicket">오전권
 					</div>
@@ -160,6 +158,8 @@
 	
 	
 	<script type="text/javascript" src="/resources/js/rental/reserve.js"></script>
+	
+	<jsp:include page="../common/footer.jsp"></jsp:include>
 
 	
 </body>

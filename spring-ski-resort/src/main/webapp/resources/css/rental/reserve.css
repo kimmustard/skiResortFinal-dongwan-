@@ -4,6 +4,10 @@
     width: 100%;
 }
 
+.back img{
+	width: 100%;
+}
+
 .date-group{
 	width: 400px;
 }
@@ -67,7 +71,7 @@
 .box{
     width: 930px;
     padding: 5px;
-    background-color: gray;
+    background-color: white;
     position: relative;
     height: 200px;
     border-radius: 10px;
@@ -88,9 +92,15 @@
     position: absolute;
     left: 0;
     top: 0;
+    padding: 10px;
     width: 100%;
-    height: 100%;
-    background-color: aqua;
+    height: 375px;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.reserveBox .input-group{
+	width: 400px;
 }
 
 .daterangepicker {
