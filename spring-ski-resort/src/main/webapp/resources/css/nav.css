@@ -91,3 +91,25 @@
 	text-decoration: none;
 	color: white;
 }
+.nav-ani{
+	display:block;
+	position: absolute;
+	background-color: white;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 0px;
+	height: 2px;
+	bottom: -1px;
+	transition: all .2s;
+	
+}
+.ski-navbar-brand{
+	position: relative;
+}
+.ski-nav-link{
+	position: relative;
+}
+.ski-nav-link:hover ~ .nav-ani{
+	width: 100%;
+}
+

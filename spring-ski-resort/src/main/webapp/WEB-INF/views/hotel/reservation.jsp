@@ -76,7 +76,7 @@
 				<div class="input-group">
 					<div class="input-group mb-3">
   						<span class="input-group-text" id="basic-addon1"><i class="bi bi-person-fill"></i></span>
-  						<input type="text" id="people" class="form-control people" placeholder="인원수" aria-label="Username" readonly="readonly" aria-describedby="basic-addon1">
+  						<input type="text" id="people" class="form-control people"  placeholder="인원수" aria-label="Username" readonly="readonly" aria-describedby="basic-addon1">
 						<button id="payBtn" type="button" class=" btn btn-light">다음</button>
 				</div>
 					
