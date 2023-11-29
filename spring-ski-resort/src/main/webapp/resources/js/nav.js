@@ -77,7 +77,7 @@ window.onload = function () {
                 }
     
     
-                document.getElementById("innerItem2").innerHTML= "<span class='weather-area'>"+region_grand_child[i]+" 날씨</span><br>Weather Report<br>"+weatherDate+"["+week_array[today_num]+"]"+weatherTime+"갱신";
+                document.getElementById("innerItem2").innerHTML= "<span class='weather-area'>"+region_grand_child[i]+" 날씨</span><br><br>"+weatherDate+"["+week_array[today_num]+"]"+weatherTime+"갱신";
                 document.getElementById("innerItem3").innerHTML= '<i class="weathericon bi bi-'+weathericon+'"></i><span class="weather-info">'+weatherStatus+Temp+'°C'+'</span>' ;
                 document.getElementById("innerItem1");
                 document.getElementById("innerItem4");
@@ -122,11 +122,35 @@ async function weatherListSearch() {
 
 }
 
-document.getElementById("ski-navbar").addEventListener("mouseover", () => {
-    document.getElementById("ski-navbar").style.height = "96px"
+document.getElementById("ski-navbar-brand").addEventListener("mouseover", (e) => {
+   e.target.querySelector("span").style.width = "100%";
 
 })
-document.getElementById("ski-navbar").addEventListener("mouseout", () => {
-    document.getElementById("ski-navbar").style.height = "0px"
 
+document.getElementById("ski-navbar-brand").addEventListener("mouseout", (e) => {
+   
+	e.target.querySelector("span").style.width = "0px";
 })
+const navLinks = document.querySelectorAll(".ski-nav-link");
+
+navLinks.forEach(link => {
+    link.addEventListener("mouseover", (e) => {
+        e.target.querySelector("span").style.width = "100%";
+    });
+    
+    link.addEventListener("mouseout", (e) => {
+        e.target.querySelector("span").style.width = "0%";
+    });
+      
+});
+
+
+
+
+
+
+
+
+
+
+

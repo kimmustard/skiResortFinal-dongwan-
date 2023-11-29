@@ -7,6 +7,7 @@
   font-size: 100px;
   color: #fff;
   text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.8);
+  user-select: none;
 }
 
 #Title-2 {
@@ -16,6 +17,7 @@
   font-size: 50px;
   color: #fff;
   text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.8);
+  user-select: none;
 }
 
 .bodyContainer {
@@ -42,6 +44,7 @@
   border-bottom-left-radius: 20px;
   border-top-left-radius: 20px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  user-select: none;
 }
 
 .loginContainer2 {
@@ -49,6 +52,7 @@
   background: linear-gradient(70deg, rgba(122, 208, 223, 0.8), rgba(25, 38, 216, 0.7));
   border-bottom-right-radius: 20px;
   border-top-right-radius: 20px;
+  user-select: none;
 }
 
 .login-box {
