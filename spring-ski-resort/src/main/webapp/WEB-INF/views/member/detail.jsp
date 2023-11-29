@@ -8,12 +8,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+	<jsp:include page="../common/nav.jsp"></jsp:include>
 <link  href="/resources/css/member/detail.css" rel="stylesheet">
 </head>
 <body>
 	
-<jsp:include page="../common/nav.jsp"></jsp:include>
-
 	<div class="bodyContainer">
 	<!-- 	<div class="mauntain1">
 			<img alt="그림없음" width="1000" src="/resources/etc/snow_mauntain.png">
@@ -29,7 +28,7 @@
 			
 				<div class="category-title">
 					<span class="category-span-main">
-						<i class="bi bi-house-door-fill"></i> 메인으로
+						<i class="bi bi-house-door-fill"></i> <a class="move-main" href="/">메인으로</a> 
 					</span>	
 				</div>
 				
@@ -106,10 +105,11 @@
 						
 							<c:if test="${authType == 'normal' }">
 							<div class="modifyBox modifyTitle">
-								<span class="sb1-span">다이스키 정규회원입니다.</span>
+								<div class="member-msg">다이스키 정규회원입니다.</div>
 							</div>
+	
 							<div class="modifyBox fbox1">
-								<label for="sb1-input1" class="sb1-span" onclick="focusInput('sb1-input1')">아이디</label><br>
+								<label for="memberId" class="sb1-span" onclick="focusInput('sb1-input1')">아이디</label><br>
 								<input class="sb1-input" id="sb1-input1" name="memberId" value="${mvo.memberId }" readonly="readonly">
 								<input type="hidden" name="memberType" value=${mvo.memberType }>
 							</div>
@@ -118,7 +118,7 @@
 								<input class="sb1-input" id="sb1-input2" value="${mvo.memberName }" readonly="readonly">
 							</div>
 							<div class="modifyBox fbox3">
-								<label for="sb1-input3" class="sb1-span" onclick="focusInput('sb1-input3')">별명</label><br>
+								<label for="memberAlias" class="sb1-span" onclick="focusInput('sb1-input3')">별명</label><br>
 								<input class="sb1-input" path="memberAlias" id="sb1-input3" name="memberAlias" value="${mvo.memberAlias }">
 							</div>
 							<div class="modifyBox fbox4">
@@ -177,9 +177,9 @@
 							</div>
 							</c:if>
 							</sec:authorize>
-						</div>
 						<div class="modify-btn">
 							<button type="submit" class="btn btn-primary">수정하기</button> 
+						</div>
 						</div>
 					</form>
 				</div>
@@ -240,7 +240,7 @@
 </div>
 
 	
-<jsp:include page="../common/footer.jsp"></jsp:include>
+
 <script>
 	function focusInput(inputId) {
 	    // 라벨 클릭시 인풋창 뒤로 focus하게하는 스크립트
