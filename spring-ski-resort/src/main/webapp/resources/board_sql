@@ -80,9 +80,9 @@ qna_num bigint,
 qna_ans_writer varchar(50) not null,
 qna_ans_title varchar(100) not null,
 qna_ans_content text,
-qna_del varchar(1) default 'N',
-qna_reg_at datetime default now(),
-qna_mod_at datetime default now(),
+qna_ans_del varchar(1) default 'N',
+qna_ans_reg_at datetime default now(),
+qna_ans_mod_at datetime default now(),
 primary key(qna_ans_num)
 );
 

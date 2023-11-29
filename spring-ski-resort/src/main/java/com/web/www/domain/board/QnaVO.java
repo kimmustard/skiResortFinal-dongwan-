@@ -13,7 +13,7 @@ import lombok.ToString;
 @NoArgsConstructor
 public class QnaVO {
 	
-	private long qnaNum; //글번호
+	private long qnaNum; //문의 글번호
 	private long memberNum; //회원번호
 	private String qnaWriter; //작성자
 	private String qnaCategory; //범주(호텔,스키장,교통,결제 등등)

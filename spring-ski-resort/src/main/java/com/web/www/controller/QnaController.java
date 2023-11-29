@@ -19,6 +19,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.web.www.domain.FileVO;
 import com.web.www.domain.board.PagingVO;
+import com.web.www.domain.board.QnaAnsDTO;
+import com.web.www.domain.board.QnaAnsVO;
 import com.web.www.domain.board.QnaDTO;
 import com.web.www.domain.board.QnaVO;
 import com.web.www.handler.FileHandler;
@@ -67,7 +69,7 @@ public class QnaController {
 	public void qnaList(HttpSession ses, Model m, PagingVO pgvo) {
 		String str = (String) ses.getAttribute("memberId");
 		log.info("###### = {}", str);
-		m.addAttribute("qna list", qsv.qnaList(pgvo));
+		m.addAttribute("list", qsv.qnaList(pgvo));
 		int totalCount = qsv.getTotalCount(pgvo);
 		PagingHandler ph = new PagingHandler(pgvo, totalCount);
 		m.addAttribute("ph",ph);
@@ -104,24 +106,6 @@ public class QnaController {
 		
 		
 		
-		//Q&A 답변 글 작성
-		@PostMapping("/ans-register")
-		public String qnaAnsRegister(QnaVO qvo, RedirectAttributes re,
-				@RequestParam(name="files", required = false)MultipartFile[] files) {
-			log.info(" >>>>> qna ans register "+qvo+" "+files);
-			List<FileVO> flist = null;
-			if(files[0].getSize() > 0) {
-				String category ="qna";
-				flist = fh.uploadFiles(files,category);
-			}
-			int isOk = qsv.qnaAnsRegister(new QnaDTO(qvo, flist));
-			log.info(">>>>> qna ans register >> "+(isOk > 0? "OK" : "Fail"));
-			return "redirect:/qna/detail?qnaNum="+qvo.getQnaNum();
-		}
-		
-		
-		
-		
 		@GetMapping("/remove")
 		public String qnaRemove(@RequestParam("qnaNum")long qnaNum, RedirectAttributes re) {
 			int isOk = qsv.qnaRemove(qnaNum);
@@ -139,6 +123,31 @@ public class QnaController {
 			return isOk > 0 ? new ResponseEntity<String>("1", HttpStatus.OK)
 					: new ResponseEntity<String>("0", HttpStatus.INTERNAL_SERVER_ERROR);
 		}
+		
+		
+		
+		
+		
+		
+		///// Q&A 답변 등록 구간 ////// 
+		@PostMapping("/register")
+		public String qnaAnsRegister(QnaAnsVO qavo, RedirectAttributes re,
+				@RequestParam(name="files", required = false)MultipartFile[] files) {
+			log.info(" >>>>> qna register "+qavo+" "+files);
+			List<FileVO> flist = null;
+			if(files[0].getSize() > 0) {
+				String category ="qna";
+				flist = fh.uploadFiles(files,category);
+			}
+			int isOk = qsv.qnaAnsRegister(new QnaAnsDTO(qavo, flist));
+			log.info(">>>>> qna register >> "+(isOk > 0? "OK" : "Fail"));
+			return "redirect:/qna/list";
+		}
+		
+		
+		
+		
+		
 	
 
 }

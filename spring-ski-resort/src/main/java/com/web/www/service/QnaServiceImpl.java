@@ -87,26 +87,6 @@ public class QnaServiceImpl implements QnaService{
 		return isOk;
 	}
 
-	
-	
-	@Override
-	public int qnaAnsRegister(QnaDTO qdto) {
-		log.info(">>>>> Qna ans register service >> ");
-		int isOk = qdao.insert(qdto.getQvo());
-		if(qdto.getFlist()==null) {
-			isOk*=1;
-			return isOk;
-		}
-		if(isOk > 0 && qdto.getFlist().size() > 0) {
-			long qnaNum = qdao.selectOneQnaNum(); //가장 마지막에 등록된 qna_num
-			//모든 파일에 qnaNum set
-			for(FileVO fvo : qdto.getFlist()) {
-				fvo.setQnaNum(qnaNum);
-				isOk*=fdao.insertQnaFile(fvo);
-			}
-		}
-		return isOk;
-	}
 
 
 	
