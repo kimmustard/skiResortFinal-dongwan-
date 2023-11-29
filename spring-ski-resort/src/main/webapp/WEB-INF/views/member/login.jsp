@@ -20,56 +20,60 @@
 	</video>
 		<span id="Title-1">ダイスキー</span>
 		<span id="Title-2">DAISUKI resort</span>
-		<div class="loginContainer">
-			<div class="login-box">
-					<div class="form-group">
-						  <label class="col-form-label mt-4" for="inputDefault">
-						  	<span class="loginFont">아이디</span>
-						  </label>
-						  <input type="text" class="form-control" name="memberId" placeholder="아이디" id="inputDefault">
-					</div>
-					
-					 <div class="form-group">
-					      <label for="exampleInputPassword1" class="form-label mt-4">
-					      	<span class="loginFont">비밀번호</span>
-					      </label>
-					      <input type="password" class="form-control" name="memberPwd" id="exampleInputPassword1" placeholder="비밀번호" autocomplete="off">
-				    </div>
-				    <div class="btn-box">
-						<button type="submit" class="btn btn-primary login-btn">로그인</button> 
-						<a href="/member/register"><button type="button" class="btn btn-primary login-btn">회원가입</button></a>
-					</div>
-					
-					<div class="a-box">
-						<a href="#">아이디 찾기</a>
-						<a href="#">비밀번호 찾기</a>
-					</div>
-					
-			
-			</div>	
-			
-			<div class="social-Box">
-			
-				<div id="kakao_id_login" style="text-align: center">
-					<a href="#">
-					<img width="223" height="52" src="/resources/etc/kakao_login_medium_narrow.png" /></a>
-	       		</div>
-	
+		<div class="loginTool">
+			<div class="loginContainer">
+				<div class="login-box">
+						<div class="form-group">
+							  <label class="col-form-label mt-4" for="inputDefault">
+							  </label>
+							  <input type="text" class="form-control" name="memberId" placeholder="아이디" id="inputDefault">
+						</div>
+						
+						 <div class="form-group">
+						      <label for="exampleInputPassword1" class="form-label mt-4">
+						      </label>
+						      <input type="password" class="form-control" name="memberPwd" id="exampleInputPassword1" placeholder="비밀번호" autocomplete="off">
+					    </div>
+					    <div class="btn-box">
+							<button type="submit" class="btn btn-primary login-btn">로그인</button> 
+							<a href="/member/register"><button type="button" class="btn btn-primary login-btn">회원가입</button></a>
+						</div>
+						
+						<div class="a-box">
+							<a href="#">아이디 찾기</a>
+							<a href="#">비밀번호 찾기</a>
+						</div>
+						
 				
-				<div id="naver_id_login" style="text-align: center">
-					<a href="#"><img width="223" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png" /></a>
-				</div>
+				</div>	
 				
-				<div id="google_id_login" style="text-align:center">
-					<a href="#"><img width="223" src="/resources/etc/web_neutral_sq_SI@1x.png"/></a>
-				</div>
-			
-			</div>
-
-			<br>
-			
-		</div>	
+				<div class="social-Box">
+				
+					<div id="kakao_id_login" style="text-align: center">
+						<a href="#">
+						<img width="70" src="/resources/etc/kakao_logo.png" /></a>
+		       		</div>
 		
+					
+					<div id="naver_id_login" style="text-align: center">
+						<a href="#"><img width="70" src="/resources/etc/naver_logo.png" /></a>
+					</div>
+					
+					<div id="google_id_login" style="text-align:center">
+						<a href="#"><img width="70" src="/resources/etc/google_logo.png"/></a>
+					</div>
+				
+				</div>
+	
+				<br>
+				
+			</div>	
+			<div class="loginContainer2">
+				<div class="loginBox2">
+					<img width="400" height="400" src="/resources/etc/loginPic.png">
+				</div>
+			</div>
+		</div>
 	</div>
 </form>
 	<jsp:include page="../common/footer.jsp"></jsp:include>
