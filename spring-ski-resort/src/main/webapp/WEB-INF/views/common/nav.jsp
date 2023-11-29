@@ -23,12 +23,13 @@
 	<nav class="ski-navbar" id="ski-navbar">
 	<nav id="hide"></nav>
   <div class="ski-collapse">
-    <a class="ski-navbar-brand" href="/">다이스키</a>
-       <div class="ski-nav-link"><a href="/rental/fee-info">렌탈</a></div>
-       <div class="ski-nav-link"><a href="/pay/testForm">결제테스트</a></div>
-       <div class="ski-nav-link"><a href="/qna/list">Q&A</a></div>
-       <div class="ski-nav-link"><a href="/notice/list">공지사항</a></div>
-       <div class="ski-nav-link"><a href="/hotel/reservation">예약</a></div>
+    <a class="ski-navbar-brand" id="ski-navbar-brand" href="/">다이스키<span class="nav-ani"></span></a>
+    
+       <div class="ski-nav-link" id="ski-nav-link"><a href="/rental/fee-info">렌탈<span class="nav-ani"></span></a></div>
+       <div class="ski-nav-link" id="ski-nav-link"><a href="/pay/testForm">결제테스트<span class="nav-ani"></span></a></div>
+       <div class="ski-nav-link" id="ski-nav-link"><a href="/qna/list">Q&A <span class="nav-ani"></span></a></div>
+       <div class="ski-nav-link" id="ski-nav-link"><a href="/notice/list">공지사항 <span class="nav-ani"></span></a></div>
+       <div class="ski-nav-link" id="ski-nav-link"><a href="/hotel/reservation">예약 <span class="nav-ani"></span></a></div>
        <ul class="ski-side-navbar">
        	<sec:authorize access="isAnonymous()">
 	       	<li><a href="/member/login">로그인</a></li>
