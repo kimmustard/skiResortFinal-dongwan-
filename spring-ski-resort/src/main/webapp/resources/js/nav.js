@@ -122,11 +122,35 @@ async function weatherListSearch() {
 
 }
 
-document.getElementById("ski-navbar").addEventListener("mouseover", () => {
-    document.getElementById("ski-navbar").style.height = "96px"
+document.getElementById("ski-navbar-brand").addEventListener("mouseover", (e) => {
+   e.target.querySelector("span").style.width = "100%";
 
 })
-document.getElementById("ski-navbar").addEventListener("mouseout", () => {
-    document.getElementById("ski-navbar").style.height = "0px"
 
+document.getElementById("ski-navbar-brand").addEventListener("mouseout", (e) => {
+   
+	e.target.querySelector("span").style.width = "0px";
 })
+const navLinks = document.querySelectorAll(".ski-nav-link");
+
+navLinks.forEach(link => {
+    link.addEventListener("mouseover", (e) => {
+        e.target.querySelector("span").style.width = "100%";
+    });
+    
+    link.addEventListener("mouseout", (e) => {
+        e.target.querySelector("span").style.width = "0%";
+    });
+      
+});
+
+
+
+
+
+
+
+
+
+
+
