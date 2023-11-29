@@ -12,4 +12,14 @@ public interface FileDAO {
 
 	int noticeRemoveFile(String uuid);
 
+	int insertQnaFile(FileVO fvo);
+
+	List<FileVO> getQnaFileList(long qnaNum);
+
+	int qnaRemoveFile(String uuid);
+
+	void deleteAllFileQna(long qnaNum);
+
+	void deleteAllFileNotice(long noticeNum);
+
 }
