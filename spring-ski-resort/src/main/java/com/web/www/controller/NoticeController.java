@@ -68,10 +68,10 @@ public class NoticeController {
 	
 	//페이징 추가
 	@GetMapping("/list")
-	public void noticeList(Model m, PagingVO npvo) {
-		m.addAttribute("list", nsv.noticeList(npvo));
-		int totalCount = nsv.getTotalCount(npvo);
-		PagingHandler ph = new PagingHandler(npvo, totalCount);
+	public void noticeList(Model m, PagingVO pgvo) {
+		m.addAttribute("list", nsv.noticeList(pgvo));
+		int totalCount = nsv.getTotalCount(pgvo);
+		PagingHandler ph = new PagingHandler(pgvo, totalCount);
 		m.addAttribute("ph",ph);
 	}
 	

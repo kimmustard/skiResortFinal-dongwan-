@@ -16,6 +16,7 @@ foreign key(member_num) references member(member_num)
 );
 
 
+
 ## file table 11-22
 create table file(
 uuid varchar(200) not null,
@@ -31,12 +32,14 @@ foreign key(notice_num) references notice(notice_num)
 );
 
 
-*11-25
+
+##11-25
 - notice table에서 member_num의 not null 지웠음.
 ALTER TABLE notice MODIFY COLUMN member_num bigint NULL;
 
 - notice_del 칼럼 추가.
 alter table notice add notice_del varchar(1) default 'N';
+
 
 
 ## qna table 11-27
@@ -48,7 +51,6 @@ qna_category varchar(50) not null,
 qna_title varchar(100) not null,
 qna_content text,
 qna_count int default 0,
-qna_pwd varchar(100),
 qna_ans_num bigint,
 qna_isok varchar(1) default 'N',
 qna_del varchar(1) default 'N',
@@ -57,3 +59,10 @@ qna_mod_at datetime default now(),
 qna_ans_reg_at datetime default now(),
 primary key(qna_num)
 );
+
+
+
+##11-28
+- file table에 qna_num 칼럼추가 및 외래키 설정.
+alter table file add qna_num bigint;
+alter table file add CONSTRAINT fk_qna foreign KEY(qna_num) references qna (qna_num) ON DELETE CASCADE;

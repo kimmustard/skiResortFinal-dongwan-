@@ -13,13 +13,13 @@ public interface NoticeDAO {
 
 	NoticeVO selectDetail(long noticeNum);
 
-	List<NoticeVO> selectList(PagingVO npvo);
+	List<NoticeVO> selectList(PagingVO pgvo);
 
 	int update(NoticeVO nvo);
 
 	int delete(long noticeNum);
 
-	int getTotalCount(PagingVO npvo);
+	int getTotalCount(PagingVO pgvo);
 
 	void readCount(@Param("noticeNum")long noticeNum, @Param("cnt")int cnt);
 

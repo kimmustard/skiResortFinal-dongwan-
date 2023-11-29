@@ -74,9 +74,9 @@ public class NoticeServiceImpl implements NoticeService{
 //	}
 	
 	@Override
-	public List<NoticeVO> noticeList(PagingVO npvo) {
+	public List<NoticeVO> noticeList(PagingVO pgvo) {
 		log.info(">>>>> notice List service >> ");
-		return ndao.selectList(npvo);
+		return ndao.selectList(pgvo);
 	}
 
 
@@ -110,6 +110,7 @@ public class NoticeServiceImpl implements NoticeService{
 	@Override
 	public int noticeRemove(long noticeNum) {
 		log.info(">>>>> notice remove service >> ");
+		fdao.deleteAllFileNotice(noticeNum);
 		int isOk = ndao.delete(noticeNum);
 		return isOk;
 	}
@@ -122,9 +123,9 @@ public class NoticeServiceImpl implements NoticeService{
 
 
 	@Override
-	public int getTotalCount(PagingVO npvo) {
+	public int getTotalCount(PagingVO pgvo) {
 		log.info(">>>>> notice totalCount service >> ");
-		return ndao.getTotalCount(npvo);
+		return ndao.getTotalCount(pgvo);
 	}
 
 
