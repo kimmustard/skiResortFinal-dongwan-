@@ -1,5 +1,10 @@
 window.onload = function () {
-
+    getTwoNotice().then(notice =>{
+        console.log(notice);
+        for(let i = 0; i<=1; i++){
+        document.getElementById('notice-box').innerHTML+= '<ul><li><span class="notice-reg">'+notice[i].noticeRegAt+'</span><a class="notice-title" href="/notice/detail?noticeNum='+notice[i].noticeNum+'">'+notice[i].noticeTitle+'</a></li></ul>'
+        }
+    });
 
     setTimeout(() => document.getElementById("ski-navbar").style.opacity = 0.5, 5000)
     if (!(document.getElementById('maintext1'))) {
@@ -121,6 +126,23 @@ async function weatherListSearch() {
     }
 
 }
+//공지 두개 받아오기
+async function getTwoNotice(){
+    try {
+        const url = "/notice/getTwoNotice";
+        const config = {
+            method: 'get'
+        };
+        const resp = await fetch(url, config);
+        const result = await resp.json();
+        console.log(result);
+        return result;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+
 
 document.getElementById("ski-navbar-brand").addEventListener("mouseover", (e) => {
    e.target.querySelector("span").style.width = "100%";

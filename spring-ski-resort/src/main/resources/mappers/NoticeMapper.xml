@@ -50,6 +50,10 @@
 		select count(notice_num) from notice where notice_del='N' <include refid="search"></include>
 	</select>
 	
+	<select id="getTwoNotice" resultType="com.web.www.domain.board.NoticeVO">
+		select notice_title ,notice_reg_at,notice_num from notice where notice_category = "공지사항" order by notice_num desc LIMIT 2
+	</select>
+	
 	
 	
 	<sql id="search">
