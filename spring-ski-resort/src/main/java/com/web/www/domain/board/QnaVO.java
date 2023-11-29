@@ -20,7 +20,6 @@ public class QnaVO {
 	private String qnaTitle; //글제목
 	private String qnaContent; //내용
 	private int qnaCount; //조회수
-	private long qnaAnsNum; //답변 글번호
 	private String qnaIsok; //답변 여부
 	private String qnaDel; //삭제 여부
 	private String qnaRegAt; //글 작성일

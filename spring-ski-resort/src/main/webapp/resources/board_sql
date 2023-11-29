@@ -66,3 +66,25 @@ primary key(qna_num)
 - file table에 qna_num 칼럼추가 및 외래키 설정.
 alter table file add qna_num bigint;
 alter table file add CONSTRAINT fk_qna foreign KEY(qna_num) references qna (qna_num) ON DELETE CASCADE;
+
+
+
+##11-29
+- qna 테이블에서 qna_ans_num 칼럼 삭제
+ALTER TABLE qna DROP COLUMN qna_ans_num;
+
+- qna_ans table 생성
+create table qna_ans(
+qna_ans_num bigint not null auto_increment,
+qna_num bigint,
+qna_ans_writer varchar(50) not null,
+qna_ans_title varchar(100) not null,
+qna_ans_content text,
+qna_del varchar(1) default 'N',
+qna_reg_at datetime default now(),
+qna_mod_at datetime default now(),
+primary key(qna_ans_num)
+);
+
+- qna_ans 테이블에 외래키 설정
+alter table qna_ans add CONSTRAINT fk_qna_ans foreign KEY(qna_num) references qna (qna_num) ON DELETE CASCADE;

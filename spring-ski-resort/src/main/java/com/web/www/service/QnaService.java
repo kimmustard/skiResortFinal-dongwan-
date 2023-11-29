@@ -22,4 +22,6 @@ public interface QnaService {
 
 	int qnaRemoveFile(String uuid);
 
+	int qnaAnsRegister(QnaDTO qdto);
+
 }

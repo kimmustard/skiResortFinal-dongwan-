@@ -47,9 +47,9 @@ public class QnaController {
 	
 	//파일업로드 추가
 	@PostMapping("/register")
-	public String noticeRegister(QnaVO qvo, RedirectAttributes re,
+	public String qnaRegister(QnaVO qvo, RedirectAttributes re,
 			@RequestParam(name="files", required = false)MultipartFile[] files) {
-		log.info(" >>>>> register "+qvo+" "+files);
+		log.info(" >>>>> qna register "+qvo+" "+files);
 		List<FileVO> flist = null;
 		if(files[0].getSize() > 0) {
 			String category ="qna";
@@ -59,14 +59,15 @@ public class QnaController {
 		log.info(">>>>> qna register >> "+(isOk > 0? "OK" : "Fail"));
 		return "redirect:/qna/list";
 	}
+
 	
 	
 	
 	@GetMapping("/list")
 	public void qnaList(HttpSession ses, Model m, PagingVO pgvo) {
 		String str = (String) ses.getAttribute("memberId");
-		log.info("######", str);
-		m.addAttribute("list", qsv.qnaList(pgvo));
+		log.info("###### = {}", str);
+		m.addAttribute("qna list", qsv.qnaList(pgvo));
 		int totalCount = qsv.getTotalCount(pgvo);
 		PagingHandler ph = new PagingHandler(pgvo, totalCount);
 		m.addAttribute("ph",ph);
@@ -75,7 +76,7 @@ public class QnaController {
 	
 	
 	//파일업로드 추가
-	@GetMapping({"/detail","/modify"})
+	@GetMapping({"/detail","/modify","/ans-register"})
 	public void qnaDetail(Model m, @RequestParam("qnaNum")long qnaNum) {
 		QnaDTO qdto = qsv.qnaDetail(qnaNum);
 		m.addAttribute("qdto",qdto);
@@ -87,7 +88,7 @@ public class QnaController {
 		@PostMapping("/modify")
 		public String qnaModify(QnaVO qvo, RedirectAttributes re,
 				@RequestParam(name="files", required = false)MultipartFile[] files) {
-			log.info(" >>>>> modify "+qvo+" "+files);
+			log.info(" >>>>>qna modify "+qvo+" "+files);
 			
 			List<FileVO> flist = null;
 			if(files[0].getSize() > 0) {
@@ -100,6 +101,24 @@ public class QnaController {
 			re.addFlashAttribute("isOk",isOk);
 			return "redirect:/qna/detail?qnaNum="+qvo.getQnaNum();
 		}
+		
+		
+		
+		//Q&A 답변 글 작성
+		@PostMapping("/ans-register")
+		public String qnaAnsRegister(QnaVO qvo, RedirectAttributes re,
+				@RequestParam(name="files", required = false)MultipartFile[] files) {
+			log.info(" >>>>> qna ans register "+qvo+" "+files);
+			List<FileVO> flist = null;
+			if(files[0].getSize() > 0) {
+				String category ="qna";
+				flist = fh.uploadFiles(files,category);
+			}
+			int isOk = qsv.qnaAnsRegister(new QnaDTO(qvo, flist));
+			log.info(">>>>> qna ans register >> "+(isOk > 0? "OK" : "Fail"));
+			return "redirect:/qna/detail?qnaNum="+qvo.getQnaNum();
+		}
+		
 		
 		
 		

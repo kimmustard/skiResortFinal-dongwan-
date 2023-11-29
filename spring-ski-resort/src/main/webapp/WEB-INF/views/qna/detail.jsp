@@ -71,6 +71,9 @@
 	<a href="/qna/modify?qnaNum=${qvo.qnaNum }">
 		<button type="button" class="btn btn-dark">수정</button>
 	</a>
+	<a href="/qna/ansRegister">
+		<button type="button" class="btn btn-dark">답변등록</button>
+	</a>
 	</div>
 
 
