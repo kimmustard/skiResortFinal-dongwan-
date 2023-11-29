@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.web.www.domain.member.MemberCheckDTO;
 import com.web.www.domain.member.MemberVO;
 import com.web.www.domain.member.ModifyMemberDTO;
 import com.web.www.security.AuthVO;
@@ -69,6 +70,9 @@ public interface MemberDAO {
 	int checkId(String memberId);
 
 	int checkEmail(String memberEmail);
+
+	// 광고성 동의 체크
+	int cdCheck(MemberCheckDTO mcDto);
 
 
 

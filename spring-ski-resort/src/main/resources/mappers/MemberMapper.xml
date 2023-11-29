@@ -78,5 +78,8 @@
 	  	#{memberPhoneNum}, #{memberType})
 	</insert>
 	
+	<update id="cdCheck">
+		update member set member_terms3 = #{memberTerms3} where member_id = #{memberId}
+	</update>
 
   </mapper>

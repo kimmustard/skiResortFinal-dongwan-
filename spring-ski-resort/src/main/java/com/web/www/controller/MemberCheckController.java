@@ -5,9 +5,12 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.web.www.domain.member.MemberCheckDTO;
 import com.web.www.handler.MemberEmailHandler;
 import com.web.www.service.MemberService;
 
@@ -43,6 +46,13 @@ public class MemberCheckController {
 	public String emailNumCheck(@PathVariable("email")String MemberEmail){
 		log.info("emailNumCheck = {}" , MemberEmail);
 		return mailService.joinEmail(MemberEmail);
+	}
+	
+	@PostMapping(value = "/cdcheck", consumes = MediaType.APPLICATION_JSON_VALUE)
+	public String cdCheck(@RequestBody MemberCheckDTO mcDto) {
+		log.info("광고 체크 = {}" , mcDto);
+		int isOk = msv.cdCheck(mcDto); 
+		return isOk == 1 ? "1" : "0";
 	}
 	
 	
