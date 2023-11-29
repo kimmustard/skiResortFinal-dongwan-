@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -73,6 +75,18 @@ public class NoticeController {
 		int totalCount = nsv.getTotalCount(pgvo);
 		PagingHandler ph = new PagingHandler(pgvo, totalCount);
 		m.addAttribute("ph",ph);
+	}
+	//공지두개 비동기로 보내기
+	@GetMapping(value="/getTwoNotice", produces = {MediaType.APPLICATION_JSON_VALUE} )
+	public ResponseEntity<List<NoticeVO>> getTwoNotice() {
+		List<NoticeVO> list  = nsv.getTwoNotice();
+		int isOk=0;
+		if(list != null && !list.isEmpty()) {
+			isOk=1;
+		}
+		log.info(isOk+"isOk<<<<<<<<");
+		return isOk > 0 ? new ResponseEntity<List<NoticeVO>>(list, HttpStatus.OK)
+				: new ResponseEntity<List<NoticeVO>>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
 

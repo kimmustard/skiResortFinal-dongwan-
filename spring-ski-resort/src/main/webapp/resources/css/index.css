@@ -105,3 +105,23 @@
 .weather-area{
 	font-size: 25px;
 }
+#notice-box{
+	width: 1150px;
+	border: solid 1px black;
+	margin: auto;
+	padding: 10px;
+}
+.notice-title{
+	color: black;
+	padding-left: 10px;
+	text-decoration: none;
+}
+.notice-logo{
+	padding-bottom: 10px;
+	font-size: 18px;
+	font-weight: 600;
+	
+}
+.notice-reg{
+	color: #aaa;
+}

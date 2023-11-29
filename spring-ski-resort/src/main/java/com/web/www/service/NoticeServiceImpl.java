@@ -129,6 +129,13 @@ public class NoticeServiceImpl implements NoticeService{
 	}
 
 
+	@Override
+	public List<NoticeVO> getTwoNotice() {
+		// TODO Auto-generated method stub
+		return ndao.getTwoNotice();
+	}
+
+
 
 
 

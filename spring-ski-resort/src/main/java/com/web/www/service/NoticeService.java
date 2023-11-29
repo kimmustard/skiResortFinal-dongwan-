@@ -24,4 +24,6 @@ public interface NoticeService {
 
 	int noticeRemoveFile(String uuid);
 
+	List<NoticeVO> getTwoNotice();
+
 }
