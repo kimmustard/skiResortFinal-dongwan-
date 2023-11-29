@@ -45,8 +45,8 @@ public class PayController {
 	
 	@ResponseBody
 	@PostMapping(value = "/portOne", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public String protOnePay(@RequestBody String imp_uid) {
-		log.info("########## = {}" , imp_uid);
+	public String protOnePay(@RequestBody UserPayInfoDTO uiDTO) {
+		log.info("########## = {}" , uiDTO);
 		
 		return null;
 	}

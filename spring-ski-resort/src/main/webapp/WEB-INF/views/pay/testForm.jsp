@@ -18,9 +18,16 @@
             </form>
 
 
-            <button id="check_module"> 다른결제 </button>
+            <button id="inicis_pay" value="html5_inicis"> 이니시스 통합결제 </button>
+            
+            <button id="kakao_pay" value="kakaopay.TC0ONETIME"> 카카오결제 </button>
+            
+            <button id="toss_pay" value="tosspay.tosstest"> 토스페이 </button>
+            
+            <button id="payco_pay" value="payco.AUTOPAY"> 페이코 </button>
+            
+            <button id="naver_pay" value=""> 네이버페이(공사중) </button>
 
-            <button onclick="requestPay()">또 다른 결제하기</button>
 
             <script type="text/javascript" src="/resources/js/pay/pay.js"></script>
         </body>
