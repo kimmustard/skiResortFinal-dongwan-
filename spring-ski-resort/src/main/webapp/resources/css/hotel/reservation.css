@@ -72,8 +72,6 @@
 .box{
     width: 930px;
     padding: 5px;
-  	
-  	 background-color:white;
     position: relative;
     height: 200px;
     border-radius: 10px;
@@ -81,7 +79,9 @@
    	transform: translateX(-50%);
    	top:20%;
    	position: absolute;
-
+   	background-color:rgba(255,255, 255, 0.9);
+   
+   	 
 }
 
 .hotelText{
@@ -93,6 +93,7 @@
 .box > *{
     margin-left: 50px;
     margin-top: 5px;
+ 
 
 }
 #innerbox{
@@ -191,6 +192,7 @@
 .form-control:read-only{
 	background-color: white;
 }
+
 .input-box{
 		display: flex;
 		margin-left: 5px;
@@ -249,7 +251,7 @@
 .paybox{
 	position: absolute;
 	bottom : 10px;
-	 left: 50%;
+	left: 50%;
    	transform: translateX(-50%);
    	width: 300px;
 }

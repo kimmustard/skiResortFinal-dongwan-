@@ -1,5 +1,10 @@
 window.onload = function () {
-
+    getTwoNotice().then(notice =>{
+        console.log(notice);
+        for(let i = 0; i<=1; i++){
+        document.getElementById('notice-box').innerHTML+= '<ul><li><span class="notice-reg">'+notice[i].noticeRegAt+'</span><a class="notice-title" href="/notice/detail?noticeNum='+notice[i].noticeNum+'">'+notice[i].noticeTitle+'</a></li></ul>'
+        }
+    });
 
     setTimeout(() => document.getElementById("ski-navbar").style.opacity = 0.5, 5000)
     if (!(document.getElementById('maintext1'))) {
@@ -77,7 +82,7 @@ window.onload = function () {
                 }
     
     
-                document.getElementById("innerItem2").innerHTML= "<span class='weather-area'>"+region_grand_child[i]+" 날씨</span><br>Weather Report<br>"+weatherDate+"["+week_array[today_num]+"]"+weatherTime+"갱신";
+                document.getElementById("innerItem2").innerHTML= "<span class='weather-area'>"+region_grand_child[i]+" 날씨</span><br><br>"+weatherDate+"["+week_array[today_num]+"]"+weatherTime+"갱신";
                 document.getElementById("innerItem3").innerHTML= '<i class="weathericon bi bi-'+weathericon+'"></i><span class="weather-info">'+weatherStatus+Temp+'°C'+'</span>' ;
                 document.getElementById("innerItem1");
                 document.getElementById("innerItem4");
@@ -121,12 +126,53 @@ async function weatherListSearch() {
     }
 
 }
+//공지 두개 받아오기
+async function getTwoNotice(){
+    try {
+        const url = "/notice/getTwoNotice";
+        const config = {
+            method: 'get'
+        };
+        const resp = await fetch(url, config);
+        const result = await resp.json();
+        console.log(result);
+        return result;
+    } catch (error) {
+        console.log(error);
+    }
+}
 
-document.getElementById("ski-navbar").addEventListener("mouseover", () => {
-    document.getElementById("ski-navbar").style.height = "96px"
+
+
+document.getElementById("ski-navbar-brand").addEventListener("mouseover", (e) => {
+   e.target.querySelector("span").style.width = "100%";
 
 })
-document.getElementById("ski-navbar").addEventListener("mouseout", () => {
-    document.getElementById("ski-navbar").style.height = "0px"
 
+document.getElementById("ski-navbar-brand").addEventListener("mouseout", (e) => {
+   
+	e.target.querySelector("span").style.width = "0px";
 })
+const navLinks = document.querySelectorAll(".ski-nav-link");
+
+navLinks.forEach(link => {
+    link.addEventListener("mouseover", (e) => {
+        e.target.querySelector("span").style.width = "100%";
+    });
+    
+    link.addEventListener("mouseout", (e) => {
+        e.target.querySelector("span").style.width = "0%";
+    });
+      
+});
+
+
+
+
+
+
+
+
+
+
+

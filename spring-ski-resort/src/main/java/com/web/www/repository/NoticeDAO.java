@@ -27,4 +27,6 @@ public interface NoticeDAO {
 
 	int noticeFileModify(NoticeVO nvo);
 
+	List<NoticeVO> getTwoNotice();
+
 }
