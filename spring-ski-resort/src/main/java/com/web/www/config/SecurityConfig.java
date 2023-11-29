@@ -77,7 +77,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/member/list").hasRole("ADMIN")
 			.antMatchers("/","/board/*","/upload/**","/resources/**",
 					"/member/login","/member/register","/rental/*","/hotel/*","/member/check/**",
-					"/oauth/*","/oauth/naver/*","/oauth/kakao/*","/oauth/google/*","/notice/**","/weather/**").permitAll()	//게스트 이용가능한 URL매핑
+					"/oauth/*","/oauth/naver/*","/oauth/kakao/*","/oauth/google/*","/notice/**","/weather/**",
+					"/pay/**").permitAll()	//게스트 이용가능한 URL매핑
 			.anyRequest().authenticated();	// 나머지 사용자 처리
 		
 			

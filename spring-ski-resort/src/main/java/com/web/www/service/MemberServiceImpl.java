@@ -2,6 +2,7 @@ package com.web.www.service;
 
 import org.springframework.stereotype.Service;
 
+import com.web.www.domain.member.MemberCheckDTO;
 import com.web.www.domain.member.MemberVO;
 import com.web.www.domain.member.ModifyMemberDTO;
 import com.web.www.repository.MemberDAO;
@@ -71,6 +72,12 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public MemberVO socialSearch(String memberId) {
 		return mdao.socialSearch(memberId);
+	}
+
+	// 광고체크 비동기로 받기
+	@Override
+	public int cdCheck(MemberCheckDTO mcDto) {
+		return mdao.cdCheck(mcDto);
 	}
 
 

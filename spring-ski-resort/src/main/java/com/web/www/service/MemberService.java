@@ -1,5 +1,6 @@
 package com.web.www.service;
 
+import com.web.www.domain.member.MemberCheckDTO;
 import com.web.www.domain.member.MemberVO;
 import com.web.www.domain.member.ModifyMemberDTO;
 
@@ -35,6 +36,9 @@ public interface MemberService {
 	 * @return OauthMemberVO omvo
 	 */
 	MemberVO socialSearch(String memberId);
+
+	// 광고 체크 비동기로 받기
+	int cdCheck(MemberCheckDTO mcDto);
 
 
 
