@@ -51,16 +51,17 @@
 				
 				
 				
-				<div class="btnContainer">
+				<div class="mb-3">
 					<div>
 				  		<input type="file" name="files" id="files" style="display: none;" multiple="multiple">
 				  		<button type="button" id="trigger" class="btn btn-outline-primary">파일선택</button>
 					</div>
 					
-					<div>
-						<button type="submit" class="btn btn-outline-primary">등록</button>
+					<div class="mb-3" id="fileZone">
+						<!-- 파일표시 -->
 					</div>
 				</div>
+				<button type="submit" class="btn btn-outline-primary">등록</button>
 			</form>
 		</div>
 	

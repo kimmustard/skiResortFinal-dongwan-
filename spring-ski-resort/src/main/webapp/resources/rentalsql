@@ -1,4 +1,4 @@
---리프트권 테이블
+--리프트권 테이블 11/27
 create table rental_lift(
 rental_lift_num varchar(200) not null,
 rental_lift_ticket varchar(50),
@@ -9,7 +9,7 @@ rental_lift_kid int,
 rental_lift_start date,
 primary key(rental_lift_num));
 
---렌탈 테이블
+--렌탈 테이블 11/27
 create table rental(
 rental_main_num bigint not null auto_increment,
 rental_lift_num varchar(200) not null,
@@ -21,8 +21,11 @@ member_type varchar(20) default 'normal',
 primary key(rental_main_num),
 foreign key(rental_lift_num) references rental_lift(rental_lift_num));
 
--- 여기까지만
+--파일 테이블
 
+
+
+--아직 없음
 --예약정보 테이블
 create table rental_reserve(
 rental_main_num bigint not null,
