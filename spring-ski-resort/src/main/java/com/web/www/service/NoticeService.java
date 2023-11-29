@@ -12,13 +12,13 @@ public interface NoticeService {
 
 	NoticeDTO noticeDetail(long noticeNum);
 
-	List<NoticeVO> noticeList(PagingVO npvo);
+	List<NoticeVO> noticeList(PagingVO pgvo);
 
 	int noticeModify(NoticeVO nvo);
 
 	int noticeRemove(long noticeNum);
 
-	int getTotalCount(PagingVO npvo);
+	int getTotalCount(PagingVO pgvo);
 
 	int noticeFileModify(NoticeDTO ndto);
 

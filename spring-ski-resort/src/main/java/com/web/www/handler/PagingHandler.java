@@ -16,12 +16,12 @@ public class PagingHandler {
 	private int realEndPage;
 	private boolean prev, next; //이전, 다음 존재여부
 	private int totalCount; //총 글자수
-	private PagingVO npvo;
+	private PagingVO pgvo;
 	
 	
 	public PagingHandler(PagingVO npvo, int totalCount) {
 		
-		this.npvo = npvo;
+		this.pgvo = npvo;
 		this.totalCount = totalCount;
 		
 		this.endPage = (int)Math.ceil(npvo.getPageNo() / (double)npvo.getQty()) * npvo.getQty();
