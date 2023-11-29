@@ -18,4 +18,4 @@ wearItem.addEventListener('click', () => {
      document.getElementById('skiItemList').style.display = 'none';
      document.getElementById('boardItemList').style.display = 'none';
      document.getElementById('wearItemList').style.display = 'flex';
-})
+});

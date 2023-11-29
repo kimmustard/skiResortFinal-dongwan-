@@ -21,8 +21,19 @@ member_type varchar(20) default 'normal',
 primary key(rental_main_num),
 foreign key(rental_lift_num) references rental_lift(rental_lift_num));
 
---파일 테이블
+--장비목록 테이블 11/29
+create table rental_items(
+rental_list_item_num bigint not null auto_increment,
+rental_list_item_type varchar(50),
+rental_list_low_item varchar(50),
+rental_list_mid_item varchar(50),
+rental_list_premium_item varchar(50),
+rental_list_item_explain text,
+primary key(rental_list_item_num));
 
+--파일 테이블 컬럼/외래키 추가 11/29
+alter table file add rental_list_item_num bigint;
+alter table file add CONSTRAINT fk_item foreign KEY(rental_list_item_num) references rental_items (rental_list_item_num) ON DELETE CASCADE;
 
 
 --아직 없음
@@ -41,12 +52,3 @@ references rental(rental_main_num) on delete cascade;
 alter table rental_reserve add constraint fk_reninum foreign key(rental_list_item_num)
 references rental_items(rental_list_item_num) on delete cascade;
 
---장비목록 테이블
-create table rental_items(
-rental_list_item_num bigint not null auto_increment,
-rental_list_low_item varchar(50),
-rental_list_mid_item varchar(50),
-rental_list_premium_item varchar(50),
-rental_list_adult_fee int,
-rental_list_kid_fee int,
-primary key(rental_list_item_num));

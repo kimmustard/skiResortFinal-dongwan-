@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,10 +17,10 @@
 		text-align: center;
 	}
 	
-	.ItemContainer{
+	.itemContainer{
 		width: 100%;
-		background-color: gray;
 	}
+	
 	
 	.skiItemList,.boardItemList,.wearItemList{
 		height: 1000px;
@@ -28,31 +29,13 @@
 		flex-wrap: wrap;
 	}
 	
-	.itemImageBox1,.itemImageBox2,
-	.itemImageBox3,.itemImageBox4,
-	.itemImageBox5,.itemImageBox6{
+	.itemImageBox{
 		width: calc(15% - 40px);
 		height: 300px;
 		margin: 100px 20px 0 20px;
+		border: 2px solid black;
 	}
-	.itemImageBox1{
-		background-color: red;
-	}
-	.itemImageBox2{
-		background-color: blue;
-	}
-	.itemImageBox3{
-		background-color: yellow;
-	}
-	.itemImageBox4{
-		background-color: green;
-	}
-	.itemImageBox5{
-		background-color: orange;
-	}
-	.itemImageBox6{
-		background-color: purple;
-	}
+	
 	.btnContainer{
 		display: flex;
 		justify-content: center;
@@ -102,107 +85,40 @@
 		</div>
 		
 		
-		<div class="ItemContainer">
-			
+		<div class="itemContainer">
 			<div class="skiItemList" id="skiItemList">
-				<div class="itemImageBox1">
-					<div>
-						<!-- 이미지 파일 표시 -->
-						스키장비
+				<div class="itemInfo">
+					<div class="itemImageBox">
+						<div>
+							<!-- 이미지 파일 표시 -->
+						</div>
 					</div>
-				</div>
-				<div class="itemImageBox2">
-					<div>
-						<!-- 이미지 파일 표시 -->
-					</div>
-				</div>
-				<div class="itemImageBox3">
-					<div>
-						<!-- 이미지 파일 표시 -->
-					</div>
-				</div>
-				<div class="itemImageBox4">
-					<div>
-						<!-- 이미지 파일 표시 -->
-					</div>
-				</div>
-				<div class="itemImageBox5">
-					<div>
-						<!-- 이미지 파일 표시 -->
-					</div>
-				</div>
-				<div class="itemImageBox6">
-					<div>
-						<!-- 이미지 파일 표시 -->
+					<div class="textBox">
+						<div>
+							<c:forEach items="${list }" var="ritvo">
+								<p>${ritvo.rentalListPremiumItem }</p>
+								<p>${ritvo.rentalListItemExplain }</p>
+							</c:forEach>
+						</div>
 					</div>
 				</div>
 			</div>
 			
 			
 			<div class="boardItemList" id="boardItemList" style="display: none;">
-				<div class="itemImageBox1">
+				<div class="itemImageBox">
 					<div>
 						<!-- 이미지 파일 표시 -->
 						보드장비
 					</div>
 				</div>
-				<div class="itemImageBox2">
-					<div>
-						<!-- 이미지 파일 표시 -->
-					</div>
-				</div>
-				<div class="itemImageBox3">
-					<div>
-						<!-- 이미지 파일 표시 -->
-					</div>
-				</div>
-				<div class="itemImageBox4">
-					<div>
-						<!-- 이미지 파일 표시 -->
-					</div>
-				</div>
-				<div class="itemImageBox5">
-					<div>
-						<!-- 이미지 파일 표시 -->
-					</div>
-				</div>
-				<div class="itemImageBox6">
-					<div>
-						<!-- 이미지 파일 표시 -->
-					</div>
-				</div>
 			</div>
 			
 			<div class="wearItemList" id="wearItemList" style="display: none;">
-				<div class="itemImageBox1">
+				<div class="itemImageBox">
 					<div>
 						<!-- 이미지 파일 표시 -->
 						의류
-					</div>
-				</div>
-				<div class="itemImageBox2">
-					<div>
-						<!-- 이미지 파일 표시 -->
-					</div>
-				</div>
-				<div class="itemImageBox3">
-					<div>
-						<!-- 이미지 파일 표시 -->
-					</div>
-				</div>
-				<div class="itemImageBox4">
-					<div>
-						<!-- 이미지 파일 표시 -->
-					</div>
-				</div>
-				<div class="itemImageBox5">
-					<div>
-						<!-- 이미지 파일 표시 -->
-					</div>
-				</div>
-				<div class="itemImageBox6">
-					<div>
-						<!-- 이미지 파일 표시 -->
 					</div>
 				</div>
 			</div>

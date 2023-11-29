@@ -14,4 +14,19 @@
 		insert into rental(rental_lift_num,member_email,rental_main_lift,member_type)
 		values(#{rentalLiftNum},#{memberEmail},'Y',#{memberType})
 	</insert>
+	
+	<insert id="itemRegister">
+		insert into rental_items(rental_list_item_type,rental_list_low_item,rental_list_mid_item,
+		rental_list_premium_item,rental_list_item_explain)
+		values(#{rentalListItemType},#{rentalListLowItem},#{rentalListMidItem},
+		#{rentalListPremiumItem},#{rentalListItemExplain})
+	</insert>
+	
+	<select id="selectOneItemNum" resultType="long">
+		select max(rental_list_item_num) from rental_items
+	</select>
+
+	<select id="itemList" resultType="com.web.www.domain.rental.RentalItemVO">
+		select * from rental_items
+	</select>
 </mapper>
