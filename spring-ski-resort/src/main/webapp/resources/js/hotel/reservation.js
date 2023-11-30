@@ -241,6 +241,8 @@ function roomSelectEvent(num){
     //요금표시
     document.getElementById('pay1').value = roomprice.toLocaleString()+"원";
     document.getElementById('pay2').value = roomprice;
+    document.getElementById('pay3').innerText ="결제금액 : "+roomprice.toLocaleString()+"원";
+  
     // if(할인율){
     //     document.getElementById('pay2').value = (roomprice*할인율)+;
 
