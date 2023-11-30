@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.web.www.domain.FileVO;
 import com.web.www.domain.board.PagingVO;
+import com.web.www.domain.board.QnaAnsDTO;
 import com.web.www.domain.board.QnaVO;
 import com.web.www.domain.board.QnaDTO;
 import com.web.www.repository.FileDAO;
@@ -105,6 +106,14 @@ public class QnaServiceImpl implements QnaService{
 	public int qnaRemoveFile(String uuid) {
 		log.info(">>>>> qna remove file service >> ");
 		return fdao.qnaRemoveFile(uuid);
+	}
+
+
+
+	@Override
+	public int qnaAnsRegister(QnaAnsDTO qnaAnsDTO) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 

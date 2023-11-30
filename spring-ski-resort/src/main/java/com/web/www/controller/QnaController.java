@@ -75,7 +75,7 @@ public class QnaController {
 		m.addAttribute("ph",ph);
 	}
 	
-	
+
 	
 	//파일업로드 추가
 	@GetMapping({"/detail","/modify","/ans-register"})
@@ -130,7 +130,7 @@ public class QnaController {
 		
 		
 		///// Q&A 답변 등록 구간 ////// 
-		@PostMapping("/register")
+		@PostMapping("/ans-register")
 		public String qnaAnsRegister(QnaAnsVO qavo, RedirectAttributes re,
 				@RequestParam(name="files", required = false)MultipartFile[] files) {
 			log.info(" >>>>> qna register "+qavo+" "+files);

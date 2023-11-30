@@ -71,14 +71,6 @@
 	<!-- 답변 등록 구간 -->
 	<form action="/qna/modify" method="post" enctype="multipart/form-data">
 		<table class="table table-hover">
-			<tr>
-				<th>번호</th>
-				<td><input type="text" name="qnaNum" value="${qvo.qnaNum}" readonly="readonly"></td>
-			</tr>	
-			<tr>
-				<th>제목</th>
-				<td><input type="text" name="qnaTitle" value="${qvo.qnaTitle }"></td>
-			</tr>	
 			
 			<tr>
 				<th><label for="exampleFormControlInput1" class="form-label">작성자</label></th>
@@ -108,65 +100,22 @@
 				<div>
 				<textarea class="form-control" rows="5" cols="50"  name="qnaAnsContent" rows="5"></textarea>
 				<br>
-					<!-- 파일표시란 -->
-					<c:set value="${qdto.flist }" var="flist"></c:set>
-					<ul class="list-group list-group-flush">
-						<c:forEach items="${flist }" var="fvo">
-							<li>
-								<c:choose>
-									<c:when test="${fvo.fileType > 0 }">
-										<div>
-										<img alt="" src="/upload/${fn: replace(fvo.saveDir,'\\','/')}/${fvo.uuid}_${fvo.fileName}">
-										</div>
-									</c:when>
-								</c:choose>
-							</li>
-						</c:forEach>
-					</ul>
-				</div>
+				</div>	
 				</td>
 			</tr>
 		</table>	
 	<br>	
-	
-		<!-- 첨부파일 표시 영역 -->
-		<div>
-			<ul>
-				<c:forEach items="${flist }" var="fvo">
-					<li>
-						<c:choose>
-							<c:when test="${fvo.fileType > 0 }">
-								<div>
-									<img alt="그림이 없음." src="/upload/${fn: replace(fvo.saveDir,'\\','/')}/${fvo.uuid}_th_${fvo.fileName}">
-								</div>
-							</c:when>
-						</c:choose>
-						<div>
-							<div><B>${fvo.fileName }</B></div>
-				 			<div class="badge text-bg-secondary">${fvo.regDate }</div>
-				 		</div>
-				 		<span class="badge rounded-pill text-bg-success">${fvo.fileSize }Byte</span>
-				 		<div>
-				 			<button type="button" class="file-x btn btn-outline-secondary" data-uuid="${fvo.uuid }">X</button>
-						</div>
-						<br>
-					</li>
-				</c:forEach>
-			</ul>
-		</div>
-		
+
 		<div class="mb-3" id="fileZone">
 		<!-- 첨부파일 표시 영역 -->
 		</div>
 		<div class="mb-3">
 		  <input type="file" class="form-control" name="files" id="files" style="display: none;" multiple="multiple">
-		  <button type="button" id="trigger" class="btn btn-outline-primary">이미지파일 등록</button>
+		  <button type="button" id="trigger" class="btn btn-outline-primary">이미지 첨부파일</button>
 		</div>
 
-
-		
-			<button type="submit" class="btn btn-dark" id="regBtn">등록</button>
-			<a href="/qna/list"><button type="button" class="btn btn-dark">취소</button></a>
+		<button type="submit" class="btn btn-dark" id="regBtn">등록</button>
+		<a href="/qna/list"><button type="button" class="btn btn-dark">취소</button></a>
 	</form>
 
 </div>

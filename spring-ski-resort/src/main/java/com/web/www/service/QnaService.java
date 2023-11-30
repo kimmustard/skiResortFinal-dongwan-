@@ -3,6 +3,7 @@ package com.web.www.service;
 import java.util.List;
 
 import com.web.www.domain.board.PagingVO;
+import com.web.www.domain.board.QnaAnsDTO;
 import com.web.www.domain.board.QnaVO;
 import com.web.www.domain.board.QnaDTO;
 
@@ -21,6 +22,8 @@ public interface QnaService {
 	int qnaRemove(long qnaNum);
 
 	int qnaRemoveFile(String uuid);
+
+	int qnaAnsRegister(QnaAnsDTO qnaAnsDTO);
 
 
 }
