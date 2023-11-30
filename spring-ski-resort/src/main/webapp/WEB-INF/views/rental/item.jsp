@@ -30,12 +30,19 @@
 	}
 	
 	.itemImageBox{
-		width: calc(15% - 40px);
-		height: 300px;
-		margin: 100px 20px 0 20px;
+		width: 1200px;
 		border: 2px solid black;
+		display: flex;
+		background-color:gray;
+		justify-content: space-around;
+		flex-wrap: wrap;
+		
 	}
-	
+	.itemImageBox div{
+		width: 18%;
+		height: 300px;
+		background-color: lightgreen;
+	}
 	.btnContainer{
 		display: flex;
 		justify-content: center;
@@ -92,33 +99,77 @@
 						<div>
 							<!-- 이미지 파일 표시 -->
 						</div>
-					</div>
-					<div class="textBox">
 						<div>
-							<c:forEach items="${list }" var="ritvo">
-								<p>${ritvo.rentalListPremiumItem }</p>
-								<p>${ritvo.rentalListItemExplain }</p>
-							</c:forEach>
+							<!-- 이미지 파일 표시 -->
 						</div>
+						<div>
+							<!-- 이미지 파일 표시 -->
+						</div>
+						<div>
+							<!-- 이미지 파일 표시 -->
+						</div>
+						<div>
+							<!-- 이미지 파일 표시 -->
+						</div>
+					</div>
+					
+					<div class="textBox">
+						
 					</div>
 				</div>
 			</div>
 			
 			
 			<div class="boardItemList" id="boardItemList" style="display: none;">
-				<div class="itemImageBox">
-					<div>
-						<!-- 이미지 파일 표시 -->
-						보드장비
+				<div class="itemInfo">
+					<div class="itemImageBox">
+						<div>
+							<!-- 이미지 파일 표시 -->
+							보드장비
+						</div>
+						<div>
+							<!-- 이미지 파일 표시 -->
+							보드장비
+						</div>
+						<div>
+							<!-- 이미지 파일 표시 -->
+							보드장비
+						</div>
+						<div>
+							<!-- 이미지 파일 표시 -->
+							보드장비
+						</div>
+						<div>
+							<!-- 이미지 파일 표시 -->
+							보드장비
+						</div>
 					</div>
 				</div>
 			</div>
 			
 			<div class="wearItemList" id="wearItemList" style="display: none;">
-				<div class="itemImageBox">
-					<div>
-						<!-- 이미지 파일 표시 -->
-						의류
+				<div class="itemInfo">
+					<div class="itemImageBox">
+						<div>
+							<!-- 이미지 파일 표시 -->
+							의류
+						</div>
+						<div>
+							<!-- 이미지 파일 표시 -->
+							의류
+						</div>
+						<div>
+							<!-- 이미지 파일 표시 -->
+							의류
+						</div>
+						<div>
+							<!-- 이미지 파일 표시 -->
+							의류
+						</div>
+						<div>
+							<!-- 이미지 파일 표시 -->
+							의류
+						</div>
 					</div>
 				</div>
 			</div>
