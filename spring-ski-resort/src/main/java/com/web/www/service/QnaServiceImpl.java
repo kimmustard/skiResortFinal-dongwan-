@@ -29,6 +29,9 @@ public class QnaServiceImpl implements QnaService{
 	
 	@Override
 	public int qnaRegister(QnaDTO qdto) {
+		if(qdto.getQvo().getQnaSecret()==null) { //비밀글 미체크시 null값 대신 'N'
+			qdto.getQvo().setQnaSecret("N");
+		}
 		int isOk = qdao.insert(qdto.getQvo());
 		if(qdto.getFlist()==null) {
 			isOk*=1;
@@ -118,14 +121,14 @@ public class QnaServiceImpl implements QnaService{
 	@Override
 	public int qnaAnsRegister(QnaAnsDTO qadto) {
 		int isOk = qdao.ansInsert(qadto.getQavo());
-		isOk = qdao.qnaIsokUpdate(qadto.getQavo().getQnaNum());
+		isOk = qdao.qnaIsokUpdate(qadto.getQavo().getQnaNum()); //qnaIsok='Y'만들기
 		if(qadto.getFlist()==null) {
 			isOk*=1;
 			return isOk;
 		}
 		if(isOk > 0 && qadto.getFlist().size() > 0) {
 			long qnaAnsNum = qdao.selectOneQnaAnsNum(); //가장 마지막에 등록된 qna_ans_num
-			long qnaNum = qdao.selectOneQnaNum(); //가장 마지막에 등록된 qna_num
+			long qnaNum = qadto.getQavo().getQnaNum(); 
 			//모든 파일에 qnaNum, qnaAnsNum set
 			for(FileVO fvo : qadto.getFlist()) {
 				fvo.setQnaAnsNum(qnaAnsNum);

@@ -125,6 +125,18 @@
 		    </tr>
 		  </thead>
 		  <tbody>
+		  <c:forEach items="${pvo }" var="pvo">
+		    <tr class="notice-table-tr-point">
+		      <td class="notice-table-td"><div class="notice-table-td-child">${pvo.noticeNum }</div></td>
+		      <td class="notice-table-td"><div class="notice-table-td-child">${pvo.noticeCategory }</div></td>
+		      <td class="notice-table-td"><div class="notice-table-td-child-title"><a href="/notice/detail?noticeNum=${pvo.noticeNum }">${pvo.noticeTitle }</a></div></td>
+		      <td class="notice-table-td"><div class="notice-table-td-child">${pvo.noticeWriter }</div></td>
+		      <td class="notice-table-td"><div class="notice-table-td-child">${fn:replace((fn:substring(pvo.noticeRegAt,0,10)),'-','.') }</div></td>
+		      <td class="notice-table-td"><div class="notice-table-td-child">${pvo.noticeCount }</div></td>
+		    </tr>
+		  </c:forEach>  
+		  </tbody>
+		  <tbody>
 		  <c:forEach items="${list }" var="nvo">
 		    <tr class="notice-table-tr">
 		      <td class="notice-table-td"><div class="notice-table-td-child">${nvo.noticeNum }</div></td>
@@ -137,7 +149,7 @@
 		  </c:forEach>  
 		  </tbody>
 		</table>
-		
+		<br>
 		
 		<!-- 페이징 라인 -->
 		  <nav aria-label="Page navigation example">

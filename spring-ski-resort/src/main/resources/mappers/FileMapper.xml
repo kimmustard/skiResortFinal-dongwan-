@@ -30,7 +30,7 @@
 	</insert>
 	
 	<select id="getQnaFileList" resultType="com.web.www.domain.FileVO">
-		select * from file where qna_num = #{qnaNum} and file_isok='Y' 
+		select * from file where qna_num = #{qnaNum} and file_isok='Y' and qna_ans_num is null 
 		order by file_reg_at asc
 	</select>
 	
@@ -50,7 +50,7 @@
 	</insert>
 	
 	<select id="getQnaAnsFileList" resultType="com.web.www.domain.FileVO">
-		select * from file where qna_ans_num=#{qnaAnsNum} and qna_num=#{qnaNum} and file_isok='Y' 
+		select * from file where qna_num=#{qnaNum} and file_isok='Y' and qna_ans_num is not null
 		order by file_reg_at asc
 	</select>
 	

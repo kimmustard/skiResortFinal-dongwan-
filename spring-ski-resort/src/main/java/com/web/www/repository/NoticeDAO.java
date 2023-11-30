@@ -29,4 +29,6 @@ public interface NoticeDAO {
 
 	List<NoticeVO> getTwoNotice();
 
+	List<NoticeVO> selectPointList();
+
 }

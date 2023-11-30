@@ -92,7 +92,47 @@ alter table qna_ans add CONSTRAINT fk_qna_ans foreign KEY(qna_num) references qn
 
 
 ##11-30
-- file 테이블에 qna_ans_num 칼럼추가 및 외래키 설정.
+- file 테이블에 qna_ans_num 칼럼추가 및 외래키 설정.  -qna테이블에 qna_secret 칼럼추가
 alter table file add qna_ans_num bigint;
 alter table file add CONSTRAINT file_ibfk_qna_ans foreign KEY(qna_ans_num) references qna_ans (qna_ans_num) ON DELETE CASCADE;
+alter table qna add qna_secret varchar(1) default 'N';
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+------------메모용 참고 자료-------------------------------
+** foreign key가 존재하는 table을 truncate/delete할때 **
+
+> set FOREIGN_KEY_CHECKS = 0;
+Query OK, 0 rows affected 
+
+> truncate 테이블명;
+Query OK, 0 rows affected
+
+> set FOREIGN_KEY_CHECKS = 1;
+Query OK, 0 rows affected 
+
+
+** 관리자 권한 부여 **
+insert into auth_member values('admin','ROLE_ADMIN');

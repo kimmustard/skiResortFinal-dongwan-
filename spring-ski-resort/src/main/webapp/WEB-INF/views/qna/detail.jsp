@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+    <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,10 +14,14 @@
 <body>
 <c:set value="${qdto.qvo }" var="qvo"></c:set>
 <c:set value="${qadto.qavo }" var="qavo"></c:set>
+<sec:authorize access="isAuthenticated()">
+<sec:authentication property="principal.mvo.authList" var="authList"/>
+</sec:authorize>
 
-	<div class="qna-img-container" style="background-image: url('https://www.princehotels.com/shinfurano/wp-content/uploads/sites/40/2022/11/2022_11_1920_ski_2-1.jpg')">	</div>
+
+<div class="qna-img-container" style="background-image: url('https://www.princehotels.com/shinfurano/wp-content/uploads/sites/40/2022/11/2022_11_1920_ski_2-1.jpg')">	</div>
 	
-	<div class="container qna-container">
+<div class="container qna-container">
 	<br>
 	<h2>Q&A</h2>
 	<br>
@@ -35,7 +40,7 @@
 		</tr>	
 		<tr>
 			<th>답변상태</th>
-			<td>${qvo.qnaIsok }</td>
+			<td>${qvo.qnaIsok=='Y' ? '답변완료' : '대기중'  }</td>
 		</tr>	
 		<tr>
 			<th>등록일</th>
@@ -71,7 +76,7 @@
 	
 	<!-- Q&A 답변 라인 -->
 	<c:if test="${qvo.qnaIsok == 'N' }">
-		<p>등록된 답변이 없습니다</p>
+		<p>※등록된 답변이 없습니다</p>
 	</c:if>
 	
 	<c:if test="${qvo.qnaIsok == 'Y' }">
@@ -110,7 +115,7 @@
 
 	</table>
 	</c:if>
-	<br><br>
+	<br><br><br>
 	
 	<a href="/qna/list">
 		<button type="button" class="btn btn-dark">리스트</button>
@@ -118,10 +123,12 @@
 	<a href="/qna/modify?qnaNum=${qvo.qnaNum }">
 		<button type="button" class="btn btn-dark">수정</button>
 	</a>
-	<a href="/qna/ans-register?qnaNum=${qvo.qnaNum }">
-		<button type="button" class="btn btn-dark">답변등록</button>
-	</a>
-	</div>
+	<c:if test="${qvo.qnaIsok=='N' }">	
+			<a href="/qna/ans-register?qnaNum=${qvo.qnaNum }">
+				<button type="button" class="btn btn-dark">답변등록</button>
+			</a>
+	</c:if>
+</div>
 
 
 <jsp:include page="../common/footer.jsp" />	

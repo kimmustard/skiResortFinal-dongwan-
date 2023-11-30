@@ -98,6 +98,12 @@
 				<td><input type="hidden" name="noticeWriter">${nvo.noticeWriter }</td>
 			</tr>
 			<tr>
+				<th>중요공지</th>
+		  		<td>중요공지(상단고정)
+		  		<input type="checkbox" name="noticePoint" value="Y">
+		  		</td>
+			</tr>
+			<tr>
 				<th>등록일</th>
 				<td>${nvo.noticeRegAt }</td>
 			</tr>

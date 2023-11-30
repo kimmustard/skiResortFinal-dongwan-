@@ -65,6 +65,11 @@
 		</div>
 		
 		<div class="mb-3">
+		  <label for="exampleFormControlInput1" class="form-label">중요공지(상단고정)</label>
+		  <input type="checkbox" name="noticePoint" value="Y">
+		</div>
+		
+		<div class="mb-3">
 		  <label for="exampleFormControlTextarea1" class="form-label">내용</label>
 		  <textarea class="form-control" name="noticeContent" id="summernote" rows="3"></textarea>
 		</div>

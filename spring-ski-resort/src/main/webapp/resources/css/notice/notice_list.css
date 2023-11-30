@@ -80,7 +80,11 @@
 
 .notice-table-tr{
 	border-bottom: 1px solid #e3dbd7;
-	
+}
+
+.notice-table-tr-point{
+	border-bottom: 1px solid #e3dbd7;
+	background-color: yellow;
 }
 
 .notice-table-th-no{
