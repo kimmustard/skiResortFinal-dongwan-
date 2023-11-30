@@ -30,6 +30,7 @@ function paymentGateway(pgName) {
         buyer_addr: '서울특별시 강남구 삼성동',
         buyer_postcode: '123-456'
     }, function (rsp) {
+        console.log(rsp);
         if (rsp.success) {
             // 서버로 데이터를 전송
             fetch("/pay/portOne", {
@@ -38,8 +39,17 @@ function paymentGateway(pgName) {
                     "Content-Type": "application/json; charset=UTF-8",
                 },
                 body: JSON.stringify({
-                    imp_uid: rsp.imp_uid,
-                    merchant_uid: rsp.merchant_uid,
+                    payImpUid: rsp.imp_uid,
+                    payMerchantUid: rsp.merchant_uid,
+                    payPg: rsp.pg_provider,
+                    payMethod: rsp.pay_method,
+                    payName: rsp.name,
+                    payAmount: rsp.paid_amount,
+                    memberName: rsp.buyer_name,
+                    memberEmail: rsp.buyer_email,
+                    memberPhone: rsp.buyer_tel,
+                    memberAddress: rsp.buyer_addr,
+
                     // 기타 필요한 데이터가 있으면 추가 전달
 
                 }),

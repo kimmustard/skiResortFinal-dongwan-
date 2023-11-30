@@ -12,6 +12,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class RoomInfoVO {
+	
 	private int hotelRoomNum;
 	private String hotelReserveStayStart;
 	private String hotelReserveStayEnd;
