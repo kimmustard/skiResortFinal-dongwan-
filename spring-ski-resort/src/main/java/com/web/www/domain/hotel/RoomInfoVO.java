@@ -1,4 +1,4 @@
-package com.web.www.domain;
+package com.web.www.domain.hotel;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,9 +12,10 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class RoomInfoVO {
-	private long hotelMainNum;
+	private long hotelMainNum; 
 	private int hotelRoomNum;
 	private long memberNum;
+	private String payMerchantUid;
 	private String hotelReserveStayStart;
 	private String hotelReserveStayEnd;
 	private int hotelReserveFee;
@@ -23,3 +24,4 @@ public class RoomInfoVO {
 	private String hotelReserveCarNum;
 
 }
+
