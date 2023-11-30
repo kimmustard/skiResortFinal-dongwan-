@@ -68,6 +68,10 @@
 							<span class="input-group-text">의류명</span>
 							<input class="form-control" type="text" name="rentalListWearItem" id="rentalListWearItem">
 						</div>
+						<div class="input-group" id="itemCount" style="display: none;">
+							<span class="input-group-text">수량</span>
+							<input class="form-control" type="text" name="rentalListItemCount" id="rentalListItemCount" value="0">
+						</div>
 						<div class="input-group" id="itemExplain" style="display: none;">
 							<span class="input-group-text">장비설명</span>
 							<textarea class="form-control" name="rentalListItemExplain"></textarea>

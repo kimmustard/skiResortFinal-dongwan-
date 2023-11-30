@@ -2,7 +2,7 @@ document.getElementById("nextBtn").addEventListener('click', () => {
     let rentalLiftStart = document.getElementById('rentalLiftStart').value;
     let rentalLiftAdult = document.getElementById('rentalLiftAdult').value;
     let rentalLiftKid = document.getElementById('rentalLiftKid').value;
-    if (rentalLiftAdult == "0" && rentalLiftKid == "0") {
+    if (rentalLiftAdult == "0") {
         alert('인원수를 입력해주세요!');
     } else if (rentalLiftStart == "") {
         alert('날짜를 선택해주세요!');
@@ -15,6 +15,7 @@ document.getElementById("nextBtn").addEventListener('click', () => {
 document.addEventListener('DOMContentLoaded', function () {
     // DateRangePicker 초기화
     let dateRangePicker = document.getElementById('dateRangePicker');
+    let rentalLiftStartInput = document.getElementById('rentalLiftStart');
 
     if (dateRangePicker) {
         // DateRangePicker 이벤트 처리
@@ -37,6 +38,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 // 선택한 날짜로 "rentalReserveStart" 입력 필드 업데이트
                 document.getElementById('rentalLiftStart').value = start.format('YYYY-MM-DD');
             });
+
+            $(this).on('cancel.daterangepicker', function () {
+                setTimeout(function () {
+                    rentalLiftStartInput.value = '';
+                }, 0);
+            })
+
             $(this).data('daterangepicker').show();
         });
     }

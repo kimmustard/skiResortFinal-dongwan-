@@ -18,6 +18,7 @@ member_email varchar(50) not null,
 reatal_main_isreturn varchar(1) default 'N',
 rental_main_lift varchar(1) default 'N',
 member_type varchar(20) default 'normal',
+rental_reg_at datetime default now(),
 primary key(rental_main_num),
 foreign key(rental_lift_num) references rental_lift(rental_lift_num));
 
@@ -28,6 +29,7 @@ rental_list_item_type varchar(50),
 rental_list_low_item varchar(50),
 rental_list_mid_item varchar(50),
 rental_list_premium_item varchar(50),
+rental_list_item_count int default 0,
 rental_list_item_explain text,
 primary key(rental_list_item_num));
 
@@ -42,9 +44,14 @@ create table rental_reserve(
 rental_main_num bigint not null,
 rental_list_item_num bigint not null,
 rental_reserve_ticket varchar(50),
-rental_reserve_item_adult_fee int,
-rental_reserve_item_kid_fee int,
-rental_reserve_start datetime);
+rental_reserve_adult_fee int,
+rental_reserve_kid_fee int,
+rental_reserve_adult int,
+rental_reserve_kid int,
+rental_reserve_isok varchar(1) default 'Y',
+rental_reserve_isreturn varchar(1) default 'N',
+rental_reserve_start date,
+rental_reserve_reg_at datetime default now());
 
 alter table rental_reserve add constraint fk_renmnum foreign key(rental_main_num)
 references rental(rental_main_num) on delete cascade;
