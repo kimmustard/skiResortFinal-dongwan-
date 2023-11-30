@@ -25,6 +25,8 @@ public class QnaServiceImpl implements QnaService{
 	
 	
 	
+///// Q&A 등록 구간 //////
+	
 	@Override
 	public int qnaRegister(QnaDTO qdto) {
 		int isOk = qdao.insert(qdto.getQvo());
@@ -89,8 +91,6 @@ public class QnaServiceImpl implements QnaService{
 	}
 
 
-
-	
 	
 	@Override
 	public int qnaRemove(long qnaNum) {
@@ -109,14 +109,29 @@ public class QnaServiceImpl implements QnaService{
 	}
 
 
+	
+	
+	
+	
+///// Q&A 답변 등록 구간 //////	
 
 	@Override
-	public int qnaAnsRegister(QnaAnsDTO qnaAnsDTO) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-
-
+	public int qnaAnsRegister(QnaAnsDTO qadto) {
+		int isOk = qdao.ansInsert(qadto.getQavo());
+		if(qadto.getFlist()==null) {
+			isOk*=1;
+			return isOk;
+		}
+		if(isOk > 0 && qadto.getFlist().size() > 0) {
+			long qnaAnsNum = qdao.selectOneQnaAnsNum(); //가장 마지막에 등록된 qna_num
+			//모든 파일에 qnaNum set
+			for(FileVO fvo : qadto.getFlist()) {
+				fvo.setQnaAnsNum(qnaAnsNum);
+				isOk*=fdao.insertQnaAnsFile(fvo);
+			}
+		}
+		return isOk;
+	}	
+	
 
 }

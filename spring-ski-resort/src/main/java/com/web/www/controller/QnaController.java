@@ -40,6 +40,8 @@ public class QnaController {
 	private final FileHandler fh;
 	
 	
+
+///// Q&A 등록 구간 //////	
 	
 	@GetMapping("/register")
 	public String qnaRegister() {
@@ -133,15 +135,15 @@ public class QnaController {
 		@PostMapping("/ans-register")
 		public String qnaAnsRegister(QnaAnsVO qavo, RedirectAttributes re,
 				@RequestParam(name="files", required = false)MultipartFile[] files) {
-			log.info(" >>>>> qna register "+qavo+" "+files);
+			log.info(" >>>>> qna-ans register "+qavo+" "+files);
 			List<FileVO> flist = null;
 			if(files[0].getSize() > 0) {
 				String category ="qna";
 				flist = fh.uploadFiles(files,category);
 			}
 			int isOk = qsv.qnaAnsRegister(new QnaAnsDTO(qavo, flist));
-			log.info(">>>>> qna register >> "+(isOk > 0? "OK" : "Fail"));
-			return "redirect:/qna/list";
+			log.info(">>>>> qna-ans register >> "+(isOk > 0? "OK" : "Fail"));
+			return "redirect:/qna//detail?qnaNum="+qavo.getQnaNum();
 		}
 		
 		

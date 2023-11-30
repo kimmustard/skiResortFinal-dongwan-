@@ -69,9 +69,11 @@
 	
 	
 	<!-- 답변 등록 구간 -->
-	<form action="/qna/modify" method="post" enctype="multipart/form-data">
+	<form action="/qna/ans-register" method="post" enctype="multipart/form-data">
 		<table class="table table-hover">
-			
+			<tr>
+				<td><input type="hidden" name="qnaNum" value="${qvo.qnaNum}" readonly="readonly"></td>
+			</tr>
 			<tr>
 				<th><label for="exampleFormControlInput1" class="form-label">작성자</label></th>
 				<td>

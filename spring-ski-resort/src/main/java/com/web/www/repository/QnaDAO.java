@@ -3,6 +3,7 @@ package com.web.www.repository;
 import java.util.List;
 
 import com.web.www.domain.board.PagingVO;
+import com.web.www.domain.board.QnaAnsVO;
 import com.web.www.domain.board.QnaVO;
 
 public interface QnaDAO {
@@ -20,5 +21,12 @@ public interface QnaDAO {
 	int QnaFileModify(QnaVO qvo);
 
 	int delete(long qnaNum);
+	
+	
+	//qns 답변 라인
+
+	int ansInsert(QnaAnsVO qavo);
+
+	long selectOneQnaAnsNum();
 
 }

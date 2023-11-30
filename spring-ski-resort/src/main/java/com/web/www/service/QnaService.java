@@ -22,6 +22,9 @@ public interface QnaService {
 	int qnaRemove(long qnaNum);
 
 	int qnaRemoveFile(String uuid);
+	
+	
+	//qns 답변라인
 
 	int qnaAnsRegister(QnaAnsDTO qnaAnsDTO);
 
