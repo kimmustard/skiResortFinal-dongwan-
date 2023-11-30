@@ -7,23 +7,30 @@ CREATE TABLE hotel (
 //삭제구문
     drop table hotel;
 
-
-
 //2023-11-30 수정
 	 drop table room; 삭제후 아래구문 입력
 
 CREATE TABLE room(
-	hotel_room_num int NOT NULL,
-	hotel_room_explain text,
-	hotel_room_type varchar(100),
-	primary key(hotel_room_num)
+hotel_room_num int AUTO_INCREMENT,
+hotel_room_name varchar(200),
+hotel_room_explain text NULL,
+hotel_room_standard_people int,
+hotel_room_type varchar(100),
+hotel_reserve_isok varchar(1),
+hotel_room_area varchar(100),
+hotel_room_fee int,
+hotel_room_count int,
+ primary key(hotel_room_num)	
 );
+
+
 
 //2023-11-30 수정
 	 drop table room_info; 삭제후 아래구문 입력
 CREATE TABLE room_info (
 	hotel_main_num bigint ,
 	hotel_room_num int NOT NULL,
+	pay_merchant_uid varchar(50),
 	member_num bigint NOT NULL,
 	hotel_reserve_stay_start dateTime,
 	hotel_reserve_stay_end dateTime,

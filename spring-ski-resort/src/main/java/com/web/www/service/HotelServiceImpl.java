@@ -1,8 +1,12 @@
+
 package com.web.www.service;
+
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.web.www.domain.RoomInfoVO;
+import com.web.www.domain.hotel.RoomInfoVO;
+import com.web.www.domain.hotel.RoomVO;
 import com.web.www.repository.HotelDAO;
 
 import lombok.RequiredArgsConstructor;
@@ -19,6 +23,18 @@ public class HotelServiceImpl implements HotelService{
 	public int updateRoomInfo(RoomInfoVO rivo) {
 		// TODO Auto-generated method stub
 		return hdao.updateRoomInfo(rivo);
+	}
+
+	@Override
+	public int addRoom(RoomVO rvo) {
+		// TODO Auto-generated method stub
+		return hdao.addRoom(rvo);
+	}
+
+	@Override
+	public List<RoomVO> getRoomList() {
+		// TODO Auto-generated method stub
+		return hdao.getRoomList();
 	}
 
 }
