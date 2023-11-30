@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.web.www.domain.member.AuthUser;
@@ -22,7 +23,7 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 public class PayController {
 	
-	private final PayService ps;
+	private final PayService psv;
 	
 	@GetMapping("/testForm")
 	public String payForm() {
@@ -37,12 +38,19 @@ public class PayController {
 		log.info("##결제 정보##  = {}" , pivo);
 		
 		//결제정보 테이블 저장
-		ps.registerPay(pivo);
+		psv.registerPay(pivo);
 		
 		
 		return null;
 	}
 	
+	@GetMapping("/refund")
+	public String refunt(@RequestParam String payImpUid) {
+		log.info("##영수증정보## = {}", payImpUid);
+			
+		int isOk = psv.refund(payImpUid);
+		return "redirect:/member/detail";
+	}
 	
 	
 	

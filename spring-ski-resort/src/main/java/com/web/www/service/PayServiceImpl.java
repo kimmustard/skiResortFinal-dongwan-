@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.web.www.domain.pay.PayInfoVO;
+import com.web.www.handler.importHandler;
 import com.web.www.repository.PayDAO;
 
 import lombok.RequiredArgsConstructor;
@@ -16,7 +17,9 @@ import lombok.extern.slf4j.Slf4j;
 public class PayServiceImpl implements PayService{
 	
 	private final PayDAO pdao;
-
+	private final importHandler iph; 
+	
+	
 	@Override
 	public void registerPay(PayInfoVO upiDTO) {
 		
@@ -37,6 +40,12 @@ public class PayServiceImpl implements PayService{
 	@Override
 	public List<PayInfoVO> getPayInfoList(long memberNum) {
 		return pdao.getPayInfoList(memberNum);
+	}
+
+	@Override
+	public int refund(String payImpUid) {
+		
+		return 0;
 	}
 	
 }

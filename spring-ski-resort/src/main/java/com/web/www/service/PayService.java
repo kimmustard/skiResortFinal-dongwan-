@@ -14,4 +14,6 @@ public interface PayService {
 	 */
 	List<PayInfoVO> getPayInfoList(long memberNum);
 
+	int refund(String payImpUid);
+
 }

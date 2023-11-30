@@ -256,7 +256,8 @@
 										</c:forEach>
 									</tbody>
 								</table>
-								<button>결제취소</button>
+											 <a href="/pay/refund?payImpUid=imp_193875071000"><button>결제취소</button></a>  
+								
 					</div>	
 				</div>
 			</div>
