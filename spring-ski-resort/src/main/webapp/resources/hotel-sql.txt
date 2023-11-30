@@ -1,28 +1,37 @@
+//2023-11-30 삭제할 테이블
 CREATE TABLE hotel (
 	hotel_main_num bigint,
 	member_num bigint NOT NULL,
 	primary key(hotel_main_num)
 );
+//삭제구문
+    drop table hotel;
+
+
+
+//2023-11-30 수정
+	 drop table room; 삭제후 아래구문 입력
 
 CREATE TABLE room(
 	hotel_room_num int NOT NULL,
-	hotel_main_num bigint,
 	hotel_room_explain text,
 	hotel_room_type varchar(100),
 	primary key(hotel_room_num)
 );
 
+//2023-11-30 수정
+	 drop table room_info; 삭제후 아래구문 입력
 CREATE TABLE room_info (
+	hotel_main_num bigint ,
 	hotel_room_num int NOT NULL,
+	member_num bigint NOT NULL,
 	hotel_reserve_stay_start dateTime,
 	hotel_reserve_stay_end dateTime,
-	hotel_reserve_isok varchar(1),
 	hotel_reserve_fee  int,
 	hotel_reserve_people int ,
 	hotel_reserve_child int,
 	hotel_reserve_car_num varchar(20),
-	hotel_reserve_start dateTime,
-	hotel_reserve_end dateTime	
+	primary key(hotel_main_num)
 );
 
 

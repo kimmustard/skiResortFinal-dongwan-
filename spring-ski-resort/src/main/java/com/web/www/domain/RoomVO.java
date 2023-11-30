@@ -13,7 +13,7 @@ import lombok.ToString;
 @ToString
 public class RoomVO {
 	private int hotelRoomNum ;
-	private long hotelMainNum;
 	private String hotelRoomExplain;
 	private String hotelRoomType; 
+	private String hotelReserveIsok;
 }
