@@ -45,12 +45,17 @@ public class OauthSuccessHandler implements AuthenticationSuccessHandler {
 
 		boolean isOk = msv.updateLastLogin(authId);
 		
+		//멤버 넘버 획득
+		long memberNum = msv.socialSearch(authId).getMemberNum();
+		
 		//내부에서로그인 세션이 저장됨
 		HttpSession ses = request.getSession();
 		log.info("LoginSuccessHandler Session = {}", ses.toString());
+		log.info("#@#@#@#@#@ = {}", authId);
 		
 		//로그인시 추가정보 (객체에서 필요한 정보가 있다면 직접 추가해주세요.)
 		AuthMember authMember = (AuthMember) authentication.getPrincipal();
+		ses.setAttribute("memberNum", memberNum);
 		ses.setAttribute("memberId", authMember.getMvo().getMemberId());
 		ses.setAttribute("memberEmail", authMember.getMvo().getMemberEmail());
 		ses.setAttribute("memberAlias", authMember.getMvo().getMemberAlias());

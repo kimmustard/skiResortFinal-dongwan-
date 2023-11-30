@@ -25,10 +25,10 @@ public class UserPayInfoDTO {
 	private String hotelMainNum;
 	
 	//렌탈 예약번호
-	private String rentalMainNum;	
+	private String rentalMainNum;
 	
 	//구매자 정보
-	private String memberNum;	
+	private long memberNum;	
 	
 	private String memberEmail;
 	private String memberName;
