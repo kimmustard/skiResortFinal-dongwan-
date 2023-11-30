@@ -12,6 +12,7 @@
 </head>
 <body>
 <c:set value="${qdto.qvo }" var="qvo"></c:set>
+<c:set value="${qadto.qavo }" var="qavo"></c:set>
 
 	<div class="qna-img-container" style="background-image: url('https://www.princehotels.com/shinfurano/wp-content/uploads/sites/40/2022/11/2022_11_1920_ski_2-1.jpg')">	</div>
 	
@@ -64,6 +65,52 @@
 		</tr>
 
 	</table>	
+	
+	
+	
+	
+	<!-- Q&A 답변 라인 -->
+	<c:if test="${qvo.qnaIsok == 'N' }">
+		<p>등록된 답변이 없습니다</p>
+	</c:if>
+	
+	<c:if test="${qvo.qnaIsok == 'Y' }">
+	<br>
+	<table class="table table-hover">	
+		<tr>
+			<th>작성자</th>
+			<td>${qavo.qnaAnsWriter }</td>
+		</tr>	
+		<tr>
+			<th>등록일</th>
+			<td>${qavo.qnaAnsRegAt }</td>
+		</tr>
+		<tr>
+			<th>내용</th>
+			<td>${qavo.qnaAnsContent }
+				<div>
+					<!-- 파일표시란 -->
+					<c:set value="${qadto.flist }" var="flistans"></c:set>
+					<ul class="list-group list-group-flush">
+						<c:forEach items="${flistans }" var="afvo">
+							<li>
+								<c:choose>
+									<c:when test="${afvo.fileType > 0 }">
+										<div>
+										<img alt="이미지x" src="/upload/${fn: replace(afvo.saveDir,'\\','/')}/${afvo.uuid}_${afvo.fileName}">
+										</div>
+									</c:when>
+								</c:choose>
+							</li>
+						</c:forEach>
+					</ul>
+				</div>
+			</td>
+		</tr>
+
+	</table>
+	</c:if>
+	<br><br>
 	
 	<a href="/qna/list">
 		<button type="button" class="btn btn-dark">리스트</button>

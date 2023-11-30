@@ -83,7 +83,9 @@ public class QnaController {
 	@GetMapping({"/detail","/modify","/ans-register"})
 	public void qnaDetail(Model m, @RequestParam("qnaNum")long qnaNum) {
 		QnaDTO qdto = qsv.qnaDetail(qnaNum);
+		QnaAnsDTO qadto = qsv.qnaAnsDetail(qnaNum);
 		m.addAttribute("qdto",qdto);
+		m.addAttribute("qadto",qadto);
 	}
 	
 	
@@ -143,7 +145,7 @@ public class QnaController {
 			}
 			int isOk = qsv.qnaAnsRegister(new QnaAnsDTO(qavo, flist));
 			log.info(">>>>> qna-ans register >> "+(isOk > 0? "OK" : "Fail"));
-			return "redirect:/qna//detail?qnaNum="+qavo.getQnaNum();
+			return "redirect:/qna/detail?qnaNum="+qavo.getQnaNum();
 		}
 		
 		

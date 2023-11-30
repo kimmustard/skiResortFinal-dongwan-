@@ -29,4 +29,9 @@ public interface QnaDAO {
 
 	long selectOneQnaAnsNum();
 
+	QnaAnsVO selectAnsDetail(long qnaNum);
+
+	int qnaIsokUpdate(long qnaNum); //qnaIsok = Y
+
+
 }

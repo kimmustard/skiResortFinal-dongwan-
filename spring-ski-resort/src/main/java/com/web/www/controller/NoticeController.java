@@ -76,6 +76,9 @@ public class NoticeController {
 		PagingHandler ph = new PagingHandler(pgvo, totalCount);
 		m.addAttribute("ph",ph);
 	}
+	
+	
+	
 	//공지두개 비동기로 보내기
 	@GetMapping(value="/getTwoNotice", produces = {MediaType.APPLICATION_JSON_VALUE} )
 	public ResponseEntity<List<NoticeVO>> getTwoNotice() {

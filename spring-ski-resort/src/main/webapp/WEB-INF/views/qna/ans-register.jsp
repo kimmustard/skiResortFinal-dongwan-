@@ -73,6 +73,7 @@
 		<table class="table table-hover">
 			<tr>
 				<td><input type="hidden" name="qnaNum" value="${qvo.qnaNum}" readonly="readonly"></td>
+				<td><input type="hidden" name="qnaAnsTitle" value="${qvo.qnaTitle }"></td>
 			</tr>
 			<tr>
 				<th><label for="exampleFormControlInput1" class="form-label">작성자</label></th>
@@ -84,14 +85,14 @@
 						<sec:authentication property="principal.mvo.memberAlias" var="authAlias"/>
 						<sec:authentication property="principal.mvo.memberType" var="authType"/>
 						  <c:if test="${authType == 'normal' }">
-						  	<input type="text" class="form-control" name="qnaWriter" id="exampleFormControlInput1" value="${authId }" readonly="readonly">
+						  	<input type="text" class="form-control" name="qnaAnsWriter" id="exampleFormControlInput1" value="${authId }" readonly="readonly">
 						  </c:if>
 						  <c:if test="${authType != 'normal' }">
-						  	<input type="text" class="form-control" name="qnaWriter" id="exampleFormControlInput1" value="${authEmail }" readonly="readonly">
+						  	<input type="text" class="form-control" name="qnaAnsWriter" id="exampleFormControlInput1" value="${authEmail }" readonly="readonly">
 						  </c:if>
 					  </sec:authorize>
 					  <sec:authorize access="isAnonymous()"> <!-- 로그인 x -->
-					  	<input type="text" class="form-control" name="qnaWriter" id="exampleFormControlInput1" value="관리자" readonly="readonly">
+					  	<input type="text" class="form-control" name="qnaAnsWriter" id="exampleFormControlInput1" value="관리자" readonly="readonly">
 					  </sec:authorize>
 					</div>
 				</td>

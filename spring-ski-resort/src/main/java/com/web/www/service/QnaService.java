@@ -28,5 +28,7 @@ public interface QnaService {
 
 	int qnaAnsRegister(QnaAnsDTO qnaAnsDTO);
 
+	QnaAnsDTO qnaAnsDetail(long qnaNum);
+
 
 }

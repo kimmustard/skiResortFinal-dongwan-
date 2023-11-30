@@ -88,3 +88,11 @@ primary key(qna_ans_num)
 
 - qna_ans 테이블에 외래키 설정
 alter table qna_ans add CONSTRAINT fk_qna_ans foreign KEY(qna_num) references qna (qna_num) ON DELETE CASCADE;
+
+
+
+##11-30
+- file 테이블에 qna_ans_num 칼럼추가 및 외래키 설정.
+alter table file add qna_ans_num bigint;
+alter table file add CONSTRAINT file_ibfk_qna_ans foreign KEY(qna_ans_num) references qna_ans (qna_ans_num) ON DELETE CASCADE;
+
