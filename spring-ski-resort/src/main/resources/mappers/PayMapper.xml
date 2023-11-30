@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.web.www.repository.PayDAO">
+  	<insert id="registerPay">
+  		insert into pay(pay_imp_uid, pay_merchant_uid, pay_pg, pay_method, pay_name, pay_amount, 
+  		member_num, member_email, member_name, member_phone_num, member_address)
+  		value(#{payImpUid}, #{payMerchantUid}, #{payPg}, #{payMethod}, #{payName}, #{payAmount},
+  		#{memberNum}, #{memberEmail}, #{memberName}, #{memberPhoneNum}, #{memberAddress})
+  	</insert>
+  </mapper>

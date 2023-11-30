@@ -47,7 +47,7 @@ function paymentGateway(pgName) {
                     payAmount: rsp.paid_amount,
                     memberName: rsp.buyer_name,
                     memberEmail: rsp.buyer_email,
-                    memberPhone: rsp.buyer_tel,
+                    memberPhoneNum: rsp.buyer_tel,
                     memberAddress: rsp.buyer_addr,
 
                     // 기타 필요한 데이터가 있으면 추가 전달

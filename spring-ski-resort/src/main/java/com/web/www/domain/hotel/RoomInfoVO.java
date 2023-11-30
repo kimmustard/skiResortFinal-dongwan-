@@ -12,11 +12,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class RoomInfoVO {
-<<<<<<< HEAD:spring-ski-resort/src/main/java/com/web/www/domain/RoomInfoVO.java
-	
-=======
 	private long hotelMainNum; 
->>>>>>> origin/main:spring-ski-resort/src/main/java/com/web/www/domain/hotel/RoomInfoVO.java
 	private int hotelRoomNum;
 	private long memberNum;
 	private String payMerchantUid;

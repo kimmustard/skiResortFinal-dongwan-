@@ -32,7 +32,7 @@ public class UserPayInfoDTO {
 	
 	private String memberEmail;
 	private String memberName;
-	private String memberPhone;
+	private String memberPhoneNum;
 	private String memberAddress;
 	
 	
