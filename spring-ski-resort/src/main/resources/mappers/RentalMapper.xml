@@ -26,7 +26,8 @@
 		select max(rental_list_item_num) from rental_items
 	</select>
 
-	<select id="itemList" resultType="com.web.www.domain.rental.RentalItemVO">
+	<select id="itemList" resultType="com.web.www.domain.rental.RentalItemDTO">
 		select * from rental_items
 	</select>
+	
 </mapper>

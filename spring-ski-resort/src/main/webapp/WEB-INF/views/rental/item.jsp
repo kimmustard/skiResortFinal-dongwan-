@@ -12,15 +12,29 @@
 		margin-top: 100px;
 	}
 	
-	.h1{
-		margin-top: 96px;
-		text-align: center;
-	}
-	
 	.itemContainer{
 		width: 100%;
 	}
 	
+	.menuCategory{
+		width: 200px;
+		margin-top:96px;
+		position: fixed;
+	    height: 100vh;
+	    margin: 30px;
+	}
+	
+	.categoryBox{
+		margin-bottom: 50px;
+	}
+	
+	.categoryBox>a{
+		text-decoration: none;
+	}
+	
+	.categoryBox>a:hover{
+		background-color: yellow;
+	}
 	
 	.skiItemList,.boardItemList,.wearItemList{
 		height: 1000px;
@@ -31,18 +45,38 @@
 	
 	.itemImageBox{
 		width: 1200px;
-		border: 2px solid black;
+		
 		display: flex;
-		background-color:gray;
+		
 		justify-content: space-around;
 		flex-wrap: wrap;
 		
 	}
+	
 	.itemImageBox div{
 		width: 18%;
 		height: 300px;
-		background-color: lightgreen;
+		
 	}
+	
+	.textBox{
+		width: 1200px;
+		display: flex;
+		justify-content: space-around;
+		flex-wrap: wrap;
+		margin-top: 30px;	
+	}
+	
+	.textBox>div{
+		width: 18%;
+		height: 100px;
+		text-align: center;
+	}
+	
+	.textBox>div>p{
+		font-weight: 700;
+	}
+	
 	.btnContainer{
 		display: flex;
 		justify-content: center;
@@ -75,20 +109,29 @@
 	
 	<div class="bodyContainer">
 	
-		<h1 class="h1">장비안내</h1>
 		
 		<div class="itemMenuContainer">
 			<ul class="nav nav-tabs justify-content-center">
 			  <li class="nav-item" id="skiItem">
-			    <a class="nav-link" href="#">스키장비SET</a>
+			    <a class="nav-link" href="#">스키장비</a>
 			  </li>
 			  <li class="nav-item" id="boardItem">
-			    <a class="nav-link" href="#">보드장비SET</a>
+			    <a class="nav-link" href="#">보드장비</a>
 			  </li>
 			  <li class="nav-item" id="wearItem">
 			    <a class="nav-link" href="#">의류</a>
 			  </li>  
 			</ul>
+		</div>
+		
+		<div class="menuCategory">
+			<div>
+				<nav class="nav flex-column nav-tabs">
+				  <a class="nav-link" id="lowItem" href="#">일반장비SET</a>
+				  <a class="nav-link" id="midItem" href="#">중급장비SET</a>
+				  <a class="nav-link" id="premiumItem" href="#">프리미엄장비SET</a>
+				</nav>
+			</div>
 		</div>
 		
 		
@@ -98,22 +141,43 @@
 					<div class="itemImageBox">
 						<div>
 							<!-- 이미지 파일 표시 -->
+							<img src="//one8.co.kr/web/product/medium/202310/7ffa01cd1d4ab7a40d2ad38f41349896.jpg" onerror="this.src=null_img" ori="//one8.co.kr/web/product/medium/202310/7ffa01cd1d4ab7a40d2ad38f41349896.jpg" id="eListPrdImage90229_1" class="thumb_Img" alt="P083 뵐클 남성 스키 세트" style="display:block; position:relative;width:100%; top:0px; left:0px; z-index:1">
 						</div>
 						<div>
 							<!-- 이미지 파일 표시 -->
+							<img src="//one8.co.kr/web/product/medium/202311/f09764f57eab506e7223f3dfdbda89d1.jpg" onerror="this.src=null_img" ori="//one8.co.kr/web/product/medium/202311/f09764f57eab506e7223f3dfdbda89d1.jpg" id="eListPrdImage97921_1" class="thumb_Img" alt="P047 노르디카 남성 스키 세트" style="display:block; position:relative;width:100%; top:0px; left:0px; z-index:1">
 						</div>
 						<div>
 							<!-- 이미지 파일 표시 -->
+							<img src="//one8.co.kr/web/product/medium/202310/992ef93964aec4fbbf628087a6dc826a.jpg" onerror="this.src=null_img" ori="//one8.co.kr/web/product/medium/202310/992ef93964aec4fbbf628087a6dc826a.jpg" id="eListPrdImage88936_1" class="thumb_Img" alt="P075 블리자드 남성 스키 세트" style="display:block; position:relative;width:100%; top:0px; left:0px; z-index:1">
 						</div>
 						<div>
 							<!-- 이미지 파일 표시 -->
+							<img src="//one8.co.kr/web/product/medium/202310/4d75387e4382861a9879a29cde83aa9f.jpg" onerror="this.src=null_img" ori="//one8.co.kr/web/product/medium/202310/4d75387e4382861a9879a29cde83aa9f.jpg" id="eListPrdImage90161_1" class="thumb_Img" alt="P015 아토믹 남녀공용 스키 세트" style="display:block; position:relative;width:100%; top:0px; left:0px; z-index:1">
 						</div>
 						<div>
 							<!-- 이미지 파일 표시 -->
+							<img src="//one8.co.kr/web/product/medium/202310/a9571feb93da5bd6f46fa1e370a25d0d.jpg" onerror="this.src=null_img" ori="//one8.co.kr/web/product/medium/202310/a9571feb93da5bd6f46fa1e370a25d0d.jpg" id="eListPrdImage75069_1" class="thumb_Img" alt="P003 아토믹 남성 스키 세트" style="display:block; position:relative;width:100%; top:0px; left:0px; z-index:1">
 						</div>
 					</div>
 					
 					<div class="textBox">
+						
+						<div>
+							<p class="fs-5">뷜클 남성 스키 세트</p>
+						</div>
+						<div>
+							<p class="fs-5">노르디카 남성 스키 세트</p>
+						</div>
+						<div>
+							<p class="fs-5">블리자드 남성 스키 세트</p>
+						</div>
+						<div>
+							<p class="fs-5">아토믹 남녀공용 스키 세트</p>
+						</div>
+						<div>
+							<p class="fs-5">아토믹 남성 스키 세트</p>
+						</div>
 						
 					</div>
 				</div>

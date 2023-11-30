@@ -35,6 +35,7 @@ public class RentalController {
 	private final RentalService rsv;
 	
 	private final FileHandler fh;
+	
 
 	@GetMapping("/fee-info")
 	public String rentalForm() {
@@ -90,7 +91,9 @@ public class RentalController {
 	@GetMapping("/item")
 	public String itemForm(Model model) {
 		List<RentalItemVO> list = rsv.itemList();
+		
 		model.addAttribute("list", list);
+		
 		return "/rental/item";
 	}
 	
