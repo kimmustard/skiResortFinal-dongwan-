@@ -7,6 +7,12 @@
 <title>Insert title here</title>
 </head>
 
+
+
+
+
+
+
   <!-- Bootstrap 4 CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
@@ -42,6 +48,37 @@
 
 
 <body>
+
+	
+
+<!-- Modal -->
+<div class="modal fade" id="hotel-pay" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content ">
+      <div class="modal-header">
+      	
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">결제선택하기</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body pay-info">
+      	<div>싱픔명</div>
+	    <div id="pay3"></div>
+      	<div>판매자</div>
+  
+      </div>
+      <div class="pay-method">
+        <button type="button">카카오</button>
+        <button type="button">네이버</button>
+        <button type="button">토스</button>
+        <button type="button">어쩌구</button>
+        <button type="button">쿠폰</button>
+  
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
 	<div class="back">
 		<img alt="" src="https://www.chamonix.com/sites/default/files/styles/full_screen/public/media/images/%C2%A9%20Daniel_Ronnback.webp?h=ea95bb15&itok=9owM8byS">
@@ -171,7 +208,7 @@
 					<div class="paybox input-group mb-3">
 						<input type="text" id="pay1" class="form-control" placeholder="요금" readonly="readonly">	
 						<input type="hidden" id="pay2" class="form-control" name="hotelReserveFee" placeholder="요금">	
-						<button type="button" class="btn btn-outline-secondary" id="submitBtn">결제</button>
+						<button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#hotel-pay">결제</button>
 					 </div>
 					</div>
 					
