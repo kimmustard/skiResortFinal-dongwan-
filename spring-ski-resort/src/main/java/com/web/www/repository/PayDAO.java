@@ -1,9 +1,21 @@
 package com.web.www.repository;
 
-import com.web.www.domain.pay.UserPayInfoDTO;
+import java.util.List;
+
+import com.web.www.domain.pay.PayInfoVO;
 
 public interface PayDAO {
 
-	void registerPay(UserPayInfoDTO upiDTO);
+	/**
+	 * 멤버 결제정보 등록
+	 * @param upiDTO
+	 */
+	void registerPay(PayInfoVO upiDTO);
+
+	/**
+	 * @param memberNum
+	 * @return 멤버정보 조히
+	 */
+	List<PayInfoVO> getPayInfoList(long memberNum);
 
 }

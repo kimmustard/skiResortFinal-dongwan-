@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import com.web.www.domain.member.MemberCheckDTO;
 import com.web.www.domain.member.MemberVO;
 import com.web.www.domain.member.ModifyMemberDTO;
+import com.web.www.domain.pay.PayInfoVO;
 import com.web.www.security.AuthVO;
 
 public interface MemberDAO {
@@ -56,11 +57,6 @@ public interface MemberDAO {
 	 * @return 로그인된 회원 검증후 DB에서 회원정보 찾아옴
 	 */
 	MemberVO getUser(@Param("memberId") String memberId, @Param("memberType")String memberType);
-	
-	
-	
-	
-	
 	
 	/**
 	 * 중복 검증 메서드 repository

@@ -150,7 +150,7 @@ public class OauthParser {
 		}
 		
 		MemberVO oauthMvo = msv.socialSearch(mvo.getMemberId());
-		
+
 		//권한 부여
 		AuthVO auth = new AuthVO();
 		auth.setMemberId(oauthMvo.getMemberId());
@@ -159,7 +159,10 @@ public class OauthParser {
 		List<AuthVO> authList = new ArrayList<>();
 		authList.add(auth);
 		oauthMvo.setAuthList(authList);
-	
+		
+		//마지막 로그인 체크
+		msv.updateLastLogin(oauthMvo.getMemberId());
+		
 		return oauthMvo;
 	}
 	

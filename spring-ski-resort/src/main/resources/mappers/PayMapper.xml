@@ -9,4 +9,9 @@
   		value(#{payImpUid}, #{payMerchantUid}, #{payPg}, #{payMethod}, #{payName}, #{payAmount},
   		#{memberNum}, #{memberEmail}, #{memberName}, #{memberPhoneNum}, #{memberAddress})
   	</insert>
+  	
+  	<select id="getPayInfoList" resultType="com.web.www.domain.pay.PayInfoVO">
+  		select * from pay where member_num = #{memberNum}
+  	</select>
+  	
   </mapper>

@@ -11,7 +11,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class UserPayInfoDTO {
+public class PayInfoVO {
 
 	//카드사 정보
 	private String payImpUid;	//카드사 영수증 번호 ("환불"관련 관리할 때 쓰입니다.)
@@ -20,6 +20,7 @@ public class UserPayInfoDTO {
 	private String payMethod; //결제 방식	
 	private String payName; // 거래 품목 이름
 	private long payAmount; //가격
+	private String payRegAt; //결제일자
 	
 	//호텔 예약번호
 	private String hotelMainNum;
@@ -34,7 +35,6 @@ public class UserPayInfoDTO {
 	private String memberName;
 	private String memberPhoneNum;
 	private String memberAddress;
-	
 	
 	
 }

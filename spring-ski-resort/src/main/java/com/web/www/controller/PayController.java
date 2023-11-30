@@ -1,10 +1,5 @@
 package com.web.www.controller;
 
-
-import java.security.Principal;
-
-import javax.servlet.http.HttpSession;
-
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.web.www.domain.member.AuthUser;
 import com.web.www.domain.member.MemberVO;
-import com.web.www.domain.pay.UserPayInfoDTO;
+import com.web.www.domain.pay.PayInfoVO;
 import com.web.www.service.PayService;
 
 import lombok.RequiredArgsConstructor;
@@ -37,13 +32,12 @@ public class PayController {
 	
 	@ResponseBody
 	@PostMapping(value = "/portOne", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public String protOnePay(@RequestBody UserPayInfoDTO upiDTO, HttpSession ses) {
-		long memberNum = (long) ses.getAttribute("memberNum");
-		upiDTO.setMemberNum(memberNum);
-		log.info("##결제 정보##  = {}" , upiDTO);
+	public String protOnePay(@RequestBody PayInfoVO pivo, @AuthUser MemberVO mvo) {
+		pivo.setMemberNum(mvo.getMemberNum());
+		log.info("##결제 정보##  = {}" , pivo);
 		
 		//결제정보 테이블 저장
-		ps.registerPay(upiDTO);
+		ps.registerPay(pivo);
 		
 		
 		return null;
