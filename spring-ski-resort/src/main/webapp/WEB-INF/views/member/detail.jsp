@@ -26,11 +26,11 @@
 		
 			<div class="category-body">
 			
-				<div class="category-title">
+			<!-- 	<div class="category-title">
 					<span class="category-span-main">
 						<i class="bi bi-house-door-fill"></i> <a class="move-main" href="/">메인으로</a> 
 					</span>	
-				</div>
+				</div> -->
 				
 				<div class="category-Box1">
 					<div class="category cbox0">
