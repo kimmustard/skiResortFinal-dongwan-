@@ -34,8 +34,7 @@
 					  <button class="btn btn-outline-success" type="submit">
 					  MY Q&A</button>
 					</c:if>
-				</form>
-				<form action="/qna/list" method="get">
+
 					<c:if test="${authType != 'normal' }">
 					  <input type="hidden" name="type" value="w" ${typed eq 'w' ? 'selected' : '' }>
 					  <input type="hidden" name="keyword" type="search" value="${authEmail }">
@@ -166,8 +165,16 @@
 		    <tr class="qna-table-tr">
 		      <td class="qna-table-td"><div class="qna-table-td-child">${qvo.qnaNum }</div></td>
 		      <td class="qna-table-td"><div class="qna-table-td-child">${qvo.qnaCategory }</div></td>
-		      <td class="qna-table-td"><div class="qna-table-td-child-title"><a href="/qna/detail?qnaNum=${qvo.qnaNum }">${qvo.qnaTitle }</a></div></td>
-		      <td class="qna-table-td"><div class="qna-table-td-child">${qvo.qnaIsok }</div></td>
+		      <td class="qna-table-td">
+		      	<div class="qna-table-td-child-title">
+		      		<c:if test="${qvo.qnaSecret=='N' }">
+		      			<a href="/qna/detail?qnaNum=${qvo.qnaNum }">${qvo.qnaTitle }</a>
+		      		</c:if>
+		      		<c:if test="${qvo.qnaSecret=='Y' }">
+		      			<p>※비밀글 입니다.</p>
+		      		</c:if>
+		      	</div></td>
+		      <td class="qna-table-td"><div class="qna-table-td-child">${qvo.qnaIsok=='Y' ? '답변완료' : '대기중' }</div></td>
 		      <td class="qna-table-td"><div class="qna-table-td-child">${fn:replace((fn:substring(qvo.qnaRegAt,0,10)),'-','.') }</div></td>
 		    </tr>
 		  </c:forEach>  
