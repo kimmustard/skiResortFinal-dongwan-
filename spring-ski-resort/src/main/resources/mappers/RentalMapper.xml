@@ -26,5 +26,9 @@
 		select max(rental_list_item_num) from rental_items
 	</select>
 	
+	<select id="ItemAndFicture" resultType="com.web.www.domain.rental.RentalItemVO">
+		select * from rental_items
+	</select>
+	
 
 </mapper>

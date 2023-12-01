@@ -213,7 +213,7 @@
 					<div class="textBox" id="midItemTextBox" style="display: none;">
 						
 						<div>
-							프리미엄
+							
 						</div>
 						<div>
 							
@@ -235,6 +235,7 @@
 						
 						<div>
 							<!-- 이미지 파일 표시 -->	
+							
 						</div>
 						<div>
 							<!-- 이미지 파일 표시 -->

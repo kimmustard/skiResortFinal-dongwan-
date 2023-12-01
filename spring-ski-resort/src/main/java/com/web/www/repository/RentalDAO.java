@@ -1,6 +1,5 @@
 package com.web.www.repository;
 
-
 import java.util.List;
 
 import com.web.www.domain.rental.RentalItemVO;
@@ -13,9 +12,13 @@ public interface RentalDAO {
 
 	int rental(RentalVO rvo);
 
-	int itemRegister(List<RentalItemVO> list);
+	int itemRegister(RentalItemVO ritvo);
 
 	long selectOneItemNum();
+
+	List<RentalItemVO> ItemAndPicture();
+
+
 
 
 

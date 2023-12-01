@@ -10,12 +10,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Getter
 @Setter
-@ToString
-@AllArgsConstructor
+@Getter
 @NoArgsConstructor
-public class RentalItemDTO {
-	private RentalItemVO ritvo;
+@AllArgsConstructor
+@ToString
+public class RentalItemListDTO {
+	private List<RentalItemVO> ritvo;
 	private List<FileVO> flist;
 }

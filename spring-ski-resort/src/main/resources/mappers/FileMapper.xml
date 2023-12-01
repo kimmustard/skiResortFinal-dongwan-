@@ -48,5 +48,8 @@
 		values(#{uuid},#{saveDir},#{fileName},#{fileIsok},#{fileType},#{fileSize},#{rentalListItemNum})
 	</insert>
 	
+	<select id="ItemAndPicture" resultType="com.web.www.domain.FileVO">
+		select * from file
+	</select>
 	
 </mapper>

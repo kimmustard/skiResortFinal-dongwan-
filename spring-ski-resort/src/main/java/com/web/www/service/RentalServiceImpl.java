@@ -2,10 +2,13 @@ package com.web.www.service;
 
 import java.util.List;
 
+import org.json.simple.ItemList;
 import org.springframework.stereotype.Service;
 
 import com.web.www.domain.FileVO;
 import com.web.www.domain.rental.RentalItemDTO;
+import com.web.www.domain.rental.RentalItemListDTO;
+import com.web.www.domain.rental.RentalItemVO;
 import com.web.www.domain.rental.RentalLiftVO;
 import com.web.www.domain.rental.RentalVO;
 import com.web.www.repository.FileDAO;
@@ -58,9 +61,9 @@ public class RentalServiceImpl implements RentalService{
 	}
 
 	@Override
-	public List<RentalItemDTO> itemList() {
-		
-		
+	public List<RentalItemListDTO> itemList() {
+		List<RentalItemVO> rlist =  rdao.ItemAndPicture();
+		List<FileVO> flist = fdao.ItemAndPicture();
 		return null;
 	}
 

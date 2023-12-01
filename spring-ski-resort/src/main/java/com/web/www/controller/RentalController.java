@@ -16,6 +16,7 @@ import com.web.www.domain.FileVO;
 import com.web.www.domain.member.AuthUser;
 import com.web.www.domain.member.MemberVO;
 import com.web.www.domain.rental.RentalItemDTO;
+import com.web.www.domain.rental.RentalItemListDTO;
 import com.web.www.domain.rental.RentalItemVO;
 import com.web.www.domain.rental.RentalLiftVO;
 import com.web.www.domain.rental.RentalVO;
@@ -69,7 +70,7 @@ public class RentalController {
 	}
 	
 	@PostMapping("/item-register")
-	public String itemRegister(List<RentalItemVO> ritvo, RedirectAttributes re,
+	public String itemRegister(RentalItemVO ritvo, RedirectAttributes re,
 			@RequestParam(name = "files", required = false)MultipartFile[] files) {
 		log.info("ritvo = {}",ritvo);
 		List<FileVO> flist = null;
@@ -77,6 +78,7 @@ public class RentalController {
 			String category = "rental";
 			flist = fh.uploadFiles(files, category);
 		}
+		
 		int isOk = rsv.itemRegister(new RentalItemDTO(ritvo,flist));
 		log.info((isOk > 0)? "ok":"fail");
 		return "redirect:/rental/item";
@@ -84,7 +86,7 @@ public class RentalController {
 
 	@GetMapping("/item")
 	public String itemForm(Model model) {
-		List<RentalItemDTO> list = rsv.itemList();
+		List<RentalItemListDTO> list = rsv.itemList();
 		
 		model.addAttribute("list", list);
 		
