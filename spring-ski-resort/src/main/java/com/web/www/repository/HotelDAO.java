@@ -13,4 +13,8 @@ public interface HotelDAO {
 
 	List<RoomVO> getRoomList();
 
+	int deleteRoom(int hotelRoomNum);
+
+	int modifyRoom(RoomVO rvo);
+
 }

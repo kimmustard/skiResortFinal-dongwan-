@@ -7,6 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.web.www.domain.hotel.RoomInfoVO;
 import com.web.www.domain.hotel.RoomVO;
@@ -52,16 +54,30 @@ public class HotelController {
 	}
 	@PostMapping("addRoom")
 	public String addRoom(RoomVO rvo) {
-		log.info(rvo+"<<<<<<rvo");
-		int isOK= hsv.addRoom(rvo);
-		
+		int isOk = hsv.addRoom(rvo);
 		return "/hotel/management";
 	}
-	@GetMapping("modifyRoom")
-	public String modifyRoom(Model m) {
+	
+	@GetMapping("roomList")
+	public String roomList(Model m) {
 		List<RoomVO> roomList = hsv.getRoomList();
 		m.addAttribute("roomList", roomList);
-		return "/hotel/modifyRoom";
+		return "/hotel/roomList";
+	}
+	
+	@GetMapping("deleteRoom")
+	public String deleteRoom(@RequestParam("hotelRoomNum")int hotelRoomNum, RedirectAttributes reatt) {
+		log.info(hotelRoomNum+"<<<<<hotelRoomNum");
+		int isOk = hsv.deleteRoom(hotelRoomNum);
+		reatt.addFlashAttribute("susdel", isOk > 0 ? "y" : "n");
+		return "redirect:/hotel/roomList";
+	}
+	@PostMapping("modifyRoom")
+	public String modifyRoom(RoomVO rvo , RedirectAttributes reatt) {
+		log.info(rvo+">>>rvo");
+		int isOk = hsv.modifyRoom(rvo);
+		reatt.addFlashAttribute("susmodi", isOk > 0 ? "y" : "n");
+		return "redirect:/hotel/roomList";
 	}
 	
 }
