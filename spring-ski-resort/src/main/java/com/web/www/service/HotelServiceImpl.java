@@ -37,4 +37,22 @@ public class HotelServiceImpl implements HotelService{
 		return hdao.getRoomList();
 	}
 
+	@Override
+	public int deleteRoom(int hotelRoomNum) {
+		// TODO Auto-generated method stub
+		return hdao.deleteRoom(hotelRoomNum);
+	}
+
+	@Override
+	public int modifyRoom(RoomVO rvo) {
+		// TODO Auto-generated method stub
+		return hdao.modifyRoom(rvo);
+	}
+
+	@Override
+	public int selectRoomCnt() {
+		// TODO Auto-generated method stub
+		return hdao.selectRoomCnt();
+	}
+
 }
