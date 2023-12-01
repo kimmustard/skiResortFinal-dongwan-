@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.web.www.repository.HotelDAO">
+  
+  	<insert id="updateRoomInfo">
+		INSERT INTO room_info 
+		VALUES (#{hotelRoomNum},#{hotelReserveStayStart} ,#{hotelReserveStayEnd},
+		'N',#{hotelReserveFee},#{hotelReservePeople},#{hotelReserveChild},"",
+		now(),now()+7);
+		
+	</insert>
+  </mapper>
