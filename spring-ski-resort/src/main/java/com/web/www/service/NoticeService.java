@@ -26,4 +26,6 @@ public interface NoticeService {
 
 	List<NoticeVO> getTwoNotice();
 
+	List<NoticeVO> noticePointList();
+
 }

@@ -22,4 +22,10 @@ public interface FileDAO {
 
 	void deleteAllFileNotice(long noticeNum);
 
+	int insertQnaAnsFile(FileVO fvo);
+
+	List<FileVO> getQnaAnsFileList(long qnaNum);
+	
+
+
 }
