@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,14 +12,28 @@
 		margin-top: 100px;
 	}
 	
-	.h1{
-		margin-top: 96px;
-		text-align: center;
+	.itemContainer{
+		width: 100%;
 	}
 	
-	.ItemContainer{
-		width: 100%;
-		background-color: gray;
+	.menuCategory{
+		width: 200px;
+		margin-top:96px;
+		position: fixed;
+	    height: 100vh;
+	    margin: 30px;
+	}
+	
+	.categoryBox{
+		margin-bottom: 50px;
+	}
+	
+	.categoryBox>a{
+		text-decoration: none;
+	}
+	
+	.categoryBox>a:hover{
+		background-color: yellow;
 	}
 	
 	.skiItemList,.boardItemList,.wearItemList{
@@ -28,31 +43,45 @@
 		flex-wrap: wrap;
 	}
 	
-	.itemImageBox1,.itemImageBox2,
-	.itemImageBox3,.itemImageBox4,
-	.itemImageBox5,.itemImageBox6{
-		width: calc(15% - 40px);
-		height: 300px;
-		margin: 100px 20px 0 20px;
+	.itemImageBox{
+		width: 1200px;
+		
+		display: flex;
+		background-color: gray;
+		justify-content: space-around;
+		flex-wrap: wrap;
+		
 	}
-	.itemImageBox1{
-		background-color: red;
+	
+	.itemImageBox div{
+		width: 18%;
+		height: 300px;	
+		border: 2px solid black;
 	}
-	.itemImageBox2{
-		background-color: blue;
+	
+	.itemImageBox div img{
+		width: 100%;
+		height: auto;
 	}
-	.itemImageBox3{
-		background-color: yellow;
+	
+	.textBox{
+		width: 1200px;
+		display: flex;
+		justify-content: space-around;
+		flex-wrap: wrap;
+		margin-top: 30px;	
 	}
-	.itemImageBox4{
-		background-color: green;
+	
+	.textBox>div{
+		width: 18%;
+		height: 100px;
+		text-align: center;
 	}
-	.itemImageBox5{
-		background-color: orange;
+	
+	.textBox>div>p{
+		font-weight: 700;
 	}
-	.itemImageBox6{
-		background-color: purple;
-	}
+	
 	.btnContainer{
 		display: flex;
 		justify-content: center;
@@ -85,15 +114,14 @@
 	
 	<div class="bodyContainer">
 	
-		<h1 class="h1">장비안내</h1>
 		
 		<div class="itemMenuContainer">
 			<ul class="nav nav-tabs justify-content-center">
 			  <li class="nav-item" id="skiItem">
-			    <a class="nav-link" href="#">스키장비SET</a>
+			    <a class="nav-link" href="#">스키장비</a>
 			  </li>
 			  <li class="nav-item" id="boardItem">
-			    <a class="nav-link" href="#">보드장비SET</a>
+			    <a class="nav-link" href="#">보드장비</a>
 			  </li>
 			  <li class="nav-item" id="wearItem">
 			    <a class="nav-link" href="#">의류</a>
@@ -101,134 +129,226 @@
 			</ul>
 		</div>
 		
-		<form action="/rental/item" method="post" enctype="murtipart/form-datas">
-			<div class="ItemContainer">
-				
-				<div class="skiItemList" id="skiItemList">
-					<div class="itemImageBox1">
+		
+		<div class="menuCategory">
+			<div>
+				<nav class="nav flex-column nav-tabs">
+				  <a class="nav-link" id="lowItem" href="#">일반장비SET</a>
+				  <a class="nav-link" id="midItem" href="#">중급장비SET</a>
+				  <a class="nav-link" id="premiumItem" href="#">프리미엄장비SET</a>
+				</nav>
+			</div>
+		</div>
+		
+		
+		
+		<div class="itemContainer">
+			<div class="skiItemList" id="skiItemList">
+				<div class="itemInfo">
+					<div class="itemImageBox" id="lowItemImageBox">
+						
 						<div>
 							<!-- 이미지 파일 표시 -->
-							스키장비
+							일반
 						</div>
+						<div>
+							<!-- 이미지 파일 표시 -->
+							
+						</div>
+						<div>
+							<!-- 이미지 파일 표시 -->
+						</div>
+						<div>
+							<!-- 이미지 파일 표시 -->
+						</div>
+						<div>
+							<!-- 이미지 파일 표시 -->
+						</div>
+						
 					</div>
-					<div class="itemImageBox2">
+					
+					<div class="textBox" id="lowItemTextBox">
+						
 						<div>
-							<!-- 이미지 파일 표시 -->
+							
 						</div>
+						<div>
+							
+						</div>
+						<div>
+							
+						</div>
+						<div>
+							
+						</div>
+						<div>
+							
+						</div>
+						
 					</div>
-					<div class="itemImageBox3">
+					
+					
+					<div class="itemImageBox" id="midItemImageBox" style="display: none;">
+						
+						<div>
+							<!-- 이미지 파일 표시 -->
+							중급
+						</div>
+						<div>
+							<!-- 이미지 파일 표시 -->
+							
+						</div>
 						<div>
 							<!-- 이미지 파일 표시 -->
 						</div>
+						<div>
+							<!-- 이미지 파일 표시 -->
+						</div>
+						<div>
+							<!-- 이미지 파일 표시 -->
+						</div>
+						
 					</div>
-					<div class="itemImageBox4">
+					
+					<div class="textBox" id="midItemTextBox" style="display: none;">
+						
 						<div>
-							<!-- 이미지 파일 표시 -->
+							
 						</div>
+						<div>
+							
+						</div>
+						<div>
+							
+						</div>
+						<div>
+							
+						</div>
+						<div>
+							
+						</div>
+						
 					</div>
-					<div class="itemImageBox5">
+					
+					
+					<div class="itemImageBox" id="premiumItemImageBox" style="display: none;">
+						
+						<div>
+							<!-- 이미지 파일 표시 -->	
+							
+						</div>
+						<div>
+							<!-- 이미지 파일 표시 -->
+							
+						</div>
 						<div>
 							<!-- 이미지 파일 표시 -->
 						</div>
+						<div>
+							<!-- 이미지 파일 표시 -->
+						</div>
+						<div>
+							<!-- 이미지 파일 표시 -->
+						</div>
+						
 					</div>
-					<div class="itemImageBox6">
+					
+					<div class="textBox" id="premiumItemTextBox" style="display: none;">
+						
 						<div>
-							<!-- 이미지 파일 표시 -->
+							
 						</div>
+						<div>
+							
+						</div>
+						<div>
+							
+						</div>
+						<div>
+							
+						</div>
+						<div>
+							
+						</div>
+						
 					</div>
 				</div>
-				
-				
-				<div class="boardItemList" id="boardItemList" style="display: none;">
-					<div class="itemImageBox1">
+			</div>
+			
+			
+			<div class="boardItemList" id="boardItemList" style="display: none;">
+				<div class="itemInfo">
+					<div class="itemImageBox">
+						<div>
+							<!-- 이미지 파일 표시 -->
+							보드장비
+						</div>
+						<div>
+							<!-- 이미지 파일 표시 -->
+							보드장비
+						</div>
+						<div>
+							<!-- 이미지 파일 표시 -->
+							보드장비
+						</div>
+						<div>
+							<!-- 이미지 파일 표시 -->
+							보드장비
+						</div>
 						<div>
 							<!-- 이미지 파일 표시 -->
 							보드장비
 						</div>
 					</div>
-					<div class="itemImageBox2">
-						<div>
-							<!-- 이미지 파일 표시 -->
-						</div>
-					</div>
-					<div class="itemImageBox3">
-						<div>
-							<!-- 이미지 파일 표시 -->
-						</div>
-					</div>
-					<div class="itemImageBox4">
-						<div>
-							<!-- 이미지 파일 표시 -->
-						</div>
-					</div>
-					<div class="itemImageBox5">
-						<div>
-							<!-- 이미지 파일 표시 -->
-						</div>
-					</div>
-					<div class="itemImageBox6">
-						<div>
-							<!-- 이미지 파일 표시 -->
-						</div>
-					</div>
 				</div>
-				
-				<div class="wearItemList" id="wearItemList" style="display: none;">
-					<div class="itemImageBox1">
+			</div>
+			
+			<div class="wearItemList" id="wearItemList" style="display: none;">
+				<div class="itemInfo">
+					<div class="itemImageBox">
+						<div>
+							<!-- 이미지 파일 표시 -->
+							의류
+						</div>
+						<div>
+							<!-- 이미지 파일 표시 -->
+							의류
+						</div>
+						<div>
+							<!-- 이미지 파일 표시 -->
+							의류
+						</div>
+						<div>
+							<!-- 이미지 파일 표시 -->
+							의류
+						</div>
 						<div>
 							<!-- 이미지 파일 표시 -->
 							의류
 						</div>
 					</div>
-					<div class="itemImageBox2">
-						<div>
-							<!-- 이미지 파일 표시 -->
-						</div>
-					</div>
-					<div class="itemImageBox3">
-						<div>
-							<!-- 이미지 파일 표시 -->
-						</div>
-					</div>
-					<div class="itemImageBox4">
-						<div>
-							<!-- 이미지 파일 표시 -->
-						</div>
-					</div>
-					<div class="itemImageBox5">
-						<div>
-							<!-- 이미지 파일 표시 -->
-						</div>
-					</div>
-					<div class="itemImageBox6">
-						<div>
-							<!-- 이미지 파일 표시 -->
-						</div>
-					</div>
 				</div>
 			</div>
-	
-			<div class="btnContainer">
-				<div>
-			  		<input type="file" name="files" id="files" style="display: none;" multiple="multiple">
-			  		<button type="button" id="trigger" class="btn btn-outline-primary">파일선택</button>
-				</div>
-				
-				<div>
-					<button type="submit" class="btn btn-outline-primary">등록</button>
-				</div>
-			</div>
+		</div>
+
+		<div class="btnContainer">
+			
+			
+			<a href="/rental/item-register"><button type="button" class="btn btn-outline-primary">파일등록페이지</button></a>
+			
+		</div>
 		
-		</form>
+		
 		
 		<!-- 페이징 기능 들어갈지말지 -->
+		
 	
 	
 	</div>
 	
 	
 	<script type="text/javascript" src="/resources/js/rental/item.js"></script>
-	<script type="text/javascript" src="/resources/js/rental/rentalRegister.js"></script>
+	
 	
 	
 	<jsp:include page="../common/footer.jsp"></jsp:include>
