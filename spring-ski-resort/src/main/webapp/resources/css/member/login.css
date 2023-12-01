@@ -1,0 +1,118 @@
+@charset "UTF-8";
+
+#Title-1 {
+  position: absolute;
+  top: 150px;
+  right: 100px;
+  font-size: 100px;
+  color: #fff;
+  text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.8);
+  user-select: none;
+}
+
+#Title-2 {
+  position: absolute;
+  top: 250px;
+  right: 50px;
+  font-size: 50px;
+  color: #fff;
+  text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.8);
+  user-select: none;
+}
+
+.bodyContainer {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.loginTool {
+  width: 800px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+  border-radius: 20px;
+  display: flex;
+}
+
+.loginContainer {
+  width: 400px;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-bottom-left-radius: 20px;
+  border-top-left-radius: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  user-select: none;
+}
+
+.loginContainer2 {
+  width: 400px;
+  background: linear-gradient(70deg, rgba(122, 208, 223, 0.8), rgba(25, 38, 216, 0.7));
+  border-bottom-right-radius: 20px;
+  border-top-right-radius: 20px;
+  user-select: none;
+}
+
+.login-box {
+  margin: 0 50px 0px 50px;
+  height: 300px;
+}
+
+.login-box2 {
+  margin: 0 50px 0px 50px;
+}
+
+.btn-box {
+  width: 300px;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.login-btn {
+  background: linear-gradient(0deg, #0F4C81 0%, #00A4CC 100%);
+  width: 100px;
+  line-height: 42px;
+  padding: 0;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.login-btn:hover {
+  background: linear-gradient(0deg, #00A4CC 0%, #0F4C81 100%);
+}
+
+.a-box {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.a-box > a {
+  margin-right: 10px;
+  margin-left: 10px;
+  text-decoration: none;
+  color: #333;
+}
+
+.social-Box {
+  display: flex;
+  margin-left: 70px;
+}
+
+.social-Box > div {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.bodyContainer > video {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  filter: brightness(0.8);
+}

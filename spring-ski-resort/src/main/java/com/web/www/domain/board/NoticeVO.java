@@ -4,11 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class NoticeVO {
 	
 	private long noticeNum; //글번호
@@ -21,22 +23,9 @@ public class NoticeVO {
 	private String noticeRegAt; //등록일
 	private String noticeModAt; //수정일
 	private String noticePoint; //중요공지 상단 노출
+	private String noticeDel; //삭제여부
 
 }
 
 
 
-//create table notice(
-//notice_num bigint not null auto_increment,
-//member_num bigint not null,
-//notice_writer varchar(50) not null,
-//notice_category varchar(20) not null,
-//notice_title varchar(100) not null,
-//notice_content text,
-//notice_count int default 0,
-//notice_reg_at datetime default now(),
-//notice_mod_at datetime default now(),
-//notice_point varchar(1) default 'N',
-//primary key(notice_num),
-//foreign key(member_num) references member(member_num)
-//);

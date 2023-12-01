@@ -6,29 +6,55 @@
 <meta charset="UTF-8">
 <title>렌탈/요금안내</title>
 <style type="text/css">
-	.bodyContainer1{
+	.bodyContainer{
 		width: 100%;
-		height: 1500px;
+		height: 100%;
+		margin-top: 100px;
 	}
 	
 	.h1{
 		text-align: center;
 	}
-	
-	.rentalTableContainer, .liftTableContainer{
-		margin: 120px auto;
-		width: 700px;
-	}
-	
+
 	.btnContainer{
 		display: flex;
 		justify-content: center;
+		margin-top: 50px;
 	}
 	
 	.btn-outline-info{
 		margin-left: 20px;
 		margin-right: 20px;
 	}
+	
+	.liftTableContainer, .rentalTableContainer{
+		width: 1100px;
+		border-collapse: collapse;
+		margin: 0 auto;
+	}
+	
+	.liftTr, .liftTd, .rentalTd, .rentalTr{
+	 	border: 2px solid black;
+	 	text-align: center;
+	 	font-weight: 700;
+	 }
+	 
+	 .liftTd, .rentalTd{
+	 	vertical-align: middle;
+	 }
+
+	.thead > .liftTr > .liftTd{
+		background-color: #D5D5D5;
+	}
+	.thead > .rentalTr > .rentalTd{
+		background-color: #D5D5D5;
+	}
+	
+	.textContainer{
+		margin-left: 420px;
+		font-weight: 700;
+	}
+	
 </style>
 </head>
 <body>
@@ -37,76 +63,213 @@
 
 	<div class="bodyContainer">
 	
-		<div class="rentalTableContainer">
-			<h1 class="h1">렌탈/요금안내</h1>
-			<table class="table table-info table-striped">
-				<thead>
-					<tr>
-						<th>#</th>
-						<th>스키/보드</th>
-						<th>헬멧/보호대</th>
-						<th>의류</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<th>4시간권</th>
-						<th>15000</th>
-						<th>10000</th>
-						<th>15000</th>
-					</tr>
-					<tr>
-						<th>6시간권</th>
-						<th>20000</th>
-						<th>15000</th>
-						<th>20000</th>
-					</tr>
-					<tr>
-						<th>종일권</th>
-						<th>30000</th>
-						<th>25000</th>
-						<th>30000</th>
-					</tr>
-				</tbody>
-			</table>
-
-		</div>
+		
+		
+		<h1 class="h1" style="margin-top: 50px;">리프트권 요금</h1>
 		
 		<div class="liftTableContainer">
-			<h1 class="h1">리프트권 요금</h1>
-			<table class="table table-info table-striped">
-				<thead>
-					<tr>
-						<th>#</th>
-						<th>평일</th>
-						<th>주말/공휴일</th>
+			<table class="table">
+				<thead class="thead">
+					<tr class="liftTr">
+						<td class="liftTd" rowspan="2">#</td>
+						<td class="liftTd" rowspan="2">시간</td>
+						<td class="liftTd" colspan="2">요금</td>
+					</tr>
+					<tr class="liftTr">
+						<td class="liftTd">소인</td>
+						<td class="liftTd">대인</td>
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<th>2시간권</th>
-						<th>대인 20000 | 소인 10000</th>
-						<th>대인 25000 | 소인 15000</th>
+					<tr class="liftTr">
+						<td class="liftTd" rowspan="6">리프트권</td>
+						<td class="liftTd">오전</td>
+						<td class="liftTd">30,000</td>
+						<td class="liftTd">40,000</td>
 					</tr>
-					<tr>
-						<th>4시간권</th>
-						<th>대인 30000 | 소인 20000</th>
-						<th>대인 35000 | 소인 25000</th>
+					<tr class="liftTr">
+						<td class="liftTd">오후</td>
+						<td class="liftTd">40,000</td>
+						<td class="liftTd">50,000</td>
 					</tr>
-					<tr>
-						<th>종일권</th>
-						<th>대인 40000 | 소인 30000</th>
-						<th>대인 45000 | 소인 35000</th>
+					<tr class="liftTr">
+						<td class="liftTd">주간</td>
+						<td class="liftTd">50,000</td>
+						<td class="liftTd">60,000</td>
+					</tr>
+					<tr class="liftTr">
+						<td class="liftTd">야간</td>
+						<td class="liftTd">30,000</td>
+						<td class="liftTd">40,000</td>
+					</tr>
+					<tr class="liftTr">
+						<td class="liftTd">종일</td>
+						<td class="liftTd">65,000</td>
+						<td class="liftTd">75,000</td>
+					</tr>
+					<tr class="liftTr">
+						<td class="liftTd">시즌</td>
+						<td class="liftTd">350,000</td>
+						<td class="liftTd">380,000</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
+		
+		<h1 class="h1" style="margin-top: 50px;">렌탈/요금안내</h1>
+		
+		<div class="rentalTableContainer">
+			<table class="table">
+				<thead class="thead">
+					<tr class="rentalTr">
+						<td class="rentalTd" colspan="2" rowspan="2">#</td>
+						<td class="rentalTd" colspan="6">렌탈요금</td>
+					</tr>
+					<tr class="rentalTr">
+						<td class="rentalTd">일반장비SET(스키)</td>
+						<td class="rentalTd">일반장비SET(보드)</td>
+						<td class="rentalTd">중급장비SET(스키)</td>
+						<td class="rentalTd">중급장비SET(보드)</td>
+						<td class="rentalTd">프리미엄장비SET(스키)</td>
+						<td class="rentalTd">프리미엄장비SET(보드)</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="rentalTr">
+						<td class="rentalTd" rowspan="2">오전</td>
+						<td class="rentalTd">소인</td>
+						<td class="rentalTd">15,000</td>
+						<td class="rentalTd">15,000</td>
+						<td class="rentalTd">20,000</td>
+						<td class="rentalTd">20,000</td>
+						<td class="rentalTd">25,000</td>
+						<td class="rentalTd">25,000</td>
+					</tr>
+					<tr class="rentalTr">
+						<td class="rentalTd">대인</td>
+						<td class="rentalTd">20,000</td>
+						<td class="rentalTd">20,000</td>
+						<td class="rentalTd">25,000</td>
+						<td class="rentalTd">25,000</td>
+						<td class="rentalTd">30,000</td>
+						<td class="rentalTd">30,000</td>
+					</tr>
+					<tr class="rentalTr">
+						<td class="rentalTd" rowspan="2">오후</td>
+						<td class="rentalTd">소인</td>
+						<td class="rentalTd">20,000</td>
+						<td class="rentalTd">20,000</td>
+						<td class="rentalTd">25,000</td>
+						<td class="rentalTd">25,000</td>
+						<td class="rentalTd">30,000</td>
+						<td class="rentalTd">30,000</td>
+					</tr>
+					<tr class="rentalTr">
+						<td class="rentalTd">대인</td>
+						<td class="rentalTd">25,000</td>
+						<td class="rentalTd">25,000</td>
+						<td class="rentalTd">30,000</td>
+						<td class="rentalTd">30,000</td>
+						<td class="rentalTd">35,000</td>
+						<td class="rentalTd">35,000</td>
+					</tr>
+					<tr class="rentalTr">
+						<td class="rentalTd" rowspan="2">주간</td>
+						<td class="rentalTd">소인</td>
+						<td class="rentalTd">30,000</td>
+						<td class="rentalTd">30,000</td>
+						<td class="rentalTd">35,000</td>
+						<td class="rentalTd">35,000</td>
+						<td class="rentalTd">40,000</td>
+						<td class="rentalTd">40,000</td>
+					</tr>
+					<tr class="rentalTr">
+						<td class="rentalTd">대인</td>
+						<td class="rentalTd">35,000</td>
+						<td class="rentalTd">35,000</td>
+						<td class="rentalTd">40,000</td>
+						<td class="rentalTd">40,000</td>
+						<td class="rentalTd">45,000</td>
+						<td class="rentalTd">45,000</td>
+					</tr>
+					<tr class="rentalTr">
+						<td class="rentalTd" rowspan="2">야간</td>
+						<td class="rentalTd">소인</td>
+						<td class="rentalTd">15,000</td>
+						<td class="rentalTd">15,000</td>
+						<td class="rentalTd">20,000</td>
+						<td class="rentalTd">20,000</td>
+						<td class="rentalTd">25,000</td>
+						<td class="rentalTd">25,000</td>
+					</tr>
+					<tr class="rentalTr">
+						<td class="rentalTd">대인</td>
+						<td class="rentalTd">20,000</td>
+						<td class="rentalTd">20,000</td>
+						<td class="rentalTd">25,000</td>
+						<td class="rentalTd">25,000</td>
+						<td class="rentalTd">30,000</td>
+						<td class="rentalTd">30,000</td>
+					</tr>
+					<tr class="rentalTr">
+						<td class="rentalTd" rowspan="2">종일</td>
+						<td class="rentalTd">소인</td>
+						<td class="rentalTd">45,000</td>
+						<td class="rentalTd">45,000</td>
+						<td class="rentalTd">50,000</td>
+						<td class="rentalTd">50,000</td>
+						<td class="rentalTd">55,000</td>
+						<td class="rentalTd">55,000</td>
+					</tr>
+					<tr class="rentalTr">
+						<td class="rentalTd">대인</td>
+						<td class="rentalTd">50,000</td>
+						<td class="rentalTd">50,000</td>
+						<td class="rentalTd">55,000</td>
+						<td class="rentalTd">55,000</td>
+						<td class="rentalTd">60,000</td>
+						<td class="rentalTd">60,000</td>
+					</tr>
+					<tr class="rentalTr">
+						<td class="rentalTd" rowspan="2">시즌</td>
+						<td class="rentalTd">소인</td>
+						<td class="rentalTd">250,000</td>
+						<td class="rentalTd">250,000</td>
+						<td class="rentalTd">265,000</td>
+						<td class="rentalTd">265,000</td>
+						<td class="rentalTd">280,000</td>
+						<td class="rentalTd">280,000</td>
+					</tr>
+					<tr class="rentalTr">
+						<td class="rentalTd">대인</td>
+						<td class="rentalTd">270,000</td>
+						<td class="rentalTd">270,000</td>
+						<td class="rentalTd">285,000</td>
+						<td class="rentalTd">285,000</td>
+						<td class="rentalTd">300,000</td>
+						<td class="rentalTd">300,000</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		
+		
+		<div class="textContainer">
+			<p>※소인(~ 만 13세) , 대인(만 14세 ~)</p> <br>
+			<p>※오전(09:00 ~ 13:00) , 오후(13:00 ~ 19:00) , 주간(09:00 ~ 17:00) , 야간(17:00 ~ 22:00)</p>
+		</div>
+		
+		
+		
 		<div class="btnContainer">
 			<a href="/rental/item"><button type="button" class="btn btn-outline-info">장비안내</button></a>
 			<a href="/rental/reserve"><button type="button" class="btn btn-outline-info">예약페이지</button></a>
 		</div>
 	
 	</div>
+	
+	
+	<jsp:include page="../common/footer.jsp" />
 
 </body>
 </html>

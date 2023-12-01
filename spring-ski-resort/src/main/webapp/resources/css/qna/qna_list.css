@@ -1,0 +1,143 @@
+@charset "UTF-8";
+
+.qna-img-container{
+	height: 60vh;
+	background-size: cover;
+	background-position: 0px -20vh;
+	max-width: 100%;
+}
+
+.qna-menu-container{
+	padding-top: 120px;
+	margin-bottom: 300px;
+}
+
+
+
+/* 검색 라인 */
+.qna-search-container{
+	background-color: #f5f5f5;
+	height: 100px;
+	margin-bottom: 80px;
+	justify-content: center;
+	display: flex;
+	align-items: center;
+	column-gap: 20px;
+}
+
+.qna-search-category{
+	background-color: transparent;
+	border-color: transparent;
+	color: #919393;
+}
+
+.qna-input-container{
+	width: 780px;
+	max-width: 100%;
+	border-color: transparent;
+}
+
+.qna-search-input{
+	width: 780px;
+	height: 40px;
+	background: transparent;
+	border-width: 0 0 1px;
+	border-color: #919393;
+	color: #919393;
+	padding-left: 10px;
+	outline: none;
+}
+
+.qna-search-button{
+	background-color: #ae8d73;
+	max-width: 135px;
+	min-width: 135px;
+	border: none;
+	height: 40px;
+	justify-content: center;
+	align-items: center;
+	font-size: 16px;
+	font-weight: 500;
+	color: white;
+}
+
+
+
+
+/* 카테고리 라인 */
+.qna-category{
+	margin-bottom: 0px;
+}
+
+
+
+
+/* 리스트 테이블 라인 */
+
+.qna-table{
+	text-align: center;
+}
+
+.qna-table-tr{
+	border-bottom: 1px solid #e3dbd7;
+	
+}
+
+.qna-table-th-no{
+	height: 60px;
+	width: 100px;
+	position: relative;
+}
+
+.qna-table-th-cago{
+	height: 60px;
+	width: 150px;
+	position: relative;
+}
+
+.qna-table-th-title{
+	height: 60px;
+	width: auto;
+	position: relative;
+}
+
+.qna-table-th-isok{
+	height: 60px;
+	width: 150px;
+	position: relative;
+}
+
+.qna-table-th-reg{
+	height: 60px;
+	width: 120px;
+	position: relative;
+}
+
+.qna-table-th-count{
+	height: 60px;
+	width: 80px;
+	position: relative;
+}
+
+.qna-table-td{
+	height: 60px;
+	position: relative;
+}
+
+.qna-table-td-child{
+	position: absolute;
+  	top: 50%;
+  	left: 50%;
+  	transform: translate(-50%, -50%);
+}
+
+.qna-table-td-child-title{
+	padding-left: 10px;
+	position: absolute;
+  	top: 50%;
+  	transform: translate(0, -50%);
+}
+.qna-table-td-child-title a{
+	text-decoration-line: none;
+	color: inherit;
+}
