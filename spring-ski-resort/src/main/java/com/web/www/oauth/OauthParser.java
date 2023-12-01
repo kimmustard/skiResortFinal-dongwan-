@@ -78,7 +78,7 @@ public class OauthParser {
 			conn.setRequestProperty("Authorization", "Bearer " + access_Token);
 
 			int responseCode = conn.getResponseCode();
-			System.out.println("responseCode : " + responseCode);
+			log.info("responseCode = {} ", responseCode);
 
 			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 
@@ -88,7 +88,7 @@ public class OauthParser {
 			while ((line = br.readLine()) != null) {
 				result += line;
 			}
-			System.out.println("response body : " + result);
+			log.info("response body = {} ", result);
 
 			JSONParser parser = new JSONParser();
 			Object obj = parser.parse(result); 
