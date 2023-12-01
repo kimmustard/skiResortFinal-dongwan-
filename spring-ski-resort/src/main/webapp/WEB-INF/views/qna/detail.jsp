@@ -125,7 +125,12 @@
 	</a>
 	<c:if test="${qvo.qnaIsok=='N' }">	
 			<a href="/qna/ans-register?qnaNum=${qvo.qnaNum }">
-				<button type="button" class="btn btn-dark">답변등록</button>
+				<button type="button" class="btn btn-primary">답변등록</button>
+			</a>
+	</c:if>
+	<c:if test="${qvo.qnaIsok=='Y' }">	
+			<a href="/qna/ans-modify?qnaNum=${qvo.qnaNum }">
+				<button type="button" class="btn btn-warning">답변수정</button>
 			</a>
 	</c:if>
 </div>

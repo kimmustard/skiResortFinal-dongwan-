@@ -146,6 +146,29 @@ public class QnaServiceImpl implements QnaService{
 		log.info(">>>>> qna ans detail service >> ");
 		QnaAnsDTO qadto = new QnaAnsDTO(qdao.selectAnsDetail(qnaNum), fdao.getQnaAnsFileList(qnaNum));
 		return qadto;
+	}
+
+
+
+	@Override
+	public int qnaAnsFileModify(QnaAnsDTO qadto) {
+		log.info(">>>>> Qna-ans file modify service >> ");
+		int isOk = qdao.QnaAnsFileModify(qadto.getQavo());
+		isOk = qdao.qnaIsokUpdate(qadto.getQavo().getQnaNum()); //qnaIsok='Y'만들기
+		if(qadto.getFlist()==null) {
+			isOk*=1;
+		}else {
+			if(isOk > 0 && qadto.getFlist().size() > 0) {
+				long qnaAnsNum = qdao.selectOneQnaAnsNum(); //가장 마지막에 등록된 qna_ans_num
+				long qnaNum = qadto.getQavo().getQnaNum();
+				for(FileVO fvo : qadto.getFlist()) {
+					fvo.setQnaAnsNum(qnaAnsNum);
+					fvo.setQnaNum(qnaNum);
+					isOk *= fdao.insertQnaAnsFile(fvo);
+				}
+			}
+		}
+		return isOk;
 	}	
 	
 

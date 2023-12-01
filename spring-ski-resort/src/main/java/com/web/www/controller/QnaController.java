@@ -80,7 +80,7 @@ public class QnaController {
 
 	
 	//파일업로드 추가
-	@GetMapping({"/detail","/modify","/ans-register"})
+	@GetMapping({"/detail","/modify","/ans-register","/ans-modify"})
 	public void qnaDetail(Model m, @RequestParam("qnaNum")long qnaNum) {
 		QnaDTO qdto = qsv.qnaDetail(qnaNum);
 		QnaAnsDTO qadto = qsv.qnaAnsDetail(qnaNum);
@@ -133,7 +133,8 @@ public class QnaController {
 		
 		
 		
-		///// Q&A 답변 등록 구간 ////// 
+		//////////////////// Q&A 답변 등록 구간 ////////////////////////
+		
 		@PostMapping("/ans-register")
 		public String qnaAnsRegister(QnaAnsVO qavo, RedirectAttributes re,
 				@RequestParam(name="files", required = false)MultipartFile[] files) {
@@ -149,7 +150,22 @@ public class QnaController {
 		}
 		
 		
-		
+		@PostMapping("/ans-modify")
+		public String qnaAnsModify(QnaAnsVO qavo, RedirectAttributes re,
+				@RequestParam(name="files", required = false)MultipartFile[] files) {
+			log.info(" >>>>>qna-ans modify "+qavo+" "+files);
+			
+			List<FileVO> flist = null;
+			if(files[0].getSize() > 0) {
+				String category ="qna";
+				flist = fh.uploadFiles(files,category);
+			}
+			QnaAnsDTO qadto = new QnaAnsDTO(qavo, flist);
+			int isOk = qsv.qnaAnsFileModify(qadto);
+			log.info(">>>>> qna-ans modify >> "+(isOk > 0? "OK" : "Fail"));
+			re.addFlashAttribute("isOk",isOk);
+			return "redirect:/qna/detail?qnaNum="+qavo.getQnaNum();
+		}
 		
 		
 	

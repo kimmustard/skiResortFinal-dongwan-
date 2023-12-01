@@ -33,5 +33,7 @@ public interface QnaDAO {
 
 	int qnaIsokUpdate(long qnaNum); //qnaIsok = Y
 
+	int QnaAnsFileModify(QnaAnsVO qavo);
+
 
 }

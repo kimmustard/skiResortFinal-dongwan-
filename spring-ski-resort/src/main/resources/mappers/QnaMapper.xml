@@ -58,6 +58,12 @@
 		select max(qna_ans_num) from qna_ans
 	</select>
 	
+	<update id="QnaAnsFileModify">
+		update qna_ans set
+		qna_ans_content=#{qnaAnsContent}, qna_ans_mod_at=now()
+		where qna_num = #{qnaNum}
+	</update>
+	
 	
 	
 	<sql id="search">

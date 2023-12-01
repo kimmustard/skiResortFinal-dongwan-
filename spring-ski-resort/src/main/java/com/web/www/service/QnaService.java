@@ -30,5 +30,7 @@ public interface QnaService {
 
 	QnaAnsDTO qnaAnsDetail(long qnaNum);
 
+	int qnaAnsFileModify(QnaAnsDTO qadto);
+
 
 }
