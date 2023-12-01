@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.web.www.repository.WeatherDAO">
+  	
+  	
+  	
+  <!-- 지역정보 저장 1회만 실행 -->
+  <delete id="initWeather">
+  	delete from weather
+  </delete>
+  <insert id="insertRegion">
+  	insert into region(region_num, region_parent, region_child, region_grand_child, nx, ny)
+  	values(#{regionNum}, #{regionParent}, #{regionChild}, #{regionGrandChild}, #{nx}, #{ny})
+  </insert>
+  <!-- 해당지역 위도 경도 얻기 -->
+  <select id="getRegion" resultType="com.web.www.weather.RegionDTO">
+	select * from region where region_grand_child = #{regionGrandChild}
+  </select>
+  <!-- 해당 지역 날씨 정보 등록 -->
+  <insert id="insertWeather">
+  	insert into weather(region_num, weather_temp, weather_sky_status, weather_rain_status, weather_amount,
+  						weather_per, weather_date, weather_time)
+  	values(${regionNum}, #{weatherTemp}, #{weatherSkyStatus}, #{weatherRainStatus}, #{weatherAmount},
+  						#{weatherPer}, #{weatherDate}, #{weatherTime})
+  </insert>
+  <!-- 해당 지역 날씨정보 획득 -->
+  <select id="selectDefaultWeather" resultType="com.web.www.weather.WeatherVO">
+  	SELECT * FROM weather WHERE region_num 
+  	IN (SELECT region_num FROM region WHERE region_child = #{regionChild} and region_grand_child = #{regionGrandChild});
+  </select>
+  
+  <!-- 스케쥴러 해당지역 날씨테이블 삭제 -->
+  
+</mapper>

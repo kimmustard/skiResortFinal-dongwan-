@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.web.www.repository.FileDAO">
+	<!-- notice 코드 라인 -->
+	<insert id="insertNoticeFile">
+		insert into file(uuid, save_dir, file_name, file_isok, file_type, file_size, notice_num)
+		values(#{uuid}, #{saveDir}, #{fileName}, #{fileIsok}, #{fileType}, #{fileSize}, #{noticeNum})
+	</insert>
+	
+	<select id="getNoticeFileList" resultType="com.web.www.domain.FileVO">
+		select * from file where notice_num = #{noticeNum} and file_isok='Y' 
+		order by file_reg_at asc
+	</select>
+	
+	<update id="noticeRemoveFile">
+		update file set file_isok='N' where uuid=#{uuid}
+	</update>
+	
+	<update id="deleteAllFileNotice">
+		update file set file_isok='N' where notice_num=#{noticeNum}
+	</update>
+	
+	
+	<!-- Q&A 코드 라인 -->
+	<insert id="insertQnaFile">
+		insert into file(uuid, save_dir, file_name, file_isok, file_type, file_size, qna_num)
+		values(#{uuid}, #{saveDir}, #{fileName}, #{fileIsok}, #{fileType}, #{fileSize}, #{qnaNum})
+	</insert>
+	
+	<select id="getQnaFileList" resultType="com.web.www.domain.FileVO">
+		select * from file where qna_num = #{qnaNum} and file_isok='Y' and qna_ans_num is null 
+		order by file_reg_at asc
+	</select>
+	
+	<update id="qnaRemoveFile">
+		update file set file_isok='N' where uuid=#{uuid}
+	</update>
+	
+	<update id="deleteAllFileQna">
+		update file set file_isok='N' where qna_num=#{qnaNum}
+	</update>
+	
+	
+	<!-- Q&A 답변 코드 라인 -->
+	<insert id="insertQnaAnsFile">
+		insert into file(uuid, save_dir, file_name, file_isok, file_type, file_size, qna_ans_num, qna_num)
+		values(#{uuid}, #{saveDir}, #{fileName}, #{fileIsok}, #{fileType}, #{fileSize}, #{qnaAnsNum}, #{qnaNum})
+	</insert>
+	
+	<select id="getQnaAnsFileList" resultType="com.web.www.domain.FileVO">
+		select * from file where qna_num=#{qnaNum} and file_isok='Y' and qna_ans_num is not null
+		order by file_reg_at asc
+	</select>
+	
+</mapper>
