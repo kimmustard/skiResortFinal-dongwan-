@@ -14,12 +14,6 @@
 <body>
 	
 	<div class="bodyContainer">
-	<!-- 	<div class="mauntain1">
-			<img alt="그림없음" width="1000" src="/resources/etc/snow_mauntain.png">
-		</div>
-		<div class="mauntain2">
-			<img alt="그림없음" width="1000" src="/resources/etc/snow_mauntain.png">
-		</div> -->
 
 		<!-- 왼쪽 카테고리  -->
 		<div class="mainCategory">
@@ -224,10 +218,46 @@
 					<div class="infoBox ibox6">
 						<div class="iboxList iboxList2">
 							<div>
-								<span>결제/환불 내역</span>	
+								<span>결제/환불 내역</span>
 							</div>
 							<a href="#"><span>내역조회</span></a>
 						</div>
+						<table class="table table-hover">
+									<thead>
+										<tr>
+											<td>주문번호</td>
+											<td>결제은행</td>
+											<td>결제방식</td>
+											<td>주문명</td>
+											<td>금액</td>
+											<td>이름</td>
+											<td>이메일</td>
+											<td>전화번호</td>
+											<td>주소</td>
+											<td>결제일자</td>
+										</tr>
+							
+							
+									</thead>
+									<tbody>
+										<c:forEach items="${pivoList}" var="pList">
+											<tr>
+												<td>${pList.payImpUid }</td>
+												<td>${pList.payPg }</td>
+												<td>${pList.payMethod }</td>
+												<td>${pList.payName }</td>
+												<td>${pList.payAmount } 원</td>
+												<td>${pList.memberEmail }</td>
+												<td>${pList.memberName }</td>
+												<td>${pList.memberPhoneNum }</td>
+												<td>${pList.memberAddress }</td>
+												<td>${pList.payRegAt }</td>
+											</tr>
+										</c:forEach>
+									</tbody>
+								</table>
+											 <a href="/pay/refund?payImpUid=imp_193875071000"><button>결제취소</button></a>  
+								
 					</div>	
 				</div>
 			</div>

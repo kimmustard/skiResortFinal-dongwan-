@@ -25,8 +25,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.github.scribejava.core.model.OAuth2AccessToken;
 import com.web.www.domain.member.MemberVO;
 import com.web.www.security.AuthMember;
-import com.web.www.security.OauthSuccessHandler;
-import com.web.www.service.MemberService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -39,11 +37,7 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 public class OauthLoginController {
 
-	private final MemberService msv;
 	private final OauthParser parser;
-	
-	//Oauth 로그인성공시 로그인 세션객체 세팅 클래스 
-	private final OauthSuccessHandler osh;
 	
 	/**
 	 * @NaverLoginBO 네이버 비즈니스 오브젝트(BO)입니다.  
@@ -82,10 +76,10 @@ public class OauthLoginController {
 		String apiResult = null;
 		apiResult = naverLoginBO.getUserProfile(oauthToken);	
 		
-		//JSON 유저 정보 파싱 -> 유저VO에 담기
+		// JSON 유저 정보 파싱 -> DB에 저장 -> mvo에 담기
 		MemberVO mvo = parser.naverUser(apiResult);
 		
-		//정보가 세팅된 소셜유저 가입, 인증권한 세팅 메서드 
+		//인증권한 세팅 메서드 
 		socialUserCreateMemberAndAuthSet(mvo,request ,response);
 		
 		return "redirect:/"; 
@@ -114,10 +108,10 @@ public class OauthLoginController {
 	public String kakaoLogin(HttpServletRequest request, HttpServletResponse response, @RequestParam(value = "code", required = false) String code) throws Exception {
 		String access_Token = kakaoLoginBO.getAccessToken(code);
         
-		// JSON 유저 정보 파싱 -> 유저VO에 담기
+		// JSON 유저 정보 파싱 -> DB에 저장 -> mvo에 담기
 		MemberVO mvo = parser.kakaoUser(access_Token);
 
-		//정보가 세팅된 소셜유저 가입, 인증권한 세팅 메서드
+		//인증권한 세팅 메서드
 		socialUserCreateMemberAndAuthSet(mvo, request, response);
 		
 		return "redirect:/";
@@ -143,36 +137,26 @@ public class OauthLoginController {
 		
 		Map<String, String> userInfo = googleLoginBO.getAccessToken(code);
 	
-		// JSON 유저 정보 파싱 -> 유저VO에 담기
+		// JSON 유저 정보 파싱 -> DB에 저장 -> mvo에 담기
 		MemberVO mvo = parser.googleUser(userInfo);
 		
-		//정보가 세팅된 소셜유저 가입, 인증권한 세팅 메서드
+		//인증권한 세팅 메서드
 		socialUserCreateMemberAndAuthSet(mvo,request, response);
 	
 		return "redirect:/";
 	}
 	
-	//정보가 세팅된 소셜유저 가입, 인증권한 세팅 메서드 
+	//인증권한 세팅 메서드 
 	private void socialUserCreateMemberAndAuthSet(MemberVO mvo, 
 			HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-		//DB에 소셜유저 검증 (없으면 DB에 저장 || 있으면 pass)
-		
-		
-		if(msv.socialSearch(mvo.getMemberId()) == null) {
-			int isOk = msv.socialRegister(mvo);
-		}
 
 		AuthMember OauthUser = new AuthMember(mvo);
-		log.info("OauthUser = {}" , OauthUser);
 		Authentication authentication = 
 				new UsernamePasswordAuthenticationToken(OauthUser, null, OauthUser.getAuthorities());
 		SecurityContextHolder.getContext().setAuthentication(authentication);
 
-		//세션 넣는 작업
-		osh.onAuthenticationSuccess(request, response, SecurityContextHolder.getContext().getAuthentication());
 	}
 	
-		
 }	
 
 
