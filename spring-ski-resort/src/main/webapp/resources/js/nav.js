@@ -1,16 +1,16 @@
 window.onload = function () {
-    getTwoNotice().then(notice =>{
-        console.log(notice);
-        for(let i = 0; i<=1; i++){
-        document.getElementById('notice-box').innerHTML+= '<ul><li><span class="notice-reg">'+notice[i].noticeRegAt+'</span><a class="notice-title" href="/notice/detail?noticeNum='+notice[i].noticeNum+'">'+notice[i].noticeTitle+'</a></li></ul>'
-        }
-    });
 
     setTimeout(() => document.getElementById("ski-navbar").style.opacity = 0.5, 5000)
     if (!(document.getElementById('maintext1'))) {
 
         document.getElementById("ski-navbar").style.opacity = 0.5;
     }else{
+    getTwoNotice().then(notice =>{
+        console.log(notice);
+        for(let i = 0; i<=1; i++){
+        document.getElementById('notice-box').innerHTML+= '<ul><li><span class="notice-reg">'+notice[i].noticeRegAt+'</span><a class="notice-title" href="/notice/detail?noticeNum='+notice[i].noticeNum+'">'+notice[i].noticeTitle+'</a></li></ul>'
+        }
+    });
         load();
 
     }  
