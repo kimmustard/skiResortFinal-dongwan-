@@ -22,6 +22,7 @@ import lombok.extern.slf4j.Slf4j;
 @Component
 @PropertySource("classpath:outApiProperties.properties")
 public class GoogleLoginBO {
+	
 	//로그인 전용 url 호출
 	@Value("${oauth.google.id}")
 	private String google_client_id;     

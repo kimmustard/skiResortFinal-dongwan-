@@ -1,10 +1,13 @@
 package com.web.www.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.web.www.domain.member.MemberCheckDTO;
 import com.web.www.domain.member.MemberVO;
 import com.web.www.domain.member.ModifyMemberDTO;
+import com.web.www.domain.pay.PayInfoVO;
 import com.web.www.repository.MemberDAO;
 
 import lombok.RequiredArgsConstructor;
@@ -79,6 +82,13 @@ public class MemberServiceImpl implements MemberService {
 	public int cdCheck(MemberCheckDTO mcDto) {
 		return mdao.cdCheck(mcDto);
 	}
+
+	
+	@Override
+	public MemberVO getUser(String memberId, String memberType) {
+		return mdao.getUser(memberId, memberType);
+	}
+
 
 
 

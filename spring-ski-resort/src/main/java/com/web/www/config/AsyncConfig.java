@@ -15,7 +15,7 @@ public class AsyncConfig {
     @Bean(name = "WeatherInit")
     public Executor regionIntExecutor() {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
-        executor.setCorePoolSize(2);	//스레드풀 사이즈
+        executor.setCorePoolSize(5);	//스레드풀 사이즈
         executor.setMaxPoolSize(5);	//스레드 풀 최대 개수
         executor.setQueueCapacity(100);	//스레드 풀 작업 대기열 크기
         executor.setThreadNamePrefix("RegionInit-");	//스레드 이름 접두사 설정

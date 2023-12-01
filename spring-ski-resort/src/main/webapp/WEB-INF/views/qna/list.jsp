@@ -25,6 +25,7 @@
 		<sec:authorize access="isAuthenticated()"> <!-- 로그인 시 -->
 			<sec:authentication property="principal.mvo.memberId" var="authId"/>
 			<sec:authentication property="principal.mvo.memberEmail" var="authEmail"/>
+			<sec:authentication property="principal.mvo.memberType" var="authType"/>
 			<div class="qna-myqna">
 				<form action="/qna/list" method="get">
 					<c:if test="${authType == 'normal' }">

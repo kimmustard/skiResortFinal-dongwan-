@@ -1,6 +1,7 @@
 package com.web.www.controller;
 
 import java.security.Principal;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,11 +22,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.web.www.domain.member.AuthUser;
 import com.web.www.domain.member.MemberVO;
 import com.web.www.domain.member.ModifyMemberDTO;
 import com.web.www.domain.member.RegisterMemberDTO;
+import com.web.www.domain.pay.PayInfoVO;
 import com.web.www.repository.MemberDAO;
 import com.web.www.service.MemberService;
+import com.web.www.service.PayService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -37,12 +41,11 @@ import lombok.extern.slf4j.Slf4j;
 public class MemberController {
 
 	private final MemberService msv;
+	private final PayService psv;
 	
 	/**
-	 * @MemberDAO 시큐리티 DB선행 접근시 필요
 	 * @BCryptPasswordEncoder 사용자 pwd 인코더
 	 */
-	private final MemberDAO mdao;
 	private final BCryptPasswordEncoder bcEncoder;
 	
 	@GetMapping("/login")
@@ -81,13 +84,14 @@ public class MemberController {
 	}
 
 	@GetMapping("/detail")
-	public String detailForm(HttpSession ses, Model model) {
+	public String detailForm(@AuthUser MemberVO mvo, Model model, PayInfoVO pivo) {
+
+		MemberVO detailMvo = msv.getUser(mvo.getMemberId() , mvo.getMemberType());
+		List<PayInfoVO> pivoList = psv.getPayInfoList(mvo.getMemberNum());
+		log.info("결제정보 조회 = {}", pivoList);
 		
-		String memberId = (String)ses.getAttribute("memberId");
-		String memberType = (String)ses.getAttribute("memberType");
-		MemberVO mvo = mdao.getUser(memberId , memberType);
-		
-		model.addAttribute("mvo",mvo);
+		model.addAttribute("mvo", detailMvo);
+		model.addAttribute("pivoList" , pivoList);
 		return "/member/detail";
 	}
 	
@@ -107,14 +111,13 @@ public class MemberController {
 		return "redirect:/member/login";
 	}
 	
-	
-	
-	
 	@GetMapping("/logoutSub")
 	public String logoutTab(HttpServletRequest request, HttpServletResponse response) {
 		logout(request, response);
 		return "redirect:/";
 	}
+	
+	
 	
 	/**
 	 * @param request (회원정보)

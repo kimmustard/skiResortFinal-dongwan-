@@ -12,15 +12,20 @@ import java.util.Map;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.web.www.domain.member.MemberVO;
 import com.web.www.security.AuthVO;
+import com.web.www.service.MemberService;
 
 import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Component("oauthHandlerParser")
 public class OauthParser {
+	
+	@Autowired
+	private MemberService msv;
 	
 	public MemberVO naverUser(String apiResult) {
 		//2. String형식인 apiResult를 json형태로 바꿈 
@@ -40,29 +45,18 @@ public class OauthParser {
 			String phoneNum = (String)response_obj.get("mobile");
 			String name = (String)response_obj.get("name");
 			
-			//pwd 임시로 채울 미니 난수생성
-			String pwd = String.valueOf((int)(Math.random() * 899999) + 100000);
-			
 			//멤버 객체
 			MemberVO mvo = new MemberVO();
 			mvo.setMemberId(id);
-			mvo.setMemberPwd(pwd);
 			mvo.setMemberAlias(alias);
 			mvo.setMemberEmail(email);
 			mvo.setMemberPhoneNum(phoneNum);
 			mvo.setMemberName(name);
 			mvo.setMemberType("naver");
-			//권한 부여
-			AuthVO auth = new AuthVO();
-			auth.setMemberId(id);
-			auth.setAuth("ROLE_USER");
 			
-			List<AuthVO> authList = new ArrayList<>();
-			authList.add(auth);
-			mvo.setAuthList(authList);
+		
+			return RegisterAndAuth(mvo);
 			
-			
-			return mvo;
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -110,30 +104,16 @@ public class OauthParser {
 			
 			//카카오 전화번호는 +82 XXXX 방식으로 넘어오기 때문에 번호 replace가 필요함
 			String formattedPhoneNumber = "0" + phoneNum.substring(4);
-			log.info("########### = {}", formattedPhoneNumber);
-			
-			//pwd 임시로 채울 미니 난수생성
-			String pwd = String.valueOf((int)(Math.random() * 899999) + 100000);
-			
+
 			MemberVO mvo = new MemberVO();
 			mvo.setMemberId(id);
-			mvo.setMemberPwd(pwd);
 			mvo.setMemberAlias(alias);
 			mvo.setMemberEmail(email);
 			mvo.setMemberPhoneNum(formattedPhoneNumber);
 			mvo.setMemberName(name);
 			mvo.setMemberType("kakao");
 			
-			//권한 부여
-			AuthVO auth = new AuthVO();
-			auth.setMemberId(id);
-			auth.setAuth("ROLE_USER");
-					
-			List<AuthVO> authList = new ArrayList<>();
-			authList.add(auth);
-			mvo.setAuthList(authList);
-		
-			return mvo;
+			return RegisterAndAuth(mvo);
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -151,29 +131,39 @@ public class OauthParser {
 		String email = userInfo.get("email");
 		String name = userInfo.get("name");
 		
-		//pwd 임시로 채울 미니 난수생성
-		String pwd = String.valueOf((int)(Math.random() * 899999) + 100000);
-		
 		MemberVO mvo = new MemberVO();
 		mvo.setMemberId(id);
-		mvo.setMemberPwd(pwd);
 		mvo.setMemberAlias(alias);
 		mvo.setMemberEmail(email);
 		mvo.setMemberName(name);
 		mvo.setMemberPhoneNum("");
 		mvo.setMemberType("google");
 	
+		return RegisterAndAuth(mvo);
+	
+	}
+
+
+	private MemberVO RegisterAndAuth(MemberVO mvo) {
+		if(msv.socialSearch(mvo.getMemberId()) == null) {
+			int isOk = msv.socialRegister(mvo);
+		}
+		
+		MemberVO oauthMvo = msv.socialSearch(mvo.getMemberId());
+
 		//권한 부여
 		AuthVO auth = new AuthVO();
-		auth.setMemberId(id);
+		auth.setMemberId(oauthMvo.getMemberId());
 		auth.setAuth("ROLE_USER");
 				
 		List<AuthVO> authList = new ArrayList<>();
 		authList.add(auth);
-		mvo.setAuthList(authList);
-	
-		return mvo;
-	
+		oauthMvo.setAuthList(authList);
+		
+		//마지막 로그인 체크
+		msv.updateLastLogin(oauthMvo.getMemberId());
+		
+		return oauthMvo;
 	}
 	
 }
