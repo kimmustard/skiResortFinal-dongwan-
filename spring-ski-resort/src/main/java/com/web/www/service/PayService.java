@@ -1,12 +1,15 @@
 package com.web.www.service;
 
+import java.io.IOException;
 import java.util.List;
+
+import org.springframework.http.ResponseEntity;
 
 import com.web.www.domain.pay.PayInfoVO;
 
 public interface PayService {
 
-	void registerPay(PayInfoVO upiDTO);
+	ResponseEntity<String> registerPay(PayInfoVO upiDTO) throws IOException;
 
 	/**
 	 * @param memberNum
@@ -14,6 +17,6 @@ public interface PayService {
 	 */
 	List<PayInfoVO> getPayInfoList(long memberNum);
 
-	int refund(String payImpUid);
+	int payMentRefund(String payImpUid) throws IOException;
 
 }

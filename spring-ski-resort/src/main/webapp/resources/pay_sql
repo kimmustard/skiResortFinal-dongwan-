@@ -1,3 +1,5 @@
+drop table pay;
+
 11-30 카드 결제정보 테이블입니다.
 create table pay(
 pay_merchant_uid varchar(50) not null,
@@ -6,6 +8,7 @@ pay_pg varchar(50),
 pay_method varchar(15),
 pay_name varchar(100),
 pay_amount bigint,
+pay_status varchar(15),
 member_num bigint,
 member_email varchar(50),
 member_name varchar(50),

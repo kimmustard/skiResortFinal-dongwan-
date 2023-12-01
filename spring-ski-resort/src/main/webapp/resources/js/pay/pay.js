@@ -66,6 +66,7 @@ function paymentGateway(pgName) {
 
                         alert(msg);
                     } else {
+                    	console(data);
                         // 결제가 되지 않은 경우의 처리
                     }
                 })

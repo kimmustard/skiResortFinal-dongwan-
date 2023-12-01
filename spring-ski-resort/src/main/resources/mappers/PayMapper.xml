@@ -5,13 +5,16 @@
   <mapper namespace="com.web.www.repository.PayDAO">
   	<insert id="registerPay">
   		insert into pay(pay_imp_uid, pay_merchant_uid, pay_pg, pay_method, pay_name, pay_amount, 
-  		member_num, member_email, member_name, member_phone_num, member_address)
+  		member_num, member_email, member_name, member_phone_num, member_address, pay_imp_uid)
   		value(#{payImpUid}, #{payMerchantUid}, #{payPg}, #{payMethod}, #{payName}, #{payAmount},
-  		#{memberNum}, #{memberEmail}, #{memberName}, #{memberPhoneNum}, #{memberAddress})
+  		#{memberNum}, #{memberEmail}, #{memberName}, #{memberPhoneNum}, #{memberAddress}, '결제완료')
   	</insert>
   	
   	<select id="getPayInfoList" resultType="com.web.www.domain.pay.PayInfoVO">
   		select * from pay where member_num = #{memberNum}
   	</select>
   	
+  	<update id="payMentRefund">
+  		update pay set pay_status = '결제취소' where pay_imp_uid = #{payImpUid}
+  	</update>
   </mapper>
