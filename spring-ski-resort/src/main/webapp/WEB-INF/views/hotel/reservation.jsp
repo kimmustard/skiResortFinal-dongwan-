@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -175,31 +176,30 @@
 			
 				<div id="innerbox" style="display: none;">
 					<!-- 방 추가는 여기 -->
-					<input class="room-option" id="select1" type="radio" name="hotelRoomNum" value="1" >
-					<input class="room-option" id="select2" type="radio" name="hotelRoomNum" value="2">
-					<input class="room-option" id="select3" type="radio" name="hotelRoomNum" value="3">
-					<input class="room-option" id="select4" type="radio" name="hotelRoomNum" value="4">
-					<input class="room-option" id="select5" type="radio" name="hotelRoomNum" value="5">
-					<input class="room-option" id="select6" type="radio" name="hotelRoomNum" value="6">
-					<input class="room-option" id="select7" type="radio" name="hotelRoomNum" value="7">
-					<input class="room-option" id="select8" type="radio" name="hotelRoomNum" value="8">
-					<input class="room-option" id="select9" type="radio" name="hotelRoomNum" value="9">
-					<input class="room-option"id="select10" type="radio" name="hotelRoomNum" value="10">
+					<c:forEach items="${roomList }" var="room">
+					<input class="room-option" id="select${room.hotelRoomNum}" type="radio" name="hotelRoomNum" value="${room.hotelRoomNum }" >
+					</c:forEach>
 					<ul	class="room-selecor">
 					<!-- 방 버튼은 여기 -->
+				
+			
 						<li class="room-rank">일반객실</li>
-						<li onclick="roomSelectEvent(1)" value="96000" id="room1">스탠다드 더블(2인)</li>
-						<li onclick="roomSelectEvent(2)" value="96000" id="room2">스탠다드 트윈(2인)</li>
-						<li onclick="roomSelectEvent(3)" value="132000" id="room3">스탠다드 온돌(3인)</li>
-						<li onclick="roomSelectEvent(4)" value="132000" id="room4">스탠다드 더블온돌(4인)</li>
-						<li onclick="roomSelectEvent(5)" value="132000" id="room5">마운틴 마운틴스위트(6인)</li>
-						<li onclick="roomSelectEvent(6)" value="180000" id="room6">마운틴 패밀리 가든(8인)</li>
+					<c:forEach items="${roomList }" var="room">
+						<c:if test="${room.hotelRoomType eq 'nomal'}">
+						<li onclick="roomSelectEvent(${room.hotelRoomNum})" value="${room.hotelRoomFee }" id="room${room.hotelRoomNum}">${room.hotelRoomName }(${room.hotelRoomStandardPeople}인)</li>	
+					</c:if >
+				</c:forEach>
+			
+				
+			
 						<li class="room-rank">vip객실</li>
-						<li onclick="roomSelectEvent(7)" value="96000" id="room7">vip 더블(2인)</li>
-						<li onclick="roomSelectEvent(8)" value="96000" id="room8">vip 트윈(2인)</li>
-						<li onclick="roomSelectEvent(9)" value="96000" id="room9">vip 온돌(3인)</li>
-						<li onclick="roomSelectEvent(10)" value="96000" id="room10">vip 더블온돌(4인)</li>
+					<c:forEach items="${roomList }" var="room" >
+						<c:if test="${room.hotelRoomType eq 'vip'}">
+						<li onclick="roomSelectEvent(${room.hotelRoomNum})" value="${room.hotelRoomFee }" id="room${room.hotelRoomNum}">${room.hotelRoomName }(${room.hotelRoomStandardPeople}인)</li>
+					</c:if> 
+					</c:forEach>
 					</ul>
+					
 					
 					<div class="room-info-box">
 						<div class="room-image-box">
@@ -220,35 +220,11 @@
 			
 			
 			<!-- 방 이미지 링크는 여기 -->
-			<p class="image-url" id="image-src1">
+			<c:forEach items="${roomList }" var="room">
+			<p class="image-url" id="image-src${room.hotelRoomNum}">
 			https://img.freepik.com/free-photo/room-interior-of-hotel-bedroom_23-2150683421.jpg?size=626&ext=jpg&ga=GA1.1.1826414947.1699056000&semt=sph
 			</p>
-			<P class="image-url" id="image-src2">
-			https://wehotel.co.kr/wp-content/uploads/sites/35/2023/07/WE-Hotel-Superior-Floor-MtSFM_1_m.jpg
-			</P>
-			<P class="image-url" id="image-src3">
-			https://a.cdn-hotels.com/gdcs/production124/d84/90ca94f2-3c07-4732-8c5e-0c0ccba8e74d.jpg
-			</P>
-			<P class="image-url" id="image-src4">
-			</P>
-			<P class="image-url" id="image-src5">
-			
-			</P>
-			<P class="image-url" id="image-src6">
-			
-			</P>
-			<P class="image-url" id="image-src7">
-			
-			</P>
-			<P class="image-url" id="image-src8">
-			
-			</P>
-			<P class="image-url" id="image-src9">
-			
-			</P>
-			<P class="image-url" id="image-src10">
-			
-			</P>
+		</c:forEach>
 			
 		
 		</div>
@@ -261,6 +237,5 @@
 
 </body>
 	<jsp:include page="../common/footer.jsp"></jsp:include>	
-	<script defer type="text/javascript"
-		src="/resources/js/hotel/reservation.js"></script>
+	<script type="text/javascript" src="/resources/js/hotel/reservation.js"></script>
 </html>

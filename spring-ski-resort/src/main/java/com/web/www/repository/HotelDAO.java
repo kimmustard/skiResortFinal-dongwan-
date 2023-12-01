@@ -17,4 +17,6 @@ public interface HotelDAO {
 
 	int modifyRoom(RoomVO rvo);
 
+	int selectRoomCnt();
+
 }

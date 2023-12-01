@@ -17,4 +17,6 @@ public interface HotelService {
 
 	int modifyRoom(RoomVO rvo);
 
+	int selectRoomCnt();
+
 }

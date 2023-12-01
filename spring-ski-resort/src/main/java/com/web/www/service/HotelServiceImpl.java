@@ -49,4 +49,10 @@ public class HotelServiceImpl implements HotelService{
 		return hdao.modifyRoom(rvo);
 	}
 
+	@Override
+	public int selectRoomCnt() {
+		// TODO Auto-generated method stub
+		return hdao.selectRoomCnt();
+	}
+
 }

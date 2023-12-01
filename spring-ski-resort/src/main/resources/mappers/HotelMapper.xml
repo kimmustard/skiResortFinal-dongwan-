@@ -32,6 +32,8 @@
 		hotel_room_area = #{hotelRoomArea}, hotel_room_fee = #{hotelRoomFee} , hotel_room_count=#{hotelRoomCount}
 		where hotel_room_num =#{hotelRoomNum}
 	</update>
-	
+	<select id="selectRoomCnt" resultType="int">
+		select count(*) from room
+	</select>
 	
   </mapper>
