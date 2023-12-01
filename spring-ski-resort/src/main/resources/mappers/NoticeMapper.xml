@@ -51,7 +51,10 @@
 	</select>
 	
 	<select id="getTwoNotice" resultType="com.web.www.domain.board.NoticeVO">
-		select notice_title ,notice_reg_at,notice_num from notice where notice_category = "공지사항" order by notice_num desc LIMIT 2
+		select notice_title ,notice_reg_at,notice_num from notice where notice_category = "공지사항" AND notice_del = "N" order by notice_num desc LIMIT 2
+
+	
+	
 	</select>
 	
 	

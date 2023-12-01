@@ -79,9 +79,11 @@ public class NoticeController {
 	@GetMapping(value="/getTwoNotice", produces = {MediaType.APPLICATION_JSON_VALUE} )
 	public ResponseEntity<List<NoticeVO>> getTwoNotice() {
 		List<NoticeVO> list  = nsv.getTwoNotice();
+		log.info("lsit>>>>>>>>>>"+list);
 		int isOk=0;
 		if(list != null && !list.isEmpty()) {
 			isOk=1;
+			
 		}
 		log.info(isOk+"isOk<<<<<<<<");
 		return isOk > 0 ? new ResponseEntity<List<NoticeVO>>(list, HttpStatus.OK)
