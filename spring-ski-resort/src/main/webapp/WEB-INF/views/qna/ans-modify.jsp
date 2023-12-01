@@ -112,24 +112,25 @@
 
 
 		<!-- 첨부파일 표시 영역 -->
+		<c:set value="${qadto.flist }" var="flistans"></c:set>
 		<div>
 			<ul>
-				<c:forEach items="${flist }" var="fvo">
+				<c:forEach items="${flistans }" var="afvo">
 					<li>
 						<c:choose>
-							<c:when test="${fvo.fileType > 0 }">
+							<c:when test="${afvo.fileType > 0 }">
 								<div>
-									<img alt="그림이 없음." src="/upload/${fn: replace(fvo.saveDir,'\\','/')}/${fvo.uuid}_th_${fvo.fileName}">
+									<img alt="그림이 없음." src="/upload/${fn: replace(afvo.saveDir,'\\','/')}/${afvo.uuid}_th_${afvo.fileName}">
 								</div>
 							</c:when>
 						</c:choose>
 						<div>
-							<div><B>${fvo.fileName }</B></div>
-				 			<div class="badge text-bg-secondary">${fvo.regDate }</div>
+							<div><B>${afvo.fileName }</B></div>
+				 			<div class="badge text-bg-secondary">${afvo.regDate }</div>
 				 		</div>
-				 		<span class="badge rounded-pill text-bg-success">${fvo.fileSize }Byte</span>
+				 		<span class="badge rounded-pill text-bg-success">${afvo.fileSize }Byte</span>
 				 		<div>
-				 			<button type="button" class="file-x btn btn-outline-secondary" data-uuid="${fvo.uuid }">X</button>
+				 			<button type="button" class="file-x btn btn-outline-secondary" data-uuid="${afvo.uuid }">X</button>
 						</div>
 						<br>
 					</li>

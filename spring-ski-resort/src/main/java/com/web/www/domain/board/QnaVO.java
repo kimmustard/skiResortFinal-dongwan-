@@ -21,10 +21,10 @@ public class QnaVO {
 	private String qnaContent; //내용
 	private int qnaCount; //조회수
 	private String qnaIsok; //답변 여부
+	private String qnaSecret; //비밀글 여부
 	private String qnaDel; //삭제 여부
 	private String qnaRegAt; //글 작성일
 	private String qnaModAt; //글 수정일
 	private String qnaAnsRegAt; //답변 등록일
-	private String qnaSecret; //비밀글 여부
 
 }
