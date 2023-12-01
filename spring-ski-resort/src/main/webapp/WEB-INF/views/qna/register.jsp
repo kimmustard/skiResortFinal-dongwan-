@@ -55,6 +55,11 @@
 		</div>
 		
 		<div class="mb-3">
+		  <label for="exampleFormControlInput1" class="form-label">비밀글</label>
+		  <input type="checkbox" name="qnaSecret" value="Y">
+		</div>
+		
+		<div class="mb-3">
 		  <label for="exampleFormControlTextarea1" class="form-label">문의내용</label>
 		  <textarea class="form-control" name="qnaContent" rows="3"></textarea>
 		</div>

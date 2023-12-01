@@ -22,6 +22,7 @@ public class FileVO {
 	private String regDate;
 	private long noticeNum;
 	private long qnaNum;
+	private long qnaAnsNum;
 	
 	
 
