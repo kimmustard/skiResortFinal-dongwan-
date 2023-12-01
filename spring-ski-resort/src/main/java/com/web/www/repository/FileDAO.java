@@ -22,16 +22,15 @@ public interface FileDAO {
 
 	void deleteAllFileNotice(long noticeNum);
 
-<<<<<<< HEAD
+
 	int insertItemFile(FileVO fvo);
 
 	List<FileVO> ItemAndPicture();
-=======
+
 	int insertQnaAnsFile(FileVO fvo);
 
 	List<FileVO> getQnaAnsFileList(long qnaNum);
 	
 
->>>>>>> 9b9878d1a001aa4b51b9731649d5b9d5135b3363
 
 }
