@@ -27,10 +27,6 @@
 				</div> -->
 				
 				<div class="category-Box1">
-					<div class="category cbox0">
-						<span>개인정보</span>
-					</div>
-					
 					<div class="category cbox1">
 						<a href="#"> 
 							<span class="category-span">
@@ -62,10 +58,6 @@
 				</div>
 				
 				<div class="category-Box2">
-					<div class="category cbox5">
-						<span>회원 서비스</span>
-					</div>
-					
 					<div class="category cbox6">
 						<a href="/member/logoutSub"> 
 							<span class="category-span">
@@ -81,7 +73,24 @@
 						</a>
 					</div>
 				</div>
-				
+				<div class="category-Box3">
+					<div class="category cbox8">
+						<div class="form-check form-switch">
+					        <input class="form-check-input" type="checkbox" 
+					        	id="flexSwitchCheckDefault" ${mvo.memberTerms3 eq 'terms3check' ? 'checked' : ''} value="${mvo.memberId }">
+					        <label class="form-check-label" for="flexSwitchCheckDefault">광고성/마케팅 동의(선택)</label>
+					    </div>
+					</div>
+					<div class="category cbox9">
+						<div><span>가입일 </span>${mvo.memberRegAt }</div>
+					</div>
+					<div class="category cbox10">
+						<div><span>마지막 로그인 </span>${mvo.memberLastAt }</div>
+					</div>
+					<div class="category cbox11">
+						<div><span>비밀번호 변경일 </span>${mvo.memberPwdModAt }</div>
+					</div>
+				</div>
 			</div>
 		</div>
 		
@@ -177,7 +186,7 @@
 						</div>
 					</form>
 				</div>
-				<div class="mainViewBox2">
+				<%-- <div class="mainViewBox2">
 					<div class="infoViewBox">
 						<div class="li-title">
 							<span>활동 정보</span>
@@ -199,7 +208,7 @@
 						    </div>
 						</div>
 					</div>
-				</div>
+				</div> --%>
 			</div>
 			
 				
@@ -225,13 +234,13 @@
 						<table class="table table-hover">
 									<thead>
 										<tr>
-											<td>주문번호</td>
-											<td>결제은행</td>
-											<td>주문명</td>
-											<td>금액</td>
-											<td>이름</td>
-											<td>상태</td>
-											<td>결제일자</td>
+											<th>주문번호</th>
+											<th>결제은행</th>
+											<th>주문명</th>
+											<th>금액</th>
+											<th>이름</th>
+											<th>상태</th>
+											<th>결제일자</th>
 										</tr>
 							
 							

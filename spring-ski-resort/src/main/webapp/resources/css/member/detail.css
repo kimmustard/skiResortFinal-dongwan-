@@ -4,7 +4,8 @@
 .bodyContainer{
 	width: 100%;
 	display: flex;
-	background-image: url("https://rusutsu.com/wp-content/uploads/home-main62.jpg");
+	background-image: url("/resources/etc/back.jpg");
+	/* background-image: url("https://rusutsu.com/wp-content/uploads/home-main62.jpg"); */
 	background-size: cover;
 	position: fixed;
 	
@@ -12,10 +13,11 @@
 /* 왼쪽 카테고리 */
 .mainCategory{
 	margin-top:96px;
-	width: 300px;
-	background-color: rgba(255,255,255,0.5);
+	width: 350px;
+	background-color: rgba(255,255,255,0.9);
+	border-bottom-right-radius: 100px;
 	position: fixed;
-    height: 100vh;
+    height: 800px;
 }
 
 .category-body{
@@ -49,6 +51,18 @@ a{
 }
 
 
+.category-Box3{
+	position: absolute;
+	left: 40px;
+	width: 300px;
+	bottom: 150px;
+}
+
+.category-Box3>.category{
+	margin-bottom: 10px;
+}
+
+
 /* 오른쪽 화면 */
 .mainView{
 	width: 100%;
@@ -70,9 +84,9 @@ a{
 .modifyViewBox{
   
  	margin-left: 450px;
-    width: 440px;
-    background-color: rgba(255,255,255,0.7);
-    height: 540px;
+    width: 450px;
+    background-color: rgba(255,255,255,0.9);
+    height: 810px;
 	box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
     margin-top : 128px;
     overflow:auto;
@@ -93,11 +107,11 @@ a{
 
 
 .modify-btn{
-	float: right;
-	margin-right: 100px;
+	margin-top: 50px;
+	text-align: center;
 }
 .modify-btn>button{
-	width: 200px;
+	width: 150px;
 }
 
 .mainViewBody2{
@@ -113,13 +127,13 @@ a{
 .mainViewBox3{
 	padding-top: 30px;
     height: 1004px;
-    margin-left: 370px;
-    width: 700px;
+    margin-left: 300px;
+    width: 850px;
 }
 
 .infoViewBox{
     padding: 40px 40px 25px 40px;
-    background-color: rgba(255,255,255,0.7);
+    background-color: rgba(255,255,255,0.9);
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
     margin-left: 445px;
     margin-top: 30px;
@@ -130,7 +144,7 @@ a{
 .infoBox{
 	margin-top: 20px;
 	margin-bottom: 20px;
-	background-color: rgba(255,255,255,0.7);
+	background-color: rgba(255,255,255,0.9);
 }
 
 .ibox5{
