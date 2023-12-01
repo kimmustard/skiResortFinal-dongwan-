@@ -73,3 +73,55 @@
 .index-content{
 	padding: 15px 0;
 }
+.weathericon{
+	color: white;
+	font-size: 40px;
+}
+.weather-info{
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	margin-left: 5px;
+	font-size: 20px;
+	
+}
+#innerItem1{
+	width: 600px;
+}
+#innerItem4{
+	width: 700px;
+}
+#innerItem2{
+	margin-left: 0;
+	margin-right: 0;
+	
+}
+#innerItem3{
+	
+	margin-left: 0;
+	margin-right: 0;
+
+}
+.weather-area{
+	font-size: 25px;
+}
+#notice-box{
+	width: 1150px;
+	border: solid 1px black;
+	margin: auto;
+	padding: 10px;
+}
+.notice-title{
+	color: black;
+	padding-left: 10px;
+	text-decoration: none;
+}
+.notice-logo{
+	padding-bottom: 10px;
+	font-size: 18px;
+	font-weight: 600;
+	
+}
+.notice-reg{
+	color: #aaa;
+}

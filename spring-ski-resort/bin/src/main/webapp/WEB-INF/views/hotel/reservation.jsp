@@ -7,6 +7,12 @@
 <title>Insert title here</title>
 </head>
 
+
+
+
+
+
+
   <!-- Bootstrap 4 CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
@@ -43,6 +49,37 @@
 
 <body>
 
+	
+
+<!-- Modal -->
+<div class="modal fade" id="hotel-pay" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content ">
+      <div class="modal-header">
+      	
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">결제선택하기</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body pay-info">
+      	<div>싱픔명</div>
+	    <div id="pay3"></div>
+      	<div>판매자</div>
+  
+      </div>
+      <div class="pay-method">
+        <button type="button">카카오</button>
+        <button type="button">네이버</button>
+        <button type="button">토스</button>
+        <button type="button">어쩌구</button>
+        <button type="button">쿠폰</button>
+  
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 	<div class="back">
 		<img alt="" src="https://www.chamonix.com/sites/default/files/styles/full_screen/public/media/images/%C2%A9%20Daniel_Ronnback.webp?h=ea95bb15&itok=9owM8byS">
 		<!-- <div class="selector">
@@ -55,8 +92,9 @@
 		</div> -->
 
 		<div class="box">
-			<p class="fs-3 hotelText">호텔예약</p>
-			<form action="/hotel/reservation" method="post">
+			<form action="/hotel/reservation" method="post" id="form">
+			<div id="box">
+			<p class="fs-3 hotelText">호텔예약/<a class="move-rental" href="/rental/reserve">리프트권 예약</a></p>
 			<div class="input-box">
 			<!--실제 값을 저장하는 애들 화면에는 없음-->
 			<input name="hotelReservePeople" id="hotelReservePeople" placeholder="성인인원" type="hidden">
@@ -72,12 +110,13 @@
 					<input type="text" class="form-control" id="dateRangePicker" placeholder="날짜를 선택하세요" readonly="readonly">
 					</div>
 				</div>
-				<div class="input-box">
+				<div class="input-group">
 					<div class="input-group mb-3">
   						<span class="input-group-text" id="basic-addon1"><i class="bi bi-person-fill"></i></span>
-  						<input type="text" id="people" class="form-control people" placeholder="인원수" aria-label="Username" readonly="readonly" aria-describedby="basic-addon1">
+  						<input type="text" id="people" class="form-control people"  placeholder="인원수" aria-label="Username" readonly="readonly" aria-describedby="basic-addon1">
 						<button id="payBtn" type="button" class=" btn btn-light">다음</button>
-					</div>
+				</div>
+					
   				<div class="peoplelist"  id="peoplelist" style="display: none;">
   					<div class="list-Btn-Box">
   						성인    
@@ -128,25 +167,89 @@
 			
   			</div>
   		</div>
-				
+		</div>		
 				
 				
 				
 			
 				<div id="innerbox" style="display: none;">
-			
-					<input type="radio" name="hotelRoomNum" value="1">방1 <input
-						type="radio" name="hotelRoomNum" value="2">방2 <input type="radio"
-						name="hotelRoomNum" value="3">방3 <input type="radio" name="room"
-						value="방">방 <input type="radio" name="hotelRoomNum" value="4">방4
-					<input type="radio" name="hotelRoomNum" value="5">방5
-					<button id="closeBtn" type="button">닫기</button>
-					<input type="checkbox"> <input type="checkbox">
-					<input type="text" name="hotelReserveFee" placeholder="요금">	
-					<button type="submit">결제</button>
+					<!-- 방 추가는 여기 -->
+					<input class="room-option" id="select1" type="radio" name="hotelRoomNum" value="1" >
+					<input class="room-option" id="select2" type="radio" name="hotelRoomNum" value="2">
+					<input class="room-option" id="select3" type="radio" name="hotelRoomNum" value="3">
+					<input class="room-option" id="select4" type="radio" name="hotelRoomNum" value="4">
+					<input class="room-option" id="select5" type="radio" name="hotelRoomNum" value="5">
+					<input class="room-option" id="select6" type="radio" name="hotelRoomNum" value="6">
+					<input class="room-option" id="select7" type="radio" name="hotelRoomNum" value="7">
+					<input class="room-option" id="select8" type="radio" name="hotelRoomNum" value="8">
+					<input class="room-option" id="select9" type="radio" name="hotelRoomNum" value="9">
+					<input class="room-option"id="select10" type="radio" name="hotelRoomNum" value="10">
+					<ul	class="room-selecor">
+					<!-- 방 버튼은 여기 -->
+						<li class="room-rank">일반객실</li>
+						<li onclick="roomSelectEvent(1)" value="96000" id="room1">스탠다드 더블(2인)</li>
+						<li onclick="roomSelectEvent(2)" value="96000" id="room2">스탠다드 트윈(2인)</li>
+						<li onclick="roomSelectEvent(3)" value="132000" id="room3">스탠다드 온돌(3인)</li>
+						<li onclick="roomSelectEvent(4)" value="132000" id="room4">스탠다드 더블온돌(4인)</li>
+						<li onclick="roomSelectEvent(5)" value="132000" id="room5">마운틴 마운틴스위트(6인)</li>
+						<li onclick="roomSelectEvent(6)" value="180000" id="room6">마운틴 패밀리 가든(8인)</li>
+						<li class="room-rank">vip객실</li>
+						<li onclick="roomSelectEvent(7)" value="96000" id="room7">vip 더블(2인)</li>
+						<li onclick="roomSelectEvent(8)" value="96000" id="room8">vip 트윈(2인)</li>
+						<li onclick="roomSelectEvent(9)" value="96000" id="room9">vip 온돌(3인)</li>
+						<li onclick="roomSelectEvent(10)" value="96000" id="room10">vip 더블온돌(4인)</li>
+					</ul>
+					
+					<div class="room-info-box">
+						<div class="room-image-box">
+							<div class="room-image" id="room-image"></div>
+							<div class="room-name" id="room-name"></div>
+						</div>
+					<div class="paybox input-group mb-3">
+						<input type="text" id="pay1" class="form-control" placeholder="요금" readonly="readonly">	
+						<input type="hidden" id="pay2" class="form-control" name="hotelReserveFee" placeholder="요금">	
+						<button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#hotel-pay">결제</button>
+					 </div>
+					</div>
+					
+						<button id="closeBtn" type="button" class="btn btn-outline-secondary">이전</button>
 				</div>
+				
 			</form>
-
+			
+			
+			<!-- 방 이미지 링크는 여기 -->
+			<p class="image-url" id="image-src1">
+			https://img.freepik.com/free-photo/room-interior-of-hotel-bedroom_23-2150683421.jpg?size=626&ext=jpg&ga=GA1.1.1826414947.1699056000&semt=sph
+			</p>
+			<P class="image-url" id="image-src2">
+			https://wehotel.co.kr/wp-content/uploads/sites/35/2023/07/WE-Hotel-Superior-Floor-MtSFM_1_m.jpg
+			</P>
+			<P class="image-url" id="image-src3">
+			https://a.cdn-hotels.com/gdcs/production124/d84/90ca94f2-3c07-4732-8c5e-0c0ccba8e74d.jpg
+			</P>
+			<P class="image-url" id="image-src4">
+			</P>
+			<P class="image-url" id="image-src5">
+			
+			</P>
+			<P class="image-url" id="image-src6">
+			
+			</P>
+			<P class="image-url" id="image-src7">
+			
+			</P>
+			<P class="image-url" id="image-src8">
+			
+			</P>
+			<P class="image-url" id="image-src9">
+			
+			</P>
+			<P class="image-url" id="image-src10">
+			
+			</P>
+			
+		
 		</div>
 	</div>
 

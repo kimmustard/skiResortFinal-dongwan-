@@ -3,22 +3,23 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.web.www.repository.WeatherDAO">
-  	
-  	
-  	
+
   <!-- 지역정보 저장 1회만 실행 -->
-  <delete id="initWeather">
-  	delete from weather
-  </delete>
+  <select id="searchRegion" resultType="int">
+  	select count(*) from region where region_num = 1;
+  </select>
   <insert id="insertRegion">
   	insert into region(region_num, region_parent, region_child, region_grand_child, nx, ny)
   	values(#{regionNum}, #{regionParent}, #{regionChild}, #{regionGrandChild}, #{nx}, #{ny})
   </insert>
   <!-- 해당지역 위도 경도 얻기 -->
   <select id="getRegion" resultType="com.web.www.weather.RegionDTO">
-	select * from region where region_grand_child = #{regionGrandChild}
+	select * from region where region_num BETWEEN 110 and 119;
   </select>
   <!-- 해당 지역 날씨 정보 등록 -->
+  <delete id="initWeather">
+  	delete from weather
+  </delete>
   <insert id="insertWeather">
   	insert into weather(region_num, weather_temp, weather_sky_status, weather_rain_status, weather_amount,
   						weather_per, weather_date, weather_time)
@@ -29,6 +30,11 @@
   <select id="selectDefaultWeather" resultType="com.web.www.weather.WeatherVO">
   	SELECT * FROM weather WHERE region_num 
   	IN (SELECT region_num FROM region WHERE region_child = #{regionChild} and region_grand_child = #{regionGrandChild});
+  </select>
+  
+  <!-- 날씨리스트 10개 획득 110번~ 119번-->
+  <select id="selectWeatherList" resultType="com.web.www.weather.WeatherVO">
+	select * from weather where region_num BETWEEN 110 and 119;
   </select>
   
   <!-- 스케쥴러 해당지역 날씨테이블 삭제 -->

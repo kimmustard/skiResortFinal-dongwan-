@@ -9,13 +9,16 @@ document.getElementById("payBtn").addEventListener('click',()=>{
     }
     else{
         document.getElementById("innerbox").style.display="block";
+        document.getElementById("box").style.opacity=0;
     }
    
    
 })
+
 document.getElementById("closeBtn").addEventListener('click',()=>{
 	
     	 document.getElementById("innerbox").style.display="none";
+	    document.getElementById("box").style.opacity=0.9;
    
 })
  
@@ -36,7 +39,7 @@ function getDayOfWeek(date) {
 }
 
 	function toggleApplyButton(selector, isEnabled) {
-        console.log(" tqtqqtq ");
+     
     const applyButton = $(selector).find('.daterangepicker .applyBtn');
     if (isEnabled) {
         applyButton.removeAttr('disabled');
@@ -165,13 +168,15 @@ function getDayOfWeek(date) {
    //  childAgeSelectCreater();
      })
     
-
+//인원수 세주는거
     function AllPeopleCount(){
         $('#people').attr('placeholder',`성인 : ${document.getElementById('audlt-Count').innerText}명 · 아동 ${document.getElementById('child-Count').innerText}명 ` );
         document.getElementById('hotelReservePeople').value = document.getElementById('audlt-Count').innerText;
         document.getElementById('hotelReserveChild').value = document.getElementById('child-Count').innerText;
 
     }
+    
+    
    // function childAgeSelectCreater(){
     //   
      //   let select ="";
@@ -191,23 +196,22 @@ function getDayOfWeek(date) {
   //  }
 document.getElementById('people').addEventListener('click',()=>{
     document.getElementById('peoplelist').style.display="block";
+
 })
 
 
+//peoplelist 사라지는 이벤트
 document.getElementById('peoplelistClose').addEventListener('click',()=>{
     document.getElementById('peoplelist').style.display="none";
 })
-
   var targetArea1 = document.getElementById('peoplelist');
   var targetArea2 = document.getElementById('people');
 document.addEventListener('click', function(event) {
-	
   if (!targetArea1.contains(event.target) || !targetArea2.contains(event.target)) {
-   		console.log("tq");
+   		
      document.getElementById('peoplelist').style.display="none";
   }
 });
-
 targetArea1.addEventListener('click', function(event) {
   event.stopPropagation(); 
 });
@@ -215,6 +219,44 @@ targetArea2.addEventListener('click', function(event) {
   event.stopPropagation(); 
 });
 
+//방 선택 이벤트
+function roomSelectEvent(num){
+    let roomprice=  document.getElementById('room'+num).value;
+    let roomname =  document.getElementById('room'+num).innerText;
+    let imageurl =document.getElementById('image-src'+num).innerText;
+
+
+    console.log('select'+num);
+    document.getElementById('select'+num).checked="true";
+    console.log(imageurl);
+
+    
+
+    //이미지 넣기
+    document.getElementById('room-image').style.backgroundImage=`url(${imageurl})`;
+
+    //이미지 아래 사진넣기
+    document.getElementById('room-name').innerText = roomname;
+    
+    //요금표시
+    document.getElementById('pay1').value = roomprice.toLocaleString()+"원";
+    document.getElementById('pay2').value = roomprice;
+    document.getElementById('pay3').innerText ="결제금액 : "+roomprice.toLocaleString()+"원";
+  
+    // if(할인율){
+    //     document.getElementById('pay2').value = (roomprice*할인율)+;
+
+    // }
+    
+}
+document.getElementById('submitBtn').addEventListener('click',()=>{
+    if(pay1.value==""){
+        alert("방을 선택해주세요");
+    }
+    else{
+        document.getElementById('form').submit();
+    }
+})
 
 
  

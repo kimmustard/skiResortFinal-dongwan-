@@ -19,19 +19,24 @@
 			<h1 id="maintext1">好き</h1>
 			<h1 id="maintext2">Daisuski</h1>
 			
+			
 		<div id="wrapper">
-		 	<div id="innerItem1">뭘 넣을진 z모르지만</div> 
-		 	<div id="innerItem2">날씨를 넣던가</div> 
-		 	<div id="innerItem3">다른 메뉴를 넣어도 되고</div> 
-		 	<div id="innerItem4">일단 때려박기~~</div> 
+		 	<div id="innerItem1"></div> 
+			<div id="innerItem2"></div> 
+			<div id="innerItem3"></div> 
+		 	<div id="innerItem4"></div> 
 		</div>
 	</div>
 	
 <!-- index 영상 아래 들어갈 내용은 여기에  -->	
 	<div class="index-content">
+		<div id="notice-box">
+			<h1 class="notice-logo">INFORMATION</h1>
+			
+		</div>
 		내용 추가하면 알아서 길이 늘어나요
-		
-		<span>${s }</span>
+	
+
 	</div>		
 			
 		

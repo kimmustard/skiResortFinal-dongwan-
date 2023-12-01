@@ -15,7 +15,7 @@
 	</div>
 	
 <div class="container notice-container" id="notice-container">
-<c:set value="${ph.npvo.type }" var="typed"></c:set>
+<c:set value="${ph.pgvo.type }" var="typed"></c:set>
 
 	<div class="notice-menu-container">
 		<!-- 검색 라인  -->
@@ -40,7 +40,7 @@
 			<div class="notice-input-container">
 				<input placeholder="검색어를 입력해 주세요." name="keyword" type="search" value="" class="notice-search-input">
 				<input type="hidden" name="pageNo" value="1">
-				<input type="hidden" name="qty" value="${ph.npvo.qty }">
+				<input type="hidden" name="qty" value="${ph.pgvo.qty }">
 			</div>
 			<div class="notice-button-container">
 				<button class="notice-search-button" type="submit">검색</button>
@@ -48,7 +48,7 @@
 		</div>
 		</form>
 		
-		
+
 		<!-- 카테고리 라인 -->
 		<div class="notice-category">
 		<ul class="nav nav-tabs" id="myTab" role="tablist">	
@@ -56,7 +56,7 @@
 			  	<form action="/notice/list" method="get">
 			  	<input type="hidden" name="type" value="g" ${typed eq 'g' ? 'selected' : '' }>
 			  	<input type="hidden" name="keyword" type="search" value="">
-			    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="submit" role="tab" aria-controls="home-tab-pane" aria-selected="true">
+			    <button class="nav-link active" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="submit" role="tab" aria-controls="contact-tab-pane" aria-selected="false">
 			    전체</button>
 			    </form>
 			  </li>
@@ -64,7 +64,7 @@
 			  	<form action="/notice/list" method="get">
 			  	<input type="hidden" name="type" value="g" ${typed eq 'g' ? 'selected' : '' }>
 			  	<input type="hidden" name="keyword" type="search" value="공지사항"> 
-			    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="submit" role="tab" aria-controls="profile-tab-pane" aria-selected="false">
+			    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="submit" role="tab" aria-controls="contact-tab-pane" aria-selected="false">
 			    공지사항</button>
 			  	</form>
 		  </li>
@@ -125,6 +125,18 @@
 		    </tr>
 		  </thead>
 		  <tbody>
+		  <c:forEach items="${pvo }" var="pvo">
+		    <tr class="notice-table-tr-point">
+		      <td class="notice-table-td"><div class="notice-table-td-child">${pvo.noticeNum }</div></td>
+		      <td class="notice-table-td"><div class="notice-table-td-child">${pvo.noticeCategory }</div></td>
+		      <td class="notice-table-td"><div class="notice-table-td-child-title"><a href="/notice/detail?noticeNum=${pvo.noticeNum }">${pvo.noticeTitle }</a></div></td>
+		      <td class="notice-table-td"><div class="notice-table-td-child">${pvo.noticeWriter }</div></td>
+		      <td class="notice-table-td"><div class="notice-table-td-child">${fn:replace((fn:substring(pvo.noticeRegAt,0,10)),'-','.') }</div></td>
+		      <td class="notice-table-td"><div class="notice-table-td-child">${pvo.noticeCount }</div></td>
+		    </tr>
+		  </c:forEach>  
+		  </tbody>
+		  <tbody>
 		  <c:forEach items="${list }" var="nvo">
 		    <tr class="notice-table-tr">
 		      <td class="notice-table-td"><div class="notice-table-td-child">${nvo.noticeNum }</div></td>
@@ -137,25 +149,25 @@
 		  </c:forEach>  
 		  </tbody>
 		</table>
-		
+		<br>
 		
 		<!-- 페이징 라인 -->
 		  <nav aria-label="Page navigation example">
 		  	<!-- 이전 -->
 		  	<ul class="pagination">
 		  		<li class="page-item ${(ph.prev eq false) ? 'disabled' : '' }">
-			  		<a class="page-link" href="/notice/list?pageNo=${ph.startPage - 1 }&qty=${ph.npvo.qty}&type=${ph.npvo.type}&keyword=${ph.npvo.keyword}" aria-label="Previous">
+			  		<a class="page-link" href="/notice/list?pageNo=${ph.startPage - 1 }&qty=${ph.pgvo.qty}&type=${ph.pgvo.type}&keyword=${ph.pgvo.keyword}" aria-label="Previous">
 			  		<span aria-hidden="true">&laquo;</span>
 			  		</a>
 		  		</li>
 		  		<c:forEach begin="${ph.startPage }" end="${ph.endPage }" var="i">
   					<li>
-  						<a class="page-link" href="/notice/list?pageNo=${i }&qty=${ph.npvo.qty}&type=${ph.npvo.type}&keyword=${ph.npvo.keyword}">${i }</a>
+  						<a class="page-link" href="/notice/list?pageNo=${i }&qty=${ph.pgvo.qty}&type=${ph.pgvo.type}&keyword=${ph.pgvo.keyword}">${i }</a>
   					</li>
   				</c:forEach>
   			<!-- 다음 -->
   				<li class="page-item ${(ph.next eq false) ? 'disabled' : ''}">
-  					<a class="page-link" href="/notice/list?pageNo=${ph.endPage + 1 }&qty=${ph.npvo.qty}&type=${ph.npvo.type}&keyword=${ph.npvo.keyword}" aria-label="Next">
+  					<a class="page-link" href="/notice/list?pageNo=${ph.endPage + 1 }&qty=${ph.pgvo.qty}&type=${ph.pgvo.type}&keyword=${ph.pgvo.keyword}" aria-label="Next">
         			<span aria-hidden="true">&raquo;</span>
     				</a>
   				</li>	
@@ -166,7 +178,7 @@
 		<br>
 		
 		<a href="/notice/register">
-		<button type="button">글작성</button>
+			<button type="button">글작성</button>
 		</a>
 	</div>	
 </div>
@@ -174,7 +186,7 @@
 
 <!-- 스크립트 라인  -->
 <script type="text/javascript">
-	
+
 </script>
 <script type="text/javascript" src="/resources/js/notice/noticeList.js"></script>
 

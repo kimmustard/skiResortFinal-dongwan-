@@ -14,7 +14,28 @@
 	  	#{memberAddress}, #{memberAddressDetail}, #{memberPhoneNum}, 
 	  	#{memberTerms1},#{memberTerms2},#{memberTerms3})
 	</insert>
-
+	
+	<select id="getUser" resultType="com.web.www.domain.member.MemberVO">
+		select * from member where member_id = #{memberId} and member_type = #{memberType}
+	</select>
+	
+	<!-- 멤버수정 -->
+	<update id="socialModifyMember">
+		update member set member_alias = #{memberAlias}, member_email = #{memberEmail}, 
+		member_phone_num = #{memberPhoneNum}, member_address = #{memberAddress}, member_address_detail = #{memberAddressDetail}
+		where member_id = #{memberId} and member_type = #{memberType}
+	</update>
+	
+	<update id="normalModifyMember">
+		update member set member_alias = #{memberAlias},
+		member_phone_num = #{memberPhoneNum}, member_address = #{memberAddress}, member_address_detail = #{memberAddressDetail}
+		where member_email = #{memberEmail} and member_type = #{memberType}
+	</update>
+	
+	
+	
+	
+	
 	<select id="checkId" resultType="int">
 		select count(member_id) from member where member_id = #{memberId}
 	</select>
@@ -57,5 +78,8 @@
 	  	#{memberPhoneNum}, #{memberType})
 	</insert>
 	
+	<update id="cdCheck">
+		update member set member_terms3 = #{memberTerms3} where member_id = #{memberId}
+	</update>
 
   </mapper>
