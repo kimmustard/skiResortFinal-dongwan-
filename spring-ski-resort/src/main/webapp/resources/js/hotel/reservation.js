@@ -1,3 +1,4 @@
+
 document.getElementById("payBtn").addEventListener('click',()=>{
     let hotelReservePeople= document.getElementById('hotelReservePeople').value;
     let hotelReserveStayStart= document.getElementById('hotelReserveStayStart').value;
@@ -249,14 +250,14 @@ function roomSelectEvent(num){
     // }
     
 }
-document.getElementById('submitBtn').addEventListener('click',()=>{
-    if(pay1.value==""){
-        alert("방을 선택해주세요");
-    }
-    else{
-        document.getElementById('form').submit();
-    }
-})
+//document.getElementById('submitBtn').addEventListener('click',()=>{
+//    if(pay1.value==""){
+//        alert("방을 선택해주세요");
+//    }
+//    else{
+//        document.getElementById('form').submit();
+//    }
+//})
 
 
  
