@@ -84,6 +84,7 @@ public class HotelController {
 		reatt.addFlashAttribute("susmodi", isOk > 0 ? "y" : "n");
 		return "redirect:/hotel/roomList";
 	}
+	
 	@PostConstruct
 	public void addRoomList() {
 		int roomCnt = hsv.selectRoomCnt();
