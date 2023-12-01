@@ -47,7 +47,7 @@
 		width: 1200px;
 		
 		display: flex;
-		
+		background-color: gray;
 		justify-content: space-around;
 		flex-wrap: wrap;
 		
@@ -55,8 +55,13 @@
 	
 	.itemImageBox div{
 		width: 18%;
-		height: 300px;
-		
+		height: 300px;	
+		border: 2px solid black;
+	}
+	
+	.itemImageBox div img{
+		width: 100%;
+		height: auto;
 	}
 	
 	.textBox{
@@ -124,6 +129,7 @@
 			</ul>
 		</div>
 		
+		
 		<div class="menuCategory">
 			<div>
 				<nav class="nav flex-column nav-tabs">
@@ -135,48 +141,133 @@
 		</div>
 		
 		
+		
 		<div class="itemContainer">
 			<div class="skiItemList" id="skiItemList">
 				<div class="itemInfo">
-					<div class="itemImageBox">
-						<div>
-							<!-- 이미지 파일 표시 -->
-							<img src="//one8.co.kr/web/product/medium/202310/7ffa01cd1d4ab7a40d2ad38f41349896.jpg" onerror="this.src=null_img" ori="//one8.co.kr/web/product/medium/202310/7ffa01cd1d4ab7a40d2ad38f41349896.jpg" id="eListPrdImage90229_1" class="thumb_Img" alt="P083 뵐클 남성 스키 세트" style="display:block; position:relative;width:100%; top:0px; left:0px; z-index:1">
-						</div>
-						<div>
-							<!-- 이미지 파일 표시 -->
-							<img src="//one8.co.kr/web/product/medium/202311/f09764f57eab506e7223f3dfdbda89d1.jpg" onerror="this.src=null_img" ori="//one8.co.kr/web/product/medium/202311/f09764f57eab506e7223f3dfdbda89d1.jpg" id="eListPrdImage97921_1" class="thumb_Img" alt="P047 노르디카 남성 스키 세트" style="display:block; position:relative;width:100%; top:0px; left:0px; z-index:1">
-						</div>
-						<div>
-							<!-- 이미지 파일 표시 -->
-							<img src="//one8.co.kr/web/product/medium/202310/992ef93964aec4fbbf628087a6dc826a.jpg" onerror="this.src=null_img" ori="//one8.co.kr/web/product/medium/202310/992ef93964aec4fbbf628087a6dc826a.jpg" id="eListPrdImage88936_1" class="thumb_Img" alt="P075 블리자드 남성 스키 세트" style="display:block; position:relative;width:100%; top:0px; left:0px; z-index:1">
-						</div>
-						<div>
-							<!-- 이미지 파일 표시 -->
-							<img src="//one8.co.kr/web/product/medium/202310/4d75387e4382861a9879a29cde83aa9f.jpg" onerror="this.src=null_img" ori="//one8.co.kr/web/product/medium/202310/4d75387e4382861a9879a29cde83aa9f.jpg" id="eListPrdImage90161_1" class="thumb_Img" alt="P015 아토믹 남녀공용 스키 세트" style="display:block; position:relative;width:100%; top:0px; left:0px; z-index:1">
-						</div>
-						<div>
-							<!-- 이미지 파일 표시 -->
-							<img src="//one8.co.kr/web/product/medium/202310/a9571feb93da5bd6f46fa1e370a25d0d.jpg" onerror="this.src=null_img" ori="//one8.co.kr/web/product/medium/202310/a9571feb93da5bd6f46fa1e370a25d0d.jpg" id="eListPrdImage75069_1" class="thumb_Img" alt="P003 아토믹 남성 스키 세트" style="display:block; position:relative;width:100%; top:0px; left:0px; z-index:1">
-						</div>
-					</div>
-					
-					<div class="textBox">
+					<div class="itemImageBox" id="lowItemImageBox">
 						
 						<div>
-							<p class="fs-5">뷜클 남성 스키 세트</p>
+							<!-- 이미지 파일 표시 -->
+							일반
 						</div>
 						<div>
-							<p class="fs-5">노르디카 남성 스키 세트</p>
+							<!-- 이미지 파일 표시 -->
+							
 						</div>
 						<div>
-							<p class="fs-5">블리자드 남성 스키 세트</p>
+							<!-- 이미지 파일 표시 -->
 						</div>
 						<div>
-							<p class="fs-5">아토믹 남녀공용 스키 세트</p>
+							<!-- 이미지 파일 표시 -->
 						</div>
 						<div>
-							<p class="fs-5">아토믹 남성 스키 세트</p>
+							<!-- 이미지 파일 표시 -->
+						</div>
+						
+					</div>
+					
+					<div class="textBox" id="lowItemTextBox">
+						
+						<div>
+							
+						</div>
+						<div>
+							
+						</div>
+						<div>
+							
+						</div>
+						<div>
+							
+						</div>
+						<div>
+							
+						</div>
+						
+					</div>
+					
+					
+					<div class="itemImageBox" id="midItemImageBox" style="display: none;">
+						
+						<div>
+							<!-- 이미지 파일 표시 -->
+							중급
+						</div>
+						<div>
+							<!-- 이미지 파일 표시 -->
+							
+						</div>
+						<div>
+							<!-- 이미지 파일 표시 -->
+						</div>
+						<div>
+							<!-- 이미지 파일 표시 -->
+						</div>
+						<div>
+							<!-- 이미지 파일 표시 -->
+						</div>
+						
+					</div>
+					
+					<div class="textBox" id="midItemTextBox" style="display: none;">
+						
+						<div>
+							프리미엄
+						</div>
+						<div>
+							
+						</div>
+						<div>
+							
+						</div>
+						<div>
+							
+						</div>
+						<div>
+							
+						</div>
+						
+					</div>
+					
+					
+					<div class="itemImageBox" id="premiumItemImageBox" style="display: none;">
+						
+						<div>
+							<!-- 이미지 파일 표시 -->	
+						</div>
+						<div>
+							<!-- 이미지 파일 표시 -->
+							
+						</div>
+						<div>
+							<!-- 이미지 파일 표시 -->
+						</div>
+						<div>
+							<!-- 이미지 파일 표시 -->
+						</div>
+						<div>
+							<!-- 이미지 파일 표시 -->
+						</div>
+						
+					</div>
+					
+					<div class="textBox" id="premiumItemTextBox" style="display: none;">
+						
+						<div>
+							
+						</div>
+						<div>
+							
+						</div>
+						<div>
+							
+						</div>
+						<div>
+							
+						</div>
+						<div>
+							
 						</div>
 						
 					</div>
@@ -249,6 +340,7 @@
 		
 		
 		<!-- 페이징 기능 들어갈지말지 -->
+		
 	
 	
 	</div>

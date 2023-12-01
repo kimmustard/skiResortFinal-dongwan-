@@ -48,8 +48,5 @@
 		values(#{uuid},#{saveDir},#{fileName},#{fileIsok},#{fileType},#{fileSize},#{rentalListItemNum})
 	</insert>
 	
-	<select id="selectFlist" resultType="long">
-		select * from file where rental_list_item_num = #{rentalListItemNum}
-	</select>
 	
 </mapper>

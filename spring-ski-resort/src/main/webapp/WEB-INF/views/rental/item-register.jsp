@@ -45,11 +45,17 @@
 			<form action="/rental/item-register" method="post" enctype="multipart/form-data">
 				<div class="inputContainer">
 					<div class="itemType">
-						<p class="fs-4">장비종류 선택</p>
-						<input class="form-check-input" type="radio" name="rentalListItemType" value="일반장비SET" id="lowItem">일반장비SET
-						<input class="form-check-input" type="radio" name="rentalListItemType" value="중급장비SET" id="midItem">중급장비SET
-						<input class="form-check-input" type="radio" name="rentalListItemType" value="프리미엄장비SET" id="premiumItem">프리미엄장비SET
+						<p class="fs-4">장비타입 선택</p>
+						<input class="form-check-input" type="radio" name="rentalListItemType" value="스키" id="skiItem">스키
+						<input class="form-check-input" type="radio" name="rentalListItemType" value="보드" id="boardItem">보드
 						<input class="form-check-input" type="radio" name="rentalListItemType" value="의류" id="wearItem">의류
+					</div>
+					<div class="itemType">
+						<p class="fs-4">장비등급 선택</p>
+						<input class="form-check-input" type="radio" name="rentalListItemGrade" value="일반장비" id="lowItem">일반장비
+						<input class="form-check-input" type="radio" name="rentalListItemGrade" value="중급장비" id="midItem">중급장비
+						<input class="form-check-input" type="radio" name="rentalListItemGrade" value="프리미엄장비" id="premiumItem">프리미엄장비
+						<input class="form-check-input" type="radio" name="rentalListItemGrade" value="등급없음" id="noGrade">등급없음
 					</div>
 					<div class="itemInfo">
 						<div class="input-group" id="rowItemName" style="display: none;">

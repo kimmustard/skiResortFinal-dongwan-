@@ -26,6 +26,7 @@ foreign key(rental_lift_num) references rental_lift(rental_lift_num));
 create table rental_items(
 rental_list_item_num bigint not null auto_increment,
 rental_list_item_type varchar(50),
+rental_list_item_grade varchar(50),
 rental_list_low_item varchar(50),
 rental_list_mid_item varchar(50),
 rental_list_premium_item varchar(50),

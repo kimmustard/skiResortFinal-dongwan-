@@ -16,6 +16,6 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RentalItemDTO {
-	private RentalItemVO ritvo;
+	private List<RentalItemVO> ritvo;
 	private List<FileVO> flist;
 }

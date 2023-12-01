@@ -2,8 +2,6 @@ package com.web.www.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.web.www.domain.FileVO;
+import com.web.www.domain.member.AuthUser;
 import com.web.www.domain.member.MemberVO;
 import com.web.www.domain.rental.RentalItemDTO;
 import com.web.www.domain.rental.RentalItemVO;
@@ -50,16 +49,11 @@ public class RentalController {
 	}
 	
 	@PostMapping("/reserve")
-	public String liftReservePost(@ModelAttribute("rlivo") RentalLiftVO rlivo, HttpSession ses) {
-		log.info("rlivo = {}",rlivo);
-		String memberEmail = (String)ses.getAttribute("memberEmail");
-		String memberType = (String)ses.getAttribute("memberType");
-		log.info("memberEmail = {}",memberEmail);
-		log.info("memberType = {}",memberType);
+	public String liftReservePost(@ModelAttribute("rlivo") RentalLiftVO rlivo, @AuthUser MemberVO mvo) {
 		RentalVO rvo = new RentalVO();
 		rvo.setRentalLiftNum(rlivo.getRentalLiftNum());
-		rvo.setMemberEmail(memberEmail);
-		rvo.setMemberType(memberType);
+		rvo.setMemberEmail(mvo.getMemberEmail());
+		rvo.setMemberType(mvo.getMemberType());
 		int isOk = rsv.liftReserve(rlivo);
 		isOk = rsv.rental(rvo);
 		log.info((isOk > 0)? "ok":"fail");
@@ -75,7 +69,7 @@ public class RentalController {
 	}
 	
 	@PostMapping("/item-register")
-	public String itemRegister(RentalItemVO ritvo, RedirectAttributes re,
+	public String itemRegister(List<RentalItemVO> ritvo, RedirectAttributes re,
 			@RequestParam(name = "files", required = false)MultipartFile[] files) {
 		log.info("ritvo = {}",ritvo);
 		List<FileVO> flist = null;
@@ -90,7 +84,7 @@ public class RentalController {
 
 	@GetMapping("/item")
 	public String itemForm(Model model) {
-		List<RentalItemVO> list = rsv.itemList();
+		List<RentalItemDTO> list = rsv.itemList();
 		
 		model.addAttribute("list", list);
 		

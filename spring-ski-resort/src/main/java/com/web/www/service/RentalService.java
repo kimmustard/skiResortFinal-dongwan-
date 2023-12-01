@@ -3,7 +3,6 @@ package com.web.www.service;
 import java.util.List;
 
 import com.web.www.domain.rental.RentalItemDTO;
-import com.web.www.domain.rental.RentalItemVO;
 import com.web.www.domain.rental.RentalLiftVO;
 import com.web.www.domain.rental.RentalVO;
 
@@ -15,7 +14,7 @@ public interface RentalService {
 
 	int itemRegister(RentalItemDTO rentalItemDTO);
 
-	List<RentalItemVO> itemList();
+	List<RentalItemDTO> itemList();
 
 
 }

@@ -24,6 +24,4 @@ public interface FileDAO {
 
 	int insertItemFile(FileVO fvo);
 
-	List<FileVO> selectFlist(long rentalListItemNum);
-
 }
