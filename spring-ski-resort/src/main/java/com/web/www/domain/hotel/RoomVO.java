@@ -21,4 +21,17 @@ public class RoomVO {
 	private String hotelRoomArea;
 	private int hotelRoomFee;
 	private int hotelRoomCount;
+	
+	public RoomVO(String hotelRoomName, String hotelRoomExplain, int hotelRoomStandardPeople, String hotelRoomType,
+		 String hotelRoomArea, int hotelRoomFee, int hotelRoomCount) {
+		this.hotelRoomName = hotelRoomName;
+		this.hotelRoomExplain = hotelRoomExplain;
+		this.hotelRoomStandardPeople = hotelRoomStandardPeople;
+		this.hotelRoomType = hotelRoomType;
+		this.hotelRoomArea = hotelRoomArea;
+		this.hotelRoomFee = hotelRoomFee;
+		this.hotelRoomCount = hotelRoomCount;
+	}
+	
+		
 }
