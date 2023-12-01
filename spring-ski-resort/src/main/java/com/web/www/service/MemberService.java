@@ -1,8 +1,11 @@
 package com.web.www.service;
 
+import java.util.List;
+
 import com.web.www.domain.member.MemberCheckDTO;
 import com.web.www.domain.member.MemberVO;
 import com.web.www.domain.member.ModifyMemberDTO;
+import com.web.www.domain.pay.PayInfoVO;
 
 public interface MemberService {
 
@@ -13,8 +16,15 @@ public interface MemberService {
 	
 	int modifyMember(ModifyMemberDTO mvo);
 	
+	/**
+	 * 유저 디테일 페이지 관련
+	 * getUser
+	 * @param memberId memberType 사용자 정보 가져올때 사용합니다.
+	 * @return 유저정보
+	 */
+	MemberVO getUser(String memberId, String memberType);
 	
-
+	
 	/**
 	 * 시큐리티
 	 * @param UserDetail 이후 "인증된"이메일
@@ -39,6 +49,8 @@ public interface MemberService {
 
 	// 광고 체크 비동기로 받기
 	int cdCheck(MemberCheckDTO mcDto);
+
+
 
 
 

@@ -34,7 +34,13 @@
 			<h1 class="notice-logo">INFORMATION</h1>
 			
 		</div>
-		내용 추가하면 알아서 길이 늘어나요
+		<div class="news-topic">
+			<h1>News & Topic</h1>	
+		</div>
+	
+		<div class="accommodations">
+			<h1>ACCOMMODATIONS</h1>	
+		</div>
 	
 
 	</div>		

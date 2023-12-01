@@ -70,7 +70,6 @@ public class QnaController {
 	@GetMapping("/list")
 	public void qnaList(HttpSession ses, Model m, PagingVO pgvo) {
 		String str = (String) ses.getAttribute("memberId");
-		log.info("###### = {}", str);
 		m.addAttribute("list", qsv.qnaList(pgvo));
 		int totalCount = qsv.getTotalCount(pgvo);
 		PagingHandler ph = new PagingHandler(pgvo, totalCount);

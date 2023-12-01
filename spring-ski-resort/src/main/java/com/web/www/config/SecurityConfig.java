@@ -63,7 +63,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		@Override
 		protected void configure(HttpSecurity http) throws Exception {
 			http.csrf().disable();
-			
+
 			//OAuth접근시 UTF-8 필터 필요
 			CharacterEncodingFilter filter = new CharacterEncodingFilter();
 			filter.setEncoding("UTF-8");
@@ -71,7 +71,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			http.addFilterBefore(filter, CsrfFilter.class);
 			
 
-		
 			//http의 승인요청 담당
 			http.authorizeRequests()
 			.antMatchers("/member/list").hasRole("ADMIN")
@@ -96,8 +95,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.invalidateHttpSession(true)
 			.deleteCookies("JSESSIONID")
 			.logoutSuccessUrl("/");	//홈으로
+		
 		}
 
-	
-	
+
 }
