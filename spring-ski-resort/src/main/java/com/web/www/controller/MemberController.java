@@ -27,7 +27,6 @@ import com.web.www.domain.member.MemberVO;
 import com.web.www.domain.member.ModifyMemberDTO;
 import com.web.www.domain.member.RegisterMemberDTO;
 import com.web.www.domain.pay.PayInfoVO;
-import com.web.www.repository.MemberDAO;
 import com.web.www.service.MemberService;
 import com.web.www.service.PayService;
 

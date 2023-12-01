@@ -8,6 +8,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -48,6 +49,8 @@ public class OauthParser {
 			//멤버 객체
 			MemberVO mvo = new MemberVO();
 			mvo.setMemberId(id);
+			UUID uuid = UUID.randomUUID();
+			mvo.setMemberPwd(uuid.toString());
 			mvo.setMemberAlias(alias);
 			mvo.setMemberEmail(email);
 			mvo.setMemberPhoneNum(phoneNum);
@@ -104,9 +107,10 @@ public class OauthParser {
 			
 			//카카오 전화번호는 +82 XXXX 방식으로 넘어오기 때문에 번호 replace가 필요함
 			String formattedPhoneNumber = "0" + phoneNum.substring(4);
-
 			MemberVO mvo = new MemberVO();
 			mvo.setMemberId(id);
+			UUID uuid = UUID.randomUUID();
+			mvo.setMemberPwd(uuid.toString());
 			mvo.setMemberAlias(alias);
 			mvo.setMemberEmail(email);
 			mvo.setMemberPhoneNum(formattedPhoneNumber);
@@ -133,6 +137,8 @@ public class OauthParser {
 		
 		MemberVO mvo = new MemberVO();
 		mvo.setMemberId(id);
+		UUID uuid = UUID.randomUUID();
+		mvo.setMemberPwd(uuid.toString());
 		mvo.setMemberAlias(alias);
 		mvo.setMemberEmail(email);
 		mvo.setMemberName(name);
