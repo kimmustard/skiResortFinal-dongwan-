@@ -18,4 +18,6 @@ public interface PayDAO {
 	 */
 	List<PayInfoVO> getPayInfoList(long memberNum);
 
+	int payMentRefund(String payImpUid);
+
 }

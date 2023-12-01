@@ -1,4 +1,9 @@
-##test member dummy SQL 
+
+
+삭제후 순차적으로 복붙 부탁
+
+drop table member;
+drop table auth_member;
 
 ## member table 11-16
 create table member(
@@ -14,6 +19,7 @@ member_phone_num varchar(25) not null,
 member_reg_at datetime default now(),
 member_last_at datetime default now(),
 member_pwd_mod_at datetime default now(),
+member_grade varchar(15) default 'Bronze',
 member_del varchar(1) default 'N',
 member_terms1 varchar(15) default 'non-check',
 member_terms2 varchar(15) default 'non-check',
