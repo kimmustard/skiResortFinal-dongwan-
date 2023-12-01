@@ -104,11 +104,11 @@ public class PayServiceImpl implements PayService{
 //		return new ResponseEntity<String>("결제 금액 오류, 결제 취소", HttpStatus.BAD_REQUEST);
 		
 		/*성공시*/
-//		pdao.registerPay(upiDTO);
-//		return new ResponseEntity<String>("주문이 완료되었습니다", HttpStatus.OK);
+		pdao.registerPay(upiDTO);
+		return new ResponseEntity<String>("주문이 완료되었습니다", HttpStatus.OK);
 	
 		//임시 리턴 위에 구성이 되면 삭제하세요.
-		return null;
+//		return null;
 	/*********************************/
 		
 		

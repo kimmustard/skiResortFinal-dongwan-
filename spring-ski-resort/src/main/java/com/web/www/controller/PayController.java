@@ -50,7 +50,7 @@ public class PayController {
 		return new ResponseEntity<String>("결제 금액 오류, 결제 취소", HttpStatus.BAD_REQUEST);
 	}
 	
-	@GetMapping("/refund")
+	@PostMapping("/refund")
 	public String refunt(@RequestParam String payImpUid) throws IOException {
 		log.info("##영수증정보## = {}", payImpUid);
 			

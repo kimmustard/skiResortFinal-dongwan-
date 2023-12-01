@@ -21,6 +21,7 @@ public class PayInfoVO {
 	private String payName; // 거래 품목 이름
 	private long payAmount; //가격
 	private String payRegAt; //결제일자
+	private String payStatus; //결제상태
 	
 	//호텔 예약번호
 	private String hotelMainNum;
