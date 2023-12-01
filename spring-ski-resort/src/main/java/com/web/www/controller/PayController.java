@@ -1,6 +1,10 @@
 package com.web.www.controller;
 
+import java.io.IOException;
+
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,24 +35,26 @@ public class PayController {
 		return "/pay/testForm";
 	}
 	
+	
+	
+	
 	@ResponseBody
 	@PostMapping(value = "/portOne", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public String protOnePay(@RequestBody PayInfoVO pivo, @AuthUser MemberVO mvo) {
+	public ResponseEntity<String> portOnePay(@RequestBody PayInfoVO pivo, @AuthUser MemberVO mvo) throws IOException {
 		pivo.setMemberNum(mvo.getMemberNum());
 		log.info("##결제 정보##  = {}" , pivo);
 		
 		//결제정보 테이블 저장
 		psv.registerPay(pivo);
 		
-		
-		return null;
+		return new ResponseEntity<String>("결제 금액 오류, 결제 취소", HttpStatus.BAD_REQUEST);
 	}
 	
 	@GetMapping("/refund")
-	public String refunt(@RequestParam String payImpUid) {
+	public String refunt(@RequestParam String payImpUid) throws IOException {
 		log.info("##영수증정보## = {}", payImpUid);
 			
-		int isOk = psv.refund(payImpUid);
+		int isOk = psv.payMentRefund(payImpUid);
 		return "redirect:/member/detail";
 	}
 	
