@@ -43,3 +43,9 @@ async function cdChecker(checkData) {
 
 }
 
+
+//이메일 입력창 띄우기
+document.getElementById('inputMemberEmail').addEventListener('click', () => {
+    document.getElementById('MemberEmailCheck').click();
+
+})

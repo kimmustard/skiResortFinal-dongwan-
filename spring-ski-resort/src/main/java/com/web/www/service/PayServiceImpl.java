@@ -95,7 +95,8 @@ public class PayServiceImpl implements PayService{
 		
 		
 		/**
-		 * @IF 이프문을 태워서 빠져나가는 로직 구성하면 됩니다.
+		 * @if문 태워서 빠져나가는 로직 구성하면 됩니다.
+		 * 단, 환불 or 결제여부에 따라 기존물품 갯수 +,-1을 꼭 해주세요
 		 * */
 		
 		

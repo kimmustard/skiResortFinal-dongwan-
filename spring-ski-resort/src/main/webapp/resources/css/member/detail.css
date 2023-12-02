@@ -4,62 +4,126 @@
 .bodyContainer{
 	width: 100%;
 	display: flex;
-	background-image: url("/resources/etc/back.jpg");
+	/* background-image: url("/resources/etc/back.jpg");
 	/* background-image: url("https://rusutsu.com/wp-content/uploads/home-main62.jpg"); */
 	background-size: cover;
 	position: fixed;
+}
+
+.backgroundImg{
+	position: absolute;
+	right: 0px;
+	width: 1300px;
+	height: 1000px;
+	z-index: -5;
+	background-image: url("https://i.imgur.com/UbaaWkY.png");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
 	
 }
 /* 왼쪽 카테고리 */
 .mainCategory{
-	margin-top:96px;
 	width: 350px;
-	background-color: rgba(255,255,255,0.9);
+	background-color: rgba(39,48,77,0.9);
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.7); 
 	border-bottom-right-radius: 100px;
 	position: fixed;
-    height: 800px;
+    height: 900px;
+}
+
+.category-profile{
+	display: flex;
+	flex-direction: column;
+	color: white;
+	margin: 10px;
+	margin-left: 60px;
+	margin-top: 96px;
+}
+
+.category-profile>span{
+	margin-top: 10px;
+	margin-left: -15px;
+}
+#member-grade{
+	font-size: 25px;
+	font-weight: 700
 }
 
 .category-body{
 	margin: 50px;
 }
 
+.category-Box1{
+	display: flex;
+	justify-content: space-around;
+	margin-right: 20px;
+	flex-wrap: wrap;
+}
 
-.category-title{
-	margin-top: 50px;
-	margin-bottom: 100px;
+.category>a{
+	display: flex;
+	width: 80px;
+	text-align: center;
+	flex-direction: column;
+}
+.category>a>span{
+	display: flex;
+	width: 150px;
+	margin: 10px;
+	font-weight: 700;
+	margin-top: 10px;
+}
+
+/*아이콘 글자 span*/
+.category>a>.cs2{
+	margin-left: -8px;
 }
 
 .category-Box1>.category{
-	margin-bottom: 50px;
+	margin: 10px;
+}
+
+
+.category-Box1>.category>a{
+	text-decoration: none;
+	color: white;	
 }
 
 .category-Box2>.category{
-	margin-bottom: 50px;
-}
-a{
-	text-decoration: none;
-	color: black;
-}
-.category>a:hover{
-	background-color: #aaa;
 	color: white;
+	margin-bottom: 10px;
+}
+.category-Box2{
+	position: absolute;
+	left: 40px;
+	width: 300px;
+	bottom: 50px;
+}
+
+.category-Box2>.cbox8{
+	margin-bottom: 10px;
+	margin-left: 20px;
+}
+
+
+.category-Box1>.category:hover {
+    background-color: #2d96c4; /* hover 시 배경색 변경 */
+    border-radius: 50px;
+    transition: 0.7s;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* 그림자 효과 추가 */
+}
+
+.category-Box1>.category>a:hover {
+    color: #fff; /* hover 시 글자색 변경 */
 }
 .move-main:hover{
 	background-color: #aaa;
 	color: white;
 }
 
-
-.category-Box3{
-	position: absolute;
-	left: 40px;
-	width: 300px;
-	bottom: 150px;
-}
-
-.category-Box3>.category{
-	margin-bottom: 10px;
+.bi{
+	font-size: 50px;
+	text-align: center;
 }
 
 
@@ -83,8 +147,8 @@ a{
 
 .modifyViewBox{
   
- 	margin-left: 450px;
-    width: 450px;
+ 	margin-left: 500px;
+    width: 600px;
     background-color: rgba(255,255,255,0.9);
     height: 810px;
 	box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
@@ -94,6 +158,7 @@ a{
 }
 .modifyBox{
 	margin-top: 20px;
+	margin-left: 50px;
 	margin-bottom: 20px;
 	border-radius: 10px;
 }
@@ -184,6 +249,13 @@ a{
 	color: #666;
 	font-size: 18px;
     font-weight: 600;
+}
+
+.member-msg>h3{
+	font-weight: bold;
+	font-size: 30px;
+	color: black;
+	margin-bottom: 20px;
 }
 
 

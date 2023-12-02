@@ -218,36 +218,34 @@
 	<!-- 이메일 인증 팝업 -->
 	<!-- Modal -->
 	<div class="modal fade" id="staticBackdrop" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-	  <div class="modal-dialog" tabindex="-1">
-	    <div class="modal-content" tabindex="-1">
-	      <div class="modal-header" tabindex="-1">
-	        <h1 class="modal-title fs-5" id="staticBackdropLabel" tabindex="-1">이메일 인증하기</h1>
-	        <button type="button" class="btn-close" id="modalClose" data-bs-dismiss="modal" aria-label="Close" tabindex="-1"></button>
-	      </div>
-	      <div class="modal-body" tabindex="-1">
-	        <div class="form-group registerBox rb-5" tabindex="-1">
-			     <label for="modalEmailCheck" class="form-label mt-4" tabindex="-1">Email</label>
-			     <div class="input-group mb-3" tabindex="-1">
-				     <input type="email" class="form-control" id="modalEmailCheck" aria-describedby="emailHelp" placeholder="이메일"  tabindex="-1" />
-				     <button type="button" class="btn btn-primary" id="modalEmailCheckBtn" tabindex="-1">
-					 	인증번호 받기
-					 </button>
-			  		 </div>
-				 <div id="emailDuplicateCheck" tabindex="-1"></div>
-	      </div>
-	      <div class="modal-body" id="modal-body2" tabindex="-1">
-	       
-	      </div>
-	      <div class="modal-footer" tabindex="-1">
-	        <input type="button" class="btn btn-primary" id="emailCheckSuccess" value="인증완료" tabindex="-1">
-	      </div>
-	    </div>
-	  </div>
-	</div>
-	
-	
+		  <div class="modal-dialog" tabindex="-1">
+		    <div class="modal-content" tabindex="-1">
+		      <div class="modal-header" tabindex="-1">
+		        <h1 class="modal-title fs-5" id="staticBackdropLabel" tabindex="-1">이메일 인증하기</h1>
+		        <button type="button" class="btn-close" id="modalClose" data-bs-dismiss="modal" aria-label="Close" tabindex="-1"></button>
+		      </div>
+		      <div class="modal-body" tabindex="-1">
+		        <div class="form-group registerBox rb-5" tabindex="-1">
+				     <label for="modalEmailCheck" class="form-label mt-4" tabindex="-1">Email</label>
+				     <div class="input-group mb-3" tabindex="-1">
+					     <input type="email" class="form-control" id="modalEmailCheck" aria-describedby="emailHelp" placeholder="이메일"  tabindex="-1" />
+					     <button type="button" class="btn btn-primary" id="modalEmailCheckBtn" tabindex="-1">
+						 	인증번호 받기
+						 </button>
+				  		 </div>
+					 <div id="emailDuplicateCheck" tabindex="-1"></div>
+		      </div>
+		      <div class="modal-body" id="modal-body2" tabindex="-1">
+		       
+		      </div>
+		      <div class="modal-footer" tabindex="-1">
+		        <input type="button" class="btn btn-primary" id="emailCheckSuccess" value="인증완료" tabindex="-1">
+		      </div>
+		    </div>
+		  </div>
+		</div>
 
-</div>
+	</div>
 </div>
 
 

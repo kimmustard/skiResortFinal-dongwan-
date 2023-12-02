@@ -35,6 +35,8 @@ public class PayController {
 		return "/pay/testForm";
 	}
 	
+	//유저 결제 상세 페이지
+	@GetMapping("/member")
 	
 	
 	

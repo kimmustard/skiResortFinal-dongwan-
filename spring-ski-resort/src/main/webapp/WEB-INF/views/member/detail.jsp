@@ -14,66 +14,69 @@
 <body>
 	
 	<div class="bodyContainer">
-
+	<div class="backgroundImg">
+	
+	</div>
 		<!-- 왼쪽 카테고리  -->
 		<div class="mainCategory">
+			<div class="category-profile">
+				<img alt="그림없음" width="230" height="200" src="/resources/etc/logo_white.png">
+				<span>회원님의 등급은 <span id="member-grade">${mvo.memberGrade} </span> 입니다.</span>
+			</div>
 		
 			<div class="category-body">
-			
-			<!-- 	<div class="category-title">
-					<span class="category-span-main">
-						<i class="bi bi-house-door-fill"></i> <a class="move-main" href="/">메인으로</a> 
-					</span>	
-				</div> -->
-				
 				<div class="category-Box1">
 					<div class="category cbox1">
-						<a href="#"> 
-							<span class="category-span">
-								<i class="bi bi-person-bounding-box"></i> 내 프로필
+						<a href="/member/detail"> 
+							<i class="bi bi-person-bounding-box"></i>
+							<span class="category-span cs1">
+								 내 프로필
 							</span> 
 						</a>
 					</div>
 					<div class="category cbox2">
 						<a href="#"> 
-							<span class="category-span">
-								<i class="bi bi-key-fill"></i> 비밀번호 변경
+								<i class="bi bi-key-fill"></i>
+							<span class="category-span cs2">
+							 	비밀번호 변경
 							</span> 
 						</a>
 					</div>
 					<div class="category cbox3">
 						<a href="#"> 
+								<i class="bi bi-list-stars"></i>
 							<span class="category-span">
-								<i class="bi bi-list-stars"></i> 결제내역
+								 결제내역
 							</span> 
 						</a>
 					</div>
 					<div class="category cbox4">
 						<a href="#"> 
+								<i class="bi bi-list-stars"></i>
 							<span class="category-span">
-								<i class="bi bi-list-stars"></i> 환불신청
+								 문의내역
+							</span> 
+						</a>
+					</div>
+					<div class="category cbox6">
+						<a href="/member/logoutSub"> 
+								<i class="bi bi-box-arrow-left"></i> 
+							<span class="category-span">
+								로그아웃
+							</span> 
+						</a>
+					</div>
+					<div class="category cbox7">
+						<a href="#"> 
+								<i class="bi bi-person-fill-slash"></i>
+							<span class="category-span">
+								 회원탈퇴
 							</span> 
 						</a>
 					</div>
 				</div>
 				
 				<div class="category-Box2">
-					<div class="category cbox6">
-						<a href="/member/logoutSub"> 
-							<span class="category-span">
-								<i class="bi bi-box-arrow-left"></i> 로그아웃
-							</span> 
-						</a>
-					</div>
-					<div class="category cbox7">
-						<a href="#"> 
-							<span class="category-span">
-								<i class="bi bi-person-fill-slash"></i> 회원탈퇴
-							</span> 
-						</a>
-					</div>
-				</div>
-				<div class="category-Box3">
 					<div class="category cbox8">
 						<div class="form-check form-switch">
 					        <input class="form-check-input" type="checkbox" 
@@ -108,7 +111,10 @@
 						
 							<c:if test="${authType == 'normal' }">
 							<div class="modifyBox modifyTitle">
-								<div class="member-msg">다이스키 정규회원입니다.</div>
+								<div class="member-msg">
+									<h3>회원정보 수정</h3>
+									<span class="sb1-span">회원님은 일반회원입니다.</span>
+								</div>
 							</div>
 	
 							<div class="modifyBox fbox1">
@@ -125,8 +131,11 @@
 								<input class="sb1-input" path="memberAlias" id="sb1-input3" name="memberAlias" value="${mvo.memberAlias }">
 							</div>
 							<div class="modifyBox fbox4">
-								<label for="sb1-input4" class="sb1-span" onclick="focusInput('sb1-input4')">이메일</label><br>
-								<input class="sb1-input" id="sb1-input4" path="memberEmail" name="memberEmail" value="${mvo.memberEmail }" readonly="readonly" />
+								<label for="modalEmailCheck" class="sb1-span" onclick="focusInput('sb1-input4')">이메일</label><br>
+								<input class="sb1-input" id="modalEmailCheck" path="memberEmail" name="memberEmail" value="${mvo.memberEmail }" readonly="readonly" />
+								<button type="button" class="btn btn-primary" id="MemberEmailCheck" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="display: none;">
+							 		이메일 인증
+							 	</button>
 							</div>
 							<div class="modifyBox fbox5">
 								<label for="sb1-input5" class="sb1-span" onclick="focusInput('sb1-input2')">핸드폰번호</label><br>
@@ -145,7 +154,8 @@
 							</c:if>
 							<c:if test="${authType != 'normal' }">
 							<div class="modifyTitle">
-								<span class="sb1-span">다이스키 소셜(${mvo.memberType})회원입니다.</span>
+								<h3>회원정보 수정</h3>
+								<span class="sb1-span">회원님은 소셜(${mvo.memberType})회원입니다.</span>
 							</div>
 							<div class="modifyBox fbox1">
 								<input type="hidden" name="memberId" value=${mvo.memberId }>
@@ -186,33 +196,10 @@
 						</div>
 					</form>
 				</div>
-				<%-- <div class="mainViewBox2">
-					<div class="infoViewBox">
-						<div class="li-title">
-							<span>활동 정보</span>
-						</div>
-						<div class="infoBox ibox1">
-							<div><span>가입일 </span>${mvo.memberRegAt }</div>
-						</div>
-						<div class="infoBox ibox2">
-							<div><span>마지막 로그인 </span>${mvo.memberLastAt }</div>
-						</div>
-						<div class="infoBox ibox3">
-							<div><span>비밀번호 변경일 </span>${mvo.memberPwdModAt }</div>
-						</div>
-						<div class="infoBox ibox4">
-							<div class="form-check form-switch">
-						        <input class="form-check-input" type="checkbox" 
-						        	id="flexSwitchCheckDefault" ${mvo.memberTerms3 eq 'terms3check' ? 'checked' : ''} value="${mvo.memberId }">
-						        <label class="form-check-label" for="flexSwitchCheckDefault">광고성/마케팅 동의(선택)</label>
-						    </div>
-						</div>
-					</div>
-				</div> --%>
 			</div>
 			
 				
-			<div class="mainViewBody2">
+			<%-- <div class="mainViewBody2">
 				<div class="mainViewBox3">
 					<div class="infoBox ibox5">
 						<div class="iboxList iboxList1">
@@ -263,7 +250,7 @@
 								
 					</div>	
 				</div>
-			</div>
+			</div> --%>
 	
 
 		
@@ -272,8 +259,41 @@
 	</div>	
 </div>
 
-	
 
+
+
+	<!-- 이메일 인증 팝업 -->
+	<!-- Modal -->
+	<div class="modal fade" id="staticBackdrop" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		  <div class="modal-dialog" tabindex="-1">
+		    <div class="modal-content" tabindex="-1">
+		      <div class="modal-header" tabindex="-1">
+		        <h1 class="modal-title fs-5" id="staticBackdropLabel" tabindex="-1">이메일 인증하기</h1>
+		        <button type="button" class="btn-close" id="modalClose" data-bs-dismiss="modal" aria-label="Close" tabindex="-1"></button>
+		      </div>
+		      <div class="modal-body" tabindex="-1">
+		        <div class="form-group registerBox rb-5" tabindex="-1">
+				     <label for="modalEmailCheck" class="form-label mt-4" tabindex="-1">Email</label>
+				     <div class="input-group mb-3" tabindex="-1">
+					     <input type="email" class="form-control" id="modalEmailCheck" aria-describedby="emailHelp" placeholder="이메일"  tabindex="-1" />
+					     <button type="button" class="btn btn-primary" id="modalEmailCheckBtn" tabindex="-1">
+						 	인증번호 받기
+						 </button>
+				  		 </div>
+					 <div id="emailDuplicateCheck" tabindex="-1"></div>
+		      </div>
+		      <div class="modal-body" id="modal-body2" tabindex="-1">
+		       
+		      </div>
+		      <div class="modal-footer" tabindex="-1">
+		        <input type="button" class="btn btn-primary" id="emailCheckSuccess" value="인증완료" tabindex="-1">
+		      </div>
+		    </div>
+		  </div>
+		</div>
+
+	</div>
+	
 <script>
 	function focusInput(inputId) {
 	    // 라벨 클릭시 인풋창 뒤로 focus하게하는 스크립트
