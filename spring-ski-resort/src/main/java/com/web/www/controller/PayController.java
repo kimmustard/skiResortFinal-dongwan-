@@ -40,15 +40,22 @@ public class PayController {
 	}
 	
 	//유저 결제 상세 페이지
-	@GetMapping("/memberList")
+	@GetMapping("/memberPayList")
 	public String memberPayList(@AuthUser MemberVO mvo, Model model) {
 		MemberVO detailMvo = msv.getUser(mvo.getMemberId() , mvo.getMemberType());
 		List<PayInfoVO> pivoList = psv.getPayInfoList(mvo.getMemberNum());
 		log.info("결제정보 조회 = {}", pivoList);
+		long sum = 0;
+		for (PayInfoVO payInfo : pivoList) {
+			if(payInfo.getPayStatus().equals("결제완료")) {
+				sum += payInfo.getPayAmount();
+			}
+		}
 		
+		model.addAttribute("sum", sum);
 		model.addAttribute("mvo", detailMvo);
 		model.addAttribute("pivoList" , pivoList);
-		return "/pay/memberList";
+		return "/pay/memberPayList";
 	}
 	
 	@PostMapping("/refund")

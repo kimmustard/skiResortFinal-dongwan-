@@ -136,7 +136,7 @@ public class PayServiceImpl implements PayService{
 	}
 	
 	
-	//엑세스 토큰 가져오기
+	//아임포트 엑세스 토큰 가져오기
 	public String getToken() throws IOException {
 		
 		HttpsURLConnection conn = null;
@@ -202,7 +202,7 @@ public class PayServiceImpl implements PayService{
 	
 	//결제취소
 	public void payMentCancel(String access_token, String imp_uid, long amount, String reason) throws IOException  {
-		log.info("결제 취소");
+		log.info("결제 취소 진입합니다.");
 		log.info(access_token);
 		log.info(imp_uid);
 		

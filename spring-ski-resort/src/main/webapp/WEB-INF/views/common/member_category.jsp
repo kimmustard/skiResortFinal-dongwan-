@@ -8,6 +8,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<div class="category-profile">
+		<img alt="그림없음" width="230" height="200" src="/resources/etc/logo_white.png">
+		<span>회원님의 등급은 <span id="member-grade">${mvo.memberGrade} </span> 입니다.</span>
+	</div>
 	<div class="category-body">
 		<div class="category-Box1">
 			<div class="category cbox1">
@@ -27,7 +31,7 @@
 				</a>
 			</div>
 			<div class="category cbox3">
-				<a href=""> 
+				<a href="/pay/memberPayList"> 
 						<i class="bi bi-list-stars"></i>
 					<span class="category-span">
 						 결제내역
@@ -79,6 +83,5 @@
 			</div>
 		</div>
 	</div>
-	<script type="text/javascript" src="/resources/js/nav.js" ></script>
 </body>
 </html>
