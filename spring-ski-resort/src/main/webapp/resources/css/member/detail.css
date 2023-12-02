@@ -1,6 +1,25 @@
 @charset "UTF-8";
 @import url(/resources/css/reset.css);
 
+@keyframes background-ani {
+	from {
+		transform: translate(500px, 0);
+	}
+	to {
+		transform: translate(0, 0);
+	}
+}
+
+@keyframes modifyView-ani {
+	from {
+		transform: translate(-500px, 0);
+	}
+	to {
+		transform: translate(0, 0);
+	}
+}
+
+
 .bodyContainer{
 	width: 100%;
 	display: flex;
@@ -19,6 +38,7 @@
 	background-image: url("https://i.imgur.com/UbaaWkY.png");
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
+	animation: background-ani 0.4s linear forwards;
 	
 }
 /* 왼쪽 카테고리 */
@@ -29,6 +49,7 @@
 	border-bottom-right-radius: 100px;
 	position: fixed;
     height: 900px;
+    z-index: 1;
 }
 
 .category-profile{
@@ -154,6 +175,7 @@
 	box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
     margin-top : 128px;
     overflow:auto;
+    animation: modifyView-ani 0.2s linear forwards;
     
 }
 .modifyBox{
@@ -258,5 +280,15 @@
 	margin-bottom: 20px;
 }
 
+.fbox1,.fbox2{
+	position: relative;
+}
+.bi-lock-fill{
+	position: absolute;
+	font-size: 30px;
+	bottom: 5px;
+	color: #666;
+	right: 80px;
+}
 
 

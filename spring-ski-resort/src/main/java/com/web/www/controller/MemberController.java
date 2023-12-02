@@ -84,13 +84,8 @@ public class MemberController {
 
 	@GetMapping("/detail")
 	public String detailForm(@AuthUser MemberVO mvo, Model model, PayInfoVO pivo) {
-
 		MemberVO detailMvo = msv.getUser(mvo.getMemberId() , mvo.getMemberType());
-		List<PayInfoVO> pivoList = psv.getPayInfoList(mvo.getMemberNum());
-		log.info("결제정보 조회 = {}", pivoList);
-		
 		model.addAttribute("mvo", detailMvo);
-		model.addAttribute("pivoList" , pivoList);
 		return "/member/detail";
 	}
 	

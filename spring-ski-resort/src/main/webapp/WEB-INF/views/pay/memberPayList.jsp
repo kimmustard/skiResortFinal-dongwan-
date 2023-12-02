@@ -101,103 +101,7 @@
 		<div class="mainView">
 			<div class="mainViewBody1">
 				<div class="mainViewBox1">
-					<form action="/member/detail" method="post">
-						<div class="modifyViewBox">
-							<sec:authorize access="isAuthenticated()">
-				        	<sec:authentication property="principal.mvo.memberId" var="authId"/>
-				        	<sec:authentication property="principal.mvo.memberEmail" var="authEmail"/>
-				        	<sec:authentication property="principal.mvo.memberAlias" var="authAlias"/>
-				        	<sec:authentication property="principal.mvo.memberType" var="authType"/>
-						
-							<c:if test="${authType == 'normal' }">
-							<div class="modifyBox modifyTitle">
-								<div class="member-msg">
-									<h3>회원정보 수정</h3>
-									<span class="sb1-span">회원님은 일반회원입니다.</span>
-								</div>
-							</div>
-	
-							<div class="modifyBox fbox1">
-								<label for="memberId" class="sb1-span" onclick="focusInput('sb1-input1')">아이디</label><br>
-								<input class="sb1-input" id="sb1-input1" name="memberId" value="${mvo.memberId }" readonly="readonly">
-								<i class="bi bi-lock-fill"></i>
-								<input type="hidden" name="memberType" value=${mvo.memberType }>
-							</div>
-							<div class="modifyBox fbox2">
-								<label for="sb1-input2" class="sb1-span" onclick="focusInput('sb1-input2')">이름</label><br>
-								<input class="sb1-input" id="sb1-input2" value="${mvo.memberName }" readonly="readonly">
-								<i class="bi bi-lock-fill"></i>
-							</div>
-							<div class="modifyBox fbox3">
-								<label for="memberAlias" class="sb1-span" onclick="focusInput('sb1-input3')">별명</label><br>
-								<input class="sb1-input" path="memberAlias" id="sb1-input3" name="memberAlias" value="${mvo.memberAlias }">
-							</div>
-							<div class="modifyBox fbox4">
-								<label for="inputMemberEmail" class="sb1-span" onclick="focusInput('sb1-input4')">이메일</label><br>
-								<input class="sb1-input" id="inputMemberEmail" path="memberEmail" name="memberEmail" value="${mvo.memberEmail }" readonly="readonly" />
-								<button type="button" class="btn btn-primary" id="MemberEmailCheck" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="display: none;">
-							 		이메일 인증
-							 	</button>
-							</div>
-							<div class="modifyBox fbox5">
-								<label for="sb1-input5" class="sb1-span" onclick="focusInput('sb1-input2')">핸드폰번호</label><br>
-								<input class="sb1-input" id="sb1-input5" path="memberPhoneNum" name="memberPhoneNum" value="${mvo.memberPhoneNum }">
-							</div>
-							<div class="modifyBox fbox6">
-								<label for="inputMemberAddress" class="sb1-span" onclick="focusInput('sb1-input2')">주소</label><br>
-								<input type="hidden" id="inputMemberPostcode">
-								<input class="sb1-input" id="inputMemberAddress" name="memberAddress" onclick="clickAddr()" value="${mvo.memberAddress }">
-								<button class="btn btn-primary" type="button"  id="button-addon2" onclick="sample6_execDaumPostcode()" style="display: none;" >주소 찾기</button>
-							</div>
-							<div class="modifyBox fbox7">
-								<label for="inputMemberAddressDetail" class="sb1-span" onclick="focusInput('sb1-input3')">상세주소</label><br>
-								<input class="sb1-input" id="inputMemberAddressDetail" name="memberAddressDetail" value="${mvo.memberAddressDetail}">
-							</div>
-							</c:if>
-							<c:if test="${authType != 'normal' }">
-							<div class="modifyTitle">
-								<h3>회원정보 수정</h3>
-								<span class="sb1-span">회원님은 소셜(${mvo.memberType})회원입니다.</span>
-							</div>
-							<div class="modifyBox fbox1">
-								<input type="hidden" name="memberId" value=${mvo.memberId }>
-								<input type="hidden" name="memberType" value=${mvo.memberType }>
-								<label for="sb1-input1" class="sb1-span" onclick="focusInput('sb1-input1')">아이디</label><br>
-								<input class="sb1-input" id="sb1-input1" name="memberEmail" value="${mvo.memberEmail }" readonly="readonly">
-							</div>
-							<div class="modifyBox fbox2">
-								<label for="sb1-input2" class="sb1-span" onclick="focusInput('sb1-input2')">이름</label><br>
-								<input class="sb1-input" id="sb1-input2" value="${mvo.memberName }" readonly="readonly">
-							</div>
-							<div class="modifyBox fbox3">
-								<label for="sb1-input3" class="sb1-span" onclick="focusInput('sb1-input3')">별명</label><br>
-								<input class="sb1-input" id="sb1-input3" name="memberAlias" value="${mvo.memberAlias }">
-							</div>
-							<div class="modifyBox fbox4">
-								<label for="sb1-input4" class="sb1-span" onclick="focusInput('sb1-input2')">핸드폰번호</label><br>
-								<input class="sb1-input" id="sb1-input4" name="memberPhoneNum" value="${mvo.memberPhoneNum }" placeholder="핸드폰번호를 입력해주세요."><br>
-								<c:if test="${authType == 'google'}">
-									<small style="color: red">구글 회원은 반드시 핸드폰번호를 기입해주세요.</small>
-								</c:if>
-							</div>
-							<div class="modifyBox fbox5">
-								<label for="inputMemberAddress" class="sb1-span" onclick="focusInput('sb1-input2')">주소</label><br>
-								<input type="hidden" id="inputMemberPostcode">
-								<input class="sb1-input" id="inputMemberAddress" name="memberAddress" onclick="clickAddr()" value="${mvo.memberAddress }" placeholder="주소를 입력해주세요.">
-								<button class="btn btn-primary" type="button"  id="button-addon2" onclick="sample6_execDaumPostcode()" style="display: none;" >주소 찾기</button>
-							</div>
-							<div class="modifyBox fbox6">
-								<label for="inputMemberAddressDetail" class="sb1-span" onclick="focusInput('sb1-input3')">상세주소</label><br>
-								<input class="sb1-input" id="inputMemberAddressDetail" name="memberAddressDetail" value="${mvo.memberAddressDetail}" placeholder="상세주소를 입력해주세요.">
-							</div>
-							</c:if>
-							</sec:authorize>
-						<div class="modify-btn">
-							<button type="submit" class="btn btn-primary">수정하기</button> 
-						</div>
-						</div>
-					</form>
-				</div>
+					
 			</div>
 			
 				
@@ -253,14 +157,10 @@
 					</div>	
 				</div>
 			</div> --%>
-	
-
-		
-						
-						
-	</div>	
+			
+		</div>	
+	</div>
 </div>
-
 
 
 

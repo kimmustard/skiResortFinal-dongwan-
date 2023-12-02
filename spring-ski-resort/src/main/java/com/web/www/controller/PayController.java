@@ -1,11 +1,13 @@
 package com.web.www.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.web.www.domain.member.AuthUser;
 import com.web.www.domain.member.MemberVO;
 import com.web.www.domain.pay.PayInfoVO;
+import com.web.www.service.MemberService;
 import com.web.www.service.PayService;
 
 import lombok.RequiredArgsConstructor;
@@ -28,6 +31,7 @@ import lombok.extern.slf4j.Slf4j;
 public class PayController {
 	
 	private final PayService psv;
+	private final MemberService msv;
 	
 	@GetMapping("/testForm")
 	public String payForm() {
@@ -36,8 +40,24 @@ public class PayController {
 	}
 	
 	//유저 결제 상세 페이지
-	@GetMapping("/member")
+	@GetMapping("/memberList")
+	public String memberPayList(@AuthUser MemberVO mvo, Model model) {
+		MemberVO detailMvo = msv.getUser(mvo.getMemberId() , mvo.getMemberType());
+		List<PayInfoVO> pivoList = psv.getPayInfoList(mvo.getMemberNum());
+		log.info("결제정보 조회 = {}", pivoList);
+		
+		model.addAttribute("mvo", detailMvo);
+		model.addAttribute("pivoList" , pivoList);
+		return "/pay/memberList";
+	}
 	
+	@PostMapping("/refund")
+	public String refunt(@RequestParam String payImpUid) throws IOException {
+		log.info("##영수증정보## = {}", payImpUid);
+		
+		int isOk = psv.payMentRefund(payImpUid);
+		return "redirect:/pay/memberList";
+	}
 	
 	
 	@ResponseBody
@@ -52,13 +72,6 @@ public class PayController {
 		return new ResponseEntity<String>("결제 금액 오류, 결제 취소", HttpStatus.BAD_REQUEST);
 	}
 	
-	@PostMapping("/refund")
-	public String refunt(@RequestParam String payImpUid) throws IOException {
-		log.info("##영수증정보## = {}", payImpUid);
-			
-		int isOk = psv.payMentRefund(payImpUid);
-		return "redirect:/member/detail";
-	}
 	
 	
 	
