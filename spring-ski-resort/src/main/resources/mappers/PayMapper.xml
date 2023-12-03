@@ -14,7 +14,18 @@
   		select * from pay where member_num = #{memberNum}
   	</select>
   	
+  	<insert id="registerRefund">
+  		insert into refund(refund_imp_uid, pay_merchant_uid, refund_reason, refund_name, refund_amount, refund_type)
+  		value (#{refundImpUid}, #{payMerchantUid}, #{refundReason}, #{refundName}, #{refundAmount}, #{refundType})
+  	</insert>
+  	
   	<update id="payMentRefund">
   		update pay set pay_status = '결제취소' where pay_imp_uid = #{payImpUid}
   	</update>
+  	
+  	<!-- 취소된 내역인지 확인 -->
+  	<select id="payStatusCheck" resultType="int">
+  		select count(*) from pay where pay_merchant_uid = #{payMerchantUid} and pay_status = '결제취소';
+  	</select>
+  	
   </mapper>

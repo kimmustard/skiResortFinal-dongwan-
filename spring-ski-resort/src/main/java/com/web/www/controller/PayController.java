@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.web.www.domain.member.AuthUser;
 import com.web.www.domain.member.MemberVO;
 import com.web.www.domain.pay.PayInfoVO;
+import com.web.www.domain.pay.RefundInfoVO;
 import com.web.www.service.MemberService;
 import com.web.www.service.PayService;
 
@@ -58,12 +58,13 @@ public class PayController {
 		return "/pay/memberPayList";
 	}
 	
-	@PostMapping("/refund")
-	public String refunt(@RequestParam String payImpUid) throws IOException {
-		log.info("##영수증정보## = {}", payImpUid);
+	@ResponseBody
+	@PostMapping(value = "/refund", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.TEXT_PLAIN_VALUE+ ";charset=UTF-8")
+	public ResponseEntity<String> refunt(@RequestBody RefundInfoVO rfiVO) throws IOException {
+		log.info("##환불정보## = {}", rfiVO);
 		
-		int isOk = psv.payMentRefund(payImpUid);
-		return "redirect:/pay/memberList";
+		ResponseEntity<String> isOk = psv.payMentRefund(rfiVO);
+		return isOk;
 	}
 	
 	

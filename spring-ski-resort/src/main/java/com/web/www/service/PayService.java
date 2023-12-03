@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 
 import com.web.www.domain.pay.PayInfoVO;
+import com.web.www.domain.pay.RefundInfoVO;
 
 public interface PayService {
 
@@ -17,6 +18,11 @@ public interface PayService {
 	 */
 	List<PayInfoVO> getPayInfoList(long memberNum);
 
-	int payMentRefund(String payImpUid) throws IOException;
+	/**
+	 * @param rfiVO
+	 * @return 환불 insert 이후 응답값
+	 * @throws IOException
+	 */
+	ResponseEntity<String> payMentRefund(RefundInfoVO rfiVO) throws IOException;
 
 }

@@ -47,7 +47,10 @@
 						<tbody>
 							<c:forEach items="${pivoList}" var="pList">
 								<tr>
-									<td>${pList.payMerchantUid }</td>
+									<td>
+										${pList.payMerchantUid }
+										<input type="hidden" value="${pList.payImpUid }">
+									</td>
 									<td>${pList.payPg }</td>
 									<td>${pList.payName }</td>
 									<td>${pList.payAmount } 원</td>
@@ -55,7 +58,7 @@
 									<td>${pList.memberPhoneNum }</td>
 									<td>${pList.payStatus }</td>
 									<td>${pList.payRegAt }</td>
-									<c:if test="${payStatus ne '결제완료' }">
+									<c:if test="${pList.payStatus eq '결제완료' }">
 										<td>
 											<button type="button" class="refunds"  onclick="showRowData(this)" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
 											  환불요청

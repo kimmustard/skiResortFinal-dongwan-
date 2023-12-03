@@ -32,7 +32,7 @@
 			</div>
 			<div class="category cbox3">
 				<a href="/pay/memberPayList"> 
-						<i class="bi bi-list-stars"></i>
+						<i class="bi bi-cash-coin"></i>
 					<span class="category-span">
 						 결제내역
 					</span> 
@@ -40,7 +40,7 @@
 			</div>
 			<div class="category cbox4">
 				<a href="#"> 
-						<i class="bi bi-list-stars"></i>
+						<i class="bi bi-chat-right-text-fill"></i>
 					<span class="category-span">
 						 문의내역
 					</span> 

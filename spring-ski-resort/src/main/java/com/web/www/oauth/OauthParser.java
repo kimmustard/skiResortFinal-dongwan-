@@ -29,14 +29,14 @@ public class OauthParser {
 	private MemberService msv;
 	
 	public MemberVO naverUser(String apiResult) {
-		//2. String형식인 apiResult를 json형태로 바꿈 
+		//1. String형식인 apiResult를 json형태로 바꿈 
 		JSONParser parser = new JSONParser(); 
 		Object obj;
 		try {
 			obj = parser.parse(apiResult);
 			JSONObject jsonObj = (JSONObject) obj; 
 			
-			//3. 데이터 파싱 
+			//2. 데이터 파싱 
 			//Top레벨 단계 _response 파싱
 			JSONObject response_obj = (JSONObject)jsonObj.get("response"); 
 			//response의 nickname값 파싱 String
@@ -151,6 +151,8 @@ public class OauthParser {
 
 
 	private MemberVO RegisterAndAuth(MemberVO mvo) {
+		
+		//DB에 정보가 없으면 회원등록(OAuth전용)
 		if(msv.socialSearch(mvo.getMemberId()) == null) {
 			int isOk = msv.socialRegister(mvo);
 		}
