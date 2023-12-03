@@ -55,7 +55,7 @@ public class PayController {
 		model.addAttribute("sum", sum);
 		model.addAttribute("mvo", detailMvo);
 		model.addAttribute("pivoList" , pivoList);
-		return "/pay/memberPayList";
+		return "/member/memberPayList";
 	}
 	
 	@ResponseBody

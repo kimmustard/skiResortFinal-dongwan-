@@ -23,7 +23,7 @@
 				</a>
 			</div>
 			<div class="category cbox2">
-				<a href="#"> 
+				<a href="/member/memberPwd"> 
 						<i class="bi bi-key-fill"></i>
 					<span class="category-span cs2">
 					 	비밀번호 변경

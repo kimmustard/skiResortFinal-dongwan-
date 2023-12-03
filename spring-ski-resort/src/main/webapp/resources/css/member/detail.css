@@ -68,6 +68,18 @@
 	background-size: 100% 100%;
 	animation: background2-ani 0.4s linear forwards;
 }
+
+.backgroundImgPwd{
+	position: absolute;
+	right: 0px;
+	width: 1300px;
+	height: 1000px;
+	z-index: -5;
+	background-image: url("https://i.imgur.com/5MvgVZN.png");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	animation: background-ani 0.4s linear forwards;
+}
 /* 왼쪽 카테고리 */
 .mainCategory{
 	width: 350px;
@@ -227,6 +239,8 @@
 	width: 150px;
 }
 
+
+/* 환불 list 메인 css */
 .mainViewBody2{
 	width: 1400px;
 	margin-left: 450px;
@@ -236,6 +250,17 @@
 	box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
 	overflow:auto;
 	animation: mainViewBody2 0.3s linear forwards;
+}
+
+/* 비밀번호 변경 메인 css */
+.mainViewBody3{
+	width: 700px;
+	margin-left: 500px;
+	margin-top : 250px;
+	height: 500px;
+	background-color: rgba(255,255,255,0.9);
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+	animation: modifyView-ani 0.3s linear forwards;
 }
 
 .infoBox{
@@ -300,5 +325,10 @@ textarea{
     resize: none;
     width: 100%;
     height: 6.25em;
+}
+
+.errorFont{
+	color: red;
+	margin-left: 35px;
 }
 

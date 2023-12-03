@@ -26,7 +26,7 @@
 		<div class="mainView">
 			<div class="mainViewBody1">
 				<div class="mainViewBox1">
-					<form action="/member/detail" method="post">
+					<form:form action="/member/detail" modelAttribute="mDTO" method="post">
 						<div class="modifyViewBox">
 							<sec:authorize access="isAuthenticated()">
 				        	<sec:authentication property="principal.mvo.memberId" var="authId"/>
@@ -55,23 +55,27 @@
 							</div>
 							<div class="modifyBox fbox3">
 								<label for="memberAlias" class="sb1-span" onclick="focusInput('sb1-input3')">별명</label><br>
-								<input class="sb1-input" path="memberAlias" id="sb1-input3" name="memberAlias" value="${mvo.memberAlias }">
+								<form:input class="sb1-input" path="memberAlias" id="sb1-input3" name="memberAlias" value="${mvo.memberAlias }" />
+								<br><form:errors class="errorFont" path="memberAlias"></form:errors>
 							</div>
 							<div class="modifyBox fbox4">
 								<label for="inputMemberEmail" class="sb1-span" onclick="focusInput('sb1-input4')">이메일</label><br>
-								<input class="sb1-input" id="inputMemberEmail" path="memberEmail" name="memberEmail" value="${mvo.memberEmail }" readonly="readonly" />
+								<form:input class="sb1-input" id="inputMemberEmail" path="memberEmail" name="memberEmail" value="${mvo.memberEmail }" readonly="readonly" />
+								<br><form:errors class="errorFont" path="memberEmail"></form:errors>
 								<button type="button" class="btn btn-primary" id="MemberEmailCheck" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="display: none;">
 							 		이메일 인증
 							 	</button>
 							</div>
 							<div class="modifyBox fbox5">
 								<label for="sb1-input5" class="sb1-span" onclick="focusInput('sb1-input2')">핸드폰번호</label><br>
-								<input class="sb1-input" id="sb1-input5" path="memberPhoneNum" name="memberPhoneNum" value="${mvo.memberPhoneNum }">
+								<form:input class="sb1-input" id="sb1-input5" path="memberPhoneNum" name="memberPhoneNum" value="${mvo.memberPhoneNum }" />
+								<br><form:errors class="errorFont" path="memberPhoneNum"></form:errors>
 							</div>
 							<div class="modifyBox fbox6">
 								<label for="inputMemberAddress" class="sb1-span" onclick="focusInput('sb1-input2')">주소</label><br>
 								<input type="hidden" id="inputMemberPostcode">
-								<input class="sb1-input" id="inputMemberAddress" name="memberAddress" onclick="clickAddr()" value="${mvo.memberAddress }">
+								<form:input class="sb1-input" path="memberAddress" id="inputMemberAddress" name="memberAddress" onclick="clickAddr()" value="${mvo.memberAddress }" />
+								<br><form:errors class="errorFont" path="memberAddress"></form:errors>
 								<button class="btn btn-primary" type="button"  id="button-addon2" onclick="sample6_execDaumPostcode()" style="display: none;" >주소 찾기</button>
 							</div>
 							<div class="modifyBox fbox7">
@@ -80,9 +84,11 @@
 							</div>
 							</c:if>
 							<c:if test="${authType != 'normal' }">
-							<div class="modifyTitle">
-								<h3>회원정보 수정</h3>
-								<span class="sb1-span">회원님은 소셜(${mvo.memberType})회원입니다.</span>
+							<div class="modifyBox modifyTitle">
+								<div class="member-msg">
+									<h3>회원정보 수정</h3>
+									<span class="sb1-span">회원님은 소셜(${mvo.memberType})회원입니다.</span>
+								</div>
 							</div>
 							<div class="modifyBox fbox1">
 								<input type="hidden" name="memberId" value=${mvo.memberId }>
@@ -96,19 +102,24 @@
 							</div>
 							<div class="modifyBox fbox3">
 								<label for="sb1-input3" class="sb1-span" onclick="focusInput('sb1-input3')">별명</label><br>
-								<input class="sb1-input" id="sb1-input3" name="memberAlias" value="${mvo.memberAlias }">
+								<form:input class="sb1-input" path="memberAlias" id="sb1-input3" name="memberAlias" value="${mvo.memberAlias }" />
+								<br><form:errors class="errorFont" path="memberAlias"></form:errors>
 							</div>
 							<div class="modifyBox fbox4">
-								<label for="sb1-input4" class="sb1-span" onclick="focusInput('sb1-input2')">핸드폰번호</label><br>
-								<input class="sb1-input" id="sb1-input4" name="memberPhoneNum" value="${mvo.memberPhoneNum }" placeholder="핸드폰번호를 입력해주세요."><br>
-								<c:if test="${authType == 'google'}">
-									<small style="color: red">구글 회원은 반드시 핸드폰번호를 기입해주세요.</small>
-								</c:if>
+								<label for="sb1-input4" class="sb1-span" onclick="focusInput('sb1-input2')">
+									핸드폰번호
+									<c:if test="${authType == 'google'}">
+										<small style="color: black"> ( ※ 구글 회원은 반드시 핸드폰번호를 기입해주세요. )</small>
+									</c:if>
+								</label><br>
+								<form:input class="sb1-input" id="sb1-input5" path="memberPhoneNum" name="memberPhoneNum" value="${mvo.memberPhoneNum }" />
+								<br><form:errors class="errorFont" path="memberPhoneNum"></form:errors><br>
 							</div>
 							<div class="modifyBox fbox5">
 								<label for="inputMemberAddress" class="sb1-span" onclick="focusInput('sb1-input2')">주소</label><br>
 								<input type="hidden" id="inputMemberPostcode">
-								<input class="sb1-input" id="inputMemberAddress" name="memberAddress" onclick="clickAddr()" value="${mvo.memberAddress }" placeholder="주소를 입력해주세요.">
+								<form:input class="sb1-input" path="memberAddress" id="inputMemberAddress" name="memberAddress" onclick="clickAddr()" value="${mvo.memberAddress }" />
+								<br><form:errors class="errorFont" path="memberAddress"></form:errors>
 								<button class="btn btn-primary" type="button"  id="button-addon2" onclick="sample6_execDaumPostcode()" style="display: none;" >주소 찾기</button>
 							</div>
 							<div class="modifyBox fbox6">
@@ -121,68 +132,10 @@
 							<button type="submit" class="btn btn-primary">수정하기</button> 
 						</div>
 						</div>
-					</form>
+					</form:form>
 				</div>
 			</div>
 			
-				
-			<%-- <div class="mainViewBody2">
-				<div class="mainViewBox3">
-					<div class="infoBox ibox5">
-						<div class="iboxList iboxList1">
-							<div>
-								<span id="iboxTitle">문의 내역 테스트</span>
-							</div>
-							<a href="#"><span>문의내역</span></a>
-						</div>
-					</div>	
-			
-				
-					<div class="infoBox ibox6">
-						<div class="iboxList iboxList2">
-							<div>
-								<span>결제/환불 내역</span>
-							</div>
-							<a href="#"><span>상세조회</span></a>
-						</div>
-						<table class="table table-hover">
-									<thead>
-										<tr>
-											<th>주문번호</th>
-											<th>결제은행</th>
-											<th>주문명</th>
-											<th>금액</th>
-											<th>이름</th>
-											<th>상태</th>
-											<th>결제일자</th>
-										</tr>
-							
-							
-									</thead>
-									<tbody>
-										<c:forEach items="${pivoList}" var="pList">
-											<tr>
-												<td>${pList.payMerchantUid }</td>
-												<td>${pList.payPg }</td>
-												<td>${pList.payName }</td>
-												<td>${pList.payAmount } 원</td>
-												<td>${pList.memberName }</td>
-												<td>${pList.payStatus }</td>
-												<td>${pList.payRegAt }</td>
-											</tr>
-										</c:forEach>
-									</tbody>
-								</table>
-											 
-								
-					</div>	
-				</div>
-			</div> --%>
-	
-
-		
-						
-						
 	</div>	
 </div>
 

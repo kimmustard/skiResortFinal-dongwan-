@@ -41,7 +41,7 @@
 								<th>연락처</th>
 								<th>상태</th>
 								<th>결제일자</th>
-								<th></th>
+								<th>요청</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -58,13 +58,20 @@
 									<td>${pList.memberPhoneNum }</td>
 									<td>${pList.payStatus }</td>
 									<td>${pList.payRegAt }</td>
-									<c:if test="${pList.payStatus eq '결제완료' }">
+									<c:choose>
+									<c:when test="${pList.payStatus eq '결제완료' }">
 										<td>
 											<button type="button" class="refunds"  onclick="showRowData(this)" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
 											  환불요청
 											</button>
 										</td>
-									</c:if>
+									</c:when>
+									<c:otherwise>
+										<td>
+											<button>환불영수증</button>
+										</td>
+									</c:otherwise>
+									</c:choose>
 								</tr>
 							</c:forEach>
 						</tbody>
