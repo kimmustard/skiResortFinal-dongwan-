@@ -90,7 +90,8 @@
 </div>
 
 <br><br><br><br><br><br><br><br><br><br><br><br>
-<script type="text/javascript" src="/resources/js/notice/noticeFileUpload.js"></script>
+<!-- <script type="text/javascript" src="/resources/js/notice/noticeFileUpload.js"></script> -->
+
 <script type="text/javascript">
 $(document).ready(function() {
 	//여기 아래 부분
@@ -114,9 +115,91 @@ $(document).ready(function() {
 			    ['view', ['fullscreen', 'help']]
 			  ],
 			fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋움체','바탕체'],
-			fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72']
-          
+			fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72'],
+			callbacks: {
+			      onImageUpload: function(image) {
+			         
+			             var file = image[0];
+			             var reader = new FileReader();
+			            reader.onloadend = function() {
+			                var image = $('<img>').attr('src',  reader.result);
+			                   image.attr('width','100%');
+			                $('#summernote').summernote("insertNode", image[0]);
+			            }
+			           reader.readAsDataURL(file);
+			           handleImageUpload(image[0]);
+
+			      }
+			  }
 	});
+});
+
+</script>
+
+<script type="text/javascript">
+function handleImageUpload(file) {
+    const maxSize = 10 * 1024 * 1024; // 1 MB
+    const image = new Image();
+
+    image.onload = function() {
+      if (file.size <= maxSize) {
+        // 이미지 크기가 제한 이하이면 그대로 업로드
+        uploadImage(file);
+      } else {
+        // 이미지 크기가 제한을 초과하면 리사이징 후 업로드
+        resizeImageAndUpload(file);
+      }
+    };
+
+    image.src = URL.createObjectURL(file);
+  }
+
+  function resizeImageAndUpload(file) {
+    const maxSize =10 * 1024 * 1024; // 1 MB
+    const reader = new FileReader();
+
+    reader.onload = function(e) {
+      const img = new Image();
+      img.src = e.target.result;
+
+      img.onload = function() {
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        const scale = Math.min(maxSize / img.width, maxSize / img.height);
+
+        canvas.width = img.width * scale;
+        canvas.height = img.height * scale;
+
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+        canvas.toBlob(function(blob) {
+          uploadImage(blob);
+        }, file.type);
+      };
+    };
+
+    reader.readAsDataURL(file);
+  }
+
+  function uploadImage(file) {
+    let formData = new FormData();
+    formData.append('image', file);
+
+    $.ajax({
+      url: '/upload',
+      method: 'POST',
+      data: formData,
+      processData: false,
+      contentType: false,
+      success: function(data) {
+        let imageUrl = location.origin + data.imagePath;
+        $('#summernote').summernote('editor.insertImage', imageUrl);
+      },
+      error: function(err) {
+        console.error('Error uploading image', err);
+      }
+    });
+  }
 });
 </script>
 
