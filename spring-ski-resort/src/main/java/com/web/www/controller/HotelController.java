@@ -15,6 +15,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.web.www.domain.hotel.RoomInfoVO;
 import com.web.www.domain.hotel.RoomVO;
+import com.web.www.domain.member.AuthUser;
+import com.web.www.domain.member.MemberVO;
 import com.web.www.service.HotelService;
 
 import lombok.RequiredArgsConstructor;
@@ -34,9 +36,11 @@ public class HotelController {
 	 * 예약페이지 매핑
 	 */
 	@GetMapping("/reservation")
-	public String reservForm(Model m) {
+	public String reservForm(Model m ,@AuthUser MemberVO mvo) {
 		List<RoomVO> roomList = hsv.getRoomList();
 		m.addAttribute("roomList", roomList);
+		m.addAttribute("mvo", mvo);
+	
 		return "/hotel/reservation";
 	}
 	@PostMapping("/reservation")

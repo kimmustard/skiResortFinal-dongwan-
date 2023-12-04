@@ -22,6 +22,7 @@ public interface FileDAO {
 
 	void deleteAllFileNotice(long noticeNum);
 
+
 	int insertItemFile(FileVO fvo);
 
 	List<FileVO> ItemAndPicture();

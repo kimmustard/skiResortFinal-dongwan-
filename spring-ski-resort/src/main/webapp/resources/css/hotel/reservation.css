@@ -297,21 +297,3 @@
 	text-decoration: none;
 	color: gray;
 }
-.modal-content{
-    transform: translateY(25%);
-
-}
-.pay-info{
-	background-color: green;
-	margin: 10px;
-	border-radius: 10px;
-}
-.pay-method{
-	background-color: green;
-	margin: 10px;
-	border-radius: 10px;
-	background-color: white;
-	border: solid 1px #666;
-	border-radius: 10px;
-	height: 400px;
-}

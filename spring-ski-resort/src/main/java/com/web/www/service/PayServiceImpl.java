@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.URL;
+import java.security.Principal;
 import java.util.List;
 import java.util.Map;
 
@@ -63,7 +64,7 @@ public class PayServiceImpl implements PayService{
 	 * @Method 결제정보 DB저장
 	 */
 	@Override
-	public ResponseEntity<String> registerPay(PayInfoVO upiDTO) throws IOException {
+	public ResponseEntity<String> registerPay(PayInfoVO upiDTO, Principal principal) throws IOException {
 
 	
 	// 1. 아임포트 API 키와 SECRET키로 토큰을 생성
@@ -80,15 +81,10 @@ public class PayServiceImpl implements PayService{
 	
 			
 	    // 3. 로그인이 안된 유저 return (시큐리티에서 cut하지만 안전을 위해)
-	
-	    // 4. 
-	    
-	    // 5. DB에서 실제 계산되어야 할 가격가져오기
-	    
-	    // 6. 결제 완료된 금액과 실제 계산되어야 할 금액이 다를경우 결제 취소
-	    
-	    // 7. 결제에러시 결제 취소
 		
+	    
+	    //금액확인
+	 
 		
 		/**
 		 * @if문 태워서 빠져나가는 로직 구성하면 됩니다.
@@ -103,7 +99,6 @@ public class PayServiceImpl implements PayService{
 		/*성공시*/
 		pdao.registerPay(upiDTO);
 		return new ResponseEntity<String>("주문이 완료되었습니다", HttpStatus.OK);
-	
 		//임시 리턴 위에 구성이 되면 삭제하세요.
 //		return null;
 	/*********************************/

@@ -1,16 +1,18 @@
-function attachClickListener(buttonId) {
-    document.getElementById(buttonId).addEventListener('click', function () {
-        let pgName = document.getElementById(buttonId).value;
-        console.log('pgName:', pgName);
-        paymentGateway(pgName);
-    });
-}
+
+
+// function attachClickListener(buttonId) {
+//     document.getElementById(buttonId).addEventListener('click', function () {
+//         let pgName = document.getElementById(buttonId).value;
+//         console.log('pgName:', pgName);
+//         paymentGateway(pgName);
+//     });
+// }
 
 // 각종 paymentGateway 버튼
-attachClickListener('kakao_pay');
-attachClickListener('inicis_pay');
-attachClickListener('toss_pay');
-attachClickListener('payco_pay');
+// attachClickListener('kakao_pay');
+// attachClickListener('inicis_pay');
+// attachClickListener('toss_pay');
+// attachClickListener('payco_pay');
 
 
 
@@ -24,14 +26,18 @@ function paymentGateway(pgName) {
         merchant_uid: "order_no_" + new Date().getTime(), // 상점에서 관리하는 주문 번호
         name: '주문명:결제테스트',
         amount: 1000,
-        buyer_email: 'iamport@siot.do',
-        buyer_name: '구매자이름',
-        buyer_tel: '010-1234-5678',
-        buyer_addr: '서울특별시 강남구 삼성동',
-        buyer_postcode: '123-456'
+        buyer_email: memberEmail,
+        buyer_name: memberName,
+        buyer_tel: memberPhoneNum,
+        buyer_addr: memberAddress,
+
     }, function (rsp) {
         console.log(rsp);
+       
+       
         if (rsp.success) {
+            console.log("결제된거임?");
+        
             // 서버로 데이터를 전송
             fetch("/pay/portOne", {
                 method: "POST",
@@ -54,24 +60,23 @@ function paymentGateway(pgName) {
 
                 }),
             })
-                .then((response) => response.json())
+                .then((response) => response.text())
                 .then((data) => {
+                 
                     // 서버에서의 추가 처리
-                    if (data.everythings_fine) {
+                    if (data == "결제완료") {
                         var msg = '결제가 완료되었습니다.';
-                        msg += '\n고유ID : ' + rsp.imp_uid;
-                        msg += '\n상점 거래ID : ' + rsp.merchant_uid;
+                        msg += '\n고유ID : ' +rsp.imp_uid;
+                        msg += '\n주문번호 : ' + rsp.merchant_uid;
                         msg += '\결제 금액 : ' + rsp.paid_amount;
                         msg += '카드 승인번호 : ' + rsp.apply_num;
-
                         alert(msg);
                     } else {
-                    	console(data);
-                        // 결제가 되지 않은 경우의 처리
+                        //결제 실패시 처리
+                        alert(data);
                     }
                 })
                 .catch((error) => {
-                    console.error('Error:', error);
                 });
         } else {
             var msg = '결제에 실패하였습니다.';
