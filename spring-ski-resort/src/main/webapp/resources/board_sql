@@ -1,4 +1,135 @@
 
+## notice table 생성
+create table notice(
+notice_num bigint not null auto_increment,
+member_num bigint,
+notice_writer varchar(50) not null,
+notice_category varchar(20) not null,
+notice_title varchar(100) not null,
+notice_content text,
+notice_count int default 0,
+notice_reg_at datetime default now(),
+notice_mod_at datetime default now(),
+notice_point varchar(1) default 'N',
+notice_del varchar(1) default 'N',
+primary key(notice_num)
+);
+
+
+
+## file table 생성
+create table file(
+uuid varchar(200) not null,
+notice_num bigint,
+qna_num bigint,
+qna_ans_num bigint,
+save_dir varchar(200) not null,
+file_name varchar(100) not null,
+file_isok varchar(1) default 'N',
+file_type tinyint(1) default 0,
+file_size bigint,
+file_reg_at datetime default now(),
+primary key(uuid)
+);
+
+
+
+## qna table 생성
+create table qna(
+qna_num bigint not null auto_increment,
+member_num bigint,
+qna_writer varchar(50) not null,
+qna_category varchar(50) not null,
+qna_title varchar(100) not null,
+qna_content text,
+qna_count int default 0,
+qna_isok varchar(1) default 'N',
+qna_secret varchar(1) default 'N',
+qna_del varchar(1) default 'N',
+qna_reg_at datetime default now(),
+qna_mod_at datetime default now(),
+qna_ans_reg_at datetime default now(),
+primary key(qna_num)
+);
+
+
+
+- qna_ans table 생성
+create table qna_ans(
+qna_ans_num bigint not null auto_increment,
+qna_num bigint,
+qna_ans_writer varchar(50) not null,
+qna_ans_title varchar(100) not null,
+qna_ans_content text,
+qna_ans_del varchar(1) default 'N',
+qna_ans_reg_at datetime default now(),
+qna_ans_mod_at datetime default now(),
+primary key(qna_ans_num)
+);
+
+
+
+
+
+---나중에 추가될-----------------------------------------------------------------------------
+
+##포링키
+**notice 테이블 포링키 구문
+alter table notice add CONSTRAINT fk_notice foreign KEY(member_num) references member (member_num) ON DELETE CASCADE;
+
+**file 테이블 포링키 구문
+alter table file add CONSTRAINT fk_file_notice foreign KEY(notice_num) references notice (notice_num) ON DELETE CASCADE;
+alter table file add CONSTRAINT fk_file_qna foreign KEY(qna_num) references qna (qna_num) ON DELETE CASCADE;
+alter table file add CONSTRAINT fk_file_qna_ans foreign KEY(qna_ans_num) references qna_ans (qna_ans_num) ON DELETE CASCADE;
+
+**qna_ans 테이블 포링키 구문
+alter table qna_ans add CONSTRAINT fk_qna_ans foreign KEY(qna_num) references qna (qna_num) ON DELETE CASCADE;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+------------메모용 참고 자료-------------------------------
+** foreign key가 존재하는 table을 truncate/delete할때 **
+
+> set FOREIGN_KEY_CHECKS = 0;
+Query OK, 0 rows affected 
+
+> truncate 테이블명;
+Query OK, 0 rows affected
+
+> set FOREIGN_KEY_CHECKS = 1;
+Query OK, 0 rows affected 
+
+
+** 관리자 권한 부여 **
+insert into auth_member values('admin','ROLE_ADMIN');
+
+
+
+
+
+
+
+
+
+
+
+------------옛날거임 신경 X------------------------------------------------
+
 ## notice table 11-22
 create table notice(
 notice_num bigint not null auto_increment,
@@ -66,3 +197,33 @@ primary key(qna_num)
 - file table에 qna_num 칼럼추가 및 외래키 설정.
 alter table file add qna_num bigint;
 alter table file add CONSTRAINT fk_qna foreign KEY(qna_num) references qna (qna_num) ON DELETE CASCADE;
+
+
+
+##11-29
+- qna 테이블에서 qna_ans_num 칼럼 삭제
+ALTER TABLE qna DROP COLUMN qna_ans_num;
+
+- qna_ans table 생성
+create table qna_ans(
+qna_ans_num bigint not null auto_increment,
+qna_num bigint,
+qna_ans_writer varchar(50) not null,
+qna_ans_title varchar(100) not null,
+qna_ans_content text,
+qna_ans_del varchar(1) default 'N',
+qna_ans_reg_at datetime default now(),
+qna_ans_mod_at datetime default now(),
+primary key(qna_ans_num)
+);
+
+- qna_ans 테이블에 외래키 설정
+alter table qna_ans add CONSTRAINT fk_qna_ans foreign KEY(qna_num) references qna (qna_num) ON DELETE CASCADE;
+
+
+
+##11-30
+- file 테이블에 qna_ans_num 칼럼추가 및 외래키 설정.  -qna테이블에 qna_secret 칼럼추가
+alter table file add qna_ans_num bigint;
+alter table file add CONSTRAINT file_ibfk_qna_ans foreign KEY(qna_ans_num) references qna_ans (qna_ans_num) ON DELETE CASCADE;
+alter table qna add qna_secret varchar(1) default 'N';

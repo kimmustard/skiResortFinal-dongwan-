@@ -74,7 +74,12 @@ public class NoticeController {
 		int totalCount = nsv.getTotalCount(pgvo);
 		PagingHandler ph = new PagingHandler(pgvo, totalCount);
 		m.addAttribute("ph",ph);
+		List<NoticeVO> pvo = nsv.noticePointList();
+		m.addAttribute("pvo", pvo);
 	}
+	
+	
+	
 	//공지두개 비동기로 보내기
 	@GetMapping(value="/getTwoNotice", produces = {MediaType.APPLICATION_JSON_VALUE} )
 	public ResponseEntity<List<NoticeVO>> getTwoNotice() {

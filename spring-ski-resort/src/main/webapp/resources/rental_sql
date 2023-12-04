@@ -1,0 +1,51 @@
+--리프트권 테이블 11/27
+create table rental_lift(
+rental_lift_num varchar(200) not null,
+rental_lift_ticket varchar(50),
+rental_lift_adult_fee int,
+rental_lift_kid_fee int,
+rental_lift_adult int,
+rental_lift_kid int,
+rental_lift_start date,
+primary key(rental_lift_num));
+
+--렌탈 테이블 11/27
+create table rental(
+rental_main_num bigint not null auto_increment,
+rental_lift_num varchar(200) not null,
+rental_shop_num bigint,
+member_email varchar(50) not null,
+reatal_main_isreturn varchar(1) default 'N',
+rental_main_lift varchar(1) default 'N',
+member_type varchar(20) default 'normal',
+rental_reg_at datetime default now(),
+primary key(rental_main_num));
+
+--장비목록 테이블 11/29
+create table rental_items(
+rental_list_item_num bigint not null auto_increment,
+rental_list_item_type varchar(50),
+rental_list_item_grade varchar(50),
+rental_list_low_item varchar(50),
+rental_list_mid_item varchar(50),
+rental_list_premium_item varchar(50),
+rental_list_item_count int default 0,
+rental_list_item_explain text,
+primary key(rental_list_item_num));
+
+--파일 테이블 컬럼추가 11/29
+alter table file add rental_list_item_num bigint;
+
+--장비예약 테이블(아직 없음)
+create table rental_reserve(
+rental_main_num bigint not null,
+rental_list_item_num bigint not null,
+rental_reserve_ticket varchar(50),
+rental_reserve_adult_fee int,
+rental_reserve_kid_fee int,
+rental_reserve_adult int,
+rental_reserve_kid int,
+rental_reserve_isok varchar(1) default 'Y',
+rental_reserve_isreturn varchar(1) default 'N',
+rental_reserve_start date,
+rental_reserve_reg_at datetime default now());
