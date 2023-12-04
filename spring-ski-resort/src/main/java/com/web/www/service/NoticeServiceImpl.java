@@ -34,6 +34,9 @@ public class NoticeServiceImpl implements NoticeService{
 	
 	@Override
 	public int noticeRegister(NoticeDTO ndto) {
+		if(ndto.getNvo().getNoticePoint()==null) { //중요공지 미체크시 null값 대신 'N'
+			ndto.getNvo().setNoticePoint("N");
+		}
 		int isOk = ndao.insert(ndto.getNvo());
 		if(ndto.getFlist()==null) {
 			isOk*=1;
@@ -73,13 +76,21 @@ public class NoticeServiceImpl implements NoticeService{
 //		return ndao.selectList();
 //	}
 	
+	
 	@Override
 	public List<NoticeVO> noticeList(PagingVO pgvo) {
 		log.info(">>>>> notice List service >> ");
 		return ndao.selectList(pgvo);
 	}
 
+	
+	@Override
+	public List<NoticeVO> noticePointList() {
+		log.info(">>>>> notice point List service >> ");
+		return ndao.selectPointList();
+	}
 
+	
 	@Override
 	public int noticeModify(NoticeVO nvo) {
 		log.info(">>>>> notice modify service >> ");
@@ -88,9 +99,13 @@ public class NoticeServiceImpl implements NoticeService{
 		return isOk;
 	}
 
+	
 	@Override
 	public int noticeFileModify(NoticeDTO ndto) {
 		log.info(">>>>> notice file modify service >> ");
+		if(ndto.getNvo().getNoticePoint()==null) { //중요공지 미체크시 null값 대신 'N'
+			ndto.getNvo().setNoticePoint("N");
+		}
 		ndao.readCount(ndto.getNvo().getNoticeNum(), -2);
 		int isOk = ndao.noticeFileModify(ndto.getNvo());
 		if(ndto.getFlist()==null) {
@@ -134,6 +149,8 @@ public class NoticeServiceImpl implements NoticeService{
 		// TODO Auto-generated method stub
 		return ndao.getTwoNotice();
 	}
+
+
 
 
 

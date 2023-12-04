@@ -4,8 +4,8 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.web.www.repository.NoticeDAO">
 	<insert id="insert" parameterType="com.web.www.domain.board.NoticeVO">
-		insert into notice(notice_writer, notice_category, notice_title, notice_content)
-		values(#{noticeWriter}, #{noticeCategory}, #{noticeTitle}, #{noticeContent})
+		insert into notice(notice_writer, notice_category, notice_title, notice_content, notice_point)
+		values(#{noticeWriter}, #{noticeCategory}, #{noticeTitle}, #{noticeContent}, #{noticePoint})
 	</insert>
 	
 	<select id="selectOneNoticeNum" resultType="long">
@@ -17,9 +17,13 @@
 	</select>
 	
 	<select id="selectList" resultType="com.web.www.domain.board.NoticeVO">
-		select * from notice where notice_del='N'
+		select * from notice where notice_del='N' and notice_point='N' 
 		<include refid="search"></include>
 		order by notice_num desc limit #{pageStart}, #{qty}
+	</select>
+	
+	<select id="selectPointList" resultType="com.web.www.domain.board.NoticeVO">
+		select * from notice where notice_del='N' and notice_point='Y' order by notice_num desc
 	</select>
 	
 	<update id="readCount">
@@ -34,7 +38,7 @@
 	
 	<update id="noticeFileModify">
 		update notice set 
-		notice_category=#{noticeCategory}, notice_title=#{noticeTitle}, notice_content=#{noticeContent}, notice_mod_at=now()
+		notice_category=#{noticeCategory}, notice_title=#{noticeTitle}, notice_content=#{noticeContent}, notice_mod_at=now(), notice_point=#{noticePoint} 
 		where notice_num = #{noticeNum}
 	</update>
 	

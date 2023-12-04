@@ -3,9 +3,11 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.web.www.repository.QnaDAO">
+
+	<!-- Q&A 코드 라인 -->
 	<insert id="insert" parameterType="com.web.www.domain.board.QnaVO">
-		insert into qna(qna_writer, qna_category, qna_title, qna_content)
-		values(#{qnaWriter}, #{qnaCategory}, #{qnaTitle}, #{qnaContent})
+		insert into qna(qna_writer, qna_category, qna_title, qna_content, qna_secret)
+		values(#{qnaWriter}, #{qnaCategory}, #{qnaTitle}, #{qnaContent}, #{qnaSecret})
 	</insert>
 	
 	<select id="selectOneQnaNum" resultType="long">
@@ -34,6 +36,32 @@
 	
 	<update id="delete">
 		update qna set qna_del='Y' where qna_num=#{qnaNum}
+	</update>
+	
+	
+	
+	<!-- Q&A 답변 코드 라인 -->
+	<insert id="ansInsert" parameterType="com.web.www.domain.board.QnaAnsVO">
+		insert into qna_ans(qna_ans_writer, qna_ans_title, qna_ans_content, qna_num)
+		values(#{qnaAnsWriter}, #{qnaAnsTitle}, #{qnaAnsContent}, #{qnaNum})
+	</insert>
+	
+	<update id="qnaIsokUpdate">
+		update qna set qna_isok='Y' where qna_num=#{qna_num}
+	</update>
+	
+	<select id="selectAnsDetail" resultType="com.web.www.domain.board.QnaAnsVO">
+		select * from qna_ans where qna_ans_del='N' and qna_num=#{qnaNum}
+	</select>
+	
+	<select id="selectOneQnaAnsNum" resultType="long">
+		select max(qna_ans_num) from qna_ans
+	</select>
+	
+	<update id="QnaAnsFileModify">
+		update qna_ans set
+		qna_ans_content=#{qnaAnsContent}, qna_ans_mod_at=now()
+		where qna_num = #{qnaNum}
 	</update>
 	
 	

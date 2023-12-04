@@ -19,6 +19,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.web.www.domain.FileVO;
 import com.web.www.domain.board.PagingVO;
+import com.web.www.domain.board.QnaAnsDTO;
+import com.web.www.domain.board.QnaAnsVO;
 import com.web.www.domain.board.QnaDTO;
 import com.web.www.domain.board.QnaVO;
 import com.web.www.handler.FileHandler;
@@ -38,6 +40,8 @@ public class QnaController {
 	private final FileHandler fh;
 	
 	
+
+///// Q&A 등록 구간 //////	
 	
 	@GetMapping("/register")
 	public String qnaRegister() {
@@ -47,9 +51,9 @@ public class QnaController {
 	
 	//파일업로드 추가
 	@PostMapping("/register")
-	public String noticeRegister(QnaVO qvo, RedirectAttributes re,
+	public String qnaRegister(QnaVO qvo, RedirectAttributes re,
 			@RequestParam(name="files", required = false)MultipartFile[] files) {
-		log.info(" >>>>> register "+qvo+" "+files);
+		log.info(" >>>>> qna register "+qvo+" "+files);
 		List<FileVO> flist = null;
 		if(files[0].getSize() > 0) {
 			String category ="qna";
@@ -59,25 +63,29 @@ public class QnaController {
 		log.info(">>>>> qna register >> "+(isOk > 0? "OK" : "Fail"));
 		return "redirect:/qna/list";
 	}
+
 	
 	
 	
 	@GetMapping("/list")
 	public void qnaList(HttpSession ses, Model m, PagingVO pgvo) {
 		String str = (String) ses.getAttribute("memberId");
+		log.info("###### = {}", str);
 		m.addAttribute("list", qsv.qnaList(pgvo));
 		int totalCount = qsv.getTotalCount(pgvo);
 		PagingHandler ph = new PagingHandler(pgvo, totalCount);
 		m.addAttribute("ph",ph);
 	}
 	
-	
+
 	
 	//파일업로드 추가
-	@GetMapping({"/detail","/modify"})
+	@GetMapping({"/detail","/modify","/ans-register","/ans-modify"})
 	public void qnaDetail(Model m, @RequestParam("qnaNum")long qnaNum) {
 		QnaDTO qdto = qsv.qnaDetail(qnaNum);
+		QnaAnsDTO qadto = qsv.qnaAnsDetail(qnaNum);
 		m.addAttribute("qdto",qdto);
+		m.addAttribute("qadto",qadto);
 	}
 	
 	
@@ -86,7 +94,7 @@ public class QnaController {
 		@PostMapping("/modify")
 		public String qnaModify(QnaVO qvo, RedirectAttributes re,
 				@RequestParam(name="files", required = false)MultipartFile[] files) {
-			log.info(" >>>>> modify "+qvo+" "+files);
+			log.info(" >>>>>qna modify "+qvo+" "+files);
 			
 			List<FileVO> flist = null;
 			if(files[0].getSize() > 0) {
@@ -119,6 +127,47 @@ public class QnaController {
 			return isOk > 0 ? new ResponseEntity<String>("1", HttpStatus.OK)
 					: new ResponseEntity<String>("0", HttpStatus.INTERNAL_SERVER_ERROR);
 		}
+		
+		
+		
+		
+		
+		
+		//////////////////// Q&A 답변 등록 구간 ////////////////////////
+		
+		@PostMapping("/ans-register")
+		public String qnaAnsRegister(QnaAnsVO qavo, RedirectAttributes re,
+				@RequestParam(name="files", required = false)MultipartFile[] files) {
+			log.info(" >>>>> qna-ans register "+qavo+" "+files);
+			List<FileVO> flist = null;
+			if(files[0].getSize() > 0) {
+				String category ="qna";
+				flist = fh.uploadFiles(files,category);
+			}
+			int isOk = qsv.qnaAnsRegister(new QnaAnsDTO(qavo, flist));
+			log.info(">>>>> qna-ans register >> "+(isOk > 0? "OK" : "Fail"));
+			return "redirect:/qna/detail?qnaNum="+qavo.getQnaNum();
+		}
+		
+		
+		@PostMapping("/ans-modify")
+		public String qnaAnsModify(QnaAnsVO qavo, RedirectAttributes re,
+				@RequestParam(name="files", required = false)MultipartFile[] files) {
+			log.info(" >>>>>qna-ans modify "+qavo+" "+files);
+			
+			List<FileVO> flist = null;
+			if(files[0].getSize() > 0) {
+				String category ="qna";
+				flist = fh.uploadFiles(files,category);
+			}
+			QnaAnsDTO qadto = new QnaAnsDTO(qavo, flist);
+			int isOk = qsv.qnaAnsFileModify(qadto);
+			log.info(">>>>> qna-ans modify >> "+(isOk > 0? "OK" : "Fail"));
+			re.addFlashAttribute("isOk",isOk);
+			return "redirect:/qna/detail?qnaNum="+qavo.getQnaNum();
+		}
+		
+		
 	
 
 }

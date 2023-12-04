@@ -28,7 +28,7 @@
 	}
 	
 	.liftTableContainer, .rentalTableContainer{
-		width: 1100px;
+		width: 1200px;
 		border-collapse: collapse;
 		margin: 0 auto;
 	}
@@ -123,7 +123,7 @@
 				<thead class="thead">
 					<tr class="rentalTr">
 						<td class="rentalTd" colspan="2" rowspan="2">#</td>
-						<td class="rentalTd" colspan="6">렌탈요금</td>
+						<td class="rentalTd" colspan="7">렌탈요금</td>
 					</tr>
 					<tr class="rentalTr">
 						<td class="rentalTd">일반장비SET(스키)</td>
@@ -132,6 +132,7 @@
 						<td class="rentalTd">중급장비SET(보드)</td>
 						<td class="rentalTd">프리미엄장비SET(스키)</td>
 						<td class="rentalTd">프리미엄장비SET(보드)</td>
+						<td class="rentalTd">의류SET</td>
 					</tr>
 				</thead>
 				<tbody>
@@ -144,6 +145,7 @@
 						<td class="rentalTd">20,000</td>
 						<td class="rentalTd">25,000</td>
 						<td class="rentalTd">25,000</td>
+						<td class="rentalTd">20,000</td>
 					</tr>
 					<tr class="rentalTr">
 						<td class="rentalTd">대인</td>
@@ -153,6 +155,7 @@
 						<td class="rentalTd">25,000</td>
 						<td class="rentalTd">30,000</td>
 						<td class="rentalTd">30,000</td>
+						<td class="rentalTd">25,000</td>
 					</tr>
 					<tr class="rentalTr">
 						<td class="rentalTd" rowspan="2">오후</td>
@@ -163,6 +166,7 @@
 						<td class="rentalTd">25,000</td>
 						<td class="rentalTd">30,000</td>
 						<td class="rentalTd">30,000</td>
+						<td class="rentalTd">25,000</td>
 					</tr>
 					<tr class="rentalTr">
 						<td class="rentalTd">대인</td>
@@ -172,6 +176,7 @@
 						<td class="rentalTd">30,000</td>
 						<td class="rentalTd">35,000</td>
 						<td class="rentalTd">35,000</td>
+						<td class="rentalTd">30,000</td>
 					</tr>
 					<tr class="rentalTr">
 						<td class="rentalTd" rowspan="2">주간</td>
@@ -182,6 +187,7 @@
 						<td class="rentalTd">35,000</td>
 						<td class="rentalTd">40,000</td>
 						<td class="rentalTd">40,000</td>
+						<td class="rentalTd">35,000</td>
 					</tr>
 					<tr class="rentalTr">
 						<td class="rentalTd">대인</td>
@@ -191,6 +197,7 @@
 						<td class="rentalTd">40,000</td>
 						<td class="rentalTd">45,000</td>
 						<td class="rentalTd">45,000</td>
+						<td class="rentalTd">40,000</td>
 					</tr>
 					<tr class="rentalTr">
 						<td class="rentalTd" rowspan="2">야간</td>
@@ -201,6 +208,7 @@
 						<td class="rentalTd">20,000</td>
 						<td class="rentalTd">25,000</td>
 						<td class="rentalTd">25,000</td>
+						<td class="rentalTd">20,000</td>
 					</tr>
 					<tr class="rentalTr">
 						<td class="rentalTd">대인</td>
@@ -210,6 +218,7 @@
 						<td class="rentalTd">25,000</td>
 						<td class="rentalTd">30,000</td>
 						<td class="rentalTd">30,000</td>
+						<td class="rentalTd">25,000</td>
 					</tr>
 					<tr class="rentalTr">
 						<td class="rentalTd" rowspan="2">종일</td>
@@ -220,6 +229,7 @@
 						<td class="rentalTd">50,000</td>
 						<td class="rentalTd">55,000</td>
 						<td class="rentalTd">55,000</td>
+						<td class="rentalTd">50,000</td>
 					</tr>
 					<tr class="rentalTr">
 						<td class="rentalTd">대인</td>
@@ -229,6 +239,7 @@
 						<td class="rentalTd">55,000</td>
 						<td class="rentalTd">60,000</td>
 						<td class="rentalTd">60,000</td>
+						<td class="rentalTd">55,000</td>
 					</tr>
 					<tr class="rentalTr">
 						<td class="rentalTd" rowspan="2">시즌</td>
@@ -239,6 +250,7 @@
 						<td class="rentalTd">265,000</td>
 						<td class="rentalTd">280,000</td>
 						<td class="rentalTd">280,000</td>
+						<td class="rentalTd">265,000</td>
 					</tr>
 					<tr class="rentalTr">
 						<td class="rentalTd">대인</td>
@@ -248,6 +260,7 @@
 						<td class="rentalTd">285,000</td>
 						<td class="rentalTd">300,000</td>
 						<td class="rentalTd">300,000</td>
+						<td class="rentalTd">285,000</td>
 					</tr>
 				</tbody>
 			</table>
