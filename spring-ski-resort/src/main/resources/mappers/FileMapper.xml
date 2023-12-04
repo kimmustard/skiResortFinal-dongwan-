@@ -42,7 +42,6 @@
 		update file set file_isok='N' where qna_num=#{qnaNum}
 	</update>
 	
-
 	<!-- Item 파일 라인 -->
 	<insert id="insertItemFile">
 		insert into file(uuid,save_dir,file_name,file_isok,file_type,file_size,rental_list_item_num)
@@ -62,7 +61,6 @@
 	<select id="getQnaAnsFileList" resultType="com.web.www.domain.FileVO">
 		select * from file where qna_num=#{qnaNum} and file_isok='Y' and qna_ans_num is not null
 		order by file_reg_at asc
-
 	</select>
 	
 </mapper>

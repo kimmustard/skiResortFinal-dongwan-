@@ -32,6 +32,7 @@ public class MemberVO {
 	private String memberTerms2; //이용약관
 	private String memberTerms3; //이용약관
 	private String memberType;	//일반회원 | 소셜회원
+	private String memberGrade;	//회원등급 (결제기준)
 	
 	private String memberRegAt;	//회원가입날짜
 	private String memberLastAt;	//마지막 로그인 날짜

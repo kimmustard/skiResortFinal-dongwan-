@@ -4,16 +4,30 @@ drop table pay;
 create table pay(
 pay_merchant_uid varchar(50) not null,
 pay_imp_uid  varchar(50) not null,
-pay_pg varchar(50),
-pay_method varchar(15),
-pay_name varchar(100),
-pay_amount bigint,
-pay_status varchar(15),
-member_num bigint,
-member_email varchar(50),
-member_name varchar(50),
-member_phone_num varchar(25),
+pay_pg varchar(50) not null,
+pay_method varchar(15) not null,
+pay_name varchar(100) not null,
+pay_amount bigint not null,
+pay_status varchar(15) not null,
+member_num bigint not null,
+member_email varchar(50)not null,
+member_name varchar(50) not null,
+member_phone_num varchar(25) not null,
 member_address varchar(50),
 pay_reg_at DateTime default now(),
 primary key(pay_merchant_uid)
+);
+
+
+12-03 환불 테이블입니다.
+
+create table refund(
+refund_imp_uid varchar(50) not null,
+pay_merchant_uid varchar(50) not null,
+refund_reason varchar(200) not null,
+refund_name varchar(100) not null,
+refund_amount bigint not null,
+refund_type varchar(20) not null,
+refund_reg_at DateTime default now(),
+primary key(refund_imp_uid)
 );

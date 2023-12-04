@@ -60,43 +60,43 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
 	//시큐리티 필터 체인
-		@Override
-		protected void configure(HttpSecurity http) throws Exception {
-			http.csrf().disable();
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		http.csrf().disable();
 
-			//OAuth접근시 UTF-8 필터 필요
-			CharacterEncodingFilter filter = new CharacterEncodingFilter();
-			filter.setEncoding("UTF-8");
-			filter.setForceEncoding(true);		
-			http.addFilterBefore(filter, CsrfFilter.class);
-			
+		//OAuth접근시 UTF-8 필터 필요
+		CharacterEncodingFilter filter = new CharacterEncodingFilter();
+		filter.setEncoding("UTF-8");
+		filter.setForceEncoding(true);		
+		http.addFilterBefore(filter, CsrfFilter.class);
+		
 
-			//http의 승인요청 담당
-			http.authorizeRequests()
-			.antMatchers("/member/list").hasRole("ADMIN")
-			.antMatchers("/","/board/*","/upload/**","/resources/**",
-					"/member/login","/member/register","/rental/*","/hotel/*","/member/check/**",
-					"/oauth/*","/oauth/naver/*","/oauth/kakao/*","/oauth/google/*","/notice/**","/weather/**",
-					"/pay/**","/qna/**").permitAll()	//게스트 이용가능한 URL매핑
-			.anyRequest().authenticated();	// 나머지 사용자 처리
+		//http의 승인요청 담당
+		http.authorizeRequests()
+		.antMatchers("/member/list").hasRole("ADMIN")
+		.antMatchers("/","/board/*","/upload/**","/resources/**",
+				"/member/login","/member/register","/rental/*","/hotel/*","/member/check/**",
+				"/oauth/*","/oauth/naver/*","/oauth/kakao/*","/oauth/google/*","/notice/**","/weather/**",
+				"/pay/**","/qna/**").permitAll()	//게스트 이용가능한 URL매핑
+		.anyRequest().authenticated();	// 나머지 사용자 처리
+	
 		
-			
-			//커스텀 페이지 구성
-			http.formLogin()
-			.usernameParameter("memberId")
-			.passwordParameter("memberPwd")
-			.loginPage("/member/login")
-			.successHandler(authSuccessHandler())
-			.failureHandler(authFailureHandler());
-			
-			//로그아웃 페이지 구성
-			http.logout()
-			.logoutUrl("/member/logout")
-			.invalidateHttpSession(true)
-			.deleteCookies("JSESSIONID")
-			.logoutSuccessUrl("/");	//홈으로
+		//커스텀 페이지 구성
+		http.formLogin()
+		.usernameParameter("memberId")
+		.passwordParameter("memberPwd")
+		.loginPage("/member/login")
+		.successHandler(authSuccessHandler())
+		.failureHandler(authFailureHandler());
 		
-		}
+		//로그아웃 페이지 구성
+		http.logout()
+		.logoutUrl("/member/logout")
+		.invalidateHttpSession(true)
+		.deleteCookies("JSESSIONID")
+		.logoutSuccessUrl("/");	//홈으로
+	
+	}
 
 
 }
