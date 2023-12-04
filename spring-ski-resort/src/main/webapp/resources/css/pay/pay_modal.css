@@ -1,0 +1,71 @@
+@charset "UTF-8";
+
+.modal-content{
+    transform: translateY(10%);
+
+}
+.pay-info{
+	background-color: #6498ff;
+	margin: 10px;
+	border-radius: 10px;
+	color: white;
+}
+.pay-method{
+	background-color: green;
+	margin: 10px;
+	border-radius: 10px;
+	background-color: white;
+	border: solid 1px #666;
+	border-radius: 10px;
+	height: 400px;
+}
+.pay-method>button{
+	width: 50px;
+	height: 50px;
+	border: none;
+	background-color: white;
+	position: relative;
+	margin: 30px 15px 0 15px;
+	border-radius: 10px;
+}
+.pay-method>button>span{
+		position: absolute;
+		bottom: -20px;
+		 white-space: nowrap;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+#inicis_pay{
+	background-image: url("/resources/etc/pay_icon.png");
+	background-size: cover;
+	margin-left: 37px;
+	}
+#kakao_pay{
+	background-image: url("/resources/etc/kakaopay.png");
+	background-size: cover;
+	}
+#toss_pay{
+	background-image: url("/resources/etc/tosspay.png");
+	background-size: cover;
+	}
+#payco_pay{
+	background-image: url("/resources/etc/payco.jpg");
+	background-size: cover;
+	}
+#naver_pay{
+	background-image: url("/resources/etc/naverpay.png");
+	background-size: cover;
+	}
+.pay3-box{
+	margin-top :10px;
+	border-radius: 10px;
+	font-size: 20px;
+	background-color: #487fee;
+
+}
+.pay-info>div{
+	padding: 15px;
+}
+.pay-value{
+	float: right;
+}

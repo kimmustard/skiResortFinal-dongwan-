@@ -24,6 +24,11 @@ public class FileVO {
 	private long qnaNum;
 	private long rentalListItemNum;
 	private long qnaAnsNum;
+	
+	
+
+	
+	
 
 
 }
