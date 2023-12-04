@@ -68,7 +68,7 @@ function paymentGateway(pgName) {
                         window.location.href = '/pay/PaySuccess?payMerchantUid=' + rsp.merchant_uid + '&payName=' + rsp.name + '&payAmount=' + rsp.paid_amount;
                     } else {
                         //결제 실패시 처리
-                        alert(data);
+                        window.location.href = '/pay/PayFail?errorMessage=' + data;
                     }
                 })
                 .catch((error) => {

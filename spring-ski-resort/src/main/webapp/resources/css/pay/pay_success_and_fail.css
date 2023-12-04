@@ -16,6 +16,14 @@ body {
 	background-size: 100% 100%;
 	background-size: cover;
 }
+.mainContainer2{
+	position: relative;
+	background-image: url("https://i.imgur.com/y5PYHYQ.jpg");
+	height: 100vh;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-size: cover;
+}
 
 .successContainer{
 	position: absolute;
@@ -40,7 +48,16 @@ body {
 .success-Box2{
 	margin-top: -30px;
 }
+.success-Box5{
+	margin-top: -5px;
+}
 .success-Box3>p{
+	margin-top: -15px;
+	font-family: 'Gowun Dodum', sans-serif;
+	font-size: 20px;
+	font-weight: 600;
+}
+.success-Box6>p{
 	margin-top: -15px;
 	font-family: 'Gowun Dodum', sans-serif;
 	font-size: 20px;
@@ -59,6 +76,23 @@ body {
 }
 
 .btn-1, .btn-2{
+	width: 200px;
+	color: white;
+	border: none;
+	font-family: 'Gowun Dodum', sans-serif;
+	font-size: 17px;
+	height: 40px;
+	border-color: rgb(39,48,77);
+	cursor: pointer;
+}
+
+.btn-3{
+	border-bottom-left-radius: 30px;
+}
+.btn-4{
+	border-bottom-right-radius: 30px;
+}
+.btn-3, .btn-4{
 	width: 200px;
 	color: white;
 	border: none;
