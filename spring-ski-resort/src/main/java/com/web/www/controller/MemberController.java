@@ -1,7 +1,6 @@
 package com.web.www.controller;
 
 import java.security.Principal;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,11 +22,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.web.www.domain.member.AuthUser;
+import com.web.www.domain.member.MemberPwdDTO;
 import com.web.www.domain.member.MemberVO;
 import com.web.www.domain.member.ModifyMemberDTO;
 import com.web.www.domain.member.RegisterMemberDTO;
 import com.web.www.domain.pay.PayInfoVO;
-import com.web.www.repository.MemberDAO;
 import com.web.www.service.MemberService;
 import com.web.www.service.PayService;
 
@@ -85,39 +84,59 @@ public class MemberController {
 
 	@GetMapping("/detail")
 	public String detailForm(@AuthUser MemberVO mvo, Model model, PayInfoVO pivo) {
-
 		MemberVO detailMvo = msv.getUser(mvo.getMemberId() , mvo.getMemberType());
-		List<PayInfoVO> pivoList = psv.getPayInfoList(mvo.getMemberNum());
-		log.info("결제정보 조회 = {}", pivoList);
-		
 		model.addAttribute("mvo", detailMvo);
-		model.addAttribute("pivoList" , pivoList);
+		model.addAttribute("mDTO", new RegisterMemberDTO());
 		return "/member/detail";
 	}
 	
 	@PostMapping("/detail")
-	public String detail(@Validated @ModelAttribute("mvo") ModifyMemberDTO mvo,
+	public String detail(@Validated @ModelAttribute("mDTO") ModifyMemberDTO mDTO,
 			BindingResult bindingResult, HttpServletRequest request, HttpServletResponse response,
-			RedirectAttributes rttr) {
-		log.info("mvo########### = {}" , mvo);
+			RedirectAttributes rttr, Model model, @AuthUser MemberVO mvo) {
 		
 		if(bindingResult.hasErrors()) {
-			return "redirect:/member/detail";
+			model.addAttribute("mvo", mvo);
+			return "/member/detail";
 		}
 		
-		int isMod = msv.modifyMember(mvo);
+		int isMod = msv.modifyMember(mDTO);
 		rttr.addFlashAttribute("isMod", isMod);
 		logout(request, response);
 		return "redirect:/member/login";
 	}
 	
+	@GetMapping("/memberPwd")
+	public String pwdForm(@AuthUser MemberVO mvo, Model model) {
+		model.addAttribute("mpDTO", new MemberPwdDTO());
+		model.addAttribute("mvo", mvo);
+		return "/member/memberPwd";
+	}
+	
+	@PostMapping("/memberPwd")
+	public String pwdChange(@Validated @ModelAttribute("mpDTO")MemberPwdDTO mpDTO, BindingResult bindingResult, 
+			HttpServletRequest request, HttpServletResponse response) {
+		log.info("mpDTO########### = {}" , mpDTO);
+		
+		if(bindingResult.hasErrors()) {
+			return "/member/memberPwd";
+		}
+		
+		
+		logout(request, response);
+		return "/member/login";
+	}
+	
+	
+	
+	
+	
+	// sub 로그아웃 컨트롤러
 	@GetMapping("/logoutSub")
 	public String logoutTab(HttpServletRequest request, HttpServletResponse response) {
 		logout(request, response);
 		return "redirect:/";
 	}
-	
-	
 	
 	/**
 	 * @param request (회원정보)

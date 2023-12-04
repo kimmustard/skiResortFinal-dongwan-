@@ -1,51 +1,189 @@
 @charset "UTF-8";
 @import url(/resources/css/reset.css);
 
+@keyframes background-ani {
+	from {
+		transform: translate(500px, 0);
+	}
+	to {
+		transform: translate(0, 0);
+	}
+}
+
+@keyframes background2-ani {
+	from {
+		transform: translate(0, -500px);
+	}
+	to {
+		transform: translate(0, 0);
+	}
+}
+
+@keyframes modifyView-ani {
+	from {
+		transform: translate(-500px, 0);
+	}
+	to {
+		transform: translate(0, 0);
+	}
+}
+
+@keyframes mainViewBody2 {
+	from {
+		transform: translate(0, 1000px);
+	}
+	to {
+		transform: translate(0, 0);
+	}
+}
+
+
 .bodyContainer{
 	width: 100%;
 	display: flex;
-	background-image: url("https://rusutsu.com/wp-content/uploads/home-main62.jpg");
 	background-size: cover;
 	position: fixed;
-	
+}
+
+.backgroundImg{
+	position: absolute;
+	right: 0px;
+	width: 1300px;
+	height: 1000px;
+	z-index: -5;
+	background-image: url("https://i.imgur.com/UbaaWkY.png");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	animation: background-ani 0.4s linear forwards;
+}
+
+.backgroundImgList{
+	position: absolute;
+	right: 0px;
+	width: 2000px;
+	height: 1000px;
+	z-index: -5;
+	background-image: url("https://i.imgur.com/0ypjl8U.png");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	animation: background2-ani 0.4s linear forwards;
+}
+
+.backgroundImgPwd{
+	position: absolute;
+	right: 0px;
+	width: 1300px;
+	height: 1000px;
+	z-index: -5;
+	background-image: url("https://i.imgur.com/5MvgVZN.png");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	animation: background-ani 0.4s linear forwards;
 }
 /* 왼쪽 카테고리 */
 .mainCategory{
-	margin-top:96px;
-	width: 300px;
-	background-color: rgba(255,255,255,0.5);
+	width: 350px;
+	background-color: rgba(39,48,77,0.9);
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.7); 
+	border-bottom-right-radius: 100px;
 	position: fixed;
-    height: 100vh;
+    height: 900px;
+    z-index: 1;
+}
+
+.category-profile{
+	display: flex;
+	flex-direction: column;
+	color: white;
+	margin: 10px;
+	margin-left: 60px;
+	margin-top: 96px;
+}
+
+.category-profile>span{
+	margin-top: 10px;
+	margin-left: -15px;
+}
+#member-grade{
+	font-size: 25px;
+	font-weight: 700
 }
 
 .category-body{
 	margin: 50px;
 }
 
+.category-Box1{
+	display: flex;
+	justify-content: space-around;
+	margin-right: 20px;
+	flex-wrap: wrap;
+}
 
-.category-title{
-	margin-top: 50px;
-	margin-bottom: 100px;
+.category>a{
+	display: flex;
+	width: 80px;
+	text-align: center;
+	flex-direction: column;
+}
+.category>a>span{
+	display: flex;
+	width: 150px;
+	margin: 10px;
+	font-weight: 700;
+	margin-top: 10px;
+}
+
+/*아이콘 글자 span*/
+.category>a>.cs2{
+	margin-left: -8px;
 }
 
 .category-Box1>.category{
-	margin-bottom: 50px;
+	margin: 10px;
+}
+
+
+.category-Box1>.category>a{
+	text-decoration: none;
+	color: white;	
 }
 
 .category-Box2>.category{
-	margin-bottom: 50px;
-}
-a{
-	text-decoration: none;
-	color: black;
-}
-.category>a:hover{
-	background-color: #aaa;
 	color: white;
+	margin-bottom: 10px;
+}
+.category-Box2{
+	position: absolute;
+	left: 40px;
+	width: 300px;
+	bottom: 50px;
+}
+
+.category-Box2>.cbox8{
+	margin-bottom: 10px;
+	margin-left: 20px;
+}
+
+
+.category-Box1>.category:hover {
+    background-color: #2d96c4; /* hover 시 배경색 변경 */
+    border-radius: 50px;
+    transition: 0.7s;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* 그림자 효과 추가 */
+}
+
+.category-Box1>.category>a:hover {
+    color: #fff; /* hover 시 글자색 변경 */
 }
 .move-main:hover{
 	background-color: #aaa;
 	color: white;
+}
+
+.bi{
+	font-size: 50px;
+	text-align: center;
 }
 
 
@@ -68,18 +206,19 @@ a{
 }
 
 .modifyViewBox{
-  
- 	margin-left: 450px;
-    width: 440px;
-    background-color: rgba(255,255,255,0.7);
-    height: 540px;
+ 	margin-left: 500px;
+    width: 600px;
+    background-color: rgba(255,255,255,0.9);
+    height: 810px;
 	box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
     margin-top : 128px;
     overflow:auto;
+    animation: modifyView-ani 0.2s linear forwards;
     
 }
 .modifyBox{
 	margin-top: 20px;
+	margin-left: 50px;
 	margin-bottom: 20px;
 	border-radius: 10px;
 }
@@ -93,56 +232,40 @@ a{
 
 
 .modify-btn{
-	float: right;
-	margin-right: 100px;
+	margin-top: 50px;
+	text-align: center;
 }
 .modify-btn>button{
-	width: 200px;
+	width: 150px;
 }
 
+
+/* 환불 list 메인 css */
 .mainViewBody2{
-	width: 950px;
-	
-	
+	width: 1400px;
+	margin-left: 450px;
+	margin-top : 120px;
+	height: 800px;
+	background-color: rgba(255,255,255,0.9);
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+	overflow:auto;
+	animation: mainViewBody2 0.3s linear forwards;
 }
 
-.mainViewBox2{
-	height: 304px;
-}
-
-.mainViewBox3{
-	padding-top: 30px;
-    height: 1004px;
-    margin-left: 370px;
-    width: 700px;
-}
-
-.infoViewBox{
-    padding: 40px 40px 25px 40px;
-    background-color: rgba(255,255,255,0.7);
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
-    margin-left: 445px;
-    margin-top: 30px;
-    width: 455px;
-    
+/* 비밀번호 변경 메인 css */
+.mainViewBody3{
+	width: 700px;
+	margin-left: 500px;
+	margin-top : 250px;
+	height: 500px;
+	background-color: rgba(255,255,255,0.9);
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+	animation: modifyView-ani 0.3s linear forwards;
 }
 
 .infoBox{
 	margin-top: 20px;
 	margin-bottom: 20px;
-	background-color: rgba(255,255,255,0.7);
-}
-
-.ibox5{
-	box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
- 	color: #666;
-	height: 400px;
-	margin-top: 96px;
-}
-.ibox6{
-	box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
- 	color: #666;
-	height: 400px;
 }
 
 .iboxList{
@@ -172,5 +295,40 @@ a{
     font-weight: 600;
 }
 
+.member-msg>h3{
+	font-weight: bold;
+	font-size: 30px;
+	color: black;
+	margin-bottom: 20px;
+}
 
+.fbox1,.fbox2{
+	position: relative;
+}
+.bi-lock-fill{
+	position: absolute;
+	font-size: 30px;
+	bottom: 5px;
+	color: #666;
+	right: 80px;
+}
+
+/*환불모달창 css*/
+.refundInfo-body{
+	margin: 10px;	
+}
+.refund-title, .refundInfo>.form-check{
+	margin-bottom: 10px;
+}
+
+textarea{
+    resize: none;
+    width: 100%;
+    height: 6.25em;
+}
+
+.errorFont{
+	color: red;
+	margin-left: 35px;
+}
 

@@ -19,17 +19,16 @@ public class ModifyMemberDTO {
 	private String memberId;	//회원 검증을 위한 키값
 	private String memberType;	//회원 검증을 위한 타입
 	
-	@NotBlank
+	@NotBlank(message = "별명을 입력해주세요.")
 	private String memberAlias;
 	
-	@NotBlank
-	@Email
+	@NotBlank(message = "이메일을 입력해주세요.")
 	private String memberEmail;	//일반회원용
 	
-	@NotBlank
+	@NotBlank(message = "핸드폰 번호를 입력해주세요.")
 	private String memberPhoneNum;
 	
-	@NotBlank
+	@NotBlank(message = "주소를 입력해주세요.")
 	private String memberAddress;
 	private String memberAddressDetail;
 	

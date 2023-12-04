@@ -42,6 +42,7 @@
 		update file set file_isok='N' where qna_num=#{qnaNum}
 	</update>
 	
+
 	
 	<!-- Q&A 답변 코드 라인 -->
 	<insert id="insertQnaAnsFile">

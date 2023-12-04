@@ -30,6 +30,8 @@ import com.web.www.service.NoticeService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+
+
 @Slf4j
 @Controller
 @RequestMapping("/notice/*")
@@ -40,6 +42,7 @@ public class NoticeController {
 	
 	private final FileHandler fh;
 	
+
 	
 	@GetMapping("/register")
 	public String noticeRegister(HttpSession ses) {
@@ -84,9 +87,11 @@ public class NoticeController {
 	@GetMapping(value="/getTwoNotice", produces = {MediaType.APPLICATION_JSON_VALUE} )
 	public ResponseEntity<List<NoticeVO>> getTwoNotice() {
 		List<NoticeVO> list  = nsv.getTwoNotice();
+		log.info("lsit>>>>>>>>>>"+list);
 		int isOk=0;
 		if(list != null && !list.isEmpty()) {
 			isOk=1;
+			
 		}
 		log.info(isOk+"isOk<<<<<<<<");
 		return isOk > 0 ? new ResponseEntity<List<NoticeVO>>(list, HttpStatus.OK)
