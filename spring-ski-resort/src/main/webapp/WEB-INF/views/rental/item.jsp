@@ -141,137 +141,146 @@
 		</div>
 		
 		
-		
 		<div class="itemContainer">
 			<div class="skiItemList" id="skiItemList">
 				<div class="itemInfo">
-					<div class="itemImageBox" id="lowItemImageBox">
-						
-						<div>
-							<!-- 이미지 파일 표시 -->
-							일반
-						</div>
-						<div>
-							<!-- 이미지 파일 표시 -->
-							
-						</div>
-						<div>
-							<!-- 이미지 파일 표시 -->
-						</div>
-						<div>
-							<!-- 이미지 파일 표시 -->
-						</div>
-						<div>
-							<!-- 이미지 파일 표시 -->
-						</div>
-						
-					</div>
-					
-					<div class="textBox" id="lowItemTextBox">
-						
-						<div>
-							
-						</div>
-						<div>
-							
-						</div>
-						<div>
-							
-						</div>
-						<div>
-							
-						</div>
-						<div>
-							
-						</div>
-						
-					</div>
-					
-					
-					<div class="itemImageBox" id="midItemImageBox" style="display: none;">
-						
-						<div>
-							<!-- 이미지 파일 표시 -->
-							중급
-						</div>
-						<div>
-							<!-- 이미지 파일 표시 -->
-							
-						</div>
-						<div>
-							<!-- 이미지 파일 표시 -->
-						</div>
-						<div>
-							<!-- 이미지 파일 표시 -->
-						</div>
-						<div>
-							<!-- 이미지 파일 표시 -->
-						</div>
-						
-					</div>
-					
-					<div class="textBox" id="midItemTextBox" style="display: none;">
-						
-						<div>
-							
-						</div>
-						<div>
-							
-						</div>
-						<div>
-							
-						</div>
-						<div>
-							
-						</div>
-						<div>
-							
-						</div>
-						
-					</div>
-					
-					
-					<div class="itemImageBox" id="premiumItemImageBox" style="display: none;">
-						
-						<div>
-							<!-- 이미지 파일 표시 -->	
-							
-						</div>
-						<div>
-							<!-- 이미지 파일 표시 -->
-							
-						</div>
-						<div>
-							<!-- 이미지 파일 표시 -->
-						</div>
-						<div>
-							<!-- 이미지 파일 표시 -->
-						</div>
-						<div>
-							<!-- 이미지 파일 표시 -->
-						</div>
-						
-					</div>
-					
-					<div class="textBox" id="premiumItemTextBox" style="display: none;">
-						
-						<div>
-							
-						</div>
-						<div>
-							
-						</div>
-						<div>
-							
-						</div>
-						<div>
-							
-						</div>
-						<div>
-							
-						</div>
-						
-					</div>
+					<c:forEach items="${list.flist }" var="fvo">
+					<c:choose>
+						<c:when test="${rentalListItemType eq '스키'}">
+							<c:choose>
+								<c:when test="${rentalListItemGrade eq '일반장비'}">
+									<div class="itemImageBox" id="lowItemImageBox">
+										
+										<div>
+											<!-- 이미지 파일 표시 -->
+											<img alt="이미지없음." src="/upload/${fn: replace(fvo.saveDir,'\\','/')}/${fvo.uuid}_${fvo.fileName}">
+										</div>
+										<div>
+											<!-- 이미지 파일 표시 -->
+											
+										</div>
+										<div>
+											<!-- 이미지 파일 표시 -->
+										</div>
+										<div>
+											<!-- 이미지 파일 표시 -->
+										</div>
+										<div>
+											<!-- 이미지 파일 표시 -->
+										</div>
+										
+									</div>
+									
+									<div class="textBox" id="lowItemTextBox">
+										
+										<div>
+											
+										</div>
+										<div>
+											
+										</div>
+										<div>
+											
+										</div>
+										<div>
+											
+										</div>
+										<div>
+											
+										</div>
+										
+									</div>
+								</c:when>
+								<c:when test="${rentalListItemGrade eq '중급장비'}">
+									<div class="itemImageBox" id="midItemImageBox" style="display: none;">
+										
+										<div>
+											<!-- 이미지 파일 표시 -->
+											중급
+										</div>
+										<div>
+											<!-- 이미지 파일 표시 -->
+											
+										</div>
+										<div>
+											<!-- 이미지 파일 표시 -->
+										</div>
+										<div>
+											<!-- 이미지 파일 표시 -->
+										</div>
+										<div>
+											<!-- 이미지 파일 표시 -->
+										</div>
+										
+									</div>
+									
+									<div class="textBox" id="midItemTextBox" style="display: none;">
+										
+										<div>
+											
+										</div>
+										<div>
+											
+										</div>
+										<div>
+											
+										</div>
+										<div>
+											
+										</div>
+										<div>
+											
+										</div>
+										
+									</div>
+								</c:when>
+								<c:when test="${rentalListItemGrade eq '프리미엄장비'}">
+									<div class="itemImageBox" id="premiumItemImageBox" style="display: none;">
+										
+										<div>
+											<!-- 이미지 파일 표시 -->	
+											
+										</div>
+										<div>
+											<!-- 이미지 파일 표시 -->
+											
+										</div>
+										<div>
+											<!-- 이미지 파일 표시 -->
+										</div>
+										<div>
+											<!-- 이미지 파일 표시 -->
+										</div>
+										<div>
+											<!-- 이미지 파일 표시 -->
+										</div>
+										
+									</div>
+									
+									<div class="textBox" id="premiumItemTextBox" style="display: none;">
+										
+										<div>
+											
+										</div>
+										<div>
+											
+										</div>
+										<div>
+											
+										</div>
+										<div>
+											
+										</div>
+										<div>
+											
+										</div>
+										
+									</div>
+								</c:when>
+							</c:choose>
+						</c:when>
+					</c:choose>
+					</c:forEach>
 				</div>
 			</div>
 			
