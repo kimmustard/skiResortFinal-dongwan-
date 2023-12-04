@@ -92,9 +92,71 @@
 <br><br><br><br><br><br><br><br><br><br><br><br>
 <!-- <script type="text/javascript" src="/resources/js/notice/noticeFileUpload.js"></script> -->
 
+
 <script type="text/javascript">
-$(document).ready(function() {
-	//여기 아래 부분
+$('#summernote').summernote({
+	height: 300,                 // 에디터 높이
+	minHeight: null,             // 최소 높이
+	maxHeight: null,             // 최대 높이
+	focus: true,                  // 에디터 로딩후 포커스를 맞출지 여부
+	lang: "ko-KR",					// 한글 설정
+	placeholder: '최대 2048자까지 쓸 수 있습니다',	//placeholder 설정
+	callbacks: {	//여기 부분이 이미지를 첨부하는 부분
+		onImageUpload : function(files) {
+			uploadSummernoteImageFile(files[0],this);
+		},
+		onPaste: function (e) {
+			var clipboardData = e.originalEvent.clipboardData;
+			if (clipboardData && clipboardData.items && clipboardData.items.length) {
+				var item = clipboardData.items[0];
+				if (item.kind === 'file' && item.type.indexOf('image/') !== -1) {
+					e.preventDefault();
+				}
+			}
+		}
+	}
+});
+
+
+
+/**
+* 이미지 파일 업로드
+*/
+function uploadSummernoteImageFile(file, editor) {
+data = new FormData();
+data.append("file", file);
+$.ajax({
+data : data,
+type : "POST",
+url : "/uploadSummernoteImageFile",
+contentType : false,
+processData : false,
+success : function(data) {
+	//항상 업로드된 파일의 url이 있어야 한다.
+	$(editor).summernote('insertImage', data.url);
+}
+});
+}
+
+
+$("div.note-editable").on('drop',function(e){
+    for(i=0; i< e.originalEvent.dataTransfer.files.length; i++){
+    	uploadSummernoteImageFile(e.originalEvent.dataTransfer.files[i],$("#summernote")[0]);
+    }
+   e.preventDefault();
+})
+</script>
+
+
+
+
+
+
+
+<!-- <script type="text/javascript">
+//summernote 부분 
+$(document).ready(function textEdit(){
+	jsonArray = [];
 	$('#summernote').summernote({
 		  height: 600,                 // 에디터 높이
 		  minHeight: null,             // 최소 높이
@@ -117,7 +179,59 @@ $(document).ready(function() {
 			fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋움체','바탕체'],
 			fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72'],
 			callbacks: {
-			      onImageUpload: function(image) {
+		         onImageUpload : function(files, editor, welEditable){
+
+		               // 파일 업로드(다중업로드를 위해 반복문 사용)
+		               for (var i = files.length - 1; i >= 0; i--) {
+		                   uploadSummernoteImageFile(files[i],
+		               this);
+		                   }
+		               }
+		           } 
+			
+		});
+	
+	 $('#summernote').summernote('fontSize', '24');
+	 
+	   function uploadSummernoteImageFile(file, el) {
+	       var data = new FormData();	
+	       data.append("file",file);
+	           $.ajax({
+	             url: '/../summer_image.do',
+	             type: "POST",
+	             enctype: 'multipart/form-data',
+	             data: data,
+	             cache: false,
+	             contentType : false,
+	             processData : false,
+	             success : function(data) {
+	                       var json = JSON.parse(data);
+	                       $(el).summernote('editor.insertImage',json["url"]);
+	                           jsonArray.push(json["url"]);
+	                           jsonFn(jsonArray);
+	                   },
+	                   error : function(e) {
+	                       console.log(e);
+	                   }
+	               });
+	           }
+	
+}),
+
+function jsonFn(jsonArray){
+	console.log(jsonArray);
+}
+
+</script> -->
+
+
+
+
+
+
+
+<!-- 이미지 화면100%  -->
+<!-- onImageUpload: function(image) {
 			         
 			             var file = image[0];
 			             var reader = new FileReader();
@@ -127,81 +241,8 @@ $(document).ready(function() {
 			                $('#summernote').summernote("insertNode", image[0]);
 			            }
 			           reader.readAsDataURL(file);
-			           handleImageUpload(image[0]);
 
-			      }
-			  }
-	});
-});
-
-</script>
-
-<script type="text/javascript">
-function handleImageUpload(file) {
-    const maxSize = 10 * 1024 * 1024; // 1 MB
-    const image = new Image();
-
-    image.onload = function() {
-      if (file.size <= maxSize) {
-        // 이미지 크기가 제한 이하이면 그대로 업로드
-        uploadImage(file);
-      } else {
-        // 이미지 크기가 제한을 초과하면 리사이징 후 업로드
-        resizeImageAndUpload(file);
-      }
-    };
-
-    image.src = URL.createObjectURL(file);
-  }
-
-  function resizeImageAndUpload(file) {
-    const maxSize =10 * 1024 * 1024; // 1 MB
-    const reader = new FileReader();
-
-    reader.onload = function(e) {
-      const img = new Image();
-      img.src = e.target.result;
-
-      img.onload = function() {
-        const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d');
-        const scale = Math.min(maxSize / img.width, maxSize / img.height);
-
-        canvas.width = img.width * scale;
-        canvas.height = img.height * scale;
-
-        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-
-        canvas.toBlob(function(blob) {
-          uploadImage(blob);
-        }, file.type);
-      };
-    };
-
-    reader.readAsDataURL(file);
-  }
-
-  function uploadImage(file) {
-    let formData = new FormData();
-    formData.append('image', file);
-
-    $.ajax({
-      url: '/upload',
-      method: 'POST',
-      data: formData,
-      processData: false,
-      contentType: false,
-      success: function(data) {
-        let imageUrl = location.origin + data.imagePath;
-        $('#summernote').summernote('editor.insertImage', imageUrl);
-      },
-      error: function(err) {
-        console.error('Error uploading image', err);
-      }
-    });
-  }
-});
-</script>
+			      } -->
 
 <jsp:include page="../common/footer.jsp" />
 </body>
