@@ -139,7 +139,7 @@ public class OauthLoginController {
 	
 		// JSON 유저 정보 파싱 -> DB에 저장 -> mvo에 담기
 		MemberVO mvo = parser.googleUser(userInfo);
-		
+		log.info("확인중 = {}", mvo);
 		//인증권한 세팅 메서드
 		socialUserCreateMemberAndAuthSet(mvo,request, response);
 	

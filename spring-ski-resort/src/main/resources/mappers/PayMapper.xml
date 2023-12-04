@@ -5,7 +5,7 @@
   <mapper namespace="com.web.www.repository.PayDAO">
   	<insert id="registerPay">
   		insert into pay(pay_imp_uid, pay_merchant_uid, pay_pg, pay_method, pay_name, pay_amount, 
-  		member_num, member_email, member_name, member_phone_num, member_address, pay_imp_uid)
+  		member_num, member_email, member_name, member_phone_num, member_address, pay_status)
   		value(#{payImpUid}, #{payMerchantUid}, #{payPg}, #{payMethod}, #{payName}, #{payAmount},
   		#{memberNum}, #{memberEmail}, #{memberName}, #{memberPhoneNum}, #{memberAddress}, '결제완료')
   	</insert>
@@ -14,7 +14,18 @@
   		select * from pay where member_num = #{memberNum}
   	</select>
   	
+  	<insert id="registerRefund">
+  		insert into refund(refund_imp_uid, pay_merchant_uid, refund_reason, refund_name, refund_amount, refund_type)
+  		value (#{refundImpUid}, #{payMerchantUid}, #{refundReason}, #{refundName}, #{refundAmount}, #{refundType})
+  	</insert>
+  	
   	<update id="payMentRefund">
   		update pay set pay_status = '결제취소' where pay_imp_uid = #{payImpUid}
   	</update>
+  	
+  	<!-- 취소된 내역인지 확인 -->
+  	<select id="payStatusCheck" resultType="int">
+  		select count(*) from pay where pay_merchant_uid = #{payMerchantUid} and pay_status = '결제취소';
+  	</select>
+  	
   </mapper>

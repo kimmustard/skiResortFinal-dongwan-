@@ -22,6 +22,7 @@ public class FileVO {
 	private String regDate;
 	private long noticeNum;
 	private long qnaNum;
+<<<<<<< HEAD
 
 	private long rentalListItemNum;
 
@@ -32,5 +33,9 @@ public class FileVO {
 
 	
 	
+=======
+	private long rentalListItemNum;
+	private long qnaAnsNum;
+>>>>>>> 3b25408a8d33760719294c591e677ecd466c28d9
 
 }

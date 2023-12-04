@@ -8,6 +8,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -28,14 +29,14 @@ public class OauthParser {
 	private MemberService msv;
 	
 	public MemberVO naverUser(String apiResult) {
-		//2. String형식인 apiResult를 json형태로 바꿈 
+		//1. String형식인 apiResult를 json형태로 바꿈 
 		JSONParser parser = new JSONParser(); 
 		Object obj;
 		try {
 			obj = parser.parse(apiResult);
 			JSONObject jsonObj = (JSONObject) obj; 
 			
-			//3. 데이터 파싱 
+			//2. 데이터 파싱 
 			//Top레벨 단계 _response 파싱
 			JSONObject response_obj = (JSONObject)jsonObj.get("response"); 
 			//response의 nickname값 파싱 String
@@ -48,6 +49,8 @@ public class OauthParser {
 			//멤버 객체
 			MemberVO mvo = new MemberVO();
 			mvo.setMemberId(id);
+			UUID uuid = UUID.randomUUID();
+			mvo.setMemberPwd(uuid.toString());
 			mvo.setMemberAlias(alias);
 			mvo.setMemberEmail(email);
 			mvo.setMemberPhoneNum(phoneNum);
@@ -78,7 +81,7 @@ public class OauthParser {
 			conn.setRequestProperty("Authorization", "Bearer " + access_Token);
 
 			int responseCode = conn.getResponseCode();
-			System.out.println("responseCode : " + responseCode);
+			log.info("responseCode = {} ", responseCode);
 
 			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 
@@ -88,7 +91,7 @@ public class OauthParser {
 			while ((line = br.readLine()) != null) {
 				result += line;
 			}
-			System.out.println("response body : " + result);
+			log.info("response body = {} ", result);
 
 			JSONParser parser = new JSONParser();
 			Object obj = parser.parse(result); 
@@ -104,9 +107,10 @@ public class OauthParser {
 			
 			//카카오 전화번호는 +82 XXXX 방식으로 넘어오기 때문에 번호 replace가 필요함
 			String formattedPhoneNumber = "0" + phoneNum.substring(4);
-
 			MemberVO mvo = new MemberVO();
 			mvo.setMemberId(id);
+			UUID uuid = UUID.randomUUID();
+			mvo.setMemberPwd(uuid.toString());
 			mvo.setMemberAlias(alias);
 			mvo.setMemberEmail(email);
 			mvo.setMemberPhoneNum(formattedPhoneNumber);
@@ -133,6 +137,8 @@ public class OauthParser {
 		
 		MemberVO mvo = new MemberVO();
 		mvo.setMemberId(id);
+		UUID uuid = UUID.randomUUID();
+		mvo.setMemberPwd(uuid.toString());
 		mvo.setMemberAlias(alias);
 		mvo.setMemberEmail(email);
 		mvo.setMemberName(name);
@@ -145,6 +151,8 @@ public class OauthParser {
 
 
 	private MemberVO RegisterAndAuth(MemberVO mvo) {
+		
+		//DB에 정보가 없으면 회원등록(OAuth전용)
 		if(msv.socialSearch(mvo.getMemberId()) == null) {
 			int isOk = msv.socialRegister(mvo);
 		}
