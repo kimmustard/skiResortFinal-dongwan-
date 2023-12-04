@@ -23,7 +23,7 @@
 		<div class="mainView">
 			<div class="mainViewBody3">
 				<div class="mainViewBox4">
-				<form:form action="/member/memberPwd" modelAttribute="mpDTO" method="post">
+				<form:form action="/member/memberPwd" modelAttribute="mpDTO" method="post" onsubmit="return pwdUpdateLastCheck(event);">
 					<h3> 비밀번호 변경 </h3>
 					<div class="pwdChange pwd-Box1">
 						<div class="pwd-miniBox">
@@ -51,6 +51,7 @@
 							<form:input id="pwdBox3" type="password" path="changePwdCheck" name="changePwdCheck" />
 						</div>
 						<form:errors class="errorFont" path="changePwdCheck"></form:errors>
+						<span class="errorFont" id="pwdCheck"></span>
 					</div>
 					<button class="pwd-change-btn btn-3 btn btn-primary" type="submit"> 비밀번호 변경하기 </button>
 				</form:form>
@@ -63,7 +64,7 @@
 		const isMod = `<c:out value="${isMod}" />`;
 		if(isMod == 1){
 			alert('회원 정보수정이 완료되었습니다. 안전을 위해 로그아웃이 진행됩니다.');
-		}else(isMod == 2){
+		}else if(isMod == 2){
 			alert('현재 비밀번호와 일치하지 않습니다.');
 		}
 	</script>

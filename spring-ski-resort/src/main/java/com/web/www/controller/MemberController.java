@@ -108,17 +108,20 @@ public class MemberController {
 	
 	@GetMapping("/memberPwd")
 	public String pwdForm(@AuthUser MemberVO mvo, Model model) {
+		MemberVO detailMvo = msv.getUser(mvo.getMemberId() , mvo.getMemberType());
+		model.addAttribute("mvo", detailMvo);
 		model.addAttribute("mpDTO", new MemberPwdDTO());
-		model.addAttribute("mvo", mvo);
 		return "/member/memberPwd";
 	}
 	
 	@PostMapping("/memberPwd")
 	public String pwdChange(@Validated @ModelAttribute("mpDTO")MemberPwdDTO mpDTO, BindingResult bindingResult, 
 			HttpServletRequest request, HttpServletResponse response, @AuthUser MemberVO mvo,
-			RedirectAttributes rttr) {
+			RedirectAttributes rttr, Model model) {
 		
 		if(bindingResult.hasErrors()) {
+			MemberVO detailMvo = msv.getUser(mvo.getMemberId() , mvo.getMemberType());
+			model.addAttribute("mvo", detailMvo);
 			return "/member/memberPwd";
 		}
 			
@@ -135,8 +138,8 @@ public class MemberController {
 			logout(request, response);
 			return "redirect:/member/login";
 		}else {
-			
-			rttr.addFlashAttribute("isMod", 2);
+			int isMod = 2;
+			rttr.addFlashAttribute("isMod", isMod);
 			return "redirect:/member/memberPwd";
 		}
 		

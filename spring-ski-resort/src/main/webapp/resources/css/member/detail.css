@@ -345,7 +345,7 @@ textarea{
 }
 
 .mainViewBox4>form>.pwdChange{
-	margin-bottom: 20px;
+	margin-bottom: 50px;
 	display: flex;
 	flex-direction: column;
 }
@@ -377,8 +377,9 @@ textarea{
 }
 
 .pwd-change-btn{
-	float: right;
-	margin-top: 50px;
+	position: absolute;
+	top: 430px;
+	left: 500px;
 }
 
 .pwdLabel{
