@@ -65,12 +65,7 @@ function paymentGateway(pgName) {
                  
                     // 서버에서의 추가 처리
                     if (data == "결제완료") {
-                        var msg = '결제가 완료되었습니다.';
-                        msg += '\n고유ID : ' +rsp.imp_uid;
-                        msg += '\n주문번호 : ' + rsp.merchant_uid;
-                        msg += '\결제 금액 : ' + rsp.paid_amount;
-                        msg += '카드 승인번호 : ' + rsp.apply_num;
-                        alert(msg);
+                        window.location.href = '/pay/PaySuccess?payMerchantUid=' + rsp.merchant_uid + '&payName=' + rsp.name + '&payAmount=' + rsp.paid_amount;
                     } else {
                         //결제 실패시 처리
                         alert(data);

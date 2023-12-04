@@ -95,6 +95,18 @@ public class MemberServiceImpl implements MemberService {
 		return mdao.updatePwd(mpDTO);
 	}
 
+	
+	
+	
+	
+	/************************************************
+	 * @쿠폰 비즈니스 로직입니다.
+	 */
+	@Override
+	public int couponGet(long memberNum) {
+		return 0;
+	}
+
 
 
 

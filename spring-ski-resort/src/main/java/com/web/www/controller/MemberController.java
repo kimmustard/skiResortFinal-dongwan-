@@ -168,5 +168,12 @@ public class MemberController {
 	}
 		
 	
+	@GetMapping("/coupon")
+	public String couponGet(@AuthUser MemberVO mvo) {
+		int isOk = msv.couponGet(mvo.getMemberNum());
+		return "index";
+	}
+	
+	
 	
 }

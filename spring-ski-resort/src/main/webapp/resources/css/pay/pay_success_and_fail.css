@@ -1,0 +1,70 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Jua&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Jua&family=Nanum+Gothic&display=swap');
+
+/* 성공시 */
+body {
+    margin: 0;
+    padding: 0;
+}
+.mainContainer{
+	position: relative;
+	background-image: url("https://i.imgur.com/90CUYcf.jpg");
+	height: 100vh;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-size: cover;
+}
+
+.successContainer{
+	position: absolute;
+	background-color: rgba(255,255,255,0.9);
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+	border-bottom-left-radius: 30px;
+	border-bottom-right-radius: 30px;
+	width: 600px;
+	height: 600px;
+	top: 40%;
+  	left: 50%;
+  	transform: translate(-50%, -50%);
+  	display: flex;
+  	flex-direction: column;
+   	align-items: center;
+}
+
+.successBox{
+	margin-top: 40px;
+}
+
+.success-Box2{
+	margin-top: -30px;
+}
+.success-Box3>p{
+	margin-top: -15px;
+	font-family: 'Gowun Dodum', sans-serif;
+	font-size: 20px;
+	font-weight: 600;
+}
+
+.succress-Btn>btn{
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.btn-1{
+	border-bottom-left-radius: 30px;
+}
+.btn-2{
+	border-bottom-right-radius: 30px;
+}
+
+.btn-1, .btn-2{
+	width: 200px;
+	color: white;
+	border: none;
+	font-family: 'Gowun Dodum', sans-serif;
+	font-size: 17px;
+	height: 40px;
+	border-color: rgb(39,48,77);
+	cursor: pointer;
+}

@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.web.www.domain.board.NoticeVO;
 import com.web.www.domain.member.AuthUser;
 import com.web.www.domain.member.MemberVO;
 import com.web.www.domain.pay.PayInfoVO;
@@ -89,6 +89,15 @@ public class PayController {
 	        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	    }
 	}
+	
+	//결제 성공시 안내페이지
+	@GetMapping("/PaySuccess")
+	public String SuccessForm(PayResponseDTO prDTO, Model model) {
+		log.info("prDTO####### = {}", prDTO);
+		model.addAttribute("prDTO", prDTO);
+		return "/pay/PaySuccess";
+	}
+	
 	
 	
 	

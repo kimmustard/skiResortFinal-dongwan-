@@ -53,6 +53,12 @@ public interface MemberService {
 
 	int updatePwd(MemberPwdDTO mpDTO);
 
+	
+	/**
+	 *	@coupon 쿠폰관련 service 메서드 입니다.
+	 * */
+	int couponGet(long memberNum);
+
 
 
 
