@@ -22,10 +22,7 @@ public interface FileDAO {
 
 	void deleteAllFileNotice(long noticeNum);
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 3b25408a8d33760719294c591e677ecd466c28d9
 	int insertItemFile(FileVO fvo);
 
 	List<FileVO> ItemAndPicture();
@@ -34,9 +31,5 @@ public interface FileDAO {
 
 	List<FileVO> getQnaAnsFileList(long qnaNum);
 	
-<<<<<<< HEAD
 
-
-=======
->>>>>>> 3b25408a8d33760719294c591e677ecd466c28d9
 }

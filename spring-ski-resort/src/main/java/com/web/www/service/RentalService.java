@@ -1,7 +1,5 @@
 package com.web.www.service;
 
-import java.util.List;
-
 import com.web.www.domain.rental.RentalItemDTO;
 import com.web.www.domain.rental.RentalItemListDTO;
 import com.web.www.domain.rental.RentalLiftVO;

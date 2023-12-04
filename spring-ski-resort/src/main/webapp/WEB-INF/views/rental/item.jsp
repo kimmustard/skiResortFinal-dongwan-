@@ -16,71 +16,35 @@
 		width: 100%;
 	}
 	
-	.menuCategory{
-		width: 200px;
-		margin-top:96px;
-		position: fixed;
-	    height: 100vh;
-	    margin: 30px;
-	}
 	
-	.categoryBox{
-		margin-bottom: 50px;
-	}
 	
-	.categoryBox>a{
-		text-decoration: none;
-	}
-	
-	.categoryBox>a:hover{
-		background-color: yellow;
-	}
-	
-	.skiItemList,.boardItemList,.wearItemList{
+	.itemList{
 		height: 1000px;
 		display: flex;
 		justify-content: center;
 		flex-wrap: wrap;
 	}
 	
-	.itemImageBox{
+	.itemBox{
 		width: 1200px;
-		
 		display: flex;
 		background-color: gray;
 		justify-content: space-around;
 		flex-wrap: wrap;
-		
 	}
 	
-	.itemImageBox div{
+	.itemBox div{
 		width: 18%;
 		height: 300px;	
 		border: 2px solid black;
 	}
 	
-	.itemImageBox div img{
+	.itemBox div img{
 		width: 100%;
 		height: auto;
 	}
 	
-	.textBox{
-		width: 1200px;
-		display: flex;
-		justify-content: space-around;
-		flex-wrap: wrap;
-		margin-top: 30px;	
-	}
 	
-	.textBox>div{
-		width: 18%;
-		height: 100px;
-		text-align: center;
-	}
-	
-	.textBox>div>p{
-		font-weight: 700;
-	}
 	
 	.btnContainer{
 		display: flex;
@@ -95,18 +59,7 @@
 		margin: 0 auto;
 	}
 	
-	.menuCategory{
-		display: flex;
-		flex-direction: row;
-		justify-content: center;
-		
-	}
-		
-	.menuList{
-		background-color: red;
-		margin-right: 20px;
-	}
-
+	
 </style>
 </head>
 <body>
@@ -118,231 +71,32 @@
 		<div class="itemMenuContainer">
 			<ul class="nav nav-tabs justify-content-center">
 			  <li class="nav-item" id="skiItem">
-			    <a class="nav-link" href="#">스키장비</a>
+			    <a class="nav-link" href="/rental/ski-item">스키장비</a>
 			  </li>
 			  <li class="nav-item" id="boardItem">
-			    <a class="nav-link" href="#">보드장비</a>
+			    <a class="nav-link" href="/rental/board-item">보드장비</a>
 			  </li>
 			  <li class="nav-item" id="wearItem">
-			    <a class="nav-link" href="#">의류</a>
+			    <a class="nav-link" href="/rental/wear-item">의류</a>
 			  </li>  
 			</ul>
 		</div>
 		
 		
-		<div class="menuCategory">
-			<div>
-				<nav class="nav flex-column nav-tabs">
-				  <a class="nav-link" id="lowItem" href="#">일반장비SET</a>
-				  <a class="nav-link" id="midItem" href="#">중급장비SET</a>
-				  <a class="nav-link" id="premiumItem" href="#">프리미엄장비SET</a>
-				</nav>
+		
+		
+		<div class="itemContainer">
+			<div class="itemList">
+				<div class="itemBox">
+					<p class="fs-1">장비메인이미지</p>
+				</div>
 			</div>
 		</div>
 		
-		<c:set value="${list.flist }" var="flist" />
-		<div class="itemContainer">
-			<div class="skiItemList" id="skiItemList">
-				<div class="itemInfo">
-					<c:forEach items="${flist }" var="fvo">
-					<c:choose>
-						<c:when test="${rentalListItemType eq '스키'}">
-							<c:choose>
-								<c:when test="${rentalListItemGrade eq '일반장비'}">
-									<div class="itemImageBox" id="lowItemImageBox">
-										
-										<div>
-											<!-- 이미지 파일 표시 -->
-											<img alt="이미지없음." src="/upload/${fn: replace(fvo.saveDir,'\\','/')}/${fvo.uuid}_${fvo.fileName}">
-										</div>
-										<div>
-											<!-- 이미지 파일 표시 -->
-											
-										</div>
-										<div>
-											<!-- 이미지 파일 표시 -->
-										</div>
-										<div>
-											<!-- 이미지 파일 표시 -->
-										</div>
-										<div>
-											<!-- 이미지 파일 표시 -->
-										</div>
-										
-									</div>
-									
-									<div class="textBox" id="lowItemTextBox">
-										
-										<div>
-											
-										</div>
-										<div>
-											
-										</div>
-										<div>
-											
-										</div>
-										<div>
-											
-										</div>
-										<div>
-											
-										</div>
-										
-									</div>
-								</c:when>
-								<c:when test="${rentalListItemGrade eq '중급장비'}">
-									<div class="itemImageBox" id="midItemImageBox" style="display: none;">
-										
-										<div>
-											<!-- 이미지 파일 표시 -->
-											<img alt="이미지없음." src="/upload/${fn: replace(fvo.saveDir,'\\','/')}/${fvo.uuid}_${fvo.fileName}">
-										</div>
-										<div>
-											<!-- 이미지 파일 표시 -->
-											
-										</div>
-										<div>
-											<!-- 이미지 파일 표시 -->
-										</div>
-										<div>
-											<!-- 이미지 파일 표시 -->
-										</div>
-										<div>
-											<!-- 이미지 파일 표시 -->
-										</div>
-										
-									</div>
-									
-									<div class="textBox" id="midItemTextBox" style="display: none;">
-										
-										<div>
-											
-										</div>
-										<div>
-											
-										</div>
-										<div>
-											
-										</div>
-										<div>
-											
-										</div>
-										<div>
-											
-										</div>
-										
-									</div>
-								</c:when>
-								<c:when test="${rentalListItemGrade eq '프리미엄장비'}">
-									<div class="itemImageBox" id="premiumItemImageBox" style="display: none;">
-										
-										<div>
-											<!-- 이미지 파일 표시 -->	
-											<img alt="이미지없음." src="/upload/${fn: replace(fvo.saveDir,'\\','/')}/${fvo.uuid}_${fvo.fileName}">
-										</div>
-										<div>
-											<!-- 이미지 파일 표시 -->
-											
-										</div>
-										<div>
-											<!-- 이미지 파일 표시 -->
-										</div>
-										<div>
-											<!-- 이미지 파일 표시 -->
-										</div>
-										<div>
-											<!-- 이미지 파일 표시 -->
-										</div>
-										
-									</div>
-									
-									<div class="textBox" id="premiumItemTextBox" style="display: none;">
-										
-										<div>
-											
-										</div>
-										<div>
-											
-										</div>
-										<div>
-											
-										</div>
-										<div>
-											
-										</div>
-										<div>
-											
-										</div>
-										
-									</div>
-								</c:when>
-							</c:choose>
-						</c:when>
-					</c:choose>
-					</c:forEach>
-				</div>
-			</div>
-			
-			
-			<div class="boardItemList" id="boardItemList" style="display: none;">
-				<div class="itemInfo">
-					<div class="itemImageBox">
-						<div>
-							<!-- 이미지 파일 표시 -->
-							보드장비
-						</div>
-						<div>
-							<!-- 이미지 파일 표시 -->
-							보드장비
-						</div>
-						<div>
-							<!-- 이미지 파일 표시 -->
-							보드장비
-						</div>
-						<div>
-							<!-- 이미지 파일 표시 -->
-							보드장비
-						</div>
-						<div>
-							<!-- 이미지 파일 표시 -->
-							보드장비
-						</div>
-					</div>
-				</div>
-			</div>
-			
-			<div class="wearItemList" id="wearItemList" style="display: none;">
-				<div class="itemInfo">
-					<div class="itemImageBox">
-						<div>
-							<!-- 이미지 파일 표시 -->
-							의류
-						</div>
-						<div>
-							<!-- 이미지 파일 표시 -->
-							의류
-						</div>
-						<div>
-							<!-- 이미지 파일 표시 -->
-							의류
-						</div>
-						<div>
-							<!-- 이미지 파일 표시 -->
-							의류
-						</div>
-						<div>
-							<!-- 이미지 파일 표시 -->
-							의류
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
+		
+		
 		<div class="btnContainer">
-			
-			
+
 			<a href="/rental/item-register"><button type="button" class="btn btn-outline-primary">파일등록페이지</button></a>
 			
 		</div>

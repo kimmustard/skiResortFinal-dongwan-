@@ -1,8 +1,6 @@
 package com.web.www.service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -70,18 +68,7 @@ public class RentalServiceImpl implements RentalService{
 		rldto.setRitvo(rlist);
 		rldto.setFlist(flist);
 		
-//	    for (RentalItemVO ritvo : rlist) {
-//	        RentalItemListDTO rldto = new RentalItemListDTO();
-//	        rldto.setRitvo(rlist);
-//
-//	        List<FileVO> itemFiles = flist.stream()
-//	                .filter(fileVO -> fileVO.getRentalListItemNum() == ritvo.getRentalListItemNum())
-//	                .collect(Collectors.toList());
-//
-//	        rldto.setFlist(itemFiles);
-//
-//	        allItemList.add(rldto);
-//	    }
+
 
 	    return rldto;
 	}
