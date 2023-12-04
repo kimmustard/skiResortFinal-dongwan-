@@ -1,6 +1,7 @@
 package com.web.www.controller;
 
 import java.io.IOException;
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.web.www.domain.board.NoticeVO;
 import com.web.www.domain.member.AuthUser;
 import com.web.www.domain.member.MemberVO;
 import com.web.www.domain.pay.PayInfoVO;
@@ -52,7 +54,6 @@ public class PayController {
 				sum += payInfo.getPayAmount();
 			}
 		}
-		
 		model.addAttribute("sum", sum);
 		model.addAttribute("mvo", detailMvo);
 		model.addAttribute("pivoList" , pivoList);
@@ -70,21 +71,24 @@ public class PayController {
 	
 	
 	@ResponseBody
-	@PostMapping(value = "/portOne", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<PayResponseDTO> portOnePay(@RequestBody PayInfoVO pivo, @AuthUser MemberVO mvo) throws IOException {
-		pivo.setMemberNum(mvo.getMemberNum());
-		log.info("##결제 정보##  = {}" , pivo);
+	@PostMapping(value = "/portOne", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.TEXT_PLAIN_VALUE+ ";charset=UTF-8")
+	public ResponseEntity<String> portOnePay(@RequestBody PayInfoVO pivo, @AuthUser MemberVO mvo, Principal principal) throws IOException {
+		if(principal == null) {
+			return new ResponseEntity<String>("로그인 되지않은 고객", HttpStatus.BAD_REQUEST);
+		}
 		
-		//결제정보 테이블 저장
-		psv.registerPay(pivo);
-		PayResponseDTO prDTO = new PayResponseDTO();
-		prDTO.setPayAmount(1000);
-		prDTO.setPayMerchantUid("test");
-		prDTO.setPayName("tester");
 		
-		return new ResponseEntity<PayResponseDTO>(prDTO, HttpStatus.OK);
+		try {
+	        pivo.setMemberNum(mvo.getMemberNum());
+	        log.info("##결제 정보##  = {}" , pivo);
+	        //결제정보 테이블 저장
+	        psv.registerPay(pivo, principal);
+	        return new ResponseEntity<String>("결제완료", HttpStatus.OK);
+	    } catch (Exception e) {
+	        log.error("결제 처리 중 오류 발생", e);
+	        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+	    }
 	}
-	
 	
 	
 	

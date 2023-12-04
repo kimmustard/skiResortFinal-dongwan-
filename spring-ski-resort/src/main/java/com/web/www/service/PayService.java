@@ -1,6 +1,7 @@
 package com.web.www.service;
 
 import java.io.IOException;
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
@@ -10,7 +11,7 @@ import com.web.www.domain.pay.RefundInfoVO;
 
 public interface PayService {
 
-	ResponseEntity<String> registerPay(PayInfoVO upiDTO) throws IOException;
+	ResponseEntity<String> registerPay(PayInfoVO upiDTO,Principal principal) throws IOException;
 
 	/**
 	 * @param memberNum

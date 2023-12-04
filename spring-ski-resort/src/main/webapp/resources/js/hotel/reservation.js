@@ -3,7 +3,11 @@ document.getElementById("payBtn").addEventListener('click',()=>{
     let hotelReservePeople= document.getElementById('hotelReservePeople').value;
     let hotelReserveStayStart= document.getElementById('hotelReserveStayStart').value;
     let hotelReserveStayEnd= document.getElementById('hotelReserveStayEnd').value;
-    if(hotelReservePeople==""){
+   	if(memberEmail==""){
+  	alert("로그인 후 이용해주세요");
+   		location.href="/member/login";
+   	} 
+    else if(hotelReservePeople==""){
         alert("인원을 선택해주세요");
     }else if(hotelReserveStayStart==""){
         alert("정확한 날짜를 선택해주세요");
@@ -225,7 +229,7 @@ function roomSelectEvent(num){
     let roomprice=  document.getElementById('room'+num).value;
     let roomname =  document.getElementById('room'+num).innerText;
     let imageurl =document.getElementById('image-src'+num).innerText;
-
+	
 
     console.log('select'+num);
     document.getElementById('select'+num).checked="true";
@@ -242,8 +246,10 @@ function roomSelectEvent(num){
     //요금표시
     document.getElementById('pay1').value = roomprice.toLocaleString()+"원";
     document.getElementById('pay2').value = roomprice;
-    document.getElementById('pay3').innerText ="결제금액 : "+roomprice.toLocaleString()+"원";
+    document.getElementById('pay3').innerText =roomprice.toLocaleString()+"원";
   
+  	//상품명 
+  	document.getElementById('item-name').innerText = roomname;
     // if(할인율){
     //     document.getElementById('pay2').value = (roomprice*할인율)+;
 

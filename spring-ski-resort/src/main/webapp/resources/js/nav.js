@@ -6,10 +6,12 @@ window.onload = function () {
         document.getElementById("ski-navbar").style.opacity = 0.5;
     }else{
     getTwoNotice().then(notice =>{
-        console.log(notice);
-        for(let i = 0; i<=1; i++){
+
+        for(let i = 0; i<notice.length; i++){
+        
         document.getElementById('notice-box').innerHTML+= '<ul><li><span class="notice-reg">'+notice[i].noticeRegAt+'</span><a class="notice-title" href="/notice/detail?noticeNum='+notice[i].noticeNum+'">'+notice[i].noticeTitle+'</a></li></ul>'
-        }
+            
+    }
     });
         load();
 
@@ -28,7 +30,7 @@ window.onload = function () {
             i=0;
         }
         weatherListSearch().then(weatherInfo => {
-            console.log(weatherInfo);
+      
             /*
             regionNum; //지역번호
             weatherHighTemp; // 최고온도 (지원안함)
