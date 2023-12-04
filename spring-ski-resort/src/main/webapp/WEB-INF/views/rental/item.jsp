@@ -140,11 +140,11 @@
 			</div>
 		</div>
 		
-		
+		<c:set value="${list.flist }" var="flist" />
 		<div class="itemContainer">
 			<div class="skiItemList" id="skiItemList">
 				<div class="itemInfo">
-					<c:forEach items="${list.flist }" var="fvo">
+					<c:forEach items="${flist }" var="fvo">
 					<c:choose>
 						<c:when test="${rentalListItemType eq '스키'}">
 							<c:choose>
@@ -196,7 +196,7 @@
 										
 										<div>
 											<!-- 이미지 파일 표시 -->
-											중급
+											<img alt="이미지없음." src="/upload/${fn: replace(fvo.saveDir,'\\','/')}/${fvo.uuid}_${fvo.fileName}">
 										</div>
 										<div>
 											<!-- 이미지 파일 표시 -->
@@ -239,7 +239,7 @@
 										
 										<div>
 											<!-- 이미지 파일 표시 -->	
-											
+											<img alt="이미지없음." src="/upload/${fn: replace(fvo.saveDir,'\\','/')}/${fvo.uuid}_${fvo.fileName}">
 										</div>
 										<div>
 											<!-- 이미지 파일 표시 -->

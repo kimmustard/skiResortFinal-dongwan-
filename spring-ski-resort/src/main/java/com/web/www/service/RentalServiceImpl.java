@@ -62,25 +62,28 @@ public class RentalServiceImpl implements RentalService{
 	}
 
 	@Override
-	public List<RentalItemListDTO> itemList() {
-		List<RentalItemVO> rlist =  rdao.ItemAndPicture();
+	public RentalItemListDTO itemList() {
+		List<RentalItemVO> rlist = rdao.ItemAndPicture();
 		List<FileVO> flist = fdao.ItemAndPicture();
-		List<RentalItemListDTO> allItemList = new ArrayList<>();
+		
+		RentalItemListDTO rldto = new RentalItemListDTO(); 
+		rldto.setRitvo(rlist);
+		rldto.setFlist(flist);
+		
+//	    for (RentalItemVO ritvo : rlist) {
+//	        RentalItemListDTO rldto = new RentalItemListDTO();
+//	        rldto.setRitvo(rlist);
+//
+//	        List<FileVO> itemFiles = flist.stream()
+//	                .filter(fileVO -> fileVO.getRentalListItemNum() == ritvo.getRentalListItemNum())
+//	                .collect(Collectors.toList());
+//
+//	        rldto.setFlist(itemFiles);
+//
+//	        allItemList.add(rldto);
+//	    }
 
-	    for (RentalItemVO ritvo : rlist) {
-	        RentalItemListDTO rldto = new RentalItemListDTO();
-	        rldto.setRitvo(rlist);
-
-	        List<FileVO> itemFiles = flist.stream()
-	                .filter(fileVO -> fileVO.getRentalListItemNum() == ritvo.getRentalListItemNum())
-	                .collect(Collectors.toList());
-
-	        rldto.setFlist(itemFiles);
-
-	        allItemList.add(rldto);
-	    }
-
-	    return allItemList;
+	    return rldto;
 	}
 
 

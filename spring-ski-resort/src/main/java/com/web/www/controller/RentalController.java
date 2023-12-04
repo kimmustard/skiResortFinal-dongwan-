@@ -86,9 +86,10 @@ public class RentalController {
 
 	@GetMapping("/item")
 	public String itemForm(Model model) {
-		List<RentalItemListDTO> list = rsv.itemList();
+//		RentalItemListDTO rldto = new RentalItemListDTO(); 
+		RentalItemListDTO rldto = rsv.itemList();
 		
-		model.addAttribute("list", list);
+		model.addAttribute("list", rldto);
 		
 		return "/rental/item";
 	}

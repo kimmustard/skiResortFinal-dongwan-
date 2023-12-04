@@ -15,7 +15,7 @@ public interface RentalService {
 
 	int itemRegister(RentalItemDTO rentalItemDTO);
 
-	List<RentalItemListDTO> itemList();
+	RentalItemListDTO itemList();
 
 
 }

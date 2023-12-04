@@ -11,6 +11,14 @@ skiItem.addEventListener('click', () => {
      document.getElementById('skiItemList').style.display = 'flex';
      document.getElementById('boardItemList').style.display = 'none';
      document.getElementById('wearItemList').style.display = 'none';
+
+
+
+
+
+
+
+
      lowItem.addEventListener('click', () => {
           document.getElementById('lowItemImageBox').style.display = 'flex';
           document.getElementById('midItemImageBox').style.display = 'none';
