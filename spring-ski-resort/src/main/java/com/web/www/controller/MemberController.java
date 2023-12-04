@@ -115,16 +115,31 @@ public class MemberController {
 	
 	@PostMapping("/memberPwd")
 	public String pwdChange(@Validated @ModelAttribute("mpDTO")MemberPwdDTO mpDTO, BindingResult bindingResult, 
-			HttpServletRequest request, HttpServletResponse response) {
-		log.info("mpDTO########### = {}" , mpDTO);
+			HttpServletRequest request, HttpServletResponse response, @AuthUser MemberVO mvo,
+			RedirectAttributes rttr) {
 		
 		if(bindingResult.hasErrors()) {
 			return "/member/memberPwd";
 		}
+			
+		if(bcEncoder.matches(mpDTO.getExPwd(), mvo.getMemberPwd())) {
+			
+			//회원 넘버와 인코딩된 비밀번호 저장
+			mpDTO.setMemberNum(mvo.getMemberNum());
+			mpDTO.setChangePwd(bcEncoder.encode(mpDTO.getChangePwd()));
+			
+			//변경된 비밀번호 저장
+			int isMod = msv.updatePwd(mpDTO);
+			
+			rttr.addFlashAttribute("isMod", isMod);
+			logout(request, response);
+			return "redirect:/member/login";
+		}else {
+			
+			rttr.addFlashAttribute("isMod", 2);
+			return "redirect:/member/memberPwd";
+		}
 		
-		
-		logout(request, response);
-		return "/member/login";
 	}
 	
 	

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.web.www.domain.member.AuthUser;
 import com.web.www.domain.member.MemberVO;
 import com.web.www.domain.pay.PayInfoVO;
+import com.web.www.domain.pay.PayResponseDTO;
 import com.web.www.domain.pay.RefundInfoVO;
 import com.web.www.service.MemberService;
 import com.web.www.service.PayService;
@@ -70,14 +71,18 @@ public class PayController {
 	
 	@ResponseBody
 	@PostMapping(value = "/portOne", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<String> portOnePay(@RequestBody PayInfoVO pivo, @AuthUser MemberVO mvo) throws IOException {
+	public ResponseEntity<PayResponseDTO> portOnePay(@RequestBody PayInfoVO pivo, @AuthUser MemberVO mvo) throws IOException {
 		pivo.setMemberNum(mvo.getMemberNum());
 		log.info("##결제 정보##  = {}" , pivo);
 		
 		//결제정보 테이블 저장
 		psv.registerPay(pivo);
+		PayResponseDTO prDTO = new PayResponseDTO();
+		prDTO.setPayAmount(1000);
+		prDTO.setPayMerchantUid("test");
+		prDTO.setPayName("tester");
 		
-		return new ResponseEntity<String>("결제 금액 오류, 결제 취소", HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<PayResponseDTO>(prDTO, HttpStatus.OK);
 	}
 	
 	

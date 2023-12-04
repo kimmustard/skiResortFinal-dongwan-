@@ -32,7 +32,10 @@
 		where member_email = #{memberEmail} and member_type = #{memberType}
 	</update>
 	
-	
+	<!-- 비밀번호 수정 -->
+	<update id="updatePwd">
+		update member set member_pwd = #{changePwd} where member_num = #{memberNum}
+	</update>
 	
 	
 	

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.web.www.domain.member.MemberCheckDTO;
+import com.web.www.domain.member.MemberPwdDTO;
 import com.web.www.domain.member.MemberVO;
 import com.web.www.domain.member.ModifyMemberDTO;
 import com.web.www.domain.pay.PayInfoVO;
@@ -87,6 +88,11 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public MemberVO getUser(String memberId, String memberType) {
 		return mdao.getUser(memberId, memberType);
+	}
+
+	@Override
+	public int updatePwd(MemberPwdDTO mpDTO) {
+		return mdao.updatePwd(mpDTO);
 	}
 
 

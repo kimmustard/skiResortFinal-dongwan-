@@ -156,7 +156,7 @@ document.getElementById('modalEmailCheckBtn').addEventListener('click', () => {
     })
 
 
-}) 
+})
 
 
 
@@ -166,3 +166,8 @@ document.getElementById('inputMemberEmail').addEventListener('click', () => {
     document.getElementById('MemberEmailCheck').click();
 
 })
+
+//비밀번호 중복확인
+async function pwdUpdateLastCheck(event) {
+
+}
