@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+   <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 </head>
 
 
@@ -44,6 +46,7 @@
 	
 	<jsp:include page="../common/nav.jsp"></jsp:include>
 	<link rel="stylesheet" href="/resources/css/hotel/reservation.css">
+	<link rel="stylesheet" href="/resources/css/pay/pay_modal.css">
 
 
 
@@ -62,17 +65,17 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body pay-info">
-      	<div>싱픔명</div>
-	    <div id="pay3"></div>
-      	<div>판매자</div>
+      	<div>상품명<div class="pay-value" id="item-name"></div></div>
+      	<div>판매자  <div class="pay-value">다이스키</div></div>
+	    <div class="pay3-box">결제금액<div class="pay-value" id="pay3"></div></div> 
   
       </div>
       <div class="pay-method">
-        <button type="button">카카오</button>
-        <button type="button">네이버</button>
-        <button type="button">토스</button>
-        <button type="button">어쩌구</button>
-        <button type="button">쿠폰</button>
+            <button id="inicis_pay" onclick="paymentGateway('html5_inicis')"> <span>통합결제 </span></button>
+            <button id="kakao_pay"  onclick="paymentGateway('kakaopay.TC0ONETIME')"> <span>카카오</span> </button>            
+            <button id="toss_pay" onclick="paymentGateway('tosspay.tosstest')"> <span>토스페이 </span></button>           
+            <button id="payco_pay" onclick="paymentGateway('payco.AUTOPAY')"><span>페이코</span></button>
+            <button id="naver_pay" > <span>네이버페이</span></button>
   
       </div>
     </div>
@@ -93,9 +96,10 @@
 		</div> -->
 
 		<div class="box">
-			<form action="/hotel/reservation" method="post" id="form">
+			<form action="/hotel/reservation" method="post" id="payform">
 			<div id="box">
 			<a href="/hotel/management">관리</a>
+			<button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#hotel-pay">결제</button>
 			<p class="fs-3 hotelText">호텔예약/<a class="move-rental" href="/rental/reserve">리프트권 예약</a></p>
 			<div class="input-box">
 			<!--실제 값을 저장하는 애들 화면에는 없음-->
@@ -237,5 +241,14 @@
 
 </body>
 	<jsp:include page="../common/footer.jsp"></jsp:include>	
+	<script type="text/javascript">
+	const memberEmail= `<c:out value="${mvo.memberEmail}"/>`;
+	const memberName= `<c:out value="${mvo.memberName}"/>`;
+	const memberPhoneNum= `<c:out value="${mvo.memberPhoneNum}"/>`;
+	const memberAddress= `<c:out value="${mvo.memberAddress}"/>`;
+	
+	</script>
+	<script type="text/javascript" src="/resources/js/pay/pay.js"></script>
 	<script type="text/javascript" src="/resources/js/hotel/reservation.js"></script>
+	
 </html>
