@@ -13,12 +13,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.web.www.domain.board.NoticeVO;
 import com.web.www.domain.member.AuthUser;
 import com.web.www.domain.member.MemberVO;
 import com.web.www.domain.pay.PayInfoVO;
+import com.web.www.domain.pay.PayResponseDTO;
 import com.web.www.domain.pay.RefundInfoVO;
 import com.web.www.service.MemberService;
 import com.web.www.service.PayService;
@@ -88,6 +89,23 @@ public class PayController {
 	        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	    }
 	}
+	
+	//결제 성공시 안내 페이지
+	@GetMapping("/PaySuccess")
+	public String SuccessForm(PayResponseDTO prDTO, Model model) {
+		log.info("prDTO####### = {}", prDTO);
+		model.addAttribute("prDTO", prDTO);
+		return "/pay/PaySuccess";
+	}
+	
+	//결제 실패시 안내 페이지
+	@GetMapping("/PayFail")
+	public String FailForm(@RequestParam String errorMessage, Model model) {
+		log.info("errorMessage####### = {}", errorMessage);
+		model.addAttribute("errorMessage", errorMessage);
+		return "/pay/PayFail";
+	}
+	
 	
 	
 	

@@ -101,10 +101,10 @@ async function registerLastCheck(event) {
         }
 
         // 비밀번호체크
-        const pwd1 = document.getElementById('exampleInputPassword1').value;
-        const pwd2 = document.getElementById('exampleInputPassword2').value;
+        const pwd1 = document.getElementById('pwdBox2').value;
+        const pwd2 = document.getElementById('pwdBox3').value;
         if (pwd1 != pwd2) {
-            alert('비밀번호를 확인해주세요.');
+            document.getElementById('pwdCheck').innerHTML = '비밀번호를 확인해주세요'
             return false;
         }
 
@@ -299,34 +299,34 @@ document.getElementById('ModalflexCheckDefault').addEventListener('click', () =>
 })
 
 //키보드 입력시 아이디 중복확인
-function chaekId()  {  
-  document.getElementById('MemberIdCheck').click();
+function chaekId() {
+    document.getElementById('MemberIdCheck').click();
 }
 
 //이메일 입력창 띄우기
 document.getElementById('inputMemberEmail').addEventListener('click', () => {
     document.getElementById('MemberEmailCheck').click();
-  
+
 })
 
 
 //전화번호 입력시 값 보내기
-function printNum()  {  
-let num1 = document.getElementById('phoneNum1').value;
-let x = document.getElementById('phoneNum2').value; 
+function printNum() {
+    let num1 = document.getElementById('phoneNum1').value;
+    let x = document.getElementById('phoneNum2').value;
 
-  let num2 = x.slice(0,3)+'-'+x.slice(3);
+    let num2 = x.slice(0, 3) + '-' + x.slice(3);
 
- if(x.length==8){
-	  num2= x.slice(0,4)+'-'+x.slice(4);
- }
- 
- 
- document.getElementById("inputMemberPhone").value =num1+"-"+num2;
+    if (x.length == 8) {
+        num2 = x.slice(0, 4) + '-' + x.slice(4);
+    }
+
+
+    document.getElementById("inputMemberPhone").value = num1 + "-" + num2;
 }
 
 //주소찾기 띄우기
-function clickAddr(){
+function clickAddr() {
     document.getElementById('button-addon2').click();
 }
 
