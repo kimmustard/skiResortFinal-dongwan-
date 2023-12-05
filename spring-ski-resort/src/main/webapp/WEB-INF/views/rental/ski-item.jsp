@@ -38,40 +38,44 @@
 	.itemImageBox{
 		width: 1200px;
 		display: flex;
-		background-color: gray;
 		justify-content: space-around;
 		flex-wrap: wrap;
+		margin-top: 30px;
 	}
 	
 	.itemImageBox div{
 		width: 18%;
 		height: 300px;	
 		border: 2px solid black;
+		margin-bottom: 50px;
+		overflow: hidden;
 	}
 	
 	.itemImageBox div img{
 		width: 100%;
-		height: auto;
+		height: 100%;
+		
 	}
+	
+	
 	
 	.textBox{
 		width: 1200px;
 		display: flex;
 		justify-content: space-around;
 		flex-wrap: wrap;
-		margin-top: 30px;	
+		margin-top: 10px;
 	}
 	
 	.textBox>div{
 		width: 18%;
-		height: 50px;
+		height: 30px;
 		text-align: center;
 	}
 	
 	.textBox>div>p{
 		font-weight: 700;
 	}
-	
 	
 	
 	
@@ -120,49 +124,37 @@
 						</c:forEach>
 					</div>
 					
-					<div class="textBox" id="lowItemTextBox">
-						<c:forEach items="${skiLowItem }" var="lowItem">
-							<div>
-								<p class="fs-5">${lowItem.rentalListLowItem }</p>
-							</div>
-						</c:forEach>
-					</div>
+					
+					
+					
 					
 					<div class="itemImageBox" id="midItemImageBox" style="display: none;">
 						<c:forEach items="${skiMidItem }" var="midItem">
 							<div>
 								<!-- 이미지파일 -->
-								<img alt="SkiLowItem" src="/upload/${fn: replace(midItem.fileSave,'\\','/')}/${midItem.fileUuid}_${midItem.fileName}">
+								<img alt="SkiMidItem" src="/upload/${fn: replace(midItem.fileSave,'\\','/')}/${midItem.fileUuid}_${midItem.fileName}">
 							</div>
 						</c:forEach>
 					</div>
 					
-					<div class="textBox" id="midItemTextBox" style="display: none;">
-						<c:forEach items="${skiMidItem }" var="midItem">
-							<div>
-								<p class="fs-5">${midItem.rentalListMidItem }</p>
-							</div>
-						</c:forEach>
-					</div>
+				
 					
-					<div class="premiumSlideContainer">
-						<div class="itemImageBox" id="premiumItemImageBox" style="display: none;">
-							<c:forEach items="${skiPremiumItem }" var="premiumItem">
-								<div>
-									<!-- 이미지파일 -->
-									<img alt="SkiLowItem" src="/upload/${fn: replace(premiumItem.fileSave,'\\','/')}/${premiumItem.fileUuid}_${premiumItem.fileName}">
-								</div>
-							</c:forEach>
-						</div>
+					
 						
-						<div class="textBox" id="premiumItemTextBox" style="display: none;">
-							<c:forEach items="${skiPremiumItem }" var="premiumItem">
-								<div>
-									<p class="fs-5">${premiumItem.rentalListPremiumItem }</p>
-								</div>
-							</c:forEach>
-						</div>
+					
+					<div class="itemImageBox" id="premiumItemImageBox" style="display: none;">
+						<c:forEach items="${skiPremiumItem }" var="premiumItem">
+							<div>
+								<!-- 이미지파일 -->
+								<img alt="SkiPremiumItem" src="/upload/${fn: replace(premiumItem.fileSave,'\\','/')}/${premiumItem.fileUuid}_${premiumItem.fileName}">
+								
+							</div>
+						</c:forEach>
+						
 					</div>
+					
+					
+
 					
 					
 				</div>

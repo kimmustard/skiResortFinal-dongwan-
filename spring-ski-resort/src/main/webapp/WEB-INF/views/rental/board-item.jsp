@@ -41,6 +41,7 @@
 		background-color: gray;
 		justify-content: space-around;
 		flex-wrap: wrap;
+		
 	}
 	
 	.itemImageBox div{
@@ -115,13 +116,7 @@
 						</c:forEach>
 					</div>
 					
-					<div class="textBox" id="lowItemTextBox">
-						<c:forEach items="${boardLowItem }" var="lowItem">
-							<div>
-								<p class="fs-5">${lowItem.rentalListLowItem }</p>
-							</div>
-						</c:forEach>
-					</div>
+					
 					
 					
 					<div class="itemImageBox" id="midItemImageBox" style="display: none;">
@@ -135,13 +130,7 @@
 						
 					</div>
 					
-					<div class="textBox" id="midItemTextBox" style="display: none;">
-						<c:forEach items="${boardMidItem }" var="midItem">
-							<div>
-								<p class="fs-5">${midItem.rentalListMidItem }</p>
-							</div>
-						</c:forEach>
-					</div>
+					
 					
 					
 		
@@ -156,13 +145,7 @@
 						
 					</div>
 					
-					<div class="textBox" id="premiumItemTextBox" style="display: none;">
-						<c:forEach items="${boardPremiumItem }" var="premiumItem">
-							<div>
-								<p class="fs-5">${premiumItem.rentalListPremiumItem }</p>
-							</div>
-						</c:forEach>
-					</div>
+					
 					
 	
 				</div>

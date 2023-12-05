@@ -45,20 +45,10 @@
 
 	<!-- Item 파일 라인 -->
 	<insert id="insertItemFile">
-<<<<<<< HEAD
 		insert into file(file_uuid,file_save,file_name,file_isok,file_type,file_size,rental_list_item_num)
 		values(#{fileUuid},#{fileSave},#{fileName},#{fileIsok},#{fileType},#{fileSize},#{rentalListItemNum})
 	</insert>
-=======
-		insert into file(file_uuid,save_dir,file_name,file_isok,file_type,file_size,rental_list_item_num)
-		values(#{fileUuid},#{saveDir},#{fileName},#{fileIsok},#{fileType},#{fileSize},#{rentalListItemNum})
-	</insert>
-	
-	<select id="ItemAndPicture" resultType="com.web.www.domain.FileVO">
-		select * from file order by 
-	</select>
 
->>>>>>> 0486f531dcfe541e324d56eb738f5215dd404499
 	
 	<!-- Q&A 답변 코드 라인 -->
 	<insert id="insertQnaAnsFile">
@@ -70,10 +60,6 @@
 		select * from file where qna_num=#{qnaNum} and file_isok='Y' and qna_ans_num is not null
 		order by file_reg_at asc
 	</select>
-<<<<<<< HEAD
 
-=======
-	
->>>>>>> 0486f531dcfe541e324d56eb738f5215dd404499
 	
 </mapper>

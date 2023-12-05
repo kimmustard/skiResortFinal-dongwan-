@@ -26,4 +26,3 @@ premiumItem.addEventListener('click', () => {
      document.getElementById('midItemTextBox').style.display = 'none';
      document.getElementById('premiumItemTextBox').style.display = 'flex';
 })
-
