@@ -84,5 +84,10 @@
 	<update id="cdCheck">
 		update member set member_terms3 = #{memberTerms3} where member_id = #{memberId}
 	</update>
+	
+	<!-- 쿠폰관련 -->
+	<select id="couponCheck" resultType="int">
+		select * from coupon_system
+	</select>
 
   </mapper>

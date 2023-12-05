@@ -1,5 +1,10 @@
 package com.web.www.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -10,7 +15,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.web.www.domain.coupon.CouponSystem;
+import com.web.www.domain.member.AuthUser;
 import com.web.www.domain.member.MemberCheckDTO;
+import com.web.www.domain.member.MemberVO;
 import com.web.www.handler.MemberEmailHandler;
 import com.web.www.service.MemberService;
 
@@ -56,6 +64,24 @@ public class MemberCheckController {
 	}
 	
 	
+	/**
+	 * @쿠폰
+	 */
+	@GetMapping("/coupon")
+	public String couponGet(@AuthUser MemberVO mvo) {
+		int isOk = msv.couponGet(mvo.getMemberNum());
+		return "index";
+	}
 	
+
+	@PostConstruct
+	public void couponCreate() {
+		int couponCnt = msv.couponCheck();
+		if(couponCnt == 0) {
+			List<CouponSystem> couponSystemList = new ArrayList<>();
+			
+			couponSystemList.add("1004");
+		}
+	}
 	
 }

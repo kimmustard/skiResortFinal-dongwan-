@@ -102,10 +102,17 @@ public class MemberServiceImpl implements MemberService {
 	/************************************************
 	 * @쿠폰 비즈니스 로직입니다.
 	 */
+	// 서버실행시 관리 될 쿠폰 생성 메서드입니다.
+	@Override
+	public int couponCheck() {
+		return mdao.couponCheck();
+	}
+	
 	@Override
 	public int couponGet(long memberNum) {
 		return 0;
 	}
+
 
 
 

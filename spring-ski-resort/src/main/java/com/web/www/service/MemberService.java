@@ -59,6 +59,8 @@ public interface MemberService {
 	 * */
 	int couponGet(long memberNum);
 
+	int couponCheck();
+
 
 
 

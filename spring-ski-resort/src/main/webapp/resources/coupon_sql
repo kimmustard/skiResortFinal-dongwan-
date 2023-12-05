@@ -13,6 +13,7 @@ primary key(voucher_num)
 ## 12-05 쿠폰 테이블입니다
 create table coupon_system(
 coupon_uid bigint not null,
+coupon_code varchar(20),
 coupon_check varchar(1) not null,
 coupon_day int,
 coupon_name varchar(20) not null,

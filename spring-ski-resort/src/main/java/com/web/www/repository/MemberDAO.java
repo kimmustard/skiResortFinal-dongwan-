@@ -73,6 +73,13 @@ public interface MemberDAO {
 
 	int updatePwd(MemberPwdDTO mpDTO);
 
+	
+	/**
+	 * 쿠폰 관련
+	 * @return 쿠폰시스템 테이블 쿠폰갯수
+	 */
+	int couponCheck();
+
 
 
 
