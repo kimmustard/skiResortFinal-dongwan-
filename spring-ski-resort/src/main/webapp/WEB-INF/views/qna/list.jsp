@@ -10,6 +10,7 @@
 <title>Insert title here</title>
 <jsp:include page="../common/nav.jsp" />
 <link rel="stylesheet" href="/resources/css/qna/qna_list.css">
+
 </head>
 <body>
 <div class="qna-img-container" style="background-image: url('https://www.princehotels.com/shinfurano/wp-content/uploads/sites/40/2022/11/2022_11_1920_ski_2-1.jpg')">	</div>
@@ -23,7 +24,7 @@
 </div>
 
 	<div class="qna-menu-container">
-		
+	 <div class="qna-menu-container-child">		
 
 		<!-- 검색 라인  -->
 		<div class="qna-search-form">
@@ -184,15 +185,14 @@
 					<c:if test="${authType == 'normal' }">
 					  <input type="hidden" name="type" value="w" ${typed eq 'w' ? 'selected' : '' }>
 					  <input type="hidden" name="keyword" type="search" value="${authId}">
-					  <button class="btn btn-outline-success" type="submit">
-					  MY Q&A</button>
+					  <!-- <button class="btn btn-outline-success" type="submit"> -->
+					  <span><button class="qna-btn myqna-btn" type="submit">MY Q&A</button></span>
 					</c:if>
 
 					<c:if test="${authType != 'normal' }">
 					  <input type="hidden" name="type" value="w" ${typed eq 'w' ? 'selected' : '' }>
 					  <input type="hidden" name="keyword" type="search" value="${authEmail }">
-					 <button class="btn btn-outline-success" type="submit">
-					  MY Q&A</button>
+					 <span><button class="qna-btn myqna-btn" type="submit">MY Q&A</button></span>
 					</c:if>
 				</form>	
 			</div>
@@ -203,19 +203,19 @@
 			<form action="/qna/list" method="get">
 				<input type="hidden" name="type" value="w" ${typed eq 'w' ? 'selected' : '' }>
 				<input type="hidden" name="keyword" type="search" value="비회원">
-				<button class="btn btn-outline-success" type="submit">
-				MY Q&A</button>
+				<span><button class="qna-btn myqna-btn" type="submit">MY Q&A</button></span>
 			</form>
 		</div>	
 		</sec:authorize>
 		
 		<a href="/qna/register">
-			<button class="btn btn-outline-dark type="button">문의하기</button>
+			<button class="qna-btn myqna-btn" type="button">문의하기</button>
 		</a>
 		</div>
 		
 		
 
+	  </div>
 	</div>			
 </div>
 
