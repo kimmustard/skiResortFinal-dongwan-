@@ -1,3 +1,4 @@
+//할인율 계산 (원금-coupon_int)-(원금*coupon_rate/100)-(원금*등급할인율/100)
 
 document.getElementById("payBtn").addEventListener('click',()=>{
     let hotelReservePeople= document.getElementById('hotelReservePeople').value;
@@ -244,9 +245,12 @@ function roomSelectEvent(num){
     document.getElementById('room-name').innerText = roomname;
     
     //요금표시
+    realAmount = roomprice;
+    console.log(realAmount);
     document.getElementById('pay1').value = roomprice.toLocaleString()+"원";
     document.getElementById('pay2').value = roomprice;
     document.getElementById('pay3').innerText =roomprice.toLocaleString()+"원";
+    
   
   	//상품명 
   	document.getElementById('item-name').innerText = roomname;
