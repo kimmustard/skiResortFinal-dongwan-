@@ -108,29 +108,35 @@
 				
 				<div class="itemInfo">	
 					<div class="itemImageBox" id="lowItemImageBox">
-						<div>
-							<!-- 이미지 파일 표시 -->
-							의류일반
-						</div>
+						<c:forEach items="${wearLowItem }" var="lowItem">
+							<div>
+								<!-- 이미지파일 -->
+								<img alt="WearLowItem" src="/upload/${fn: replace(lowItem.fileSave,'\\','/')}/${lowItem.fileUuid}_${lowItem.fileName}">
+							</div>
+						</c:forEach>
 					</div>
 					
 					
 					<div class="itemImageBox" id="midItemImageBox" style="display: none;">
 						
-						<div>
-							<!-- 이미지 파일 표시 -->
-							의류중반
-						</div>
+						<c:forEach items="${wearMidItem }" var="midItem">
+							<div>
+								<!-- 이미지파일 -->
+								<img alt="WearMidItem" src="/upload/${fn: replace(midItem.fileSave,'\\','/')}/${midItem.fileUuid}_${midItem.fileName}">
+							</div>
+						</c:forEach>
 						
 					</div>
 					
 		
 					<div class="itemImageBox" id="premiumItemImageBox" style="display: none;">
 						
-						<div>
-							<!-- 이미지 파일 표시 -->	
-							의류프리미엄
-						</div>
+						<c:forEach items="${wearPremiumItem }" var="premiumItem">
+							<div>
+								<!-- 이미지파일 -->
+								<img alt="WearPremiumItem" src="/upload/${fn: replace(premiumItem.fileSave,'\\','/')}/${premiumItem.fileUuid}_${premiumItem.fileName}">
+							</div>
+						</c:forEach>
 						
 					</div>
 					

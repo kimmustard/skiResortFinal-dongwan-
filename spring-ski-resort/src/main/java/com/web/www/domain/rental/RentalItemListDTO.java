@@ -22,8 +22,8 @@ public class RentalItemListDTO {
 	private int rentalListItemCount; // 장비수량
 	private String rentalListItemExplain; // 장비설명
 	
-	private String uuid;
-	private String saveDir;
+	private String fileUuid;
+	private String fileSave;
 	private String fileName;
 	
 }

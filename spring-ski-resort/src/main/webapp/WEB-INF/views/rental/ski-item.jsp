@@ -64,13 +64,15 @@
 	
 	.textBox>div{
 		width: 18%;
-		height: 100px;
+		height: 50px;
 		text-align: center;
 	}
 	
 	.textBox>div>p{
 		font-weight: 700;
 	}
+	
+	
 	
 	
 </style>
@@ -109,32 +111,59 @@
 		
 			<div class="skiItemList" id="skiItemList">
 				<div class="itemInfo">
-					<c:forEach items="${skiLowItem }" var="lowItem">
 					<div class="itemImageBox" id="lowItemImageBox">
-						<div>
-							<!-- 이미지파일 -->
-							<img alt="SkiLowItem" src="/upload/${fn: replace(lowItem.saveDir,'\\','/')}/${lowItem.uuid}_${lowItem.fileName}">
-						</div>
+						<c:forEach items="${skiLowItem }" var="lowItem">
+							<div>
+								<!-- 이미지파일 -->
+								<img alt="SkiLowItem" src="/upload/${fn: replace(lowItem.fileSave,'\\','/')}/${lowItem.fileUuid}_${lowItem.fileName}">
+							</div>
+						</c:forEach>
 					</div>
-					</c:forEach>
 					
-					<c:forEach items="${skiMidItem }" var="midItem">
+					<div class="textBox" id="lowItemTextBox">
+						<c:forEach items="${skiLowItem }" var="lowItem">
+							<div>
+								<p class="fs-5">${lowItem.rentalListLowItem }</p>
+							</div>
+						</c:forEach>
+					</div>
+					
 					<div class="itemImageBox" id="midItemImageBox" style="display: none;">
-						<div>
-							<!-- 이미지파일 -->
-							<img alt="SkiLowItem" src="/upload/${fn: replace(midItem.saveDir,'\\','/')}/${midItem.uuid}_${midItem.fileName}">
-						</div>
+						<c:forEach items="${skiMidItem }" var="midItem">
+							<div>
+								<!-- 이미지파일 -->
+								<img alt="SkiLowItem" src="/upload/${fn: replace(midItem.fileSave,'\\','/')}/${midItem.fileUuid}_${midItem.fileName}">
+							</div>
+						</c:forEach>
 					</div>
-					</c:forEach>
 					
-					<c:forEach items="${skiPremiumItem }" var="premiumItem">
-					<div class="itemImageBox" id="premiumItemImageBox" style="display: none;">
-						<div>
-							<!-- 이미지파일 -->
-							<img alt="SkiLowItem" src="/upload/${fn: replace(premiumItem.saveDir,'\\','/')}/${premiumItem.uuid}_${premiumItem.fileName}">
+					<div class="textBox" id="midItemTextBox" style="display: none;">
+						<c:forEach items="${skiMidItem }" var="midItem">
+							<div>
+								<p class="fs-5">${midItem.rentalListMidItem }</p>
+							</div>
+						</c:forEach>
+					</div>
+					
+					<div class="premiumSlideContainer">
+						<div class="itemImageBox" id="premiumItemImageBox" style="display: none;">
+							<c:forEach items="${skiPremiumItem }" var="premiumItem">
+								<div>
+									<!-- 이미지파일 -->
+									<img alt="SkiLowItem" src="/upload/${fn: replace(premiumItem.fileSave,'\\','/')}/${premiumItem.fileUuid}_${premiumItem.fileName}">
+								</div>
+							</c:forEach>
+						</div>
+						
+						<div class="textBox" id="premiumItemTextBox" style="display: none;">
+							<c:forEach items="${skiPremiumItem }" var="premiumItem">
+								<div>
+									<p class="fs-5">${premiumItem.rentalListPremiumItem }</p>
+								</div>
+							</c:forEach>
 						</div>
 					</div>
-					</c:forEach>
+					
 					
 				</div>
 			</div>

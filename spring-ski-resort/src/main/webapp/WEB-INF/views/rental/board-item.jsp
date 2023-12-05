@@ -64,7 +64,7 @@
 	
 	.textBox>div{
 		width: 18%;
-		height: 100px;
+		height: 50px;
 		text-align: center;
 	}
 	
@@ -107,31 +107,61 @@
 				
 				<div class="itemInfo">	
 					<div class="itemImageBox" id="lowItemImageBox">
-						<div>
-							<!-- 이미지 파일 표시 -->
-							보드일반
-						</div>
+						<c:forEach items="${boardLowItem }" var="lowItem">
+							<div>
+								<!-- 이미지파일 -->
+								<img alt="BoardLowItem" src="/upload/${fn: replace(lowItem.fileSave,'\\','/')}/${lowItem.fileUuid}_${lowItem.fileName}">
+							</div>
+						</c:forEach>
+					</div>
+					
+					<div class="textBox" id="lowItemTextBox">
+						<c:forEach items="${boardLowItem }" var="lowItem">
+							<div>
+								<p class="fs-5">${lowItem.rentalListLowItem }</p>
+							</div>
+						</c:forEach>
 					</div>
 					
 					
 					<div class="itemImageBox" id="midItemImageBox" style="display: none;">
 						
-						<div>
-							<!-- 이미지 파일 표시 -->
-							보드중급
-						</div>
+						<c:forEach items="${boardMidItem }" var="midItem">
+							<div>
+								<!-- 이미지파일 -->
+								<img alt="BoardMidItem" src="/upload/${fn: replace(midItem.fileSave,'\\','/')}/${midItem.fileUuid}_${midItem.fileName}">
+							</div>
+						</c:forEach>
 						
+					</div>
+					
+					<div class="textBox" id="midItemTextBox" style="display: none;">
+						<c:forEach items="${boardMidItem }" var="midItem">
+							<div>
+								<p class="fs-5">${midItem.rentalListMidItem }</p>
+							</div>
+						</c:forEach>
 					</div>
 					
 					
 		
 					<div class="itemImageBox" id="premiumItemImageBox" style="display: none;">
 						
-						<div>
-							<!-- 이미지 파일 표시 -->	
-							보드프리미엄
-						</div>
+						<c:forEach items="${boardPremiumItem }" var="premiumItem">
+							<div>
+								<!-- 이미지파일 -->
+								<img alt="BoardPremiumItem" src="/upload/${fn: replace(premiumItem.fileSave,'\\','/')}/${premiumItem.fileUuid}_${premiumItem.fileName}">
+							</div>
+						</c:forEach>
 						
+					</div>
+					
+					<div class="textBox" id="premiumItemTextBox" style="display: none;">
+						<c:forEach items="${boardPremiumItem }" var="premiumItem">
+							<div>
+								<p class="fs-5">${premiumItem.rentalListPremiumItem }</p>
+							</div>
+						</c:forEach>
 					</div>
 					
 	

@@ -103,11 +103,25 @@ public class RentalController {
 	}
 	@GetMapping("/board-item")
 	public String boardItemForm(Model model) {
+		List<RentalItemListDTO> boardLowItem = rsv.getBoardLowItem();
+		List<RentalItemListDTO> boardMidItem = rsv.getBoardMidItem();
+		List<RentalItemListDTO> boardPremiumItem = rsv.getBoardPremiumItem();
+		
+		model.addAttribute("boardLowItem", boardLowItem);
+		model.addAttribute("boardMidItem", boardMidItem);
+		model.addAttribute("boardPremiumItem", boardPremiumItem);
 		
 		return "/rental/board-item";
 	}
 	@GetMapping("/wear-item")
 	public String wearItemForm(Model model) {
+		List<RentalItemListDTO> wearLowItem = rsv.getWearLowItem();
+		List<RentalItemListDTO> wearMidItem = rsv.getWearMidItem();
+		List<RentalItemListDTO> wearPremiumItem = rsv.getWearPremiumItem();
+		
+		model.addAttribute("wearLowItem", wearLowItem);
+		model.addAttribute("wearMidItem", wearMidItem);
+		model.addAttribute("wearPremiumItem", wearPremiumItem);
 		
 		return "/rental/wear-item";
 	}

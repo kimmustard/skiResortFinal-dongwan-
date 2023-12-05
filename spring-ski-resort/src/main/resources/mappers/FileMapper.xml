@@ -42,16 +42,12 @@
 		update file set file_isok='N' where qna_num=#{qnaNum}
 	</update>
 	
-<<<<<<< HEAD
+
 	<!-- Item 파일 라인 -->
 	<insert id="insertItemFile">
-		insert into file(uuid,save_dir,file_name,file_isok,file_type,file_size,rental_list_item_num)
-		values(#{uuid},#{saveDir},#{fileName},#{fileIsok},#{fileType},#{fileSize},#{rentalListItemNum})
+		insert into file(file_uuid,file_save,file_name,file_isok,file_type,file_size,rental_list_item_num)
+		values(#{fileUuid},#{fileSave},#{fileName},#{fileIsok},#{fileType},#{fileSize},#{rentalListItemNum})
 	</insert>
-	
-=======
-
->>>>>>> 9ce66a52c95aadc01f55d9dc812c259c03290700
 	
 	<!-- Q&A 답변 코드 라인 -->
 	<insert id="insertQnaAnsFile">
@@ -63,16 +59,6 @@
 		select * from file where qna_num=#{qnaNum} and file_isok='Y' and qna_ans_num is not null
 		order by file_reg_at asc
 	</select>
-	
-	
-	<!-- Item 파일 라인 -->
-	<insert id="insertItemFile">
-		insert into file(file_uuid,file_save,file_name,file_isok,file_type,file_size,rental_list_item_num)
-		values(#{fileUuid},#{fileSave},#{fileName},#{fileIsok},#{fileType},#{fileSize},#{rentalListItemNum})
-	</insert>
-	
-	<select id="ItemAndPicture" resultType="com.web.www.domain.FileVO">
-		select * from file
-	</select>	
+
 	
 </mapper>

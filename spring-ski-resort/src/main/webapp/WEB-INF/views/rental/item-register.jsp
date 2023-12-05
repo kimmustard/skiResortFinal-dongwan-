@@ -60,7 +60,7 @@
 					<div class="itemInfo">
 						<div class="input-group" id="rowItemName" style="display: none;">
 							<span class="input-group-text">일반장비명</span>
-							<input class="form-control" type="text" name="rentalListRowItem" id="rentalListRowItem">
+							<input class="form-control" type="text" name="rentalListLowItem" id="rentalListRowItem">
 						</div> 
 						<div class="input-group" id="midItemName" style="display: none;">
 							<span class="input-group-text">중급장비명</span>

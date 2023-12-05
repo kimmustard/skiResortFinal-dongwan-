@@ -29,9 +29,6 @@ public interface FileDAO {
 	int insertQnaAnsFile(FileVO fvo);
 
 	List<FileVO> getQnaAnsFileList(long qnaNum);
-<<<<<<< HEAD
-	
-=======
->>>>>>> 9ce66a52c95aadc01f55d9dc812c259c03290700
+
 
 }

@@ -29,8 +29,8 @@
 	<select id="getSkiLowItem" resultType="com.web.www.domain.rental.RentalItemListDTO">
 		SELECT
 		    ri.*,
-		    fi.uuid,
-		    fi.save_dir,
+		    fi.file_uuid,
+		    fi.file_save,
 		    fi.file_name
 		FROM
 		    rental_items ri
@@ -44,8 +44,8 @@
 	<select id="getSkiMidItem" resultType="com.web.www.domain.rental.RentalItemListDTO">
 		SELECT
 		    ri.*,
-		    fi.uuid,
-		    fi.save_dir,
+		    fi.file_uuid,
+		    fi.file_save,
 		    fi.file_name
 		FROM
 		    rental_items ri
@@ -59,8 +59,8 @@
 	<select id="getSkiPremiumItem" resultType="com.web.www.domain.rental.RentalItemListDTO">
 		SELECT
 		    ri.*,
-		    fi.uuid,
-		    fi.save_dir,
+		    fi.file_uuid,
+		    fi.file_save,
 		    fi.file_name
 		FROM
 		    rental_items ri
@@ -68,6 +68,96 @@
 		    file fi ON ri.rental_list_item_num = fi.rental_list_item_num
 		WHERE
 		    ri.rental_list_item_type = '스키'
+		    AND ri.rental_list_item_grade = '프리미엄장비';
+	</select>
+	
+	<select id="getBoardLowItem" resultType="com.web.www.domain.rental.RentalItemListDTO">
+		SELECT
+		    ri.*,
+		    fi.file_uuid,
+		    fi.file_save,
+		    fi.file_name
+		FROM
+		    rental_items ri
+		JOIN
+		    file fi ON ri.rental_list_item_num = fi.rental_list_item_num
+		WHERE
+		    ri.rental_list_item_type = '보드'
+		    AND ri.rental_list_item_grade = '일반장비';
+	</select>
+	
+	<select id="getBoardMidItem" resultType="com.web.www.domain.rental.RentalItemListDTO">
+		SELECT
+		    ri.*,
+		    fi.file_uuid,
+		    fi.file_save,
+		    fi.file_name
+		FROM
+		    rental_items ri
+		JOIN
+		    file fi ON ri.rental_list_item_num = fi.rental_list_item_num
+		WHERE
+		    ri.rental_list_item_type = '보드'
+		    AND ri.rental_list_item_grade = '중급장비';
+	</select>
+	
+	<select id="getBoardPremiumItem" resultType="com.web.www.domain.rental.RentalItemListDTO">
+		SELECT
+		    ri.*,
+		    fi.file_uuid,
+		    fi.file_save,
+		    fi.file_name
+		FROM
+		    rental_items ri
+		JOIN
+		    file fi ON ri.rental_list_item_num = fi.rental_list_item_num
+		WHERE
+		    ri.rental_list_item_type = '보드'
+		    AND ri.rental_list_item_grade = '프리미엄장비';
+	</select>
+	
+	<select id="getWearLowItem" resultType="com.web.www.domain.rental.RentalItemListDTO">
+		SELECT
+		    ri.*,
+		    fi.file_uuid,
+		    fi.file_save,
+		    fi.file_name
+		FROM
+		    rental_items ri
+		JOIN
+		    file fi ON ri.rental_list_item_num = fi.rental_list_item_num
+		WHERE
+		    ri.rental_list_item_type = '의류'
+		    AND ri.rental_list_item_grade = '일반장비';
+	</select>
+	
+	<select id="getWearMidItem" resultType="com.web.www.domain.rental.RentalItemListDTO">
+		SELECT
+		    ri.*,
+		    fi.file_uuid,
+		    fi.file_save,
+		    fi.file_name
+		FROM
+		    rental_items ri
+		JOIN
+		    file fi ON ri.rental_list_item_num = fi.rental_list_item_num
+		WHERE
+		    ri.rental_list_item_type = '의류'
+		    AND ri.rental_list_item_grade = '중급장비';
+	</select>
+	
+	<select id="getWearPremiumItem" resultType="com.web.www.domain.rental.RentalItemListDTO">
+		SELECT
+		    ri.*,
+		    fi.file_uuid,
+		    fi.file_save,
+		    fi.file_name
+		FROM
+		    rental_items ri
+		JOIN
+		    file fi ON ri.rental_list_item_num = fi.rental_list_item_num
+		WHERE
+		    ri.rental_list_item_type = '의류'
 		    AND ri.rental_list_item_grade = '프리미엄장비';
 	</select>
 	

@@ -58,22 +58,57 @@ public class RentalServiceImpl implements RentalService{
 		return isOk;
 	}
 
+	// 스키장비 등급(일반,중급,프리미엄)에 따라 분류
 	@Override
 	public List<RentalItemListDTO> getSkiLowItem() {
 		
 		return rdao.getSkiLowItem();
 	}
-
 	@Override
 	public List<RentalItemListDTO> getSkiMidItem() {
 		
 		return rdao.getSkiMidItem();
 	}
-
 	@Override
 	public List<RentalItemListDTO> getSkiPremiumItem() {
 		
 		return rdao.getSkiPremiumItem();
+	}
+
+	
+	// 보드장비 등급(일반,중급,프리미엄)에 따라 분류
+	@Override
+	public List<RentalItemListDTO> getBoardLowItem() {
+		
+		return rdao.getBoardLowItem();
+	}
+	@Override
+	public List<RentalItemListDTO> getBoardMidItem() {
+		
+		return rdao.getBoardMidItem();
+	}
+	@Override
+	public List<RentalItemListDTO> getBoardPremiumItem() {
+		
+		return rdao.getBoardPremiumItem();
+	}
+
+	
+	// 의류 등급(일반,중급,프리미엄)에 따라 분류
+	@Override
+	public List<RentalItemListDTO> getWearLowItem() {
+		
+		return rdao.getWearLowItem();
+	}
+	@Override
+	public List<RentalItemListDTO> getWearMidItem() {
+		
+		return rdao.getWearMidItem();
+	}
+	@Override
+	public List<RentalItemListDTO> getWearPremiumItem() {
+		
+		return rdao.getWearPremiumItem();
 	}
 
 	
