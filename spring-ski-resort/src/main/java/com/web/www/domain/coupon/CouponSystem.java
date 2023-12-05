@@ -15,8 +15,8 @@ public class CouponSystem {
 
 	private String couponCode;	//쿠폰 아이디 (고유 아이디)
 	private String couponCheck;	// 사용여부	
-	private String couponSearch;	// 사용여부	
-	private String couponDupli;	// 사용여부	
+	private String couponSearch;	// 코드입력 사용여부	
+	private String couponDupli;	// 중복보유 여부	
 	private int couponDay; // 쿠폰 사용기간 (기준)
 	private String couponName;	// 쿠폰 이름
 	private int couponInt;	//쿠폰 할인율(정수)

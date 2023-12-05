@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.security.Principal;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -112,7 +110,7 @@ public class PayController {
 	
 	
 	
-//	private final KakaoPay kakaoPay;
+//	private finzal KakaoPay kakaoPay;
 //	
 //	@PostMapping("/order")
 //	public String order() {

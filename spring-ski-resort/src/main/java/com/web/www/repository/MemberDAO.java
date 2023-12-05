@@ -1,15 +1,16 @@
 package com.web.www.repository;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.web.www.domain.coupon.CouponGetDTO;
 import com.web.www.domain.coupon.CouponSystem;
 import com.web.www.domain.member.MemberCheckDTO;
 import com.web.www.domain.member.MemberPwdDTO;
 import com.web.www.domain.member.MemberVO;
 import com.web.www.domain.member.ModifyMemberDTO;
-import com.web.www.domain.pay.PayInfoVO;
 import com.web.www.security.AuthVO;
 
 public interface MemberDAO {
@@ -82,8 +83,19 @@ public interface MemberDAO {
 	int couponCheck();
 	void couponCreate(CouponSystem couponSystem);
 
+	//신규회원 쿠폰 지급
+	
+	/**
+	 * 쿠폰 생성전 유저 체크와 조건문을 통해 유저 쿠폰 생성
+	 * @return 1 = true , 0 = false
+	 */
+	int userCouponCheck(CouponGetDTO cgDto);
+	//날짜부여
+	int userCouponDate(String couponCode);
+	//유저에게 쿠폰생성
+	int userCouponAdd(CouponGetDTO cgDto);
 
-
+	List<CouponGetDTO> getUserCouponList(long memberNum);
 
 
 
