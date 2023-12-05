@@ -156,7 +156,7 @@ document.getElementById('modalEmailCheckBtn').addEventListener('click', () => {
     })
 
 
-}) 
+})
 
 
 
@@ -166,3 +166,19 @@ document.getElementById('inputMemberEmail').addEventListener('click', () => {
     document.getElementById('MemberEmailCheck').click();
 
 })
+
+//비밀번호 중복확인
+async function pwdUpdateLastCheck(event) {
+    event.preventDefault(); // 폼 제출 방지
+
+    // 비밀번호체크
+    const pwd1 = document.getElementById('pwdBox2').value;
+    const pwd2 = document.getElementById('pwdBox3').value;
+    if (pwd1 != pwd2) {
+        alert('새 비밀번호가 일치하는지 확인해주세요');
+        return false;
+    }
+
+    // 중복 체크 및 비밀번호 체크 통과 시에 폼 제출
+    event.target.submit(); // 폼 제출
+}
