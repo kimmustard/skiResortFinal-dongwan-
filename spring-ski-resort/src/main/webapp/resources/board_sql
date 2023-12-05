@@ -19,17 +19,19 @@ primary key(notice_num)
 
 ## file table 생성
 create table file(
-uuid varchar(200) not null,
+file_uuid varchar(200) not null,
 notice_num bigint,
 qna_num bigint,
 qna_ans_num bigint,
-save_dir varchar(200) not null,
+hotel_room_num int,
+rental_list_item_num bigint,
+file_save varchar(200) not null,
 file_name varchar(100) not null,
 file_isok varchar(1) default 'N',
 file_type tinyint(1) default 0,
 file_size bigint,
 file_reg_at datetime default now(),
-primary key(uuid)
+primary key(file_uuid)
 );
 
 

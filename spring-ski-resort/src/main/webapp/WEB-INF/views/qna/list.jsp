@@ -174,7 +174,7 @@
 		      			<p>※비밀글 입니다.</p>
 		      		</c:if>
 		      	</div></td>
-		      <td class="qna-table-td"><div class="qna-table-td-child">${qvo.qnaIsok=='Y' ? '답변완료' : '대기중' }</div></td>
+		      <td class="qna-table-td"><div class="qna-table-td-child">${qvo.qnaIsok=='Y' ? '답변완료' : '접수중' }</div></td>
 		      <td class="qna-table-td"><div class="qna-table-td-child">${fn:replace((fn:substring(qvo.qnaRegAt,0,10)),'-','.') }</div></td>
 		    </tr>
 		  </c:forEach>  
