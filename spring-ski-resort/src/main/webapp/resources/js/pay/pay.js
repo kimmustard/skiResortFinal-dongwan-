@@ -25,7 +25,7 @@ function paymentGateway(pgName) {
         pay_method: 'card', //card(신용카드), trans(실시간계좌이체), vbank(가상계좌), phone(휴대폰소액결제)
         merchant_uid: "order_no_" + new Date().getTime(), // 상점에서 관리하는 주문 번호
         name: '주문명:결제테스트',
-        amount: 1000,
+        amount: realAmount,
         buyer_email: memberEmail,
         buyer_name: memberName,
         buyer_tel: memberPhoneNum,
