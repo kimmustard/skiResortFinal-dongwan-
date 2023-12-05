@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.web.www.domain.coupon.CouponSystem;
 import com.web.www.domain.member.MemberCheckDTO;
 import com.web.www.domain.member.MemberPwdDTO;
 import com.web.www.domain.member.MemberVO;
@@ -79,6 +80,7 @@ public interface MemberDAO {
 	 * @return 쿠폰시스템 테이블 쿠폰갯수
 	 */
 	int couponCheck();
+	void couponCreate(CouponSystem couponSystem);
 
 
 

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.web.www.domain.coupon.CouponSystem;
 import com.web.www.domain.member.MemberCheckDTO;
 import com.web.www.domain.member.MemberPwdDTO;
 import com.web.www.domain.member.MemberVO;
@@ -107,11 +108,18 @@ public class MemberServiceImpl implements MemberService {
 	public int couponCheck() {
 		return mdao.couponCheck();
 	}
+	@Override
+	public void couponCreate(CouponSystem couponSystem) {
+		mdao.couponCreate(couponSystem);
+		
+	}
 	
+	// 유저의 쿠폰을 가져옵니다.
 	@Override
 	public int couponGet(long memberNum) {
 		return 0;
 	}
+
 
 
 

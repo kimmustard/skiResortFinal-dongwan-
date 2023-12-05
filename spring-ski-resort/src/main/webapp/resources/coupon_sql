@@ -1,23 +1,21 @@
 
 ## 12-05 쿠폰 시스템 테이블입니다.
 create table coupon(
-voucher_num bigint not null auto_increment,
 member_num bigint not null,
 coupon_uid bigint not null,
 coupon_start DateTime default now(),
 coupon_end DateTime,
-primary key(voucher_num)
 );
 
 
 ## 12-05 쿠폰 테이블입니다
 create table coupon_system(
-coupon_uid bigint not null,
+coupon_uid bigint not null auto_increment,
 coupon_code varchar(20),
-coupon_check varchar(1) not null,
+coupon_check varchar(1) default 'Y',
 coupon_day int,
 coupon_name varchar(20) not null,
-coupon_type varchar(20) not null,
+coupon_type varchar(20),
 coupon_int int,
 coupon_rate int,
 primary key(coupon_uid)

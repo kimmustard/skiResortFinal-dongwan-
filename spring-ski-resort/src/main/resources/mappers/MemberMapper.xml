@@ -87,7 +87,11 @@
 	
 	<!-- 쿠폰관련 -->
 	<select id="couponCheck" resultType="int">
-		select * from coupon_system
+		select count(*) from coupon_system
 	</select>
+	<insert id="couponCreate">
+		insert into coupon_system(coupon_day, coupon_name, coupon_type, coupon_int, coupon_rate)
+		value(#{couponDay}, #{couponName}, #{couponType}, #{couponInt}, #{couponRate})
+	</insert>
 
   </mapper>

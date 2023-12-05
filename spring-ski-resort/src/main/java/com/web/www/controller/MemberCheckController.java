@@ -64,7 +64,7 @@ public class MemberCheckController {
 	}
 	
 	
-	/**
+	/************************************************
 	 * @쿠폰
 	 */
 	@GetMapping("/coupon")
@@ -77,10 +77,16 @@ public class MemberCheckController {
 	@PostConstruct
 	public void couponCreate() {
 		int couponCnt = msv.couponCheck();
-		if(couponCnt == 0) {
+		if( couponCnt == 0 ) {
 			List<CouponSystem> couponSystemList = new ArrayList<>();
 			
-			couponSystemList.add("1004");
+			couponSystemList.add(new CouponSystem(30,"신규회원 쿠폰","rate",0,10));
+			couponSystemList.add(new CouponSystem(30,"정수형 테스트 쿠폰","integer",1000,0));
+			couponSystemList.add(new CouponSystem(60,"60일 테스트 쿠폰","rate",0,5));
+			
+			for (CouponSystem couponSystem : couponSystemList) {
+				msv.couponCreate(couponSystem);
+			}
 		}
 	}
 	
