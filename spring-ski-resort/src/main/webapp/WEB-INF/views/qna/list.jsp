@@ -13,76 +13,40 @@
 </head>
 <body>
 <div class="qna-img-container" style="background-image: url('https://www.princehotels.com/shinfurano/wp-content/uploads/sites/40/2022/11/2022_11_1920_ski_2-1.jpg')">	</div>
-<br><br><br><br><br><br><br>	
+
 
 <div class="container qna-container" id="qna-container">
 <c:set value="${ph.pgvo.type }" var="typed"></c:set>
-<h1>고객문의</h1>
-<h4>Q&A</h4>
+<div class="qna-h1">
+	고객문의
+	<p>Q&A</p>
+</div>
 
 	<div class="qna-menu-container">
-		<!-- MY Q&A -->
-		<sec:authorize access="isAuthenticated()"> <!-- 로그인 시 -->
-			<sec:authentication property="principal.mvo.memberId" var="authId"/>
-			<sec:authentication property="principal.mvo.memberEmail" var="authEmail"/>
-			<sec:authentication property="principal.mvo.memberType" var="authType"/>
-			<div class="qna-myqna">
-				<form action="/qna/list" method="get">
-					<c:if test="${authType == 'normal' }">
-					  <input type="hidden" name="type" value="w" ${typed eq 'w' ? 'selected' : '' }>
-					  <input type="hidden" name="keyword" type="search" value="${authId}">
-					  <button class="btn btn-outline-success" type="submit">
-					  MY Q&A</button>
-					</c:if>
+		
 
-					<c:if test="${authType != 'normal' }">
-					  <input type="hidden" name="type" value="w" ${typed eq 'w' ? 'selected' : '' }>
-					  <input type="hidden" name="keyword" type="search" value="${authEmail }">
-					 <button class="btn btn-outline-success" type="submit">
-					  MY Q&A</button>
-					</c:if>
-				</form>	
-			</div>
-		</sec:authorize>
-		
-		<sec:authorize access="isAnonymous()"> <!-- 로그인 x -->
-		<div class="qna-myqna">
-			<form action="/qna/list" method="get">
-				<input type="hidden" name="type" value="w" ${typed eq 'w' ? 'selected' : '' }>
-				<input type="hidden" name="keyword" type="search" value="비회원">
-				<button class="btn btn-outline-success" type="submit">
-				MY Q&A</button>
-			</form>
-		</div>	
-		</sec:authorize>
-		
-		<a href="/qna/register">
-			<button class="btn btn-outline-dark type="button">문의글작성</button>
-		</a>
-		<br>
-		
-		
-		
 		<!-- 검색 라인  -->
-		<form action="/qna/list" method="get">
-		<div class="qna-search-container">
-			<div class="dropdown qna-search-category">
-			  <select class="qna-search-category dropdown-toggle" name="type" data-bs-toggle="dropdown" aria-expanded="false">
-			   	<option class="dropdown-item" value="tcw" ${typed eq 'tc' ? 'selected' : '' }>전체</option>
-			   	<option class="dropdown-item" value="t" ${typed eq 't' ? 'selected' : '' }>제목</option>
-			   	<option class="dropdown-item" value="c" ${typed eq 'c' ? 'selected' : '' }>내용</option>
-			  </select>
+		<div class="qna-search-form">
+			<form action="/qna/list" method="get">
+			<div class="qna-search-container">
+				<div class="dropdown qna-search-category">
+				  <select class="qna-search-category dropdown-toggle" name="type" data-bs-toggle="dropdown" aria-expanded="false">
+				   	<option class="dropdown-item" value="tcw" ${typed eq 'tc' ? 'selected' : '' }>전체</option>
+				   	<option class="dropdown-item" value="t" ${typed eq 't' ? 'selected' : '' }>제목</option>
+				   	<option class="dropdown-item" value="c" ${typed eq 'c' ? 'selected' : '' }>내용</option>
+				  </select>
+				</div>
+				<div class="qna-input-container">
+					<input placeholder="검색어를 입력해 주세요." name="keyword" type="search" value="" class="qna-search-input">
+					<input type="hidden" name="pageNo" value="1">
+					<input type="hidden" name="qty" value="${ph.pgvo.qty }">
+				</div>
+				<div class="qna-button-container">
+					<button class="qna-search-button" type="submit">검색</button>
+				</div>
 			</div>
-			<div class="qna-input-container">
-				<input placeholder="검색어를 입력해 주세요." name="keyword" type="search" value="" class="qna-search-input">
-				<input type="hidden" name="pageNo" value="1">
-				<input type="hidden" name="qty" value="${ph.pgvo.qty }">
-			</div>
-			<div class="qna-button-container">
-				<button class="qna-search-button" type="submit">검색</button>
-			</div>
+			</form>
 		</div>
-		</form>
 		
 		
 		<!-- 카테고리 라인 -->
@@ -183,6 +147,7 @@
 		
 		
 		<!-- 페이징 라인 -->
+		<div class="qna-paging-container">
 		  <nav aria-label="Page navigation example">
 		  	<!-- 이전 -->
 		  	<ul class="pagination">
@@ -204,11 +169,54 @@
   				</li>	
 		  	</ul>
 		  </nav>
+		</div>
 		
 		
-		<br>
 		
-	</div>	
+		<!-- MY Q&A -->
+		<div class="qna-reg">
+		<sec:authorize access="isAuthenticated()"> <!-- 로그인 시 -->
+			<sec:authentication property="principal.mvo.memberId" var="authId"/>
+			<sec:authentication property="principal.mvo.memberEmail" var="authEmail"/>
+			<sec:authentication property="principal.mvo.memberType" var="authType"/>
+			<div class="qna-myqna">
+				<form action="/qna/list" method="get">
+					<c:if test="${authType == 'normal' }">
+					  <input type="hidden" name="type" value="w" ${typed eq 'w' ? 'selected' : '' }>
+					  <input type="hidden" name="keyword" type="search" value="${authId}">
+					  <button class="btn btn-outline-success" type="submit">
+					  MY Q&A</button>
+					</c:if>
+
+					<c:if test="${authType != 'normal' }">
+					  <input type="hidden" name="type" value="w" ${typed eq 'w' ? 'selected' : '' }>
+					  <input type="hidden" name="keyword" type="search" value="${authEmail }">
+					 <button class="btn btn-outline-success" type="submit">
+					  MY Q&A</button>
+					</c:if>
+				</form>	
+			</div>
+		</sec:authorize>
+		
+		<sec:authorize access="isAnonymous()"> <!-- 로그인 x -->
+		<div class="qna-myqna">
+			<form action="/qna/list" method="get">
+				<input type="hidden" name="type" value="w" ${typed eq 'w' ? 'selected' : '' }>
+				<input type="hidden" name="keyword" type="search" value="비회원">
+				<button class="btn btn-outline-success" type="submit">
+				MY Q&A</button>
+			</form>
+		</div>	
+		</sec:authorize>
+		
+		<a href="/qna/register">
+			<button class="btn btn-outline-dark type="button">문의하기</button>
+		</a>
+		</div>
+		
+		
+
+	</div>			
 </div>
 
 

@@ -1,28 +1,52 @@
 @charset "UTF-8";
+.qna-container{
+	margin-top: 100px;
+}
+
+.qna-h1{
+	text-align: center;
+	font-size: 35px;
+	font-family: arial;
+}
+
+.qna-h1>p{
+	font-size: 20px;
+	padding-top: 10px;
+	font-family: arial;
+}
 
 .qna-img-container{
-	height: 60vh;
+	height: 40vh;
 	background-size: cover;
 	background-position: 0px -20vh;
 	max-width: 100%;
 }
 
 .qna-menu-container{
-	padding-top: 120px;
+	margin-top: 120px;
 	margin-bottom: 300px;
+	border: 1px solid #dddddd;
 }
 
 
 
 /* 검색 라인 */
+.qna-search-form{
+
+}
+
 .qna-search-container{
 	background-color: #f5f5f5;
 	height: 100px;
-	margin-bottom: 80px;
+	width: 80%;
 	justify-content: center;
 	display: flex;
 	align-items: center;
 	column-gap: 20px;
+	/* 수평 중앙 정렬하기 */
+  	margin: 0 auto;
+  	margin-bottom: 50px;
+  	margin-top: 100px;
 }
 
 .qna-search-category{
@@ -32,13 +56,12 @@
 }
 
 .qna-input-container{
-	width: 780px;
 	max-width: 100%;
 	border-color: transparent;
 }
 
 .qna-search-input{
-	width: 780px;
+	width: 650px;
 	height: 40px;
 	background: transparent;
 	border-width: 0 0 1px;
@@ -76,6 +99,9 @@
 
 .qna-table{
 	text-align: center;
+	width: 80%;
+	margin: 0 auto;
+	margin-bottom: 30px;
 }
 
 .qna-table-tr{
@@ -141,3 +167,27 @@
 	text-decoration-line: none;
 	color: inherit;
 }
+
+
+
+/*페이징 라인*/
+.qna-paging-container{
+	display: flex;
+  	justify-content: center;
+  	margin-bottom: 60px;
+}
+
+
+
+/*등록 버튼*/
+.qna-reg{
+	margin-bottom: 60px;
+	display: flex;
+	 float: right;
+
+}
+
+
+
+
+

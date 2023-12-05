@@ -61,9 +61,6 @@
 		insert into file(file_uuid,file_save,file_name,file_isok,file_type,file_size,rental_list_item_num)
 		values(#{fileUuid},#{fileSave},#{fileName},#{fileIsok},#{fileType},#{fileSize},#{rentalListItemNum})
 	</insert>
-	
-	<select id="ItemAndPicture" resultType="com.web.www.domain.FileVO">
-		select * from file
-	</select>	
+
 	
 </mapper>

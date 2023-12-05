@@ -58,7 +58,7 @@
 								<c:choose>
 									<c:when test="${fvo.fileType > 0 }">
 										<div>
-										<img alt="이미지x" src="/upload/${fn: replace(fvo.saveDir,'\\','/')}/${fvo.uuid}_${fvo.fileName}">
+										<img alt="이미지x" src="/upload/${fn: replace(fvo.fileSave,'\\','/')}/${fvo.fileUuid}_${fvo.fileName}">
 										</div>
 									</c:when>
 								</c:choose>
@@ -102,7 +102,7 @@
 								<c:choose>
 									<c:when test="${afvo.fileType > 0 }">
 										<div>
-										<img alt="이미지x" src="/upload/${fn: replace(afvo.saveDir,'\\','/')}/${afvo.uuid}_${afvo.fileName}">
+										<img alt="이미지x" src="/upload/${fn: replace(afvo.fileSave,'\\','/')}/${afvo.fileUuid}_${afvo.fileName}">
 										</div>
 									</c:when>
 								</c:choose>
