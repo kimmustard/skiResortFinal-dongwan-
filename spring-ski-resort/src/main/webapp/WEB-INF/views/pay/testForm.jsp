@@ -29,7 +29,7 @@
             <button id="naver_pay" value=""> 네이버페이(공사중) </button>
 
 			<a href="/"><button> 메인으로 </button></a>
-			<button> 쿠폰받기 </button>
+			<button id="coupon_get"> 쿠폰받기 </button>
 
             <script type="text/javascript" src="/resources/js/pay/pay.js"></script>
         </body>

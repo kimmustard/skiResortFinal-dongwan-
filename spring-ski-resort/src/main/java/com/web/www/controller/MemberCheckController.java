@@ -80,13 +80,15 @@ public class MemberCheckController {
 		if( couponCnt == 0 ) {
 			List<CouponSystem> couponSystemList = new ArrayList<>();
 			
-			couponSystemList.add(new CouponSystem(30,"신규회원 쿠폰","rate",0,10));
-			couponSystemList.add(new CouponSystem(30,"정수형 테스트 쿠폰","integer",1000,0));
-			couponSystemList.add(new CouponSystem(60,"60일 테스트 쿠폰","rate",0,5));
+			couponSystemList.add(new CouponSystem("WelcomeUser","Y","N","N",30,"신규회원 쿠폰",0,10));
+			couponSystemList.add(new CouponSystem("integerTest","Y","N","N",30,"정수형 테스트 쿠폰",1000,0));
+			couponSystemList.add(new CouponSystem("rateTest","Y","N","N",30,"퍼센트 테스트 쿠폰",0,5));
+			couponSystemList.add(new CouponSystem("ABCD-1234","Y","Y","N",7,"입력형 테스트 쿠폰",0,3));
+			couponSystemList.add(new CouponSystem("adminTest","Y","N","Y",7,"관리자 분산형 쿠폰",500,0));
 			
-			for (CouponSystem couponSystem : couponSystemList) {
-				msv.couponCreate(couponSystem);
-			}
+//			for (CouponSystem couponSystem : couponSystemList) {
+//				msv.couponCreate(couponSystem);
+//			}
 		}
 	}
 	

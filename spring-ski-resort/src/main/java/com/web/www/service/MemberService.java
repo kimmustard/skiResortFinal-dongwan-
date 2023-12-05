@@ -1,13 +1,11 @@
 package com.web.www.service;
 
-import java.util.List;
 
 import com.web.www.domain.coupon.CouponSystem;
 import com.web.www.domain.member.MemberCheckDTO;
 import com.web.www.domain.member.MemberPwdDTO;
 import com.web.www.domain.member.MemberVO;
 import com.web.www.domain.member.ModifyMemberDTO;
-import com.web.www.domain.pay.PayInfoVO;
 
 public interface MemberService {
 
