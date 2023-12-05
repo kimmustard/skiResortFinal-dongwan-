@@ -101,8 +101,8 @@ async function registerLastCheck(event) {
         }
 
         // 비밀번호체크
-        const pwd1 = document.getElementById('pwdBox2').value;
-        const pwd2 = document.getElementById('pwdBox3').value;
+        const pwd1 = document.getElementById('exampleInputPassword1').value;
+        const pwd2 = document.getElementById('exampleInputPassword2').value;
         if (pwd1 != pwd2) {
             document.getElementById('pwdCheck').innerHTML = '비밀번호를 확인해주세요'
             return false;

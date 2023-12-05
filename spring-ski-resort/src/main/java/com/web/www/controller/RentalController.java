@@ -91,7 +91,13 @@ public class RentalController {
 	
 	@GetMapping("/ski-item")
 	public String skiItemForm(Model model) {
-		List<RentalItemListDTO> rldto = rsv.skiAllItem();
+		List<RentalItemListDTO> skiLowItem = rsv.getSkiLowItem();
+		List<RentalItemListDTO> skiMidItem = rsv.getSkiMidItem();
+		List<RentalItemListDTO> skiPremiumItem = rsv.getSkiPremiumItem();
+		
+		model.addAttribute("skiLowItem", skiLowItem);
+		model.addAttribute("skiMidItem", skiMidItem);
+		model.addAttribute("skiPremiumItem", skiPremiumItem);
 		
 		return "/rental/ski-item";
 	}

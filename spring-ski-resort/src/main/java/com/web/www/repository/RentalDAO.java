@@ -17,7 +17,11 @@ public interface RentalDAO {
 
 	long selectOneItemNum();
 
-	List<RentalItemListDTO> skiAllItem();
+	
+	List<RentalItemListDTO> getSkiLowItem();
+	List<RentalItemListDTO> getSkiMidItem();
+	List<RentalItemListDTO> getSkiPremiumItem();
+
 
 
 

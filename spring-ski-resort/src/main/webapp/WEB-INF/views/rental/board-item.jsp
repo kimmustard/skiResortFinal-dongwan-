@@ -111,82 +111,19 @@
 							<!-- 이미지 파일 표시 -->
 							보드일반
 						</div>
-						<div>
-							<!-- 이미지 파일 표시 -->
-							
-						</div>
-						<div>
-							<!-- 이미지 파일 표시 -->
-						</div>
-						<div>
-							<!-- 이미지 파일 표시 -->
-						</div>
-						<div>
-							<!-- 이미지 파일 표시 -->
-						</div>
 					</div>
 					
-					<div class="textBox" id="lowItemTextBox">
-						
-						<div>
-							
-						</div>
-						<div>
-							
-						</div>
-						<div>
-							
-						</div>
-						<div>
-							
-						</div>
-						<div>
-							
-						</div>
 					
-						
-					</div>
 					<div class="itemImageBox" id="midItemImageBox" style="display: none;">
 						
 						<div>
 							<!-- 이미지 파일 표시 -->
 							보드중급
 						</div>
-						<div>
-							<!-- 이미지 파일 표시 -->
-							
-						</div>
-						<div>
-							<!-- 이미지 파일 표시 -->
-						</div>
-						<div>
-							<!-- 이미지 파일 표시 -->
-						</div>
-						<div>
-							<!-- 이미지 파일 표시 -->
-						</div>
 						
 					</div>
 					
-					<div class="textBox" id="midItemTextBox" style="display: none;">
-						
-							<div>
-								
-							</div>
-							<div>
-								
-							</div>
-							<div>
-								
-							</div>
-							<div>
-								
-							</div>
-							<div>
-								
-							</div>
-						
-					</div>
+					
 		
 					<div class="itemImageBox" id="premiumItemImageBox" style="display: none;">
 						
@@ -194,41 +131,9 @@
 							<!-- 이미지 파일 표시 -->	
 							보드프리미엄
 						</div>
-						<div>
-							<!-- 이미지 파일 표시 -->
-							
-						</div>
-						<div>
-							<!-- 이미지 파일 표시 -->
-						</div>
-						<div>
-							<!-- 이미지 파일 표시 -->
-						</div>
-						<div>
-							<!-- 이미지 파일 표시 -->
-						</div>
 						
 					</div>
 					
-					<div class="textBox" id="premiumItemTextBox" style="display: none;">
-						
-						<div>
-							
-						</div>
-						<div>
-							
-						</div>
-						<div>
-							
-						</div>
-						<div>
-							
-						</div>
-						<div>
-							
-						</div>
-						
-					</div>
 	
 				</div>
 				

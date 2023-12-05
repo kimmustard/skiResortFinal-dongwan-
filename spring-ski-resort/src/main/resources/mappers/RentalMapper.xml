@@ -26,8 +26,49 @@
 		select max(rental_list_item_num) from rental_items
 	</select>
 	
-	<select id="skiAllItem" resultType="com.web.www.domain.rental.RentalItemListDTO">
-		select * from rental_items 
+	<select id="getSkiLowItem" resultType="com.web.www.domain.rental.RentalItemListDTO">
+		SELECT
+		    ri.*,
+		    fi.uuid,
+		    fi.save_dir,
+		    fi.file_name
+		FROM
+		    rental_items ri
+		JOIN
+		    file fi ON ri.rental_list_item_num = fi.rental_list_item_num
+		WHERE
+		    ri.rental_list_item_type = '스키'
+		    AND ri.rental_list_item_grade = '일반장비';
+	</select>
+	
+	<select id="getSkiMidItem" resultType="com.web.www.domain.rental.RentalItemListDTO">
+		SELECT
+		    ri.*,
+		    fi.uuid,
+		    fi.save_dir,
+		    fi.file_name
+		FROM
+		    rental_items ri
+		JOIN
+		    file fi ON ri.rental_list_item_num = fi.rental_list_item_num
+		WHERE
+		    ri.rental_list_item_type = '스키'
+		    AND ri.rental_list_item_grade = '중급장비';
+	</select>
+	
+	<select id="getSkiPremiumItem" resultType="com.web.www.domain.rental.RentalItemListDTO">
+		SELECT
+		    ri.*,
+		    fi.uuid,
+		    fi.save_dir,
+		    fi.file_name
+		FROM
+		    rental_items ri
+		JOIN
+		    file fi ON ri.rental_list_item_num = fi.rental_list_item_num
+		WHERE
+		    ri.rental_list_item_type = '스키'
+		    AND ri.rental_list_item_grade = '프리미엄장비';
 	</select>
 	
 

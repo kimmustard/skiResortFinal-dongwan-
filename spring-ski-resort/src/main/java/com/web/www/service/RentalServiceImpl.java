@@ -59,10 +59,21 @@ public class RentalServiceImpl implements RentalService{
 	}
 
 	@Override
-	public List<RentalItemListDTO> skiAllItem() {
-		RentalItemListDTO rldto = new RentalItemListDTO();
+	public List<RentalItemListDTO> getSkiLowItem() {
 		
-		return rdao.skiAllItem();
+		return rdao.getSkiLowItem();
+	}
+
+	@Override
+	public List<RentalItemListDTO> getSkiMidItem() {
+		
+		return rdao.getSkiMidItem();
+	}
+
+	@Override
+	public List<RentalItemListDTO> getSkiPremiumItem() {
+		
+		return rdao.getSkiPremiumItem();
 	}
 
 	

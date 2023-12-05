@@ -1,7 +1,5 @@
 package com.web.www.domain.rental;
 
-import com.web.www.domain.FileVO;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,6 +12,18 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class RentalItemListDTO {
-	private RentalItemVO ritvo;
-	private FileVO fvo;
+	
+	private long rentalListItemNum; // 장비번호
+	private String rentalListItemType; // 장비타입
+	private String rentalListItemGrade; // 장비등급
+	private String rentalListLowItem; // 일반장비
+	private String rentalListMidItem; // 중급장비
+	private String rentalListPremiumItem; // 프리미엄장비
+	private int rentalListItemCount; // 장비수량
+	private String rentalListItemExplain; // 장비설명
+	
+	private String uuid;
+	private String saveDir;
+	private String fileName;
+	
 }

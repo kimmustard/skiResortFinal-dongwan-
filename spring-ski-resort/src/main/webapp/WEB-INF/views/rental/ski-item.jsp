@@ -108,27 +108,37 @@
 		<div class="itemContainer">
 		
 			<div class="skiItemList" id="skiItemList">
-				<div class="itemImageBox">
-					<div>
+				<div class="itemInfo">
+					<c:forEach items="${skiLowItem }" var="lowItem">
+					<div class="itemImageBox" id="lowItemImageBox">
+						<div>
+							<!-- 이미지파일 -->
+							<img alt="SkiLowItem" src="/upload/${fn: replace(lowItem.saveDir,'\\','/')}/${lowItem.uuid}_${lowItem.fileName}">
+						</div>
+					</div>
+					</c:forEach>
 					
+					<c:forEach items="${skiMidItem }" var="midItem">
+					<div class="itemImageBox" id="midItemImageBox" style="display: none;">
+						<div>
+							<!-- 이미지파일 -->
+							<img alt="SkiLowItem" src="/upload/${fn: replace(midItem.saveDir,'\\','/')}/${midItem.uuid}_${midItem.fileName}">
+						</div>
 					</div>
-				</div>
-			</div>
-			<div class="skiItemList" id="skiItemList">
-				<div class="itemImageBox">
-					<div>
-					${ }
-					</div>
-				</div>
-			</div>
-			<div class="skiItemList" id="skiItemList">
-				<div class="itemImageBox">
-					<div>
+					</c:forEach>
 					
+					<c:forEach items="${skiPremiumItem }" var="premiumItem">
+					<div class="itemImageBox" id="premiumItemImageBox" style="display: none;">
+						<div>
+							<!-- 이미지파일 -->
+							<img alt="SkiLowItem" src="/upload/${fn: replace(premiumItem.saveDir,'\\','/')}/${premiumItem.uuid}_${premiumItem.fileName}">
+						</div>
 					</div>
+					</c:forEach>
+					
 				</div>
 			</div>
-			
+
 				
 		</div>
 

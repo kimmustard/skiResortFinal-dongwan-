@@ -15,7 +15,13 @@ public interface RentalService {
 
 	int itemRegister(RentalItemDTO rentalItemDTO);
 
-	List<RentalItemListDTO> skiAllItem();
+	/**
+	 * 스키장비 등급(일반,중급,프리미엄)에 따라 분류
+	 * @return
+	 */
+	List<RentalItemListDTO> getSkiLowItem();
+	List<RentalItemListDTO> getSkiMidItem();
+	List<RentalItemListDTO> getSkiPremiumItem();
 
 
 
