@@ -108,134 +108,28 @@
 		<div class="itemContainer">
 		
 			<div class="skiItemList" id="skiItemList">
-			
-				<c:forEach items="${rldto.ritvo}" var="ritvo">
-					<c:if test="${ritvo.rentalListItemType eq '스키'}">
-						<div class="itemInfo">	
-							<c:if test="${ritvo.rentalListItemGrade eq '일반장비' }">
-								<div class="itemImageBox" id="lowItemImageBox">
-									<c:forEach items="${rldto.flist}" var="fvo">
-										<c:if test="${fvo.rentalListItemNum eq ritvo.rentalListItemNum }">
-											
-											<div>
-												<!-- 이미지 파일 표시 -->
-												<img alt="이미지없음" src="/upload/${fn: replace(fvo.saveDir,'\\','/')}/${fvo.uuid}_${fvo.fileName}">
-											</div>
-										
-										</c:if>
-									</c:forEach>
-									
-								</div>
-							
-								<div class="textBox" id="lowItemTextBox">
-									
-									<div>
-										<p class="fs-5">${ritvo.rentalListLowItem }</p>
-									</div>
-									<div>
-										
-									</div>
-									<div>
-										
-									</div>
-									<div>
-										
-									</div>
-									<div>
-										
-									</div>
-								
-									
-								</div>
-							</c:if>
-							
-									<c:if test="${ritvo.rentalListItemGrade eq '중급장비' }">
-									
-								<div class="itemImageBox" id="midItemImageBox" style="display: none;">
-									<c:forEach items="${rldto.flist}" var="fvo">
-									${fvo.rentalListItemNum }ss
-										<c:if test="${ritvo.rentalListItemNum eq fvo.rentalListItemNum }">
-									
-											<div>
-												<!-- 이미지 파일 표시 -->
-												<img alt="이미지없음" src="/upload/${fn: replace(fvo.saveDir,'\\','/')}/${fvo.uuid}_${fvo.fileName}">
-											</div>
-											
-										</c:if>
-									</c:forEach>
-								</div>
-									</c:if>
-								
-								<div class="textBox" id="midItemTextBox" style="display: none;">
-									
-										<div>
-											<p class="fs-5">${ritvo.rentalListMidItem }</p>
-										</div>
-										<div>
-											
-										</div>
-										<div>
-											
-										</div>
-										<div>
-											
-										</div>
-										<div>
-											
-										</div>
-									
-								</div>
+				<div class="itemImageBox">
+					<div>
 					
-							
-							<c:if test="${ritvo.rentalListItemGrade eq '프리미엄장비' }">
-								<div class="itemImageBox" id="premiumItemImageBox" style="display: none;">
-									<c:forEach items="${rldto.flist}" var="fvo">
-										<c:if test="${fvo.rentalListItemNum eq ritvo.rentalListItemNum }">
-											<div>
-												<!-- 이미지 파일 표시 -->	
-												<img alt="이미지없음" src="/upload/${fn: replace(fvo.saveDir,'\\','/')}/${fvo.uuid}_${fvo.fileName}">
-											</div>
-											<div>
-												<!-- 이미지 파일 표시 -->
-												
-											</div>
-											<div>
-												<!-- 이미지 파일 표시 -->
-											</div>
-											<div>
-												<!-- 이미지 파일 표시 -->
-											</div>
-											<div>
-												<!-- 이미지 파일 표시 -->
-											</div>
-										</c:if>
-									</c:forEach>
-								</div>
-								
-								<div class="textBox" id="premiumItemTextBox" style="display: none;">
-									
-									<div>
-										<p class="fs-5">${ritvo.rentalListPremiumItem }</p>
-									</div>
-									<div>
-										
-									</div>
-									<div>
-										
-									</div>
-									<div>
-										
-									</div>
-									<div>
-										
-									</div>
-									
-								</div>
-							</c:if>
-						</div>
-					</c:if>
-				</c:forEach>
+					</div>
+				</div>
 			</div>
+			<div class="skiItemList" id="skiItemList">
+				<div class="itemImageBox">
+					<div>
+					${ }
+					</div>
+				</div>
+			</div>
+			<div class="skiItemList" id="skiItemList">
+				<div class="itemImageBox">
+					<div>
+					
+					</div>
+				</div>
+			</div>
+			
+				
 		</div>
 
 	</div>

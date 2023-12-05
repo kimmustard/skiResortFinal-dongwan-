@@ -84,13 +84,26 @@ public class RentalController {
 		return "redirect:/rental/item";
 	}
 
-	@GetMapping({"/item","/ski-item","board-item","wear-item"})
-	public void itemForm(Model model) {
-//		RentalItemListDTO rldto = new RentalItemListDTO(); 
-		RentalItemListDTO rldto = rsv.itemList();
+	@GetMapping("/item")
+	public String itemForm(Model model) {
+		return "/rental/item";
+	}
+	
+	@GetMapping("/ski-item")
+	public String skiItemForm(Model model) {
+		List<RentalItemListDTO> rldto = rsv.skiAllItem();
 		
-		model.addAttribute("rldto", rldto);
+		return "/rental/ski-item";
+	}
+	@GetMapping("/board-item")
+	public String boardItemForm(Model model) {
 		
+		return "/rental/board-item";
+	}
+	@GetMapping("/wear-item")
+	public String wearItemForm(Model model) {
+		
+		return "/rental/wear-item";
 	}
 	
 }

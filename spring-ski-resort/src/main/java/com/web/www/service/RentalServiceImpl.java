@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import com.web.www.domain.FileVO;
 import com.web.www.domain.rental.RentalItemDTO;
 import com.web.www.domain.rental.RentalItemListDTO;
-import com.web.www.domain.rental.RentalItemVO;
 import com.web.www.domain.rental.RentalLiftVO;
 import com.web.www.domain.rental.RentalVO;
 import com.web.www.repository.FileDAO;
@@ -60,19 +59,13 @@ public class RentalServiceImpl implements RentalService{
 	}
 
 	@Override
-	public RentalItemListDTO itemList() {
-		List<RentalItemVO> rlist = rdao.ItemAndPicture();
-		List<FileVO> flist = fdao.ItemAndPicture();
+	public List<RentalItemListDTO> skiAllItem() {
+		RentalItemListDTO rldto = new RentalItemListDTO();
 		
-		RentalItemListDTO rldto = new RentalItemListDTO(); 
-		rldto.setRitvo(rlist);
-		rldto.setFlist(flist);
-		
-
-
-	    return rldto;
+		return rdao.skiAllItem();
 	}
 
+	
 
 
 
