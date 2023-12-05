@@ -3,6 +3,7 @@ package com.web.www.service;
 import java.util.List;
 
 import com.web.www.domain.member.MemberCheckDTO;
+import com.web.www.domain.member.MemberPwdDTO;
 import com.web.www.domain.member.MemberVO;
 import com.web.www.domain.member.ModifyMemberDTO;
 import com.web.www.domain.pay.PayInfoVO;
@@ -49,6 +50,14 @@ public interface MemberService {
 
 	// 광고 체크 비동기로 받기
 	int cdCheck(MemberCheckDTO mcDto);
+
+	int updatePwd(MemberPwdDTO mpDTO);
+
+	
+	/**
+	 *	@coupon 쿠폰관련 service 메서드 입니다.
+	 * */
+	int couponGet(long memberNum);
 
 
 

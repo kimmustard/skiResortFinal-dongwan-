@@ -332,3 +332,59 @@ textarea{
 	margin-left: 35px;
 }
 
+
+/* 비밀번호 변경 창*/
+.mainViewBox4>form{
+	 -ms-user-select: none;
+     -moz-user-select: -moz-none;
+     -webkit-user-select: none;
+     -khtml-user-select: none;
+     user-select: none;
+	margin: 50px;
+	margin-left: 100px;
+}
+
+.mainViewBox4>form>.pwdChange{
+	margin-bottom: 50px;
+	display: flex;
+	flex-direction: column;
+}
+
+.pwdChange>.errorFont{
+	margin-left: 150px;
+}
+
+.mainViewBox4>form>h3{
+	font-weight: bold;
+	font-size: 30px;
+	color: black;
+	margin-bottom: 50px;
+	padding-bottom: 20px;
+	border-bottom: 1px solid gray;
+}
+
+.pwd-miniBox>input{
+	border-width: 0 0 1px;
+	border-color: gray;
+	float: right;
+	width: 300px;
+	margin-right: 100px;
+	background-color: transparent;
+}
+
+.pwd-miniBox>input:focus {
+  outline: none;
+}
+
+.pwd-change-btn{
+	position: absolute;
+	top: 430px;
+	left: 500px;
+}
+
+.pwdLabel{
+	width: 150px;
+}
+
+
+

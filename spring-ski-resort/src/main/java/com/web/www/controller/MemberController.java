@@ -108,23 +108,41 @@ public class MemberController {
 	
 	@GetMapping("/memberPwd")
 	public String pwdForm(@AuthUser MemberVO mvo, Model model) {
+		MemberVO detailMvo = msv.getUser(mvo.getMemberId() , mvo.getMemberType());
+		model.addAttribute("mvo", detailMvo);
 		model.addAttribute("mpDTO", new MemberPwdDTO());
-		model.addAttribute("mvo", mvo);
 		return "/member/memberPwd";
 	}
 	
 	@PostMapping("/memberPwd")
 	public String pwdChange(@Validated @ModelAttribute("mpDTO")MemberPwdDTO mpDTO, BindingResult bindingResult, 
-			HttpServletRequest request, HttpServletResponse response) {
-		log.info("mpDTO########### = {}" , mpDTO);
+			HttpServletRequest request, HttpServletResponse response, @AuthUser MemberVO mvo,
+			RedirectAttributes rttr, Model model) {
 		
 		if(bindingResult.hasErrors()) {
+			MemberVO detailMvo = msv.getUser(mvo.getMemberId() , mvo.getMemberType());
+			model.addAttribute("mvo", detailMvo);
 			return "/member/memberPwd";
 		}
+			
+		if(bcEncoder.matches(mpDTO.getExPwd(), mvo.getMemberPwd())) {
+			
+			//회원 넘버와 인코딩된 비밀번호 저장
+			mpDTO.setMemberNum(mvo.getMemberNum());
+			mpDTO.setChangePwd(bcEncoder.encode(mpDTO.getChangePwd()));
+			
+			//변경된 비밀번호 저장
+			int isMod = msv.updatePwd(mpDTO);
+			
+			rttr.addFlashAttribute("isMod", isMod);
+			logout(request, response);
+			return "redirect:/member/login";
+		}else {
+			int isMod = 2;
+			rttr.addFlashAttribute("isMod", isMod);
+			return "redirect:/member/memberPwd";
+		}
 		
-		
-		logout(request, response);
-		return "/member/login";
 	}
 	
 	
@@ -149,6 +167,13 @@ public class MemberController {
 		new SecurityContextLogoutHandler().logout(request, response, auth);
 	}
 		
+	
+	@GetMapping("/coupon")
+	public String couponGet(@AuthUser MemberVO mvo) {
+		int isOk = msv.couponGet(mvo.getMemberNum());
+		return "index";
+	}
+	
 	
 	
 }

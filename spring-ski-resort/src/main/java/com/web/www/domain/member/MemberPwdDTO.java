@@ -15,6 +15,7 @@ import lombok.ToString;
 @NoArgsConstructor
 public class MemberPwdDTO {
 	
+	private long memberNum;
 	@NotBlank(message = "비밀번호를 정확히 입력해주세요.")
 	private String exPwd;
 	

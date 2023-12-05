@@ -16,7 +16,7 @@
                 <button type="submit" id="btn-kakao-pay"> 결제하기 </button>
 
             </form>
-
+			
 
             <button id="inicis_pay" value="html5_inicis"> 이니시스 통합결제 </button>
             
@@ -28,6 +28,8 @@
             
             <button id="naver_pay" value=""> 네이버페이(공사중) </button>
 
+			<a href="/"><button> 메인으로 </button></a>
+			<button> 쿠폰받기 </button>
 
             <script type="text/javascript" src="/resources/js/pay/pay.js"></script>
         </body>
