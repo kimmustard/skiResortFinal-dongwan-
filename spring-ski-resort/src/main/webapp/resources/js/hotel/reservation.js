@@ -1,3 +1,4 @@
+//할인율 계산 (원금-coupon_int)-(원금*coupon_rate/100)-(원금*등급할인율/100)
 
 document.getElementById("payBtn").addEventListener('click',()=>{
     let hotelReservePeople= document.getElementById('hotelReservePeople').value;

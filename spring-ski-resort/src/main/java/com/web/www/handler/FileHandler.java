@@ -40,7 +40,7 @@ public class FileHandler {
 		for(MultipartFile file : files) {
 			FileVO fvo = new FileVO();
 			String setDir = category+File.separator+today;
-			fvo.setSaveDir(setDir);
+			fvo.setFileSave(setDir);
 			fvo.setFileSize(file.getSize());
 			fvo.setFileIsok("Y");
 			
@@ -51,7 +51,7 @@ public class FileHandler {
 			fvo.setFileName(fileName);
 			
 			UUID uuid = UUID.randomUUID();
-			fvo.setUuid(uuid.toString());
+			fvo.setFileUuid(uuid.toString());
 			//-----기본 fileVO 생성 완료------
 			
 			//-----디스크에 저장할 파일 객체 생성-----

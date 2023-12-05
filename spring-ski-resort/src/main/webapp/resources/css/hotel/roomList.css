@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+
+
+li{
+	list-style: none;
+	margin: 15px 0 0 15px ;
+}
+.modify-box{
+	border: solid 1px black;
+	padding: 10px;
+}
+.text1{
+
+	margin: 100px 0 0 15px ;
+	font-size: 45px;
+	font-weight: 600;
+}
