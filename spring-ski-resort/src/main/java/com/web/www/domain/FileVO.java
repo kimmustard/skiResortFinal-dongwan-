@@ -13,17 +13,18 @@ import lombok.ToString;
 @NoArgsConstructor
 public class FileVO {
 	
-	private String uuid;
-	private String saveDir;
-	private String fileName;
-	private String fileIsok;
-	private int fileType;
-	private long fileSize;
-	private String regDate;
-	private long noticeNum;
-	private long qnaNum;
-	private long rentalListItemNum;
-	private long qnaAnsNum;
+	private String fileUuid; //uuid
+	private String fileSave; //경로 
+	private String fileName; //파일이름
+	private String fileIsok; //파일존재여부
+	private int fileType; //파일타입확인(img)
+	private long fileSize; //파일 사이즈
+	private String fileRegAt; //등록일
+	private long noticeNum; //공지글번호
+	private long qnaNum; //Q&A 글번호
+	private long qnaAnsNum; //Q&A답변 글번호
+	private long rentalListItemNum; //장비이미지 번호
+
 	
 	
 
