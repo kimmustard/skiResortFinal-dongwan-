@@ -17,7 +17,7 @@
 		</ul>
 	</div>
 	<a href="/hotel/roomList">방 수정</a>
-	<a href="/hotel/addRoom">방 추가</a>
+	<a href="/hotel/addRoom">방 추가</a> 
 	
 </body>
 <jsp:include page="../common/footer.jsp"></jsp:include>
