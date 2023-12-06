@@ -1,25 +1,22 @@
 @charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Jua&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Jua&family=Nanum+Gothic&display=swap');
 
 body,ul {
     margin: 0;
     padding: 0;
 }
 
-a {
-  text-decoration: none;
-  color: white;
-}
-
 .devNav{
 	position: fixed;
 	width: 100%;
-	height: 100px;
-	background-color: black;
+	height: 50px;
+	z-index: 1;
 }
 
 .devBody{
-	padding-top: 100px;
-	display: flex;
+	margin-left: 300px;
 }
 
 .devNav>ul{
@@ -36,12 +33,16 @@ a {
 }
 
 .devCategory{
+	position: absolute;
 	width: 300px;
 	height: 100vh;
-	background-color: gray;
+	left: 0;
+	background-color: rgb(55,58,60);
+	z-index: 2;
 }
 .ul-magin{
-	padding-top: 100px;
+	margin-top: 10px;
+	margin-left: 35px;
 }
 
 .category-menu{
@@ -56,14 +57,21 @@ a {
 
 .category-menu>ul>li{
 	margin-top: 10px;
-	margin-left: 20px;
-	margin-bottom: 10px;
 	color: white;
 }
 
 .menu-btn {
 	width: 200px;
 	height: 40px;
+}
+
+.menu-btn>span{
+	font-family: 'Gowun Dodum', sans-serif;
+	font-weight: 600;
+	font-size: 20px;
+}
+.menu-btn>.bi{
+	font-size: 20px;
 }
 
 .menu1>ul,
@@ -76,3 +84,80 @@ a {
     overflow: hidden;
     transition: opacity 0.3s ease-in-out, max-height 0.3s ease-in-out;
 }
+
+.menu5{
+	width: 200px;
+}
+
+.menu5>span{
+	font-family: 'Gowun Dodum', sans-serif;
+	font-weight: 600;
+	font-size: 20px;
+}
+
+
+.category-menu>ul>li>a{
+	text-decoration: none;
+  	color: white;
+}
+
+.category-menu>ul>li>a>span{
+	font-family: 'Gowun Dodum', sans-serif;
+	font-size: 16px;
+	margin-left: -20px;
+	padding-right: 50px;
+	padding-left: 50px;
+}
+
+.category-menu>ul>li>a>span:hover{
+	background-color: gray;
+	border-radius: 50px;
+}
+
+
+/*****************전광판****************************/
+
+@import url('https://cdn.jsdelivr.net/npm/galmuri@latest/dist/galmuri.css');
+
+.marquee {
+  display: flex;
+  overflow: hidden;
+}
+
+.marquee.reverse {
+  flex-direction: row-reverse;
+}
+
+.marquee .marquee-text {
+  margin: 0;
+  white-space: nowrap;
+  color: #fff;
+/*   text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff; */
+  animation-name: glow;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  margin-left: -6px;
+}
+
+
+
+/***************************************************/
+
+.mmmmainContainer{
+	background-image: url("/resources/etc/developer_background.png");
+	background-repeat: no-repeat;
+	background-size : cover;
+	padding-top: 80px;
+	width: 100%;
+	height: 100vh;
+}
+
+.ppppeople-status{
+	font-family: 'Gowun Dodum', sans-serif;
+	margin-top: 200px;
+	margin-left: 300px;
+	font-weight: 500;
+	color: white;
+}
+
