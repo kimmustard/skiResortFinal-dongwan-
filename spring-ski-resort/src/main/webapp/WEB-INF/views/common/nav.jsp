@@ -15,9 +15,6 @@
 
 </head>
 <body>
-	<sec:authorize access="isAuthenticated()">
-		
-	</sec:authorize>
 <div class="navContainer">
 
 	<nav class="ski-navbar" id="ski-navbar">
@@ -40,6 +37,14 @@
         	<sec:authentication property="principal.mvo.memberEmail" var="authEmail"/>
         	<sec:authentication property="principal.mvo.memberAlias" var="authAlias"/>
         	<sec:authentication property="principal.mvo.memberType" var="authType"/>
+        	<sec:authentication property="principal.mvo.authList" var="auths"/>
+        	
+	       	<!-- admin 관리페이지 -->
+            <c:if test="${auths.stream().anyMatch(authVO -> authVO.auth.equals('ROLE_ADMIN')).get()}">
+               <li>
+			   		<a class="developer_page" href="/developer/setting"><i class="bi bi-gear-fill"></i>   | </a>
+               </li>
+            </c:if>
         	<c:if test="${authType == 'normal' }">
 	       		<li>${authId}님 환영합니다.</li>
 		       	<li><a href="/member/detail">| 회원정보</a></li>
@@ -57,7 +62,10 @@
 		       	<li><a href="/member/detail">| 회원정보</a></li>
         	</c:if>
 	       	<li><a href="/member/logout">| 로그아웃</a></li>
-		
+     
+	      
+	
+			
 		</sec:authorize>
      
        </ul>

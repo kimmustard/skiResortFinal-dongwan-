@@ -73,7 +73,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 		//http의 승인요청 담당
 		http.authorizeRequests()
-		.antMatchers("/member/list").hasRole("ADMIN")
+		.antMatchers("/developer/**").hasRole("ADMIN")
 		.antMatchers("/","/board/*","/upload/**","/resources/**",
 				"/member/login","/member/register","/rental/*","/hotel/*","/member/check/**",
 				"/oauth/*","/oauth/naver/*","/oauth/kakao/*","/oauth/google/*","/notice/**","/weather/**",
