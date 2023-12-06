@@ -10,21 +10,29 @@
 <title>Insert title here</title>
 <jsp:include page="../common/nav.jsp" />
 <link rel="stylesheet" href="/resources/css/qna/qna_list.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
 </head>
 <body>
-<div class="qna-img-container" style="background-image: url('https://www.princehotels.com/shinfurano/wp-content/uploads/sites/40/2022/11/2022_11_1920_ski_2-1.jpg')">	</div>
-
+<!-- <div class="qna-img-container" style="background-image: url('https://www.princehotels.com/shinfurano/wp-content/uploads/sites/40/2022/11/2022_11_1920_ski_2-1.jpg')">	</div>
+ -->
+ <sec:authorize access="isAuthenticated()"> <!-- 로그인 시 -->
+			<sec:authentication property="principal.mvo.memberId" var="authId"/>
+			<sec:authentication property="principal.mvo.memberEmail" var="authEmail"/>
+			<sec:authentication property="principal.mvo.memberType" var="authType"/>
+</sec:authorize>			
+ 
 
 <div class="container qna-container" id="qna-container">
 <c:set value="${ph.pgvo.type }" var="typed"></c:set>
-<div class="qna-h1">
-	고객문의
-	<p>Q&A</p>
+<div class="qna-header qna-header-two">
+	<h1 class="qna-header-h1">고객문의<span class="qna-header-span">Question And Answer</span></h1>
 </div>
 
+	 	<div class="qna-header-p">궁금하신 부분에 대한 빠르고 정확한 답변을 드리겠습니다.</div>	
 	<div class="qna-menu-container">
-	 <div class="qna-menu-container-child">		
+	 <div class="qna-menu-container-child">	
+	 
 
 		<!-- 검색 라인  -->
 		<div class="qna-search-form">
@@ -115,8 +123,8 @@
 		
 		
 		<!-- 리스트 테이블 라인 -->
-		<table class="table qna-table"  >
-		  <thead >
+		<table class="table qna-table">
+		  <thead class="table-light" >
 		    <tr class="qna-table-tr">
 		      <th scope="col" class="qna-table-th-no"><div class="qna-table-td-child">번호</div></th>
 		      <th scope="col" class="qna-table-th-cago"><div class="qna-table-td-child">범주</div></th>
@@ -136,10 +144,20 @@
 		      			<a href="/qna/detail?qnaNum=${qvo.qnaNum }">${qvo.qnaTitle }</a>
 		      		</c:if>
 		      		<c:if test="${qvo.qnaSecret=='Y' }">
-		      			<p>※비밀글 입니다.</p>
+		      			<c:if test="${(authType == 'normal' && authId == qvo.qnaWriter) || (authType != 'normal' && authEmail == qvo.qnaWriter) }">
+		      				<a href="/qna/detail?qnaNum=${qvo.qnaNum }">${qvo.qnaTitle }</a>
+		      			</c:if>
+		      			<c:if test="${(authType == 'normal' && authId != qvo.qnaWriter) || (authType != 'normal' && authEmail != qvo.qnaWriter) }">
+		      				<span class="material-symbols-outlined">lock</span><span>비밀글 입니다.</span>
+		      			</c:if>
 		      		</c:if>
 		      	</div></td>
-		      <td class="qna-table-td"><div class="qna-table-td-child">${qvo.qnaIsok=='Y' ? '답변완료' : '접수중' }</div></td>
+		      <td class="qna-table-td">
+		      	<div class="qna-table-td-child">
+		      		<c:if test="${qvo.qnaIsok=='Y' }"><div class="qna-isok-y isok-line isok-end">답변완료</div></c:if>
+		      		<c:if test="${qvo.qnaIsok=='N' }"><div class="qna-isok-n isok-line isok-end">대기중</div></c:if>
+		      	</div>
+		      </td>
 		      <td class="qna-table-td"><div class="qna-table-td-child">${fn:replace((fn:substring(qvo.qnaRegAt,0,10)),'-','.') }</div></td>
 		    </tr>
 		  </c:forEach>  
@@ -185,7 +203,6 @@
 					<c:if test="${authType == 'normal' }">
 					  <input type="hidden" name="type" value="w" ${typed eq 'w' ? 'selected' : '' }>
 					  <input type="hidden" name="keyword" type="search" value="${authId}">
-					  <!-- <button class="btn btn-outline-success" type="submit"> -->
 					  <span><button class="qna-btn myqna-btn" type="submit">MY Q&A</button></span>
 					</c:if>
 
