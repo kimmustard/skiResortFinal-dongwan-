@@ -1,5 +1,10 @@
 package com.web.www.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -10,7 +15,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.web.www.domain.coupon.CouponGetDTO;
+import com.web.www.domain.coupon.CouponSystem;
+import com.web.www.domain.member.AuthUser;
 import com.web.www.domain.member.MemberCheckDTO;
+import com.web.www.domain.member.MemberVO;
 import com.web.www.handler.MemberEmailHandler;
 import com.web.www.service.MemberService;
 
@@ -56,6 +65,55 @@ public class MemberCheckController {
 	}
 	
 	
+	/************************************************
+	 * 쿠폰 비동기 로직 영역
+	 * @쿠폰
+	 */
+	@GetMapping("/coupon/{code}")
+	public ResponseEntity<String> couponGet(@AuthUser MemberVO mvo, @PathVariable("code") String couponCode) {
+		
+		if(mvo == null) {
+			return new ResponseEntity<String> ("2", HttpStatus.BAD_REQUEST);
+		}
+		
+		CouponGetDTO cgDto = new CouponGetDTO();
+		cgDto.setMemberNum(mvo.getMemberNum());
+		cgDto.setCouponCode(couponCode);
+		int isOk = msv.userCouponAdd(cgDto);
+		
+		return isOk > 0 ? new ResponseEntity<String> ("1", HttpStatus.OK) :
+			new ResponseEntity<String> ("0", HttpStatus.NOT_FOUND);
+	}
 	
+	@GetMapping(value = "/couponList", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<CouponGetDTO>> couponList(@AuthUser MemberVO mvo) {
+		log.info("테스트합니다");
+		List<CouponGetDTO> cpList = msv.getUserCouponList(mvo.getMemberNum());
+		
+		return new ResponseEntity<List<CouponGetDTO>> (cpList, HttpStatus.OK);
+	}
+	
+	
+	
+	
+	//기본 쿠폰 갱신
+	@PostConstruct
+	public void couponCreate() {
+		
+		if( msv.couponCheck() == 0 ) {
+			List<CouponSystem> couponSystemList = new ArrayList<>();
+			
+			couponSystemList.add(new CouponSystem("WelcomeUser","Y","N","N",30,"신규회원 쿠폰",0,10));
+			couponSystemList.add(new CouponSystem("openWorld","Y","N","N",30,"오픈기념 쿠폰",0,10));
+			couponSystemList.add(new CouponSystem("integerTest","Y","N","N",30,"정수형 테스트 쿠폰",1000,0));
+			couponSystemList.add(new CouponSystem("rateTest","Y","N","N",30,"퍼센트 테스트 쿠폰",0,5));
+			couponSystemList.add(new CouponSystem("ABCD-1234","Y","Y","N",7,"입력형 테스트 쿠폰",0,3));
+			couponSystemList.add(new CouponSystem("adminTest","Y","N","Y",7,"관리자 분산형 쿠폰",500,0));
+			
+			for (CouponSystem couponSystem : couponSystemList) {
+				msv.couponCreate(couponSystem);
+			}
+		}
+	}
 	
 }

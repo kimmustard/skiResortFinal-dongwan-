@@ -331,10 +331,40 @@
 		  <version>0.2.14</version>
 		</dependency>
 		
+<<<<<<< HEAD
 	
 
 
 
+=======
+		<!-- json 변환 -->
+		<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+		<dependency>
+		    <groupId>commons-io</groupId>
+		    <artifactId>commons-io</artifactId>
+		    <version>2.6</version>
+		</dependency>
+		
+		<!-- @Retryable 라이브러리 예외발생시 메서드를 재실행 합니다. -->
+		<!-- https://mvnrepository.com/artifact/org.springframework.retry/spring-retry -->
+		<dependency>
+		    <groupId>org.springframework.retry</groupId>
+		    <artifactId>spring-retry</artifactId>
+		    <version>1.2.4.RELEASE</version>
+		</dependency>
+		
+		<!-- Java 8에서 추가된 LocalDateTime 항목을 제대로 직렬화 또는 역직렬화를 못하는 현상 해결 라이브러리 
+			쿠폰 테이블에서 생기는 날짜 변환문제 관련 -->
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.datatype/jackson-datatype-jsr310 -->
+		<dependency>
+		    <groupId>com.fasterxml.jackson.datatype</groupId>
+		    <artifactId>jackson-datatype-jsr310</artifactId>
+		    <version>2.13.3</version>
+		</dependency>
+		
+			
+	
+>>>>>>> 8c9e31fdcf9383b90c2b1c06c9b77556205e0623
 	</dependencies>
 	<build>
 		<plugins>

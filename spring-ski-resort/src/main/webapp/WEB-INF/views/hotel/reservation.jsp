@@ -247,6 +247,8 @@
 	const memberPhoneNum= `<c:out value="${mvo.memberPhoneNum}"/>`;
 	const memberAddress= `<c:out value="${mvo.memberAddress}"/>`;
 	
+	let realAmount = 1;
+
 	</script>
 	<script type="text/javascript" src="/resources/js/pay/pay.js"></script>
 	<script type="text/javascript" src="/resources/js/hotel/reservation.js"></script>

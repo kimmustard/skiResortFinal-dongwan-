@@ -11,7 +11,8 @@ public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitiali
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
-		return new Class[] {RootConfig.class, MailConfig.class, SecurityConfig.class, AsyncConfig.class};
+		return new Class[] {RootConfig.class, MailConfig.class, SecurityConfig.class, 
+				AsyncConfig.class, JacksonConfig.class};
 	}
 
 	@Override

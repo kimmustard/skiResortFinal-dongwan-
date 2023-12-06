@@ -161,6 +161,10 @@
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
       <Context docBase="spring-ski-resort" path="/" reloadable="true" source="org.eclipse.jst.jee.server:spring-ski-resort"/>
+<<<<<<< HEAD
+=======
+      
+>>>>>>> 8c9e31fdcf9383b90c2b1c06c9b77556205e0623
       </Host>
     </Engine>
   </Service>

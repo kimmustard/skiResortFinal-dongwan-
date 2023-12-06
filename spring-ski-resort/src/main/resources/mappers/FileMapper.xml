@@ -43,6 +43,16 @@
 	</update>
 	
 
+	<!-- Item 파일 라인 -->
+	<insert id="insertItemFile">
+		insert into file(file_uuid,save_dir,file_name,file_isok,file_type,file_size,rental_list_item_num)
+		values(#{fileUuid},#{saveDir},#{fileName},#{fileIsok},#{fileType},#{fileSize},#{rentalListItemNum})
+	</insert>
+	
+	<select id="ItemAndPicture" resultType="com.web.www.domain.FileVO">
+		select * from file order by 
+	</select>
+
 	
 	<!-- Q&A 답변 코드 라인 -->
 	<insert id="insertQnaAnsFile">
@@ -56,6 +66,7 @@
 	</select>
 	
 	
+<<<<<<< HEAD
 	<!-- Item 파일 라인 -->
 	<insert id="insertItemFile">
 		insert into file(file_uuid,file_save,file_name,file_isok,file_type,file_size,rental_list_item_num)
@@ -63,4 +74,6 @@
 	</insert>
 
 	
+=======
+>>>>>>> 8c9e31fdcf9383b90c2b1c06c9b77556205e0623
 </mapper>

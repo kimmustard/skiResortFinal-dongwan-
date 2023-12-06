@@ -1,4 +1,4 @@
-console.log(susdel);
+
 
 if(modisus=="y"){
     alert("수정되었습니다");
@@ -12,3 +12,13 @@ if(susdel=="y"){
 }else if(susdel=="n"){
 	alert("삭제실패");
 }
+
+function modiroom(roomnum){
+ if(document.getElementById("room"+roomnum).style.display == "none"){
+
+	document.getElementById("room"+roomnum).style.display = "block"
+	}else{
+	document.getElementById("room"+roomnum).style.display = "none"
+}
+}
+

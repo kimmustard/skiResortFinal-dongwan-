@@ -110,7 +110,7 @@ public class PayController {
 	
 	
 	
-//	private final KakaoPay kakaoPay;
+//	private finzal KakaoPay kakaoPay;
 //	
 //	@PostMapping("/order")
 //	public String order() {
