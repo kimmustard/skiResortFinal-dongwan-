@@ -1,12 +1,14 @@
 package com.web.www.service;
 
+
 import java.util.List;
 
+import com.web.www.domain.coupon.CouponGetDTO;
+import com.web.www.domain.coupon.CouponSystem;
 import com.web.www.domain.member.MemberCheckDTO;
 import com.web.www.domain.member.MemberPwdDTO;
 import com.web.www.domain.member.MemberVO;
 import com.web.www.domain.member.ModifyMemberDTO;
-import com.web.www.domain.pay.PayInfoVO;
 
 public interface MemberService {
 
@@ -57,9 +59,13 @@ public interface MemberService {
 	/**
 	 *	@coupon 쿠폰관련 service 메서드 입니다.
 	 * */
-	int couponGet(long memberNum);
+	int couponCheck();
+	void couponCreate(CouponSystem couponSystem);
+	
+	//유저 쿠폰 생성
+	int userCouponAdd(CouponGetDTO cgDto);
 
-
+	List<CouponGetDTO> getUserCouponList(long memberNum);
 
 
 

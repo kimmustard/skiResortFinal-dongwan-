@@ -28,6 +28,7 @@ public class OauthParser {
 	@Autowired
 	private MemberService msv;
 	
+	//네이버 파싱
 	public MemberVO naverUser(String apiResult) {
 		//1. String형식인 apiResult를 json형태로 바꿈 
 		JSONParser parser = new JSONParser(); 
@@ -68,7 +69,7 @@ public class OauthParser {
 		return null;
 	}
 	
-	
+	//카카오 파싱
 	public MemberVO kakaoUser(String access_Token) throws ParseException {
 		
 		String reqURL = "https://kapi.kakao.com/v2/user/me";
@@ -127,6 +128,7 @@ public class OauthParser {
 		
 	}
 
+	//구글 파싱 (구글은 파싱할 필요가 없어서, 간단 setter 로직만 수행)
 	public MemberVO googleUser(Map<String, String> userInfo) {
 		
 		
