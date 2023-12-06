@@ -12,6 +12,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.retry.annotation.EnableRetry;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -25,6 +26,7 @@ import com.zaxxer.hikari.HikariDataSource;
 @EnableAspectJAutoProxy	// aspect 프록시 모드
 @EnableTransactionManagement	//트랜잭션 사용
 @EnableScheduling	//스케줄러
+@EnableRetry	//리트라이
 public class RootConfig {
 
 	@Autowired
