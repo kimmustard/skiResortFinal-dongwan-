@@ -91,10 +91,10 @@
 	</select>
 	<!-- 쿠폰 갱신 -->
 	<insert id="couponCreate">
-		insert into coupon_system(coupon_code, coupon_check, coupon_search, coupon_dupli, 
+		insert into coupon_system(coupon_code, coupon_admin_check, coupon_search, coupon_dupli, 
 		coupon_day, coupon_name, coupon_int, coupon_rate)
 		
-		value(#{couponCode}, #{couponCheck}, #{couponSearch}, #{couponDupli}, 
+		value(#{couponCode}, #{couponAdminCheck}, #{couponSearch}, #{couponDupli}, 
 		#{couponDay}, #{couponName}, #{couponInt}, #{couponRate})
 	</insert>
 
@@ -121,7 +121,7 @@
 	    FROM coupon c
 	    JOIN coupon_system cs ON c.coupon_code = cs.coupon_code
 	    WHERE c.member_num = #{member_num}
-     	AND (c.coupon_end IS NULL OR c.coupon_end >= NOW());
+     	AND (c.coupon_end IS NULL OR c.coupon_end >= NOW())and c.coupon_member_check = 'Y';
 	</select>
 
   </mapper>
