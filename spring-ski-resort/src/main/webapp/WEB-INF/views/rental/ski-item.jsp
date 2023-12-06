@@ -37,46 +37,44 @@
 	
 	.itemImageBox{
 		width: 1200px;
+		margin: 0 auto;
 		display: flex;
-		justify-content: space-around;
+		justify-content: space-between;
 		flex-wrap: wrap;
-		margin-top: 30px;
 	}
 	
 	.itemImageBox div{
-		width: 18%;
-		height: 300px;	
+		width: 48%;
+		height: 600px;	
 		border: 2px solid black;
-		margin-bottom: 50px;
+		margin-bottom: 20px;
 		overflow: hidden;
+		box-sizing: border-box;
 	}
 	
 	.itemImageBox div img{
 		width: 100%;
 		height: 100%;
-		
+		object-fit: cover;
 	}
 	
-	
-	
-	.textBox{
-		width: 1200px;
-		display: flex;
-		justify-content: space-around;
-		flex-wrap: wrap;
-		margin-top: 10px;
+	#prevButtonId,
+	#nextButtonId {
+	  display: block;
+	  margin: 10px;
+	  padding: 10px 20px;
+	  background-color: #3498db;
+	  color: #fff;
+	  border: none;
+	  cursor: pointer;
+	  font-size: 16px;
+	  border-radius: 5px;
 	}
 	
-	.textBox>div{
-		width: 18%;
-		height: 30px;
-		text-align: center;
+	#prevButtonId:hover,
+	#nextButtonId:hover {
+	  background-color: #2980b9;
 	}
-	
-	.textBox>div>p{
-		font-weight: 700;
-	}
-	
 	
 	
 </style>
@@ -94,7 +92,7 @@
 			    <a class="nav-link" href="/rental/board-item">보드장비</a>
 			  </li>
 			  <li class="nav-item" id="wearItem">
-			    <a class="nav-link" href="/rental/wear-item">의류</a>
+			    <a class="nav-link" href="/rental/wear-item">의류/보호장비</a>
 			  </li>  
 			</ul>
 		</div>
@@ -160,6 +158,8 @@
 				</div>
 			</div>
 
+			<button id="slidePrevBtn">◀</button>
+			<button id="slideNextBtn">▶</button>
 				
 		</div>
 

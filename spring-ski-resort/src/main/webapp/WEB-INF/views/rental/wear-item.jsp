@@ -89,7 +89,7 @@
 			    <a class="nav-link" href="/rental/board-item">보드장비</a>
 			  </li>
 			  <li class="nav-item" id="wearItem">
-			    <a class="nav-link" href="/rental/wear-item">의류</a>
+			    <a class="nav-link" href="/rental/wear-item">의류/보호장비</a>
 			  </li>  
 			</ul>
 		</div>
@@ -97,9 +97,9 @@
 		<div class="menuCategory">
 			<div>
 				<nav class="nav flex-column nav-tabs">
-				  <a class="nav-link" id="lowItem" href="#">일반장비SET</a>
-				  <a class="nav-link" id="midItem" href="#">중급장비SET</a>
-				  <a class="nav-link" id="premiumItem" href="#">프리미엄장비SET</a>
+				  <a class="nav-link" id="lowItem" href="#">일반장비</a>
+				  <a class="nav-link" id="midItem" href="#">중급장비</a>
+				  <a class="nav-link" id="premiumItem" href="#">프리미엄장비</a>
 				</nav>
 			</div>
 		</div>

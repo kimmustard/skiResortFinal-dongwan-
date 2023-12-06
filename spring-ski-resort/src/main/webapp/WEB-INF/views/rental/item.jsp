@@ -77,7 +77,7 @@
 			    <a class="nav-link" href="/rental/board-item">보드장비</a>
 			  </li>
 			  <li class="nav-item" id="wearItem">
-			    <a class="nav-link" href="/rental/wear-item">의류</a>
+			    <a class="nav-link" href="/rental/wear-item">의류/보호장비</a>
 			  </li>  
 			</ul>
 		</div>
