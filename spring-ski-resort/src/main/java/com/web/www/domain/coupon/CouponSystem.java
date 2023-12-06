@@ -14,7 +14,7 @@ import lombok.ToString;
 public class CouponSystem {
 
 	private String couponCode;	//쿠폰 아이디 (고유 아이디)
-	private String couponCheck;	// 사용여부	
+	private String couponAdminCheck;	// 관리자가 쿠폰 사용여부 결정	
 	private String couponSearch;	// 코드입력 사용여부	
 	private String couponDupli;	// 중복보유 여부	
 	private int couponDay; // 쿠폰 사용기간 (기준)

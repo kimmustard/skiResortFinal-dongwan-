@@ -17,6 +17,7 @@ public class CouponGetDTO {
 	private String couponCode;
 	private String couponDay;
 	private String couponName;
+	private String couponMemberCheck;
 	private int couponInt;	
 	private int couponRate;
 	
