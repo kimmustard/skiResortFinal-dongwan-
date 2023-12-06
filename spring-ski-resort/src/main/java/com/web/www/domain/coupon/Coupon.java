@@ -17,4 +17,5 @@ public class Coupon {
 	private String couponCode;		// 쿠폰 아이디 (고유아이디)
 	private String couponStart;	// 쿠폰 시작일	
 	private String couponEnd;	// 쿠폰 마감일
+	private String couponMemberCheck; // 유저 쿠폰 사용가능 여부 
 }
