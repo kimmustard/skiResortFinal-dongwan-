@@ -17,9 +17,9 @@
 	
 	<insert id="itemRegister">
 		insert into rental_items(rental_list_item_type,rental_list_item_grade,rental_list_low_item,rental_list_mid_item,
-		rental_list_premium_item,rental_list_item_count,rental_list_item_explain)
+		rental_list_premium_item,rental_list_item_count)
 		values(#{rentalListItemType},#{rentalListItemGrade},#{rentalListLowItem},#{rentalListMidItem},
-		#{rentalListPremiumItem},#{rentalListItemCount},#{rentalListItemExplain})
+		#{rentalListPremiumItem},#{rentalListItemCount})
 	</insert>
 	
 	<select id="selectOneItemNum" resultType="long">

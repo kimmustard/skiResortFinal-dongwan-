@@ -25,52 +25,42 @@
 	}
 	
 	.itemContainer{
-		width: 100%;
+		position: relative;
+		margin-left: 300px;
+		width: 1200px;
+		height: 1000px;
+		overflow: hidden;
+		display: flex;
 	}
 	
 	.boardItemList{
 		height: 1000px;
-		display: flex;
-		justify-content: center;
-		flex-wrap: wrap;
+		
 	}
 	
 	.itemImageBox{
-		width: 1200px;
+		position: absolute;
+		width: 5500px;
+		margin: 0 auto;
 		display: flex;
-		background-color: gray;
-		justify-content: space-around;
-		flex-wrap: wrap;
-		margin-top: 30px;
 	}
 	
-	.itemImageBox div{
-		width: 18%;
-		height: 300px;	
-		border: 2px solid black;
+	.itemImageBox div{	
+		
+		margin-bottom: 20px;
+		box-sizing: border-box;
 	}
 	
 	.itemImageBox div img{
-		width: 100%;
-		height: auto;
+		width: 400px;
+		height: 600px;
+		object-fit: cover;
 	}
 	
-	.textBox{
-		width: 1200px;
-		display: flex;
-		justify-content: space-around;
-		flex-wrap: wrap;
-		margin-top: 30px;	
-	}
-	
-	.textBox>div{
-		width: 18%;
-		height: 50px;
-		text-align: center;
-	}
-	
-	.textBox>div>p{
-		font-weight: 700;
+	.slide-btn{
+	position: absolute;
+	top: 650px;
+	left: 1000px;
 	}
 	
 </style>
@@ -82,10 +72,10 @@
 		<div class="itemMenuContainer">
 			<ul class="nav nav-tabs justify-content-center">
 			  <li class="nav-item" id="skiItem">
-			    <a class="nav-link" href="/rental/ski-item">스키장비</a>
+			    <a class="nav-link" href="/rental/ski-item">스키</a>
 			  </li>
 			  <li class="nav-item" id="boardItem">
-			    <a class="nav-link" href="/rental/board-item">보드장비</a>
+			    <a class="nav-link" href="/rental/board-item">스노우보드</a>
 			  </li>
 			  <li class="nav-item" id="wearItem">
 			    <a class="nav-link" href="/rental/wear-item">의류/보호장비</a>
@@ -143,6 +133,11 @@
 							</div>
 						</c:forEach>
 						
+					</div>
+					
+					<div class="slide-btn">
+						<button id="slidePrevBtn" class="slidePrevBtn">◀</button>
+						<button id="slideNextBtn" class="slideNextBtn">▶</button>
 					</div>
 					
 					

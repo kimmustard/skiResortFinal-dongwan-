@@ -30,11 +30,8 @@ rental_list_low_item varchar(50),
 rental_list_mid_item varchar(50),
 rental_list_premium_item varchar(50),
 rental_list_item_count int default 0,
-rental_list_item_explain text,
 primary key(rental_list_item_num));
 
---파일 테이블 컬럼추가 11/29
-alter table file add rental_list_item_num bigint;
 
 --장비예약 테이블(아직 없음)
 create table rental_reserve(

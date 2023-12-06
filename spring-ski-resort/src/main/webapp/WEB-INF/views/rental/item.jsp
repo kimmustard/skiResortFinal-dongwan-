@@ -71,10 +71,10 @@
 		<div class="itemMenuContainer">
 			<ul class="nav nav-tabs justify-content-center">
 			  <li class="nav-item" id="skiItem">
-			    <a class="nav-link" href="/rental/ski-item">스키장비</a>
+			    <a class="nav-link" href="/rental/ski-item">스키</a>
 			  </li>
 			  <li class="nav-item" id="boardItem">
-			    <a class="nav-link" href="/rental/board-item">보드장비</a>
+			    <a class="nav-link" href="/rental/board-item">스노우보드</a>
 			  </li>
 			  <li class="nav-item" id="wearItem">
 			    <a class="nav-link" href="/rental/wear-item">의류/보호장비</a>
@@ -100,10 +100,6 @@
 			<a href="/rental/item-register"><button type="button" class="btn btn-outline-primary">파일등록페이지</button></a>
 			
 		</div>
-		
-		
-		
-		<!-- 페이징 기능 들어갈지말지 -->
 		
 	
 	

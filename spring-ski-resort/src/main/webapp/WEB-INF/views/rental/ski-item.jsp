@@ -25,56 +25,45 @@
 	}
 	
 	.itemContainer{
-		width: 100%;
+		position: relative;
+		margin-left: 300px;
+		width: 1200px;
+		height: 1000px;
+		overflow: hidden;
+		display: flex;
 	}
 	
 	.skiItemList{
 		height: 1000px;
-		display: flex;
-		justify-content: center;
-		flex-wrap: wrap;
+		
 	}
 	
 	.itemImageBox{
-		width: 1200px;
+		position: absolute;
+		width: 5500px;
 		margin: 0 auto;
 		display: flex;
-		justify-content: space-between;
-		flex-wrap: wrap;
 	}
 	
-	.itemImageBox div{
-		width: 48%;
-		height: 600px;	
-		border: 2px solid black;
+	.itemImageBox div{	
+		
 		margin-bottom: 20px;
-		overflow: hidden;
 		box-sizing: border-box;
 	}
 	
 	.itemImageBox div img{
-		width: 100%;
-		height: 100%;
+		width: 400px;
+		height: 600px;
 		object-fit: cover;
 	}
 	
-	#prevButtonId,
-	#nextButtonId {
-	  display: block;
-	  margin: 10px;
-	  padding: 10px 20px;
-	  background-color: #3498db;
-	  color: #fff;
-	  border: none;
-	  cursor: pointer;
-	  font-size: 16px;
-	  border-radius: 5px;
+	.slide-btn{
+	position: absolute;
+	top: 650px;
+	left: 1000px;
 	}
 	
-	#prevButtonId:hover,
-	#nextButtonId:hover {
-	  background-color: #2980b9;
-	}
+	
 	
 	
 </style>
@@ -86,10 +75,10 @@
 		<div class="itemMenuContainer">
 			<ul class="nav nav-tabs justify-content-center">
 			  <li class="nav-item" id="skiItem">
-			    <a class="nav-link" href="/rental/ski-item">스키장비</a>
+			    <a class="nav-link" href="/rental/ski-item">스키</a>
 			  </li>
 			  <li class="nav-item" id="boardItem">
-			    <a class="nav-link" href="/rental/board-item">보드장비</a>
+			    <a class="nav-link" href="/rental/board-item">스노우보드</a>
 			  </li>
 			  <li class="nav-item" id="wearItem">
 			    <a class="nav-link" href="/rental/wear-item">의류/보호장비</a>
@@ -141,8 +130,9 @@
 						
 					
 					<div class="itemImageBox" id="premiumItemImageBox" style="display: none;">
+						
 						<c:forEach items="${skiPremiumItem }" var="premiumItem">
-							<div>
+							<div id="image">
 								<!-- 이미지파일 -->
 								<img alt="SkiPremiumItem" src="/upload/${fn: replace(premiumItem.fileSave,'\\','/')}/${premiumItem.fileUuid}_${premiumItem.fileName}">
 								
@@ -151,16 +141,15 @@
 						
 					</div>
 					
-					
+					<div class="slide-btn">
+						<button id="slidePrevBtn" class="slidePrevBtn">◀</button>
+						<button id="slideNextBtn" class="slideNextBtn">▶</button>
+					</div>
 
-					
 					
 				</div>
 			</div>
 
-			<button id="slidePrevBtn">◀</button>
-			<button id="slideNextBtn">▶</button>
-				
 		</div>
 
 	</div>
