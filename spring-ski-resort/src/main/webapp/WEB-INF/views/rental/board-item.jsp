@@ -41,7 +41,7 @@
 		background-color: gray;
 		justify-content: space-around;
 		flex-wrap: wrap;
-		
+		margin-top: 30px;
 	}
 	
 	.itemImageBox div{
