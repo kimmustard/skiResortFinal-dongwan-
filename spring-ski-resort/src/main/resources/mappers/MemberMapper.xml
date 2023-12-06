@@ -84,5 +84,44 @@
 	<update id="cdCheck">
 		update member set member_terms3 = #{memberTerms3} where member_id = #{memberId}
 	</update>
+	
+	<!-- 쿠폰관련 -->
+	<select id="couponCheck" resultType="int">
+		select count(*) from coupon_system
+	</select>
+	<!-- 쿠폰 갱신 -->
+	<insert id="couponCreate">
+		insert into coupon_system(coupon_code, coupon_check, coupon_search, coupon_dupli, 
+		coupon_day, coupon_name, coupon_int, coupon_rate)
+		
+		value(#{couponCode}, #{couponCheck}, #{couponSearch}, #{couponDupli}, 
+		#{couponDay}, #{couponName}, #{couponInt}, #{couponRate})
+	</insert>
+
+	<!-- 유저 쿠폰 체크 -->
+	<select id="userCouponCheck" resultType="int">
+		select count(*) from coupon where member_num = #{memberNum} and coupon_code = #{couponCode}
+	</select>
+	
+	<select id="userCouponDate" resultType="int">
+		select coupon_day from coupon_system where coupon_code = #{couponCode}
+	</select>
+	
+	<!-- 신규유저 쿠폰 생성 -->
+
+	<!-- 유저 쿠폰 생성 -->
+	<insert id="userCouponAdd">
+		insert into coupon(member_num, coupon_code, coupon_start, coupon_end)
+		value (#{memberNum}, #{couponCode}, #{couponStart}, #{couponEnd})
+	</insert>
+
+	<!-- 유저 쿠폰 리스트 조회 (+ end날짜가 지났으면 제외 조건문까지 ) -->
+	<select id="getUserCouponList" resultType="com.web.www.domain.coupon.CouponGetDTO">
+		SELECT c.*, cs.coupon_name, cs.coupon_int, cs.coupon_rate
+	    FROM coupon c
+	    JOIN coupon_system cs ON c.coupon_code = cs.coupon_code
+	    WHERE c.member_num = #{member_num}
+     	AND (c.coupon_end IS NULL OR c.coupon_end >= NOW());
+	</select>
 
   </mapper>

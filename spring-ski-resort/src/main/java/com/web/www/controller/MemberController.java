@@ -144,6 +144,7 @@ public class MemberController {
 		}
 		
 	}
+
 	
 	
 	
@@ -167,12 +168,6 @@ public class MemberController {
 		new SecurityContextLogoutHandler().logout(request, response, auth);
 	}
 		
-	
-	@GetMapping("/coupon")
-	public String couponGet(@AuthUser MemberVO mvo) {
-		int isOk = msv.couponGet(mvo.getMemberNum());
-		return "index";
-	}
 	
 	
 	

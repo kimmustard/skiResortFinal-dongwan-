@@ -19,7 +19,7 @@ public class AsyncConfig {
         executor.setMaxPoolSize(5);	//스레드 풀 최대 개수
         executor.setQueueCapacity(100);	//스레드 풀 작업 대기열 크기
         executor.setThreadNamePrefix("RegionInit-");	//스레드 이름 접두사 설정
-        executor.setAwaitTerminationSeconds(120);	//작업 완료후 스레드풀 생존 시간
+        executor.setAwaitTerminationSeconds(60);	//작업 완료후 스레드풀 생존 시간
         executor.initialize();
         return executor;
     }
