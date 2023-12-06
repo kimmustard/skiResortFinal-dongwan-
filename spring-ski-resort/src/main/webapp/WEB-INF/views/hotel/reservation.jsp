@@ -67,7 +67,7 @@
       <div class="modal-body pay-info">
       	<div>상품명<div class="pay-value" id="item-name"></div></div>
       	<div>판매자  <div class="pay-value">다이스키</div></div>
-	    <div class="pay3-box">결제금액<div class="pay-value" id="pay3"></div></div> 
+	    <div class="pay3-box">결제금액<div class="pay-value" id="userViewpay"></div></div> 
   
       </div>
       <div class="pay-method">
@@ -76,12 +76,15 @@
             <button id="toss_pay" onclick="paymentGateway('tosspay.tosstest')"> <span>토스페이 </span></button>           
             <button id="payco_pay" onclick="paymentGateway('payco.AUTOPAY')"><span>페이코</span></button>
             <button id="naver_pay" > <span>네이버페이</span></button>
-  
+            
+            <button id="my_coupon_list" value="openWorld"> 내 쿠폰목록 </button>
+            <div id="myCouponList"></div>
+  	
       </div>
     </div>
   </div>
 </div>
-
+	
 
 
 	<div class="back">
@@ -212,7 +215,7 @@
 						</div>
 					<div class="paybox input-group mb-3">
 						<input type="text" id="pay1" class="form-control" placeholder="요금" readonly="readonly">	
-						<input type="hidden" id="pay2" class="form-control" name="hotelReserveFee" placeholder="요금">	
+						<input type="hidden" id="realpayvalue" class="form-control" name="hotelReserveFee" placeholder="요금">	
 						<button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#hotel-pay">결제</button>
 					 </div>
 					</div>
@@ -251,6 +254,7 @@
 
 	</script>
 	<script type="text/javascript" src="/resources/js/pay/pay.js"></script>
+	<script type="text/javascript" src="/resources/js/coupon/coupon.js"></script>
 	<script type="text/javascript" src="/resources/js/hotel/reservation.js"></script>
 	
 </html>

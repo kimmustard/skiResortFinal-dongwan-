@@ -248,8 +248,8 @@ function roomSelectEvent(num){
     realAmount = roomprice;
     console.log(realAmount);
     document.getElementById('pay1').value = roomprice.toLocaleString()+"원";
-    document.getElementById('pay2').value = roomprice;
-    document.getElementById('pay3').innerText =roomprice.toLocaleString()+"원";
+    document.getElementById('realpayvalue').value = roomprice;
+    document.getElementById('userViewpay').innerText =roomprice.toLocaleString()+"원";
     
   
   	//상품명 
@@ -271,3 +271,7 @@ function roomSelectEvent(num){
 
 
  
+
+function usecoupon(couponInt,couponrate){
+    document.getElementById('pay3').innerText =roomprice.toLocaleString()+"원";
+}
