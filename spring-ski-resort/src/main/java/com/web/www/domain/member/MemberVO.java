@@ -28,6 +28,7 @@ public class MemberVO {
 	private String memberAddress;	//주소
 	private String memberAddressDetail;	//상세주소
 	private String memberPhoneNum;	//폰번호
+	private String memberDel;	//탈퇴여부
 	private String memberTerms1; //이용약관
 	private String memberTerms2; //이용약관
 	private String memberTerms3; //이용약관

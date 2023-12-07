@@ -168,7 +168,6 @@ public class MemberController {
 		new SecurityContextLogoutHandler().logout(request, response, auth);
 	}
 		
-	
-	
+
 	
 }
