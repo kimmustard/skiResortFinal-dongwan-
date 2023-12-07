@@ -48,14 +48,20 @@ document.getElementById('my_coupon_list').addEventListener('click', () => {
 
             
         */
-        if (result != null) {
+        if (result.length != 0) {
             console.log('사용자 쿠폰 리스트 :' + JSON.stringify(result));
-            console.log(result[0].couponName);
+            console.log(result);
             for(let i = 0 ; i < result.length; i++){
+              
+                couponInt = parseInt(result[0].couponInt);
+                console.log(couponInt);
             
-            document.getElementById('myCouponList').innerHTML =`${result[i].couponName} <input type="radio" name="coupon" onclick="usecoupon(${result[0].couponInt,result[0].couponRate})" value="${result[i].couponName}">`
+            document.getElementById('myCouponList').innerHTML =`${result[i].couponName} <input type="radio" id="coupon" name="coupon" onclick="usecoupon(${result[0].couponInt},${result[0].couponRate})" value="${result[i].couponCode}">`
             }
 
+        }else{
+
+            alert("사용가능한 쿠폰이 없습니다.")
         }
        
     })

@@ -21,9 +21,10 @@ public class RoomVO {
 	private String hotelRoomArea;
 	private int hotelRoomFee;
 	private int hotelRoomCount;
+	private int hotelInitialCount;
 	
 	public RoomVO(String hotelRoomName, String hotelRoomExplain, int hotelRoomStandardPeople, String hotelRoomType,
-		 String hotelRoomArea, int hotelRoomFee, int hotelRoomCount) {
+		 String hotelRoomArea, int hotelRoomFee, int hotelRoomCount ,int hotelInitialCount) {
 		this.hotelRoomName = hotelRoomName;
 		this.hotelRoomExplain = hotelRoomExplain;
 		this.hotelRoomStandardPeople = hotelRoomStandardPeople;
@@ -31,6 +32,7 @@ public class RoomVO {
 		this.hotelRoomArea = hotelRoomArea;
 		this.hotelRoomFee = hotelRoomFee;
 		this.hotelRoomCount = hotelRoomCount;
+		this.hotelInitialCount =hotelInitialCount;
 	}
 	
 		

@@ -85,7 +85,12 @@
 		update member set member_terms3 = #{memberTerms3} where member_id = #{memberId}
 	</update>
 	
+	<!-- ************************************************ -->
 	<!-- 쿠폰관련 -->
+	<!-- 쿠폰관련 -->
+	<!-- 쿠폰관련 -->
+	<!-- 쿠폰관련 -->
+	<!-- ************************************************ -->
 	<select id="couponCheck" resultType="int">
 		select count(*) from coupon_system
 	</select>
@@ -123,5 +128,8 @@
 	    WHERE c.member_num = #{member_num}
      	AND (c.coupon_end IS NULL OR c.coupon_end >= NOW())and c.coupon_member_check = 'Y';
 	</select>
+	<update id="useCoupon">
+		update coupon set coupon_member_check = 'N' where member_num =#{memberNum} AND coupon_code = #{couponCode}
+	</update>
 
   </mapper>

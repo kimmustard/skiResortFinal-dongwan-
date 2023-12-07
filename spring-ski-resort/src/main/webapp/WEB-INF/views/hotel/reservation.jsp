@@ -55,7 +55,10 @@
 
 
 
+	
 <!-- Modal -->
+
+			
 <div class="modal fade" id="hotel-pay" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content ">
@@ -71,20 +74,19 @@
   
       </div>
       <div class="pay-method">
-            <button id="inicis_pay" onclick="paymentGateway('html5_inicis')"> <span>통합결제 </span></button>
-            <button id="kakao_pay"  onclick="paymentGateway('kakaopay.TC0ONETIME')"> <span>카카오</span> </button>            
-            <button id="toss_pay" onclick="paymentGateway('tosspay.tosstest')"> <span>토스페이 </span></button>           
-            <button id="payco_pay" onclick="paymentGateway('payco.AUTOPAY')"><span>페이코</span></button>
-            <button id="naver_pay" > <span>네이버페이</span></button>
-            
-            <button id="my_coupon_list" value="openWorld"> 내 쿠폰목록 </button>
+            <button id="inicis_pay" onclick="paymentGateway('html5_inicis')" type="button"> <span>통합결제 </span></button>
+            <button id="kakao_pay"  onclick="paymentGateway('kakaopay.TC0ONETIME')" type="button"> <span>카카오</span> </button>            
+            <button id="toss_pay" onclick="paymentGateway('tosspay.tosstest')" type="button"> <span>토스페이 </span></button>           
+            <button id="payco_pay" onclick="paymentGateway('payco.AUTOPAY')" type="button"><span>페이코</span></button>
+            <button id="naver_pay" ><span>네이버페이</span></button>
+            <hr>
+            <button id="my_coupon_list" value="openWorld" type="button"> <span>쿠폰</span></button>
             <div id="myCouponList"></div>
   	
       </div>
     </div>
   </div>
 </div>
-	
 
 
 	<div class="back">
@@ -99,7 +101,7 @@
 		</div> -->
 
 		<div class="box">
-			<form action="/hotel/reservation" method="post" id="payform">
+		<form action="/hotel/reservation" method="post" id="payform">
 			<div id="box">
 			<a href="/hotel/management">관리</a>
 			<button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#hotel-pay">결제</button>
@@ -184,15 +186,17 @@
 				<div id="innerbox" style="display: none;">
 					<!-- 방 추가는 여기 -->
 					<c:forEach items="${roomList }" var="room">
+					<c:if test="${room.hotelRoomCount >= 0 }">
 					<input class="room-option" id="select${room.hotelRoomNum}" type="radio" name="hotelRoomNum" value="${room.hotelRoomNum }" >
+					</c:if>
 					</c:forEach>
 					<ul	class="room-selecor">
 					<!-- 방 버튼은 여기 -->
-				
 			
 						<li class="room-rank">일반객실</li>
 					<c:forEach items="${roomList }" var="room">
-						<c:if test="${room.hotelRoomType eq 'nomal'}">
+						<c:if test="${room.hotelRoomType eq 'nomal' && room.hotelRoomCount >= 0}">
+						
 						<li onclick="roomSelectEvent(${room.hotelRoomNum})" value="${room.hotelRoomFee }" id="room${room.hotelRoomNum}">${room.hotelRoomName }(${room.hotelRoomStandardPeople}인)</li>	
 					</c:if >
 				</c:forEach>
@@ -201,7 +205,7 @@
 			
 						<li class="room-rank">vip객실</li>
 					<c:forEach items="${roomList }" var="room" >
-						<c:if test="${room.hotelRoomType eq 'vip'}">
+						<c:if test="${room.hotelRoomType eq 'vip' && room.hotelRoomCount >= 0}">
 						<li onclick="roomSelectEvent(${room.hotelRoomNum})" value="${room.hotelRoomFee }" id="room${room.hotelRoomNum}">${room.hotelRoomName }(${room.hotelRoomStandardPeople}인)</li>
 					</c:if> 
 					</c:forEach>
@@ -216,27 +220,31 @@
 					<div class="paybox input-group mb-3">
 						<input type="text" id="pay1" class="form-control" placeholder="요금" readonly="readonly">	
 						<input type="hidden" id="realpayvalue" class="form-control" name="hotelReserveFee" placeholder="요금">	
+						<input type="hidden" class="form-control" name="memberNum" placeholder="회원번호" value="${mvo.memberNum }">	
+						<input type="hidden" class="form-control" name="payMerchantUid" id="payMerchantUid">	
+						<input type="hidden" class="form-control" name="payAmount" id="payAmount">	
+						<input type="hidden" class="form-control" name="payName" id="payName">	
 						<button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#hotel-pay">결제</button>
 					 </div>
 					</div>
-					
+						 <input type="hidden" name="couponCode" id="couponCode" >
 						<button id="closeBtn" type="button" class="btn btn-outline-secondary">이전</button>
 				</div>
 				
-			</form>
+
 			
 			
 			<!-- 방 이미지 링크는 여기 -->
-			<c:forEach items="${roomList }" var="room">
+			<c:forEach items="${roomList}" var="room">
 			<p class="image-url" id="image-src${room.hotelRoomNum}">
 			https://img.freepik.com/free-photo/room-interior-of-hotel-bedroom_23-2150683421.jpg?size=626&ext=jpg&ga=GA1.1.1826414947.1699056000&semt=sph
 			</p>
 		</c:forEach>
 			
+	</form>
 		
 		</div>
 	</div>
-
 
 
 

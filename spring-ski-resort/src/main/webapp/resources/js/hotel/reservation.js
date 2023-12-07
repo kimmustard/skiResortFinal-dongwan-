@@ -1,5 +1,5 @@
 //할인율 계산 (원금-coupon_int)-(원금*coupon_rate/100)-(원금*등급할인율/100)
-
+let roomprice;
 document.getElementById("payBtn").addEventListener('click',()=>{
     let hotelReservePeople= document.getElementById('hotelReservePeople').value;
     let hotelReserveStayStart= document.getElementById('hotelReserveStayStart').value;
@@ -227,7 +227,7 @@ targetArea2.addEventListener('click', function(event) {
 
 //방 선택 이벤트
 function roomSelectEvent(num){
-    let roomprice=  document.getElementById('room'+num).value;
+    roomprice=  document.getElementById('room'+num).value;
     let roomname =  document.getElementById('room'+num).innerText;
     let imageurl =document.getElementById('image-src'+num).innerText;
 	
@@ -273,5 +273,12 @@ function roomSelectEvent(num){
  
 
 function usecoupon(couponInt,couponrate){
-    document.getElementById('pay3').innerText =roomprice.toLocaleString()+"원";
+    //할인율 계산 (원금-coupon_int)-(원금*coupon_rate/100)-(원금*등급할인율/100)
+
+  let totalprice= (roomprice-couponInt)-(roomprice*couponrate/100);
+
+    document.getElementById('realpayvalue').value = totalprice;
+    document.getElementById('userViewpay').innerText =totalprice.toLocaleString()+"원";
+    document.getElementById('couponCode').value= document.getElementById('coupon').value;
+    realAmount=totalprice;
 }
