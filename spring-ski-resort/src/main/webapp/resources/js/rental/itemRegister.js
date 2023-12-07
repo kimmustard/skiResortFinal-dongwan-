@@ -1,9 +1,9 @@
 let lowItem = document.getElementById('lowItem');
 let midItem = document.getElementById('midItem');
 let premiumItem = document.getElementById('premiumItem');
-let wearItem = document.getElementById('wearItem');
 
 lowItem.addEventListener('click', () => {
+     document.getElementById('itemNum').style.display = 'flex';
      document.getElementById('rowItemName').style.display = 'flex';
      document.getElementById('midItemName').style.display = 'none';
      document.getElementById('premiumItemName').style.display = 'none';
@@ -11,6 +11,7 @@ lowItem.addEventListener('click', () => {
 });
 
 midItem.addEventListener('click', () => {
+     document.getElementById('itemNum').style.display = 'flex';
      document.getElementById('rowItemName').style.display = 'none';
      document.getElementById('midItemName').style.display = 'flex';
      document.getElementById('premiumItemName').style.display = 'none';
@@ -18,6 +19,7 @@ midItem.addEventListener('click', () => {
 });
 
 premiumItem.addEventListener('click', () => {
+     document.getElementById('itemNum').style.display = 'flex';
      document.getElementById('rowItemName').style.display = 'none';
      document.getElementById('midItemName').style.display = 'none';
      document.getElementById('premiumItemName').style.display = 'flex';

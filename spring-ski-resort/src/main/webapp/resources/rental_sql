@@ -23,7 +23,7 @@ primary key(rental_main_num));
 
 --장비목록 테이블 11/29
 create table rental_items(
-rental_list_item_num bigint not null auto_increment,
+rental_list_item_num bigint not null,
 rental_list_item_type varchar(50),
 rental_list_item_grade varchar(50),
 rental_list_low_item varchar(50),

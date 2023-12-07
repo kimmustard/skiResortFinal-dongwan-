@@ -30,6 +30,10 @@
 						<input class="form-check-input" type="radio" name="rentalListItemGrade" value="프리미엄장비" id="premiumItem">프리미엄장비
 					</div>
 					<div class="itemInfo">
+						<div class="input-group" id="itemNum" style="display: none;">
+							<span class="input-group-text">장비번호</span>
+							<input class="form-control" type="text" name="rentalListItemNum" id="rentalListItemNum">
+						</div>
 						<div class="input-group" id="rowItemName" style="display: none;">
 							<span class="input-group-text">일반장비명</span>
 							<input class="form-control" type="text" name="rentalListLowItem" id="rentalListRowItem">

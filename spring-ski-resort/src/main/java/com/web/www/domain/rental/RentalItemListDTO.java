@@ -20,7 +20,6 @@ public class RentalItemListDTO {
 	private String rentalListMidItem; // 중급장비
 	private String rentalListPremiumItem; // 프리미엄장비
 	private int rentalListItemCount; // 장비수량
-	private String rentalListItemExplain; // 장비설명
 	
 	private String fileUuid;
 	private String fileSave;

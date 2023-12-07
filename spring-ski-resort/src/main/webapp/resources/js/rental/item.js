@@ -6,25 +6,16 @@ lowItem.addEventListener('click', () => {
      document.getElementById('lowItemImageBox').style.display = 'flex';
      document.getElementById('midItemImageBox').style.display = 'none';
      document.getElementById('premiumItemImageBox').style.display = 'none';
-     document.getElementById('lowItemTextBox').style.display = 'flex';
-     document.getElementById('midItemTextBox').style.display = 'none';
-     document.getElementById('premiumItemTextBox').style.display = 'none';
 })
 midItem.addEventListener('click', () => {
      document.getElementById('lowItemImageBox').style.display = 'none';
      document.getElementById('midItemImageBox').style.display = 'flex';
      document.getElementById('premiumItemImageBox').style.display = 'none';
-     document.getElementById('lowItemTextBox').style.display = 'none';
-     document.getElementById('midItemTextBox').style.display = 'flex';
-     document.getElementById('premiumItemTextBox').style.display = 'none';
 })
 premiumItem.addEventListener('click', () => {
      document.getElementById('lowItemImageBox').style.display = 'none';
      document.getElementById('midItemImageBox').style.display = 'none';
      document.getElementById('premiumItemImageBox').style.display = 'flex';
-     document.getElementById('lowItemTextBox').style.display = 'none';
-     document.getElementById('midItemTextBox').style.display = 'none';
-     document.getElementById('premiumItemTextBox').style.display = 'flex';
 })
 
 
@@ -99,13 +90,14 @@ if (prevBtn) {
 /*   장바구니 기능    */
 
 document.addEventListener('DOMContentLoaded', function () {
+     // 스키 아이템
      document.getElementById('skiItemList').addEventListener('click', function (e) {
           if (e.target.tagName == 'IMG') {
                let itemName = e.target.getAttribute('data-name');
-
                shoppingBasket(itemName);
           }
-     })
+     });
+
 })
 
 function shoppingBasket(name) {

@@ -46,7 +46,7 @@
 						<c:forEach items="${wearLowItem }" var="lowItem">
 							<div>
 								<!-- 이미지파일 -->
-								<img alt="WearLowItem" src="/upload/${fn: replace(lowItem.fileSave,'\\','/')}/${lowItem.fileUuid}_${lowItem.fileName}">
+								<img alt="WearLowItem" data-name="${lowItem.rentalListLowItem }" src="/upload/${fn: replace(lowItem.fileSave,'\\','/')}/${lowItem.fileUuid}_${lowItem.fileName}">
 							</div>
 						</c:forEach>
 					</div>
@@ -57,7 +57,7 @@
 						<c:forEach items="${wearMidItem }" var="midItem">
 							<div>
 								<!-- 이미지파일 -->
-								<img alt="WearMidItem" src="/upload/${fn: replace(midItem.fileSave,'\\','/')}/${midItem.fileUuid}_${midItem.fileName}">
+								<img alt="WearMidItem" data-name="${midItem.rentalListMidItem }" src="/upload/${fn: replace(midItem.fileSave,'\\','/')}/${midItem.fileUuid}_${midItem.fileName}">
 							</div>
 						</c:forEach>
 						
@@ -69,7 +69,7 @@
 						<c:forEach items="${wearPremiumItem }" var="premiumItem">
 							<div>
 								<!-- 이미지파일 -->
-								<img alt="WearPremiumItem" src="/upload/${fn: replace(premiumItem.fileSave,'\\','/')}/${premiumItem.fileUuid}_${premiumItem.fileName}">
+								<img alt="WearPremiumItem" data-name="${premiumItem.rentalListPremiumItem }" src="/upload/${fn: replace(premiumItem.fileSave,'\\','/')}/${premiumItem.fileUuid}_${premiumItem.fileName}">
 							</div>
 						</c:forEach>
 						
@@ -82,6 +82,12 @@
 					
 	
 				</div>
+				
+			</div>
+		</div>
+		
+		<div class="shopContainer">
+			<div class="shoppingBasket">
 				
 			</div>
 		</div>

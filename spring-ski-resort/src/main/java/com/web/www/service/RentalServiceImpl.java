@@ -3,6 +3,7 @@ package com.web.www.service;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.web.www.domain.FileVO;
 import com.web.www.domain.rental.RentalItemDTO;
@@ -39,8 +40,12 @@ public class RentalServiceImpl implements RentalService{
 //		return rdao.itemRegister(ritvo);
 //	}
 
+	@Transactional
 	@Override
 	public int itemRegister(RentalItemDTO rdto) {
+		long tempNum = rdao.selectOneItemNum();
+		rdto.getRitvo().setRentalListItemNum(tempNum+1);
+		
 		int isOk = rdao.itemRegister(rdto.getRitvo());
 		
 		if(rdto.getFlist() == null) {
@@ -109,6 +114,11 @@ public class RentalServiceImpl implements RentalService{
 	public List<RentalItemListDTO> getWearPremiumItem() {
 		
 		return rdao.getWearPremiumItem();
+	}
+
+	@Override
+	public int rentalItemCntCheck() {
+		return rdao.rentalItemCntCheck();
 	}
 
 	

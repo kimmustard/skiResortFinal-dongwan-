@@ -32,6 +32,10 @@ public interface RentalDAO {
 	List<RentalItemListDTO> getWearMidItem();
 	List<RentalItemListDTO> getWearPremiumItem();
 
+	void insertRentalItem(RentalItemVO ritvo);
+
+	int rentalItemCntCheck();
+
 
 
 

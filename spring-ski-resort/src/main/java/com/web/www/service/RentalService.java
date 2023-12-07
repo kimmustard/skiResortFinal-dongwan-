@@ -31,6 +31,9 @@ public interface RentalService {
 	List<RentalItemListDTO> getWearMidItem();
 	List<RentalItemListDTO> getWearPremiumItem();
 
+	//실행전 테이블 체크
+	int rentalItemCntCheck();
+
 
 
 }

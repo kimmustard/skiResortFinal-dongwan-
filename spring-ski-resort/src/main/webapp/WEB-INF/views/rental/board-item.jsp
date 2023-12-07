@@ -46,7 +46,7 @@
 						<c:forEach items="${boardLowItem }" var="lowItem">
 							<div>
 								<!-- 이미지파일 -->
-								<img alt="BoardLowItem" src="/upload/${fn: replace(lowItem.fileSave,'\\','/')}/${lowItem.fileUuid}_${lowItem.fileName}">
+								<img alt="BoardLowItem" data-name="${lowItem.rentalListLowItem }" src="/upload/${fn: replace(lowItem.fileSave,'\\','/')}/${lowItem.fileUuid}_${lowItem.fileName}">
 							</div>
 						</c:forEach>
 					</div>
@@ -59,7 +59,7 @@
 						<c:forEach items="${boardMidItem }" var="midItem">
 							<div>
 								<!-- 이미지파일 -->
-								<img alt="BoardMidItem" src="/upload/${fn: replace(midItem.fileSave,'\\','/')}/${midItem.fileUuid}_${midItem.fileName}">
+								<img alt="BoardMidItem" data-name="${midItem.rentalListMidItem }" src="/upload/${fn: replace(midItem.fileSave,'\\','/')}/${midItem.fileUuid}_${midItem.fileName}">
 							</div>
 						</c:forEach>
 						
@@ -74,7 +74,7 @@
 						<c:forEach items="${boardPremiumItem }" var="premiumItem">
 							<div>
 								<!-- 이미지파일 -->
-								<img alt="BoardPremiumItem" src="/upload/${fn: replace(premiumItem.fileSave,'\\','/')}/${premiumItem.fileUuid}_${premiumItem.fileName}">
+								<img alt="BoardPremiumItem" data-name="${premiumItem.rentalListPremiumItem }" src="/upload/${fn: replace(premiumItem.fileSave,'\\','/')}/${premiumItem.fileUuid}_${premiumItem.fileName}">
 							</div>
 						</c:forEach>
 						
@@ -89,6 +89,12 @@
 					
 	
 				</div>
+				
+			</div>
+		</div>
+		
+		<div class="shopContainer">
+			<div class="shoppingBasket">
 				
 			</div>
 		</div>
