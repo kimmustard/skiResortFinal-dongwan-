@@ -161,7 +161,7 @@
 						</c:choose>
 						<div>
 							<div><B>${fvo.fileName }</B></div>
-				 			<div class="badge text-bg-secondary">${fvo.regDate }</div>
+				 			<div class="badge text-bg-secondary">${fvo.fileRegAt }</div>
 				 		</div>
 				 		<span class="badge rounded-pill text-bg-success">${fvo.fileSize }Byte</span>
 				 		<div>

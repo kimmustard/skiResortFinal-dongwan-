@@ -54,7 +54,7 @@
 								<c:choose>
 									<c:when test="${fvo.fileType > 0 }">
 										<div>
-										<img alt="이미지x" src="/upload/${fn: replace(fvo.saveDir,'\\','/')}/${fvo.uuid}_${fvo.fileName}">
+										<img alt="이미지x" src="/upload/${fn: replace(fvo.fileSave,'\\','/')}/${fvo.fileUuid}_${fvo.fileName}">
 										</div>
 									</c:when>
 								</c:choose>
@@ -120,17 +120,17 @@
 						<c:choose>
 							<c:when test="${afvo.fileType > 0 }">
 								<div>
-									<img alt="그림이 없음." src="/upload/${fn: replace(afvo.saveDir,'\\','/')}/${afvo.uuid}_th_${afvo.fileName}">
+									<img alt="그림이 없음." src="/upload/${fn: replace(afvo.fileSave,'\\','/')}/${afvo.fileUuid}_th_${afvo.fileName}">
 								</div>
 							</c:when>
 						</c:choose>
 						<div>
 							<div><B>${afvo.fileName }</B></div>
-				 			<div class="badge text-bg-secondary">${afvo.regDate }</div>
+				 			<div class="badge text-bg-secondary">${afvo.fileRegAt }</div>
 				 		</div>
 				 		<span class="badge rounded-pill text-bg-success">${afvo.fileSize }Byte</span>
 				 		<div>
-				 			<button type="button" class="file-x btn btn-outline-secondary" data-uuid="${afvo.uuid }">X</button>
+				 			<button type="button" class="file-x btn btn-outline-secondary" data-uuid="${afvo.fileUuid }">X</button>
 						</div>
 						<br>
 					</li>

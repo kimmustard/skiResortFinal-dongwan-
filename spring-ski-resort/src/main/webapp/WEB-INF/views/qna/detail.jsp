@@ -17,7 +17,7 @@
 <c:set value="${qdto.qvo }" var="qvo"></c:set>
 <c:set value="${qadto.qavo }" var="qavo"></c:set>
 <sec:authorize access="isAuthenticated()">
-<sec:authentication property="principal.mvo.authList" var="authList"/>
+<sec:authentication property="principal.mvo.authList" var="auths"/>
 </sec:authorize>
 
 
@@ -36,7 +36,7 @@
 
 
 	<table class="table qna-table">
-		<thead class="table-light">
+		<thead class="table-secondary">
 			<tr class="qna-table-tr">
 				<td class="qna-table-td-category">
 				      <div class="qna-table-td-child-category">
@@ -76,19 +76,20 @@
 		</thead>
 		<tbody>		
 			<tr class="qna-table-tr">
-				<td class="qna-table-td">
+				<td class="qna-table-td ">
 			      	<div class="qna-table-td-child">
 			      		<c:if test="${qvo.qnaIsok=='Y' }"><div class="qna-isok-y isok-line isok-end">답변완료</div></c:if>
 			      		<c:if test="${qvo.qnaIsok=='N' }"><div class="qna-isok-n isok-line isok-end">대기중</div></c:if>
 			      	</div>
 		      	</td>
-		      	<td class="qna-table-td">
-		      		<div class="qna-table-td-writer">${qvo.qnaWriter }</div>
+		      	<td class="qna-table-td qna-table-td-writer" colspan="2">
+		      		<div class="qna-table-div-writer">${qvo.qnaWriter }</div>
 		      	</td>
 			</tr>			
 			<!-- 내용 표시란 -->
 			<tr>
-				<td class="qna-table-content" colspan="3" style="padding: 30px 20px;">${qvo.qnaContent }
+				<td class="qna-table-content" colspan="3" style="padding: 30px 20px;">
+					<div class="qna-table-content-child">${qvo.qnaContent }</div>
 					<div>
 						<!-- 파일표시란 -->
 						<c:set value="${qdto.flist }" var="flist"></c:set>
@@ -97,8 +98,8 @@
 								<li>
 									<c:choose>
 										<c:when test="${fvo.fileType > 0 }">
-											<div>
-											<img alt="이미지x" src="/upload/${fn: replace(fvo.fileSave,'\\','/')}/${fvo.fileUuid}_${fvo.fileName}">
+											<div class="qna-table-content-img-container">
+											<img class="qna-table-content-img" alt="이미지x" src="/upload/${fn: replace(fvo.fileSave,'\\','/')}/${fvo.fileUuid}_${fvo.fileName}">
 											</div>
 										</c:when>
 									</c:choose>
@@ -108,72 +109,64 @@
 					</div>
 				</td>
 			</tr>
-		</tbody>
+		
+		
+		<!-- Q&A 답변 라인 -->
 
+		<c:if test="${qvo.qnaIsok == 'Y' }">
+			<tr class="table-light qna-table-ans-head">
+				<td class="" colspan="3">
+					<div class="qna-table-td-child">답변완료: ${qavo.qnaAnsRegAt }</div>
+				</td>
+			</tr>
+			<tr>	
+				<td colspan="3" class="qna-table-ans-content">
+					<div class="qna-table-ans-content-child">${qavo.qnaAnsContent }</div>
+					<div>
+						<!-- 파일표시란 -->
+						<c:set value="${qadto.flist }" var="flistans"></c:set>
+						<ul class="list-group list-group-flush">
+							<c:forEach items="${flistans }" var="afvo">
+								<li>
+									<c:choose>
+										<c:when test="${afvo.fileType > 0 }">
+											<div class="qna-table-content-img-container">
+											<img class="qna-table-content-img" alt="이미지x" src="/upload/${fn: replace(afvo.fileSave,'\\','/')}/${afvo.fileUuid}_${afvo.fileName}">
+											</div>
+										</c:when>
+									</c:choose>
+								</li>
+							</c:forEach>
+						</ul>
+					</div>
+				</td>
+			</tr>	
+		</c:if>
+
+	</tbody>
 	</table>	
 	
 	
 	
 	
-	<!-- Q&A 답변 라인 -->
-	<c:if test="${qvo.qnaIsok == 'N' }">
-		<p>※등록된 답변이 없습니다</p>
-	</c:if>
-	
-	<c:if test="${qvo.qnaIsok == 'Y' }">
-	<br>
-	<table class="table table-hover">	
-		<tr>
-			<th>작성자</th>
-			<td>${qavo.qnaAnsWriter }</td>
-		</tr>	
-		<tr>
-			<th>등록일</th>
-			<td>${qavo.qnaAnsRegAt }</td>
-		</tr>
-		<tr>
-			<th>내용</th>
-			<td>${qavo.qnaAnsContent }
-				<div>
-					<!-- 파일표시란 -->
-					<c:set value="${qadto.flist }" var="flistans"></c:set>
-					<ul class="list-group list-group-flush">
-						<c:forEach items="${flistans }" var="afvo">
-							<li>
-								<c:choose>
-									<c:when test="${afvo.fileType > 0 }">
-										<div>
-										<img alt="이미지x" src="/upload/${fn: replace(afvo.fileSave,'\\','/')}/${afvo.fileUuid}_${afvo.fileName}">
-										</div>
-									</c:when>
-								</c:choose>
-							</li>
-						</c:forEach>
-					</ul>
-				</div>
-			</td>
-		</tr>
-
-	</table>
-	</c:if>
-	<br><br><br>
-	
 	<a href="/qna/list">
-		<button type="button" class="btn btn-dark">리스트</button>
+		<button type="button" class="qna-btn myqna-btn">목록</button>
 	</a>
 	<a href="/qna/modify?qnaNum=${qvo.qnaNum }">
-		<button type="button" class="btn btn-dark">수정</button>
+		<button type="button" class="qna-btn myqna-btn">수정</button>
 	</a>
-	<c:if test="${qvo.qnaIsok=='N' }">	
-			<a href="/qna/ans-register?qnaNum=${qvo.qnaNum }">
-				<button type="button" class="btn btn-primary">답변등록</button>
-			</a>
-	</c:if>
-	<c:if test="${qvo.qnaIsok=='Y' }">	
-			<a href="/qna/ans-modify?qnaNum=${qvo.qnaNum }">
-				<button type="button" class="btn btn-warning">답변수정</button>
-			</a>
-	</c:if>
+	<c:if test="${auths.stream().anyMatch(authVO -> authVO.auth.equals('ROLE_ADMIN')).get()}">
+		<c:if test="${qvo.qnaIsok=='N' }">	
+				<a href="/qna/ans-register?qnaNum=${qvo.qnaNum }">
+					<button type="button" class="qna-btn myqna-btn">답변등록</button>
+				</a>
+		</c:if>
+		<c:if test="${qvo.qnaIsok=='Y' }">	
+				<a href="/qna/ans-modify?qnaNum=${qvo.qnaNum }">
+					<button type="button" class="qna-btn myqna-btn">답변수정</button>
+				</a>
+		</c:if>
+	</c:if>	
 </div>
 
 
