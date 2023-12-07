@@ -1,5 +1,11 @@
 @charset "UTF-8";
 
+.devMainContainer{
+	height: 2000px;
+	background-color: rgb(139, 139, 139);
+}
+
+
 .couponContainer{
 	margin-left: 70px;
 }
@@ -18,8 +24,36 @@ table tbody {
 }
 
 .couponSetting{
-	width: 1500px;
-	height: 450px;
+	text-align: center;
+	width: 500px;
+	height: 700px;
 	background-color: rgba(255, 255, 255, 0.8);
 }
 
+.form-check{
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.coupone-setting-check{
+	display: flex;
+	justify-content: center;
+}
+
+.form-group>.coupon-input, 
+.form-group>.form-select{
+	margin-left: 25%;
+	text-align: center;
+	width: 250px;
+}
+
+.form-group{
+	text-align: center;
+}
+.coupon-btn{
+	text-align: center;
+}
+.coupon-create-btn{
+	width: 250px;
+	margin-top: 50px;
+}

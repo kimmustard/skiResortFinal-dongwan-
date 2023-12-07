@@ -6,8 +6,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.web.www.domain.coupon.CouponCreate;
 import com.web.www.domain.coupon.CouponSystem;
 import com.web.www.domain.member.MemberVO;
 import com.web.www.repository.AdminDAO;
@@ -65,6 +67,14 @@ public class AdminController {
 		List<CouponSystem> csList = asv.getCouponList();
 		model.addAttribute("csList", csList);
 		return "/developer/settingCoupon";
+	}
+	
+	@PostMapping("/createCoupon")
+	public String couponCreate(CouponCreate cpc) {
+		log.info("cpc#### = {}" , cpc);
+		
+		
+		return "redirect:/developer/settingCoupon";
 	}
 	
 	

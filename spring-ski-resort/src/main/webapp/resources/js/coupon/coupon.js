@@ -5,12 +5,12 @@ document.getElementById('coupon_get').addEventListener('click', () => {
     couponGetToServer(code).then(result => {
         if (result == 1) {
             alert('쿠폰 발급 완료!')
-        } else if(result == 2) {
+        } else if (result == 2) {
             alert('로그인 후 이용해주세요.')
         } else {
             alert('이미 발급된 쿠폰입니다.')
         }
-    }) 
+    })
 })
 
 async function couponGetToServer(code) {
@@ -30,10 +30,10 @@ async function couponGetToServer(code) {
 //내 쿠폰 목록 보기
 document.getElementById('my_coupon_list').addEventListener('click', () => {
     //쿠폰 목록창 띄우는 코드
-    
-    
+
+
     //리스트 가져오기
-    myCouponListGet().then(result =>  {
+    myCouponListGet().then(result => {
         /* 받아온 JSON을 목록창에 쿠폰 작성하기
             couponCode : 생략
             couponDay : 생략
@@ -51,7 +51,7 @@ document.getElementById('my_coupon_list').addEventListener('click', () => {
         if (result != null) {
             console.log('사용자 쿠폰 리스트 :' + JSON.stringify(result));
         }
-       
+
     })
 })
 
