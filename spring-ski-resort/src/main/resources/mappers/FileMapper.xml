@@ -41,17 +41,7 @@
 	<update id="deleteAllFileQna">
 		update file set file_isok='N' where qna_num=#{qnaNum}
 	</update>
-	
 
-	<!-- Item 파일 라인 -->
-	<insert id="insertItemFile">
-		insert into file(file_uuid,save_dir,file_name,file_isok,file_type,file_size,rental_list_item_num)
-		values(#{fileUuid},#{saveDir},#{fileName},#{fileIsok},#{fileType},#{fileSize},#{rentalListItemNum})
-	</insert>
-	
-	<select id="ItemAndPicture" resultType="com.web.www.domain.FileVO">
-		select * from file order by 
-	</select>
 
 	
 	<!-- Q&A 답변 코드 라인 -->
@@ -66,4 +56,13 @@
 	</select>
 	
 	
+
+	<!-- Item 파일 라인 -->
+	<insert id="insertItemFile">
+		insert into file(file_uuid,file_save,file_name,file_isok,file_type,file_size,rental_list_item_num)
+		values(#{fileUuid},#{fileSave},#{fileName},#{fileIsok},#{fileType},#{fileSize},#{rentalListItemNum})
+	</insert>
+
+	
+
 </mapper>
