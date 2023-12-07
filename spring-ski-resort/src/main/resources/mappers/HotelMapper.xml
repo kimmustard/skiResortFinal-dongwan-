@@ -28,8 +28,8 @@
 	<update id="modifyRoom">
 		update room set hotel_room_name = #{hotelRoomName} ,hotel_room_explain = #{hotelRoomExplain},
 		hotel_room_standard_people = #{hotelRoomStandardPeople} ,hotel_room_type = #{hotelRoomType},
-		hotel_room_area = #{hotelRoomArea}, hotel_room_fee = #{hotelRoomFee} , hotel_room_count=#{hotelRoomCount}
-		where hotel_room_num =#{hotelRoomNum}
+		hotel_room_area = #{hotelRoomArea}, hotel_room_fee = #{hotelRoomFee} , hotel_initial_count=#{hotelInitialCount}
+		where hotel_room_num =#{hotelRoomNum}								
 	</update>
 	<select id="selectRoomCnt" resultType="int">
 		select count(*) from room

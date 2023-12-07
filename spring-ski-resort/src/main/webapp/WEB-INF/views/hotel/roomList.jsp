@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 
 	<jsp:include page="../common/nav.jsp"></jsp:include>
-	<link rel="stylesheet" href="/resources/css/hotel/roomList.css">
+	
 
 </head>
 <body>

@@ -6,19 +6,43 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="/resources/css/hotel/management.css">
+<link  href="/resources/css/developer/setting.css" rel="stylesheet">
 </head>
 
-<jsp:include page="../common/nav.jsp"></jsp:include>
-<body>
 
-	<div class="bodyContainer">
-		<ul>
+<body>
+	<jsp:include page="../common/devCategory.jsp"></jsp:include>
+	<div class="devMainContainer">
+		<div class="devNav">
+			<div class="marquee marquee1">
+				  <p class="marquee-text"><img alt="" height="50" src="/resources/etc/line.png"></p>
+				</div>
 			
-		</ul>
+		</div>
+		
+		<div class="devBody">
+			
+			<jsp:include page="../common/devCategory.jsp"></jsp:include>
+			
+
+			<div class="mmmmainContainer">
+			<!-- 각자 페이지 개발구역 -->
+				<div class="ppppeople-status">
+					
+				</div>
+			
+			</div>
+			
+			
+		</div>
+
+	
+	
+	
 	</div>
-	<a href="/hotel/roomList">방 수정</a>
-	<a href="/hotel/addRoom">방 추가</a> 
+	<script type="text/javascript" src="/resources/js/developer/setting.js"></script>
+	
 	
 </body>
-<jsp:include page="../common/footer.jsp"></jsp:include>
+
 </html>

@@ -103,8 +103,8 @@
 		<div class="box">
 		<form action="/hotel/reservation" method="post" id="payform">
 			<div id="box">
-			<a href="/hotel/management">관리</a>
-			<button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#hotel-pay">결제</button>
+		
+		
 			<p class="fs-3 hotelText">호텔예약/<a class="move-rental" href="/rental/reserve">리프트권 예약</a></p>
 			<div class="input-box">
 			<!--실제 값을 저장하는 애들 화면에는 없음-->
