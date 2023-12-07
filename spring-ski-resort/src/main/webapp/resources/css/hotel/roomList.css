@@ -42,8 +42,11 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 .hotelListContainer{
 	width : 99%;
+	height:800px;
  	margin: 10px;
- 	overflow-x: auto; 
+ 	overflow: auto; 
+}
+.mmmmainContainer{
 	
 }
 .th-bottun{
