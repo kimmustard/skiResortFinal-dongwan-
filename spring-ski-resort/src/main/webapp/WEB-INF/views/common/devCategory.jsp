@@ -36,7 +36,8 @@
 					</button>
 					<ul id="ul-menu2">
 						<li>
-							<a href=""><span>객실관리</span></a>
+						
+							<a href="/developer/settingHotel"><span>객실관리</span></a>
 						</li>
 						<li>
 							<a href=""><span>호텔정산</span></a>

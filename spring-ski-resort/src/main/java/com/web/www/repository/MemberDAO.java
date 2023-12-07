@@ -97,6 +97,14 @@ public interface MemberDAO {
 
 	List<CouponGetDTO> getUserCouponList(long memberNum);
 
+	int useCoupon(@Param("memberNum") long memberNum, @Param("couponCode")String couponCode);
+
+	void minousRoom(long memberNum);
+
+
+
+	
+
 
 
 
