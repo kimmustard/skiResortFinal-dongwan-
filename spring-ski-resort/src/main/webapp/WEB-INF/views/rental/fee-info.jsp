@@ -5,57 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>렌탈/요금안내</title>
-<style type="text/css">
-	.bodyContainer{
-		width: 100%;
-		height: 100%;
-		margin-top: 100px;
-	}
-	
-	.h1{
-		text-align: center;
-	}
-
-	.btnContainer{
-		display: flex;
-		justify-content: center;
-		margin-top: 50px;
-	}
-	
-	.btn-outline-info{
-		margin-left: 20px;
-		margin-right: 20px;
-	}
-	
-	.liftTableContainer, .rentalTableContainer{
-		width: 1200px;
-		border-collapse: collapse;
-		margin: 0 auto;
-	}
-	
-	.liftTr, .liftTd, .rentalTd, .rentalTr{
-	 	border: 2px solid black;
-	 	text-align: center;
-	 	font-weight: 700;
-	 }
-	 
-	 .liftTd, .rentalTd{
-	 	vertical-align: middle;
-	 }
-
-	.thead > .liftTr > .liftTd{
-		background-color: #D5D5D5;
-	}
-	.thead > .rentalTr > .rentalTd{
-		background-color: #D5D5D5;
-	}
-	
-	.textContainer{
-		margin-left: 420px;
-		font-weight: 700;
-	}
-	
-</style>
+<link rel="stylesheet" href="/resources/css/rental/fee_info.css">
 </head>
 <body>
 	<jsp:include page="../common/nav.jsp" />

@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+.bodyContainer{
+	margin-top: 100px;
+}
+
+.formContainer{
+	width: 900px;
+	height: 500px;
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+	position: absolute;
+}
+
+.inputContainer{
+	margin-top: 15px;
+}
+
+.inputContainer > .itemType > p,input{
+	margin: 15px;
+}
+
+.itemInfo{
+	width: 600px;
+	margin-top: 20px;
+}

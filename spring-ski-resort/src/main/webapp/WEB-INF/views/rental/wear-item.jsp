@@ -7,64 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style type="text/css">
-	.bodyContainer{
-		margin-top: 100px;
-	}
-	
-	.itemMenuContainer{
-		margin: 0 auto;
-	}
-	
-	.menuCategory{
-		width: 200px;
-		margin-top:96px;
-		position: fixed;
-	    height: 100vh;
-	    margin: 30px;
-	}
-	
-	.itemContainer{
-		position: relative;
-		margin-left: 300px;
-		width: 1200px;
-		height: 1000px;
-		overflow: hidden;
-		display: flex;
-	}
-	
-	.wearItemList{
-		height: 1000px;
-		
-	}
-	
-	.itemImageBox{
-		position: absolute;
-		width: 5500px;
-		margin: 0 auto;
-		display: flex;
-	}
-	
-	.itemImageBox div{	
-		
-		margin-bottom: 20px;
-		box-sizing: border-box;
-	}
-	
-	.itemImageBox div img{
-		width: 400px;
-		height: 600px;
-		object-fit: cover;
-	}
-	
-	.slide-btn{
-	position: absolute;
-	top: 650px;
-	left: 1000px;
-	}
-	
-	
-</style>
+<link rel="stylesheet" href="/resources/css/rental/item_list.css">
 </head>
 <body>
 	<jsp:include page="../common/nav.jsp" />

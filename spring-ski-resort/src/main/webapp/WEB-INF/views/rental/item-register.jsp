@@ -5,34 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>장비 파일 등록 페이지</title>
-<style type="text/css">
-.bodyContainer{
-	margin-top: 100px;
-}
-
-.formContainer{
-	width: 900px;
-	height: 500px;
-	position: relative;
-	left: 50%;
-	transform: translateX(-50%);
-	position: absolute;
-}
-
-.inputContainer{
-	margin-top: 15px;
-}
-
-.inputContainer > .itemType > p,input{
-	margin: 15px;
-}
-
-.itemInfo{
-	width: 600px;
-	margin-top: 20px;
-}
-
-</style>
+<link rel="stylesheet" href="/resources/css/rental/item_register.css">
 </head>
 <body>
 	<jsp:include page="../common/nav.jsp" />
