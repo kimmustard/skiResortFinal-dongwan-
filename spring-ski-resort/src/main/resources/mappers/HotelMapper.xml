@@ -13,9 +13,9 @@
 	</insert>
   	<insert id="addRoom">
 		INSERT INTO room (hotel_room_name, hotel_room_explain,hotel_room_standard_people,
-		hotel_room_type,hotel_room_area,hotel_room_fee,hotel_room_count,hotel_initial_count)
+		hotel_room_type,hotel_room_area,hotel_room_fee,hotel_room_count,hotel_initial_count,hotel_image)
 		VALUES (#{hotelRoomName},#{hotelRoomExplain} ,#{hotelRoomStandardPeople},
-		#{hotelRoomType},#{hotelRoomArea},#{hotelRoomFee},#{hotelRoomCount},#{hotelInitialCount}
+		#{hotelRoomType},#{hotelRoomArea},#{hotelRoomFee},#{hotelRoomCount},#{hotelInitialCount},#{hotelImage}
 		);	
 	</insert>
 	<select id="getRoomList" resultType="com.web.www.domain.hotel.RoomVO">
@@ -28,7 +28,8 @@
 	<update id="modifyRoom">
 		update room set hotel_room_name = #{hotelRoomName} ,hotel_room_explain = #{hotelRoomExplain},
 		hotel_room_standard_people = #{hotelRoomStandardPeople} ,hotel_room_type = #{hotelRoomType},
-		hotel_room_area = #{hotelRoomArea}, hotel_room_fee = #{hotelRoomFee} , hotel_initial_count=#{hotelInitialCount}
+		hotel_room_area = #{hotelRoomArea}, hotel_room_fee = #{hotelRoomFee} ,
+		hotel_initial_count=#{hotelInitialCount}, hotel_image=#{hotelImage}
 		where hotel_room_num =#{hotelRoomNum}								
 	</update>
 	<select id="selectRoomCnt" resultType="int">

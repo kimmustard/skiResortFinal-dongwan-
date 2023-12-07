@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link  href="/resources/css/developer/setting.css" rel="stylesheet">
+			<jsp:include page="../common/devCategory.jsp"></jsp:include>
 <link  href="/resources/css/developer/devMember.css" rel="stylesheet">
 </head>
 <body>
@@ -20,13 +21,12 @@
 		
 		<div class="devBody">
 			
-			<jsp:include page="../common/devCategory.jsp"></jsp:include>
 			
 
 			<div class="mmmmainContainer">
 			<!-- 각자 페이지 개발구역 -->
-				<div class="memberListContainer">
-					<table class="table table-hover">
+				<div class="memberListContainer" >
+					<table class="table table-hover memberTable">
 						<thead>
 							<tr class="table-dark">
 							
