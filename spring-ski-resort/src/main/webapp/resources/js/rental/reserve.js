@@ -68,6 +68,9 @@ document.addEventListener('DOMContentLoaded', function () {
     let rentalLiftKidFeeInput = document.querySelector('input[name="rentalLiftKidFee"]');
 
     function updateFees() {
+        rentalLiftAdultFeeInput.value = parseInt(rentalLiftAdultFeeInput.value).toLocaleString();
+        rentalLiftKidFeeInput.value = parseInt(rentalLiftKidFeeInput.value).toLocaleString();
+
         // 오전권
         if (morning.checked && parseInt(rentalLiftAdult.value) == 1) {
             rentalLiftAdultFeeInput.value = '40000';

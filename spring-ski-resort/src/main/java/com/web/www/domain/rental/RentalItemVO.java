@@ -12,6 +12,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RentalItemVO {
+	
 	private long rentalListItemNum; // 장비번호
 	private String rentalListItemType; // 장비타입
 	private String rentalListItemGrade; // 장비등급
@@ -19,5 +20,5 @@ public class RentalItemVO {
 	private String rentalListMidItem; // 중급장비
 	private String rentalListPremiumItem; // 프리미엄장비
 	private int rentalListItemCount; // 장비수량
-	private String rentalListItemExplain; // 장비설명
+	
 }

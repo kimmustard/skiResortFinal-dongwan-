@@ -1,0 +1,78 @@
+@charset "UTF-8";
+
+.bodyContainer{
+	margin-top: 100px;
+}
+
+.itemMenuContainer{
+	margin: 0 auto;
+}
+
+.menuCategory{
+	width: 200px;
+	margin-top:96px;
+	position: fixed;
+    height: 100vh;
+    margin: 30px;
+}
+
+.itemContainer{
+	position: relative;
+	margin-left: 300px;
+	width: 1200px;
+	height: 700px;
+	overflow: hidden;
+	display: flex;
+}
+
+.skiItemList{
+	height: 1000px;
+	
+}
+
+.itemImageBox{
+	position: absolute;
+	width: 5500px;
+	margin: 0 auto;
+	display: flex;
+}
+
+.itemImageBox div{	
+	
+	margin-bottom: 20px;
+	box-sizing: border-box;
+}
+
+.itemImageBox div img{
+	width: 400px;
+	height: 600px;
+	object-fit: cover;
+	cursor: pointer;
+}
+
+.slidePrevBtn{
+	position: absolute;
+	top: 300px;
+	left: 30px;
+	cursor: pointer;
+}
+
+.slideNextBtn{
+	position: absolute;
+	top: 300px;
+	right: 30px;
+	cursor: pointer;
+}
+
+.shoppingBasket{
+	width: 350px;
+	height: 350px;
+	background-color: gray;
+	position: absolute;
+	bottom: 97px;
+	right: 0;
+}
+
+.shoppingBasket p{
+	text-align: center;
+}

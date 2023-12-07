@@ -148,11 +148,11 @@
 					
 					<div class="input-group mb-3">
 						<span class="input-group-text">요금(성인)</span>
-						<input type="text" class="form-control" name="rentalLiftAdultFee" value="0" readonly="readonly">
+						<input type="text" class="form-control" name="rentalLiftAdultFee" id="adultFee" value="0" readonly="readonly">
 					</div>
 					<div class="input-group mb-3">
 						<span class="input-group-text">요금(어린이)</span>
-						<input type="text" class="form-control" name="rentalLiftKidFee" value="0" readonly="readonly">
+						<input type="text" class="form-control" name="rentalLiftKidFee" id="kidFee" value="0" readonly="readonly">
 					</div>
 					
 					<a href="/rental/reserve"><button type="button" class="btn btn-outline-primary">이전으로</button></a>

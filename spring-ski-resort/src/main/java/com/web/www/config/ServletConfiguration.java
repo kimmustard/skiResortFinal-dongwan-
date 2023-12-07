@@ -15,7 +15,7 @@ import org.springframework.web.servlet.view.JstlView;
 
 @EnableWebMvc
 @ComponentScan(basePackages= {"com.web.www.controller", "com.web.www.handler", 
-		"com.web.www.oauth", "com.web.www.weather", "com.web.www.security"})
+		"com.web.www.oauth", "com.web.www.weather", "com.web.www.security", "com.web.www.domain.rental"})
 public class ServletConfiguration implements WebMvcConfigurer{
 	
 	

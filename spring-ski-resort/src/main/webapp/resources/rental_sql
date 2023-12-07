@@ -23,18 +23,21 @@ primary key(rental_main_num));
 
 --장비목록 테이블 11/29
 create table rental_items(
-rental_list_item_num bigint not null auto_increment,
+rental_list_item_num bigint not null,
 rental_list_item_type varchar(50),
 rental_list_item_grade varchar(50),
 rental_list_low_item varchar(50),
 rental_list_mid_item varchar(50),
 rental_list_premium_item varchar(50),
 rental_list_item_count int default 0,
-rental_list_item_explain text,
 primary key(rental_list_item_num));
 
---파일 테이블 컬럼추가 11/29
-alter table file add rental_list_item_num bigint;
+--장비이미지url 테이블
+create table item_image(
+rental_list_item_num bigint,
+file_name varchar(100),
+image_url varchar(200));
+
 
 --장비예약 테이블(아직 없음)
 create table rental_reserve(
