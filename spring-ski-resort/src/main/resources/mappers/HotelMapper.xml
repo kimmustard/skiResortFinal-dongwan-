@@ -5,19 +5,18 @@
   <mapper namespace="com.web.www.repository.HotelDAO">
   
   	<insert id="updateRoomInfo">
-		INSERT INTO room_info 
-		VALUES (#{hotelRoomNum},#{hotelReserveStayStart} ,#{hotelReserveStayEnd},
-		'N',#{hotelReserveFee},#{hotelReservePeople},#{hotelReserveChild},"",
-		now(),now()+7);
+		INSERT INTO room_info (hotel_room_num,member_num,hotel_reserve_stay_start,hotel_reserve_stay_end,hotel_reserve_fee,
+								hotel_reserve_people,hotel_reserve_child)
+		VALUES (#{hotelRoomNum},#{memberNum},#{hotelReserveStayStart} ,#{hotelReserveStayEnd},
+				#{hotelReserveFee},#{hotelReservePeople},#{hotelReserveChild});
 		
 	</insert>
   	<insert id="addRoom">
 		INSERT INTO room (hotel_room_name, hotel_room_explain,hotel_room_standard_people,
-		hotel_room_type,hotel_room_area,hotel_room_fee,hotel_room_count)
+		hotel_room_type,hotel_room_area,hotel_room_fee,hotel_room_count,hotel_initial_count)
 		VALUES (#{hotelRoomName},#{hotelRoomExplain} ,#{hotelRoomStandardPeople},
-		#{hotelRoomType},#{hotelRoomArea},#{hotelRoomFee},#{hotelRoomCount}
-		);
-		
+		#{hotelRoomType},#{hotelRoomArea},#{hotelRoomFee},#{hotelRoomCount},#{hotelInitialCount}
+		);	
 	</insert>
 	<select id="getRoomList" resultType="com.web.www.domain.hotel.RoomVO">
 		select * from room
@@ -29,11 +28,22 @@
 	<update id="modifyRoom">
 		update room set hotel_room_name = #{hotelRoomName} ,hotel_room_explain = #{hotelRoomExplain},
 		hotel_room_standard_people = #{hotelRoomStandardPeople} ,hotel_room_type = #{hotelRoomType},
-		hotel_room_area = #{hotelRoomArea}, hotel_room_fee = #{hotelRoomFee} , hotel_room_count=#{hotelRoomCount}
-		where hotel_room_num =#{hotelRoomNum}
+		hotel_room_area = #{hotelRoomArea}, hotel_room_fee = #{hotelRoomFee} , hotel_initial_count=#{hotelInitialCount}
+		where hotel_room_num =#{hotelRoomNum}								
 	</update>
 	<select id="selectRoomCnt" resultType="int">
 		select count(*) from room
+	</select>
+	
+	<update id="updateRoomCount">
+		UPDATE room SET hotel_room_count = COALESCE(hotel_initial_count, 0) - COALESCE((
+	    SELECT COUNT(hotel_room_num)
+	    FROM room_info
+	    WHERE room_info.hotel_room_num = room.hotel_room_num
+	    GROUP BY room_info.hotel_room_num ), 0)
+	</update>
+	<select id="getRoomCount" resultType="int">
+		select count(*) from room where hotel_room_count= #{hotelRoomNum}
 	</select>
 	
   </mapper>

@@ -8,12 +8,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.web.www.domain.coupon.CouponCreate;
 import com.web.www.domain.coupon.CouponSystem;
+import com.web.www.domain.hotel.RoomVO;
+import com.web.www.domain.member.AuthUser;
 import com.web.www.domain.member.MemberVO;
 import com.web.www.repository.AdminDAO;
 import com.web.www.service.AdminService;
+import com.web.www.service.HotelService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -25,6 +30,7 @@ import lombok.extern.slf4j.Slf4j;
 public class AdminController {
 
 	private final AdminService asv;
+	private final HotelService hsv;
 	private final AdminDAO adao;
 	
 	@GetMapping("/settingMain")
@@ -82,8 +88,33 @@ public class AdminController {
 	 * @Developer 관리자 페이지 "호텔 관리"
 	 *************************************/
 	
+	@GetMapping("/settingHotel")
+	public String hotelListForm(Model m ,@AuthUser MemberVO mvo) {
+		List<RoomVO> roomList = hsv.getRoomList();
+		m.addAttribute("roomList", roomList);
+		m.addAttribute("mvo", mvo);
+		return "/developer/settingHotel";
+	}
 	
-	
+	@PostMapping("/addRoom")
+	public String addRoom(RoomVO rvo) {
+		int isOk = hsv.addRoom(rvo);
+		return "redirect:/developer/settingHotel";
+	}
+	@GetMapping("deleteRoom")
+	public String deleteRoom(@RequestParam("hotelRoomNum") int hotelRoomNum, RedirectAttributes reatt) {
+		log.info(hotelRoomNum + "<<<<<hotelRoomNum");
+		int isOk = hsv.deleteRoom(hotelRoomNum);
+		reatt.addFlashAttribute("susdel", isOk > 0 ? "y" : "n");
+		return "redirect:/developer/settingHotel";
+	}
+	@PostMapping("modifyRoom")
+	public String modifyRoom(RoomVO rvo, RedirectAttributes reatt) {
+		log.info(rvo + ">>>rvo");
+		int isOk = hsv.modifyRoom(rvo);
+		reatt.addFlashAttribute("susmodi", isOk > 0 ? "y" : "n");
+		return "redirect:/developer/settingHotel";
+	}
 	
 	
 	

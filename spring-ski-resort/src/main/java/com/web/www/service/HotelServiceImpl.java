@@ -4,10 +4,13 @@ package com.web.www.service;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.web.www.domain.coupon.Coupon;
 import com.web.www.domain.hotel.RoomInfoVO;
 import com.web.www.domain.hotel.RoomVO;
 import com.web.www.repository.HotelDAO;
+import com.web.www.repository.MemberDAO;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,11 +21,17 @@ import lombok.extern.slf4j.Slf4j;
 public class HotelServiceImpl implements HotelService{
 
 	private final HotelDAO hdao;
-
+	private final MemberDAO mdao;
+	
+	@Transactional
 	@Override
-	public int updateRoomInfo(RoomInfoVO rivo) {
-		// TODO Auto-generated method stub
-		return hdao.updateRoomInfo(rivo);
+	public int updateRoomInfo(RoomInfoVO rivo ,Coupon cpn) {
+		
+		mdao.useCoupon(rivo.getMemberNum(),cpn.getCouponCode());
+		int isOk =hdao.updateRoomInfo(rivo);
+		hdao.updateRoomCount();
+		
+		return isOk ;
 	}
 
 	@Override
@@ -53,6 +62,12 @@ public class HotelServiceImpl implements HotelService{
 	public int selectRoomCnt() {
 		// TODO Auto-generated method stub
 		return hdao.selectRoomCnt();
+	}
+
+	@Override
+	public int cheakRoomCount(int hotelRoomNum) {
+		// TODO Auto-generated method stub
+		return hdao.getRoomCount(hotelRoomNum);
 	}
 
 }
