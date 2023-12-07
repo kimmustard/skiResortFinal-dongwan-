@@ -32,6 +32,12 @@ rental_list_premium_item varchar(50),
 rental_list_item_count int default 0,
 primary key(rental_list_item_num));
 
+--장비이미지url 테이블
+create table item_image(
+rental_list_item_num bigint,
+file_name varchar(100),
+image_url varchar(200));
+
 
 --장비예약 테이블(아직 없음)
 create table rental_reserve(

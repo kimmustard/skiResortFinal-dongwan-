@@ -89,11 +89,39 @@ if (prevBtn) {
 
 /*   장바구니 기능    */
 
+// 스키 아이템
 document.addEventListener('DOMContentLoaded', function () {
-     // 스키 아이템
-     document.getElementById('skiItemList').addEventListener('click', function (e) {
-          if (e.target.tagName == 'IMG') {
+
+     document.getElementById('skiItemList').addEventListener('click', (e) => {
+          if (e.target.tagName === 'IMG') {
                let itemName = e.target.getAttribute('data-name');
+               console.log(itemName);
+               shoppingBasket(itemName);
+          }
+     });
+
+})
+
+// 보드 아이템
+document.addEventListener('DOMContentLoaded', function () {
+
+     document.getElementById('boardItemList').addEventListener('click', (e) => {
+          if (e.target.tagName === 'IMG') {
+               let itemName = e.target.getAttribute('data-name');
+               console.log(itemName);
+               shoppingBasket(itemName);
+          }
+     });
+
+})
+
+// 의류/보호장비 아이템
+document.addEventListener('DOMContentLoaded', function () {
+
+     document.getElementById('wearItemList').addEventListener('click', (e) => {
+          if (e.target.tagName === 'IMG') {
+               let itemName = e.target.getAttribute('data-name');
+               console.log(itemName);
                shoppingBasket(itemName);
           }
      });
@@ -103,6 +131,6 @@ document.addEventListener('DOMContentLoaded', function () {
 function shoppingBasket(name) {
      let shoppingBasketDiv = document.querySelector('.shoppingBasket');
      let itemSelectDiv = document.createElement('div');
-     itemSelectDiv.innerHTML = `${name}`;
+     itemSelectDiv.innerHTML = `<p class="fs-5">${name}</p>`;
      shoppingBasketDiv.appendChild(itemSelectDiv);
 }

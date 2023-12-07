@@ -100,6 +100,7 @@
 		
 		<div class="shopContainer">
 			<div class="shoppingBasket">
+				<p class="fs-4">장바구니</p>
 				
 			</div>
 		</div>
