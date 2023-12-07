@@ -129,7 +129,8 @@ public class OauthLoginController {
 
 		return  googleAuthUrl;
 	}
-
+	
+	
 	// 구글 Callback호출
 	@RequestMapping(value = "/google/callback", method = { RequestMethod.GET, RequestMethod.POST })
 	public String googleCallback(HttpServletRequest request, HttpServletResponse response, 
@@ -154,7 +155,6 @@ public class OauthLoginController {
 		Authentication authentication = 
 				new UsernamePasswordAuthenticationToken(OauthUser, null, OauthUser.getAuthorities());
 		SecurityContextHolder.getContext().setAuthentication(authentication);
-
 	}
 	
 }	

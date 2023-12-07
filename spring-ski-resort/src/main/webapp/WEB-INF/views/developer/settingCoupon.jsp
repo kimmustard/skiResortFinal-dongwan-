@@ -133,7 +133,7 @@
 
 					<div class="couponOrder">
 						<h3>쿠폰 삭제하기</h3>
-						<form action="">
+						<form action="/developer/deleteCoupon" method="post">
 							<div class="input-group mb-3 delete-coupon">
 							      <input type="text" class="form-control" id="deleteCouponInput1" name="couponCode" placeholder="삭제할 쿠폰코드 입력" aria-label="Recipient's username" aria-describedby="button-addon2">
 							      <button class="btn btn-primary" type="submit" id="button-addon2">삭제</button>
@@ -141,18 +141,36 @@
 					    </form>
 					    <hr>
 					    <h3>쿠폰 지급하기</h3>
+					    <form action="/developer/spreadCoupon" method="post">
 					    <div class="form-group">
-						  <label class="col-form-label mt-4" for="inputDefault6">회원 아이디</label>
-						  <input type="text" class="form-control" placeholder="Default input" id="inputDefault6">
-						</div>
-					    <div class="form-group">
-						  <label class="col-form-label mt-4" for="inputDefault7">지급할 쿠폰코드</label>
-						  <input type="text" class="form-control" placeholder="Default input" id="inputDefault7">
-						</div>
-						<button class="btn btn-success" type="submit" id="button-addon2">쿠폰 전송</button>
+							  <label class="col-form-label mt-4" for="inputDefault6">회원 아이디</label>
+							  <input type="text" class="form-control spread-input" name="memberId" placeholder="아이디" id="inputDefault6">
+							</div>
+						    <div class="form-group">
+							  <label class="col-form-label mt-4" for="inputDefault7">지급할 쿠폰코드</label>
+							  <input type="text" class="form-control spread-input" name="couponCode" placeholder="쿠폰코드" id="inputDefault7">
+							</div>
+							<button class="btn btn-success spread-btn" type="submit" id="button-addon2">쿠폰 전송</button>
+						</form>
 						<hr>
 						<h3>모든 유저에게 쿠폰지급</h3>
-						
+							<div class="form-group">
+						      <label for="coupon-spread-select1" class="form-label mt-4">지급할 유저 계층</label>
+						      <select class="form-select" id="coupon-spread-select1" name="">
+						        <option selected value="">등급 선택</option>
+						        <option value="All">모든유저</option>
+						        <option value="Bronze">브론즈</option>
+						        <option value="Silver">실버</option>
+						        <option value="Gold">골드</option>
+						        <option value="VIP">VIP</option>
+						  	 </select>
+	    					</div>
+	    					<form action="">
+								<div class="input-group mb-3 delete-coupon">
+								      <input type="text" class="form-control" id="spreadCouponInput" name="couponCode" placeholder="전송할 쿠폰코드 입력" aria-label="Recipient's username" aria-describedby="button-addon2">
+								      <button class="btn btn-primary" type="submit" id="button-addon2">지급</button>
+							    </div>
+						    </form>
 					</div>
 				</div>
 			</div>
@@ -173,6 +191,16 @@
 		}else if(isOk ==3){
 			alert('공백X.')
 		}
+		
+		const isDel = `<c:out value="${isDel}" />`;
+		if(isDel == 1){
+			alert('삭제 완료');
+		}else if(isDel == 2){
+			alert('삭제 실패 쿠폰코드를 확인해주세요.')
+		}else if(isDel ==3){
+			alert('공백X.')
+		}
+		
 	</script>
 	<script type="text/javascript" src="/resources/js/developer/setting.js"></script>
 	<script type="text/javascript" src="/resources/js/developer/settingCoupon.js"></script>

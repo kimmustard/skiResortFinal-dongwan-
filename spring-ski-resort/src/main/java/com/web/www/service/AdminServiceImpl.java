@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.web.www.domain.coupon.CouponCreate;
+import com.web.www.domain.coupon.CouponGetDTO;
 import com.web.www.domain.coupon.CouponSystem;
 import com.web.www.domain.member.MemberVO;
 import com.web.www.repository.AdminDAO;
@@ -17,6 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 public class AdminServiceImpl implements AdminService{
 
 	private final AdminDAO adao;
+	private final MemberService msv;
 
 	@Override
 	public List<MemberVO> getMemberList() {
@@ -75,5 +77,21 @@ public class AdminServiceImpl implements AdminService{
 		}
 		
 		return adao.couponCreate(cpc);
+	}
+
+	@Override
+	public int couponRemove(String couponCode) {
+		return adao.couponRemove(couponCode);
+	}
+
+	@Override
+	public int spreadCoupon(String memberId, String couponCode) {
+		long memberNum = adao.spreadCouponMemberGet(memberId);
+		CouponGetDTO cgDTO = new CouponGetDTO();
+		cgDTO.setMemberNum(memberNum);
+		cgDTO.setCouponCode(couponCode);
+		int isOk = msv.userCouponAdd(cgDTO);
+		
+		return isOk;
 	}
 }

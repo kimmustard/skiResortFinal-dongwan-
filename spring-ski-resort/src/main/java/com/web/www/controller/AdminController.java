@@ -93,6 +93,32 @@ public class AdminController {
 		return "redirect:/developer/settingCoupon";
 	}
 	
+	@PostMapping("/deleteCoupon")
+	public String couponRemove(@RequestParam("couponCode") String couponCode, RedirectAttributes rttr) {
+		if(couponCode == null) {
+			rttr.addFlashAttribute("isDel;", 3);
+			return "redirect:/developer/settingCoupon";
+		}
+		
+		int isDel = asv.couponRemove(couponCode);
+		log.info("isDel ######## = {}",isDel);
+		rttr.addFlashAttribute("isDel", isDel);
+		return "redirect:/developer/settingCoupon";
+	}
+	
+	@PostMapping("/spreadCoupon")
+	public String spreadCoupon(@RequestParam("memberId") String memberId, 
+			@RequestParam("couponCode")String couponCode, RedirectAttributes rttr) {
+		if(couponCode == null || memberId == null) {
+			rttr.addFlashAttribute("isOk;", 3);
+			return "redirect:/developer/settingCoupon";
+		}
+		
+		int isOk = asv.spreadCoupon(memberId, couponCode);
+		rttr.addFlashAttribute("isOk", isOk);
+		return "redirect:/developer/settingCoupon";
+	}
+	
 	
 	/*************************************
 	 * @Developer 관리자 페이지 "호텔 관리"

@@ -39,4 +39,12 @@
   		insert into coupon_system(coupon_code, coupon_admin_check, coupon_search, coupon_dupli, coupon_day, coupon_name, coupon_int, coupon_rate)
   		value(#{couponCode}, #{couponAdminCheck}, #{couponSearch}, #{couponDupli}, #{couponDay}, #{couponName}, #{couponInt}, #{couponRate})
   	</insert>
+  	
+  	<delete id="couponRemove">
+  		delete from coupon_system where coupon_code = #{couponCode}
+  	</delete>
+  	
+  	<select id="spreadCouponMemberGet" resultType="long">
+  		select member_num from member where member_id = #{memberId}
+  	</select>
   </mapper>

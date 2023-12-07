@@ -27,5 +27,9 @@ public interface AdminDAO {
 
 	int couponCreate(CouponCreate cpc);
 
+	int couponRemove(String couponCode);
+
+	long spreadCouponMemberGet(String memberId);
+
 
 }

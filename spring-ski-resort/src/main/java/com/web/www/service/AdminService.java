@@ -18,4 +18,8 @@ public interface AdminService {
 
 
 	int couponCreate(CouponCreate cpc);
+
+	int couponRemove(String couponCode);
+
+	int spreadCoupon(String memberId, String couponCode);
 }

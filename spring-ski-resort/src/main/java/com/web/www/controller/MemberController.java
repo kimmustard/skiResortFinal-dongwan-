@@ -62,6 +62,7 @@ public class MemberController {
 		return "redirect:/member/login";
 	}
 	
+	
 	@GetMapping("/register")
 	public String registerForm(Model model) {
 		model.addAttribute("mvo", new RegisterMemberDTO());
@@ -168,6 +169,5 @@ public class MemberController {
 		new SecurityContextLogoutHandler().logout(request, response, auth);
 	}
 		
-
 	
 }
