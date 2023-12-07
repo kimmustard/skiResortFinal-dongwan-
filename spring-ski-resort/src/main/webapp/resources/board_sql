@@ -1,4 +1,6 @@
 
+
+
 ## notice table 생성
 create table notice(
 notice_num bigint not null auto_increment,

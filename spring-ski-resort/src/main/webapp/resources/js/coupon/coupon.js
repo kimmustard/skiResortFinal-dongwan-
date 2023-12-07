@@ -1,5 +1,6 @@
 
 //홈페이지 버튼눌러서 쿠폰받기
+
 if(document.getElementById('coupon_get')){
     document.getElementById('coupon_get').addEventListener('click', () => {
         let code = document.getElementById('coupon_get').value;
@@ -14,6 +15,7 @@ if(document.getElementById('coupon_get')){
         }) 
     })
 }
+
 
 async function couponGetToServer(code) {
     try {
@@ -33,7 +35,7 @@ async function couponGetToServer(code) {
 document.getElementById('my_coupon_list').addEventListener('click', () => {
     //쿠폰 목록창 띄우는 코드 
     //리스트 가져오기
-    myCouponListGet().then(result =>  {
+    myCouponListGet().then(result => {
         /* 받아온 JSON을 목록창에 쿠폰 작성하기
             couponCode : 생략
             couponDay : 생략
@@ -63,7 +65,7 @@ document.getElementById('my_coupon_list').addEventListener('click', () => {
 
             alert("사용가능한 쿠폰이 없습니다.")
         }
-       
+
     })
 })
 

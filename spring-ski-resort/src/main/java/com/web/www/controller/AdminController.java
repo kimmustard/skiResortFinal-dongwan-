@@ -4,13 +4,17 @@ import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.web.www.domain.coupon.CouponCreate;
 import com.web.www.domain.coupon.CouponSystem;
 import com.web.www.domain.hotel.RoomVO;
 import com.web.www.domain.member.AuthUser;
@@ -72,6 +76,21 @@ public class AdminController {
 		List<CouponSystem> csList = asv.getCouponList();
 		model.addAttribute("csList", csList);
 		return "/developer/settingCoupon";
+	}
+	
+	@PostMapping("/createCoupon")
+	public String couponCreate(@Validated @ModelAttribute("cpc") CouponCreate cpc, 
+			BindingResult bindingResult, RedirectAttributes rttr) {
+		
+		if(bindingResult.hasErrors()) {
+			rttr.addFlashAttribute("isOk", 3);
+			return "redirect:/developer/settingCoupon";
+		}
+		
+		
+		int isOk = asv.couponCreate(cpc);
+		rttr.addFlashAttribute("isOk", isOk);
+		return "redirect:/developer/settingCoupon";
 	}
 	
 	
