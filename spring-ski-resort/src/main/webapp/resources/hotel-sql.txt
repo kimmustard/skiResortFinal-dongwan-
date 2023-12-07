@@ -21,6 +21,7 @@ hotel_room_area varchar(100),
 hotel_room_fee int,
 hotel_room_count int,
 hotel_initial_count int,
+hotel_image varchar(1000),
  primary key(hotel_room_num)	
 );
 
