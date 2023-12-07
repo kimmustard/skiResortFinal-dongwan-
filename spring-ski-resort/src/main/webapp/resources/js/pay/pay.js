@@ -65,8 +65,18 @@ function paymentGateway(pgName) {
                  
                     // 서버에서의 추가 처리
                     if (data == "결제완료") {
-                        window.location.href = '/pay/PaySuccess?payMerchantUid=' + rsp.merchant_uid + '&payName=' + rsp.name + '&payAmount=' + rsp.paid_amount;
-                    } else {
+                        document.getElementById('payName').value = rsp.name;
+                        document.getElementById('payAmount').value = rsp.paid_amount;
+                        document.getElementById('payMerchantUid').value = rsp.merchant_uid;
+                            if( document.getElementById("payform")){
+                                document.getElementById("payform").submit();
+                          
+                            }
+        
+                    
+                   
+                           
+                        } else {
                         //결제 실패시 처리
                         window.location.href = '/pay/PayFail?errorMessage=' + data;
                     }
