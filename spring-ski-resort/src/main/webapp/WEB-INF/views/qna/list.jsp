@@ -20,7 +20,7 @@
 			<sec:authentication property="principal.mvo.memberId" var="authId"/>
 			<sec:authentication property="principal.mvo.memberEmail" var="authEmail"/>
 			<sec:authentication property="principal.mvo.memberType" var="authType"/>
-			<sec:authentication property="principal.mvo.authList" var="authList"/>
+			<sec:authentication property="principal.mvo.authList" var="auths"/>
 </sec:authorize>
 
 		
@@ -178,12 +178,14 @@
 		      			<a href="/qna/detail?qnaNum=${qvo.qnaNum }">${qvo.qnaTitle }</a>
 		      		</c:if>
 		      		<c:if test="${qvo.qnaSecret=='Y' }">
-		      			<c:if test="${(authType == 'normal' && authId == qvo.qnaWriter) || (authType != 'normal' && authEmail == qvo.qnaWriter) || (authList == 'ROLE_ADMIN')}">
+		      			<c:if test="${(authType == 'normal' && authId == qvo.qnaWriter) || (authType != 'normal' && authEmail == qvo.qnaWriter) || auths.stream().anyMatch(authVO -> authVO.auth.equals('ROLE_ADMIN')).get()}">
 		      				<span class="qna-secret-title"><a href="/qna/detail?qnaNum=${qvo.qnaNum }">${qvo.qnaTitle }</a></span>
 							<span class="material-symbols-outlined" style="font-size: 21px">lock</span>
 		      			</c:if>
-		      			<c:if test="${(authType == 'normal' && authId != qvo.qnaWriter) || (authType != 'normal' && authEmail != qvo.qnaWriter) }">
-		      				<span class="qna-secret-title" style="color: #cfcfcf;">비밀글 입니다. </span><span class="material-symbols-outlined" style="font-size: 21px">lock</span>
+		      			<c:if test="${!auths.stream().anyMatch(authVO -> authVO.auth.equals('ROLE_ADMIN')).get()}">
+			      			<c:if test="${(authType == 'normal' && authId != qvo.qnaWriter) || (authType != 'normal' && authEmail != qvo.qnaWriter)}">
+			      				<span class="qna-secret-title" style="color: #cfcfcf;">비밀글 입니다. </span><span class="material-symbols-outlined" style="font-size: 21px">lock</span>
+			      			</c:if>
 		      			</c:if>
 		      		</c:if>
 		      	</div></td>
