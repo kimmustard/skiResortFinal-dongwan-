@@ -1,5 +1,10 @@
 @charset "UTF-8";
 
+.couponListTitle{
+	width: 280px;
+	background-color: white;
+}
+
 .devMainContainer{
 	height: 2000px;
 	background-color: rgb(139, 139, 139);
@@ -10,13 +15,21 @@
 	margin-left: 70px;
 }
 
-table tbody {
-  height: 300px;
-  overflow-y: auto;
-}
 .couponList{
 	width: 1500px;
+	max-height: 400px;
+	overflow-y: auto;
 	background-color: rgba(255, 255, 255, 0.8);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table tbody {
+  max-height: 400px; /* tbody 최대 높이 설정 */
+  overflow-y: auto; /* 필요한 경우 스크롤 생성 */
 }
 
 .couponList>h3{
@@ -56,4 +69,27 @@ table tbody {
 .coupon-create-btn{
 	width: 250px;
 	margin-top: 50px;
+}
+
+.settingAndOrder{
+	display: flex;
+	margin-top: 30px;
+}
+
+.couponOrder{
+	margin-left: 20px;
+	text-align: center;
+	width: 980px;
+	height: 700px;
+	background-color: rgba(255, 255, 255, 0.8);
+}
+
+.couponOrder>form>.delete-coupon{
+	margin-left: 25%;
+	width: 500px;
+}
+
+.delete-coupon>#deleteCouponInput1, .delete-coupon>#button-addon2{
+	text-align: center;
+	height: 50px;
 }

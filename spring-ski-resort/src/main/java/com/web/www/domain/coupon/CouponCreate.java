@@ -1,5 +1,8 @@
 package com.web.www.domain.coupon;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,15 +16,19 @@ import lombok.ToString;
 @ToString
 public class CouponCreate {
 
-	private String CouponCode;
-	private String CouponAdminCheck;
-	private String CouponSearch;
-	private String CouponDupli;
-	private int CouponDay;
-	private String CouponName;
-	private int CouponInt;
-	private int CouponRate;
+	@NotBlank(message = "공백X")
+	private String couponCode;
+	private String couponAdminCheck;
+	private String couponSearch;
+	private String couponDupli;
+	@Min(value = 1, message = "최소 1 이상 입력하세요.")
+	private int couponDay;
+	@NotBlank(message = "공백X")
+	private String couponName;
+	private int couponInt;
+	private int couponRate;
 	
 	//변환전 임시 할인 저장
-	private int DefaultAmount;
+	@Min(value = 1, message = "최소 1 이상 입력하세요.")
+	private int defaultAmount;
 }
