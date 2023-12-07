@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+.couponContainer{
+	margin-left: 70px;
+}
+
+table tbody {
+  height: 300px;
+  overflow-y: auto;
+}
+.couponList{
+	width: 1500px;
+	background-color: rgba(255, 255, 255, 0.8);
+}
+
+.couponList>h3{
+	text-align: center;
+}
+
+.couponSetting{
+	width: 1500px;
+	height: 450px;
+	background-color: rgba(255, 255, 255, 0.8);
+}
+

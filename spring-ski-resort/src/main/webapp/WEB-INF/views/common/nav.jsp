@@ -7,6 +7,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+	#bi-gear-fill{
+		font-size: 10px;
+	}
+</style>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
@@ -15,9 +20,6 @@
 
 </head>
 <body>
-	<sec:authorize access="isAuthenticated()">
-		
-	</sec:authorize>
 <div class="navContainer">
 
 	<nav class="ski-navbar" id="ski-navbar">
@@ -40,6 +42,14 @@
         	<sec:authentication property="principal.mvo.memberEmail" var="authEmail"/>
         	<sec:authentication property="principal.mvo.memberAlias" var="authAlias"/>
         	<sec:authentication property="principal.mvo.memberType" var="authType"/>
+        	<sec:authentication property="principal.mvo.authList" var="auths"/>
+        	
+	       	<!-- admin 관리페이지 -->
+            <c:if test="${auths.stream().anyMatch(authVO -> authVO.auth.equals('ROLE_ADMIN')).get()}">
+               <li>
+			   		<a class="developer_page" href="/developer/settingMain"><i class="bi bi-gear-fill" id="bi-gear-fill"></i>   | </a>
+               </li>
+            </c:if>
         	<c:if test="${authType == 'normal' }">
 	       		<li>${authId}님 환영합니다.</li>
 		       	<li><a href="/member/detail">| 회원정보</a></li>
@@ -57,7 +67,10 @@
 		       	<li><a href="/member/detail">| 회원정보</a></li>
         	</c:if>
 	       	<li><a href="/member/logout">| 로그아웃</a></li>
-		
+     
+	      
+	
+			
 		</sec:authorize>
      
        </ul>
