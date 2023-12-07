@@ -1,5 +1,5 @@
-drop table coupon
-drop table coupon_system
+drop table coupon;
+drop table coupon_system;
 
 ## 12-05 쿠폰 시스템 테이블입니다.
 create table coupon(

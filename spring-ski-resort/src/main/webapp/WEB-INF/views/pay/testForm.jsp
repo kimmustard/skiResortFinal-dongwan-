@@ -36,6 +36,8 @@
 
             <script type="text/javascript" src="/resources/js/pay/pay.js"></script>
             <script type="text/javascript" src="/resources/js/coupon/coupon.js"></script>
+            
+            
         </body>
 
         </html>
