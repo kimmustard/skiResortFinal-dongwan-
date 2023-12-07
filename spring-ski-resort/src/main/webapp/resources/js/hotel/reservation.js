@@ -230,7 +230,7 @@ function roomSelectEvent(num){
     roomprice=  document.getElementById('room'+num).value;
     let roomname =  document.getElementById('room'+num).innerText;
     let imageurl =document.getElementById('image-src'+num).innerText;
-	
+	let roomexplain = document.getElementById('explian-src'+num).innerText;
 
     console.log('select'+num);
     document.getElementById('select'+num).checked="true";
@@ -243,6 +243,10 @@ function roomSelectEvent(num){
 
     //이미지 아래 사진넣기
     document.getElementById('room-name').innerText = roomname;
+    
+    //이미지 설정하기
+     document.getElementById('room-explain').innerText = roomexplain;
+    
     
     //요금표시
     realAmount = roomprice;

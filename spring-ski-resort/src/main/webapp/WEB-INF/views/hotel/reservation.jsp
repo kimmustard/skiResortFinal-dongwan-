@@ -207,6 +207,7 @@
 					<c:forEach items="${roomList }" var="room" >
 						<c:if test="${room.hotelRoomType eq 'vip' && room.hotelRoomCount >= 0}">
 						<li onclick="roomSelectEvent(${room.hotelRoomNum})" value="${room.hotelRoomFee }" id="room${room.hotelRoomNum}">${room.hotelRoomName }(${room.hotelRoomStandardPeople}인)</li>
+				
 					</c:if> 
 					</c:forEach>
 					</ul>
@@ -216,6 +217,8 @@
 						<div class="room-image-box">
 							<div class="room-image" id="room-image"></div>
 							<div class="room-name" id="room-name"></div>
+							<div class="room-explain" id="room-explain"></div>
+								
 						</div>
 					<div class="paybox input-group mb-3">
 						<input type="text" id="pay1" class="form-control" placeholder="요금" readonly="readonly">	
@@ -236,10 +239,16 @@
 			
 			<!-- 방 이미지 링크는 여기 -->
 			<c:forEach items="${roomList}" var="room">
-			<p class="image-url" id="image-src${room.hotelRoomNum}">
-			https://img.freepik.com/free-photo/room-interior-of-hotel-bedroom_23-2150683421.jpg?size=626&ext=jpg&ga=GA1.1.1826414947.1699056000&semt=sph
+			<p class="hidden-info" id="image-src${room.hotelRoomNum}">
+				${room.hotelImage}
 			</p>
-		</c:forEach>
+			<p class="hidden-info" id="explian-src${room.hotelRoomNum}">
+				${room.hotelRoomExplain}
+			</p>
+		
+			
+			</c:forEach>
+		
 			
 	</form>
 		
