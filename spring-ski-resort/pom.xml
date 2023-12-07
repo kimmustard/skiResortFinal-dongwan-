@@ -331,19 +331,6 @@
 		  <version>0.2.14</version>
 		</dependency>
 		
-<<<<<<< HEAD
-	
-
-
-
-=======
-		<!-- json 변환 -->
-		<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
-		<dependency>
-		    <groupId>commons-io</groupId>
-		    <artifactId>commons-io</artifactId>
-		    <version>2.6</version>
-		</dependency>
 		
 		<!-- @Retryable 라이브러리 예외발생시 메서드를 재실행 합니다. -->
 		<!-- https://mvnrepository.com/artifact/org.springframework.retry/spring-retry -->
@@ -363,8 +350,7 @@
 		</dependency>
 		
 			
-	
->>>>>>> 8c9e31fdcf9383b90c2b1c06c9b77556205e0623
+
 	</dependencies>
 	<build>
 		<plugins>

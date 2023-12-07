@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>다이스키 고객문의 목록</title>
 <jsp:include page="../common/nav.jsp" />
 <link rel="stylesheet" href="/resources/css/qna/qna_list.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -20,7 +20,10 @@
 			<sec:authentication property="principal.mvo.memberId" var="authId"/>
 			<sec:authentication property="principal.mvo.memberEmail" var="authEmail"/>
 			<sec:authentication property="principal.mvo.memberType" var="authType"/>
-</sec:authorize>			
+			<sec:authentication property="principal.mvo.authList" var="authList"/>
+</sec:authorize>
+
+		
  
 
 <div class="container qna-container" id="qna-container">
@@ -28,8 +31,8 @@
 <div class="qna-header qna-header-two">
 	<h1 class="qna-header-h1">고객문의<span class="qna-header-span">Question And Answer</span></h1>
 </div>
+<div class="qna-header-p">궁금하신 부분에 대한 빠르고 정확한 답변을 드리겠습니다.</div>	
 
-	 	<div class="qna-header-p">궁금하신 부분에 대한 빠르고 정확한 답변을 드리겠습니다.</div>	
 	<div class="qna-menu-container">
 	 <div class="qna-menu-container-child">	
 	 
@@ -50,8 +53,8 @@
 					<input type="hidden" name="pageNo" value="1">
 					<input type="hidden" name="qty" value="${ph.pgvo.qty }">
 				</div>
-				<div class="qna-button-container">
-					<button class="qna-search-button" type="submit">검색</button>
+				<div class="qna-button-container">			
+					<button class="qna-search-button" type="submit"><div><span class="material-symbols-outlined" style="color: white;">search</span>검색</div></button>
 				</div>
 			</div>
 			</form>
@@ -100,7 +103,7 @@
 			  	<form action="/qna/list" method="get">
 			  	<input type="hidden" name="type" value="g" ${typed eq 'g' ? 'selected' : '' }>
 			  	<input type="hidden" name="keyword" type="search" value="예약">
-			    <button class="nav-link" type="submit">Reservation</button>
+			    <button class="nav-link" type="submit">Reserved</button>
 			    </form>
 			  </li>
 			  <li class="nav-item">
@@ -129,7 +132,7 @@
 		      <th scope="col" class="qna-table-th-no"><div class="qna-table-td-child">번호</div></th>
 		      <th scope="col" class="qna-table-th-cago"><div class="qna-table-td-child">범주</div></th>
 		      <th scope="col" class="qna-table-th-title"><div class="qna-table-td-child">제목</div></th>
-		      <th scope="col" class="qna-table-th-isok"><div class="qna-table-td-child">상태</div></th>
+		      <th scope="col" class="qna-table-th-isok"><div class="qna-table-td-child">답변상태</div></th>
 		      <th scope="col" class="qna-table-th-reg"><div class="qna-table-td-child">등록일</div></th>
 		    </tr>
 		  </thead>
@@ -137,18 +140,50 @@
 		  <c:forEach items="${list }" var="qvo">
 		    <tr class="qna-table-tr">
 		      <td class="qna-table-td"><div class="qna-table-td-child">${qvo.qnaNum }</div></td>
-		      <td class="qna-table-td"><div class="qna-table-td-child">${qvo.qnaCategory }</div></td>
+		      <td class="qna-table-td">
+			      <div class="qna-table-td-child-category">
+			      	<c:if test="${qvo.qnaCategory=='스키장' }">
+				      	<span class="material-symbols-outlined qna-icon-ski" style="color: #004080;">downhill_skiing</span>
+				      	<span class="qna-table-td-child-category-span" style="color: #004080;">${qvo.qnaCategory }</span>
+			      	</c:if>
+			      	<c:if test="${qvo.qnaCategory=='호텔' }">
+				      	<span class="material-symbols-outlined" style="color: #934900;">location_city</span>
+				      	<span class="qna-table-td-child-category-span" style="color: #934900;">${qvo.qnaCategory }</span>
+			      	</c:if>
+			      	<c:if test="${qvo.qnaCategory=='렌탈' }">
+				      	<span class="material-symbols-outlined" style="color: #893436;">apparel</span>
+				      	<span class="qna-table-td-child-category-span" style="color: #893436;">${qvo.qnaCategory }</span>
+			      	</c:if>
+			      	<c:if test="${qvo.qnaCategory=='교통' }">
+				      	<span class="material-symbols-outlined" style="color: #34702e;">local_taxi</span>
+				      	<span class="qna-table-td-child-category-span" style="color: #34702e;">${qvo.qnaCategory }</span>
+			      	</c:if>
+			      	<c:if test="${qvo.qnaCategory=='예약' }">
+				      	<span class="material-symbols-outlined" style="color: #007575;">schedule</span>
+				      	<span class="qna-table-td-child-category-span" style="color: #007575;">${qvo.qnaCategory }</span>
+			      	</c:if>
+			      	<c:if test="${qvo.qnaCategory=='결제' }">
+				      	<span class="material-symbols-outlined" style="color: #b3a000;">credit_card</span>
+				      	<span class="qna-table-td-child-category-span" style="color: #b3a000;">${qvo.qnaCategory }</span>
+			      	</c:if>
+			      	<c:if test="${qvo.qnaCategory=='기타' }">
+				      	<span class="material-symbols-outlined" style="color: #472e50;">other_admission</span>
+				      	<span class="qna-table-td-child-category-span" style="color: #472e50;">${qvo.qnaCategory }</span>
+			      	</c:if>
+			      </div>
+		      </td>
 		      <td class="qna-table-td">
 		      	<div class="qna-table-td-child-title">
 		      		<c:if test="${qvo.qnaSecret=='N' }">
 		      			<a href="/qna/detail?qnaNum=${qvo.qnaNum }">${qvo.qnaTitle }</a>
 		      		</c:if>
 		      		<c:if test="${qvo.qnaSecret=='Y' }">
-		      			<c:if test="${(authType == 'normal' && authId == qvo.qnaWriter) || (authType != 'normal' && authEmail == qvo.qnaWriter) }">
-		      				<a href="/qna/detail?qnaNum=${qvo.qnaNum }">${qvo.qnaTitle }</a>
+		      			<c:if test="${(authType == 'normal' && authId == qvo.qnaWriter) || (authType != 'normal' && authEmail == qvo.qnaWriter) || (authList == 'ROLE_ADMIN')}">
+		      				<span class="qna-secret-title"><a href="/qna/detail?qnaNum=${qvo.qnaNum }">${qvo.qnaTitle }</a></span>
+							<span class="material-symbols-outlined" style="font-size: 21px">lock</span>
 		      			</c:if>
 		      			<c:if test="${(authType == 'normal' && authId != qvo.qnaWriter) || (authType != 'normal' && authEmail != qvo.qnaWriter) }">
-		      				<span class="material-symbols-outlined">lock</span><span>비밀글 입니다.</span>
+		      				<span class="qna-secret-title" style="color: #cfcfcf;">비밀글 입니다. </span><span class="material-symbols-outlined" style="font-size: 21px">lock</span>
 		      			</c:if>
 		      		</c:if>
 		      	</div></td>
@@ -169,7 +204,7 @@
 		<div class="qna-paging-container">
 		  <nav aria-label="Page navigation example">
 		  	<!-- 이전 -->
-		  	<ul class="pagination">
+		  	<ul class="pagination qna-paging-ul">
 		  		<li class="page-item ${(ph.prev eq false) ? 'disabled' : '' }">
 			  		<a class="page-link" href="/qna/list?pageNo=${ph.startPage - 1 }&qty=${ph.pgvo.qty}&type=${ph.pgvo.type}&keyword=${ph.pgvo.keyword}" aria-label="Previous">
 			  		<span aria-hidden="true">&laquo;</span>
