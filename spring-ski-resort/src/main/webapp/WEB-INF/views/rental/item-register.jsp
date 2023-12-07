@@ -5,34 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>장비 파일 등록 페이지</title>
-<style type="text/css">
-.bodyContainer{
-	margin-top: 100px;
-}
-
-.formContainer{
-	width: 900px;
-	height: 500px;
-	position: relative;
-	left: 50%;
-	transform: translateX(-50%);
-	position: absolute;
-}
-
-.inputContainer{
-	margin-top: 15px;
-}
-
-.inputContainer > .itemType > p,input{
-	margin: 15px;
-}
-
-.itemInfo{
-	width: 600px;
-	margin-top: 20px;
-}
-
-</style>
+<link rel="stylesheet" href="/resources/css/rental/item_register.css">
 </head>
 <body>
 	<jsp:include page="../common/nav.jsp" />
@@ -55,12 +28,15 @@
 						<input class="form-check-input" type="radio" name="rentalListItemGrade" value="일반장비" id="lowItem">일반장비
 						<input class="form-check-input" type="radio" name="rentalListItemGrade" value="중급장비" id="midItem">중급장비
 						<input class="form-check-input" type="radio" name="rentalListItemGrade" value="프리미엄장비" id="premiumItem">프리미엄장비
-						<input class="form-check-input" type="radio" name="rentalListItemGrade" value="등급없음" id="noGrade">등급없음
 					</div>
 					<div class="itemInfo">
+						<div class="input-group" id="itemNum" style="display: none;">
+							<span class="input-group-text">장비번호</span>
+							<input class="form-control" type="text" name="rentalListItemNum" id="rentalListItemNum">
+						</div>
 						<div class="input-group" id="rowItemName" style="display: none;">
 							<span class="input-group-text">일반장비명</span>
-							<input class="form-control" type="text" name="rentalListRowItem" id="rentalListRowItem">
+							<input class="form-control" type="text" name="rentalListLowItem" id="rentalListRowItem">
 						</div> 
 						<div class="input-group" id="midItemName" style="display: none;">
 							<span class="input-group-text">중급장비명</span>
@@ -70,17 +46,9 @@
 							<span class="input-group-text">프리미엄장비명</span>
 							<input class="form-control" type="text" name="rentalListPremiumItem" id="rentalListPremiumItem">
 						</div>
-						<div class="input-group" id="wearItemName" style="display: none;">
-							<span class="input-group-text">의류명</span>
-							<input class="form-control" type="text" name="rentalListWearItem" id="rentalListWearItem">
-						</div>
 						<div class="input-group" id="itemCount" style="display: none;">
 							<span class="input-group-text">수량</span>
 							<input class="form-control" type="text" name="rentalListItemCount" id="rentalListItemCount" value="0">
-						</div>
-						<div class="input-group" id="itemExplain" style="display: none;">
-							<span class="input-group-text">장비설명</span>
-							<textarea class="form-control" name="rentalListItemExplain"></textarea>
 						</div>
 						
 					</div>

@@ -2,6 +2,8 @@ package com.web.www.controller;
 
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +19,7 @@ import com.web.www.domain.member.AuthUser;
 import com.web.www.domain.member.MemberVO;
 import com.web.www.domain.rental.RentalItemDTO;
 import com.web.www.domain.rental.RentalItemListDTO;
+import com.web.www.domain.rental.RentalItemRead;
 import com.web.www.domain.rental.RentalItemVO;
 import com.web.www.domain.rental.RentalLiftVO;
 import com.web.www.domain.rental.RentalVO;
@@ -33,9 +36,8 @@ import lombok.extern.slf4j.Slf4j;
 public class RentalController {
 	
 	private final RentalService rsv;
-	
 	private final FileHandler fh;
-	
+	private final RentalItemRead rir;
 
 	@GetMapping("/fee-info")
 	public String rentalForm() {
@@ -86,11 +88,57 @@ public class RentalController {
 
 	@GetMapping("/item")
 	public String itemForm(Model model) {
-		List<RentalItemListDTO> list = rsv.itemList();
-		
-		model.addAttribute("list", list);
-		
 		return "/rental/item";
 	}
+	
+	@GetMapping("/ski-item")
+	public String skiItemForm(Model model) {
+		List<RentalItemListDTO> skiLowItem = rsv.getSkiLowItem();
+		List<RentalItemListDTO> skiMidItem = rsv.getSkiMidItem();
+		List<RentalItemListDTO> skiPremiumItem = rsv.getSkiPremiumItem();
+		
+		model.addAttribute("skiLowItem", skiLowItem);
+		model.addAttribute("skiMidItem", skiMidItem);
+		model.addAttribute("skiPremiumItem", skiPremiumItem);
+		
+		return "/rental/ski-item";
+	}
+	@GetMapping("/board-item")
+	public String boardItemForm(Model model) {
+		List<RentalItemListDTO> boardLowItem = rsv.getBoardLowItem();
+		List<RentalItemListDTO> boardMidItem = rsv.getBoardMidItem();
+		List<RentalItemListDTO> boardPremiumItem = rsv.getBoardPremiumItem();
+		
+		model.addAttribute("boardLowItem", boardLowItem);
+		model.addAttribute("boardMidItem", boardMidItem);
+		model.addAttribute("boardPremiumItem", boardPremiumItem);
+		
+		return "/rental/board-item";
+	}
+	@GetMapping("/wear-item")
+	public String wearItemForm(Model model) {
+		List<RentalItemListDTO> wearLowItem = rsv.getWearLowItem();
+		List<RentalItemListDTO> wearMidItem = rsv.getWearMidItem();
+		List<RentalItemListDTO> wearPremiumItem = rsv.getWearPremiumItem();
+		
+		model.addAttribute("wearLowItem", wearLowItem);
+		model.addAttribute("wearMidItem", wearMidItem);
+		model.addAttribute("wearPremiumItem", wearPremiumItem);
+		
+		return "/rental/wear-item";
+	}
+	
+	
+	@PostConstruct
+	public void rentalItemCreate() {
+		
+		int isOk = rsv.rentalItemCntCheck();
+		// 테이블에 지역정보가 있는지 확인
+		if(isOk == 0) {
+			rir.read();
+		}
+		
+	}
+	
 	
 }

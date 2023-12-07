@@ -42,7 +42,6 @@
 		update file set file_isok='N' where qna_num=#{qnaNum}
 	</update>
 
-
 	
 	<!-- Q&A 답변 코드 라인 -->
 	<insert id="insertQnaAnsFile">
@@ -54,7 +53,7 @@
 		select * from file where qna_num=#{qnaNum} and file_isok='Y' and qna_ans_num is not null
 		order by file_reg_at asc
 	</select>
-	
+
 	
 
 	<!-- Item 파일 라인 -->

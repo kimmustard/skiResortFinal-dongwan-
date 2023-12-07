@@ -25,10 +25,10 @@ public interface FileDAO {
 
 	int insertItemFile(FileVO fvo);
 
-	List<FileVO> ItemAndPicture();
 
 	int insertQnaAnsFile(FileVO fvo);
 
 	List<FileVO> getQnaAnsFileList(long qnaNum);
+
 
 }

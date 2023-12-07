@@ -14,8 +14,26 @@ public interface RentalService {
 	int rental(RentalVO rvo);
 
 	int itemRegister(RentalItemDTO rentalItemDTO);
+ 
+	// 스키장비 등급(일반,중급,프리미엄)에 따라 분류
+	List<RentalItemListDTO> getSkiLowItem();
+	List<RentalItemListDTO> getSkiMidItem();
+	List<RentalItemListDTO> getSkiPremiumItem();
 
-	List<RentalItemListDTO> itemList();
+
+	// 보드장비 등급(일반,중급,프리미엄)에 따라 분류
+	List<RentalItemListDTO> getBoardLowItem();
+	List<RentalItemListDTO> getBoardMidItem();
+	List<RentalItemListDTO> getBoardPremiumItem();
+
+	// 의류 등급(일반,중급,프리미엄)에 따라 분류
+	List<RentalItemListDTO> getWearLowItem();
+	List<RentalItemListDTO> getWearMidItem();
+	List<RentalItemListDTO> getWearPremiumItem();
+
+	//실행전 테이블 체크
+	int rentalItemCntCheck();
+
 
 
 }
