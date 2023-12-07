@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 <link rel="stylesheet" href="/resources/css/rental/item_list.css">
 </head>
 
@@ -50,7 +50,7 @@
 						<c:forEach items="${skiLowItem }" var="lowItem">
 							<div>
 								<!-- 이미지파일 -->
-								<img alt="SkiLowItem" src="/upload/${fn: replace(lowItem.fileSave,'\\','/')}/${lowItem.fileUuid}_${lowItem.fileName}">
+								<img alt="SkiLowItem" data-name="${lowItem.rentalListLowItem }" src="/upload/${fn: replace(lowItem.fileSave,'\\','/')}/${lowItem.fileUuid}_${lowItem.fileName}">
 							</div>
 						</c:forEach>
 					</div>
@@ -63,7 +63,7 @@
 						<c:forEach items="${skiMidItem }" var="midItem">
 							<div>
 								<!-- 이미지파일 -->
-								<img alt="SkiMidItem" src="/upload/${fn: replace(midItem.fileSave,'\\','/')}/${midItem.fileUuid}_${midItem.fileName}">
+								<img alt="SkiMidItem" data-name="${midItem.rentalListMidItem }" src="/upload/${fn: replace(midItem.fileSave,'\\','/')}/${midItem.fileUuid}_${midItem.fileName}">
 							</div>
 						</c:forEach>
 					</div>
@@ -78,7 +78,7 @@
 						<c:forEach items="${skiPremiumItem }" var="premiumItem">
 							<div id="image">
 								<!-- 이미지파일 -->
-								<img alt="SkiPremiumItem" src="/upload/${fn: replace(premiumItem.fileSave,'\\','/')}/${premiumItem.fileUuid}_${premiumItem.fileName}">
+								<img alt="SkiPremiumItem" data-name="${premiumItem.rentalListPremiumItem }" src="/upload/${fn: replace(premiumItem.fileSave,'\\','/')}/${premiumItem.fileUuid}_${premiumItem.fileName}">
 								
 							</div>
 						</c:forEach>
@@ -86,8 +86,9 @@
 					</div>
 					
 					<div class="slide-btn">
-						<button id="slidePrevBtn" class="slidePrevBtn">◀</button>
-						<button id="slideNextBtn" class="slideNextBtn">▶</button>
+						
+						<i class="bi bi-arrow-left-circle-fill slidePrevBtn" id="slidePrevBtn"></i>
+						<i class="bi bi-arrow-right-circle-fill slideNextBtn" id="slideNextBtn"></i>
 					</div>
 
 					
@@ -95,6 +96,14 @@
 			</div>
 
 		</div>
+		
+		
+		<div class="shopContainer">
+			<div class="shoppingBasket">
+				
+			</div>
+		</div>
+		
 
 	</div>
 	

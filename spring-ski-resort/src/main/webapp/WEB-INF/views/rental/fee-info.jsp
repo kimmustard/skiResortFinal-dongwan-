@@ -82,7 +82,7 @@
 						<td class="rentalTd">중급장비SET(보드)</td>
 						<td class="rentalTd">프리미엄장비SET(스키)</td>
 						<td class="rentalTd">프리미엄장비SET(보드)</td>
-						<td class="rentalTd">의류SET</td>
+						<td class="rentalTd">의류/보호장비</td>
 					</tr>
 				</thead>
 				<tbody>

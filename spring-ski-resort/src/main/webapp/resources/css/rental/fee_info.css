@@ -21,8 +21,14 @@
 	margin-right: 20px;
 }
 
-.liftTableContainer, .rentalTableContainer{
-	width: 1200px;
+.liftTableContainer{
+	width: 1000px;
+	border-collapse: collapse;
+	margin: 0 auto;
+}
+
+.rentalTableContainer{
+	width: 1300px;
 	border-collapse: collapse;
 	margin: 0 auto;
 }

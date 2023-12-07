@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 <link rel="stylesheet" href="/resources/css/rental/item_list.css">
 </head>
 <body>
@@ -75,8 +76,8 @@
 					</div>
 					
 					<div class="slide-btn">
-						<button id="slidePrevBtn" class="slidePrevBtn">◀</button>
-						<button id="slideNextBtn" class="slideNextBtn">▶</button>
+						<i class="bi bi-arrow-left-circle-fill slidePrevBtn" id="slidePrevBtn"></i>
+						<i class="bi bi-arrow-right-circle-fill slideNextBtn" id="slideNextBtn"></i>
 					</div>
 					
 	

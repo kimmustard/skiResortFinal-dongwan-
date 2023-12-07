@@ -20,7 +20,7 @@
 	position: relative;
 	margin-left: 300px;
 	width: 1200px;
-	height: 1000px;
+	height: 700px;
 	overflow: hidden;
 	display: flex;
 }
@@ -47,10 +47,28 @@
 	width: 400px;
 	height: 600px;
 	object-fit: cover;
+	cursor: pointer;
 }
 
-.slide-btn{
-position: absolute;
-top: 650px;
-left: 1000px;
+.slidePrevBtn{
+	position: absolute;
+	top: 300px;
+	left: 30px;
+	cursor: pointer;
+}
+
+.slideNextBtn{
+	position: absolute;
+	top: 300px;
+	right: 30px;
+	cursor: pointer;
+}
+
+.shoppingBasket{
+	width: 350px;
+	height: 350px;
+	background-color: gray;
+	position: absolute;
+	bottom: 97px;
+	right: 0;
 }

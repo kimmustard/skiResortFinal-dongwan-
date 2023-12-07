@@ -29,6 +29,8 @@ premiumItem.addEventListener('click', () => {
 
 
 
+/*     슬라이드 기능     */
+
 let page = 0; // 현재 인덱스 번호
 let imageWidth = 400; // 이미지 width
 
@@ -91,4 +93,24 @@ if (prevBtn) {
      prevBtn.addEventListener('click', function () {
           prev();
      });
+}
+
+
+/*   장바구니 기능    */
+
+document.addEventListener('DOMContentLoaded', function () {
+     document.getElementById('skiItemList').addEventListener('click', function (e) {
+          if (e.target.tagName == 'IMG') {
+               let itemName = e.target.getAttribute('data-name');
+
+               shoppingBasket(itemName);
+          }
+     })
+})
+
+function shoppingBasket(name) {
+     let shoppingBasketDiv = document.querySelector('.shoppingBasket');
+     let itemSelectDiv = document.createElement('div');
+     itemSelectDiv.innerHTML = `${name}`;
+     shoppingBasketDiv.appendChild(itemSelectDiv);
 }
