@@ -69,47 +69,8 @@ public class HotelController {
 		return paySuccessUrl;
 	}
 
-	@GetMapping("/management")
-	public String management() {
 
-		return "/hotel/management";
-	}
-
-	@GetMapping("addRoom")
-	public String moveaddRoom() {
-
-		return "/hotel/addRoom";
-	}
-
-	@PostMapping("addRoom")
-	public String addRoom(RoomVO rvo) {
-		int isOk = hsv.addRoom(rvo);
-		return "/hotel/management";
-	}
-
-	@GetMapping("roomList")
-	public String roomList(Model m) {
-		List<RoomVO> roomList = hsv.getRoomList();
-		m.addAttribute("roomList", roomList);
-		return "/hotel/roomList";
-	}
-
-	@GetMapping("deleteRoom")
-	public String deleteRoom(@RequestParam("hotelRoomNum") int hotelRoomNum, RedirectAttributes reatt) {
-		log.info(hotelRoomNum + "<<<<<hotelRoomNum");
-		int isOk = hsv.deleteRoom(hotelRoomNum);
-		reatt.addFlashAttribute("susdel", isOk > 0 ? "y" : "n");
-		return "redirect:/hotel/roomList";
-	}
-
-	@PostMapping("modifyRoom")
-	public String modifyRoom(RoomVO rvo, RedirectAttributes reatt) {
-		log.info(rvo + ">>>rvo");
-		int isOk = hsv.modifyRoom(rvo);
-		reatt.addFlashAttribute("susmodi", isOk > 0 ? "y" : "n");
-		return "redirect:/hotel/roomList";
-	}
-
+	
 	@PostConstruct
 	public void addRoomList() {
 		int roomCnt = hsv.selectRoomCnt();
