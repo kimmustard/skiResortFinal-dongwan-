@@ -41,13 +41,15 @@
 	<update id="deleteAllFileQna">
 		update file set file_isok='N' where qna_num=#{qnaNum}
 	</update>
-	
 
+<<<<<<< HEAD
 	<!-- Item 파일 라인 -->
 	<insert id="insertItemFile">
 		insert into file(file_uuid,file_save,file_name,file_isok,file_type,file_size,rental_list_item_num)
 		values(#{fileUuid},#{fileSave},#{fileName},#{fileIsok},#{fileType},#{fileSize},#{rentalListItemNum})
 	</insert>
+=======
+>>>>>>> 68c79e56c45c1a8bb39f52fdd7caa5c4e5a9b089
 
 	
 	<!-- Q&A 답변 코드 라인 -->
@@ -62,4 +64,13 @@
 	</select>
 
 	
+
+	<!-- Item 파일 라인 -->
+	<insert id="insertItemFile">
+		insert into file(file_uuid,file_save,file_name,file_isok,file_type,file_size,rental_list_item_num)
+		values(#{fileUuid},#{fileSave},#{fileName},#{fileIsok},#{fileType},#{fileSize},#{rentalListItemNum})
+	</insert>
+
+	
+
 </mapper>

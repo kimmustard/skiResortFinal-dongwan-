@@ -123,7 +123,7 @@
 								<c:choose>
 									<c:when test="${fvo.fileType > 0 }">
 										<div>
-										<img alt="" src="/upload/${fn: replace(fvo.saveDir,'\\','/')}/${fvo.uuid}_${fvo.fileName}">
+										<img alt="" src="/upload/${fn: replace(fvo.fileSave,'\\','/')}/${fvo.fileUuid}_${fvo.fileName}">
 										</div>
 									</c:when>
 								</c:choose>
@@ -146,7 +146,7 @@
 						<c:choose>
 							<c:when test="${fvo.fileType > 0 }">
 								<div>
-									<img alt="그림이 없음." src="/upload/${fn: replace(fvo.saveDir,'\\','/')}/${fvo.uuid}_th_${fvo.fileName}">
+									<img alt="그림이 없음." src="/upload/${fn: replace(fvo.fileSave,'\\','/')}/${fvo.fileUuid}_th_${fvo.fileName}">
 								</div>
 							</c:when>
 						</c:choose>
@@ -156,7 +156,7 @@
 				 		</div>
 				 		<span class="badge rounded-pill text-bg-success">${fvo.fileSize }Byte</span>
 				 		<div>
-				 			<button type="button" class="file-x btn btn-outline-secondary" data-uuid="${fvo.uuid }">X</button>
+				 			<button type="button" class="file-x btn btn-outline-secondary" data-uuid="${fvo.fileUuid }">X</button>
 						</div>
 						<br>
 					</li>
