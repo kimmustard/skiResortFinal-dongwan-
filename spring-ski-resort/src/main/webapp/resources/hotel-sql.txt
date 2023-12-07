@@ -20,6 +20,8 @@ hotel_reserve_isok varchar(1),
 hotel_room_area varchar(100),
 hotel_room_fee int,
 hotel_room_count int,
+hotel_initial_count int,
+hotel_image varchar(1000),
  primary key(hotel_room_num)	
 );
 
@@ -28,7 +30,7 @@ hotel_room_count int,
 //2023-11-30 수정
 	 drop table room_info; 삭제후 아래구문 입력
 CREATE TABLE room_info (
-	hotel_main_num bigint ,
+	hotel_main_num bigint auto_increment ,
 	hotel_room_num int NOT NULL,
 	pay_merchant_uid varchar(50),
 	member_num bigint NOT NULL,

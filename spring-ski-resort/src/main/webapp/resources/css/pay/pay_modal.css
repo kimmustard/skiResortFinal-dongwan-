@@ -28,6 +28,10 @@
 	margin: 30px 15px 0 15px;
 	border-radius: 10px;
 }
+.pay-method>hr{
+	margin-top: 50px;
+	boar
+}
 .pay-method>button>span{
 		position: absolute;
 		bottom: -20px;
@@ -56,6 +60,14 @@
 	background-image: url("/resources/etc/naverpay.png");
 	background-size: cover;
 	}
+#my_coupon_list{
+	margin-top:5px;
+	background-image: url("/resources/etc/coupon.png");
+	background-size: cover;
+	margin-left: 37px;
+	width: 40px;
+	height: 40px;
+}
 .pay3-box{
 	margin-top :10px;
 	border-radius: 10px;

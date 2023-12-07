@@ -1,18 +1,51 @@
-@charset "UTF-8";
-
-
-
-li{
-	list-style: none;
-	margin: 15px 0 0 15px ;
+.roomType{
+		width: 95px;
+	}
+.throomNum{
+	width: 81px;
 }
-.modify-box{
-	border: solid 1px black;
-	padding: 10px;
+.throomType{
+		width: 115px;
+	}
+	
+.roomArea{
+	width: 91px;
 }
-.text1{
-
-	margin: 100px 0 0 15px ;
-	font-size: 45px;
-	font-weight: 600;
+.throomArea{
+	width: 111px;
+}
+.form-control{
+	text-align: center;
+}
+.roomStandardPeople,.roomCount{
+	width: 62px;
+}
+.throomStandardPeople,.throomCount{
+	width: 82px;
+}
+.roomFee{
+	width: 103px;
+}
+.throomFee{
+	width: 123px;
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.roomExplain,.roomName{
+	width: 260px;
+}
+.throomExplain,.throomName{
+	width: 280px;
+}
+.hotelListContainer{
+	width : 99%;
+ 	margin: 10px;
+ 	overflow-x: auto; 
+	
+}
+.th-bottun{
+	width: 140px;
 }

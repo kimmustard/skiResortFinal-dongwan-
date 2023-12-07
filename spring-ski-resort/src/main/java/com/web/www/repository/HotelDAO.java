@@ -19,4 +19,8 @@ public interface HotelDAO {
 
 	int selectRoomCnt();
 
+	void updateRoomCount();
+
+	int getRoomCount(int hotelRoomNum);
+
 }

@@ -110,6 +110,7 @@
 	border: solid 1px black;
 	margin: auto;
 	padding: 10px;
+	margin-top: 100px;
 }
 .notice-title{
 	color: black;
@@ -125,9 +126,60 @@
 .notice-reg{
 	color: #aaa;
 }
-.news-topic{
+.news-topic-box{
+	width: 100%;
+margin-top: 150px;
+}
+.box-title{
+	width :300px;
 	margin: auto;
+	text-align : center;
+	margin-top: 10px
+
 }
 .accommodations{
 	margin: auto;
 }
+.event-box{
+	margin-top: 150px;
+}
+   .bannerBox {
+      border-radius : 0 0 25px 25px;
+            margin: 30px auto;
+            overflow: hidden;
+            width: 1450px;
+            height: 400px;
+            position: relative;
+           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); 
+        }
+
+        .bannerUl {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            transition: transform 1s ease-in-out;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%; 
+        }
+
+        .bannerLi {
+            margin-right: 10px;
+            opacity: 1;
+            transition: opacity 1s ease-in-out;
+            width: 300px;
+            background-size: cover;
+            height: 100%;
+            display: inline;
+            background-color: yellow;
+        }
+
+        .bannerA {
+            text-decoration: none;
+            width: 1450px;
+            height: 100%;
+            display: flex; 
+            align-items: center; 
+        }
