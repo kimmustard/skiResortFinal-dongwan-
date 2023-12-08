@@ -16,7 +16,7 @@ local.properties
 .settings/
 .loadpath
 .recommenders
-outApiProperties.properties
+.outApiProperties.properties
 
 # External tool builders
 .externalToolBuilders/
