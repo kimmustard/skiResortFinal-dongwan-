@@ -56,9 +56,9 @@
 			</div>
 			<div class="category cbox7">
 				<a href="#"> 
-						<i class="bi bi-person-fill-slash"></i>
+					<i class="bi bi-mailbox2"></i>
 					<span class="category-span">
-						 회원탈퇴
+						 서비스알람
 					</span> 
 				</a>
 			</div>

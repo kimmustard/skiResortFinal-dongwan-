@@ -13,7 +13,7 @@
 <body>
 	<jsp:include page="../common/nav.jsp"></jsp:include>
 	
-<form action="/member/login" method="post">
+<form action="/member/login" method="post" >
 	<div class="bodyContainer">
 	<video width="100%" height="auto" autoplay loop muted>
 	<source src="https://www.chamonix.com/sites/default/files/media/videos/homepage-vallorcine%201.mp4" type="video/mp4">
@@ -26,13 +26,13 @@
 						<div class="form-group">
 							  <label class="col-form-label mt-4" for="inputDefault">
 							  </label>
-							  <input type="text" class="form-control" name="memberId" placeholder="아이디" id="inputDefault">
+							  <input type="text" class="form-control" name="memberId" placeholder="아이디" id="inputDefault" />
 						</div>
 						
 						 <div class="form-group">
 						      <label for="exampleInputPassword1" class="form-label mt-4">
 						      </label>
-						      <input type="password" class="form-control" name="memberPwd" id="exampleInputPassword1" placeholder="비밀번호" autocomplete="off">
+						      <input type="password" class="form-control" name="memberPwd" id="exampleInputPassword1" placeholder="비밀번호" autocomplete="off" />
 					    </div>
 					    <div class="btn-box">
 							<button type="submit" class="btn btn-primary login-btn">로그인</button> 
@@ -76,12 +76,22 @@
 		</div>
 	</div>
 </form>
+
 	<jsp:include page="../common/footer.jsp"></jsp:include>
 	<script type="text/javascript">
 		const isMod = `<c:out value="${isMod}" />`;
 		if(isMod == 1){
 			alert('회원 정보수정이 완료되었습니다. 안전을 위해 로그아웃이 진행됩니다.');
 		}
+		const isOk = `<c:out value="${isOk}" />`;
+		if(isOk == 1){
+			alert('탈퇴가 완료되었습니다.');
+		}
+		const errMsg = `<c:out value="${errMsg}" />`;
+		if(errMsg == 1){
+			alert('회원정보 오류입니다.');
+		}
+		
 	</script>
 	
 	<script type="text/javascript" src="/resources/js/member/MemberLogin.js"></script>

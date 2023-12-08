@@ -154,18 +154,18 @@
 						</form>
 						<hr>
 						<h3>모든 유저에게 쿠폰지급</h3>
-							<div class="form-group">
-						      <label for="coupon-spread-select1" class="form-label mt-4">지급할 유저 계층</label>
-						      <select class="form-select" id="coupon-spread-select1" name="">
-						        <option selected value="">등급 선택</option>
-						        <option value="All">모든유저</option>
-						        <option value="Bronze">브론즈</option>
-						        <option value="Silver">실버</option>
-						        <option value="Gold">골드</option>
-						        <option value="VIP">VIP</option>
-						  	 </select>
-	    					</div>
-	    					<form action="">
+	    					<form action="/developer/allSpreadCoupon" method="post">
+								<div class="form-group">
+							      <label for="coupon-spread-select1" class="form-label mt-4">지급할 유저 계층</label>
+							      <select class="form-select" id="coupon-spread-select1" name="memberGrade">
+							        <option selected value="">등급 선택</option>
+							        <option value="All">모든유저</option>
+							        <option value="Bronze">브론즈</option>
+							        <option value="Silver">실버</option>
+							        <option value="Gold">골드</option>
+							        <option value="VIP">VIP</option>
+							  	 </select>
+		    					</div>
 								<div class="input-group mb-3 delete-coupon">
 								      <input type="text" class="form-control" id="spreadCouponInput" name="couponCode" placeholder="전송할 쿠폰코드 입력" aria-label="Recipient's username" aria-describedby="button-addon2">
 								      <button class="btn btn-primary" type="submit" id="button-addon2">지급</button>

@@ -386,5 +386,31 @@ textarea{
 	width: 150px;
 }
 
+.member_leave>a{
+	position: absolute;
+	text-decoration-line: none;
+	right: 30px;
+	bottom: 10px;
+}
 
+.member-leave-btn{
+	border: none;
+	background-color: transparent;
+}
+
+.member_leave>a>.member-leave-btn>.bi-person-fill-slash,
+.member_leave>a>.member-leave-btn>span
+{
+	font-size: 20px;
+	color: gray;
+	cursor: pointer;
+}
+
+.memberLeaveText{
+	text-align: center;
+}
+
+.modal-body>.memberLeaveText>p{
+	font-weight: 600;
+}
 

@@ -83,6 +83,11 @@ public class MemberServiceImpl implements MemberService {
 	public MemberVO socialSearch(String memberId) {
 		return mdao.socialSearch(memberId);
 	}
+	
+	@Override
+	public int socialLeaveSearch(String memberId) {
+		return mdao.socialLeaveSearch(memberId);
+	}
 
 	// 광고체크 비동기로 받기
 	@Override
@@ -148,6 +153,16 @@ public class MemberServiceImpl implements MemberService {
 	public List<CouponGetDTO> getUserCouponList(long memberNum) {
 		return mdao.getUserCouponList(memberNum);
 	}
+
+	@Override
+	public int memberLeave(MemberVO mvo) {
+		//회원탈퇴 -> 회원탈퇴 로그 테이블에 기록남기기
+		
+		
+		return mdao.memberLeave(mvo);
+	}
+
+
 
 
 

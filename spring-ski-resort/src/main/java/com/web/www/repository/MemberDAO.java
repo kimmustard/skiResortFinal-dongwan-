@@ -37,7 +37,8 @@ public interface MemberDAO {
 	void socialRegister(MemberVO mvo);
 	
 	MemberVO socialSearch(String memberId);
-	
+	//탈퇴회원인지 체크
+	int socialLeaveSearch(String memberId);
 	
 	
 	
@@ -100,6 +101,9 @@ public interface MemberDAO {
 	int useCoupon(@Param("memberNum") long memberNum, @Param("couponCode")String couponCode);
 
 	void minousRoom(long memberNum);
+
+	int memberLeave(MemberVO mvo);
+
 
 
 

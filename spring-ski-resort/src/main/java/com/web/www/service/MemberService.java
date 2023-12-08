@@ -49,6 +49,7 @@ public interface MemberService {
 	 * @return OauthMemberVO omvo
 	 */
 	MemberVO socialSearch(String memberId);
+	int socialLeaveSearch(String memberId);
 
 	// 광고 체크 비동기로 받기
 	int cdCheck(MemberCheckDTO mcDto);
@@ -66,6 +67,9 @@ public interface MemberService {
 	int userCouponAdd(CouponGetDTO cgDto);
 
 	List<CouponGetDTO> getUserCouponList(long memberNum);
+
+	int memberLeave(MemberVO mvo);
+
 
 
 

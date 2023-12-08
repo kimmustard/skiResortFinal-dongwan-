@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.web.www.domain.coupon.CouponCreate;
+import com.web.www.domain.coupon.CouponSpread;
 import com.web.www.domain.coupon.CouponSystem;
 import com.web.www.domain.hotel.RoomVO;
 import com.web.www.domain.member.AuthUser;
@@ -119,6 +120,19 @@ public class AdminController {
 		return "redirect:/developer/settingCoupon";
 	}
 	
+	
+	@PostMapping("/allSpreadCoupon")
+	public String allSpreadCoupon(@Validated @ModelAttribute("cps")CouponSpread cps,BindingResult bindingResult , RedirectAttributes rttr) {
+		
+		if(bindingResult.hasErrors()) {
+			rttr.addFlashAttribute("isOk", 3);
+			return "redirect:/developer/settingCoupon";
+		}
+		
+		int isOk = asv.allSpreadCoupon(cps);
+		rttr.addFlashAttribute("isOk", isOk);
+		return "redirect:/developer/settingCoupon";
+	}
 	
 	/*************************************
 	 * @Developer 관리자 페이지 "호텔 관리"

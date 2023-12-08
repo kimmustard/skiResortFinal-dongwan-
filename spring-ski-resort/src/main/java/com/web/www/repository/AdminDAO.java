@@ -3,6 +3,7 @@ package com.web.www.repository;
 import java.util.List;
 
 import com.web.www.domain.coupon.CouponCreate;
+import com.web.www.domain.coupon.CouponSpread;
 import com.web.www.domain.coupon.CouponSystem;
 import com.web.www.domain.member.MemberVO;
 import com.web.www.security.AuthVO;
@@ -30,6 +31,12 @@ public interface AdminDAO {
 	int couponRemove(String couponCode);
 
 	long spreadCouponMemberGet(String memberId);
+
+	List<Long> noSpreadCouponMemberGet(CouponSpread cps);
+	List<Long> allSpreadCouponMemberGet(CouponSpread cps);
+
+	void allSpreadCoupon(CouponSpread cps);
+
 
 
 }

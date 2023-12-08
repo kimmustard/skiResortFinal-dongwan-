@@ -47,4 +47,17 @@
   	<select id="spreadCouponMemberGet" resultType="long">
   		select member_num from member where member_id = #{memberId}
   	</select>
+  	
+  	<select id="allSpreadCouponMemberGet" resultType="long">
+  		select member_num from member where member_del = 'N'
+  	</select>
+  	
+  	<select id="noSpreadCouponMemberGet" resultType="long">
+  		select member_num from member where member_del = 'N' and member_grade = #{memberGrade}
+  	</select>
+  	
+  	<insert id="allSpreadCoupon">
+  		insert into coupon
+  	</insert>
+  	
   </mapper>

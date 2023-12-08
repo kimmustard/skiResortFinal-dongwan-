@@ -182,3 +182,26 @@ async function pwdUpdateLastCheck(event) {
     // 중복 체크 및 비밀번호 체크 통과 시에 폼 제출
     event.target.submit(); // 폼 제출
 }
+
+
+
+//회원탈퇴 체크
+async function leaveLastCheck(event) {
+    event.preventDefault(); // 폼 제출 방지
+
+    // 비밀번호체크
+    const pwd1 = document.getElementById('memberLeavePassword1').value;
+    const pwd2 = document.getElementById('memberLeavePassword2').value;
+    if (pwd1 == null || pwd2 == null) {
+        alert('공백은 불가능합니다.');
+        return false;
+    }
+
+
+    if (pwd1 != pwd2) {
+        alert('비밀번호가 일치하는지 확인해주세요');
+        return false;
+    }
+
+    event.target.submit(); // 폼 제출
+}
