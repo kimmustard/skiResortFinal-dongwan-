@@ -34,4 +34,11 @@ member_id varchar(100) not null,
 auth varchar(50) not null
 );
 
+## member 탈퇴관련 테이블 12-09
+create table member_leave(
+member_num bigint not null,
+member_type varchar(20),
+leave_reg_at datetime default now()
+);
+
 

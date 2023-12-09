@@ -51,6 +51,12 @@
 		update member set member_del = 'Y' where member_num = #{memberNum} and member_id = #{memberId}
 	</update>
 	
+	<!-- 탈퇴 이후 로그 저장 -->
+	<insert id="memberLeaveLegAt">
+		insert into member_leave(member_num, member_type)
+		value(#{memberNum}, #{memberType})
+	</insert>
+	
 	<!-- 시큐리티 userDetail클래스 DB 선접근 mapper -->
 	<select id="selectMemberId" resultType="com.web.www.domain.member.MemberVO">
 		select * from member where member_id = #{memberId} and member_del = 'N'

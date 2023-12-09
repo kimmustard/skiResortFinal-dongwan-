@@ -104,6 +104,8 @@ public interface MemberDAO {
 
 	int memberLeave(MemberVO mvo);
 
+	void memberLeaveLegAt(MemberVO mvo);
+
 
 
 

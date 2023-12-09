@@ -154,11 +154,12 @@ public class MemberServiceImpl implements MemberService {
 		return mdao.getUserCouponList(memberNum);
 	}
 
+	@Transactional
 	@Override
 	public int memberLeave(MemberVO mvo) {
 		//회원탈퇴 -> 회원탈퇴 로그 테이블에 기록남기기
 		
-		
+		mdao.memberLeaveLegAt(mvo);
 		return mdao.memberLeave(mvo);
 	}
 
