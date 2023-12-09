@@ -65,12 +65,12 @@
 	height: 100%;
 	border-bottom-left-radius: 30px;
 	border-bottom-right-radius: 30px;
-	box-shadow: 0 10px 15px rgba(0, 0, 0, 0.7); 
+	box-shadow: 0 20px 15px rgba(0, 0, 0, 0.7); 
 }
 
 .findBoxContainer>img{
 	position: absolute;
-	top: 30px;
+	top: 15px;
 	left: 37%;
 }
 

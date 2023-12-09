@@ -23,23 +23,24 @@
 			<a id="find-pwd-menu" href="/member/findPwd">비밀번호찾기</a>
 		</div>
 		
-		<div class="findBoxContainer">
-			<img alt="" width="180" height="160" src="/resources/etc/logo_basic.png">
-			<div class="findBox find-id-box">
-				<label for="findId-id-input">아이디</label>
-				<input type="text" id="findId-id-input" name="memberId" placeholder="아이디를 입력해주세요.">
+		<form action="/member/findPwd" method="post">
+			<div class="findBoxContainer">
+				<img alt="" width="180" height="160" src="/resources/etc/logo_basic.png">
+				<div class="findBox find-id-box">
+					<label for="findId-id-input">아이디</label>
+					<input type="text" id="findId-id-input" name="memberId" placeholder="아이디를 입력해주세요.">
+				</div>
+				<div class="findBox find-email-box">
+					<label for="findId-email-input">이메일</label>
+					<input type="text" id="findId-email-input" name="memberEmail" placeholder="이메일을 입력해주세요.">
+				</div>
+				
+				<div class="findBox find-btn-box">
+					<button class="btnBox" id="id-btn" type="submit">비밀번호찾기</button>
+					<a href="/"><button class="btnBox" id="main-btn" type="button">메인으로</button></a> 
+				</div>
 			</div>
-			<div class="findBox find-email-box">
-				<label for="findId-email-input">이메일</label>
-				<input type="text" id="findId-email-input" name="memberEmail" placeholder="이메일을 입력해주세요.">
-			</div>
-			
-			<div class="findBox find-btn-box">
-				<button class="btnBox" id="id-btn" type="submit">비밀번호찾기</button>
-				<a href="/"><button class="btnBox" id="main-btn" type="button">메인으로</button></a> 
-			</div>
-		</div>
-	
+		</form>
 	
 	</div>
 	</div>

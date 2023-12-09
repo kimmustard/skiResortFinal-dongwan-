@@ -19,7 +19,7 @@
 	<source src="https://www.chamonix.com/sites/default/files/media/videos/homepage-vallorcine%201.mp4" type="video/mp4">
 	</video>
 		<span id="Title-1">ダイスキー</span>
-		<span id="Title-2">DAISUKI resort</span>
+		<span id="Title-2">DAISUSKI RESORT</span>
 		<div id="Title-3"></div>
 		<div class="loginTool">
 			<div class="loginContainer">

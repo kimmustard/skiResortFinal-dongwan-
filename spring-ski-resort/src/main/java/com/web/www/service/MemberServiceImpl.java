@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.web.www.domain.coupon.CouponGetDTO;
 import com.web.www.domain.coupon.CouponSystem;
+import com.web.www.domain.member.FindIdDTO;
 import com.web.www.domain.member.MemberCheckDTO;
 import com.web.www.domain.member.MemberPwdDTO;
 import com.web.www.domain.member.MemberVO;
@@ -161,6 +162,16 @@ public class MemberServiceImpl implements MemberService {
 		
 		mdao.memberLeaveLegAt(mvo);
 		return mdao.memberLeave(mvo);
+	}
+
+	
+	/**
+	 * @findId 아이디 찾기
+	 * @findPWd 패스워드 찾기
+	 */
+	@Override
+	public String findId(FindIdDTO fiDTO) {
+		return mdao.findId(fiDTO);
 	}
 
 

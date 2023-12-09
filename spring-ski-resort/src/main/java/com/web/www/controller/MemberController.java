@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.web.www.domain.member.AuthUser;
+import com.web.www.domain.member.FindIdDTO;
 import com.web.www.domain.member.MemberPwdDTO;
 import com.web.www.domain.member.MemberVO;
 import com.web.www.domain.member.ModifyMemberDTO;
@@ -171,13 +172,37 @@ public class MemberController {
 	}
 	
 	@GetMapping("/findId")
-	public String findId() {
-		
+	public String findIdFrom(Model model) {
+		model.addAttribute("fiDTO", new FindIdDTO());
 		return "/member/findId";
 	}
 	
+	@PostMapping("/findId")
+	public String findIdPost(@Validated @ModelAttribute("fiDTO")FindIdDTO fiDTO, 
+			BindingResult bindingResult, RedirectAttributes rttr, Model model) {
+		
+		if(bindingResult.hasErrors()) {
+			return "/member/findId";
+		}
+		
+		String memberId = msv.findId(fiDTO);
+		
+		if(memberId != null) {
+			rttr.addFlashAttribute("memberId", memberId);
+			return "redirect:/member/findIdResult";
+		}
+		
+		rttr.addFlashAttribute("isOk", 1);
+		return "redirect:/member/findId";
+	}
+	
+	@GetMapping("/findIdResult")
+	public String findIdResult() {
+		return "/member/findIdResult";
+	}
+	
 	@GetMapping("/findPwd")
-	public String findPwd() {
+	public String findPwdFrom() {
 		
 		return "/member/findPwd";
 	}

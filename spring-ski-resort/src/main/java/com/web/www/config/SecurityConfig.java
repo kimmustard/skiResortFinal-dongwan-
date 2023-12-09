@@ -77,7 +77,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.antMatchers("/","/board/*","/upload/**","/resources/**",
 				"/member/login","/member/register","/rental/*","/hotel/*","/member/check/**",
 				"/oauth/*","/oauth/naver/*","/oauth/kakao/*","/oauth/google/*","/notice/**","/weather/**",
-				"/pay/**","/qna/**","/developer/**","/resort/**","/member/findId","/member/findPwd").permitAll()	//게스트 이용가능한 URL매핑
+				"/pay/**","/qna/**","/developer/**","/resort/**","/member/findId","/member/findPwd","/member/findIdResult").permitAll()	//게스트 이용가능한 URL매핑
 		.anyRequest().authenticated();	// 나머지 사용자 처리
 		
 		
