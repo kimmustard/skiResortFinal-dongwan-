@@ -174,6 +174,17 @@ public class MemberServiceImpl implements MemberService {
 		return mdao.findId(fiDTO);
 	}
 
+	@Override
+	public int findPwd(FindIdDTO fiDTO) {
+		return mdao.findPwd(fiDTO);
+	}
+
+	@Override
+	public void findPwdUpdate(FindIdDTO fiDTO) {
+		mdao.findPwdUpdate(fiDTO);
+	}
+
+
 
 
 

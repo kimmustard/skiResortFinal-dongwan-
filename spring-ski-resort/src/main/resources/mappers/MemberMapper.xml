@@ -63,6 +63,15 @@
 		where member_email = #{memberEmail} and member_name = #{memberName} and member_type = 'normal'
 	</select>
 	
+	<select id="findPwd" resultType="int">
+		select count(*) from member
+		where member_id = #{memberId} and member_email = #{memberEmail} and member_type = 'normal'
+	</select>
+	
+	<update id="findPwdUpdate">
+		update member set member_pwd = #{memberPwd} 
+		where member_id = #{memberId} and member_email = #{memberEmail} and member_type = 'normal'
+	</update>
 	
 	<!-- 시큐리티 userDetail클래스 DB 선접근 mapper -->
 	<select id="selectMemberId" resultType="com.web.www.domain.member.MemberVO">

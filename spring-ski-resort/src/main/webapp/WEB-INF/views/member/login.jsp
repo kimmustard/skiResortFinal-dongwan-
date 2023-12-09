@@ -92,6 +92,12 @@
 		if(errMsg == 1){
 			alert('회원정보 오류입니다.');
 		}
+		const isPwd = `<c:out value="${isPwd}" />`;
+		if(isPwd == 1){
+			alert('이메일에 발송된 임시 비밀번호를 확인 후 로그인 해주세요.');
+		}else if(isPwd == 2){
+			alert('회원정보 오류입니다.');
+		}
 		
 	</script>
 	

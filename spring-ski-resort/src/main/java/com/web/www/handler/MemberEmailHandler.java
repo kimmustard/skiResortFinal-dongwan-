@@ -45,6 +45,22 @@ public class MemberEmailHandler {
 		return Integer.toString(authNumber);
 	}
 	
+	//임시 비밀번호 발송 양식
+	public String pwdEmail(String email) {
+		makeRandomNumber();
+		String setFrom = ".com"; // email-config에 설정한 자신의 이메일 주소를 입력 
+		String toMail = email;
+		String title = "다이스키 리조트 임시 비밀번호 이메일 입니다."; // 이메일 제목 
+		String content = 
+				"다이스키 리조트 홈페이지를 방문해주셔서 감사합니다." + 	//html 형식으로 작성 ! 
+						"<br><br>" + 
+						"임시 비밀번호는 <font color=\"red\" style=\"font-weight:bold;\">" + authNumber + " </font>입니다." + 
+						"<br>" + 
+						"해당 비밀번호로 로그인 이후 반드시 비밀번호를 변경해주세요."; //이메일 내용 삽입
+		mailSend(setFrom, toMail, title, content);
+		return Integer.toString(authNumber);
+	}
+	
 	//이메일 전송 메소드
 	public void mailSend(String setFrom, String toMail, String title, String content) { 
 		MimeMessage message = mailSender.createMimeMessage();

@@ -73,6 +73,10 @@ public interface MemberService {
 
 	String findId(FindIdDTO fiDTO);
 
+	int findPwd(FindIdDTO fiDTO);
+
+	void findPwdUpdate(FindIdDTO fiDTO);
+
 
 
 
