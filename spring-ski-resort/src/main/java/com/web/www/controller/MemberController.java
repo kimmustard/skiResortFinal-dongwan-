@@ -1,7 +1,5 @@
 package com.web.www.controller;
 
-import java.security.Principal;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -148,10 +146,10 @@ public class MemberController {
 	public String memberLeave(@AuthUser MemberVO mvo, @RequestParam("memberPwd")String memberPwd, 
 			RedirectAttributes rttr, Model model, HttpServletRequest request, HttpServletResponse response) {
 		
-//		if(!(bcEncoder.matches(memberPwd, mvo.getMemberPwd()))) {
-//			rttr.addFlashAttribute("isLeave", 1);
-//			return "redirect:/member/detail";
-//		}
+		if(!(bcEncoder.matches(memberPwd, mvo.getMemberPwd()))) {
+			rttr.addFlashAttribute("isLeave", 1);
+			return "redirect:/member/detail";
+		}
 		
 		
 		int isOk = msv.memberLeave(mvo);
@@ -161,7 +159,16 @@ public class MemberController {
 	}
 
 	
-	
+	@PostMapping("/socialDaisukiLeave")
+	public String socialMemberLeave(@AuthUser MemberVO mvo, RedirectAttributes rttr, 
+			Model model, HttpServletRequest request, HttpServletResponse response) {
+		
+		
+		int isOk = msv.memberLeave(mvo);
+		rttr.addFlashAttribute("isOk", isOk);
+		logout(request, response);
+		return "redirect:/member/login";
+	}
 	
 	
 	

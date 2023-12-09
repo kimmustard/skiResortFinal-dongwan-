@@ -62,7 +62,6 @@ public class OauthLoginController {
 		
 		/* 네이버아이디로 인증 URL을 생성하기 위하여 naverLoginBO클래스의 getAuthorizationUrl메소드 호출 */ 
 		String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
-		log.info("네이버 url = {}" , naverAuthUrl); //네이버 
 		return naverAuthUrl; 
 	 }
 
@@ -76,17 +75,16 @@ public class OauthLoginController {
 		
 		//로그인 사용자 정보를 읽어옵니다.
 		String apiResult = null;
-		apiResult = naverLoginBO.getUserProfile(oauthToken);	
-		log.info("naver######### =  {}" , code);
+		apiResult = naverLoginBO.getUserProfile(oauthToken);
 		
 		// JSON 유저 정보 파싱 -> DB에 저장 -> mvo에 담기
 		MemberVO mvo = parser.naverUser(apiResult);
 		
 		// 탈퇴회원이면?
 		if(mvo == null) {
-			Oauth2logout.naverLogout(code);
+			Oauth2logout.naverLogout(oauthToken.getAccessToken());
 			rttr.addFlashAttribute("errMsg", 1);
-			return "redirect:/";
+			return "redirect:/member/login";
 		}
 		
 		//인증권한 세팅 메서드 
@@ -119,7 +117,7 @@ public class OauthLoginController {
 			@RequestParam(value = "code", required = false) String code, RedirectAttributes rttr) throws Exception {
 		
 		String access_Token = kakaoLoginBO.getAccessToken(code);
-        log.info("kakao######### = {}", access_Token);
+
 		// JSON 유저 정보 파싱 -> DB에 저장 -> mvo에 담기
 		MemberVO mvo = parser.kakaoUser(access_Token);
 
@@ -127,7 +125,7 @@ public class OauthLoginController {
 		if(mvo == null) {
 			Oauth2logout.kakaoLogout(access_Token);
 			rttr.addFlashAttribute("errMsg", 1);
-			return "redirect:/";
+			return "redirect:/member/login";
 		}
 		
 		//인증권한 세팅 메서드
@@ -142,10 +140,9 @@ public class OauthLoginController {
 	// 로그인 첫 화면 요청
 	@ResponseBody
 	@RequestMapping("/google/login")
-	public String login(HttpServletRequest request) {
+	public String login() {
 		//구글 code 발행
 		String googleAuthUrl = googleLoginBO.getGoogleUrl();
-
 		return  googleAuthUrl;
 	}
 	
@@ -159,12 +156,12 @@ public class OauthLoginController {
 	
 		// JSON 유저 정보 파싱 -> DB에 저장 -> mvo에 담기
 		MemberVO mvo = parser.googleUser(userInfo);
-		log.info("google####### = {}", code);
+
 		// 탈퇴회원이면?
 		if(mvo == null) {
 			Oauth2logout.googleLogout(code);
 			rttr.addFlashAttribute("errMsg", 1);
-			return "redirect:/";
+			return "redirect:/member/login";
 		}
 		
 		
@@ -182,14 +179,6 @@ public class OauthLoginController {
 		Authentication authentication = 
 				new UsernamePasswordAuthenticationToken(OauthUser, null, OauthUser.getAuthorities());
 		SecurityContextHolder.getContext().setAuthentication(authentication);
-	}
-	
-	
-	//탈퇴회원 확인시 세션 로그아웃
-	private void logout(HttpServletRequest request, HttpServletResponse response) {
-		//사용자 정보를 찾는 인자
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		new SecurityContextLogoutHandler().logout(request, response, auth);
 	}
 	
 }	
