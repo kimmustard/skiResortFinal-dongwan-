@@ -16,7 +16,7 @@
 			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 			allowfullscreen> </iframe>
 		<h1 id="maintext1">好き</h1>
-		<h1 id="maintext2">Daisuski</h1>
+		<h1 id="maintext2">DAISUSKI</h1>
 
 
 		<div id="wrapper">

@@ -24,14 +24,19 @@
 
 	<nav class="ski-navbar" id="ski-navbar">
 	<nav id="hide"></nav>
+  	<div class="main-title-logo">
+  		<img alt="" width="110" height="90" src="/resources/etc/logo_white.png">
+  	</div>
   <div class="ski-collapse">
     <a class="ski-navbar-brand" id="ski-navbar-brand" href="/">다이스키<span class="nav-ani"></span></a>
-    
-       <div class="ski-nav-link" id="ski-nav-link"><a href="/rental/fee-info">렌탈<span class="nav-ani"></span></a></div>
-       <div class="ski-nav-link" id="ski-nav-link"><a href="/pay/testForm">결제테스트<span class="nav-ani"></span></a></div>
-       <div class="ski-nav-link" id="ski-nav-link"><a href="/qna/list">Q&A <span class="nav-ani"></span></a></div>
-       <div class="ski-nav-link" id="ski-nav-link"><a href="/notice/list">공지사항 <span class="nav-ani"></span></a></div>
-       <div class="ski-nav-link" id="ski-nav-link"><a href="/hotel/reservation">예약 <span class="nav-ani"></span></a></div>
+    	
+       <div class="ski-nav-link" id="ski-nav-link"><a href="/notice/list"> NEWS <span class="nav-ani"></span></a></div>
+       <div class="ski-nav-link" id="ski-nav-link"><a href="/resort/resortForm"> RESORT <span class="nav-ani"></span></a></div>
+       <div class="ski-nav-link" id="ski-nav-link"><a href="/rental/fee-info">SKI / RENTAL <span class="nav-ani"></span></a></div>
+       <div class="ski-nav-link" id="ski-nav-link"><a href="/hotel/reservation"> HOTEL <span class="nav-ani"></span></a></div>
+       <div class="ski-nav-link" id="ski-nav-link"><a href="/qna/list"> SERVICE <span class="nav-ani"></span></a></div>
+       <div class="ski-nav-link" id="ski-nav-link"><a href="#"> BUS <span class="nav-ani"></span></a></div>
+       <div class="ski-nav-link" id="ski-nav-link"><a href="/pay/testForm"> 작업실 <span class="nav-ani"></span></a></div>
        <ul class="ski-side-navbar">
        	<sec:authorize access="isAnonymous()">
 	       	<li><a href="/member/login">로그인</a></li>
