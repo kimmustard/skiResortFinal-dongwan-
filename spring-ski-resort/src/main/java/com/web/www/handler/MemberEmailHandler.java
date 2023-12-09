@@ -1,6 +1,6 @@
 package com.web.www.handler;
 
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
@@ -8,6 +8,7 @@ import javax.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
 import lombok.extern.slf4j.Slf4j;
@@ -23,10 +24,12 @@ public class MemberEmailHandler {
 	
 	public void makeRandomNumber() {
 		// 난수의 범위 111111 ~ 999999 (6자리 난수)
-		Random random = new Random();
-		int checkNum = random.nextInt(888888) + 111111;
-		log.info("인증번호 = {} ", checkNum);
-		authNumber = checkNum;
+		authNumber = ThreadLocalRandom.current().nextInt(111111, 999999 + 1);
+	    log.info("인증번호 = {} ", authNumber);
+//		Random random = new Random();
+//		int checkNum = random.nextInt(888888) + 111111;
+//		log.info("인증번호 = {} ", checkNum);
+//		authNumber = checkNum;
 	}
 	
 	//이메일 양식
@@ -54,7 +57,7 @@ public class MemberEmailHandler {
 		String content = 
 				"다이스키 리조트 홈페이지를 방문해주셔서 감사합니다." + 	//html 형식으로 작성 ! 
 						"<br><br>" + 
-						"임시 비밀번호는 <font color=\"red\" style=\"font-weight:bold;\">" + authNumber + " </font>입니다." + 
+						"임시 비밀번호는 <font color=\"red\" style=\"font-weight:bold;\">" + authNumber + "</font> 입니다." + 
 						"<br>" + 
 						"해당 비밀번호로 로그인 이후 반드시 비밀번호를 변경해주세요."; //이메일 내용 삽입
 		mailSend(setFrom, toMail, title, content);
@@ -62,6 +65,7 @@ public class MemberEmailHandler {
 	}
 	
 	//이메일 전송 메소드
+	@Async("WeatherInit")
 	public void mailSend(String setFrom, String toMail, String title, String content) { 
 		MimeMessage message = mailSender.createMimeMessage();
 		// true 매개값을 전달하면 multipart 형식의 메세지 전달이 가능.문자 인코딩 설정도 가능하다.

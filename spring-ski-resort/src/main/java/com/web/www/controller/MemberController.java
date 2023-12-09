@@ -213,22 +213,23 @@ public class MemberController {
 	public String findPwdPost(@Validated @ModelAttribute("fiDTO")FindIdDTO fiDTO, 
 			BindingResult bindingResult, RedirectAttributes rttr) {
 		
-		int isPwd = msv.findPwd(fiDTO);
 		
-		if(isPwd > 0) {
-			String memberPwd = bcEncoder.encode(mailService.pwdEmail(fiDTO.getMemberEmail()));
-			fiDTO.setMemberPwd(memberPwd);
-			
-			msv.findPwdUpdate(fiDTO);
-			
+		int isPwd = msv.findPwd(fiDTO);
+		if(isPwd == 0) {
 			rttr.addFlashAttribute("isPwd", isPwd);
 			return "redirect:/member/login";
-		}else {
-			
-			rttr.addFlashAttribute("isPwd", isPwd);
-			return "redirect:/member/login";
-			
 		}
+		
+		String tempPwd = mailService.pwdEmail(fiDTO.getMemberEmail());
+
+		String memberPwd = bcEncoder.encode(tempPwd);
+		fiDTO.setMemberPwd(memberPwd);
+			
+		msv.findPwdUpdate(fiDTO);
+			
+		rttr.addFlashAttribute("isPwd", isPwd);
+		return "redirect:/member/login";
+		
 	}
 	
 	
