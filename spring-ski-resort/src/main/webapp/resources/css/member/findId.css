@@ -1,0 +1,122 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Jua&family=Sunflower:wght@300;500&display=swap');
+
+.bodyContainer {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.bodyContainer>video{
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  filter: brightness(0.8);
+}
+
+.findMainBody{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+	width: 700px;
+	height: 500px;
+	border-radius: 30px;
+}
+
+.findMenu{
+	display: flex;
+	justify-content: space-around;
+}
+
+.findMenu>a{
+	font-family: 'Jua', sans-serif;
+	font-size: 25px;
+	font-weight: 400;
+	color: rgb(20, 20, 20);
+	text-decoration: none;
+	width: 350px;
+	cursor: pointer;
+	text-align: center;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.findMenu>#find-id-menu, .findMenu>#find-pwd-menu{
+	background-color: rgba(255, 255, 255, 0.9);
+	border-top-right-radius: 30px;
+	border-top-left-radius: 30px;
+}
+
+.findMenu>#find-pwd-menu{
+	background-color: rgba(255, 255, 255, 0.4);
+}
+
+.findBoxContainer{
+	display: flex;
+	position: relative;
+	flex-direction: column;
+	justify-content: center;
+	align-content: center;
+	background-color: rgba(255, 255, 255, 0.9);
+	height: 100%;
+	border-bottom-left-radius: 30px;
+	border-bottom-right-radius: 30px;
+	box-shadow: 0 10px 15px rgba(0, 0, 0, 0.7); 
+}
+
+.findBoxContainer>img{
+	position: absolute;
+	top: 30px;
+	left: 37%;
+}
+
+.findBoxContainer{
+	padding-top: 170px;
+}
+
+.findBox>input{
+	border: none;
+	width: 300px;
+ 	background-color: inherit;
+ 	border-width: 0 0 1px;
+ 	outline: none;
+ 	border-bottom: solid #aaa 2.5px;
+}
+
+.findBox>label{
+	font-family: 'Sunflower', sans-serif;
+	font-size: 20px;
+	font-weight: 400;
+}
+
+.findBoxContainer>.findBox{
+	margin-top: 20px;
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+.btnBox{
+	font-family: 'Sunflower', sans-serif;
+	font-size: 20px;
+	margin-left: 40px;
+	margin-right: 40px;
+	color: white;
+	border: none;
+	width: 150px;
+	height: 40px;
+	background-color: black;
+}
+
+.find-email-box>input{
+	margin-left: 15px;
+}
+.find-pwd-box>input{
+	margin-left: 30px;
+}
+
+
+/***********************************************/

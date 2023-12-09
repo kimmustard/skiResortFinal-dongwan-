@@ -28,7 +28,9 @@
   		<img alt="" width="110" height="90" src="/resources/etc/logo_white.png">
   	</div>
   <div class="ski-collapse">
-    <a class="ski-navbar-brand" id="ski-navbar-brand" href="/">다이스키<span class="nav-ani"></span></a>
+    <a class="ski-navbar-brand" id="ski-navbar-brand" href="/">
+    	<img width="40" height="40" src="/resources/etc/icons/ski-icon.png">다이스키<span class="nav-ani"></span>
+    </a>
     	
        <div class="ski-nav-link" id="ski-nav-link"><a href="/notice/list"> NEWS <span class="nav-ani"></span></a></div>
        <div class="ski-nav-link" id="ski-nav-link"><a href="/resort/resortForm"> RESORT <span class="nav-ani"></span></a></div>

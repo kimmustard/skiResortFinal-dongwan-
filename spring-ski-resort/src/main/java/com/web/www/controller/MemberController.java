@@ -170,6 +170,23 @@ public class MemberController {
 		return "redirect:/member/login";
 	}
 	
+	@GetMapping("/findId")
+	public String findId() {
+		
+		return "/member/findId";
+	}
+	
+	@GetMapping("/findPwd")
+	public String findPwd() {
+		
+		return "/member/findPwd";
+	}
+	
+	
+	
+	
+	
+	
 	
 	
 	// sub 로그아웃 컨트롤러

@@ -10,11 +10,26 @@
 <body>
 	<jsp:include page="common/nav.jsp"></jsp:include>
 	<div class="ytLandscape" id="ytLandscape">
-		<iframe
+	<!-- 	<iframe
 			src="https://www.youtube.com/embed/h1VWRkX8vD8?si=hXoOA0167YGh5z27&autoplay=1&mute=1&controls=0&loop=1&playlist=h1VWRkX8vD8&modestbranding=1"
 			title="YouTube video player" frameborder="0"
 			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-			allowfullscreen> </iframe>
+			allowfullscreen> </iframe> -->
+			
+		<!-- 	<iframe
+			src="https://www.youtube-nocookie.com/embed/4hESncfGTyE?si=2klehek2I1xT6Nts&autoplay=1&mute=1&loop=1&amp;controls=0" 
+			title="YouTube video player" 
+			frameborder="0" 
+			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+			allowfullscreen></iframe> -->
+		
+			<iframe width="560" height="315" 
+			src="https://www.youtube.com/embed/fbqHK8i-HdA?si=x8stsZdudUJ74Zay&autoplay=1&mute=1&loop=1&amp;controls=0&amp;start=250" 
+			title="YouTube video player" 
+			frameborder="0" 
+			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+			allowfullscreen></iframe>
+			
 		<h1 id="maintext1">好き</h1>
 		<h1 id="maintext2">DAISUSKI</h1>
 

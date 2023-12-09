@@ -20,6 +20,7 @@
 	</video>
 		<span id="Title-1">ダイスキー</span>
 		<span id="Title-2">DAISUKI resort</span>
+		<div id="Title-3"></div>
 		<div class="loginTool">
 			<div class="loginContainer">
 				<div class="login-box">
@@ -40,8 +41,8 @@
 						</div>
 						
 						<div class="a-box">
-							<a href="#">아이디 찾기</a>
-							<a href="#">비밀번호 찾기</a>
+							<a href="/member/findId">아이디 찾기</a>
+							<a href="/member/findPwd">비밀번호 찾기</a>
 						</div>
 						
 				
