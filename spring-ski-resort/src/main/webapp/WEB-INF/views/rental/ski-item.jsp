@@ -48,9 +48,9 @@
 				<div class="itemInfo">
 					<div class="itemImageBox" id="lowItemImageBox">
 						<c:forEach items="${skiLowItem }" var="lowItem">
-							<div>
+							<div class="slide">
 								<!-- 이미지파일 -->
-								<img alt="SkiLowItem" data-name="${lowItem.rentalListLowItem }" src="/upload/${fn: replace(lowItem.fileSave,'\\','/')}/${lowItem.fileUuid}_${lowItem.fileName}">
+								<img alt="SkiLowItem" data-name="${lowItem.rentalListLowItem }" src="${lowItem.imageUrl }">
 							</div>
 						</c:forEach>
 					</div>
@@ -61,9 +61,9 @@
 					
 					<div class="itemImageBox" id="midItemImageBox" style="display: none;">
 						<c:forEach items="${skiMidItem }" var="midItem">
-							<div>
+							<div class="slide">
 								<!-- 이미지파일 -->
-								<img alt="SkiMidItem" data-name="${midItem.rentalListMidItem }" src="/upload/${fn: replace(midItem.fileSave,'\\','/')}/${midItem.fileUuid}_${midItem.fileName}">
+								<img alt="SkiMidItem" data-name="${midItem.rentalListMidItem }" src="${midItem.imageUrl }">
 							</div>
 						</c:forEach>
 					</div>
@@ -76,9 +76,9 @@
 					<div class="itemImageBox" id="premiumItemImageBox" style="display: none;">
 						
 						<c:forEach items="${skiPremiumItem }" var="premiumItem">
-							<div id="image">
+							<div class="slide">
 								<!-- 이미지파일 -->
-								<img alt="SkiPremiumItem" data-name="${premiumItem.rentalListPremiumItem }" src="/upload/${fn: replace(premiumItem.fileSave,'\\','/')}/${premiumItem.fileUuid}_${premiumItem.fileName}">
+								<img alt="SkiPremiumItem" data-name="${premiumItem.rentalListPremiumItem }" src="${premiumItem.imageUrl }">
 								
 							</div>
 						</c:forEach>
@@ -98,10 +98,10 @@
 		</div>
 		
 		
-		<div class="shopContainer">
+		<div class="shopContainer" style="display: none;">
 			<div class="shoppingBasket">
 				<p class="fs-4">장바구니</p>
-				
+				<a href="/rental/item-reserve"><button type="button" class="btn btn-outline-info reserveBtn">예약신청하기</button></a>
 			</div>
 		</div>
 		

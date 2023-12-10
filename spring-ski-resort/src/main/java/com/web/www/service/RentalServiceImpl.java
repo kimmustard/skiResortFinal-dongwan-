@@ -121,6 +121,12 @@ public class RentalServiceImpl implements RentalService{
 		return rdao.rentalItemCntCheck();
 	}
 
+	@Override
+	public int rentalItemImageCntCheck() {
+		
+		return rdao.rentalItemImageCntCheck();
+	}
+
 	
 
 

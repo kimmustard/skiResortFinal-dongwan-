@@ -44,9 +44,9 @@
 				<div class="itemInfo">	
 					<div class="itemImageBox" id="lowItemImageBox">
 						<c:forEach items="${boardLowItem }" var="lowItem">
-							<div>
+							<div class="slide">
 								<!-- 이미지파일 -->
-								<img alt="BoardLowItem" data-name="${lowItem.rentalListLowItem }" src="/upload/${fn: replace(lowItem.fileSave,'\\','/')}/${lowItem.fileUuid}_${lowItem.fileName}">
+								<img alt="BoardLowItem" data-name="${lowItem.rentalListLowItem }" src="${lowItem.imageUrl }">
 							</div>
 						</c:forEach>
 					</div>
@@ -57,9 +57,9 @@
 					<div class="itemImageBox" id="midItemImageBox" style="display: none;">
 						
 						<c:forEach items="${boardMidItem }" var="midItem">
-							<div>
+							<div class="slide">
 								<!-- 이미지파일 -->
-								<img alt="BoardMidItem" data-name="${midItem.rentalListMidItem }" src="/upload/${fn: replace(midItem.fileSave,'\\','/')}/${midItem.fileUuid}_${midItem.fileName}">
+								<img alt="BoardMidItem" data-name="${midItem.rentalListMidItem }" src="${midItem.imageUrl }">
 							</div>
 						</c:forEach>
 						
@@ -72,9 +72,9 @@
 					<div class="itemImageBox" id="premiumItemImageBox" style="display: none;">
 						
 						<c:forEach items="${boardPremiumItem }" var="premiumItem">
-							<div>
+							<div class="slide">
 								<!-- 이미지파일 -->
-								<img alt="BoardPremiumItem" data-name="${premiumItem.rentalListPremiumItem }" src="/upload/${fn: replace(premiumItem.fileSave,'\\','/')}/${premiumItem.fileUuid}_${premiumItem.fileName}">
+								<img alt="BoardPremiumItem" data-name="${premiumItem.rentalListPremiumItem }" src="${premiumItem.imageUrl }">
 							</div>
 						</c:forEach>
 						
@@ -93,9 +93,10 @@
 			</div>
 		</div>
 		
-		<div class="shopContainer">
+		<div class="shopContainer" style="display: none;">
 			<div class="shoppingBasket">
-				
+				<p class="fs-4">장바구니</p>
+				<a href="/rental/item-reserve"><button type="button" class="btn btn-outline-info reserveBtn">예약신청하기</button></a>
 			</div>
 		</div>
 

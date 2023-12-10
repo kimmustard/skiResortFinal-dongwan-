@@ -39,7 +39,10 @@ file_name varchar(100),
 image_url varchar(200));
 
 
---장비예약 테이블(아직 없음)
+--장비예약 테이블(아직 없음)create table item_image(
+rental_list_item_num bigint,
+file_name varchar(100),
+image_url varchar(200));
 create table rental_reserve(
 rental_main_num bigint not null,
 rental_list_item_num bigint not null,

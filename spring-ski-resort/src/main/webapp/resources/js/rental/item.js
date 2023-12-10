@@ -32,47 +32,56 @@ let leftWidth = 500;
 let nextBtn = document.getElementById('slideNextBtn'); // 다음 이미지로 넘어가는 버튼
 let prevBtn = document.getElementById('slidePrevBtn'); // 다음 이미지로 넘어가는 버튼
 
+function cloneAndAppend(container, className) {
+     let slides = container.querySelectorAll(`.${className}`);
+     let firstSlideClone = slides[0].cloneNode(true);
+     container.appendChild(firstSlideClone);
+}
+
+let lowItemImage = document.getElementById('lowItemImageBox');
+cloneAndAppend(lowItemImage, 'slide');
+
+let midItemImage = document.getElementById('midItemImageBox');
+cloneAndAppend(midItemImage, 'slide');
+
+let premiumItemImage = document.getElementById('premiumItemImageBox');
+cloneAndAppend(premiumItemImage, 'slide');
+
 function next() {
-     if (value == -5500) {
-          return;
-     }
-
      value -= rigthWidth;
-     console.log("오른쪽버튼" + value);
-
-     let lowItemImage = document.getElementById('lowItemImageBox');
-     lowItemImage.style.transition = 'transform 0.8s ease';
-     lowItemImage.style.transform = 'translateX(' + value + 'px)';
-
-     let midItemImage = document.getElementById('midItemImageBox');
-     midItemImage.style.transition = 'transform 0.8s ease';
-     midItemImage.style.transform = 'translateX(' + value + 'px)';
-
-     let premiumItemImage = document.getElementById('premiumItemImageBox');
-     premiumItemImage.style.transition = 'transform 0.8s ease';
-     premiumItemImage.style.transform = 'translateX(' + value + 'px)';
+     transitionSlides();
 }
 
 function prev() {
-     if (value == 0) {
-          return;
-     }
-
-
      value += leftWidth;
-     console.log("왼쪽버튼" + value);
+     transitionSlides();
+}
 
-     let lowItemImage = document.getElementById('lowItemImageBox');
-     lowItemImage.style.transition = 'transform 0.8s ease';
+function transitionSlides() {
+     lowItemImage.style.transition = 'transform 0.5s ease';
      lowItemImage.style.transform = 'translateX(' + value + 'px)';
 
-     let midItemImage = document.getElementById('midItemImageBox');
-     midItemImage.style.transition = 'transform 0.8s ease';
+     midItemImage.style.transition = 'transform 0.5s ease';
      midItemImage.style.transform = 'translateX(' + value + 'px)';
 
-     let premiumItemImage = document.getElementById('premiumItemImageBox');
-     premiumItemImage.style.transition = 'transform 0.8s ease';
+     premiumItemImage.style.transition = 'transform 0.5s ease';
      premiumItemImage.style.transform = 'translateX(' + value + 'px)';
+
+     if (value === -5500) {
+          setTimeout(function () {
+               lowItemImage.style.transition = 'transform 0s';
+               lowItemImage.style.transform = 'translateX(0)';
+               value = 0;
+          }, 800);
+     }
+
+     if (value === 0) {
+          setTimeout(function () {
+               lowItemImage.style.transition = 'transform 0s';
+               lowItemImage.style.transform = 'translateX(-5500px)';
+               value = -5500;
+          }, 800);
+     }
 }
 
 if (nextBtn) {
@@ -134,3 +143,12 @@ function shoppingBasket(name) {
      itemSelectDiv.innerHTML = `<p class="fs-5">${name}</p>`;
      shoppingBasketDiv.appendChild(itemSelectDiv);
 }
+
+let imageBox = document.querySelectorAll('.itemImageBox .slide img');
+let shopContainer = document.querySelector('.shopContainer');
+
+imageBox.forEach(function (image) {
+     image.addEventListener('click', function () {
+          shopContainer.style.display = 'block';
+     })
+})

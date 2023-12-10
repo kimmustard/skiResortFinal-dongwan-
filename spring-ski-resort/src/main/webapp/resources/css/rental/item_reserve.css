@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+.bodyContainer{
+	margin-top: 100px;
+}
+
+.reserveContainer{
+	height: 1000px;
+	background-color: gray;
+}
+
+.reserveBox{
+	width: 800px;
+	padding: 5px;
+	background-color: white;
+	position: relative;
+	height: 300px;
+	border-radius: 10px;
+	left: 50%;
+	transform: translateX(-50%);
+	background-color:rgba(255,255, 255, 0.9);
+	top: 20%;
+	position: absolute;
+}
