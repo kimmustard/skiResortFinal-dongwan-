@@ -2,52 +2,144 @@
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+    <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>다이스키 공지사항 목록</title>
+<jsp:include page="../common/nav.jsp" />
 <link rel="stylesheet" href="/resources/css/notice/notice_list.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 <body>
-<jsp:include page="../common/nav.jsp" />
-	<div class="notice-img-container" style="background-image: url('https://a.cdn-hotels.com/gdcs/production68/d766/4cc034a7-aeb1-4edd-b2a9-f7feaac49aec.jpg')">	
+
+
+<!-- 슬라이드 라인 -->
+<div class="section">
+	<input type="radio" name="slide" id="slide01" checked>
+	<input type="radio" name="slide" id="slide02">
+	<input type="radio" name="slide" id="slide03">
+	<input type="radio" name="slide" id="slide04">
+	<input type="radio" name="slide" id="slide05">
+	<div class="slidewrap">
+		<ul class="slidelist">
+		  <c:forEach items="${pfvo }" var="pfvo">
+				<!-- 슬라이드 영역 -->
+				<li class="slideitem">
+					<a href="/notice/detail?noticeNum=${pfvo.noticeNum }">
+						<div class="textbox">
+							<h3>첫번째 슬라이드</h3>
+							<p>첫번째 슬라이드 입니다.</p>
+						</div>
+						<img src="/upload/${fn: replace(pfvo.fileSave,'\\','/')}/${pfvo.fileUuid}_${pfvo.fileName}">
+					</a>
+				</li>
+		  </c:forEach>			
+				<li class="slideitem">
+					<a>				
+						<div class="textbox">
+							<h3>두번째 슬라이드</h3>
+							<p>두번째 슬라이드 입니다.</p>
+						</div>
+						<img src="/resources/img/slide.jpg">
+					</a>
+				</li>
+				<li class="slideitem">
+					<a>
+						
+						<div class="textbox">
+							<h3>세번째 슬라이드</h3>
+							<p>세번째 슬라이드 입니다.</p>
+						</div>
+						<img src="/resources/img/slide.jpg">
+					</a>
+				</li>
+	
+				<!-- 좌,우 슬라이드 버튼 -->
+				<div class="slide-control">
+					<div>
+						<label for="slide05" class="left"></label>
+						<label for="slide02" class="right"></label>
+					</div>
+					<div>
+						<label for="slide01" class="left"></label>
+						<label for="slide03" class="right"></label>
+					</div>
+					<div>
+						<label for="slide02" class="left"></label>
+						<label for="slide04" class="right"></label>
+					</div>
+					<div>
+						<label for="slide03" class="left"></label>
+						<label for="slide05" class="right"></label>
+					</div>
+					<div>
+						<label for="slide04" class="left"></label>
+						<label for="slide01" class="right"></label>
+					</div>
+				</div>
+		</ul>
+		
+		<!-- 페이징 -->
+		<ul class="slide-pagelist">
+				<li><label for="slide01"></label></li>
+				<li><label for="slide02"></label></li>
+				<li><label for="slide03"></label></li>	
+				<li><label for="slide04"></label></li>	
+				<li><label for="slide05"></label></li>	
+		</ul>	  	
 	</div>
+</div>
+
+
+
+
+
+
+
+
+	<!-- <div class="notice-img-container" style="background-image: url('https://a.cdn-hotels.com/gdcs/production68/d766/4cc034a7-aeb1-4edd-b2a9-f7feaac49aec.jpg')">	
+	</div> -->
 	
 <div class="container notice-container" id="notice-container">
 <c:set value="${ph.pgvo.type }" var="typed"></c:set>
 
 	<div class="notice-menu-container">
+	  <div class="notice-menu-container-child">
+	  
+	  
 		<!-- 검색 라인  -->
-		<form action="/notice/list" method="get">
-		<div class="notice-search-container">
-			<div class="dropdown notice-search-category">
-			  <select class="notice-search-category dropdown-toggle" name="type" data-bs-toggle="dropdown" aria-expanded="false">
-			   	<option class="dropdown-item" value="tcw" ${typed eq 'tcw' ? 'selected' : '' }>전체</option>
-			   	<option class="dropdown-item" value="t" ${typed eq 't' ? 'selected' : '' }>제목</option>
-			   	<option class="dropdown-item" value="c" ${typed eq 'c' ? 'selected' : '' }>내용</option>
-			   	<option class="dropdown-item" value="w" ${typed eq 'w' ? 'selected' : '' }>작성자</option>
-			  </select>
-			  <!-- <button class="notice-search-category dropdown-toggle" name="type" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-			   		제목
-			  </button>
-			  <ul class="dropdown-menu">
-			    <li class="dropdown-item">제목</li>
-			    <li class="dropdown-item">내용</li>
-			    <li class="dropdown-item">전체</li>
-			  </ul> -->
+		<div class="notice-search-form">
+			<form action="/notice/list" method="get">
+			<div class="notice-search-container">
+				<div class="dropdown notice-search-category">
+				  <select class="notice-search-category dropdown-toggle" name="type" data-bs-toggle="dropdown" aria-expanded="false">
+				   	<option class="dropdown-item" value="tcw" ${typed eq 'tcw' ? 'selected' : '' }>전체</option>
+				   	<option class="dropdown-item" value="t" ${typed eq 't' ? 'selected' : '' }>제목</option>
+				   	<option class="dropdown-item" value="c" ${typed eq 'c' ? 'selected' : '' }>내용</option>
+				   	<option class="dropdown-item" value="w" ${typed eq 'w' ? 'selected' : '' }>작성자</option>
+				  </select>
+				  <!-- <button class="notice-search-category dropdown-toggle" name="type" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+				   		제목
+				  </button>
+				  <ul class="dropdown-menu">
+				    <li class="dropdown-item">제목</li>
+				    <li class="dropdown-item">내용</li>
+				    <li class="dropdown-item">전체</li>
+				  </ul> -->
+				</div>
+				<div class="notice-input-container">
+					<input placeholder="검색어를 입력해 주세요." name="keyword" type="search" value="" class="notice-search-input">
+					<input type="hidden" name="pageNo" value="1">
+					<input type="hidden" name="qty" value="${ph.pgvo.qty }">
+				</div>
+				<div class="notice-button-container">
+					<button class="notice-search-button" type="submit"><div><span class="material-symbols-outlined" style="color: white;">search</span>검색</div></button>
+				</div>
 			</div>
-			<div class="notice-input-container">
-				<input placeholder="검색어를 입력해 주세요." name="keyword" type="search" value="" class="notice-search-input">
-				<input type="hidden" name="pageNo" value="1">
-				<input type="hidden" name="qty" value="${ph.pgvo.qty }">
-			</div>
-			<div class="notice-button-container">
-				<button class="notice-search-button" type="submit">검색</button>
-			</div>
+			</form>
 		</div>
-		</form>
-		
 
 		<!-- 카테고리 라인 -->
 		<div class="notice-category">
@@ -114,7 +206,7 @@
 		
 		<!-- 리스트 테이블 라인 -->
 		<table class="table notice-table"  >
-		  <thead >
+		  <thead class="table-light" >
 		    <tr class="notice-table-tr">
 		      <th scope="col" class="notice-table-th-no"><div class="notice-table-td-child">번호</div></th>
 		      <th scope="col" class="notice-table-th-cago"><div class="notice-table-td-child">카테고리</div></th>
@@ -124,10 +216,11 @@
 		      <th scope="col" class="notice-table-th-count"><div class="notice-table-td-child">조회</div></th>
 		    </tr>
 		  </thead>
+		  <c:if test="${ph.pgvo.keyword == '' || ph.pgvo.keyword == null }">
 		  <tbody>
 		  <c:forEach items="${pvo }" var="pvo">
-		    <tr class="notice-table-tr-point">
-		      <td class="notice-table-td"><div class="notice-table-td-child">${pvo.noticeNum }</div></td>
+		    <tr class="notice-table-tr">
+		      <td class="notice-table-td"><div class="notice-table-td-child"><span class="material-symbols-outlined" style="color: red;">campaign</span></div></td>
 		      <td class="notice-table-td"><div class="notice-table-td-child">${pvo.noticeCategory }</div></td>
 		      <td class="notice-table-td"><div class="notice-table-td-child-title"><a href="/notice/detail?noticeNum=${pvo.noticeNum }">${pvo.noticeTitle }</a></div></td>
 		      <td class="notice-table-td"><div class="notice-table-td-child">${pvo.noticeWriter }</div></td>
@@ -136,6 +229,7 @@
 		    </tr>
 		  </c:forEach>  
 		  </tbody>
+		  </c:if>
 		  <tbody>
 		  <c:forEach items="${list }" var="nvo">
 		    <tr class="notice-table-tr">
@@ -152,9 +246,10 @@
 		<br>
 		
 		<!-- 페이징 라인 -->
+		<div class="notice-paging-container">
 		  <nav aria-label="Page navigation example">
 		  	<!-- 이전 -->
-		  	<ul class="pagination">
+		  	<ul class="pagination notice-paging-ul">
 		  		<li class="page-item ${(ph.prev eq false) ? 'disabled' : '' }">
 			  		<a class="page-link" href="/notice/list?pageNo=${ph.startPage - 1 }&qty=${ph.pgvo.qty}&type=${ph.pgvo.type}&keyword=${ph.pgvo.keyword}" aria-label="Previous">
 			  		<span aria-hidden="true">&laquo;</span>
@@ -173,14 +268,14 @@
   				</li>	
 		  	</ul>
 		  </nav>
+		</div>
 		
 		
-		<br>
-		
-		<a href="/notice/register">
+		<!-- <a href="/notice/register">
 			<button type="button">글작성</button>
-		</a>
-	</div>	
+		</a> -->
+	</div>
+  </div>		
 </div>
 
 

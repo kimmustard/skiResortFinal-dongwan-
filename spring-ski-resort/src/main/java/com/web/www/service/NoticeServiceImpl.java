@@ -45,9 +45,18 @@ public class NoticeServiceImpl implements NoticeService{
 		if(isOk > 0 && ndto.getFlist().size() > 0) {
 			long noticeNum = ndao.selectOneNoticeNum(); //가장 마지막에 등록된 notice_num
 			//모든 파일에 bno set
-			for(FileVO fvo : ndto.getFlist()) {
-				fvo.setNoticeNum(noticeNum);
-				isOk*=fdao.insertNoticeFile(fvo);
+			if(ndto.getNvo().getNoticePoint().equals("Y")) { //중요공지 체크시 noticePointFile에 "Y"
+				for(FileVO fvo : ndto.getFlist()) {
+					fvo.setNoticeNum(noticeNum);
+					fvo.setNoticePointFile("Y");
+					isOk*=fdao.insertNoticeFile(fvo);
+				}
+			}else{
+				for(FileVO fvo : ndto.getFlist()) {
+					fvo.setNoticeNum(noticeNum);
+					fvo.setNoticePointFile("N");
+					isOk*=fdao.insertNoticeFile(fvo);
+				}				
 			}
 		}
 		return isOk;
@@ -86,8 +95,14 @@ public class NoticeServiceImpl implements NoticeService{
 	
 	@Override
 	public List<NoticeVO> noticePointList() {
-		log.info(">>>>> notice point List service >> ");
+		log.info(">>>>> notice point List service >> ");	
 		return ndao.selectPointList();
+	}
+	
+	
+	@Override
+	public List<FileVO> noticePointFileList() {
+		return fdao.selectFilePointList();
 	}
 
 	
@@ -149,6 +164,9 @@ public class NoticeServiceImpl implements NoticeService{
 		// TODO Auto-generated method stub
 		return ndao.getTwoNotice();
 	}
+
+
+
 
 
 

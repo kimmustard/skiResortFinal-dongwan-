@@ -247,7 +247,7 @@ a{
 
 
 
-/* 테이블 답변 라인 */
+/* 테이블 답변 등록 라인 */
 .qna-table-ans-head{
 	border-top: 1px solid #e3dbd7;
 	height: 60px;
@@ -264,13 +264,31 @@ a{
 	color: #8d8d8d;
 	text-align:left;
 	padding: 30px 20px;
-	height: 10em;
 	line-height:1.5em;
 }
 .qna-table-ans-content-child textarea{
 	height: 300px;
 	padding: 20px;
 	width: calc(100% - 40px)
+}
+.qna-table-ans-file{
+	position: relative;
+}
+.qna-table-ans-file div{
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.qna-table-ans-tr{
+	border-top: 1px solid #e3dbd7;
+}
+.qna-table-ans-td{
+	padding: 10px 10px 0 10px;
+	text-align: left;
+}
+.qna-table-ans-td div{
+	padding: 10px 10px 0 10px;
 }
 
 
@@ -340,6 +358,9 @@ a{
 
 .qna-detail-btn {
 	text-align: center;
+}
+.qna-detail-btn a{
+	text-decoration-line: none;
 }
 
 

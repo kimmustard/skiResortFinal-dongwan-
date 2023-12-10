@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>다이스키 공지사항 수정페이지</title>
 <link rel="stylesheet" href="/resources/css/notice/notice_detail.css">
 </head>
 <body>
