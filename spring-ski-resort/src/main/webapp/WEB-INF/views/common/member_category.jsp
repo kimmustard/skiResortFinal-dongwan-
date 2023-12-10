@@ -58,7 +58,7 @@
 				<a href="#"> 
 					<i class="bi bi-mailbox2"></i>
 					<span class="category-span">
-						 서비스알람
+						 서비스알림
 					</span> 
 				</a>
 			</div>

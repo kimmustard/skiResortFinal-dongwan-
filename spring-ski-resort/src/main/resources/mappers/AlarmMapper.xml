@@ -18,5 +18,18 @@
   	value(#{memberNum}, #{alarmContentNum}, #{alarmType})
   </insert>
   
+  <select id="getAlarmListTen" resultType="com.web.www.domain.alarm.AlarmDTO">
+	SELECT a.*, ac.*
+	FROM alarm_system a
+	JOIN alarm_content ac ON a.alarm_content_num = ac.alarm_content_num
+	WHERE a.member_num = #{memberNum}
+	ORDER BY a.alarm_reg_at DESC
+	LIMIT 10
+  </select>
+  
+  <select id="getAlarmMemberNum" resultType="long">
+  	select member_num from member where member_id = #{mebmerId}
+  </select>
+  
   </mapper>
 

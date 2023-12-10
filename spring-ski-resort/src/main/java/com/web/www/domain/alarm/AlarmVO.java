@@ -7,9 +7,7 @@ public class AlarmVO {
 	
 	private long memberNum;
 	private long alarmContentNum;
-	private String alarmCheck;
 	private String alarmType;
-	private String alarmRegAt;
 	
 	
 	public AlarmVO() {

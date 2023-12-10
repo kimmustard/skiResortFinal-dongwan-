@@ -1,6 +1,5 @@
 package com.web.www.service;
 
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -35,9 +34,9 @@ public class MemberServiceImpl implements MemberService {
 	public int insertMember(MemberVO mvo) {
 		mdao.insertMember(mvo);	//가입
 		int isOk = mdao.insertAuthInit(mvo.getMemberId());
-		long memberNum = mdao.recentMember();
 		
 		//알람 발송
+		long memberNum = mdao.recentMember();
 		adao.alarmSetting(new AlarmVO(memberNum , 1, "쿠폰"));
 		return isOk;
 	}
@@ -46,7 +45,11 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int socialRegister(MemberVO mvo) {
 		mdao.socialRegister(mvo);	//소셜유저 가입
-		return mdao.insertAuthInit(mvo.getMemberId());
+		int isOk = mdao.insertAuthInit(mvo.getMemberId());
+		//알람 발송
+		long memberNum = mdao.recentMember();
+		adao.alarmSetting(new AlarmVO(memberNum , 1, "쿠폰"));
+		return isOk;
 	}
 	
 	@Override
@@ -190,6 +193,8 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public void findPwdUpdate(FindIdDTO fiDTO) {
 		mdao.findPwdUpdate(fiDTO);
+		long memberNum = adao.getAlarmMemberNum(fiDTO.getMemberId());
+		adao.alarmSetting(new AlarmVO(memberNum , 4, "변경"));
 	}
 
 

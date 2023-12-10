@@ -45,6 +45,7 @@
 	       	<li><a href="/member/register">회원가입</a></li>
 	    </sec:authorize>
         <sec:authorize access="isAuthenticated()">
+        	<sec:authentication property="principal.mvo.memberNum" var="authNum"/>
         	<sec:authentication property="principal.mvo.memberId" var="authId"/>
         	<sec:authentication property="principal.mvo.memberEmail" var="authEmail"/>
         	<sec:authentication property="principal.mvo.memberAlias" var="authAlias"/>
@@ -75,8 +76,19 @@
         	</c:if>
 	       	<li><a href="/member/logout">| 로그아웃</a></li>
      
-	      
-	
+	      	<div class="member-alarm" id="alarm-bell">
+	      		<i class="bi bi-bell-fill position-relative"><span class="alarm-bell-deco">1</span></i>
+	      	</div>
+			
+			<div class="member-alarm-board" id="alarm-board">
+				<div class="alarm-board-title"><a href="/member/detail">자세히보기</a></div>
+				
+				<div class="alarm-board-body" id="alarm-spread">
+					
+				
+				</div>
+				
+			</div>
 			
 		</sec:authorize>
      

@@ -181,11 +181,15 @@
 	color: white;
 }
 
+
 .bi{
 	font-size: 50px;
 	text-align: center;
 }
 
+.bi-bell-fill{
+	font-size: 35px;
+}
 
 /* 오른쪽 화면 */
 .mainView{

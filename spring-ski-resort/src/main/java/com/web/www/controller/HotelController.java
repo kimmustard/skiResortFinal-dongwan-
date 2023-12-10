@@ -33,7 +33,6 @@ import lombok.extern.slf4j.Slf4j;
 public class HotelController {
 
 	private final HotelService hsv;
-	private RoomVO rvo = new RoomVO();
 
 	/*
 	 * 예약페이지 매핑

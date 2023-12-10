@@ -85,5 +85,13 @@
 
 	<jsp:include page="common/footer.jsp"></jsp:include>
 </body>
+<script type="text/javascript">
+const isOk = `<c:out value="${isOk}" />`;
+if(isOk == 1){
+	alert('쿠폰 지급 완료!!');
+}else if(isOk ==2){
+	alert('이미 받은 쿠폰입니다.');
+}
+</script>
 <script type="text/javascript" src="/resources/js/index.js"></script>
 </html>

@@ -1,6 +1,9 @@
 package com.web.www.service;
 
+import java.util.List;
+
 import com.web.www.domain.alarm.AlarmContentVO;
+import com.web.www.domain.alarm.AlarmDTO;
 
 public interface AlarmService {
 
@@ -10,5 +13,8 @@ public interface AlarmService {
 	 */
 	int selectAlarmCnt();
 	void addAlarmList(AlarmContentVO alarmContentVO);
+	
+	//알람 리스트 불러오기
+	List<AlarmDTO> getAlarmListTen(long memberNum);
 
 }
