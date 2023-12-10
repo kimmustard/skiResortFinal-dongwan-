@@ -1,0 +1,17 @@
+## alarm_sytem 테이블추가 12-10
+create table alarm_system(
+member_num bigint not null,
+alarm_content_num bigint not null,
+alarm_check varchar(1) default 'N',
+alarm_type varchar(20),
+alarm_reg_at DateTime default now()
+);
+
+## alarm_text 테이블추가 12-10
+create table alarm_content(
+alarm_content_num bigint,
+alarm_content_name varchar(20),
+alarm_content_text varchar(200),
+alarm_content_url varchar(1000),
+primary key(alarm_content_num)
+);

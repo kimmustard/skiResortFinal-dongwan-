@@ -113,6 +113,8 @@ public interface MemberDAO {
 
 	void findPwdUpdate(FindIdDTO fiDTO);
 
+	long recentMember();
+
 
 
 

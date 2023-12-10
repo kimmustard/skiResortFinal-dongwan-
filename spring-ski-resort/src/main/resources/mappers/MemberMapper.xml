@@ -163,6 +163,9 @@
 		update coupon set coupon_member_check = 'N' where member_num =#{memberNum} AND coupon_code = #{couponCode}
 	</update>
 	
-	
+	<!-- 최근에 가입한 멤버조회하기 -->
+	<select id="recentMember" resultType="long">
+		select max(member_num) from member where member_del = 'N' order by member_reg_at desc;
+	</select>
 
   </mapper>

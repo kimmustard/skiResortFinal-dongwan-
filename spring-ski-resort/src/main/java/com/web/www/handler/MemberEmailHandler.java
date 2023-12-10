@@ -9,6 +9,7 @@ import javax.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
 import lombok.extern.slf4j.Slf4j;
@@ -67,6 +68,7 @@ public class MemberEmailHandler {
 	        log.error("메일 전송 예외 =  {}", ex.getMessage());
 	        return null; // 예외 처리 후에도 CompletableFuture가 완료될 수 있도록 null을 리턴합니다.
 	    });
+		
 		 
 		return Integer.toString(authNumber);
 	}

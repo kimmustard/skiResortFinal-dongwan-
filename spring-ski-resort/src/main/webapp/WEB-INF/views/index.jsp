@@ -24,7 +24,7 @@
 			allowfullscreen></iframe> -->
 		
 			<iframe width="560" height="315" 
-			src="https://www.youtube.com/embed/fbqHK8i-HdA?si=x8stsZdudUJ74Zay&autoplay=1&mute=1&loop=1&amp;controls=0&amp;start=250" 
+			src="https://www.youtube.com/embed/fbqHK8i-HdA?si=x8stsZdudUJ74Zay&autoplay=1&mute=1&loop=1&playlist=fbqHK8i-HdA&modestbranding=1&amp;controls=0&amp;start=250" 
 			title="YouTube video player" 
 			frameborder="0" 
 			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 

@@ -30,9 +30,9 @@
 
 			<a href="/"><button> 메인으로 </button></a>
 			
-			<button id="coupon_get" value="openWorld"> 쿠폰받기 </button>
+			<button id="coupon_get" value="openWorld">쿠폰받기</button>
 			
-			<button id="my_coupon_list" value="openWorld"> 내 쿠폰목록 </button>
+			<button id="my_coupon_list"> 내 쿠폰목록 </button>
 
             <script type="text/javascript" src="/resources/js/pay/pay.js"></script>
             <script type="text/javascript" src="/resources/js/coupon/coupon.js"></script>

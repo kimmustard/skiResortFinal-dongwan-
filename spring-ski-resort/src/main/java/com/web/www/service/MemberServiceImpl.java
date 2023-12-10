@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.web.www.domain.alarm.AlarmVO;
 import com.web.www.domain.coupon.CouponGetDTO;
 import com.web.www.domain.coupon.CouponSystem;
 import com.web.www.domain.member.FindIdDTO;
@@ -14,6 +15,7 @@ import com.web.www.domain.member.MemberCheckDTO;
 import com.web.www.domain.member.MemberPwdDTO;
 import com.web.www.domain.member.MemberVO;
 import com.web.www.domain.member.ModifyMemberDTO;
+import com.web.www.repository.AlarmDAO;
 import com.web.www.repository.MemberDAO;
 
 import lombok.RequiredArgsConstructor;
@@ -26,12 +28,18 @@ import lombok.extern.slf4j.Slf4j;
 public class MemberServiceImpl implements MemberService {
 
 	private final MemberDAO mdao;
+	private final AlarmDAO adao;
 
 	@Transactional
 	@Override
 	public int insertMember(MemberVO mvo) {
 		mdao.insertMember(mvo);	//가입
-		return mdao.insertAuthInit(mvo.getMemberId());
+		int isOk = mdao.insertAuthInit(mvo.getMemberId());
+		long memberNum = mdao.recentMember();
+		
+		//알람 발송
+		adao.alarmSetting(new AlarmVO(memberNum , 1, "쿠폰"));
+		return isOk;
 	}
 
 	@Transactional
