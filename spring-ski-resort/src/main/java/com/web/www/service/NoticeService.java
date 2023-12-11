@@ -4,6 +4,7 @@ import java.util.List;
 
 
 import com.web.www.domain.board.PagingVO;
+import com.web.www.domain.FileVO;
 import com.web.www.domain.board.NoticeDTO;
 import com.web.www.domain.board.NoticeVO;
 
@@ -28,6 +29,8 @@ public interface NoticeService {
 	List<NoticeVO> getTwoNotice();
 
 	List<NoticeVO> noticePointList();
+
+	List<FileVO> noticePointFileList();
 
 
 

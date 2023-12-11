@@ -61,8 +61,15 @@ public class QnaController {
 		}
 		int isOk = qsv.qnaRegister(new QnaDTO(qvo, flist));
 		log.info(">>>>> qna register >> "+(isOk > 0? "OK" : "Fail"));
-		return "redirect:/qna/list";
-	}
+		if(isOk==2) {
+			re.addFlashAttribute("isOk", isOk);
+			return "redirect:/qna/register";
+		}else {
+			re.addFlashAttribute("isOk", isOk);
+			return "redirect:/qna/list";
+			}
+		}
+	
 
 	
 	
@@ -104,8 +111,13 @@ public class QnaController {
 			QnaDTO qdto = new QnaDTO(qvo, flist);
 			int isOk = qsv.qnaFileModify(qdto);
 			log.info(">>>>> qna modify >> "+(isOk > 0? "OK" : "Fail"));
-			re.addFlashAttribute("isOk",isOk);
-			return "redirect:/qna/detail?qnaNum="+qvo.getQnaNum();
+			if(isOk==2) {
+				re.addFlashAttribute("isOk", isOk);
+				return "redirect:/qna/modify?qnaNum="+qvo.getQnaNum();
+			}else {			
+				re.addFlashAttribute("isOk",isOk);
+				return "redirect:/qna/detail?qnaNum="+qvo.getQnaNum();
+				}
 		}
 		
 		

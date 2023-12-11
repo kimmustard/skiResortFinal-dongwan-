@@ -68,10 +68,10 @@
 					</button>
 					<ul id="ul-menu4">
 						<li>
-							<a href=""><span>공지사항</span></a>
+							<a href="/developer/settingNotice"><span>공지사항</span></a>
 						</li>
 						<li>
-							<a href=""><span>문의</span></a>
+							<a href="/developer/settingQna"><span>문의</span></a>
 						</li>
 						<li>
 							<a href=""><span>버스</span></a>
