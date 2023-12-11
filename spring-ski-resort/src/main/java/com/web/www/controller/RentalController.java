@@ -18,6 +18,7 @@ import com.web.www.domain.FileVO;
 import com.web.www.domain.member.AuthUser;
 import com.web.www.domain.member.MemberVO;
 import com.web.www.domain.rental.RentalItemDTO;
+import com.web.www.domain.rental.RentalItemImageRead;
 import com.web.www.domain.rental.RentalItemListDTO;
 import com.web.www.domain.rental.RentalItemRead;
 import com.web.www.domain.rental.RentalItemVO;
@@ -38,6 +39,7 @@ public class RentalController {
 	private final RentalService rsv;
 	private final FileHandler fh;
 	private final RentalItemRead rir;
+	private final RentalItemImageRead rii;
 
 	@GetMapping("/fee-info")
 	public String rentalForm() {
@@ -128,6 +130,16 @@ public class RentalController {
 		return "/rental/wear-item";
 	}
 	
+	@GetMapping("/item-reserve")
+	public String itemReserveForm(Model model) {
+		RentalVO rvo = new RentalVO();
+		rvo.setRentalMainLift("Y");
+		model.addAttribute("rvo", rvo);
+		return "/rental/item-reserve";
+	}
+	
+	
+	
 	
 	@PostConstruct
 	public void rentalItemCreate() {
@@ -138,6 +150,15 @@ public class RentalController {
 			rir.read();
 		}
 		
+	}
+	
+	@PostConstruct
+	public void rentalItemImageCreate() {
+		int isOk = rsv.rentalItemImageCntCheck();
+		// 테이블에 지역정보가 있는지 확인
+		if(isOk == 0) {
+			rii.read();
+		}
 	}
 	
 	

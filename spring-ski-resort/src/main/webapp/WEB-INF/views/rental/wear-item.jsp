@@ -44,9 +44,11 @@
 				<div class="itemInfo">	
 					<div class="itemImageBox" id="lowItemImageBox">
 						<c:forEach items="${wearLowItem }" var="lowItem">
-							<div>
+							<div class="slide">
 								<!-- 이미지파일 -->
-								<img alt="WearLowItem" data-name="${lowItem.rentalListLowItem }" src="/upload/${fn: replace(lowItem.fileSave,'\\','/')}/${lowItem.fileUuid}_${lowItem.fileName}">
+								<img alt="WearLowItem" data-name="${lowItem.rentalListLowItem }" data-adultFee="${lowItem.rentalListItemAdultFee }" src="${lowItem.imageUrl }">
+								<p class="fs-5">${lowItem.rentalListLowItem }</p>
+								<p class="fs-5">${lowItem.rentalListItemAdultFee }원</p>
 							</div>
 						</c:forEach>
 					</div>
@@ -55,9 +57,11 @@
 					<div class="itemImageBox" id="midItemImageBox" style="display: none;">
 						
 						<c:forEach items="${wearMidItem }" var="midItem">
-							<div>
+							<div class="slide">
 								<!-- 이미지파일 -->
-								<img alt="WearMidItem" data-name="${midItem.rentalListMidItem }" src="/upload/${fn: replace(midItem.fileSave,'\\','/')}/${midItem.fileUuid}_${midItem.fileName}">
+								<img alt="WearMidItem" data-name="${midItem.rentalListMidItem }" data-adultFee="${midItem.rentalListItemAdultFee }" src="${midItem.imageUrl }">
+								<p class="fs-5">${midItem.rentalListMidItem }</p>
+								<p class="fs-5">${midItem.rentalListItemAdultFee }원</p>
 							</div>
 						</c:forEach>
 						
@@ -67,28 +71,31 @@
 					<div class="itemImageBox" id="premiumItemImageBox" style="display: none;">
 						
 						<c:forEach items="${wearPremiumItem }" var="premiumItem">
-							<div>
+							<div class="slide">
 								<!-- 이미지파일 -->
-								<img alt="WearPremiumItem" data-name="${premiumItem.rentalListPremiumItem }" src="/upload/${fn: replace(premiumItem.fileSave,'\\','/')}/${premiumItem.fileUuid}_${premiumItem.fileName}">
+								<img alt="WearPremiumItem" data-name="${premiumItem.rentalListPremiumItem }" data-adultFee="${premiumItem.rentalListItemAdultFee }" src="${premiumItem.imageUrl }">
+								<p class="fs-5">${premiumItem.rentalListPremiumItem }</p>
+								<p class="fs-5">${premiumItem.rentalListItemAdultFee }원</p>
 							</div>
 						</c:forEach>
 						
 					</div>
 					
 					<div class="slide-btn">
-						<i class="bi bi-arrow-left-circle-fill slidePrevBtn" id="slidePrevBtn"></i>
-						<i class="bi bi-arrow-right-circle-fill slideNextBtn" id="slideNextBtn"></i>
+						<i class="bi bi-chevron-left slidePrevBtn" id="slidePrevBtn"></i>
+						<i class="bi bi-chevron-right slideNextBtn" id="slideNextBtn"></i>
 					</div>
-					
+						
 	
 				</div>
 				
 			</div>
 		</div>
 		
-		<div class="shopContainer">
+		<div class="shopContainer" style="display: none;">
 			<div class="shoppingBasket">
-				
+				<p class="fs-4">장바구니</p>
+				<a href="/rental/item-reserve"><button type="button" class="btn btn-outline-info reserveBtn">예약신청하기</button></a>
 			</div>
 		</div>
 		
