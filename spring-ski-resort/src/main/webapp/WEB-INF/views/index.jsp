@@ -56,30 +56,23 @@
 		<div class="event-box">
 			<p class="fs-1 box-title">Event</p>
 			<p class="fs-3 box-title">이벤트</p>
-		<div class="bannerBox">
-      <ul class="bannerUl">
-         <li class="bannerLi" >
-            <a class="bannerA" href="#">
-            </a>
-         </li>
-         <li class="bannerLi" >
-            <a class="bannerA" href="#">
-            </a>
-         </li>
-         <li class="bannerLi">
-            <a class="bannerA" href="#">
-            </a>
-         </li>
-         <li class="bannerLi" >
-            <a class="bannerA" href="#">
-            </a>
-         </li>
-      </ul>
-   </div>
-			
+			<div class="contentBox">
+				  <div class="slide_wrapper">
+		      <ul class="slides">
+		        <li class="event-li"> <div class="event-item-box" id="event-item-box1"> <div class="event-image-box"></div><div class="event-content-box">이벤트 1</div></div></li>
+		        <li class="event-li"> <div class="event-item-box" id="event-item-box2"> <div class="event-image-box"></div><div class="event-content-box">이벤트 2</div></div></li>
+		        <li class="event-li"> <div class="event-item-box" id="event-item-box3"> <div class="event-image-box"></div><div class="event-content-box">이벤트 3</div></div></li>
+		        <li class="event-li"> <div class="event-item-box" id="event-item-box4"> <div class="event-image-box"></div><div class="event-content-box">이벤트 4</div></div></li>
+		        <li class="event-li"> <div class="event-item-box" id="event-item-box5"> <div class="event-image-box"></div><div class="event-content-box">이벤트 5</div></div></li>
+		      </ul>
+		    </div>
+		
+		    <p class="controls">
+		      <span class="prev">prev</span>
+		      <span class="next">next</span>
+		    </p>
+  		    </div>
 		</div>
-
-
 	</div>
 
 

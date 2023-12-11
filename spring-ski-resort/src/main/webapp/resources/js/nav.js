@@ -138,7 +138,6 @@ async function getTwoNotice(){
         };
         const resp = await fetch(url, config);
         const result = await resp.json();
-        console.log(result);
         return result;
     } catch (error) {
         console.log(error);
@@ -191,7 +190,7 @@ document.getElementById("alarm-bell").addEventListener('click', () => {
 async function memberAlarmSpread() {
     try {
         const result = await memberAlarmList();
-        console.log(result);
+    
 
         
 
