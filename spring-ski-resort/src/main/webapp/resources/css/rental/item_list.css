@@ -18,7 +18,7 @@
 
 .itemContainer{
 	position: relative;
-	margin-left: 300px;
+	margin-left: 400px;
 	width: 1200px;
 	height: 700px;
 	overflow: hidden;
@@ -69,7 +69,7 @@
 	height: 300px;
 	background-color: gray;
 	position: absolute;
-	bottom: 107px;
+	bottom: 200px;
 	right: 0;
 }
 
