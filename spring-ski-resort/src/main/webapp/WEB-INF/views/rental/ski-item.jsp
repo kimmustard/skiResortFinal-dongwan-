@@ -48,9 +48,19 @@
 				<div class="itemInfo">
 					<div class="itemImageBox" id="lowItemImageBox">
 						<c:forEach items="${skiLowItem }" var="lowItem">
-							<div>
+							<div class="slide">
 								<!-- 이미지파일 -->
-								<img alt="SkiLowItem" data-name="${lowItem.rentalListLowItem }" src="/upload/${fn: replace(lowItem.fileSave,'\\','/')}/${lowItem.fileUuid}_${lowItem.fileName}">
+								<img alt="SkiLowItem" data-name="${lowItem.rentalListLowItem }" data-adultFee="${lowItem.rentalListItemAdultFee }" data-kidFee="${lowItem.rentalListItemKidFee }" src="${lowItem.imageUrl }">
+								<p class="fs-5">${lowItem.rentalListLowItem }</p>
+								<c:choose>
+									<c:when test="${fn:contains(lowItem.rentalListLowItem,'주니어') }">
+										<p class="fs-5">${lowItem.rentalListItemKidFee }원</p>
+									</c:when>
+									<c:otherwise>
+										<p class="fs-5">${lowItem.rentalListItemAdultFee }원</p>
+									</c:otherwise>
+								</c:choose>
+								
 							</div>
 						</c:forEach>
 					</div>
@@ -61,9 +71,18 @@
 					
 					<div class="itemImageBox" id="midItemImageBox" style="display: none;">
 						<c:forEach items="${skiMidItem }" var="midItem">
-							<div>
+							<div class="slide">
 								<!-- 이미지파일 -->
-								<img alt="SkiMidItem" data-name="${midItem.rentalListMidItem }" src="/upload/${fn: replace(midItem.fileSave,'\\','/')}/${midItem.fileUuid}_${midItem.fileName}">
+								<img alt="SkiMidItem" data-name="${midItem.rentalListMidItem }" data-adultFee="${midItem.rentalListItemAdultFee }" data-kidFee="${midItem.rentalListItemKidFee }" src="${midItem.imageUrl }">
+								<p class="fs-5">${midItem.rentalListMidItem }</p>
+								<c:choose>
+									<c:when test="${fn:contains(midItem.rentalListMidItem,'주니어') }">
+										<p class="fs-5">${midItem.rentalListItemKidFee }원</p>
+									</c:when>
+									<c:otherwise>
+										<p class="fs-5">${midItem.rentalListItemAdultFee }원</p>
+									</c:otherwise>
+								</c:choose>
 							</div>
 						</c:forEach>
 					</div>
@@ -76,9 +95,18 @@
 					<div class="itemImageBox" id="premiumItemImageBox" style="display: none;">
 						
 						<c:forEach items="${skiPremiumItem }" var="premiumItem">
-							<div id="image">
+							<div class="slide">
 								<!-- 이미지파일 -->
-								<img alt="SkiPremiumItem" data-name="${premiumItem.rentalListPremiumItem }" src="/upload/${fn: replace(premiumItem.fileSave,'\\','/')}/${premiumItem.fileUuid}_${premiumItem.fileName}">
+								<img alt="SkiPremiumItem" data-name="${premiumItem.rentalListPremiumItem }" data-adultFee="${premiumItem.rentalListItemAdultFee }" data-kidFee="${premiumItem.rentalListItemKidFee }" src="${premiumItem.imageUrl }">
+								<p class="fs-5">${premiumItem.rentalListPremiumItem }</p>
+								<c:choose>
+									<c:when test="${fn:contains(premiumItem.rentalListPremiumItem,'주니어') }">
+										<p class="fs-5">${premiumItem.rentalListItemKidFee }원</p>
+									</c:when>
+									<c:otherwise>
+										<p class="fs-5">${premiumItem.rentalListItemAdultFee }원</p>
+									</c:otherwise>
+								</c:choose>
 								
 							</div>
 						</c:forEach>
@@ -87,8 +115,8 @@
 					
 					<div class="slide-btn">
 						
-						<i class="bi bi-arrow-left-circle-fill slidePrevBtn" id="slidePrevBtn"></i>
-						<i class="bi bi-arrow-right-circle-fill slideNextBtn" id="slideNextBtn"></i>
+						<i class="bi bi-chevron-left slidePrevBtn" id="slidePrevBtn"></i>
+						<i class="bi bi-chevron-right slideNextBtn" id="slideNextBtn"></i>
 					</div>
 
 					
@@ -98,10 +126,11 @@
 		</div>
 		
 		
-		<div class="shopContainer">
+		<div class="shopContainer" style="display: none;">
 			<div class="shoppingBasket">
+				<input type="hidden" name="rentalMainLift" id="rentalMainLift" placeholder="리프트권 구매여부" readonly="readonly">
 				<p class="fs-4">장바구니</p>
-				
+				<a href="/rental/item-reserve"><button type="button" class="btn btn-outline-info reserveBtn" id="reserveBtn">예약신청하기</button></a>
 			</div>
 		</div>
 		

@@ -24,10 +24,17 @@
 	
 	<insert id="insertRentalItem">
 		insert into rental_items(rental_list_item_num, rental_list_item_type,rental_list_item_grade,rental_list_low_item,rental_list_mid_item,
-		rental_list_premium_item,rental_list_item_count)
+		rental_list_premium_item,rental_list_item_adult_fee,rental_list_item_kid_fee,rental_list_item_count)
 		values(#{rentalListItemNum}, #{rentalListItemType},#{rentalListItemGrade},#{rentalListLowItem},#{rentalListMidItem},
-		#{rentalListPremiumItem},#{rentalListItemCount})
+		#{rentalListPremiumItem},#{rentalListItemAdultFee},#{rentalListItemKidFee},#{rentalListItemCount})
 	</insert>
+	
+	<insert id="insertRentalItemImage">
+		insert into item_image(rental_list_item_num, file_name, image_url)
+		values(#{rentalListItemNum}, #{fileName}, #{imageUrl})
+	</insert>
+	
+	
 	
 	<select id="selectOneItemNum" resultType="long">
 		select max(rental_list_item_num) from rental_items
@@ -36,13 +43,12 @@
 	<select id="getSkiLowItem" resultType="com.web.www.domain.rental.RentalItemListDTO">
 		SELECT
 		    ri.*,
-		    fi.file_uuid,
-		    fi.file_save,
-		    fi.file_name
+		    ii.file_name,
+		    ii.image_url
 		FROM
 		    rental_items ri
 		JOIN
-		    file fi ON ri.rental_list_item_num = fi.rental_list_item_num
+		    item_image ii ON ri.rental_list_item_num = ii.rental_list_item_num
 		WHERE
 		    ri.rental_list_item_type = '스키'
 		    AND ri.rental_list_item_grade = '일반장비';
@@ -51,13 +57,12 @@
 	<select id="getSkiMidItem" resultType="com.web.www.domain.rental.RentalItemListDTO">
 		SELECT
 		    ri.*,
-		    fi.file_uuid,
-		    fi.file_save,
-		    fi.file_name
+		    ii.file_name,
+		    ii.image_url
 		FROM
 		    rental_items ri
 		JOIN
-		    file fi ON ri.rental_list_item_num = fi.rental_list_item_num
+		    item_image ii ON ri.rental_list_item_num = ii.rental_list_item_num
 		WHERE
 		    ri.rental_list_item_type = '스키'
 		    AND ri.rental_list_item_grade = '중급장비';
@@ -66,13 +71,12 @@
 	<select id="getSkiPremiumItem" resultType="com.web.www.domain.rental.RentalItemListDTO">
 		SELECT
 		    ri.*,
-		    fi.file_uuid,
-		    fi.file_save,
-		    fi.file_name
+		    ii.file_name,
+		    ii.image_url
 		FROM
 		    rental_items ri
 		JOIN
-		    file fi ON ri.rental_list_item_num = fi.rental_list_item_num
+		    item_image ii ON ri.rental_list_item_num = ii.rental_list_item_num
 		WHERE
 		    ri.rental_list_item_type = '스키'
 		    AND ri.rental_list_item_grade = '프리미엄장비';
@@ -81,13 +85,12 @@
 	<select id="getBoardLowItem" resultType="com.web.www.domain.rental.RentalItemListDTO">
 		SELECT
 		    ri.*,
-		    fi.file_uuid,
-		    fi.file_save,
-		    fi.file_name
+		    ii.file_name,
+		    ii.image_url
 		FROM
 		    rental_items ri
 		JOIN
-		    file fi ON ri.rental_list_item_num = fi.rental_list_item_num
+		    item_image ii ON ri.rental_list_item_num = ii.rental_list_item_num
 		WHERE
 		    ri.rental_list_item_type = '보드'
 		    AND ri.rental_list_item_grade = '일반장비';
@@ -96,13 +99,12 @@
 	<select id="getBoardMidItem" resultType="com.web.www.domain.rental.RentalItemListDTO">
 		SELECT
 		    ri.*,
-		    fi.file_uuid,
-		    fi.file_save,
-		    fi.file_name
+		    ii.file_name,
+		    ii.image_url
 		FROM
 		    rental_items ri
 		JOIN
-		    file fi ON ri.rental_list_item_num = fi.rental_list_item_num
+		    item_image ii ON ri.rental_list_item_num = ii.rental_list_item_num
 		WHERE
 		    ri.rental_list_item_type = '보드'
 		    AND ri.rental_list_item_grade = '중급장비';
@@ -111,13 +113,12 @@
 	<select id="getBoardPremiumItem" resultType="com.web.www.domain.rental.RentalItemListDTO">
 		SELECT
 		    ri.*,
-		    fi.file_uuid,
-		    fi.file_save,
-		    fi.file_name
+		    ii.file_name,
+		    ii.image_url
 		FROM
 		    rental_items ri
 		JOIN
-		    file fi ON ri.rental_list_item_num = fi.rental_list_item_num
+		    item_image ii ON ri.rental_list_item_num = ii.rental_list_item_num
 		WHERE
 		    ri.rental_list_item_type = '보드'
 		    AND ri.rental_list_item_grade = '프리미엄장비';
@@ -126,13 +127,12 @@
 	<select id="getWearLowItem" resultType="com.web.www.domain.rental.RentalItemListDTO">
 		SELECT
 		    ri.*,
-		    fi.file_uuid,
-		    fi.file_save,
-		    fi.file_name
+		    ii.file_name,
+		    ii.image_url
 		FROM
 		    rental_items ri
 		JOIN
-		    file fi ON ri.rental_list_item_num = fi.rental_list_item_num
+		    item_image ii ON ri.rental_list_item_num = ii.rental_list_item_num
 		WHERE
 		    ri.rental_list_item_type = '의류'
 		    AND ri.rental_list_item_grade = '일반장비';
@@ -141,13 +141,12 @@
 	<select id="getWearMidItem" resultType="com.web.www.domain.rental.RentalItemListDTO">
 		SELECT
 		    ri.*,
-		    fi.file_uuid,
-		    fi.file_save,
-		    fi.file_name
+		    ii.file_name,
+		    ii.image_url
 		FROM
 		    rental_items ri
 		JOIN
-		    file fi ON ri.rental_list_item_num = fi.rental_list_item_num
+		    item_image ii ON ri.rental_list_item_num = ii.rental_list_item_num
 		WHERE
 		    ri.rental_list_item_type = '의류'
 		    AND ri.rental_list_item_grade = '중급장비';
@@ -156,13 +155,12 @@
 	<select id="getWearPremiumItem" resultType="com.web.www.domain.rental.RentalItemListDTO">
 		SELECT
 		    ri.*,
-		    fi.file_uuid,
-		    fi.file_save,
-		    fi.file_name
+		    ii.file_name,
+		    ii.image_url
 		FROM
 		    rental_items ri
 		JOIN
-		    file fi ON ri.rental_list_item_num = fi.rental_list_item_num
+		    item_image ii ON ri.rental_list_item_num = ii.rental_list_item_num
 		WHERE
 		    ri.rental_list_item_type = '의류'
 		    AND ri.rental_list_item_grade = '프리미엄장비';
@@ -170,6 +168,10 @@
 	
 	<select id="rentalItemCntCheck" resultType="int">
 		select count(*) from rental_items
+	</select>
+	
+	<select id="rentalItemImageCntCheck" resultType="int">
+		select count(*) from item_image
 	</select>
 
 </mapper>

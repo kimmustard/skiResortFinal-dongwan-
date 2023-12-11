@@ -33,6 +33,7 @@ public interface RentalService {
 
 	//실행전 테이블 체크
 	int rentalItemCntCheck();
+	int rentalItemImageCntCheck();
 
 
 
