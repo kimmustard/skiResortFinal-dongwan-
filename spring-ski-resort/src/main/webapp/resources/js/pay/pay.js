@@ -74,21 +74,21 @@ function paymentGateway(pgName) {
                         }
 
 
-
-
                     } else {
 
                         /*결제 정보 + 환불 사유 넘기는 객체 생성*/
                         let refundInfo = {
                             refundImpUid: "refund_no_" + new Date().getTime(), // 상점에서 관리하는 환불 번호 
-                            payMerchantUid: rowData[0],
-                            payImpUid: row.querySelector('td input[type="hidden"]').value,
-                            refundReason: selectedValue,
-                            refundName: rowData[2],
-                            refundAmount: parseInt(rowData[3].replace(/\D/g, ''), 10),
+                            payMerchantUid: rsp.merchant_uid,
+                            payImpUid: rsp.imp_uid,
+                            refundReason: data,
+                            refundName: rsp.name,
+                            refundAmount: rsp.paid_amount,
                             refundType: '시스템'
                         };
 
+
+                        detailToRefund(refundInfo);
 
 
                         //결제 실패시 처리
@@ -104,4 +104,31 @@ function paymentGateway(pgName) {
             alert(msg);
         }
     });
+}
+
+
+//서버로 환불정보를 보냅니다.
+async function detailToRefund(refundInfo) {
+    try {
+        const response = await fetch('/pay/refund', {
+            method: 'post',
+            headers: {
+                "Content-Type": "application/json; charset=UTF-8",
+            },
+            body: JSON.stringify(refundInfo)
+        });
+
+        if (response.ok) {
+            // 성공적인 응답 처리
+            console.log("response 성공", response);
+
+        } else {
+            // 실패한 경우
+            const errorMessage = await response.text();
+            throw new Error(errorMessage);
+        }
+    } catch (error) {
+        console.log(error.message);
+
+    }
 }
