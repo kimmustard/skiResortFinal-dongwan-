@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.web.www.domain.board.PagingVO;
+import com.web.www.domain.board.QnaVO;
 import com.web.www.domain.coupon.CouponCreate;
 import com.web.www.domain.coupon.CouponSpread;
 import com.web.www.domain.coupon.CouponSystem;
@@ -23,6 +25,8 @@ import com.web.www.domain.member.MemberVO;
 import com.web.www.repository.AdminDAO;
 import com.web.www.service.AdminService;
 import com.web.www.service.HotelService;
+import com.web.www.service.NoticeService;
+import com.web.www.service.QnaService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -36,6 +40,8 @@ public class AdminController {
 	private final AdminService asv;
 	private final HotelService hsv;
 	private final AdminDAO adao;
+	private final QnaService qsv;
+	private final NoticeService nsv;
 	
 	@GetMapping("/settingMain")
 	public String adminPageForm() {
@@ -180,9 +186,16 @@ public class AdminController {
 	/*************************************
 	 * @Developer 관리자 페이지 "게시판 관리"
 	 *************************************/
+	@GetMapping("/settingNotice")
+	public String noticeList() {
+		return "/developer/settingNotice";
+	}
 	
-	
-	
+	@GetMapping("/settingQna")
+	public void QnaList(Model m, PagingVO pgvo) {
+		m.addAttribute("list", qsv.qnaList(pgvo));
+
+	}
 	
 	
 	
