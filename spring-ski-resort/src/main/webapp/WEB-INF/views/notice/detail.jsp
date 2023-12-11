@@ -53,7 +53,7 @@
 			<!-- 내용 표시란 -->
 			<tr>
 				<td class="notice-table-content" colspan="3" style="padding: 30px 20px;">
-					<div class="notice-table-content-child">${nvo.noticeContent }</div>
+					<pre class="notice-table-content-child">${nvo.noticeContent }</pre>
 					<div>
 						<!-- 파일표시란 -->
 						<c:set value="${ndto.flist }" var="flist"></c:set>
@@ -97,5 +97,6 @@
 	
 	
 <jsp:include page="../common/footer.jsp" />	
+
 </body>
 </html>

@@ -99,7 +99,7 @@
 			<!-- 내용 표시란 -->
 			<tr>
 				<td class="qna-table-content" colspan="3" style="padding: 30px 20px;">
-					<div class="qna-table-content-child">${qvo.qnaContent }</div>
+					<div class="qna-table-content-child"><pre>${qvo.qnaContent }</pre></div>
 					<div>
 						<!-- 파일표시란 -->
 						<c:set value="${qdto.flist }" var="flist"></c:set>
@@ -131,7 +131,7 @@
 			</tr>
 			<tr>	
 				<td colspan="3" class="qna-table-ans-content">
-					<div class="qna-table-ans-content-child">${qavo.qnaAnsContent }</div>
+					<div class="qna-table-ans-content-child"><pre>${qavo.qnaAnsContent }</pre></div>
 					<div>
 						<!-- 파일표시란 -->
 						<c:set value="${qadto.flist }" var="flistans"></c:set>
@@ -192,5 +192,16 @@
 
 
 <jsp:include page="../common/footer.jsp" />	
+
+<!--가져온 코드를 줄바꿈 해주는 코드  -->
+<script type="text/javascript">
+//enter => <br>
+var text = document.getElementById("textarea-board").value;
+text = text.replace(/(?:\r\n|\r|\n)/g, '<br>');
+
+//<br> => enter
+var text = document.getElementById("textarea-board").value;
+text = text.replaceAll("<br>", "\r\n");
+</script>
 </body>
 </html>
