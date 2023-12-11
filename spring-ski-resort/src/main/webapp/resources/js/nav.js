@@ -1,9 +1,9 @@
 window.onload = function () {
 
-    setTimeout(() => document.getElementById("ski-navbar").style.opacity = 0.5, 5000)
+    setTimeout(() => document.getElementById("ski-navbar").style.opacity = 0.8, 5000)
     if (!(document.getElementById('maintext1'))) {
 
-        document.getElementById("ski-navbar").style.opacity = 0.5;
+        document.getElementById("ski-navbar").style.opacity = 0.8;
     }else{
     getTwoNotice().then(notice =>{
 
@@ -14,10 +14,11 @@ window.onload = function () {
     }
     });
         load();
-
+       
+        
     }  
-    
-    }
+    memberAlarmSpread();
+}
 
 
 
@@ -171,8 +172,61 @@ navLinks.forEach(link => {
 
 
 
+//alarm-board 스위치
 
+let bellSwitch = 0;
 
+document.getElementById("alarm-bell").addEventListener('click', () => {
+    let board = document.getElementById('alarm-board');
+    if (bellSwitch == 0) {
+        board.style.right = '-10px';
+        bellSwitch = 1;
+    } else if (bellSwitch == 1) {
+        board.style.right = '-500px';
+        bellSwitch = 0;
+    }
+
+})
+
+async function memberAlarmSpread() {
+    try {
+        const result = await memberAlarmList();
+        console.log(result);
+
+        
+
+        let div = document.getElementById('alarm-spread');
+        div.innerHTML = '';
+        let str = `<ul>`;
+        for (let i = 0; i < result.length; i++) {
+            str += `<li>`;
+            str += `<a href="${result[i].alarmContentUrl}">${i+1}. ${result[i].alarmContentName}  :  ${result[i].alarmContentText}</a><br>`;
+            str += `</li>`;
+        }
+        str += `</ul>`;
+        div.innerHTML += str;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+async function memberAlarmCheckCount() {
+    
+}
+
+async function memberAlarmList() {
+    try {
+        const url = "/alarm/alarmList";
+        const config = {
+            method: 'get'
+        };
+        const resp = await fetch(url, config);
+        const result = await resp.json();
+        return result;
+    } catch (error) {
+        console.log(error);
+    }
+}
 
 
 

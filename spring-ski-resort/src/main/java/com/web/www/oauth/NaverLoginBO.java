@@ -103,4 +103,6 @@ public class NaverLoginBO {
         Response response = request.send();
         return response.getBody();
     }
+    
+   
 }

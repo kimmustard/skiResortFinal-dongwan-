@@ -1,10 +1,14 @@
 package com.web.www.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.web.www.domain.coupon.CouponCreate;
+import com.web.www.domain.coupon.CouponGetDTO;
+import com.web.www.domain.coupon.CouponSpread;
 import com.web.www.domain.coupon.CouponSystem;
 import com.web.www.domain.member.MemberVO;
 import com.web.www.repository.AdminDAO;
@@ -17,6 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 public class AdminServiceImpl implements AdminService{
 
 	private final AdminDAO adao;
+	private final MemberService msv;
 
 	@Override
 	public List<MemberVO> getMemberList() {
@@ -75,5 +80,42 @@ public class AdminServiceImpl implements AdminService{
 		}
 		
 		return adao.couponCreate(cpc);
+	}
+
+	@Override
+	public int couponRemove(String couponCode) {
+		return adao.couponRemove(couponCode);
+	}
+
+	@Override
+	public int spreadCoupon(String memberId, String couponCode) {
+		long memberNum = adao.spreadCouponMemberGet(memberId);
+		CouponGetDTO cgDTO = new CouponGetDTO();
+		cgDTO.setMemberNum(memberNum);
+		cgDTO.setCouponCode(couponCode);
+		int isOk = msv.userCouponAdd(cgDTO);
+		
+		return isOk;
+	}
+
+	@Transactional
+	@Override
+	public int allSpreadCoupon(CouponSpread cps) {
+		List<Long> memberNumList = new ArrayList<Long>();
+		
+		if(cps.getMemberGrade().equals("All")) {
+			memberNumList = adao.allSpreadCouponMemberGet(cps);	
+		}
+		
+		memberNumList = adao.noSpreadCouponMemberGet(cps);	
+		CouponGetDTO cgDTO = new CouponGetDTO();
+		int isOk = 1;
+		for (Long memberNum : memberNumList) {
+			cgDTO.setMemberNum(memberNum);
+			cgDTO.setCouponCode(cps.getCouponCode());
+			isOk *= msv.userCouponAdd(cgDTO);
+		}
+		
+		return isOk;
 	}
 }

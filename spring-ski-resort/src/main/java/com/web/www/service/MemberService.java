@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.web.www.domain.coupon.CouponGetDTO;
 import com.web.www.domain.coupon.CouponSystem;
+import com.web.www.domain.member.FindIdDTO;
 import com.web.www.domain.member.MemberCheckDTO;
 import com.web.www.domain.member.MemberPwdDTO;
 import com.web.www.domain.member.MemberVO;
@@ -49,6 +50,7 @@ public interface MemberService {
 	 * @return OauthMemberVO omvo
 	 */
 	MemberVO socialSearch(String memberId);
+	int socialLeaveSearch(String memberId);
 
 	// 광고 체크 비동기로 받기
 	int cdCheck(MemberCheckDTO mcDto);
@@ -66,6 +68,15 @@ public interface MemberService {
 	int userCouponAdd(CouponGetDTO cgDto);
 
 	List<CouponGetDTO> getUserCouponList(long memberNum);
+
+	int memberLeave(MemberVO mvo);
+
+	String findId(FindIdDTO fiDTO);
+
+	int findPwd(FindIdDTO fiDTO);
+
+	void findPwdUpdate(FindIdDTO fiDTO);
+
 
 
 

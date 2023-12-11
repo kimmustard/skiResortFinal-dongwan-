@@ -38,7 +38,6 @@
 	</update>
 	
 	
-	
 	<select id="checkId" resultType="int">
 		select count(member_id) from member where member_id = #{memberId}
 	</select>
@@ -47,9 +46,36 @@
 		select count(member_email) from member where member_email = #{memberEmail} and member_type = 'normal'
 	</select>
 	
+	<!-- 회원 탈퇴 -->
+	<update id="memberLeave">
+		update member set member_del = 'Y' where member_num = #{memberNum} and member_id = #{memberId}
+	</update>
+	
+	<!-- 탈퇴 이후 로그 저장 -->
+	<insert id="memberLeaveLegAt">
+		insert into member_leave(member_num, member_type)
+		value(#{memberNum}, #{memberType})
+	</insert>
+	
+	<!-- 아이디 비번 찾기 -->
+	<select id="findId" resultType="string">
+		select member_id from member 
+		where member_email = #{memberEmail} and member_name = #{memberName} and member_type = 'normal'
+	</select>
+	
+	<select id="findPwd" resultType="int">
+		select count(*) from member
+		where member_id = #{memberId} and member_email = #{memberEmail} and member_type = 'normal'
+	</select>
+	
+	<update id="findPwdUpdate">
+		update member set member_pwd = #{memberPwd} 
+		where member_id = #{memberId} and member_email = #{memberEmail} and member_type = 'normal'
+	</update>
+	
 	<!-- 시큐리티 userDetail클래스 DB 선접근 mapper -->
 	<select id="selectMemberId" resultType="com.web.www.domain.member.MemberVO">
-		select * from member where member_id = #{memberId}
+		select * from member where member_id = #{memberId} and member_del = 'N'
 	</select>
 	
 	<select id="selectAuths" resultType="com.web.www.security.AuthVO">
@@ -71,6 +97,11 @@
 	<select id="socialSearch" resultType="com.web.www.domain.member.MemberVO">
 		select * from member where member_id = #{memberId}
 	</select>
+	
+	<select id="socialLeaveSearch" resultType="int">
+		select count(*) from member where member_id = #{memberId} and member_del = 'Y'
+	</select>
+	
 	<!-- 시큐리티 Oauth 유저(소셜) 가입 -->
 	<insert id="socialRegister">
 		insert into member(member_id, member_pwd,
@@ -131,5 +162,10 @@
 	<update id="useCoupon">
 		update coupon set coupon_member_check = 'N' where member_num =#{memberNum} AND coupon_code = #{couponCode}
 	</update>
+	
+	<!-- 최근에 가입한 멤버조회하기 -->
+	<select id="recentMember" resultType="long">
+		select max(member_num) from member where member_del = 'N' order by member_reg_at desc;
+	</select>
 
   </mapper>

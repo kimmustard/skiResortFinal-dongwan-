@@ -20,6 +20,19 @@
   user-select: none;
 }
 
+#Title-3{
+	position: absolute;
+	width: 300px;
+	height: 300px;
+	bottom: 0px;
+	right: 0px;
+	background-image: url(/resources/etc/logo_basic.png);
+	background-size: 300px 280px;
+	opacity: 0.3;
+	background-repeat: no-repeat;
+		
+}
+
 .bodyContainer {
   width: 100%;
   height: 100vh;

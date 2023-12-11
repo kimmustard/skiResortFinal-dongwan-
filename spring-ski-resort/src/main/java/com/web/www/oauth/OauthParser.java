@@ -154,6 +154,11 @@ public class OauthParser {
 
 	private MemberVO RegisterAndAuth(MemberVO mvo) {
 		
+		//탈퇴회원인지 체크
+		if(msv.socialLeaveSearch(mvo.getMemberId()) > 0) {
+			return null;
+		}
+		
 		//DB에 정보가 없으면 회원등록(OAuth전용)
 		if(msv.socialSearch(mvo.getMemberId()) == null) {
 			int isOk = msv.socialRegister(mvo);
