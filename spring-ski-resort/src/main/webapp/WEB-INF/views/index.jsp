@@ -10,13 +10,28 @@
 <body>
 	<jsp:include page="common/nav.jsp"></jsp:include>
 	<div class="ytLandscape" id="ytLandscape">
-		<iframe
+	<!-- 	<iframe
 			src="https://www.youtube.com/embed/h1VWRkX8vD8?si=hXoOA0167YGh5z27&autoplay=1&mute=1&controls=0&loop=1&playlist=h1VWRkX8vD8&modestbranding=1"
 			title="YouTube video player" frameborder="0"
 			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-			allowfullscreen> </iframe>
+			allowfullscreen> </iframe> -->
+			
+		<!-- 	<iframe
+			src="https://www.youtube-nocookie.com/embed/4hESncfGTyE?si=2klehek2I1xT6Nts&autoplay=1&mute=1&loop=1&amp;controls=0" 
+			title="YouTube video player" 
+			frameborder="0" 
+			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+			allowfullscreen></iframe> -->
+		
+			<iframe width="560" height="315" 
+			src="https://www.youtube.com/embed/fbqHK8i-HdA?si=x8stsZdudUJ74Zay&autoplay=1&mute=1&loop=1&playlist=fbqHK8i-HdA&modestbranding=1&amp;controls=0&amp;start=250" 
+			title="YouTube video player" 
+			frameborder="0" 
+			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+			allowfullscreen></iframe>
+			
 		<h1 id="maintext1">好き</h1>
-		<h1 id="maintext2">Daisuski</h1>
+		<h1 id="maintext2">DAISUSKI</h1>
 
 
 		<div id="wrapper">
@@ -70,5 +85,13 @@
 
 	<jsp:include page="common/footer.jsp"></jsp:include>
 </body>
+<script type="text/javascript">
+const isOk = `<c:out value="${isOk}" />`;
+if(isOk == 1){
+	alert('쿠폰 지급 완료!!');
+}else if(isOk ==2){
+	alert('이미 받은 쿠폰입니다.');
+}
+</script>
 <script type="text/javascript" src="/resources/js/index.js"></script>
 </html>

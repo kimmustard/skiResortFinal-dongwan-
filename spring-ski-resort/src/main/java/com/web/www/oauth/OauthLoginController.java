@@ -13,6 +13,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,6 +39,7 @@ import lombok.extern.slf4j.Slf4j;
 public class OauthLoginController {
 
 	private final OauthParser parser;
+	private final OauthLogout Oauth2logout;
 	
 	/**
 	 * @NaverLoginBO 네이버 비즈니스 오브젝트(BO)입니다.  
@@ -60,7 +62,6 @@ public class OauthLoginController {
 		
 		/* 네이버아이디로 인증 URL을 생성하기 위하여 naverLoginBO클래스의 getAuthorizationUrl메소드 호출 */ 
 		String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
-		log.info("네이버 url = {}" , naverAuthUrl); //네이버 
 		return naverAuthUrl; 
 	 }
 
@@ -74,10 +75,17 @@ public class OauthLoginController {
 		
 		//로그인 사용자 정보를 읽어옵니다.
 		String apiResult = null;
-		apiResult = naverLoginBO.getUserProfile(oauthToken);	
+		apiResult = naverLoginBO.getUserProfile(oauthToken);
 		
 		// JSON 유저 정보 파싱 -> DB에 저장 -> mvo에 담기
 		MemberVO mvo = parser.naverUser(apiResult);
+		
+		// 탈퇴회원이면?
+		if(mvo == null) {
+			Oauth2logout.naverLogout(oauthToken.getAccessToken());
+			rttr.addFlashAttribute("errMsg", 1);
+			return "redirect:/member/login";
+		}
 		
 		//인증권한 세팅 메서드 
 		socialUserCreateMemberAndAuthSet(mvo,request ,response);
@@ -105,12 +113,21 @@ public class OauthLoginController {
 	 }
 	// 카카오 callback 호출
 	@RequestMapping(value = "/kakao/callback", method = {RequestMethod.GET, RequestMethod.POST }) 
-	public String kakaoLogin(HttpServletRequest request, HttpServletResponse response, @RequestParam(value = "code", required = false) String code) throws Exception {
+	public String kakaoLogin(HttpServletRequest request, HttpServletResponse response, 
+			@RequestParam(value = "code", required = false) String code, RedirectAttributes rttr) throws Exception {
+		
 		String access_Token = kakaoLoginBO.getAccessToken(code);
-        
+
 		// JSON 유저 정보 파싱 -> DB에 저장 -> mvo에 담기
 		MemberVO mvo = parser.kakaoUser(access_Token);
 
+		// 탈퇴회원이면?
+		if(mvo == null) {
+			Oauth2logout.kakaoLogout(access_Token);
+			rttr.addFlashAttribute("errMsg", 1);
+			return "redirect:/member/login";
+		}
+		
 		//인증권한 세팅 메서드
 		socialUserCreateMemberAndAuthSet(mvo, request, response);
 		
@@ -123,25 +140,33 @@ public class OauthLoginController {
 	// 로그인 첫 화면 요청
 	@ResponseBody
 	@RequestMapping("/google/login")
-	public String login(HttpServletRequest request) {
+	public String login() {
 		//구글 code 발행
 		String googleAuthUrl = googleLoginBO.getGoogleUrl();
-
 		return  googleAuthUrl;
 	}
-
+	
+	
 	// 구글 Callback호출
 	@RequestMapping(value = "/google/callback", method = { RequestMethod.GET, RequestMethod.POST })
 	public String googleCallback(HttpServletRequest request, HttpServletResponse response, 
-			Model model, @RequestParam String code) throws IOException, ServletException {
+			Model model, @RequestParam String code, RedirectAttributes rttr) throws IOException, ServletException {
 		
 		Map<String, String> userInfo = googleLoginBO.getAccessToken(code);
 	
 		// JSON 유저 정보 파싱 -> DB에 저장 -> mvo에 담기
 		MemberVO mvo = parser.googleUser(userInfo);
-		log.info("확인중 = {}", mvo);
+
+		// 탈퇴회원이면?
+		if(mvo == null) {
+			Oauth2logout.googleLogout(code);
+			rttr.addFlashAttribute("errMsg", 1);
+			return "redirect:/member/login";
+		}
+		
+		
 		//인증권한 세팅 메서드
-		socialUserCreateMemberAndAuthSet(mvo,request, response);
+		socialUserCreateMemberAndAuthSet(mvo, request, response);
 	
 		return "redirect:/";
 	}
@@ -154,7 +179,6 @@ public class OauthLoginController {
 		Authentication authentication = 
 				new UsernamePasswordAuthenticationToken(OauthUser, null, OauthUser.getAuthorities());
 		SecurityContextHolder.getContext().setAuthentication(authentication);
-
 	}
 	
 }	

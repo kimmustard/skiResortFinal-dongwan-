@@ -1,49 +1,3 @@
-
-//주소 찾기
-function clickAddr() {
-    document.getElementById('button-addon2').click();
-}
-
-
-//광고성 체크
-document.getElementById('flexSwitchCheckDefault').addEventListener('click', () => {
-    let id = document.getElementById('flexSwitchCheckDefault').value;
-    let check = '';
-    if (document.getElementById('flexSwitchCheckDefault').checked == true) {
-        check = 'terms3check';
-    } else {
-        check = 'non-check';
-    }
-
-    let checkData = {
-        memberId: id,
-        memberTerms3: check
-    }
-
-
-    cdChecker(checkData);
-})
-
-
-async function cdChecker(checkData) {
-    try {
-        const url = '/member/check/cdcheck';
-        const config = {
-            method: 'post',
-            headers: {
-                'Content-Type': 'application/json; charset=utf-8'
-            },
-            body: JSON.stringify(checkData)
-        }
-        await fetch(url, config);
-
-    } catch (error) {
-        console.log(error);
-    }
-
-}
-
-
 /* 이메일 로직*/
 /*이메일 인증*/
 // 중복체크
@@ -91,9 +45,9 @@ document.getElementById('modalEmailCheckBtn').addEventListener('click', () => {
 
     emailCheck(email).then(result => {
 
-        if (result > 0) {
+        if (result == 0) {
             document.getElementById('modalEmailCheck').className = 'form-control is-invalid';
-            document.getElementById('emailDuplicateCheck').innerText = '가입된 이메일이 이미 존재합니다.';
+            document.getElementById('emailDuplicateCheck').innerText = '이메일이 존재하지 않습니다.';
             document.getElementById('emailDuplicateCheck').style.color = 'red';
         } else {
             document.getElementById('modalEmailCheck').className = 'form-control is-valid';
@@ -166,42 +120,3 @@ document.getElementById('inputMemberEmail').addEventListener('click', () => {
     document.getElementById('MemberEmailCheck').click();
 
 })
-
-//비밀번호 중복확인
-async function pwdUpdateLastCheck(event) {
-    event.preventDefault(); // 폼 제출 방지
-
-    // 비밀번호체크
-    const pwd1 = document.getElementById('pwdBox2').value;
-    const pwd2 = document.getElementById('pwdBox3').value;
-    if (pwd1 != pwd2) {
-        alert('새 비밀번호가 일치하는지 확인해주세요');
-        return false;
-    }
-
-    // 중복 체크 및 비밀번호 체크 통과 시에 폼 제출
-    event.target.submit(); // 폼 제출
-}
-
-
-
-//회원탈퇴 체크
-async function leaveLastCheck(event) {
-    event.preventDefault(); // 폼 제출 방지
-
-    // 비밀번호체크
-    const pwd1 = document.getElementById('memberLeavePassword1').value;
-    const pwd2 = document.getElementById('memberLeavePassword2').value;
-    if (pwd1 == null || pwd2 == null) {
-        alert('공백은 불가능합니다.');
-        return false;
-    }
-
-
-    if (pwd1 != pwd2) {
-        alert('비밀번호가 일치하는지 확인해주세요');
-        return false;
-    }
-
-    event.target.submit(); // 폼 제출
-}

@@ -62,10 +62,10 @@ public class PayController {
 	
 	@ResponseBody
 	@PostMapping(value = "/refund", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.TEXT_PLAIN_VALUE+ ";charset=UTF-8")
-	public ResponseEntity<String> refunt(@RequestBody RefundInfoVO rfiVO) throws IOException {
+	public ResponseEntity<String> refunt(@RequestBody RefundInfoVO rfiVO, @AuthUser MemberVO mvo) throws IOException {
 		log.info("##환불정보## = {}", rfiVO);
-		
-		ResponseEntity<String> isOk = psv.payMentRefund(rfiVO);
+		long memberNum = mvo.getMemberNum();
+		ResponseEntity<String> isOk = psv.payMentRefund(rfiVO, memberNum);
 		return isOk;
 	}
 	
@@ -82,7 +82,7 @@ public class PayController {
 	        pivo.setMemberNum(mvo.getMemberNum());
 	        log.info("##결제 정보##  = {}" , pivo);
 	        //결제정보 테이블 저장
-	        psv.registerPay(pivo, principal);
+	        psv.registerPay(pivo);
 	        return new ResponseEntity<String>("결제완료", HttpStatus.OK);
 	    } catch (Exception e) {
 	        log.error("결제 처리 중 오류 발생", e);

@@ -1,18 +1,20 @@
 package com.web.www.service;
 
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.web.www.domain.alarm.AlarmVO;
 import com.web.www.domain.coupon.CouponGetDTO;
 import com.web.www.domain.coupon.CouponSystem;
+import com.web.www.domain.member.FindIdDTO;
 import com.web.www.domain.member.MemberCheckDTO;
 import com.web.www.domain.member.MemberPwdDTO;
 import com.web.www.domain.member.MemberVO;
 import com.web.www.domain.member.ModifyMemberDTO;
+import com.web.www.repository.AlarmDAO;
 import com.web.www.repository.MemberDAO;
 
 import lombok.RequiredArgsConstructor;
@@ -25,19 +27,29 @@ import lombok.extern.slf4j.Slf4j;
 public class MemberServiceImpl implements MemberService {
 
 	private final MemberDAO mdao;
+	private final AlarmDAO adao;
 
 	@Transactional
 	@Override
 	public int insertMember(MemberVO mvo) {
 		mdao.insertMember(mvo);	//가입
-		return mdao.insertAuthInit(mvo.getMemberId());
+		int isOk = mdao.insertAuthInit(mvo.getMemberId());
+		
+		//알람 발송
+		long memberNum = mdao.recentMember();
+		adao.alarmSetting(new AlarmVO(memberNum , 1, "쿠폰"));
+		return isOk;
 	}
 
 	@Transactional
 	@Override
 	public int socialRegister(MemberVO mvo) {
 		mdao.socialRegister(mvo);	//소셜유저 가입
-		return mdao.insertAuthInit(mvo.getMemberId());
+		int isOk = mdao.insertAuthInit(mvo.getMemberId());
+		//알람 발송
+		long memberNum = mdao.recentMember();
+		adao.alarmSetting(new AlarmVO(memberNum , 1, "쿠폰"));
+		return isOk;
 	}
 	
 	@Override
@@ -82,6 +94,11 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public MemberVO socialSearch(String memberId) {
 		return mdao.socialSearch(memberId);
+	}
+	
+	@Override
+	public int socialLeaveSearch(String memberId) {
+		return mdao.socialLeaveSearch(memberId);
 	}
 
 	// 광고체크 비동기로 받기
@@ -148,6 +165,40 @@ public class MemberServiceImpl implements MemberService {
 	public List<CouponGetDTO> getUserCouponList(long memberNum) {
 		return mdao.getUserCouponList(memberNum);
 	}
+
+	@Transactional
+	@Override
+	public int memberLeave(MemberVO mvo) {
+		//회원탈퇴 -> 회원탈퇴 로그 테이블에 기록남기기
+		
+		mdao.memberLeaveLegAt(mvo);
+		return mdao.memberLeave(mvo);
+	}
+
+	
+	/**
+	 * @findId 아이디 찾기
+	 * @findPWd 패스워드 찾기
+	 */
+	@Override
+	public String findId(FindIdDTO fiDTO) {
+		return mdao.findId(fiDTO);
+	}
+
+	@Override
+	public int findPwd(FindIdDTO fiDTO) {
+		return mdao.findPwd(fiDTO);
+	}
+
+	@Override
+	public void findPwdUpdate(FindIdDTO fiDTO) {
+		mdao.findPwdUpdate(fiDTO);
+		long memberNum = adao.getAlarmMemberNum(fiDTO.getMemberId());
+		adao.alarmSetting(new AlarmVO(memberNum , 4, "변경"));
+	}
+
+
+
 
 
 

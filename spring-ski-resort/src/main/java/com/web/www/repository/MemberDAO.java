@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.web.www.domain.coupon.CouponGetDTO;
 import com.web.www.domain.coupon.CouponSystem;
+import com.web.www.domain.member.FindIdDTO;
 import com.web.www.domain.member.MemberCheckDTO;
 import com.web.www.domain.member.MemberPwdDTO;
 import com.web.www.domain.member.MemberVO;
@@ -37,7 +38,8 @@ public interface MemberDAO {
 	void socialRegister(MemberVO mvo);
 	
 	MemberVO socialSearch(String memberId);
-	
+	//탈퇴회원인지 체크
+	int socialLeaveSearch(String memberId);
 	
 	
 	
@@ -100,6 +102,19 @@ public interface MemberDAO {
 	int useCoupon(@Param("memberNum") long memberNum, @Param("couponCode")String couponCode);
 
 	void minousRoom(long memberNum);
+
+	int memberLeave(MemberVO mvo);
+
+	void memberLeaveLegAt(MemberVO mvo);
+
+	String findId(FindIdDTO fiDTO);
+
+	int findPwd(FindIdDTO fiDTO);
+
+	void findPwdUpdate(FindIdDTO fiDTO);
+
+	long recentMember();
+
 
 
 
