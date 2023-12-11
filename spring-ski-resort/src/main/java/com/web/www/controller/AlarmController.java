@@ -10,11 +10,14 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.web.www.domain.alarm.AlarmContentVO;
 import com.web.www.domain.alarm.AlarmDTO;
+import com.web.www.domain.alarm.AlarmReadDTO;
 import com.web.www.domain.coupon.CouponGetDTO;
 import com.web.www.domain.member.AuthUser;
 import com.web.www.domain.member.MemberVO;
@@ -60,6 +63,17 @@ public class AlarmController {
 		log.info("테스트 = {}", alarmList);
 		
 		return new ResponseEntity<List<AlarmDTO>> (alarmList, HttpStatus.OK);
+	}
+	
+	@PostMapping(value = "/alarmReadCheck", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<String> alarmReadCheck(@RequestBody AlarmReadDTO arDTO){
+		
+		log.info("알려주세요 = {}", arDTO);
+		int isOk = asv.alarmReadCheck(arDTO);
+		
+		return isOk > 0 ? new ResponseEntity<String> ("1",HttpStatus.OK) :
+			new ResponseEntity<String> ("0",HttpStatus.NOT_FOUND) ;
+		
 	}
 	
 	

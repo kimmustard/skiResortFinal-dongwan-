@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 <style type="text/css">
 	#bi-gear-fill{
 		font-size: 10px;
@@ -77,7 +78,7 @@
 	       	<li><a href="/member/logout">| 로그아웃</a></li>
      
 	      	<div class="member-alarm" id="alarm-bell">
-	      		<i class="bi bi-bell-fill position-relative"><span class="alarm-bell-deco">1</span></i>
+	      		<i class="bi bi-bell-fill position-relative" id=""><span class="alarm-bell-deco" id="alarm-mini-bell"></span></i>
 	      	</div>
 			
 			<div class="member-alarm-board" id="alarm-board">
