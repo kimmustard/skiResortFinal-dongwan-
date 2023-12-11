@@ -99,7 +99,9 @@
 			<!-- 내용 표시란 -->
 			<tr>
 				<td class="qna-table-content" colspan="3" style="padding: 30px 20px;">
-					<pre class="qna-table-content-child">${qvo.qnaContent }</pre>
+					<div class="qna-table-content-child">
+						<pre-wrap>${qvo.qnaContent }</pre-wrap>
+					</div>
 					<div>
 						<!-- 파일표시란 -->
 						<c:set value="${qdto.flist }" var="flist"></c:set>
@@ -131,7 +133,7 @@
 			</tr>
 			<tr>	
 				<td colspan="3" class="qna-table-ans-content">
-					<pre class="qna-table-ans-content-child">${qavo.qnaAnsContent }</pre>
+					<div class="qna-table-ans-content-child"><pre-wrap>${qavo.qnaAnsContent }</pre-wrap></div>
 					<div>
 						<!-- 파일표시란 -->
 						<c:set value="${qadto.flist }" var="flistans"></c:set>

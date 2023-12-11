@@ -225,6 +225,7 @@ a{
     height: 130px;
 }
 .qna-table-content-child{
+	position: relative;
 	color: #8d8d8d;
 	text-align:left;
 	padding: 30px 20px;
