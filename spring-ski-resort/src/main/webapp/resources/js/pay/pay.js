@@ -33,11 +33,11 @@ function paymentGateway(pgName) {
 
     }, function (rsp) {
         console.log(rsp);
-       
-       
+
+
         if (rsp.success) {
             console.log("결제된거임?");
-        
+
             // 서버로 데이터를 전송
             fetch("/pay/portOne", {
                 method: "POST",
@@ -62,21 +62,35 @@ function paymentGateway(pgName) {
             })
                 .then((response) => response.text())
                 .then((data) => {
-                 
+
                     // 서버에서의 추가 처리
                     if (data == "결제완료") {
                         document.getElementById('payName').value = rsp.name;
                         document.getElementById('payAmount').value = rsp.paid_amount;
                         document.getElementById('payMerchantUid').value = rsp.merchant_uid;
-                            if( document.getElementById("payform")){
-                                document.getElementById("payform").submit();
-                          
-                            }
-        
-                    
-                   
-                           
-                        } else {
+                        if (document.getElementById("payform")) {
+                            document.getElementById("payform").submit();
+
+                        }
+
+
+
+
+                    } else {
+
+                        /*결제 정보 + 환불 사유 넘기는 객체 생성*/
+                        let refundInfo = {
+                            refundImpUid: "refund_no_" + new Date().getTime(), // 상점에서 관리하는 환불 번호 
+                            payMerchantUid: rowData[0],
+                            payImpUid: row.querySelector('td input[type="hidden"]').value,
+                            refundReason: selectedValue,
+                            refundName: rowData[2],
+                            refundAmount: parseInt(rowData[3].replace(/\D/g, ''), 10),
+                            refundType: '시스템'
+                        };
+
+
+
                         //결제 실패시 처리
                         window.location.href = '/pay/PayFail?errorMessage=' + data;
                     }

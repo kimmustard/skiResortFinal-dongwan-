@@ -51,7 +51,6 @@ public class HotelController {
 		String paySuccessUrl;
 		int cheakRoomCount = hsv.cheakRoomCount(rivo.getHotelRoomNum());
 		if (cheakRoomCount <= 0) {
-			log.info("####### = {}" , cheakRoomCount);
 			return "redirect:/pay/PayFail?errorMessage=" + URLEncoder.encode("이용가능한 방이 없습니다.", StandardCharsets.UTF_8);
 		}
 		int isOk = hsv.updateRoomInfo(rivo, cpn);
