@@ -76,8 +76,10 @@ public class NoticeController {
 		int totalCount = nsv.getTotalCount(pgvo);
 		PagingHandler ph = new PagingHandler(pgvo, totalCount);
 		m.addAttribute("ph",ph);
-		List<NoticeVO> pvo = nsv.noticePointList();
+		List<NoticeVO> pvo = nsv.noticePointList(); //중요공지 목록 가져오기
 		m.addAttribute("pvo", pvo);
+		List<FileVO> pfvo = nsv.noticePointFileList(); //중요공지 파일 목록 가져오기
+		m.addAttribute("pfvo", pfvo);
 	}
 	
 	

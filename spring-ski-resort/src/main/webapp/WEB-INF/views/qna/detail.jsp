@@ -17,7 +17,10 @@
 <c:set value="${qdto.qvo }" var="qvo"></c:set>
 <c:set value="${qadto.qavo }" var="qavo"></c:set>
 <sec:authorize access="isAuthenticated()">
-<sec:authentication property="principal.mvo.authList" var="auths"/>
+	<sec:authentication property="principal.mvo.authList" var="auths"/>
+	<sec:authentication property="principal.mvo.memberId" var="authId"/>
+	<sec:authentication property="principal.mvo.memberEmail" var="authEmail"/>
+	<sec:authentication property="principal.mvo.memberType" var="authType"/>
 </sec:authorize>
 
 
@@ -69,8 +72,15 @@
 					      	<span class="qna-table-td-child-category-span" style="color: #472e50;">${qvo.qnaCategory }</span>
 				      	</c:if>
 				      </div>
-			      </td>	      
-		      <th scope="col" class="qna-table-th-title"><div class="qna-table-td-child">${qvo.qnaTitle }</div></th>
+			      </td>	
+				  <c:if test="${qvo.qnaSecret=='Y' }">
+			      	<c:if test="${(authType == 'normal' && authId == qvo.qnaWriter) || (authType != 'normal' && authEmail == qvo.qnaWriter) || auths.stream().anyMatch(authVO -> authVO.auth.equals('ROLE_ADMIN')).get()}">          
+			      		<th scope="col" class="qna-table-th-title"><div class="qna-table-td-title"><span class="material-symbols-outlined" style="font-size: 21px">lock</span>${qvo.qnaTitle }</div></th>
+			      	</c:if>
+			      </c:if>
+			      <c:if test="${qvo.qnaSecret=='N' }">
+			      		<th scope="col" class="qna-table-th-title"><div class="qna-table-td-title">${qvo.qnaTitle }</div></th>
+			      </c:if>
 		      <td class="qna-table-td-category"><div class="qna-table-td-child-reg">${fn:replace((fn:substring(qvo.qnaRegAt,0,10)),'-','.') }</div></td>		      
 		    </tr>
 		</thead>
@@ -148,28 +158,35 @@
 	
 	
 	
+		<!-- 버튼 -->
+		<div class="qna-detail-btn">
+			<a href="/qna/list">
+				<button type="button" class="qna-btn myqna-btn">목록</button>
+			</a>
+			<c:if test="${qvo.qnaIsok=='N' }">
+				<c:if test="${(authType == 'normal' && authId == qvo.qnaWriter) || (authType != 'normal' && authEmail == qvo.qnaWriter) || auths.stream().anyMatch(authVO -> authVO.auth.equals('ROLE_ADMIN')).get()}">			
+					<a href="/qna/modify?qnaNum=${qvo.qnaNum }">
+						<button type="button" class="qna-btn myqna-btn">수정</button>
+					</a>
+				</c:if>	
+			</c:if>
+			<c:if test="${auths.stream().anyMatch(authVO -> authVO.auth.equals('ROLE_ADMIN')).get()}">
+				<c:if test="${qvo.qnaIsok=='N' }">	
+						<a href="/qna/ans-register?qnaNum=${qvo.qnaNum }">
+							<button type="button" class="qna-btn myqna-btn">답변등록</button>
+						</a>
+				</c:if>
+				<c:if test="${qvo.qnaIsok=='Y' }">	
+						<a href="/qna/ans-modify?qnaNum=${qvo.qnaNum }">
+							<button type="button" class="qna-btn myqna-btn">답변수정</button>
+						</a>
+				</c:if>
+			</c:if>	
+		</div>
 	
-	<a href="/qna/list">
-		<button type="button" class="qna-btn myqna-btn">목록</button>
-	</a>
-	<a href="/qna/modify?qnaNum=${qvo.qnaNum }">
-		<button type="button" class="qna-btn myqna-btn">수정</button>
-	</a>
-	<c:if test="${auths.stream().anyMatch(authVO -> authVO.auth.equals('ROLE_ADMIN')).get()}">
-		<c:if test="${qvo.qnaIsok=='N' }">	
-				<a href="/qna/ans-register?qnaNum=${qvo.qnaNum }">
-					<button type="button" class="qna-btn myqna-btn">답변등록</button>
-				</a>
-		</c:if>
-		<c:if test="${qvo.qnaIsok=='Y' }">	
-				<a href="/qna/ans-modify?qnaNum=${qvo.qnaNum }">
-					<button type="button" class="qna-btn myqna-btn">답변수정</button>
-				</a>
-		</c:if>
-	</c:if>	
-</div>
-
-
+	
+	
+	  </div>
 	</div>
 </div>	
 

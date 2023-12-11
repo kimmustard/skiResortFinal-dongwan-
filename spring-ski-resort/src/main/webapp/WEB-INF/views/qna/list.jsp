@@ -31,7 +31,7 @@
 <div class="qna-header qna-header-two">
 	<h1 class="qna-header-h1">고객문의<span class="qna-header-span">Question And Answer</span></h1>
 </div>
-<div class="qna-header-p">궁금하신 부분에 대한 빠르고 정확한 답변을 드리겠습니다.</div>	
+<div class="qna-header-p">문의하신 부분에 대해 빠르고 정확한 답변을 드리겠습니다.</div>	
 
 	<div class="qna-menu-container">
 	 <div class="qna-menu-container-child">	
@@ -250,21 +250,24 @@
 					</c:if>
 				</form>	
 			</div>
+			<a href="/qna/register">
+				<button class="qna-btn myqna-btn" type="button">문의하기</button>
+			</a>
 		</sec:authorize>
 		
-		<sec:authorize access="isAnonymous()"> <!-- 로그인 x -->
+		<!-- 비회원도 문의할 수 있는 버튼인데 막아놓았음 -->
+		<%-- <sec:authorize access="isAnonymous()"> <!-- 로그인 x -->
 		<div class="qna-myqna">
 			<form action="/qna/list" method="get">
 				<input type="hidden" name="type" value="w" ${typed eq 'w' ? 'selected' : '' }>
 				<input type="hidden" name="keyword" type="search" value="비회원">
 				<span><button class="qna-btn myqna-btn" type="submit">MY Q&A</button></span>
 			</form>
-		</div>	
-		</sec:authorize>
-		
-		<a href="/qna/register">
-			<button class="qna-btn myqna-btn" type="button">문의하기</button>
-		</a>
+		</div>
+			<a href="/qna/register">
+				<button class="qna-btn myqna-btn" type="button">문의하기</button>
+			</a>	
+		</sec:authorize> --%>
 		</div>
 		
 		

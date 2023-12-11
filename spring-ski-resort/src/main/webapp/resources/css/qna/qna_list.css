@@ -344,7 +344,7 @@
   	width: 130px;
   	height: 40px;
   	padding: 10px 25px;
-  	border: 1px solid #000;
+  	border: 1px solid #414141;
   	font-family: 'Lato', sans-serif;
   	font-weight: 500;
   	background: transparent;
@@ -355,18 +355,18 @@
 }
 
 .myqna-btn {
-   background: #000;
+   background: #414141;
   color: #fff;
 
   padding: 0;
-  border: 1px solid #000;
+  border: 1px solid #414141;
   z-index: 1;
    -webkit-transition: all 0.3s linear;
   transition: all 0.3s linear;
 }
 .myqna-btn:hover {
   background: transparent;
-  color: #000;
+  color: #414141;
 }
 .myqna-btn:before,
 .myqna-btn:after {
@@ -377,7 +377,7 @@
   height: 50%;
   right: 0;
   z-index: -1;
-  background: #000;
+  background: #414141;
   transition: all 0.3s ease;
 }
 .myqna-btn:before {
@@ -389,7 +389,7 @@
 .myqna-btn:hover:before,
 .myqna-btn:hover:after {
   height: 0;
-  background-color: #000;
+  background-color: #414141;
   border: 1px solid #dddddd;
 }
 

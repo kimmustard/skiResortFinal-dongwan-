@@ -30,7 +30,7 @@
 	
 	<update id="QnaFileModify">
 		update qna set 
-		qna_category=#{qnaCategory}, qna_title=#{qnaTitle}, qna_content=#{qnaContent}, qna_mod_at=now()
+		qna_category=#{qnaCategory}, qna_title=#{qnaTitle}, qna_content=#{qnaContent}, qna_mod_at=now(), qna_secret=#{qnaSecret}
 		where qna_num = #{qnaNum}
 	</update>
 	

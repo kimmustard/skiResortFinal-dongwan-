@@ -1,28 +1,44 @@
 @charset "UTF-8";
 
 .notice-img-container{
-	height: 60vh;
+	margin-top: 96px;
+	height: 70vh;
 	background-size: cover;
 	background-position: 0px -20vh;
 	max-width: 100%;
 }
 
+
+.notice-container{
+	margin-top: 50px;
+}
 .notice-menu-container{
-	padding-top: 120px;
-	margin-bottom: 300px;
+	margin-top: 100px;
+	margin-bottom: 200px;
+	border: 1px solid #dddddd;
+}
+.notice-menu-container-child{
+	width: 80%;
+	/* 수평 중앙 정렬하기 */
+  	margin: 0 auto;
+  	margin-bottom: 200px; 
 }
 
 
 
 /* 검색 라인 */
 .notice-search-container{
-	background-color: #f5f5f5;
+	background-color: #f8f9fa;
 	height: 100px;
-	margin-bottom: 80px;
+	width: 100%;
 	justify-content: center;
 	display: flex;
 	align-items: center;
 	column-gap: 20px;
+	/* 수평 중앙 정렬하기 */
+  	margin: 0 auto;
+  	margin-bottom: 50px;
+  	margin-top: 80px;
 }
 
 .notice-search-category{
@@ -32,13 +48,12 @@
 }
 
 .notice-input-container{
-	width: 780px;
 	max-width: 100%;
 	border-color: transparent;
 }
 
 .notice-search-input{
-	width: 780px;
+	width: 650px;
 	height: 40px;
 	background: transparent;
 	border-width: 0 0 1px;
@@ -49,16 +64,36 @@
 }
 
 .notice-search-button{
-	background-color: #ae8d73;
+	background-color: #7390ae;
 	max-width: 135px;
 	min-width: 135px;
 	border: none;
 	height: 40px;
+	transition: all 0.3s ease;
+}
+.notice-search-button:hover{
+	background-color: #804000;
+	max-width: 135px;
+	min-width: 135px;
+	border: none;
+	height: 40px;
+	transition: all 0.3s ease;
+}
+
+.notice-search-button>div{
 	justify-content: center;
 	align-items: center;
-	font-size: 16px;
-	font-weight: 500;
+	font-weight: 800;
 	color: white;
+	font-size: 16px;	
+}
+
+.notice-search-button:hover{
+	box-shadow:
+   -7px -7px 20px 0px #fff9,
+   -4px -4px 5px 0px #fff9,
+   7px 7px 20px 0px #0002,
+   4px 4px 5px 0px #0001;
 }
 
 
@@ -66,7 +101,10 @@
 
 /* 카테고리 라인 */
 .notice-category{
-	margin-bottom: 0px;
+	margin-bottom: 5px;
+}
+.nav-link{
+	color: black;
 }
 
 
@@ -76,26 +114,29 @@
 
 .notice-table{
 	text-align: center;
+	width: 100%;
+	margin: 0 auto;
+	margin-bottom: 30px;
+}
+
+.notice-table>thead{
+	border-top: 1px solid #4b4b4b;
 }
 
 .notice-table-tr{
 	border-bottom: 1px solid #e3dbd7;
-}
-
-.notice-table-tr-point{
-	border-bottom: 1px solid #e3dbd7;
-	background-color: yellow;
+	
 }
 
 .notice-table-th-no{
 	height: 60px;
-	width: 100px;
+	width: 80px;
 	position: relative;
 }
 
 .notice-table-th-cago{
 	height: 60px;
-	width: 150px;
+	width: 130px;
 	position: relative;
 }
 
@@ -107,7 +148,13 @@
 
 .notice-table-th-writer{
 	height: 60px;
-	width: 100px;
+	width: 120px;
+	position: relative;
+}
+
+.notice-table-th-isok{
+	height: 60px;
+	width: 150px;
 	position: relative;
 }
 
@@ -133,15 +180,361 @@
   	top: 50%;
   	left: 50%;
   	transform: translate(-50%, -50%);
+  	color: #5f5f5f;
+  	;
+}
+
+.notice-table-td-child-category{
+	width:120px;
+	position: absolute;
+	top: 50%;
+	left: 45%;
+  	transform: translate(-50%, -50%);
+  	color: #5f5f5f;
 }
 
 .notice-table-td-child-title{
-	padding-left: 10px;
+	padding-left: 20px;
 	position: absolute;
   	top: 50%;
   	transform: translate(0, -50%);
+  	color: #5f5f5f;	
 }
+
 .notice-table-td-child-title a{
 	text-decoration-line: none;
 	color: inherit;
 }
+
+.notice-isok-y.isok-end.isok-line{
+	font-size: 13px;
+    border: 1px solid #008000;
+    color: #008000;
+    background: #ffffff;
+}
+
+.notice-isok-y.isok-end{
+    width: 75px;
+    border: 1px solid #008000;
+    color: #ffffff;
+    background: #008000;
+    line-height: 25px;
+}
+
+.notice-isok-n.isok-end.isok-line{
+	font-size: 13px;
+    border: 1px solid #dd6f00;
+    color: #dd6f00;
+    background: #ffffff;
+}
+
+.notice-isok-n.isok-end{
+    width: 75px;
+    border: 1px solid #dd6f00;
+    color: #ffffff;
+    background: #dd6f00;
+    line-height: 25px;
+}
+
+
+/* 테이블 아이콘 라인 */
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 300,
+  'GRAD' 0,
+  'opsz' 24;
+  vertical-align:middle;
+  color: #8d8d8d;
+}
+
+.notice-secret-title{
+	vertical-align:middle;
+}
+
+.notice-table-td-child-category-span{
+	vertical-align:middle;
+}
+
+
+/*페이징 라인*/
+.notice-paging-container{
+	display: flex;
+  	justify-content: center;
+  	margin-bottom: 60px;
+}
+
+.notice-paging-ul>li>a{
+	color: #8d8d8d;
+	font-family: sans-serif;
+}
+.notice-paging-ul>li>a:hover{
+	color: #800000;
+	font-family: sans-serif;
+}
+
+
+
+
+/*등록 버튼 라인*/
+.notice-reg{
+	margin-bottom: 60px;
+	display: flex;
+	float: right;
+	column-gap: 5px;
+}
+
+.notice-btn{
+  	outline: none;
+  	width: 130px;
+  	height: 40px;
+  	padding: 10px 25px;
+  	border: 1px solid #414141;
+  	font-family: 'Lato', sans-serif;
+  	font-weight: 500;
+  	background: transparent;
+  	cursor: pointer;
+  	transition: all 0.3s ease;
+  	position: relative;
+  	display: inline-block;
+}
+
+.mynotice-btn {
+   background: #414141;
+  color: #fff;
+
+  padding: 0;
+  border: 1px solid #414141;
+  z-index: 1;
+   -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+.mynotice-btn:hover {
+  background: transparent;
+  color: #414141;
+}
+.mynotice-btn:before,
+.mynotice-btn:after {
+  position: absolute;
+  content: "";
+  left: 0;
+  width: 100%;
+  height: 50%;
+  right: 0;
+  z-index: -1;
+  background: #414141;
+  transition: all 0.3s ease;
+}
+.mynotice-btn:before {
+  top: 0;
+}
+.mynotice-btn:after {
+  bottom: 0;
+}
+.mynotice-btn:hover:before,
+.mynotice-btn:hover:after {
+  height: 0;
+  background-color: #414141;
+  border: 1px solid #dddddd;
+}
+
+
+
+
+
+/* -----슬라이드 부분----- */
+.section input[id*="slide"] {
+	display:none;
+	}
+.section .slidewrap {
+	max-width:100%;
+	margin:0 auto;
+	margin-top: 96px;
+	height: 70vh;
+	}
+.section .slidelist {
+	white-space:nowrap;
+	font-size:0;
+	overflow:hidden;
+	position:relative;
+	}
+.section .slidelist > li {
+	display:inline-block;
+	vertical-align:middle;
+	height: 70vh;
+	width:100%;
+	transition:all .5s;
+	}
+.section .slidelist > li > a {
+	display:block;
+	position:relative;
+	}
+.section .slidelist > li > a img {
+	width:100%;
+	}
+.section .slidelist label {
+	position:absolute;
+	z-index:10;top:50%;
+	transform:translateY(-50%);
+	padding:50px;
+	cursor:pointer;
+	}
+.section .slidelist .textbox {
+	position:absolute;
+	z-index:1;top:50%;
+	left:50%;
+	transform:translate(-50%,-50%);
+	line-height:1.6;
+	text-align:center;
+	}
+.section .slidelist .textbox h3 {
+	font-size:36px;
+	color:#fff;
+	transform:translateY(30px);
+	transition:all .5s;
+	}
+.section .slidelist .textbox p {
+	font-size:16px;
+	color:#fff;
+	opacity:0;
+	transform:translateY(30px);
+	transition:all .5s;
+	}
+
+/* input에 체크되면 슬라이드 효과 */
+.section input[id="slide01"]:checked ~ .slidewrap .slidelist > li {
+	transform:translateX(0%);
+	}
+.section input[id="slide02"]:checked ~ .slidewrap .slidelist > li {
+	transform:translateX(-100%);
+	}
+.section input[id="slide03"]:checked ~ .slidewrap .slidelist > li {
+	transform:translateX(-200%);
+	}
+.section input[id="slide04"]:checked ~ .slidewrap .slidelist > li {
+	transform:translateX(-300%);
+	}
+.section input[id="slide05"]:checked ~ .slidewrap .slidelist > li {
+	transform:translateX(-400%);
+	}
+
+/* input에 체크되면 텍스트 효과 */
+.section input[id="slide01"]:checked ~ .slidewrap li:nth-child(1) .textbox h3 {
+	opacity:1;
+	transform:translateY(0);
+	transition-delay:.2s;
+	}
+.section input[id="slide01"]:checked ~ .slidewrap li:nth-child(1) .textbox p {
+	opacity:1;
+	transform:translateY(0);
+	transition-delay:.4s;
+	}
+.section input[id="slide02"]:checked ~ .slidewrap li:nth-child(2) .textbox h3 {
+	opacity:1;
+	transform:translateY(0);
+	transition-delay:.2s;
+	}
+.section input[id="slide02"]:checked ~ .slidewrap li:nth-child(2) .textbox p {
+	opacity:1;
+	transform:translateY(0);
+	transition-delay:.4s;
+	}
+.section input[id="slide03"]:checked ~ .slidewrap li:nth-child(3) .textbox h3 {
+	opacity:1;
+	transform:translateY(0);
+	transition-delay:.2s;
+	}
+.section input[id="slide03"]:checked ~ .slidewrap li:nth-child(3) .textbox p {
+	opacity:1;
+	transform:translateY(0);
+	transition-delay:.4s;
+	}
+.section input[id="slide04"]:checked ~ .slidewrap li:nth-child(4) .textbox h3 {
+	opacity:1;
+	transform:translateY(0);
+	transition-delay:.2s;
+	}
+.section input[id="slide04"]:checked ~ .slidewrap li:nth-child(4) .textbox p {
+	opacity:1;
+	transform:translateY(0);
+	transition-delay:.4s;
+	}
+.section input[id="slide05"]:checked ~ .slidewrap li:nth-child(5) .textbox h3 {
+	opacity:1;
+	transform:translateY(0);
+	transition-delay:.2s;
+	}
+.section input[id="slide05"]:checked ~ .slidewrap li:nth-child(5) .textbox p {
+	opacity:1;
+	transform:translateY(0);
+	transition-delay:.4s;
+	}
+
+/* 좌,우 슬라이드 버튼 */
+.slide-control > div {
+	display:none;
+	}
+.section .left {
+	left:30px;
+	background:url('/resources/img/left.png') center center / 100% no-repeat;
+	}
+.section .right {
+	right:30px;
+	background:url('/resources/img/right.png') center center / 100% no-repeat;
+	}
+.section input[id="slide01"]:checked ~ .slidewrap .slide-control > div:nth-child(1) {
+	display:block;
+	}
+.section input[id="slide02"]:checked ~ .slidewrap .slide-control > div:nth-child(2) {
+	display:block;
+	}
+.section input[id="slide03"]:checked ~ .slidewrap .slide-control > div:nth-child(3) {
+	display:block;
+	}
+.section input[id="slide04"]:checked ~ .slidewrap .slide-control > div:nth-child(4) {
+	display:block;
+	}
+.section input[id="slide05"]:checked ~ .slidewrap .slide-control > div:nth-child(5) {
+	display:block;
+	}
+
+
+/* 페이징 */
+.slide-pagelist {
+	text-align:center;padding:20px;
+	}
+.slide-pagelist > li {
+	display:inline-block;vertical-align:middle;
+	}
+.slide-pagelist > li > label {
+	display:block;padding:8px 30px;border-radius:30px;background:#ccc;margin:20px 10px;cursor:pointer;
+	}
+.section input[id="slide01"]:checked ~ .slidewrap .slide-pagelist > li:nth-child(1) > label {
+	background:#999;
+	}
+.section input[id="slide02"]:checked ~ .slidewrap .slide-pagelist > li:nth-child(2) > label {
+	background:#999;
+	}
+.section input[id="slide03"]:checked ~ .slidewrap .slide-pagelist > li:nth-child(3) > label {
+	background:#999;
+	}
+.section input[id="slide04"]:checked ~ .slidewrap .slide-pagelist > li:nth-child(4) > label {
+	background:#999;
+	}
+.section input[id="slide05"]:checked ~ .slidewrap .slide-pagelist > li:nth-child(5) > label {
+	background:#999;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
