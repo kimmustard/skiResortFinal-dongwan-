@@ -8,149 +8,215 @@
 <head>
 <meta charset="UTF-8">
 <title>ans modify</title>
-<link rel="stylesheet" href="/resources/css/qna/qna_detail.css">
+<link rel="stylesheet" href="/resources/css/qna/qna-ans-register.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <jsp:include page="../common/nav.jsp" />
 </head>
 <body>
 <c:set value="${qdto.qvo }" var="qvo"></c:set>
 <c:set value="${qadto.qavo }" var="qavo"></c:set>
+<sec:authorize access="isAuthenticated()">
+	<sec:authentication property="principal.mvo.authList" var="auths"/>
+	<sec:authentication property="principal.mvo.memberId" var="authId"/>
+	<sec:authentication property="principal.mvo.memberEmail" var="authEmail"/>
+	<sec:authentication property="principal.mvo.memberType" var="authType"/>
+</sec:authorize>
 
-<div class="qna-img-container" style="background-image: url('https://www.princehotels.com/shinfurano/wp-content/uploads/sites/40/2022/11/2022_11_1920_ski_2-1.jpg')">	</div>
-	
+
+<!-- <div class="qna-img-container" style="background-image: url('https://www.princehotels.com/shinfurano/wp-content/uploads/sites/40/2022/11/2022_11_1920_ski_2-1.jpg')">	</div>
+ -->
 <div class="container qna-container">
-	<br>
-	<h2>Q&A 관리자 페이지 답변수정</h2>
-	<br>
-	<table class="table table-hover">
-		<tr>
-			<th>카테고리</th>
-			<td>${qvo.qnaCategory}</td>
-		</tr>	
-		<tr>
-			<th>제목</th>
-			<td>${qvo.qnaTitle }</td>
-		</tr>	
-		<tr>
-			<th>작성자</th>
-			<td>${qvo.qnaWriter }</td>
-		</tr>	
-		<tr>
-			<th>답변상태</th>
-			<td>${qvo.qnaIsok }</td>
-		</tr>	
-		<tr>
-			<th>등록일</th>
-			<td>${qvo.qnaRegAt }</td>
-		</tr>
-		<tr>
-			<th>내용</th>
-			<td>${qvo.qnaContent }
-				<div>
-					<!-- 파일표시란 -->
-					<c:set value="${qdto.flist }" var="flist"></c:set>
-					<ul class="list-group list-group-flush">
-						<c:forEach items="${flist }" var="fvo">
-							<li>
-								<c:choose>
-									<c:when test="${fvo.fileType > 0 }">
-										<div>
-										<img alt="이미지x" src="/upload/${fn: replace(fvo.fileSave,'\\','/')}/${fvo.fileUuid}_${fvo.fileName}">
-										</div>
-									</c:when>
-								</c:choose>
-							</li>
-						</c:forEach>
-					</ul>
-				</div>
-			</td>
-		</tr>
+<div class="qna-header qna-header-two">
+	<h1 class="qna-header-h1">고객문의<span class="qna-header-span">Question And Answer</span></h1>
+</div>
 
-	</table>	
-	<br><br><br>
-	
-	
-	<!-- 답변 등록 구간 -->
+
+<div class="qna-menu-container">
+	<div class="qna-menu-container-child">
+
 	<form action="/qna/ans-modify" method="post" enctype="multipart/form-data">
-		<table class="table table-hover">
+	<table class="table qna-table">
+		<thead class="table-secondary">
+			<tr class="qna-table-tr">
+				<td class="qna-table-td-category">
+				      <div class="qna-table-td-child-category">
+				      	<c:if test="${qvo.qnaCategory=='스키장' }">
+					      	<span class="material-symbols-outlined qna-icon-ski" style="color: #004080;">downhill_skiing</span>
+					      	<span class="qna-table-td-child-category-span" style="color: #004080;">${qvo.qnaCategory }</span>
+				      	</c:if>
+				      	<c:if test="${qvo.qnaCategory=='호텔' }">
+					      	<span class="material-symbols-outlined" style="color: #934900;">location_city</span>
+					      	<span class="qna-table-td-child-category-span" style="color: #934900;">${qvo.qnaCategory }</span>
+				      	</c:if>
+				      	<c:if test="${qvo.qnaCategory=='렌탈' }">
+					      	<span class="material-symbols-outlined" style="color: #893436;">apparel</span>
+					      	<span class="qna-table-td-child-category-span" style="color: #893436;">${qvo.qnaCategory }</span>
+				      	</c:if>
+				      	<c:if test="${qvo.qnaCategory=='교통' }">
+					      	<span class="material-symbols-outlined" style="color: #34702e;">local_taxi</span>
+					      	<span class="qna-table-td-child-category-span" style="color: #34702e;">${qvo.qnaCategory }</span>
+				      	</c:if>
+				      	<c:if test="${qvo.qnaCategory=='예약' }">
+					      	<span class="material-symbols-outlined" style="color: #007575;">schedule</span>
+					      	<span class="qna-table-td-child-category-span" style="color: #007575;">${qvo.qnaCategory }</span>
+				      	</c:if>
+				      	<c:if test="${qvo.qnaCategory=='결제' }">
+					      	<span class="material-symbols-outlined" style="color: #b3a000;">credit_card</span>
+					      	<span class="qna-table-td-child-category-span" style="color: #b3a000;">${qvo.qnaCategory }</span>
+				      	</c:if>
+				      	<c:if test="${qvo.qnaCategory=='기타' }">
+					      	<span class="material-symbols-outlined" style="color: #472e50;">other_admission</span>
+					      	<span class="qna-table-td-child-category-span" style="color: #472e50;">${qvo.qnaCategory }</span>
+				      	</c:if>
+				      </div>
+			      </td>	
+				  <c:if test="${qvo.qnaSecret=='Y' }">
+			      	<c:if test="${(authType == 'normal' && authId == qvo.qnaWriter) || (authType != 'normal' && authEmail == qvo.qnaWriter) || auths.stream().anyMatch(authVO -> authVO.auth.equals('ROLE_ADMIN')).get()}">          
+			      		<th scope="col" class="qna-table-th-title"><div class="qna-table-td-title"><span class="material-symbols-outlined" style="font-size: 21px">lock</span>${qvo.qnaTitle }</div></th>
+			      	</c:if>
+			      </c:if>
+			      <c:if test="${qvo.qnaSecret=='N' }">
+			      		<th scope="col" class="qna-table-th-title"><div class="qna-table-td-title">${qvo.qnaTitle }</div></th>
+			      </c:if>
+		      <td class="qna-table-td-category"><div class="qna-table-td-child-reg">${fn:replace((fn:substring(qvo.qnaRegAt,0,10)),'-','.') }</div></td>		      
+		    </tr>
+		</thead>
+		<tbody>		
+			<tr class="qna-table-tr">
+				<td class="qna-table-td ">
+			      	<div class="qna-table-td-child">
+			      		<c:if test="${qvo.qnaIsok=='Y' }"><div class="qna-isok-y isok-line isok-end">답변완료</div></c:if>
+			      		<c:if test="${qvo.qnaIsok=='N' }"><div class="qna-isok-n isok-line isok-end">대기중</div></c:if>
+			      	</div>
+		      	</td>
+		      	<td class="qna-table-td qna-table-td-writer" colspan="2">
+		      		<div class="qna-table-div-writer">${qvo.qnaWriter }</div>
+		      	</td>
+			</tr>			
+			<!-- 내용 표시란 -->
 			<tr>
-				<td><input type="hidden" name="qnaNum" value="${qvo.qnaNum}" readonly="readonly"></td>
-				<td><input type="hidden" name="qnaAnsTitle" value="${qvo.qnaTitle }"></td>
-			</tr>
-			<tr>
-				<th><label for="exampleFormControlInput1" class="form-label">작성자</label></th>
-				<td>
-					<div class="mb-3">
-					  <sec:authorize access="isAuthenticated()"> <!-- 로그인 -->
-						<sec:authentication property="principal.mvo.memberId" var="authId"/>
-						<sec:authentication property="principal.mvo.memberEmail" var="authEmail"/>
-						<sec:authentication property="principal.mvo.memberAlias" var="authAlias"/>
-						<sec:authentication property="principal.mvo.memberType" var="authType"/>
-						  <c:if test="${authType == 'normal' }">
-						  	<input type="text" class="form-control" name="qnaAnsWriter" id="exampleFormControlInput1" value="${authId }" readonly="readonly">
-						  </c:if>
-						  <c:if test="${authType != 'normal' }">
-						  	<input type="text" class="form-control" name="qnaAnsWriter" id="exampleFormControlInput1" value="${authEmail }" readonly="readonly">
-						  </c:if>
-					  </sec:authorize>
-					  <sec:authorize access="isAnonymous()"> <!-- 로그인 x -->
-					  	<input type="text" class="form-control" name="qnaAnsWriter" id="exampleFormControlInput1" value="관리자" readonly="readonly">
-					  </sec:authorize>
+				<td class="qna-table-content" colspan="3" style="padding: 30px 20px;">
+					<div class="qna-table-content-child">${qvo.qnaContent }</div>
+					<div>
+						<!-- 파일표시란 -->
+						<c:set value="${qdto.flist }" var="flist"></c:set>
+						<ul class="list-group list-group-flush">
+							<c:forEach items="${flist }" var="fvo">
+								<li>
+									<c:choose>
+										<c:when test="${fvo.fileType > 0 }">
+											<div class="qna-table-content-img-container">
+											<img class="qna-table-content-img" alt="이미지x" src="/upload/${fn: replace(fvo.fileSave,'\\','/')}/${fvo.fileUuid}_${fvo.fileName}">
+											</div>
+										</c:when>
+									</c:choose>
+								</li>
+							</c:forEach>
+						</ul>
 					</div>
 				</td>
 			</tr>
-			<tr>
-				<th>답변내용</th>
-				<td>
-				<div>
-				<textarea class="form-control" rows="5" cols="50"  name="qnaAnsContent" rows="5">${qavo.qnaAnsContent }</textarea>
-				<br>
-				</div>	
+		
+		
+		<!-- 답변 등록 구간 -->
+
+
+			<tr class="table-light qna-table-ans-head">
+				<td class="" colspan="3">
+					<div class="qna-table-td-child">답변등록 중..</div>
+					<input type="hidden" name="qnaNum" value="${qvo.qnaNum}" readonly="readonly">
+					<input type="hidden" name="qnaAnsTitle" value="${qvo.qnaTitle }">
+					<sec:authorize access="isAuthenticated()"> <!-- 로그인 -->
+						  <c:if test="${authType == 'normal' }">
+						  	<input type="hidden" class="form-control" name="qnaAnsWriter" id="exampleFormControlInput1" value="${authId }" readonly="readonly">
+						  </c:if>
+						  <c:if test="${authType != 'normal' }">
+						  	<input type="hidden" class="form-control" name="qnaAnsWriter" id="exampleFormControlInput1" value="${authEmail }" readonly="readonly">
+						  </c:if>
+					 </sec:authorize>
+					 <sec:authorize access="isAnonymous()"> <!-- 로그인 x -->
+					  	<input type="hidden" class="form-control" name="qnaAnsWriter" id="exampleFormControlInput1" value="관리자" readonly="readonly">
+					 </sec:authorize>
 				</td>
 			</tr>
-		</table>	
-	<br>	
-
-
-		<!-- 첨부파일 표시 영역 -->
-		<c:set value="${qadto.flist }" var="flistans"></c:set>
-		<div>
-			<ul>
-				<c:forEach items="${flistans }" var="afvo">
-					<li>
-						<c:choose>
-							<c:when test="${afvo.fileType > 0 }">
-								<div>
-									<img alt="그림이 없음." src="/upload/${fn: replace(afvo.fileSave,'\\','/')}/${afvo.fileUuid}_th_${afvo.fileName}">
-								</div>
-							</c:when>
-						</c:choose>
-						<div>
-							<div><B>${afvo.fileName }</B></div>
-				 			<div class="badge text-bg-secondary">${afvo.fileRegAt }</div>
-				 		</div>
-				 		<span class="badge rounded-pill text-bg-success">${afvo.fileSize }Byte</span>
-				 		<div>
-				 			<button type="button" class="file-x btn btn-outline-secondary" data-uuid="${afvo.fileUuid }">X</button>
-						</div>
-						<br>
-					</li>
-				</c:forEach>
-			</ul>
+			<tr>	
+				<td colspan="3" class="qna-table-ans-content">
+					<div class="qna-table-ans-content-child">
+						<!-- 답변내용 -->
+						<textarea class="form-control" rows="5" cols="50"  name="qnaAnsContent" rows="5">${qavo.qnaAnsContent }</textarea>
+					</div>
+				</td>
+			</tr>
+				<colgroup>
+					<col style="width: 150px;">
+					<col>
+				</colgroup>
+			<tr class="qna-table-ans-tr">
+				<th class="qna-table-ans-file" style="background-color: #f8f8f8;">
+					<div class="qna-table-ans-file-child">첨부파일</div>
+				</th>
+				<td class="qna-table-ans-td">
+					<div class="mb-3">
+						  <input type="file" class="form-control" name="files" id="files" style="display: none;" multiple="multiple">
+						  <!-- input button trigger 용도의 button -->
+						  <button type="button" id="trigger" class="btn btn-outline-primary">첨부파일</button>
+						  <span style="color: #ac0000;">※ 첨부파일은 20MB 이하의 png, gif, jpg 형식의 파일만 등록이 가능 합니다.</span>
+						  <!-- 첨부파일 표시 영역 -->
+							<c:set value="${qadto.flist }" var="flistans"></c:set>
+							<div>
+								<ul>
+									<c:forEach items="${flistans }" var="afvo">
+										<li>
+											<c:choose>
+												<c:when test="${afvo.fileType > 0 }">
+													<div>
+														<img alt="그림이 없음." src="/upload/${fn: replace(afvo.fileSave,'\\','/')}/${afvo.fileUuid}_th_${afvo.fileName}">
+													</div>
+												</c:when>
+											</c:choose>
+											<div>
+												<div><B>${afvo.fileName }</B></div>
+									 			<div class="badge text-bg-secondary">${afvo.fileRegAt }</div>
+									 		</div>
+									 		<span class="badge rounded-pill text-bg-success">${afvo.fileSize }Byte</span>
+									 		<div>
+									 			<button type="button" class="file-x btn btn-outline-secondary" data-uuid="${afvo.fileUuid }">X</button>
+											</div>
+											<br>
+										</li>
+									</c:forEach>
+								</ul>
+							</div>
+						  <div class="mb-3" id="fileZone">
+						  <!-- 첨부파일 표시 영역 -->
+						  </div>
+					</div>
+				</td>
+			</tr>	
+	</tbody>
+	</table>	
+	
+	
+		<!-- 버튼 -->
+		<div class="qna-detail-btn">		
+			<c:if test="${auths.stream().anyMatch(authVO -> authVO.auth.equals('ROLE_ADMIN')).get()}">
+				<c:if test="${qvo.qnaIsok=='Y' }">	
+						<a href="/qna/ans-register?qnaNum=${qvo.qnaNum }">
+							<button type="submit" class="qna-btn myqna-btn" id="regBtn">답변수정</button>
+						</a>
+				</c:if>		
+			</c:if>	
+			<a href="/qna/list">
+				<button type="button" class="qna-btn myqna-btn">취소</button>
+			</a>
 		</div>
-
-		<div class="mb-3" id="fileZone">
-		<!-- 첨부파일 표시 영역 -->
-		</div>
-		<div class="mb-3">
-		  <input type="file" class="form-control" name="files" id="files" style="display: none;" multiple="multiple">
-		  <button type="button" id="trigger" class="btn btn-outline-primary">이미지 첨부파일</button>
-		</div>
-
-		<button type="submit" class="btn btn-dark" id="regBtn">등록</button>
-		<a href="/qna/list"><button type="button" class="btn btn-dark">취소</button></a>
 	</form>
+	
+	  </div>
+	</div>
+</div>	 
 
-</div>
+
 
 
 <script type="text/javascript" src="/resources/js/qna/qnaFileModify.js"></script>

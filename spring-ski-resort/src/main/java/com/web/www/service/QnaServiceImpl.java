@@ -29,23 +29,30 @@ public class QnaServiceImpl implements QnaService{
 	
 	@Override
 	public int qnaRegister(QnaDTO qdto) {
-		if(qdto.getQvo().getQnaSecret()==null) { //비밀글 미체크시 null값 대신 'N'
-			qdto.getQvo().setQnaSecret("N");
-		}
-		int isOk = qdao.insert(qdto.getQvo());
-		if(qdto.getFlist()==null) {
-			isOk*=1;
-			return isOk;
-		}
-		if(isOk > 0 && qdto.getFlist().size() > 0) {
-			long qnaNum = qdao.selectOneQnaNum(); //가장 마지막에 등록된 qna_num
-			//모든 파일에 qnaNum set
-			for(FileVO fvo : qdto.getFlist()) {
-				fvo.setQnaNum(qnaNum);
-				isOk*=fdao.insertQnaFile(fvo);
+		//제목 공백 등록 막기
+		if(qdto.getQvo().getQnaTitle().equals("")) {
+			log.info(">>>>> register 제목 공백 발생>>>");
+			return 2;
+		}else {
+			if(qdto.getQvo().getQnaSecret()==null) { //비밀글 미체크시 null값 대신 'N'
+				qdto.getQvo().setQnaSecret("N");
 			}
-		}
-		return isOk;
+			int isOk = qdao.insert(qdto.getQvo());
+			if(qdto.getFlist()==null) {
+				isOk*=1;
+				return isOk;
+			}
+			if(isOk > 0 && qdto.getFlist().size() > 0) {
+				long qnaNum = qdao.selectOneQnaNum(); //가장 마지막에 등록된 qna_num
+				//모든 파일에 qnaNum set
+				for(FileVO fvo : qdto.getFlist()) {
+					fvo.setQnaNum(qnaNum);
+					isOk*=fdao.insertQnaFile(fvo);
+				}
+			}
+			return isOk;
+		}		
+		
 	}
 
 
@@ -78,19 +85,25 @@ public class QnaServiceImpl implements QnaService{
 	@Override
 	public int qnaFileModify(QnaDTO qdto) {
 		log.info(">>>>> Qna file modify service >> ");
-		int isOk = qdao.QnaFileModify(qdto.getQvo());
-		if(qdto.getFlist()==null) {
-			isOk*=1;
+		//제목 공백 등록 막기
+		if(qdto.getQvo().getQnaTitle().equals("")) {
+			log.info(">>>>> register 제목 공백 발생>>>");
+			return 2;
 		}else {
-			if(isOk > 0 && qdto.getFlist().size() > 0) {
-				long QnaNum = qdto.getQvo().getQnaNum();
-				for(FileVO fvo : qdto.getFlist()) {
-					fvo.setQnaNum(QnaNum);
-					isOk *= fdao.insertQnaFile(fvo);
+			int isOk = qdao.QnaFileModify(qdto.getQvo());
+			if(qdto.getFlist()==null) {
+				isOk*=1;
+			}else {
+				if(isOk > 0 && qdto.getFlist().size() > 0) {
+					long QnaNum = qdto.getQvo().getQnaNum();
+					for(FileVO fvo : qdto.getFlist()) {
+						fvo.setQnaNum(QnaNum);
+						isOk *= fdao.insertQnaFile(fvo);
+					}
 				}
 			}
-		}
-		return isOk;
+			return isOk;		
+		}		
 	}
 
 
