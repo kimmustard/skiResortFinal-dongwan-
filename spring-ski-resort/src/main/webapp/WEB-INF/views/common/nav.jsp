@@ -7,7 +7,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 <style type="text/css">
 	#bi-gear-fill{
 		font-size: 10px;
@@ -19,6 +18,9 @@
  
  <link rel="stylesheet" href="/resources/css/nav.css">
 
+ <!-- Moment.js -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/locale/ko.js"></script> <!-- 한국어 locale 파일 추가 -->
 </head>
 <body>
 <div class="navContainer">
