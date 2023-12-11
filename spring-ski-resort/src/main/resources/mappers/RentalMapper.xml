@@ -24,9 +24,9 @@
 	
 	<insert id="insertRentalItem">
 		insert into rental_items(rental_list_item_num, rental_list_item_type,rental_list_item_grade,rental_list_low_item,rental_list_mid_item,
-		rental_list_premium_item,rental_list_item_count)
+		rental_list_premium_item,rental_list_item_adult_fee,rental_list_item_kid_fee,rental_list_item_count)
 		values(#{rentalListItemNum}, #{rentalListItemType},#{rentalListItemGrade},#{rentalListLowItem},#{rentalListMidItem},
-		#{rentalListPremiumItem},#{rentalListItemCount})
+		#{rentalListPremiumItem},#{rentalListItemAdultFee},#{rentalListItemKidFee},#{rentalListItemCount})
 	</insert>
 	
 	<insert id="insertRentalItemImage">
@@ -107,7 +107,7 @@
 		    item_image ii ON ri.rental_list_item_num = ii.rental_list_item_num
 		WHERE
 		    ri.rental_list_item_type = '보드'
-		    AND ri.rental_list_item_grade = '프리미엄장비';
+		    AND ri.rental_list_item_grade = '중급장비';
 	</select>
 	
 	<select id="getBoardPremiumItem" resultType="com.web.www.domain.rental.RentalItemListDTO">

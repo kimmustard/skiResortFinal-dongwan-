@@ -25,11 +25,11 @@
 					</div>
 					<div class="input-group mb-3">
 						<span class="input-group-text">상품명</span>
-						<input type="text" class="form-control" name="rentalLiftStart" id="LiftStart" readonly="readonly">
+						<input type="text" class="form-control" name="rentalItemName" id="rentalItemName" readonly="readonly">
 					</div>
 					<div class="input-group mb-3">
 						<span class="input-group-text">결제금액</span>
-						<input type="text" class="form-control" name="rentalLiftStart" id="LiftStart" readonly="readonly">
+						<input type="text" class="form-control" name="rentalItemPrice" id="rentalItemPrice" readonly="readonly">
 					</div>
 					<a href="/rental/ski-item"><button type="button" class="btn btn-outline-primary">이전으로</button></a>
 					<button type="submit" class="btn btn-outline-primary">결제</button>
@@ -41,6 +41,7 @@
 	
 	
 	
+	<script type="text/javascript" src="/resources/js/rental/item.js"></script>
 	<jsp:include page="../common/footer.jsp" />
 </body>
 </html>
