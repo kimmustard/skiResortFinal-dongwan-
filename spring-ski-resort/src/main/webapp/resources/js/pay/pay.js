@@ -17,7 +17,7 @@
 
 
 function paymentGateway(pgName) {
-    //임시로 방이름만 나중에 방이름/렌탈장비/리프트권이름 유연하게 가져와야함.
+    //임시로 방이름만 가져옴. 나중에 방이름/렌탈장비/리프트권이름 유연하게 가져와야함.
     let payName = document.getElementById('room-name').innerText;   
     let roomNum = document.getElementById('room-payinfo-num').value;
 
