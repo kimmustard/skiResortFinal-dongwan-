@@ -21,6 +21,8 @@ member_type varchar(20) default 'normal',
 rental_reg_at datetime default now(),
 primary key(rental_main_num));
 
+-- 테이블 삭제
+drop table rental_items;
 --장비목록 테이블 11/29
 create table rental_items(
 rental_list_item_num bigint not null,
