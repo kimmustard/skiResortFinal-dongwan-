@@ -37,7 +37,9 @@ public class RentalItemRead {
             	ritvo.setRentalListLowItem(parts[3]);
             	ritvo.setRentalListMidItem(parts[4]);
             	ritvo.setRentalListPremiumItem(parts[5]);
-            	ritvo.setRentalListItemCount(Integer.parseInt(parts[6]));
+            	ritvo.setRentalListItemAdultFee(Integer.parseInt(parts[6]));
+            	ritvo.setRentalListItemKidFee(Integer.parseInt(parts[7]));
+            	ritvo.setRentalListItemCount(Integer.parseInt(parts[8]));
             	rdao.insertRentalItem(ritvo);
             }
 			

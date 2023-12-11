@@ -72,146 +72,47 @@
 			<table class="table">
 				<thead class="thead">
 					<tr class="rentalTr">
-						<td class="rentalTd" colspan="2" rowspan="2">#</td>
-						<td class="rentalTd" colspan="7">렌탈요금</td>
+						<td class="rentalTd" colspan="2" rowspan="2">구분</td>
+						<td class="rentalTd" colspan="9">렌탈요금</td>
 					</tr>
 					<tr class="rentalTr">
-						<td class="rentalTd">일반장비SET(스키)</td>
-						<td class="rentalTd">일반장비SET(보드)</td>
-						<td class="rentalTd">중급장비SET(스키)</td>
-						<td class="rentalTd">중급장비SET(보드)</td>
-						<td class="rentalTd">프리미엄장비SET(스키)</td>
-						<td class="rentalTd">프리미엄장비SET(보드)</td>
-						<td class="rentalTd">의류/보호장비</td>
+						<td class="rentalTd">스키장비SET(일반)</td>
+						<td class="rentalTd">스키장비SET(중급)</td>
+						<td class="rentalTd">스키장비SET(프리미엄)</td>
+						<td class="rentalTd">보드장비SET(일반)</td>
+						<td class="rentalTd">보드장비SET(중급)</td>
+						<td class="rentalTd">보드장비SET(프리미엄)</td>
+						<td class="rentalTd">의류/보호장비(일반)</td>
+						<td class="rentalTd">의류/보호장비(중급)</td>
+						<td class="rentalTd">의류/보호장비(프리미엄)</td>
 					</tr>
 				</thead>
 				<tbody>
 					<tr class="rentalTr">
-						<td class="rentalTd" rowspan="2">오전</td>
-						<td class="rentalTd">소인</td>
-						<td class="rentalTd">15,000</td>
-						<td class="rentalTd">15,000</td>
+						
+						<td class="rentalTd" colspan="2">소인</td>
 						<td class="rentalTd">20,000</td>
-						<td class="rentalTd">20,000</td>
-						<td class="rentalTd">25,000</td>
-						<td class="rentalTd">25,000</td>
-						<td class="rentalTd">20,000</td>
-					</tr>
-					<tr class="rentalTr">
-						<td class="rentalTd">대인</td>
-						<td class="rentalTd">20,000</td>
-						<td class="rentalTd">20,000</td>
-						<td class="rentalTd">25,000</td>
-						<td class="rentalTd">25,000</td>
 						<td class="rentalTd">30,000</td>
-						<td class="rentalTd">30,000</td>
-						<td class="rentalTd">25,000</td>
-					</tr>
-					<tr class="rentalTr">
-						<td class="rentalTd" rowspan="2">오후</td>
-						<td class="rentalTd">소인</td>
-						<td class="rentalTd">20,000</td>
-						<td class="rentalTd">20,000</td>
-						<td class="rentalTd">25,000</td>
-						<td class="rentalTd">25,000</td>
-						<td class="rentalTd">30,000</td>
-						<td class="rentalTd">30,000</td>
-						<td class="rentalTd">25,000</td>
-					</tr>
-					<tr class="rentalTr">
-						<td class="rentalTd">대인</td>
-						<td class="rentalTd">25,000</td>
-						<td class="rentalTd">25,000</td>
-						<td class="rentalTd">30,000</td>
-						<td class="rentalTd">30,000</td>
-						<td class="rentalTd">35,000</td>
-						<td class="rentalTd">35,000</td>
-						<td class="rentalTd">30,000</td>
-					</tr>
-					<tr class="rentalTr">
-						<td class="rentalTd" rowspan="2">주간</td>
-						<td class="rentalTd">소인</td>
-						<td class="rentalTd">30,000</td>
-						<td class="rentalTd">30,000</td>
-						<td class="rentalTd">35,000</td>
-						<td class="rentalTd">35,000</td>
 						<td class="rentalTd">40,000</td>
-						<td class="rentalTd">40,000</td>
-						<td class="rentalTd">35,000</td>
-					</tr>
-					<tr class="rentalTr">
-						<td class="rentalTd">대인</td>
-						<td class="rentalTd">35,000</td>
-						<td class="rentalTd">35,000</td>
-						<td class="rentalTd">40,000</td>
-						<td class="rentalTd">40,000</td>
-						<td class="rentalTd">45,000</td>
-						<td class="rentalTd">45,000</td>
-						<td class="rentalTd">40,000</td>
-					</tr>
-					<tr class="rentalTr">
-						<td class="rentalTd" rowspan="2">야간</td>
-						<td class="rentalTd">소인</td>
-						<td class="rentalTd">15,000</td>
-						<td class="rentalTd">15,000</td>
 						<td class="rentalTd">20,000</td>
-						<td class="rentalTd">20,000</td>
-						<td class="rentalTd">25,000</td>
-						<td class="rentalTd">25,000</td>
-						<td class="rentalTd">20,000</td>
-					</tr>
-					<tr class="rentalTr">
-						<td class="rentalTd">대인</td>
-						<td class="rentalTd">20,000</td>
-						<td class="rentalTd">20,000</td>
-						<td class="rentalTd">25,000</td>
-						<td class="rentalTd">25,000</td>
 						<td class="rentalTd">30,000</td>
+						<td class="rentalTd">40,000</td>
+						<td class="rentalTd" rowspan="2">15,000</td>
+						<td class="rentalTd" rowspan="2">25,000</td>
+						<td class="rentalTd" rowspan="2">35,000</td>
+					</tr>
+					<tr class="rentalTr">
+						<td class="rentalTd" colspan="2">대인</td>
 						<td class="rentalTd">30,000</td>
-						<td class="rentalTd">25,000</td>
-					</tr>
-					<tr class="rentalTr">
-						<td class="rentalTd" rowspan="2">종일</td>
-						<td class="rentalTd">소인</td>
-						<td class="rentalTd">45,000</td>
-						<td class="rentalTd">45,000</td>
+						<td class="rentalTd">40,000</td>
 						<td class="rentalTd">50,000</td>
+						<td class="rentalTd">30,000</td>
+						<td class="rentalTd">40,000</td>
 						<td class="rentalTd">50,000</td>
-						<td class="rentalTd">55,000</td>
-						<td class="rentalTd">55,000</td>
-						<td class="rentalTd">50,000</td>
+						
+						
 					</tr>
-					<tr class="rentalTr">
-						<td class="rentalTd">대인</td>
-						<td class="rentalTd">50,000</td>
-						<td class="rentalTd">50,000</td>
-						<td class="rentalTd">55,000</td>
-						<td class="rentalTd">55,000</td>
-						<td class="rentalTd">60,000</td>
-						<td class="rentalTd">60,000</td>
-						<td class="rentalTd">55,000</td>
-					</tr>
-					<tr class="rentalTr">
-						<td class="rentalTd" rowspan="2">시즌</td>
-						<td class="rentalTd">소인</td>
-						<td class="rentalTd">250,000</td>
-						<td class="rentalTd">250,000</td>
-						<td class="rentalTd">265,000</td>
-						<td class="rentalTd">265,000</td>
-						<td class="rentalTd">280,000</td>
-						<td class="rentalTd">280,000</td>
-						<td class="rentalTd">265,000</td>
-					</tr>
-					<tr class="rentalTr">
-						<td class="rentalTd">대인</td>
-						<td class="rentalTd">270,000</td>
-						<td class="rentalTd">270,000</td>
-						<td class="rentalTd">285,000</td>
-						<td class="rentalTd">285,000</td>
-						<td class="rentalTd">300,000</td>
-						<td class="rentalTd">300,000</td>
-						<td class="rentalTd">285,000</td>
-					</tr>
+					
 				</tbody>
 			</table>
 		</div>
