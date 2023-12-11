@@ -221,7 +221,8 @@
 					</th>
 					<td class="qna-table-td">
 						<div class="mb-3 qna-table-td-child" id="qna-secret-div">
-						  <input type="checkbox" name="qnaSecret" value="" id="qna-secret"><span> 비밀글 등록</span>
+						  <input type="checkbox" name="qnaSecret" value="Y" id="qna-secret"><span> 비밀글 등록</span>
+						  <input type="hidden" name="qnaSecret" value="N" id="qna-secret-hidden">
 						</div>
 					</td>
 				</tr>	
@@ -267,19 +268,23 @@ document.addEventListener("DOMContentLoaded", function() {
         qnaSecretCheckbox.addEventListener('change', function() {
             // 체크박스가 체크되어 있으면 'Y', 그렇지 않으면 'N' 설정
             Secret = qnaSecretCheckbox.checked ? 'Y' : 'N';
-            console.log(Secret);
-            /* if(Secret==='N'){
-    	        let div = document.getElementById('qna-secret-div');
-    	        div.innerHTML = `<input type="checkbox" name="qnaSecret" value="N" id="qna-secret"><span> 비밀글 등록 N</span>`;
-            }
-            if(Secret==='Y'){
-    	    	let div = document.getElementById('qna-secret-div');
-                div.innerHTML = `<input type="checkbox" name="qnaSecret" value="Y" id="qna-secret"><span> 비밀글 등록 Y</span>`;
-                console.log(Secret);
-    	    } */
- 
+            
     	}) 
     } 
+    
+    document.getElementById('qna-secret').addEventListener('click',()=>{
+    	const checkBox =  document.getElementById('qna-secret');
+    	const checkBoxHidden = document.getElementById('qna-secret-hidden');
+    	
+    	console.log("test");
+    	if(checkBox.checked){
+    		checkBoxHidden.disabled = true;
+    	}else{
+    		checkBoxHidden.disabled = false;
+    	}
+    	
+    })
+    
     
 
 		/* document.getElementById('qna-secret').addEventListener('click',()=>{

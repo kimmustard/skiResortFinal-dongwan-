@@ -54,7 +54,7 @@
 					</th>
 					<td class="notice-table-td">
 						<div class="mb-3 notice-table-td-child">
-							<select class="form-select" name="qnaCategory" id="inputGroupSelect01">
+							<select class="form-select" name="noticeCategory" id="inputGroupSelect01">
 								<option value="공지사항">공지사항</option>
 							  	<option value="이벤트">이벤트</option>
 							  	<option value="보도자료">보도자료</option>
@@ -83,16 +83,16 @@
 						<div class="mb-3 notice-table-td-child">
 						  <sec:authorize access="isAuthenticated()">
 							  <c:if test="${authType == 'normal' }">
-							  	<input type="hidden" class="form-control" name="qnaWriter" id="exampleFormControlInput1" value="${authId }" readonly="readonly">
+							  	<input type="hidden" class="form-control" name="noticeWriter" id="exampleFormControlInput1" value="${authId }" readonly="readonly">
 							  	<span style="padding: 10px;">${authId }</span>
 							  </c:if>
 							  <c:if test="${authType != 'normal' }">
-							  	<input type="hidden" class="form-control" name="qnaWriter" id="exampleFormControlInput1" value="${authEmail }" readonly="readonly">
+							  	<input type="hidden" class="form-control" name="noticeWriter" id="exampleFormControlInput1" value="${authEmail }" readonly="readonly">
 							  	<span style="padding: 10px;">${authEmail }</span>
 							  </c:if>
 						  </sec:authorize> 
 						  <sec:authorize access="isAnonymous()"> <!-- 로그인 x -->
-						  	<input type="hidden" class="form-control" name="qnaWriter" id="exampleFormControlInput1" value="비회원" readonly="readonly">
+						  	<input type="hidden" class="form-control" name="noticeWriter" id="exampleFormControlInput1" value="비회원" readonly="readonly">
 						  	<span style="padding: 10px;">비회원</span>
 						  </sec:authorize>
 						</div>
@@ -120,7 +120,7 @@
 					</th>
 					<td class="notice-table-td">
 						<div class="mb-3 notice-table-td-content">
-						  <textarea class="form-control" name="qnaContent" rows="3" placeholder="내용은 1000자 이내로 작성해 주십시오." maxlength="1000"></textarea>
+						  <textarea class="form-control" name="noticeContent" rows="3" placeholder="내용은 1000자 이내로 작성해 주십시오." maxlength="1000"></textarea>
 						</div>
 					</td>
 				</tr>
