@@ -17,11 +17,14 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import com.web.www.domain.alarm.AlarmVO;
 import com.web.www.domain.pay.PayInfoVO;
 import com.web.www.domain.pay.RefundInfoVO;
+import com.web.www.repository.AlarmDAO;
 import com.web.www.repository.PayDAO;
 
 import lombok.Getter;
@@ -36,6 +39,7 @@ import lombok.extern.slf4j.Slf4j;
 public class PayServiceImpl implements PayService{
 	
 	private final PayDAO pdao;
+	private final AlarmDAO adao;
 	
 	@Value("${pay.imp}")
 	private String imp_uid;
@@ -63,8 +67,9 @@ public class PayServiceImpl implements PayService{
 	 * @throws IOException 
 	 * @Method 결제정보 DB저장
 	 */
+	@Transactional
 	@Override
-	public ResponseEntity<String> registerPay(PayInfoVO upiDTO, Principal principal) throws IOException {
+	public ResponseEntity<String> registerPay(PayInfoVO pivo) throws IOException {
 
 	
 	// 1. 아임포트 API 키와 SECRET키로 토큰을 생성
@@ -73,7 +78,7 @@ public class PayServiceImpl implements PayService{
     
 	// 2. 토큰으로 결제 완료된 주문정보를 가져옴
 		//amount는 결제완료된 금액입니다.
-		long amount = paymentInfo(upiDTO.getPayImpUid(), access_token);
+		long amount = paymentInfo(pivo.getPayImpUid(), access_token);
 		
 		
     
@@ -96,7 +101,8 @@ public class PayServiceImpl implements PayService{
 //		return new ResponseEntity<String>("결제 금액 오류, 결제 취소", HttpStatus.BAD_REQUEST);
 		
 		/*성공시*/
-		pdao.registerPay(upiDTO);
+		pdao.registerPay(pivo);
+		adao.alarmSetting(new AlarmVO(pivo.getMemberNum() , 2, "결제"));// 시스템 알람 반드시 넣어주세요.
 		return new ResponseEntity<String>("주문이 완료되었습니다", HttpStatus.OK);
 		//임시 리턴 위에 구성이 되면 삭제하세요.
 //		return null;
@@ -117,8 +123,9 @@ public class PayServiceImpl implements PayService{
 	 * @throws IOException 
 	 * @Method 환불
 	 */
+	@Transactional
 	@Override
-	public ResponseEntity<String> payMentRefund(RefundInfoVO rfiVO) throws IOException {
+	public ResponseEntity<String> payMentRefund(RefundInfoVO rfiVO, long memberNum) throws IOException {
 		
 		/********** 환불 비즈니스 로직 **************/
 		
@@ -152,6 +159,7 @@ public class PayServiceImpl implements PayService{
 		 */
 		pdao.registerRefund(rfiVO);
 		pdao.payMentRefund(rfiVO.getPayImpUid());
+		adao.alarmSetting(new AlarmVO(memberNum, 3, "환불"));// 시스템 알람 반드시 넣어주세요.
 		return new ResponseEntity<String>("정상적으로 환불되었습니다.", HttpStatus.OK);
 	}
 	

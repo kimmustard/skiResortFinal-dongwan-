@@ -1,10 +1,7 @@
 package com.web.www.controller;
 
-import java.security.Principal;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.security.core.Authentication;
@@ -19,16 +16,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.web.www.domain.member.AuthUser;
+import com.web.www.domain.member.FindIdDTO;
 import com.web.www.domain.member.MemberPwdDTO;
 import com.web.www.domain.member.MemberVO;
 import com.web.www.domain.member.ModifyMemberDTO;
 import com.web.www.domain.member.RegisterMemberDTO;
 import com.web.www.domain.pay.PayInfoVO;
+import com.web.www.handler.MemberEmailHandler;
 import com.web.www.service.MemberService;
-import com.web.www.service.PayService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -40,7 +39,7 @@ import lombok.extern.slf4j.Slf4j;
 public class MemberController {
 
 	private final MemberService msv;
-	private final PayService psv;
+	private final MemberEmailHandler mailService;
 	
 	/**
 	 * @BCryptPasswordEncoder 사용자 pwd 인코더
@@ -48,19 +47,20 @@ public class MemberController {
 	private final BCryptPasswordEncoder bcEncoder;
 	
 	@GetMapping("/login")
-	public String loginForm(Principal principal) {
-		if(principal != null) {
-			return "/";
-		}
+	public String loginForm() {
 		return "/member/login";
 	}
 	
 	@PostMapping("/login")
-	public String login(HttpSession ses, RedirectAttributes rttr) {
-		rttr.addAttribute("memberId", ses.getAttribute("memberId"));
-		rttr.addAttribute("errMsg", ses.getAttribute("errMsg"));
+	public String login(HttpServletRequest request, RedirectAttributes rttr) {
+		
+		if(request.getAttribute("errMsg").equals("Bad credentials")) {
+			rttr.addFlashAttribute("errMsg", 1);
+		}
+		
 		return "redirect:/member/login";
 	}
+	
 	
 	@GetMapping("/register")
 	public String registerForm(Model model) {
@@ -144,7 +144,96 @@ public class MemberController {
 		}
 		
 	}
+	
+	@PostMapping("/daisukiLeave")
+	public String memberLeave(@AuthUser MemberVO mvo, @RequestParam("memberPwd")String memberPwd, 
+			RedirectAttributes rttr, Model model, HttpServletRequest request, HttpServletResponse response) {
+		
+		if(!(bcEncoder.matches(memberPwd, mvo.getMemberPwd()))) {
+			rttr.addFlashAttribute("isLeave", 1);
+			return "redirect:/member/detail";
+		}
+		
+		
+		int isOk = msv.memberLeave(mvo);
+		rttr.addFlashAttribute("isOk", isOk);
+		logout(request, response);
+		return "redirect:/member/login";
+	}
 
+	
+	@PostMapping("/socialDaisukiLeave")
+	public String socialMemberLeave(@AuthUser MemberVO mvo, RedirectAttributes rttr, 
+			Model model, HttpServletRequest request, HttpServletResponse response) {
+		
+		
+		int isOk = msv.memberLeave(mvo);
+		rttr.addFlashAttribute("isOk", isOk);
+		logout(request, response);
+		return "redirect:/member/login";
+	}
+	
+	@GetMapping("/findId")
+	public String findIdFrom(Model model) {
+		model.addAttribute("fiDTO", new FindIdDTO());
+		return "/member/findId";
+	}
+	
+	@PostMapping("/findId")
+	public String findIdPost(@Validated @ModelAttribute("fiDTO")FindIdDTO fiDTO, 
+			BindingResult bindingResult, RedirectAttributes rttr) {
+		
+		if(bindingResult.hasErrors()) {
+			return "/member/findId";
+		}
+		
+		String memberId = msv.findId(fiDTO);
+		
+		if(memberId != null) {
+			rttr.addFlashAttribute("memberId", memberId);
+			return "redirect:/member/findIdResult";
+		}
+		
+		rttr.addFlashAttribute("isOk", 1);
+		return "redirect:/member/findId";
+	}
+	
+	@GetMapping("/findIdResult")
+	public String findIdResult() {
+		return "/member/findIdResult";
+	}
+	
+	@GetMapping("/findPwd")
+	public String findPwdFrom() {
+		
+		return "/member/findPwd";
+	}
+	
+	@PostMapping("/findPwd")
+	public String findPwdPost(@Validated @ModelAttribute("fiDTO")FindIdDTO fiDTO, 
+			BindingResult bindingResult, RedirectAttributes rttr) {
+		
+		
+		int isPwd = msv.findPwd(fiDTO);
+		if(isPwd == 0) {
+			rttr.addFlashAttribute("isPwd", isPwd);
+			return "redirect:/member/login";
+		}
+		
+		String tempPwd = mailService.pwdEmail(fiDTO.getMemberEmail());
+
+		String memberPwd = bcEncoder.encode(tempPwd);
+		fiDTO.setMemberPwd(memberPwd);
+			
+		msv.findPwdUpdate(fiDTO);
+			
+		rttr.addFlashAttribute("isPwd", isPwd);
+		return "redirect:/member/login";
+		
+	}
+	
+	
+	
 	
 	
 	
@@ -168,6 +257,5 @@ public class MemberController {
 		new SecurityContextLogoutHandler().logout(request, response, auth);
 	}
 		
-
 	
 }

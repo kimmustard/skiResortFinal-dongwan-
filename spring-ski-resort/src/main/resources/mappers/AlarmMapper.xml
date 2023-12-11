@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.web.www.repository.AlarmDAO">
+  
+  <select id="selectAlarmCnt" resultType="int">
+  	select count(*) from alarm_content
+  </select>
+  
+  <insert id="addAlarmList">
+  	insert into alarm_content(alarm_content_num, alarm_content_name, alarm_content_text, alarm_content_url)
+  	value(#{alarmContentNum}, #{alarmContentName}, #{alarmContentText}, #{alarmContentUrl})
+  </insert>
+  
+  <insert id="alarmSetting">
+  	insert into alarm_system(member_num, alarm_content_num, alarm_type)
+  	value(#{memberNum}, #{alarmContentNum}, #{alarmType})
+  </insert>
+  
+  <select id="getAlarmListTen" resultType="com.web.www.domain.alarm.AlarmDTO">
+	SELECT a.*, ac.*
+	FROM alarm_system a
+	JOIN alarm_content ac ON a.alarm_content_num = ac.alarm_content_num
+	WHERE a.member_num = #{memberNum}
+	ORDER BY a.alarm_reg_at DESC
+	LIMIT 10
+  </select>
+  
+  <select id="getAlarmMemberNum" resultType="long">
+  	select member_num from member where member_id = #{mebmerId}
+  </select>
+  
+  </mapper>
+

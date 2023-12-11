@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.web.www.domain.alarm.AlarmDTO;
 import com.web.www.domain.coupon.CouponGetDTO;
 import com.web.www.domain.coupon.CouponSystem;
 import com.web.www.domain.member.AuthUser;
@@ -69,6 +70,7 @@ public class MemberCheckController {
 	 * 쿠폰 비동기 로직 영역
 	 * @쿠폰
 	 */
+	//배너 클릭형 쿠폰 획득 로직
 	@GetMapping("/coupon/{code}")
 	public ResponseEntity<String> couponGet(@AuthUser MemberVO mvo, @PathVariable("code") String couponCode) {
 		
@@ -87,7 +89,6 @@ public class MemberCheckController {
 	
 	@GetMapping(value = "/couponList", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<CouponGetDTO>> couponList(@AuthUser MemberVO mvo) {
-		log.info("테스트합니다");
 		List<CouponGetDTO> cpList = msv.getUserCouponList(mvo.getMemberNum());
 		
 		return new ResponseEntity<List<CouponGetDTO>> (cpList, HttpStatus.OK);
