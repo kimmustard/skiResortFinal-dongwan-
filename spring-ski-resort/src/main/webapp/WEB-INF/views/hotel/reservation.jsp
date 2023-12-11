@@ -217,12 +217,14 @@
 							<div class="room-image" id="room-image"></div>
 							<div class="room-name" id="room-name"></div>
 							<div class="room-explain" id="room-explain"></div>
+							<input type="hidden" id="room-payinfo-num" value="">
 								
 						</div>
 					<div class="paybox input-group mb-3">
 						<input type="text" id="pay1" class="form-control" placeholder="요금" readonly="readonly">	
 						<input type="hidden" id="realpayvalue" class="form-control" name="hotelReserveFee" placeholder="요금">	
 						<input type="hidden" class="form-control" name="memberNum" placeholder="회원번호" value="${mvo.memberNum }">	
+						<input type="hidden" class="form-control" name="payImpUid" id="payImpUid">	
 						<input type="hidden" class="form-control" name="payMerchantUid" id="payMerchantUid">	
 						<input type="hidden" class="form-control" name="payAmount" id="payAmount">	
 						<input type="hidden" class="form-control" name="payName" id="payName">	

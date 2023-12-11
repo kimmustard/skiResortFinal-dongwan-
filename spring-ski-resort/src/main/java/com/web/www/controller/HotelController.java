@@ -1,5 +1,6 @@
 package com.web.www.controller;
 
+import java.io.IOException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -7,6 +8,7 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,7 +23,9 @@ import com.web.www.domain.hotel.RoomVO;
 import com.web.www.domain.member.AuthUser;
 import com.web.www.domain.member.MemberVO;
 import com.web.www.domain.pay.PayInfoVO;
+import com.web.www.domain.pay.RefundInfoVO;
 import com.web.www.service.HotelService;
+import com.web.www.service.PayService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -33,6 +37,7 @@ import lombok.extern.slf4j.Slf4j;
 public class HotelController {
 
 	private final HotelService hsv;
+	private final PayService psv;
 
 	/*
 	 * 예약페이지 매핑
@@ -47,14 +52,9 @@ public class HotelController {
 	}
 
 	@PostMapping("/reservation")
-	public String reservation(RoomInfoVO rivo, Coupon cpn, PayInfoVO pivo, RedirectAttributes attributes) {
+	public String reservation(RoomInfoVO rivo, Coupon cpn, PayInfoVO pivo, RedirectAttributes attributes) throws IOException {
 		String paySuccessUrl;
-		int cheakRoomCount = hsv.cheakRoomCount(rivo.getHotelRoomNum());
-		if (cheakRoomCount <= 0) {
-			return "redirect:/pay/PayFail?errorMessage=" + URLEncoder.encode("이용가능한 방이 없습니다.", StandardCharsets.UTF_8);
-		}
 		int isOk = hsv.updateRoomInfo(rivo, cpn);
-
 		String encodedPayName = URLEncoder.encode(pivo.getPayName(), StandardCharsets.UTF_8);
 		UriComponentsBuilder builder = UriComponentsBuilder.fromPath("/pay/PaySuccess")
 				.queryParam("payMerchantUid", pivo.getPayMerchantUid()).queryParam("payName", encodedPayName)

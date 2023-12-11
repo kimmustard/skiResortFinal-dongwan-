@@ -25,7 +25,7 @@ public class PayInfoVO {
 	
 	//호텔 예약번호
 	private String hotelMainNum;
-	
+	private int hotelRoomNum;	// 방 관리 번호 확인
 	//렌탈 예약번호
 	private String rentalMainNum;
 	
