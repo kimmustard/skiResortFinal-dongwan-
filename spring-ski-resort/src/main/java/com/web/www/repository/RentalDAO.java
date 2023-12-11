@@ -6,6 +6,7 @@ import com.web.www.domain.rental.RentalItemListDTO;
 import com.web.www.domain.rental.RentalItemVO;
 import com.web.www.domain.rental.RentalLiftVO;
 import com.web.www.domain.rental.RentalVO;
+import com.web.www.domain.rental.rentalItemImageVO;
 
 public interface RentalDAO {
 
@@ -35,6 +36,10 @@ public interface RentalDAO {
 	void insertRentalItem(RentalItemVO ritvo);
 
 	int rentalItemCntCheck();
+
+	void insertRentalItemImage(rentalItemImageVO riivo);
+
+	int rentalItemImageCntCheck();
 
 
 

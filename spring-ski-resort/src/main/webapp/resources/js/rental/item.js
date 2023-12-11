@@ -32,47 +32,70 @@ let leftWidth = 500;
 let nextBtn = document.getElementById('slideNextBtn'); // 다음 이미지로 넘어가는 버튼
 let prevBtn = document.getElementById('slidePrevBtn'); // 다음 이미지로 넘어가는 버튼
 
+function cloneAndAppend(container, className) {
+     let slides = container.querySelectorAll(`.${className}`);
+     let firstSlideClone = slides[0].cloneNode(true);
+     container.appendChild(firstSlideClone);
+}
+
+let lowItemImage = document.getElementById('lowItemImageBox');
+cloneAndAppend(lowItemImage, 'slide');
+
+let midItemImage = document.getElementById('midItemImageBox');
+cloneAndAppend(midItemImage, 'slide');
+
+let premiumItemImage = document.getElementById('premiumItemImageBox');
+cloneAndAppend(premiumItemImage, 'slide');
+
 function next() {
-     if (value == -5500) {
-          return;
-     }
-
      value -= rigthWidth;
-     console.log("오른쪽버튼" + value);
-
-     let lowItemImage = document.getElementById('lowItemImageBox');
-     lowItemImage.style.transition = 'transform 0.8s ease';
-     lowItemImage.style.transform = 'translateX(' + value + 'px)';
-
-     let midItemImage = document.getElementById('midItemImageBox');
-     midItemImage.style.transition = 'transform 0.8s ease';
-     midItemImage.style.transform = 'translateX(' + value + 'px)';
-
-     let premiumItemImage = document.getElementById('premiumItemImageBox');
-     premiumItemImage.style.transition = 'transform 0.8s ease';
-     premiumItemImage.style.transform = 'translateX(' + value + 'px)';
+     transitionSlides();
 }
 
 function prev() {
-     if (value == 0) {
-          return;
-     }
-
-
      value += leftWidth;
-     console.log("왼쪽버튼" + value);
+     transitionSlides();
+}
 
-     let lowItemImage = document.getElementById('lowItemImageBox');
-     lowItemImage.style.transition = 'transform 0.8s ease';
+function transitionSlides() {
+     lowItemImage.style.transition = 'transform 0.5s ease';
      lowItemImage.style.transform = 'translateX(' + value + 'px)';
 
-     let midItemImage = document.getElementById('midItemImageBox');
-     midItemImage.style.transition = 'transform 0.8s ease';
+     midItemImage.style.transition = 'transform 0.5s ease';
      midItemImage.style.transform = 'translateX(' + value + 'px)';
 
-     let premiumItemImage = document.getElementById('premiumItemImageBox');
-     premiumItemImage.style.transition = 'transform 0.8s ease';
+     premiumItemImage.style.transition = 'transform 0.5s ease';
      premiumItemImage.style.transform = 'translateX(' + value + 'px)';
+
+     if (value <= -5000) {
+          setTimeout(function () {
+               value = 0;
+
+               lowItemImage.style.transition = 'transform 0s';
+               midItemImage.style.transition = 'transform 0s';
+               premiumItemImage.style.transition = 'transform 0s';
+
+               lowItemImage.style.transform = 'translateX(' + value + 'px)';
+               midItemImage.style.transform = 'translateX(' + value + 'px)';
+               premiumItemImage.style.transform = 'translateX(' + value + 'px)';
+
+          }, 500);
+     }
+
+     if (value >= 0) {
+          setTimeout(function () {
+               value = -5000;
+
+               lowItemImage.style.transition = 'transform 0s';
+               midItemImage.style.transition = 'transform 0s';
+               premiumItemImage.style.transition = 'transform 0s';
+
+               lowItemImage.style.transform = 'translateX(' + value + 'px)';
+               midItemImage.style.transform = 'translateX(' + value + 'px)';
+               premiumItemImage.style.transform = 'translateX(' + value + 'px)';
+
+          }, 500);
+     }
 }
 
 if (nextBtn) {
@@ -89,14 +112,29 @@ if (prevBtn) {
 
 /*   장바구니 기능    */
 
+function fnContains(str, substr) {
+     return str.indexOf(substr) !== -1;
+}
+
 // 스키 아이템
 document.addEventListener('DOMContentLoaded', function () {
 
      document.getElementById('skiItemList').addEventListener('click', (e) => {
           if (e.target.tagName === 'IMG') {
                let itemName = e.target.getAttribute('data-name');
-               console.log(itemName);
-               shoppingBasket(itemName);
+               let itemAdultFee = e.target.getAttribute('data-adultFee');
+               let itemKidFee = e.target.getAttribute('data-kidFee');
+
+               if (fnContains(itemName, '주니어')) {
+                    console.log(itemName, itemKidFee);
+                    shoppingBasket(itemName, itemKidFee);
+               } else {
+                    console.log(itemName, itemAdultFee);
+                    shoppingBasket(itemName, itemAdultFee);
+               }
+
+               document.getElementById('rentalItemName').value = itemName;
+
           }
      });
 
@@ -108,8 +146,17 @@ document.addEventListener('DOMContentLoaded', function () {
      document.getElementById('boardItemList').addEventListener('click', (e) => {
           if (e.target.tagName === 'IMG') {
                let itemName = e.target.getAttribute('data-name');
-               console.log(itemName);
-               shoppingBasket(itemName);
+               let itemAdultFee = e.target.getAttribute('data-adultFee');
+               let itemKidFee = e.target.getAttribute('data-kidFee');
+
+               if (fnContains(itemName, '주니어')) {
+                    console.log(itemName, itemKidFee);
+                    shoppingBasket(itemName, itemKidFee);
+               } else {
+                    console.log(itemName, itemAdultFee);
+                    shoppingBasket(itemName, itemAdultFee);
+               }
+
           }
      });
 
@@ -121,16 +168,27 @@ document.addEventListener('DOMContentLoaded', function () {
      document.getElementById('wearItemList').addEventListener('click', (e) => {
           if (e.target.tagName === 'IMG') {
                let itemName = e.target.getAttribute('data-name');
+               let itemAdultFee = e.target.getAttribute('data-adultFee');
                console.log(itemName);
-               shoppingBasket(itemName);
+               shoppingBasket(itemName, itemAdultFee);
           }
      });
 
 })
 
-function shoppingBasket(name) {
+function shoppingBasket(name, price) {
      let shoppingBasketDiv = document.querySelector('.shoppingBasket');
      let itemSelectDiv = document.createElement('div');
      itemSelectDiv.innerHTML = `<p class="fs-5">${name}</p>`;
+     itemSelectDiv.innerHTML += `<p class="fs-5">${price}원</p>`;
      shoppingBasketDiv.appendChild(itemSelectDiv);
 }
+
+let imageBox = document.querySelectorAll('.itemImageBox .slide img');
+let shopContainer = document.querySelector('.shopContainer');
+
+imageBox.forEach(function (image) {
+     image.addEventListener('click', function () {
+          shopContainer.style.display = 'block';
+     })
+})
