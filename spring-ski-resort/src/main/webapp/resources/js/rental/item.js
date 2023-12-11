@@ -67,34 +67,34 @@ function transitionSlides() {
      premiumItemImage.style.transition = 'transform 0.5s ease';
      premiumItemImage.style.transform = 'translateX(' + value + 'px)';
 
-     if (value <= -5000) {
+     if (value <= -5500) {
           setTimeout(function () {
+
+               lowItemImage.style.transition = '0s';
+               midItemImage.style.transition = '0s';
+               premiumItemImage.style.transition = '0s';
+
                value = 0;
-
-               lowItemImage.style.transition = 'transform 0s';
-               midItemImage.style.transition = 'transform 0s';
-               premiumItemImage.style.transition = 'transform 0s';
-
                lowItemImage.style.transform = 'translateX(' + value + 'px)';
                midItemImage.style.transform = 'translateX(' + value + 'px)';
                premiumItemImage.style.transform = 'translateX(' + value + 'px)';
 
-          }, 500);
+          }, 0);
      }
 
      if (value >= 0) {
           setTimeout(function () {
-               value = -5000;
 
-               lowItemImage.style.transition = 'transform 0s';
-               midItemImage.style.transition = 'transform 0s';
-               premiumItemImage.style.transition = 'transform 0s';
+               lowItemImage.style.transition = '0s';
+               midItemImage.style.transition = '0s';
+               premiumItemImage.style.transition = '0s';
 
+               value = -5500;
                lowItemImage.style.transform = 'translateX(' + value + 'px)';
                midItemImage.style.transform = 'translateX(' + value + 'px)';
                premiumItemImage.style.transform = 'translateX(' + value + 'px)';
 
-          }, 500);
+          }, 0);
      }
 }
 
