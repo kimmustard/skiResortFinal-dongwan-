@@ -191,6 +191,10 @@ public class AdminController {
 		return "/developer/settingNotice";
 	}
 	
+
+	
+	
+	
 	@GetMapping("/settingQna")
 	public void QnaList(Model m, PagingVO pgvo) {
 		m.addAttribute("list", qsv.qnaList(pgvo));

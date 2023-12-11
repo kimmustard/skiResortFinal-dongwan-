@@ -229,15 +229,18 @@ a{
 	color: #8d8d8d;
 	text-align:left;
 	padding: 30px 20px;
-	height: 10em;
 	line-height:1.5em;
+}
+.qna-table-content-child>pre{
+	white-space:pre-wrap;
+	overflow: auto;
+	font-family: arial;
 }
 .qna-table-content-img-container{
 	width:100%;
     overflow:hidden;
     margin:0 auto;
     padding: 30px 20px;
-    
     position: relative;
 
 }
@@ -265,8 +268,12 @@ a{
 	color: #8d8d8d;
 	text-align:left;
 	padding: 30px 20px;
-	height: 10em;
 	line-height:1.5em;
+}
+.qna-table-ans-content-child>pre{
+	white-space:pre-wrap;
+	overflow: auto;
+	font-family: arial;
 }
 .qna-table-ans-content-child textarea{
 	height: 300px;

@@ -96,7 +96,9 @@
 			<!-- 내용 표시란 -->
 			<tr>
 				<td class="qna-table-content" colspan="3" style="padding: 30px 20px;">
-					<div class="qna-table-content-child">${qvo.qnaContent }</div>
+					<div class="qna-table-content-child">
+						<pre>${qvo.qnaContent }</pre>
+					</div>
 					<div>
 						<!-- 파일표시란 -->
 						<c:set value="${qdto.flist }" var="flist"></c:set>
