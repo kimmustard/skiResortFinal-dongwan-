@@ -46,10 +46,9 @@
 						<c:forEach items="${wearLowItem }" var="lowItem">
 							<div class="slide">
 								<!-- 이미지파일 -->
-								<img alt="WearLowItem" data-name="${lowItem.rentalListLowItem }" data-adultFee="${lowItem.rentalListItemAdultFee }" data-kidFee="${lowItem.rentalListItemKidFee }" src="${lowItem.imageUrl }">
+								<img alt="WearLowItem" data-name="${lowItem.rentalListLowItem }" data-adultFee="${lowItem.rentalListItemAdultFee }" src="${lowItem.imageUrl }">
 								<p class="fs-5">${lowItem.rentalListLowItem }</p>
-								<p class="fs-5">성인 : ${lowItem.rentalListItemAdultFee }원</p>
-								<p class="fs-5">어린이 : ${lowItem.rentalListItemKidFee }원</p>
+								<p class="fs-5">${lowItem.rentalListItemAdultFee }원</p>
 							</div>
 						</c:forEach>
 					</div>
@@ -60,10 +59,9 @@
 						<c:forEach items="${wearMidItem }" var="midItem">
 							<div class="slide">
 								<!-- 이미지파일 -->
-								<img alt="WearMidItem" data-name="${midItem.rentalListMidItem }" data-adultFee="${midItem.rentalListItemAdultFee }" data-kidFee="${midItem.rentalListItemKidFee }" src="${midItem.imageUrl }">
+								<img alt="WearMidItem" data-name="${midItem.rentalListMidItem }" data-adultFee="${midItem.rentalListItemAdultFee }" src="${midItem.imageUrl }">
 								<p class="fs-5">${midItem.rentalListMidItem }</p>
-								<p class="fs-5">성인 : ${midItem.rentalListItemAdultFee }원</p>
-								<p class="fs-5">어린이 : ${midItem.rentalListItemKidFee }원</p>
+								<p class="fs-5">${midItem.rentalListItemAdultFee }원</p>
 							</div>
 						</c:forEach>
 						
@@ -75,10 +73,9 @@
 						<c:forEach items="${wearPremiumItem }" var="premiumItem">
 							<div class="slide">
 								<!-- 이미지파일 -->
-								<img alt="WearPremiumItem" data-name="${premiumItem.rentalListPremiumItem }" data-adultFee="${premiumItem.rentalListItemAdultFee }" data-kidFee="${premiumItem.rentalListItemKidFee }" src="${premiumItem.imageUrl }">
+								<img alt="WearPremiumItem" data-name="${premiumItem.rentalListPremiumItem }" data-adultFee="${premiumItem.rentalListItemAdultFee }" src="${premiumItem.imageUrl }">
 								<p class="fs-5">${premiumItem.rentalListPremiumItem }</p>
-								<p class="fs-5">성인 : ${premiumItem.rentalListItemAdultFee }원</p>
-								<p class="fs-5">어린이 : ${premiumItem.rentalListItemKidFee }원</p>
+								<p class="fs-5">${premiumItem.rentalListItemAdultFee }원</p>
 							</div>
 						</c:forEach>
 						
@@ -88,7 +85,7 @@
 						<i class="bi bi-chevron-left slidePrevBtn" id="slidePrevBtn"></i>
 						<i class="bi bi-chevron-right slideNextBtn" id="slideNextBtn"></i>
 					</div>
-					
+						
 	
 				</div>
 				

@@ -18,7 +18,7 @@
 
 .itemContainer{
 	position: relative;
-	margin-left: 400px;
+	margin-left: 350px;
 	width: 1200px;
 	height: 800px;
 	overflow: hidden;
@@ -64,7 +64,7 @@
 	position: absolute;
 	top: 280px;
 	left: 30px;
-	font-size: 40px;
+	font-size: 50px;
 	cursor: pointer;
 }
 
@@ -72,7 +72,7 @@
 	position: absolute;
 	top: 280px;
 	right: 30px;
-	font-size: 40px;
+	font-size: 50px;
 	cursor: pointer;
 }
 
@@ -94,8 +94,11 @@
 }
 
 .reserveBtn {
-    position: absolute;
+	margin-top: 10px;
+    position: sticky;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
+    width: 50%;
+    z-index: 1;
 }

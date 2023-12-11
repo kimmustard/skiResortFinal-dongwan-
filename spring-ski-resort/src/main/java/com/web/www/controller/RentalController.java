@@ -132,8 +132,9 @@ public class RentalController {
 	
 	@GetMapping("/item-reserve")
 	public String itemReserveForm(Model model) {
-		RentalLiftVO rlivo = new RentalLiftVO();
-		model.addAttribute("rlivo", rlivo);
+		RentalVO rvo = new RentalVO();
+		rvo.setRentalMainLift("Y");
+		model.addAttribute("rvo", rvo);
 		return "/rental/item-reserve";
 	}
 	

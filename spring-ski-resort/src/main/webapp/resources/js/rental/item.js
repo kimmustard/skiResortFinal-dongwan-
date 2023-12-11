@@ -67,20 +67,34 @@ function transitionSlides() {
      premiumItemImage.style.transition = 'transform 0.5s ease';
      premiumItemImage.style.transform = 'translateX(' + value + 'px)';
 
-     if (value === -5000) {
+     if (value <= -5000) {
           setTimeout(function () {
-               lowItemImage.style.transition = 'transform 0s';
-               lowItemImage.style.transform = 'translateX(0)';
                value = 0;
-          }, 800);
+
+               lowItemImage.style.transition = 'transform 0s';
+               midItemImage.style.transition = 'transform 0s';
+               premiumItemImage.style.transition = 'transform 0s';
+
+               lowItemImage.style.transform = 'translateX(' + value + 'px)';
+               midItemImage.style.transform = 'translateX(' + value + 'px)';
+               premiumItemImage.style.transform = 'translateX(' + value + 'px)';
+
+          }, 500);
      }
 
-     if (value === 0) {
+     if (value >= 0) {
           setTimeout(function () {
-               lowItemImage.style.transition = 'transform 0s';
-               lowItemImage.style.transform = 'translateX(-5500px)';
                value = -5000;
-          }, 800);
+
+               lowItemImage.style.transition = 'transform 0s';
+               midItemImage.style.transition = 'transform 0s';
+               premiumItemImage.style.transition = 'transform 0s';
+
+               lowItemImage.style.transform = 'translateX(' + value + 'px)';
+               midItemImage.style.transform = 'translateX(' + value + 'px)';
+               premiumItemImage.style.transform = 'translateX(' + value + 'px)';
+
+          }, 500);
      }
 }
 
@@ -154,8 +168,9 @@ document.addEventListener('DOMContentLoaded', function () {
      document.getElementById('wearItemList').addEventListener('click', (e) => {
           if (e.target.tagName === 'IMG') {
                let itemName = e.target.getAttribute('data-name');
+               let itemAdultFee = e.target.getAttribute('data-adultFee');
                console.log(itemName);
-               shoppingBasket(itemName);
+               shoppingBasket(itemName, itemAdultFee);
           }
      });
 

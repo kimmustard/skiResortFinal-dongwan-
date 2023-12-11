@@ -97,9 +97,9 @@
 						<td class="rentalTd">20,000</td>
 						<td class="rentalTd">30,000</td>
 						<td class="rentalTd">40,000</td>
-						<td class="rentalTd">15,000</td>
-						<td class="rentalTd">25,000</td>
-						<td class="rentalTd">35,000</td>
+						<td class="rentalTd" rowspan="2">15,000</td>
+						<td class="rentalTd" rowspan="2">25,000</td>
+						<td class="rentalTd" rowspan="2">35,000</td>
 					</tr>
 					<tr class="rentalTr">
 						<td class="rentalTd" colspan="2">대인</td>
@@ -109,9 +109,8 @@
 						<td class="rentalTd">30,000</td>
 						<td class="rentalTd">40,000</td>
 						<td class="rentalTd">50,000</td>
-						<td class="rentalTd">25,000</td>
-						<td class="rentalTd">35,000</td>
-						<td class="rentalTd">45,000</td>
+						
+						
 					</tr>
 					
 				</tbody>
