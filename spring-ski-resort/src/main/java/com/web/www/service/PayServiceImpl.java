@@ -27,6 +27,7 @@ import com.web.www.domain.alarm.AlarmVO;
 import com.web.www.domain.pay.PayInfoVO;
 import com.web.www.domain.pay.RefundInfoVO;
 import com.web.www.repository.AlarmDAO;
+import com.web.www.repository.MemberDAO;
 import com.web.www.repository.PayDAO;
 
 import lombok.Getter;
@@ -43,6 +44,7 @@ public class PayServiceImpl implements PayService{
 	private final PayDAO pdao;
 	private final AlarmDAO adao;
 	private final HotelService hsv;
+	private final MemberDAO mdao;
 	
 	@Value("${pay.imp}")
 	private String imp_uid;
@@ -84,30 +86,39 @@ public class PayServiceImpl implements PayService{
 			
 			
 			
-	/***********DB 등록 전  비즈니스 로직 영역 (할인율 등)*********/
-		/*+개선해야할점 호텔/리프트/장비/ 3가지로 switch문(수문장) 나눠서 각자 if문을 타게 하던가 하는게 좋았을듯? +*/
-			log.info("### 결제무슨타입 ? = {}", pivo.getPayNameType());
+		/*********** 비즈니스 로직 영역 *********/
 
+		switch (pivo.getPayNameType()) {
 		
-	    //[호텔]방이없을때 return
-		int cheakRoomCount = hsv.cheakRoomCount(pivo.getHotelRoomNum());// 쓸때없이 타야함.
-		if (cheakRoomCount <= 0) {
-			adao.alarmSetting(new AlarmVO(pivo.getMemberNum(), 4, "취소"));// 시스템 알람 반드시 넣어주세요.
-			payMentCancel(access_token, pivo.getPayImpUid(), amount, "이용 가능한 방이 없습니다.");
-			return new ResponseEntity<String>("이용 가능한 방이 없습니다.", HttpStatus.BAD_REQUEST);
-		}
-		
-		//[렌탈]장비가 없을때 return
-		
+			case "호텔":
+				//[호텔]방이없을때 return
+				int cheakRoomCount = hsv.cheakRoomCount(pivo.getHotelRoomNum());
+				if (cheakRoomCount <= 0) {
+					adao.alarmSetting(new AlarmVO(pivo.getMemberNum(), 4, "취소"));// 시스템 알람 반드시 넣어주세요.
+					payMentCancel(access_token, pivo.getPayImpUid(), amount, "이용 가능한 방이 없습니다.");
+					return new ResponseEntity<String>("이용 가능한 방이 없습니다.", HttpStatus.BAD_REQUEST);
+				}
+				//[호텔] 추가 로직
+				
+				break;
+			case "렌탈":
+				//[렌탈]장비가 없을때 return
+				
+				//[렌탈] 추가 로직
+				
+				break;
+			case "리프트":
+				
+				//[렌탈] 로직
+				
+				break;
 	
-		//XXXX[호텔] 이미 구매 했으면 return (멤버번호로(room_info) cnt 조회하면 한방에 끝날듯)XXXX
-		
-	    
+			default:
+				
+				break;
+		}
 
-		/**
-		 * @if문 태워서 빠져나가는 로직 구성하면 됩니다.
-		 * 단, 환불 or 결제여부에 따라 기존물품 개수 갱신 로직을 꼭 해주세요
-		 * */
+		/*********************************/
 		
 		
 		/*실패시(복붙용)*/
@@ -115,11 +126,13 @@ public class PayServiceImpl implements PayService{
 //		return new ResponseEntity<String>("취소사유", HttpStatus.BAD_REQUEST);
 		
 		/*성공시*/
+		if(!(pivo.getCouponCode().isEmpty())) {
+			mdao.useCoupon(pivo.getMemberNum(),pivo.getCouponCode());	//쿠폰 사용 처리
+		}
 		pdao.registerPay(pivo);
 		adao.alarmSetting(new AlarmVO(pivo.getMemberNum() , 2, "결제"));// 시스템 알람 반드시 넣어주세요.
 		return new ResponseEntity<String>("결제완료", HttpStatus.OK);
 		
-	/*********************************/
 	}
 
 	/**
@@ -140,24 +153,36 @@ public class PayServiceImpl implements PayService{
 		
 		/********** 환불 비즈니스 로직 **************/
 		
-		log.info("### 환불무슨타입 ? = {}", rfiVO.getRefundNameType());
-		
 		//[공통] 이미 취소된 내역이면 return
 		if(pdao.payStatusCheck(rfiVO.getPayMerchantUid()) != 0) {
 			return new ResponseEntity<String>("이미 취소된 내역입니다.", HttpStatus.BAD_REQUEST);
 		}
+		
 		//[공통] 상품 환불가능기간 하루전 기간이 지났으면 return
+
 		
-		//[호텔] 환불시 room_info 테이블 삭제 로직
-		rfiVO.getPayMerchantUid();
-		
-		
-		//[렌탈] 환불시 테이블 삭제 로직
-		
-		//[리프트] 환불시 테이블 삭제 로직
-		
-		
-		
+		switch (rfiVO.getRefundNameType()) {
+		case "호텔":
+			
+			//[호텔] 환불시 room_info 테이블 삭제 로직
+			if(pdao.refundRoomInfo(rfiVO.getPayMerchantUid()) == 0) {
+				return new ResponseEntity<String>("환불할 거래 정보가 없습니다.", HttpStatus.BAD_REQUEST);
+			}
+			
+			break;
+		case "렌탈":
+			//[렌탈] 환불시 테이블 삭제 로직
+			
+			break;
+		case "리프트":
+			//[리프트] 환불시 테이블 삭제 로직
+			
+			break;
+
+		default:
+			break;
+		}
+
 		
 		/***************************************/
 		
@@ -180,6 +205,7 @@ public class PayServiceImpl implements PayService{
 		 */
 		pdao.registerRefund(rfiVO);
 		pdao.payMentRefund(rfiVO.getPayImpUid());
+		
 		adao.alarmSetting(new AlarmVO(memberNum, 3, "환불"));// 시스템 알람 반드시 넣어주세요.
 		return new ResponseEntity<String>("정상적으로 환불되었습니다.", HttpStatus.OK);
 	}

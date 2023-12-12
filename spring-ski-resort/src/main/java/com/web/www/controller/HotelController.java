@@ -52,10 +52,10 @@ public class HotelController {
 	}
 
 	@PostMapping("/reservation")
-	public String reservation(RoomInfoVO rivo, Coupon cpn, PayInfoVO pivo, RedirectAttributes attributes) throws IOException {
+	public String reservation(RoomInfoVO rivo, PayInfoVO pivo, RedirectAttributes attributes) throws IOException {
 		
 		String paySuccessUrl;
-		int isOk = hsv.updateRoomInfo(rivo, cpn);
+		int isOk = hsv.updateRoomInfo(rivo);
 		String encodedPayName = URLEncoder.encode(pivo.getPayName(), StandardCharsets.UTF_8);
 		UriComponentsBuilder builder = UriComponentsBuilder.fromPath("/pay/PaySuccess")
 				.queryParam("payMerchantUid", pivo.getPayMerchantUid()).queryParam("payName", encodedPayName)

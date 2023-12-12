@@ -28,4 +28,9 @@
   		select count(*) from pay where pay_merchant_uid = #{payMerchantUid} and pay_status = '결제취소';
   	</select>
   	
+  	<!-- 환불 후 호텔방 갱신 -->
+  	<delete id="refundRoomInfo">
+  		delete from room_info where pay_merchant_uid = #{payMerchantUid}
+  	</delete>
+  	
   </mapper>

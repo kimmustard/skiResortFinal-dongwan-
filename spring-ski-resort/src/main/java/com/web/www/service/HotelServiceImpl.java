@@ -21,16 +21,12 @@ import lombok.extern.slf4j.Slf4j;
 public class HotelServiceImpl implements HotelService{
 
 	private final HotelDAO hdao;
-	private final MemberDAO mdao;
 	
 	@Transactional
 	@Override
-	public int updateRoomInfo(RoomInfoVO rivo ,Coupon cpn) {
-		
-		mdao.useCoupon(rivo.getMemberNum(),cpn.getCouponCode());
+	public int updateRoomInfo(RoomInfoVO rivo) {
 		int isOk = hdao.updateRoomInfo(rivo);
 		hdao.updateRoomCount();
-		
 		return isOk ;
 	}
 
