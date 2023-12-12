@@ -24,14 +24,35 @@
 						<input type="text" class="form-control" name="rentalLiftStart" id="LiftStart" value="${rlivo.rentalLiftStart }" readonly="readonly">
 					</div>
 					<div class="input-group mb-3">
+						<span class="input-group-text">인원수(성인)</span>
+						<input type="text" class="form-control" name="rentalReserveAdultFee" id="rentalReserveKidFee" readonly="readonly">
+						<span class="input-group-text">인원수(어린이)</span>
+						<input type="text" class="form-control" name="rentalReserveAdultFee" id="rentalReserveKidFee" readonly="readonly">
+					</div>
+					<div class="input-group mb-3">
 						<span class="input-group-text">상품명</span>
 						<input type="text" class="form-control" name="rentalItemName" id="rentalItemName" readonly="readonly">
 					</div>
 					<div class="input-group mb-3">
 						<span class="input-group-text">성인요금</span>
-						<input type="text" class="form-control" name="rentalReserveAdultFee" id="rentalReserveKidFee" readonly="readonly">
+						<input type="text" class="form-control fee" name="rentalReserveAdultFee" id="rentalReserveKidFee" readonly="readonly">
 						<span class="input-group-text">어린이요금</span>
-						<input type="text" class="form-control" name="rentalReserveAdultFee" id="rentalReserveKidFee" readonly="readonly">
+						<input type="text" class="form-control fee" name="rentalReserveAdultFee" id="rentalReserveKidFee" readonly="readonly">
+					</div>
+					<div class="input-group mb-3">
+						<label class="form-check-label" for="flexRadioDefault2">반납서비스 이용</label>
+					</div>
+					<div class="form-check">
+					  	<input class="form-check-input" type="radio" name="rentalReserveIsreturn" id="yesCheck">
+					  	<label class="form-check-label" for="flexRadioDefault1">
+					    예
+					  	</label>
+					</div>
+					<div class="form-check">
+						<input class="form-check-input" type="radio" name="rentalReserveIsreturn" id="noCheck">
+						<label class="form-check-label" for="flexRadioDefault1">
+						아니오
+						</label>
 					</div>
 					<a href="/rental/ski-item"><button type="button" class="btn btn-outline-primary">이전으로</button></a>
 					<button type="submit" class="btn btn-outline-primary">결제</button>

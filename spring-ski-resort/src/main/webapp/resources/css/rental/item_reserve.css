@@ -5,14 +5,14 @@
 }
 
 .reserveContainer{
-	height: 1000px;
+	height: 700px;
 }
 
 .reserveBox{
 	width: 800px;
 	padding: 5px;
 	position: relative;
-	height: 600px;
+	height: 420px;
 	border-radius: 10px;
 	left: 50%;
 	transform: translateX(-50%);
@@ -25,6 +25,6 @@
 
 .reserveBox .input-group{
 	position: relative;
-	width: 400px;
+	width: 500px;
+	margin-top: 10px;
 }
-
