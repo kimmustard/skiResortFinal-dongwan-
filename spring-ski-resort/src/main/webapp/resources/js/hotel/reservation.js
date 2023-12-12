@@ -226,11 +226,14 @@ targetArea2.addEventListener('click', function(event) {
 });
 
 //방 선택 이벤트
-function roomSelectEvent(num){
+function roomSelectEvent(num) {
     roomprice=  document.getElementById('room'+num).value;
     let roomname =  document.getElementById('room'+num).innerText;
     let imageurl =document.getElementById('image-src'+num).innerText;
-	let roomexplain = document.getElementById('explian-src'+num).innerText;
+    let roomexplain = document.getElementById('explian-src' + num).innerText;
+    
+    //방 갯수 확인을 위한 value값
+    document.getElementById('room-payinfo-num').value = num;
 
     console.log('select'+num);
     document.getElementById('select'+num).checked="true";

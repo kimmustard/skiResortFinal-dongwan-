@@ -58,6 +58,7 @@
 									<td>${pList.memberPhoneNum }</td>
 									<td>${pList.payStatus }</td>
 									<td>${pList.payRegAt }</td>
+									<td style="display:none">${pList.payNameType}</td>
 									<c:choose>
 									<c:when test="${pList.payStatus eq '결제완료' }">
 										<td>

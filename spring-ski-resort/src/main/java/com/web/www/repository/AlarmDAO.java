@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.web.www.domain.alarm.AlarmContentVO;
 import com.web.www.domain.alarm.AlarmDTO;
+import com.web.www.domain.alarm.AlarmReadDTO;
 import com.web.www.domain.alarm.AlarmVO;
 
 public interface AlarmDAO {
@@ -17,5 +18,7 @@ public interface AlarmDAO {
 	List<AlarmDTO> getAlarmListTen(long memberNum);
 
 	long getAlarmMemberNum(String memberId);
+
+	int alarmReadCheck(AlarmReadDTO arDTO);
 
 }
