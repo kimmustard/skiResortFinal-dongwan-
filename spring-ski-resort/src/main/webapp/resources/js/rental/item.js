@@ -23,21 +23,20 @@ premiumItem.addEventListener('click', () => {
 /*     슬라이드 기능     */
 
 
-
 let value = 0;
-let rigthWidth = 400;
-let leftWidth = 400;
+let slideWidth = 400;
 
 let nextBtn = document.getElementById('slideNextBtn'); // 다음 이미지로 넘어가는 버튼
 let prevBtn = document.getElementById('slidePrevBtn'); // 이전 이미지로 넘어가는 버튼
 
-// 처음 이미지 클론
+// 이미지 클론
 function clone(container, className) {
      let slides = container.querySelectorAll(`.${className}`);
      let firstSlideClone = slides[0].cloneNode(true);
      let lastSlideClone = slides[slides.length - 1].cloneNode(true);
      container.appendChild(firstSlideClone);
-     container.insertBefore(lastSlideClone, slides[0]);
+     container.appendChild(lastSlideClone);
+    
 }
 
 let lowItemImage = document.getElementById('lowItemImageBox');
@@ -50,12 +49,12 @@ let premiumItemImage = document.getElementById('premiumItemImageBox');
 clone(premiumItemImage, 'slide');
 
 function next() {
-     value -= rigthWidth;
+     value -= slideWidth;
      transitionSlides();
 }
 
 function prev() {
-     value += leftWidth;
+     value += slideWidth;
      transitionSlides();
 }
 
