@@ -59,14 +59,7 @@
 			<div class="contentBox">
 				  <div class="slide_wrapper">
 		      <ul class="slides" id="slides" >
-		         <li class="event-li"><div class="event-item-box" id="event-item-box1"> <div class="event-image-box"  id="event-image-box1"></div><div class="event-content-box" id="event-content-box1">이벤트 1</div></div></li>
-		        <li class="event-li"> <div class="event-item-box" id="event-item-box2"> <div class="event-image-box"  id="event-image-box2"></div><div class="event-content-box" id="event-content-box2">이벤트 2</div></div></li>
-		        <li class="event-li"> <div class="event-item-box" id="event-item-box3"> <div class="event-image-box"  id="event-image-box3"></div><div class="event-content-box" id="event-content-box3">이벤트 3</div></div></li>
-		        <li class="event-li"> <div class="event-item-box" id="event-item-box4"> <div class="event-image-box"  id="event-image-box4"></div><div class="event-content-box" id="event-content-box4">이벤트 4</div></div></li>
-		        <li class="event-li"> <div class="event-item-box" id="event-item-box5"> <div class="event-image-box"  id="event-image-box5"></div><div class="event-content-box" id="event-content-box5">이벤트 5</div></div></li>
-		       
-		       
-		      </ul>
+      </ul>
 		    </div>
 		
 		    <p class="controls">
