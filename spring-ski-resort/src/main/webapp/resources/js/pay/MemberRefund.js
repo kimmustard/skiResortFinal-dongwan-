@@ -12,17 +12,18 @@ function showRowData(button) {
     tds.forEach(function (td) {
         rowData.push(td.innerText);
     });
+    console.log('알려줘', rowData);
     div.innerHTML = '';
     let str = `<span style="font-weight:bold">결제정보</span> <br><br>`;
     str += `<span>주문번호 : ${rowData[0]}</span> <br>`;
     str += `<span>결제은행 : ${rowData[1]}</span> <br>`;
     str += `<span>주문명 : ${rowData[2]}</span> <br>`;
-    str += `<span>금액 : ${rowData[3]}</span> <br>`;    
+    str += `<span>금액 : ${rowData[3]}</span> <br>`;
     str += `<span>이름 : ${rowData[4]}</span> <br>`;
     str += `<span>연락처 : ${rowData[5]}</span> <br>`;
     str += `<span>결제일자 : ${rowData[7]}</span> <br>`;
     div.innerHTML = str;
-    
+
 
     refundDiv.innerHTML = '';
     let str2 = `<div class="refund-title">`;
@@ -71,19 +72,20 @@ function showRowData(button) {
 
         /*결제 정보 + 환불 사유 넘기는 객체 생성*/
         let refundInfo = {
-            refundImpUid: "refund_no_" + new Date().getTime(), // 상점에서 관리하는 환불 번호 
+            refundImpUid: "refund_no_" + new Date().getTime(),
             payMerchantUid: rowData[0],
             payImpUid: row.querySelector('td input[type="hidden"]').value,
-            refundReason : selectedValue,
+            refundReason: selectedValue,
             refundName: rowData[2],
             refundAmount: parseInt(rowData[3].replace(/\D/g, ''), 10),
-            refundType: '구매자'
+            refundType: '구매자',
+            refundNameType: rowData[8],
         };
 
         console.log(refundInfo);
-        
+
         detailToRefund(refundInfo);
-        
+
 
     })
 }

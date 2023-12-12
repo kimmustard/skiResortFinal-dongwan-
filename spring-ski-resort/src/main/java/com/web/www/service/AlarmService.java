@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.web.www.domain.alarm.AlarmContentVO;
 import com.web.www.domain.alarm.AlarmDTO;
+import com.web.www.domain.alarm.AlarmReadDTO;
 
 public interface AlarmService {
 
@@ -16,5 +17,8 @@ public interface AlarmService {
 	
 	//알람 리스트 불러오기
 	List<AlarmDTO> getAlarmListTen(long memberNum);
+	
+	//읽음 체크
+	int alarmReadCheck(AlarmReadDTO arDTO);
 
 }

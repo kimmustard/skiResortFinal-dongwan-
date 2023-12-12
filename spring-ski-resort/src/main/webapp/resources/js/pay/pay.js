@@ -17,6 +17,17 @@
 
 
 function paymentGateway(pgName) {
+    //임시로 방이름만 가져옴. 나중에 방이름/렌탈장비/리프트권이름 유연하게 가져와야함.
+    let payName;
+    let nameType;
+    if(document.getElementById('room-name')){
+    	payName = document.getElementById('room-name').innerText;
+    	nameType = '호텔';   
+    }else{
+    
+    }
+    
+    let roomNum = document.getElementById('room-payinfo-num').value;
 
     IMP.init("imp70464277");
 
@@ -24,7 +35,7 @@ function paymentGateway(pgName) {
         pg: pgName,
         pay_method: 'card', //card(신용카드), trans(실시간계좌이체), vbank(가상계좌), phone(휴대폰소액결제)
         merchant_uid: "order_no_" + new Date().getTime(), // 상점에서 관리하는 주문 번호
-        name: '주문명:결제테스트',
+        name: payName,
         amount: realAmount,
         buyer_email: memberEmail,
         buyer_name: memberName,
@@ -33,11 +44,10 @@ function paymentGateway(pgName) {
 
     }, function (rsp) {
         console.log(rsp);
-       
-       
+
+
         if (rsp.success) {
             console.log("결제된거임?");
-        
             // 서버로 데이터를 전송
             fetch("/pay/portOne", {
                 method: "POST",
@@ -55,28 +65,27 @@ function paymentGateway(pgName) {
                     memberEmail: rsp.buyer_email,
                     memberPhoneNum: rsp.buyer_tel,
                     memberAddress: rsp.buyer_addr,
-
-                    // 기타 필요한 데이터가 있으면 추가 전달
+                    hotelRoomNum: roomNum,
+                    payNameType: nameType,
 
                 }),
             })
                 .then((response) => response.text())
                 .then((data) => {
-                 
+
                     // 서버에서의 추가 처리
                     if (data == "결제완료") {
                         document.getElementById('payName').value = rsp.name;
                         document.getElementById('payAmount').value = rsp.paid_amount;
                         document.getElementById('payMerchantUid').value = rsp.merchant_uid;
-                            if( document.getElementById("payform")){
-                                document.getElementById("payform").submit();
-                          
-                            }
-        
-                    
-                   
-                           
-                        } else {
+                        document.getElementById('payImpUid').value = rsp.imp_uid;
+                        if (document.getElementById("payform")) {
+                            document.getElementById("payform").submit();
+
+                        }
+
+
+                    } else {
                         //결제 실패시 처리
                         
                         window.location.href = '/pay/PayFail?errorMessage=' + data;
@@ -92,3 +101,5 @@ function paymentGateway(pgName) {
         }
     });
 }
+
+

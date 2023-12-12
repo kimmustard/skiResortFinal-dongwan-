@@ -145,6 +145,7 @@
 	height: 25px;
 	background-color: red;
 	border-radius: 100%;
+	display: none;
 	
 }
 
@@ -182,7 +183,7 @@
 }
 
 .alarm-board-body{
-	margin-left: 50px;
+	margin-left: 20px;
 	margin-top: 50px;
 }
 .alarm-board-body>ul>li{
@@ -190,9 +191,19 @@
 }
 
 .alarm-board-body>ul>li>a{
+	display: inline-block;
 	color: white;
 	text-decoration-line: none;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: 300px;
 }
+
+.alarm-board-body>ul>li>span{
+	padding-bottom: -10px;
+}
+
 .main-title-logo{
 	margin-top: 3px;
 }

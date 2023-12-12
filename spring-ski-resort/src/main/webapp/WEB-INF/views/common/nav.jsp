@@ -18,6 +18,9 @@
  
  <link rel="stylesheet" href="/resources/css/nav.css">
 
+ <!-- Moment.js -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/locale/ko.js"></script> <!-- 한국어 locale 파일 추가 -->
 </head>
 <body>
 <div class="navContainer">
@@ -75,7 +78,7 @@
 	       	<li><a href="/member/logout">| 로그아웃</a></li>
      
 	      	<div class="member-alarm" id="alarm-bell">
-	      		<i class="bi bi-bell-fill position-relative"><span class="alarm-bell-deco">1</span></i>
+	      		<i class="bi bi-bell-fill position-relative" id=""><span class="alarm-bell-deco" id="alarm-mini-bell"></span></i>
 	      	</div>
 			
 			<div class="member-alarm-board" id="alarm-board">

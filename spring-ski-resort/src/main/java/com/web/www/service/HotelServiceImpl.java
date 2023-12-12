@@ -28,7 +28,7 @@ public class HotelServiceImpl implements HotelService{
 	public int updateRoomInfo(RoomInfoVO rivo ,Coupon cpn) {
 		
 		mdao.useCoupon(rivo.getMemberNum(),cpn.getCouponCode());
-		int isOk =hdao.updateRoomInfo(rivo);
+		int isOk = hdao.updateRoomInfo(rivo);
 		hdao.updateRoomCount();
 		
 		return isOk ;

@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.URL;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.security.Principal;
 import java.util.List;
 import java.util.Map;
@@ -40,6 +42,7 @@ public class PayServiceImpl implements PayService{
 	
 	private final PayDAO pdao;
 	private final AlarmDAO adao;
+	private final HotelService hsv;
 	
 	@Value("${pay.imp}")
 	private String imp_uid;
@@ -70,45 +73,53 @@ public class PayServiceImpl implements PayService{
 	@Transactional
 	@Override
 	public ResponseEntity<String> registerPay(PayInfoVO pivo) throws IOException {
-
-	
-	// 1. 아임포트 API 키와 SECRET키로 토큰을 생성
-		String access_token = getToken();
-		log.info("아임포트 엑세스 토큰값 확인 = {}", access_token);
-    
-	// 2. 토큰으로 결제 완료된 주문정보를 가져옴
-		//amount는 결제완료된 금액입니다.
-		long amount = paymentInfo(pivo.getPayImpUid(), access_token);
 		
-		
-    
-	/***********DB 등록 전  비즈니스 로직 영역 (할인율 등)*********/
-	
+		// 1. 아임포트 API 키와 SECRET키로 토큰을 생성
+			String access_token = getToken();
+			log.info("아임포트 엑세스 토큰값 확인 = {}", access_token);
+	    
+		// 2. 토큰으로 결제 완료된 주문정보를 가져옴
+			//amount는 결제완료된 금액입니다.
+			long amount = paymentInfo(pivo.getPayImpUid(), access_token);
 			
-	    // 3. 로그인이 안된 유저 return (시큐리티에서 cut하지만 안전을 위해)
+			
+			
+	/***********DB 등록 전  비즈니스 로직 영역 (할인율 등)*********/
+		/*+개선해야할점 호텔/리프트/장비/ 3가지로 switch문(수문장) 나눠서 각자 if문을 타게 하던가 하는게 좋았을듯? +*/
+			log.info("### 결제무슨타입 ? = {}", pivo.getPayNameType());
+
+		
+	    //[호텔]방이없을때 return
+		int cheakRoomCount = hsv.cheakRoomCount(pivo.getHotelRoomNum());// 쓸때없이 타야함.
+		if (cheakRoomCount <= 0) {
+			adao.alarmSetting(new AlarmVO(pivo.getMemberNum(), 4, "취소"));// 시스템 알람 반드시 넣어주세요.
+			payMentCancel(access_token, pivo.getPayImpUid(), amount, "이용 가능한 방이 없습니다.");
+			return new ResponseEntity<String>("이용 가능한 방이 없습니다.", HttpStatus.BAD_REQUEST);
+		}
+		
+		//[렌탈]장비가 없을때 return
+		
+	
+		//XXXX[호텔] 이미 구매 했으면 return (멤버번호로(room_info) cnt 조회하면 한방에 끝날듯)XXXX
 		
 	    
-	    //금액확인
 
 		/**
 		 * @if문 태워서 빠져나가는 로직 구성하면 됩니다.
-		 * 단, 환불 or 결제여부에 따라 기존물품 갯수 +,-1을 꼭 해주세요
+		 * 단, 환불 or 결제여부에 따라 기존물품 개수 갱신 로직을 꼭 해주세요
 		 * */
 		
 		
-		/*실패시*/
-//		payMentCancel(access_token, upiDTO.getPayImpUid(), amount, "무슨 이유로 에러발생");
-//		return new ResponseEntity<String>("결제 금액 오류, 결제 취소", HttpStatus.BAD_REQUEST);
+		/*실패시(복붙용)*/
+//		payMentCancel(access_token, upiDTO.getPayImpUid(), amount, "카드회사에 전달할 사유");
+//		return new ResponseEntity<String>("취소사유", HttpStatus.BAD_REQUEST);
 		
 		/*성공시*/
 		pdao.registerPay(pivo);
 		adao.alarmSetting(new AlarmVO(pivo.getMemberNum() , 2, "결제"));// 시스템 알람 반드시 넣어주세요.
-		return new ResponseEntity<String>("주문이 완료되었습니다", HttpStatus.OK);
-		//임시 리턴 위에 구성이 되면 삭제하세요.
-//		return null;
+		return new ResponseEntity<String>("결제완료", HttpStatus.OK);
+		
 	/*********************************/
-		
-		
 	}
 
 	/**
@@ -129,13 +140,23 @@ public class PayServiceImpl implements PayService{
 		
 		/********** 환불 비즈니스 로직 **************/
 		
-		//1. 로그인이 안된 유저 return
+		log.info("### 환불무슨타입 ? = {}", rfiVO.getRefundNameType());
 		
-		//2. 이미 취소된 내역이면 return
+		//[공통] 이미 취소된 내역이면 return
 		if(pdao.payStatusCheck(rfiVO.getPayMerchantUid()) != 0) {
 			return new ResponseEntity<String>("이미 취소된 내역입니다.", HttpStatus.BAD_REQUEST);
 		}
-		//3. 상품 환불가능기간 하루전 기간이 지났으면 return
+		//[공통] 상품 환불가능기간 하루전 기간이 지났으면 return
+		
+		//[호텔] 환불시 room_info 테이블 삭제 로직
+		rfiVO.getPayMerchantUid();
+		
+		
+		//[렌탈] 환불시 테이블 삭제 로직
+		
+		//[리프트] 환불시 테이블 삭제 로직
+		
+		
 		
 		
 		/***************************************/

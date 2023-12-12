@@ -22,7 +22,7 @@
 	SELECT a.*, ac.*
 	FROM alarm_system a
 	JOIN alarm_content ac ON a.alarm_content_num = ac.alarm_content_num
-	WHERE a.member_num = #{memberNum}
+	WHERE a.member_num = #{memberNum} and alarm_check = 'N'
 	ORDER BY a.alarm_reg_at DESC
 	LIMIT 10
   </select>
@@ -30,6 +30,11 @@
   <select id="getAlarmMemberNum" resultType="long">
   	select member_num from member where member_id = #{mebmerId}
   </select>
+  
+  <update id="alarmReadCheck">
+  	update alarm_system set alarm_check = 'Y' where member_num = #{memberNum} and alarm_reg_at = #{alarmRegAt}
+  </update>
+  
   
   </mapper>
 

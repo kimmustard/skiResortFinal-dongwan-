@@ -63,27 +63,25 @@ public class PayController {
 	@ResponseBody
 	@PostMapping(value = "/refund", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.TEXT_PLAIN_VALUE+ ";charset=UTF-8")
 	public ResponseEntity<String> refunt(@RequestBody RefundInfoVO rfiVO, @AuthUser MemberVO mvo) throws IOException {
+		
 		log.info("##환불정보## = {}", rfiVO);
-		long memberNum = mvo.getMemberNum();
-		ResponseEntity<String> isOk = psv.payMentRefund(rfiVO, memberNum);
+		ResponseEntity<String> isOk = psv.payMentRefund(rfiVO, mvo.getMemberNum());
 		return isOk;
 	}
 	
 	
 	@ResponseBody
 	@PostMapping(value = "/portOne", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.TEXT_PLAIN_VALUE+ ";charset=UTF-8")
-	public ResponseEntity<String> portOnePay(@RequestBody PayInfoVO pivo, @AuthUser MemberVO mvo, Principal principal) throws IOException {
-		if(principal == null) {
-			return new ResponseEntity<String>("로그인 되지않은 고객", HttpStatus.BAD_REQUEST);
+	public ResponseEntity<String> portOnePay(@RequestBody PayInfoVO pivo, @AuthUser MemberVO mvo) throws IOException {
+		if(mvo == null) {
+			return new ResponseEntity<String>("회원 정보가 없습니다.",HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		
 		
 		try {
 	        pivo.setMemberNum(mvo.getMemberNum());
 	        log.info("##결제 정보##  = {}" , pivo);
 	        //결제정보 테이블 저장
-	        psv.registerPay(pivo);
-	        return new ResponseEntity<String>("결제완료", HttpStatus.OK);
+	        return psv.registerPay(pivo);
 	    } catch (Exception e) {
 	        log.error("결제 처리 중 오류 발생", e);
 	        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
