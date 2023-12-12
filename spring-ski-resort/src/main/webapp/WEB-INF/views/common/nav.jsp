@@ -52,8 +52,8 @@
         	
 	       	<!-- admin 관리페이지 -->
             <c:if test="${auths.stream().anyMatch(authVO -> authVO.auth.equals('ROLE_ADMIN')).get()}">
-               <li>
-			   		<a class="developer_page" href="/developer/settingMain" id="ski-navbar-brand"><i class="bi bi-gear-fill" id="bi-gear-fill"></i>   | </a>
+               <li id="ski-navbar-brand">
+			   		<a class="developer_page" href="/developer/settingMain" ><i class="bi bi-gear-fill" id="bi-gear-fill"></i>   | </a>
                </li>
             </c:if>
         	<c:if test="${authType == 'normal' }">

@@ -190,10 +190,17 @@ margin-top: 150px;
 	
 }
 .event-image-box{
+	background-color:black;
 	height: 350px;
 	 border-radius: 7px 7px 0 0;
-	 background-color: black;
+	background-size: cover;
+}
+.event-image-box:hover{
+	cursor: pointer;
 }
 .event-content-box{
     padding: 16px;
+    text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
 }

@@ -2,6 +2,8 @@
 
 
 ## notice table 생성
+drop table notice;
+
 create table notice(
 notice_num bigint not null auto_increment,
 member_num bigint,
@@ -14,6 +16,7 @@ notice_reg_at datetime default now(),
 notice_mod_at datetime default now(),
 notice_point varchar(1) default 'N',
 notice_del varchar(1) default 'N',
+notice_image_url varchar(1000),
 primary key(notice_num)
 );
 

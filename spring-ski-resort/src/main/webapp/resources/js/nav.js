@@ -2,21 +2,14 @@ window.onload = function () {
 
     setTimeout(() => document.getElementById("ski-navbar").style.opacity = 0.8, 5000)
     if (!(document.getElementById('maintext1'))) {
-
         document.getElementById("ski-navbar").style.opacity = 0.8;
     }else{
-    getTwoNotice().then(notice =>{
+  
+   
 
-        for(let i = 0; i<notice.length; i++){
-        
-        document.getElementById('notice-box').innerHTML+= '<ul><li><span class="notice-reg">'+notice[i].noticeRegAt+'</span><a class="notice-title" href="/notice/detail?noticeNum='+notice[i].noticeNum+'">'+notice[i].noticeTitle+'</a></li></ul>'
-            
-    }
-    });
-        load();
-       
-        
-    }  
+
+    load();
+   }  
     memberAlarmSpread();
 }
 
@@ -129,32 +122,11 @@ async function weatherListSearch() {
     }
 
 }
-//공지 두개 받아오기
-async function getTwoNotice(){
-    try {
-        const url = "/notice/getTwoNotice";
-        const config = {
-            method: 'get'
-        };
-        const resp = await fetch(url, config);
-        const result = await resp.json();
-        return result;
-    } catch (error) {
-        console.log(error);
-    }
-}
 
 
 
-document.getElementById("ski-navbar-brand").addEventListener("mouseover", (e) => {
-   e.target.querySelector("span").style.width = "100%";
 
-})
 
-document.getElementById("ski-navbar-brand").addEventListener("mouseout", (e) => {
-   
-	e.target.querySelector("span").style.width = "0px";
-})
 const navLinks = document.querySelectorAll(".ski-nav-link");
 
 navLinks.forEach(link => {
@@ -174,7 +146,7 @@ navLinks.forEach(link => {
 //alarm-board 스위치
 
 let bellSwitch = 0;
-
+if(document.getElementById("alarm-bell")){
 document.getElementById("alarm-bell").addEventListener('click', () => {
     let board = document.getElementById('alarm-board');
     if (bellSwitch == 0) {
@@ -186,6 +158,7 @@ document.getElementById("alarm-bell").addEventListener('click', () => {
     }
 
 })
+}
 
 async function memberAlarmSpread() {
     try {
