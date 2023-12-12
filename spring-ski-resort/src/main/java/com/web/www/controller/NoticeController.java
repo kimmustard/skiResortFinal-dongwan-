@@ -79,11 +79,10 @@ public class NoticeController {
 	@GetMapping("/list")
 	public void noticeList(Model m, PagingVO pgvo) {
 		m.addAttribute("list", nsv.noticeList(pgvo));
+		m.addAttribute("plist", nsv.noticePointList(pgvo)); //중요공지 목록 가져오기
 		int totalCount = nsv.getTotalCount(pgvo);
 		PagingHandler ph = new PagingHandler(pgvo, totalCount);
 		m.addAttribute("ph",ph);
-		List<NoticeVO> pvo = nsv.noticePointList(); //중요공지 목록 가져오기
-		m.addAttribute("pvo", pvo);
 		List<FileVO> pfvo = nsv.noticePointFileList(); //중요공지 파일 목록 가져오기
 		m.addAttribute("pfvo", pfvo);
 	}
