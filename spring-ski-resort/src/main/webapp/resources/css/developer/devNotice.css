@@ -57,6 +57,10 @@
 	color: inherit;
 }
 
+.dev-notice-tr>td>a{
+	text-decoration-line: none;
+	color: inherit;
+}
 
 
 
