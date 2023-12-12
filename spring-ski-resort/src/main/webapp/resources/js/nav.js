@@ -10,9 +10,6 @@ window.onload = function () {
 }
 
 
-
-
-
 const timer = ms => new Promise(res => setTimeout(res, ms))
 async function load() {
     for (let i = 0; ; i++) {
