@@ -178,6 +178,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 })
 
+
+// 이미지 클릭시 장바구니에 name, price 담기
 function shoppingBasket(name, price) {
      let shoppingBasketDiv = document.querySelector('.shoppingBasket');
      let itemSelectDiv = document.createElement('div');
@@ -189,8 +191,12 @@ function shoppingBasket(name, price) {
 let imageBox = document.querySelectorAll('.itemImageBox .slide img');
 let shopContainer = document.querySelector('.shopContainer');
 
-imageBox.forEach(function (image) {
-     image.addEventListener('click', function () {
-          shopContainer.style.display = 'block';
+//로그인된 유저가 리프트권이 있다면? true / false
+if (true) {
+     imageBox.forEach(function (image) {
+          image.addEventListener('click', function () {
+               shopContainer.style.display = 'block';
+          })
      })
-})
+
+}

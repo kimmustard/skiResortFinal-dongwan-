@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,6 +19,7 @@
 					<div class="input-group mb-3">
 						<span class="input-group-text">리프트권종류</span>
 						<input type="text" class="form-control" name="rentalLiftTicket" id="LiftTicket" value="${rlivo.rentalLiftTicket }" readonly="readonly">
+						<c:out value="${rlivo }"></c:out>
 					</div>
 					<div class="input-group mb-3">
 						<span class="input-group-text">이용날짜</span>

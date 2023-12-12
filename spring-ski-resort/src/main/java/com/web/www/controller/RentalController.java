@@ -49,7 +49,7 @@ public class RentalController {
 	}
 	
 	@GetMapping("/reserve")
-	public String reserveForm(@ModelAttribute("mvo")MemberVO mvo) {
+	public String reserveForm(@AuthUser MemberVO mvo) {
 		log.info("MemberController mvo = {}" , mvo);
 		return "/rental/reserve";
 	}
@@ -134,8 +134,9 @@ public class RentalController {
 	}
 	
 	@GetMapping("/item-reserve")
-	public String itemReserveForm(Model model) {
-		
+	public String itemReserveForm(Model model, RentalLiftVO rlivo, @AuthUser MemberVO mvo) {
+		model.addAttribute("mvo", mvo);
+		model.addAttribute("rlivo", rlivo);
 		return "/rental/item-reserve";
 	}
 	
