@@ -152,12 +152,21 @@ function updateOpacity() {
 }
 
 
+//연타방지
+function clickdeilay(btn){
+  btn.style.pointerEvents = "none";
+  setTimeout(function () {
+    btn.style.pointerEvents = "auto";;
+  }, 600);
+}
+
 nextBtn.addEventListener("click", function () {
-  
+  clickdeilay(nextBtn);
   moveSlide(currentIdx + 1);
 });
 
 prevBtn.addEventListener("click", function () {
+  clickdeilay(prevBtn);
   moveSlide(currentIdx - 1);
 
 });
