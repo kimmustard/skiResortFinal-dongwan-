@@ -56,41 +56,36 @@
 		<div class="event-box">
 			<p class="fs-1 box-title">Event</p>
 			<p class="fs-3 box-title">이벤트</p>
-		<div class="bannerBox">
-      <ul class="bannerUl">
-         <li class="bannerLi" >
-            <a class="bannerA" href="#">
-            </a>
-         </li>
-         <li class="bannerLi" >
-            <a class="bannerA" href="#">
-            </a>
-         </li>
-         <li class="bannerLi">
-            <a class="bannerA" href="#">
-            </a>
-         </li>
-         <li class="bannerLi" >
-            <a class="bannerA" href="#">
-            </a>
-         </li>
-      </ul>
-   </div>
-			
+			<div class="contentBox">
+				  <div class="slide_wrapper">
+		      <ul class="slides" id="slides" >
+		         <li class="event-li"><div class="event-item-box" id="event-item-box1"> <div class="event-image-box"  id="event-image-box1"></div><div class="event-content-box" id="event-content-box1">이벤트 1</div></div></li>
+		        <li class="event-li"> <div class="event-item-box" id="event-item-box2"> <div class="event-image-box"  id="event-image-box2"></div><div class="event-content-box" id="event-content-box2">이벤트 2</div></div></li>
+		        <li class="event-li"> <div class="event-item-box" id="event-item-box3"> <div class="event-image-box"  id="event-image-box3"></div><div class="event-content-box" id="event-content-box3">이벤트 3</div></div></li>
+		        <li class="event-li"> <div class="event-item-box" id="event-item-box4"> <div class="event-image-box"  id="event-image-box4"></div><div class="event-content-box" id="event-content-box4">이벤트 4</div></div></li>
+		        <li class="event-li"> <div class="event-item-box" id="event-item-box5"> <div class="event-image-box"  id="event-image-box5"></div><div class="event-content-box" id="event-content-box5">이벤트 5</div></div></li>
+		       
+		       
+		      </ul>
+		    </div>
+		
+		    <p class="controls">
+		      <span class="prev">prev</span>
+		      <span class="next">next</span>
+		    </p>
+  		    </div>
 		</div>
-
-
 	</div>
 
 
 	<jsp:include page="common/footer.jsp"></jsp:include>
 </body>
 <script type="text/javascript">
-const isOk = `<c:out value="${isOk}" />`;
-if(isOk == 1){
-	alert('쿠폰 지급 완료!!');
-}else if(isOk ==2){
-	alert('이미 받은 쿠폰입니다.');
+const isOk = parseInt('<c:out value="${isOk}" />');
+if (isOk === 1) {
+    alert('쿠폰 지급 완료!!');
+} else if (isOk === 2) {
+    alert('이미 받은 쿠폰입니다.');
 }
 </script>
 <script type="text/javascript" src="/resources/js/index.js"></script>

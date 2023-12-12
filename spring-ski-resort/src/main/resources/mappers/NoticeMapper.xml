@@ -56,12 +56,18 @@
 	
 	<select id="getTwoNotice" resultType="com.web.www.domain.board.NoticeVO">
 		select notice_title ,notice_reg_at,notice_num from notice where notice_category = "공지사항" AND notice_del = "N" order by notice_num desc LIMIT 2
-
-	
-	
 	</select>
-	
-	
+	<select id="selectEventCnt" resultType="int">
+		select count(*) from notice where notice_category = "이벤트";
+	</select>
+	<insert id="addEvent">
+		INSERT INTO notice (member_num, notice_writer, notice_category, notice_title,notice_content,notice_point,notice_image_url)
+		VALUES (#{memberNum}, #{noticeWriter}, #{noticeCategory}, #{noticeTitle} ,#{noticeContent}, #{noticePoint}, #{noticeImageUrl});
+	</insert>
+	<select id="getFiveEvent" resultType="com.web.www.domain.board.NoticeVO">
+		select notice_num, notice_title , notice_content, notice_image_url from notice where notice_category = "이벤트" AND notice_del = "N" order by notice_num desc LIMIT 5
+	</select>
+
 	
 	<sql id="search">
 		<if test="type != null">

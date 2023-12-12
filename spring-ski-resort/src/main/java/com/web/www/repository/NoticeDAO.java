@@ -31,4 +31,10 @@ public interface NoticeDAO {
 
 	List<NoticeVO> selectPointList();
 
+	int selectEventCnt();
+
+	void addEvent(NoticeVO noticeVO);
+
+	List<NoticeVO> getFiveEvent();
+
 }
