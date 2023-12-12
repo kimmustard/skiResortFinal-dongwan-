@@ -318,14 +318,22 @@
 }
 
 .myCouponListTitle{
-	margin-top: 10px;
-	margin-bottom: 10px;
+	padding-bottom: 30px;
+	margin-top: 30px;
+	margin-bottom: 20px;
+	border-bottom: 3px solid gray;
 	text-align: center;
+}
+
+.myCouponListTitle>span{
+	font-size: 20px;
+	
 }
 
 .couponBox{
 	position: relative;
 	display: flex;
+	margin-top: 10px;
 	margin-bottom: 10px;
 	height: 100px;
 	justify-content: center;
@@ -341,6 +349,8 @@
 }
 .couponBox1>span{
 	position: absolute;
+	text-align: center;
+	width: 150px;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
@@ -356,4 +366,7 @@
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+}
+.couponBox2>div>span{
+	width: 200px;
 }

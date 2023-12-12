@@ -83,7 +83,7 @@ document.getElementById('my_coupon_list').addEventListener('click', () => {
                 str += `<div class="couponBox2">`;
                 str += `<div><p>${formattedDateStart}~${formattedDateEnd}</p>`;
                 str += `<span>${result[i].couponName}</span></div>`;
-                str += `<input id="r${i}" type="radio" name="coupon">`;
+                str += `<input id="r${i}" type="radio" name="coupon" value="${result[i].couponCode}" style="display:none">`;
                 str += `</div>`;
 
                 str += `</div>`;
@@ -92,28 +92,40 @@ document.getElementById('my_coupon_list').addEventListener('click', () => {
                 myCouponList.innerHTML += str;
             }
 
-            //라디오 버튼 로직
+            // 라디오 버튼 로직
             document.addEventListener('click', (e) => {
-                if (e.target.type === 'radio' && e.target.name === 'coupon') {
-                    const index = e.target.id.slice(1);
-                    const couponBox = document.getElementById(`cbox${index}`);
+                if (e.target.type !== 'radio' || e.target.name !== 'coupon') {
+                    return;
+                }
 
-                    if (e.target.checked) {
+                const index = e.target.id.slice(1);
+                const couponBox = document.getElementById(`cbox${index}`);
+
+                if (e.target.checked) {
+                    // 같은 라디오 버튼을 다시 클릭하면 체크를 해제하도록 변경
+                    if (couponBox.style.border === '3px solid red') {
+                        e.target.checked = false;
+                        couponBox.style.border = '';
+                        // 라디오 버튼이 체크가 해제되면 원래 가격으로 설정
+                        resetPrice();
+                    } else {
                         // 체크된 라디오 박스가 있다면, 모든 라디오 박스의 스타일을 원래대로 되돌린 후, 선택된 라디오 박스에 대해서만 스타일을 변경
                         const radioButtons = document.querySelectorAll('[name="coupon"]');
                         radioButtons.forEach((radio, i) => {
                             const otherCouponBox = document.getElementById(`cbox${i}`);
                             otherCouponBox.style.border = '';
+                            radio.checked = false; // 체크된 상태를 해제
                         });
 
-                        console.log('라디오 박스가 체크되었습니다.');
-                        couponBox.style.border = '5px solid red'; // 여기에 굵게 하고 싶은 border 스타일을 적용
-                    } else {
-                        console.log('라디오 박스가 체크가 해제되었습니다.');
-                        couponBox.style.border = ''; // border를 제거하거나, 기본 값으로 설정
+                        couponBox.style.border = '3px solid red'; // 여기에 굵게 하고 싶은 border 스타일을 적용
+
+                        // 할인율 계산
+                        usecoupon(result[index].couponInt, result[index].couponRate);
                     }
                 }
+                
             });
+
 
 
         } else {
@@ -138,5 +150,10 @@ async function myCouponListGet() {
     }
 }
 
-
-
+function resetPrice() {
+    // 기존 가격으로 설정
+    document.getElementById('realpayvalue').value = roomprice;
+    document.getElementById('userViewpay').innerText = roomprice.toLocaleString() + "원";
+    document.getElementById('couponCode').value = ''; // 쿠폰 코드 초기화
+    realAmount = roomprice;
+}

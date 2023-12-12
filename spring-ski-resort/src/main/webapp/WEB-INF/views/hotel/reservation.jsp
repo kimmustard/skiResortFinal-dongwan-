@@ -84,7 +84,7 @@
             
 			<div class="myCouponListBody">
 				 <div class="myCouponListTitle">
-				 	<span><i class="bi bi-envelope"></i>쿠폰함</span> 
+				 	<span><i class="bi bi-envelope"></i> 쿠폰함</span> 
 				 </div>
 				 <div class="myCouponList" id="myCouponList">
 				 	

@@ -288,4 +288,13 @@ function usecoupon(couponInt, couponrate) {
     document.getElementById('userViewpay').innerText = totalprice.toLocaleString() + "원";
     document.getElementById('couponCode').value = document.getElementById('coupon').value;
     realAmount = totalprice;
+
+}
+
+function resetPrice() {
+    // 기존 가격으로 설정
+    document.getElementById('realpayvalue').value = roomprice;
+    document.getElementById('userViewpay').innerText = roomprice.toLocaleString() + "원";
+    document.getElementById('couponCode').value = ''; // 쿠폰 코드 초기화
+    realAmount = roomprice;
 }
