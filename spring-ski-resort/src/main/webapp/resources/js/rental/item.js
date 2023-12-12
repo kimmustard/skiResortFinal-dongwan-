@@ -22,92 +22,67 @@ premiumItem.addEventListener('click', () => {
 
 /*     슬라이드 기능     */
 
-let page = 0; // 현재 인덱스 번호
-let imageWidth = 400; // 이미지 width
-
-let value = 0;
-let rigthWidth = 500;
-let leftWidth = 500;
 
 let nextBtn = document.getElementById('slideNextBtn'); // 다음 이미지로 넘어가는 버튼
-let prevBtn = document.getElementById('slidePrevBtn'); // 다음 이미지로 넘어가는 버튼
+let prevBtn = document.getElementById('slidePrevBtn'); // 이전 이미지로 넘어가는 버튼
+let slideList = document.querySelector('.itemImageBox');
+let slideContent = document.querySelectorAll('.slide');
+let slideLen = slideContent.length;
 
-function cloneAndAppend(container, className) {
-     let slides = container.querySelectorAll(`.${className}`);
-     let firstSlideClone = slides[0].cloneNode(true);
-     container.appendChild(firstSlideClone);
-}
+let slideWidth = 400;
+let slideSpeed = 300;
+let startNum = 0;
 
-let lowItemImage = document.getElementById('lowItemImageBox');
-cloneAndAppend(lowItemImage, 'slide');
+slideList.style.width = slideWidth * (slideLen + 2) + "px";
 
-let midItemImage = document.getElementById('midItemImageBox');
-cloneAndAppend(midItemImage, 'slide');
+let firstChild = slideList.firstElementChild;
+let lastChild = slideList.lastElementChild;
+let firstClone = firstChild.cloneNode(true);
+let lastClone = lastChild.cloneNode(true);
 
-let premiumItemImage = document.getElementById('premiumItemImageBox');
-cloneAndAppend(premiumItemImage, 'slide');
+slideList.appendChild(firstClone);
+slideList.insertBefore(lastClone, slideList.firstChild);
 
-function next() {
-     value -= rigthWidth;
-     transitionSlides();
-}
+slideList.style.transform = "translate3d(-" + (slideWidth * (startNum + 1)) + "px, 0px, 0px)";
 
-function prev() {
-     value += leftWidth;
-     transitionSlides();
-}
+let curIndex = startNum;
+let curSlide = slideContent[curIndex];
+curSlide.classList.add('slide_active');
 
-function transitionSlides() {
-     lowItemImage.style.transition = 'transform 0.5s ease';
-     lowItemImage.style.transform = 'translateX(' + value + 'px)';
-
-     midItemImage.style.transition = 'transform 0.5s ease';
-     midItemImage.style.transform = 'translateX(' + value + 'px)';
-
-     premiumItemImage.style.transition = 'transform 0.5s ease';
-     premiumItemImage.style.transform = 'translateX(' + value + 'px)';
-
-     if (value <= -5500) {
-          setTimeout(function () {
-
-               lowItemImage.style.transition = '0s';
-               midItemImage.style.transition = '0s';
-               premiumItemImage.style.transition = '0s';
-
-               value = 0;
-               lowItemImage.style.transform = 'translateX(' + value + 'px)';
-               midItemImage.style.transform = 'translateX(' + value + 'px)';
-               premiumItemImage.style.transform = 'translateX(' + value + 'px)';
-
-          }, 0);
+nextBtn.addEventListener('click', function () {
+     if (curIndex < slideLen) {
+          slideList.style.transition = slideSpeed + "ms";
+          slideList.style.transform = "translate3d(-" + (slideWidth * (curIndex + 2)) + "px, 0px, 0px)";
      }
-
-     if (value >= 0) {
+     if (curIndex === slideLen - 1) {
           setTimeout(function () {
-
-               lowItemImage.style.transition = '0s';
-               midItemImage.style.transition = '0s';
-               premiumItemImage.style.transition = '0s';
-
-               value = -5500;
-               lowItemImage.style.transform = 'translateX(' + value + 'px)';
-               midItemImage.style.transform = 'translateX(' + value + 'px)';
-               premiumItemImage.style.transform = 'translateX(' + value + 'px)';
-
-          }, 0);
+               slideList.style.transition = "0ms";
+               slideList.style.transform = "translate3d(-" + (slideWidth * slideLen + 1) + "px, 0px, 0px)";
+          }, slideSpeed);
+          curIndex = -1;
      }
-}
+     curSlide.classList.remove('slide_active');
+     curSlide = slideContent[++curIndex];
+     curSlide.classList.add('slide_active');
+})
 
-if (nextBtn) {
-     nextBtn.addEventListener('click', function () {
-          next();
-     });
-}
-if (prevBtn) {
-     prevBtn.addEventListener('click', function () {
-          prev();
-     });
-}
+prevBtn.addEventListener('click', function () {
+     if (curIndex >= 0) {
+          slideList.style.transition = slideSpeed + "ms";
+          slideList.style.transform = "translate3d(-" + (slideWidth * curIndex) + "px, 0px, 0px)";
+     }
+     if (curIndex === 0) {
+          setTimeout(function () {
+               slideList.style.transition = "0ms";
+               slideList.style.transform = "translate3d(-" + (slideWidth * slideLen) + "px, 0px, 0px)";
+          }, slideSpeed);
+          curIndex = slideLen;
+     }
+     curSlide.classList.remove('slide_active');
+     curSlide = slideContent[--curIndex];
+     curSlide.classList.add('slide_active');
+})
+
 
 
 /*   장바구니 기능    */
