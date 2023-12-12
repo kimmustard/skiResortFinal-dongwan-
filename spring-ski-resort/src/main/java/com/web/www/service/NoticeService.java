@@ -32,6 +32,12 @@ public interface NoticeService {
 
 	List<FileVO> noticePointFileList();
 
+	int selectEventCnt();
+
+	void addEvent(NoticeVO noticeVO);
+
+	List<NoticeVO> getFiveEvent();
+
 
 
 }

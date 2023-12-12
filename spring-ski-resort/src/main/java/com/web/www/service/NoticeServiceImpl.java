@@ -166,6 +166,27 @@ public class NoticeServiceImpl implements NoticeService{
 	}
 
 
+	@Override
+	public int selectEventCnt() {
+		// TODO Auto-generated method stub
+		return ndao.selectEventCnt();
+	}
+
+
+	@Override
+	public void addEvent(NoticeVO noticeVO) {
+		ndao.addEvent(noticeVO);
+		
+	}
+
+
+	@Override
+	public List<NoticeVO> getFiveEvent() {
+		// TODO Auto-generated method stub
+		return ndao.getFiveEvent();
+	}
+
+
 
 
 

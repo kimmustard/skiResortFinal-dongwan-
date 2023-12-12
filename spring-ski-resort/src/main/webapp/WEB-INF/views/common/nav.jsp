@@ -24,17 +24,15 @@
 
 	<nav class="ski-navbar" id="ski-navbar">
 	<nav id="hide"></nav>
-  	<div class="main-title-logo">
-  		<img alt="" width="110" height="90" src="/resources/etc/logo_white.png">
-  	</div>
+  
   <div class="ski-collapse">
-    <a class="ski-navbar-brand" id="ski-navbar-brand" href="/">
+<!--     <a class="ski-navbar-brand" id="ski-navbar-brand" href="/">
     	<img width="40" height="40" src="/resources/etc/icons/ski-icon.png">다이스키<span class="nav-ani"></span>
-    </a>
-    	
+    </a> -->
        <div class="ski-nav-link" id="ski-nav-link"><a href="/notice/list"> NEWS <span class="nav-ani"></span></a></div>
        <div class="ski-nav-link" id="ski-nav-link"><a href="/resort/resortForm"> RESORT <span class="nav-ani"></span></a></div>
        <div class="ski-nav-link" id="ski-nav-link"><a href="/rental/fee-info">SKI / RENTAL <span class="nav-ani"></span></a></div>
+    		<span class="main-title-logo"><a href="/"><img alt="" width="110" height="90" src="/resources/etc/logo_white.png"></a> </span>
        <div class="ski-nav-link" id="ski-nav-link"><a href="/hotel/reservation"> HOTEL <span class="nav-ani"></span></a></div>
        <div class="ski-nav-link" id="ski-nav-link"><a href="/qna/list"> SERVICE <span class="nav-ani"></span></a></div>
        <div class="ski-nav-link" id="ski-nav-link"><a href="#"> BUS <span class="nav-ani"></span></a></div>
@@ -54,8 +52,8 @@
         	
 	       	<!-- admin 관리페이지 -->
             <c:if test="${auths.stream().anyMatch(authVO -> authVO.auth.equals('ROLE_ADMIN')).get()}">
-               <li>
-			   		<a class="developer_page" href="/developer/settingMain"><i class="bi bi-gear-fill" id="bi-gear-fill"></i>   | </a>
+               <li id="ski-navbar-brand">
+			   		<a class="developer_page" href="/developer/settingMain" ><i class="bi bi-gear-fill" id="bi-gear-fill"></i>   | </a>
                </li>
             </c:if>
         	<c:if test="${authType == 'normal' }">
