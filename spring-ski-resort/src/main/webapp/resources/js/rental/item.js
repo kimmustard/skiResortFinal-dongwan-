@@ -23,8 +23,8 @@ premiumItem.addEventListener('click', () => {
 /*     슬라이드 기능     */
 
 
-let nextBtn = document.getElementById('slideNextBtn'); // 다음 이미지로 넘어가는 버튼
-let prevBtn = document.getElementById('slidePrevBtn'); // 이전 이미지로 넘어가는 버튼
+let nextBtn = document.querySelector('.slideNextBtn'); // 다음 이미지로 넘어가는 버튼
+let prevBtn = document.querySelector('.slidePrevBtn'); // 이전 이미지로 넘어가는 버튼
 let slideList = document.querySelector('.itemImageBox');
 let slideContent = document.querySelectorAll('.slide');
 let slideLen = slideContent.length;
