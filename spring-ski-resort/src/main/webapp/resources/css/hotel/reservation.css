@@ -317,6 +317,43 @@
 	background-color: white;
 }
 
+.myCouponListTitle{
+	margin-top: 10px;
+	margin-bottom: 10px;
+	text-align: center;
+}
+
 .couponBox{
-	
+	position: relative;
+	display: flex;
+	margin-bottom: 10px;
+	height: 100px;
+	justify-content: center;
+	margin-left: 10px;
+	margin-right: 10px;
+	border: 1px solid black;
+}
+
+.couponBox1{
+	position: relative;
+	width: 100px;
+	background-color: white;
+}
+.couponBox1>span{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+.couponBox2{
+	position: relative;
+	width: 260px;
+	background-color: white;
+}
+
+.couponBox2>div{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }

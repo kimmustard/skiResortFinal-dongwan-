@@ -61,26 +61,60 @@ document.getElementById('my_coupon_list').addEventListener('click', () => {
 
             for (let i = 0; i < result.length; i++) {
 
+                // 날짜 포맷터
+                let monthStart = result[i].couponStart.substring(5, 7); //월
+                let dayStart = result[i].couponStart.substring(8, 10);  //일
+                let monthEnd = result[i].couponEnd.substring(5, 7); //월
+                let dayEnd = result[i].couponEnd.substring(8, 10); //일
+                let formattedDateStart = monthStart + '-' + dayStart;
+                let formattedDateEnd = monthEnd + '-' + dayEnd;
+
                 couponInt = parseInt(result[0].couponInt);
                 console.log(couponInt);
 
-                let str = `<div class="couponBox">`;
+                let str = `<label for="r${i}">`;
+                str += `<div class="couponBox" id="cbox${i}">`;
 
                 if (result[i].couponInt == 0) {
-                    str += `<div><span>${result[i].couponRate}%</span></div>`;
+                    str += `<div class="couponBox1"><span>${result[i].couponRate}%</span></div>`;
                 } else {
-                    str += `<div><span>${result[i].couponInt}원</span></div>`;
+                    str += `<div class="couponBox1"><span>${result[i].couponInt}원</span></div>`;
                 }
-                str += `<div>`;
-                str += `<div>${result[i].couponStart} ~ ${result[i].couponEnd}</div>`;
-                str += `<div><input type="radio" name="coupon" >`;
+                str += `<div class="couponBox2">`;
+                str += `<div><p>${formattedDateStart}~${formattedDateEnd}</p>`;
                 str += `<span>${result[i].couponName}</span></div>`;
+                str += `<input id="r${i}" type="radio" name="coupon">`;
                 str += `</div>`;
 
                 str += `</div>`;
+                str += `</label>`;
                 // `${result[i].couponName} <input type="radio" id="coupon" name="coupon" onclick="usecoupon(${result[0].couponInt},${result[0].couponRate})" value="${result[i].couponCode}">`
                 myCouponList.innerHTML += str;
             }
+
+            //라디오 버튼 로직
+            document.addEventListener('click', (e) => {
+                if (e.target.type === 'radio' && e.target.name === 'coupon') {
+                    const index = e.target.id.slice(1);
+                    const couponBox = document.getElementById(`cbox${index}`);
+
+                    if (e.target.checked) {
+                        // 체크된 라디오 박스가 있다면, 모든 라디오 박스의 스타일을 원래대로 되돌린 후, 선택된 라디오 박스에 대해서만 스타일을 변경
+                        const radioButtons = document.querySelectorAll('[name="coupon"]');
+                        radioButtons.forEach((radio, i) => {
+                            const otherCouponBox = document.getElementById(`cbox${i}`);
+                            otherCouponBox.style.border = '';
+                        });
+
+                        console.log('라디오 박스가 체크되었습니다.');
+                        couponBox.style.border = '5px solid red'; // 여기에 굵게 하고 싶은 border 스타일을 적용
+                    } else {
+                        console.log('라디오 박스가 체크가 해제되었습니다.');
+                        couponBox.style.border = ''; // border를 제거하거나, 기본 값으로 설정
+                    }
+                }
+            });
+
 
         } else {
 
