@@ -1,3 +1,20 @@
+//슬라이드 만들기
+let Eventslides = document.getElementById("slides").innerHTML;
+makeSlides();
+
+function makeSlides() {
+  Eventslides = "";
+  for (let i = 1; i <= 5; i++) {
+    Eventslides += `<li class="event-li"><div class="event-item-box" id="event-item-box${i}"> <div class="event-image-box"  id="event-image-box${i}"></div><div class="event-content-box" id="event-content-box${i}">이벤트 1</div><p id="event-content${i}"></div></li>`;
+    console.log(Eventslides);
+  }
+
+
+  document.getElementById("slides").innerHTML = Eventslides;
+}
+
+
+
 //공지 두 개 받아오기
 async function getTwoNotice(){
     try {
@@ -12,6 +29,13 @@ async function getTwoNotice(){
         console.log(error);
     }
 }
+//공지 화면에 뿌리기
+   getTwoNotice().then(notice =>{
+       if(notice!=undefined){
+       for(let i = 0; i<notice.length; i++){     
+       document.getElementById('notice-box').innerHTML+= '<ul><li><span class="notice-reg">'+notice[i].noticeRegAt+'</span><a class="notice-title" href="/notice/detail?noticeNum='+notice[i].noticeNum+'">'+notice[i].noticeTitle+'</a></li></ul>'        
+       }}
+   });
 //이벤트 리스트 5개 받아오기
 async function getFiveEvent(){
     try {
@@ -26,35 +50,30 @@ async function getFiveEvent(){
         console.log(error);
     }
 }
- //공지 두 개 받아오기
-    getTwoNotice().then(notice =>{
-        if(notice!=undefined){
-        for(let i = 0; i<notice.length; i++){     
-        document.getElementById('notice-box').innerHTML+= '<ul><li><span class="notice-reg">'+notice[i].noticeRegAt+'</span><a class="notice-title" href="/notice/detail?noticeNum='+notice[i].noticeNum+'">'+notice[i].noticeTitle+'</a></li></ul>'        
-        }}
-    });
    
-
 
   //슬라이드에 이미지와 내용 추가
      getFiveEvent().then(events => {
       for (let i = 0; i < events.length; i++) {
-          let centralEventImageBoxes = document.querySelectorAll("#event-image-box" + (i + 1));
-          
-          centralEventImageBoxes.forEach(function (centralEventImageBox) {
-              centralEventImageBox.style.backgroundImage = "url('" + events[i].noticeImageUrl + "')";
-              centralEventImageBox.onclick = function () {
+          let EventImageBoxes = document.querySelectorAll("#event-image-box" + (i + 1));
+          let EventContentBoxes = document.querySelectorAll("#event-content-box" + (i + 1));
+          let EventContent = document.querySelectorAll("#event-content" + (i + 1));
+      
+          EventImageBoxes.forEach(function (EventImageBox) {
+              EventImageBox.style.backgroundImage = "url('" + events[i].noticeImageUrl + "')";
+              EventImageBox.onclick = function () {
                 moveEventSite(events[i].noticeNum);
             };
           });
-          let centralEventContentBoxes = document.querySelectorAll("#event-content-box" + (i + 1));
-          
-          centralEventContentBoxes.forEach(function (centralEventContentBox) {
-            centralEventContentBox.innerHTML =events[i].noticeContent;
+          EventContentBoxes.forEach(function (EventContentBox) {
+            EventContentBox.innerHTML =events[i].noticeTitle; 
           });
-        }}).catch(error => {
-      console.error("Error fetching events:", error);
-  });
+          EventContent.forEach(function (EventContent) {
+            EventContent.innerText =events[i].noticeContent; 
+          });
+
+
+        }})
 //이벤트 페이지 이동 이벤트
   function moveEventSite(num){
     location.href = "/notice/detail?noticeNum="+num;
@@ -135,7 +154,13 @@ function updateOpacity() {
   let centralItemIndex = ((currentIdx % slideCount + slideCount) % slideCount)+2;
   let allEventItemBoxes = document.querySelectorAll(".event-item-box");
   allEventItemBoxes.forEach(function (itemBox) {
+    let pTagInsideBox = itemBox.querySelector("p");
+      if (pTagInsideBox) {
+       pTagInsideBox.style.display = "none";
+      }
     itemBox.style.opacity = "0.7";
+    itemBox.style.backgroundColor="white";
+    itemBox.style.color = "black";
   });
   // 중앙에 있는 아이템의 투명도를 1로 설정
   if(centralItemIndex==6){
@@ -145,19 +170,40 @@ function updateOpacity() {
   let centralEventItemBoxes = document.querySelectorAll("#event-item-box" + (centralItemIndex));
 
   centralEventItemBoxes.forEach(function (centralEventItemBox) {
-  
       centralEventItemBox.style.opacity = "1";
+      centralEventItemBox.style.backgroundColor = "black";
+      centralEventItemBox.style.color = "white";
+      let pTagInsideBox = centralEventItemBox.querySelector("p");
+      if (pTagInsideBox) {
+        pTagInsideBox.style.display = "-webkit-box";
+        pTagInsideBox.style.color ="black";
+        setTimeout(function () {
+          pTagInsideBox.style.color ="white";
+        }, 500);
+      }
+      
 
   });
 }
 
 
+//연타방지
+function clickdeilay(){
+  nextBtn.style.pointerEvents = "none";
+  prevBtn.style.pointerEvents = "none";
+  setTimeout(function () {
+    nextBtn.style.pointerEvents = "auto";
+    prevBtn.style.pointerEvents = "auto";
+  }, 1000);
+}
+
 nextBtn.addEventListener("click", function () {
-  
+  clickdeilay();
   moveSlide(currentIdx + 1);
 });
 
 prevBtn.addEventListener("click", function () {
+  clickdeilay();
   moveSlide(currentIdx - 1);
 
 });
