@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.web.www.domain.alarm.AlarmContentVO;
 import com.web.www.domain.alarm.AlarmDTO;
+import com.web.www.domain.alarm.AlarmReadDTO;
 import com.web.www.repository.AlarmDAO;
 
 import lombok.RequiredArgsConstructor;
@@ -30,6 +31,11 @@ public class AlarmServiceImpl implements AlarmService{
 	@Override
 	public List<AlarmDTO> getAlarmListTen(long memberNum) {
 		return adao.getAlarmListTen(memberNum);
+	}
+
+	@Override
+	public int alarmReadCheck(AlarmReadDTO arDTO) {
+		return adao.alarmReadCheck(arDTO);
 	}
 	
 	

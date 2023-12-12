@@ -3,13 +3,16 @@ window.onload = function () {
     setTimeout(() => document.getElementById("ski-navbar").style.opacity = 0.8, 5000)
     if (!(document.getElementById('maintext1'))) {
         document.getElementById("ski-navbar").style.opacity = 0.8;
-    }else{
-  
-   
+
+    } else {
+       
+            }
+        });
+        load();
 
 
-    load();
-   }  
+    }
+
     memberAlarmSpread();
 }
 
@@ -17,14 +20,14 @@ window.onload = function () {
 
 
 
-    const timer = ms => new Promise(res=>setTimeout(res,ms))
-    async function load(){
-    for(let i =0;;i++){
-        if(i==10){
-            i=0;
+const timer = ms => new Promise(res => setTimeout(res, ms))
+async function load() {
+    for (let i = 0; ; i++) {
+        if (i == 10) {
+            i = 0;
         }
         weatherListSearch().then(weatherInfo => {
-      
+
             /*
             regionNum; //지역번호
             weatherHighTemp; // 최고온도 (지원안함)
@@ -47,47 +50,47 @@ window.onload = function () {
                8 북방면
                9 내면
             */
-                const weatherDate = weatherInfo[i].weatherDate.slice(0,4)+"년"+weatherInfo[i].weatherDate.slice(4,6)+"월"+weatherInfo[i].weatherDate.slice(6,8)+"일";
-                var week_array = new Array('일', '월', '화', '수', '목', '금', '토');
-                var region_grand_child = new Array('홍천읍', '화촌면', '두촌면', '내촌면', '서석면', '영귀미면', '남면','서면','북방면','내면');
-                var today_num = new Date().getDay();
-                const weatherTime = weatherInfo[i].weatherTime.slice(0,2)+":"+ weatherInfo[i].weatherTime.slice(2,4);
-                let weatherStatus =  weatherInfo[i].weatherRainStatus;
-                let Temp =  weatherInfo[i].weatherTemp;
-    
-                if(weatherStatus=="없음"){
-                  weatherStatus=weatherInfo[i].weatherSkyStatus;
-                }
-                let weathericon = "";
-                if(weatherStatus=="맑음"){
-                    weathericon="brightness-high";
-                }else if(weatherStatus=="구름조금"){
-                    weathericon="cloud-sun";
-                }else if(weatherStatus=="구름많음"){
-                    weathericon="cloud";
-                }else if(weatherStatus=="흐림"){
-                    weathericon="cloud-haze";
-                }else if(weatherStatus=="비"){
-                    weathericon="cloud-drizzle";
-                }else if(weatherStatus=="눈/비"){
-                    weathericon ="cloud-sleet";
-                }else if(weatherStatus=="소나기"){
-                    weathericon ="cloud-rain-heavy";
-                }else{
-                    weathericon = "cloud-snow";
-                }
-    
-    
-                document.getElementById("innerItem2").innerHTML= "<span class='weather-area'>"+region_grand_child[i]+" 날씨</span><br><br>"+weatherDate+"["+week_array[today_num]+"]"+weatherTime+"갱신";
-                document.getElementById("innerItem3").innerHTML= '<i class="weathericon bi bi-'+weathericon+'"></i><span class="weather-info">'+weatherStatus+Temp+'°C'+'</span>' ;
-                document.getElementById("innerItem1");
-                document.getElementById("innerItem4");
-            
-            });
-         
+            const weatherDate = weatherInfo[i].weatherDate.slice(0, 4) + "년" + weatherInfo[i].weatherDate.slice(4, 6) + "월" + weatherInfo[i].weatherDate.slice(6, 8) + "일";
+            var week_array = new Array('일', '월', '화', '수', '목', '금', '토');
+            var region_grand_child = new Array('홍천읍', '화촌면', '두촌면', '내촌면', '서석면', '영귀미면', '남면', '서면', '북방면', '내면');
+            var today_num = new Date().getDay();
+            const weatherTime = weatherInfo[i].weatherTime.slice(0, 2) + ":" + weatherInfo[i].weatherTime.slice(2, 4);
+            let weatherStatus = weatherInfo[i].weatherRainStatus;
+            let Temp = weatherInfo[i].weatherTemp;
+
+            if (weatherStatus == "없음") {
+                weatherStatus = weatherInfo[i].weatherSkyStatus;
+            }
+            let weathericon = "";
+            if (weatherStatus == "맑음") {
+                weathericon = "brightness-high";
+            } else if (weatherStatus == "구름조금") {
+                weathericon = "cloud-sun";
+            } else if (weatherStatus == "구름많음") {
+                weathericon = "cloud";
+            } else if (weatherStatus == "흐림") {
+                weathericon = "cloud-haze";
+            } else if (weatherStatus == "비") {
+                weathericon = "cloud-drizzle";
+            } else if (weatherStatus == "눈/비") {
+                weathericon = "cloud-sleet";
+            } else if (weatherStatus == "소나기") {
+                weathericon = "cloud-rain-heavy";
+            } else {
+                weathericon = "cloud-snow";
+            }
+
+
+            document.getElementById("innerItem2").innerHTML = "<span class='weather-area'>" + region_grand_child[i] + " 날씨</span><br><br>" + weatherDate + "[" + week_array[today_num] + "]" + weatherTime + "갱신";
+            document.getElementById("innerItem3").innerHTML = '<i class="weathericon bi bi-' + weathericon + '"></i><span class="weather-info">' + weatherStatus + Temp + '°C' + '</span>';
+            document.getElementById("innerItem1");
+            document.getElementById("innerItem4");
+
+        });
+
         await timer(10000);
     }
-    }
+}
 
 //날씨정보 불러오기
 async function weatherSearch() {
@@ -123,9 +126,10 @@ async function weatherListSearch() {
 
 }
 
+document.getElementById("ski-navbar-brand").addEventListener("mouseout", (e) => {
 
-
-
+    e.target.querySelector("span").style.width = "0px";
+})
 
 const navLinks = document.querySelectorAll(".ski-nav-link");
 
@@ -133,13 +137,12 @@ navLinks.forEach(link => {
     link.addEventListener("mouseover", (e) => {
         e.target.querySelector("span").style.width = "100%";
     });
-    
+
     link.addEventListener("mouseout", (e) => {
         e.target.querySelector("span").style.width = "0%";
     });
-      
-});
 
+});
 
 
 
@@ -147,43 +150,48 @@ navLinks.forEach(link => {
 
 let bellSwitch = 0;
 if(document.getElementById("alarm-bell")){
-document.getElementById("alarm-bell").addEventListener('click', () => {
-    let board = document.getElementById('alarm-board');
-    if (bellSwitch == 0) {
-        board.style.right = '-10px';
-        bellSwitch = 1;
-    } else if (bellSwitch == 1) {
-        board.style.right = '-500px';
-        bellSwitch = 0;
-    }
-
-})
+	document.getElementById("alarm-bell").addEventListener('click', () => {
+	    let board = document.getElementById('alarm-board');
+	    if (bellSwitch == 0) {
+	        board.style.right = '-10px';
+	        bellSwitch = 1;
+	    } else if (bellSwitch == 1) {
+	        board.style.right = '-500px';
+	        bellSwitch = 0;
+	    }
+	
+	})
 }
-
 async function memberAlarmSpread() {
     try {
         const result = await memberAlarmList();
     
 
-        
 
         let div = document.getElementById('alarm-spread');
         div.innerHTML = '';
         let str = `<ul>`;
         for (let i = 0; i < result.length; i++) {
+            //  href = "${result[i].alarmContentUrl}"
             str += `<li>`;
-            str += `<a href="${result[i].alarmContentUrl}">${i+1}. ${result[i].alarmContentName}  :  ${result[i].alarmContentText}</a><br>`;
+            str += `<a href = "${result[i].alarmContentUrl}" data-alarmregat="${result[i].alarmRegAt}" data-membernum="${result[i].memberNum}">${i + 1}. ${result[i].alarmContentName}  :  ${result[i].alarmContentText}</a>`;
+            str += `<span> (${changeDate(result[i].alarmRegAt)})</span><br>`;
             str += `</li>`;
         }
         str += `</ul>`;
         div.innerHTML += str;
+
+        if (result.length > 0) {
+            document.getElementById('alarm-mini-bell').style.display = 'block';
+            document.getElementById('alarm-mini-bell').innerText = result.length;
+        } else {
+            document.getElementById('alarm-mini-bell').style.display = 'none';
+        }
+
+
     } catch (error) {
         console.log(error);
     }
-}
-
-async function memberAlarmCheckCount() {
-    
 }
 
 async function memberAlarmList() {
@@ -201,6 +209,88 @@ async function memberAlarmList() {
 }
 
 
+// 2017-08-28 17:22:21 요렇게 들어오는 데이터를 잘 요리해준다
+function changeDate(datetime) {
+    // 오늘 날짜
+    let now = moment(new Date())
+    // 오늘과의 시간 차이
+    let duration = moment.duration(now.diff(datetime))
+    // 변환
+    // asSeconds 를 하면 오늘과의 시간차이를 
+    // 초단위로 float datatype 으로 보여준다 (3.82 이런식)
+    let seconds = duration.asSeconds()
+    let minute = duration.asMinutes()
+    let hours = duration.asHours()
+    let days = duration.asDays()
+    let weeks = duration.asWeeks()
+    let month = duration.asMonths()
+    let year = duration.asYears()
 
+    // 그래서 사용할 때는 parseInt 를 사용해 int 로 바꿔야 한다. 
+    if (minute < 1) {
+        // 1분 미만이면 초 단위로 보여주고,  
+        return parseInt(seconds) + '초 전'
+    } else if (hours < 1) {
+        // 1시간 미만이면 분 단위로 보여주고
+        return parseInt(minute) + '분 전'
+    } else if (hours < 24) {
+        // 하루 미만이면 시간으로 보여주고
+        return parseInt(hours) + '시간 전'
+    } else if (weeks < 1) {
+        // 일주일 미만이면 일 단위로 보여주고
+        return parseInt(days) + '일 전'
+    } else if (month < 1) {
+        // 한 달 미만이면 주 단위로 보여주고
+        return parseInt(weeks) + '주 전'
+    } else if (year < 1) {
+        // 1년 미만이면 달 단위로 보여주고
+        return parseInt(month) + '달 전'
+    } else {
+        // 1년 이상이면 넌 단위로 보여주고
+        return parseInt(year) + '년 전'
+    }
+}
+
+document.addEventListener('click', (e) => {
+    const clickedElement = e.target;
+    if (clickedElement.tagName == 'A') {
+        // data-alarm-id 값을 가져옴
+        const regAt = e.target.dataset.alarmregat;
+        const num = e.target.dataset.membernum;
+
+        checkData = {
+            alarmRegAt: regAt,
+            memberNum: num
+        }
+
+        memberAlarmCheckCount(checkData).then(result => {
+            if (result == 1) {
+                console.log('성공');
+                memberAlarmSpread();
+            } else {
+                console.log('실패');
+            }
+
+        })
+    }
+
+});
+
+async function memberAlarmCheckCount(checkData) {
+    try {
+        const url = "/alarm/alarmReadCheck";
+        const config = {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json; charset=utf-8'
+            },
+            body: JSON.stringify(checkData)
+        }
+        const resp = await fetch(url, config);
+        const result = await resp.text();
+    } catch (error) {
+        console.log(error);
+    }
+}
 
 
