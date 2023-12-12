@@ -1,18 +1,18 @@
 
 //홈페이지 버튼눌러서 쿠폰받기
 
-if(document.getElementById('coupon_get')){
+if (document.getElementById('coupon_get')) {
     document.getElementById('coupon_get').addEventListener('click', () => {
         let code = document.getElementById('coupon_get').value;
         couponGetToServer(code).then(result => {
             if (result == 1) {
                 alert('쿠폰 발급 완료!')
-            } else if(result == 2) {
+            } else if (result == 2) {
                 alert('로그인 후 이용해주세요.')
             } else {
                 alert('이미 발급된 쿠폰입니다.')
             }
-        }) 
+        })
     })
 }
 
@@ -50,18 +50,39 @@ document.getElementById('my_coupon_list').addEventListener('click', () => {
 
             
         */
+
+        const myCouponList = document.getElementById('myCouponList');
+        myCouponList.innerHTML = '';
+
         if (result.length != 0) {
             console.log('사용자 쿠폰 리스트 :' + JSON.stringify(result));
             console.log(result);
-            for(let i = 0 ; i < result.length; i++){
-              
+
+
+            for (let i = 0; i < result.length; i++) {
+
                 couponInt = parseInt(result[0].couponInt);
                 console.log(couponInt);
-            
-            document.getElementById('myCouponList').innerHTML =`${result[i].couponName} <input type="radio" id="coupon" name="coupon" onclick="usecoupon(${result[0].couponInt},${result[0].couponRate})" value="${result[i].couponCode}">`
+
+                let str = `<div class="couponBox">`;
+
+                if (result[i].couponInt == 0) {
+                    str += `<div><span>${result[i].couponRate}%</span></div>`;
+                } else {
+                    str += `<div><span>${result[i].couponInt}원</span></div>`;
+                }
+                str += `<div>`;
+                str += `<div>${result[i].couponStart} ~ ${result[i].couponEnd}</div>`;
+                str += `<div><input type="radio" name="coupon" >`;
+                str += `<span>${result[i].couponName}</span></div>`;
+                str += `</div>`;
+
+                str += `</div>`;
+                // `${result[i].couponName} <input type="radio" id="coupon" name="coupon" onclick="usecoupon(${result[0].couponInt},${result[0].couponRate})" value="${result[i].couponCode}">`
+                myCouponList.innerHTML += str;
             }
 
-        }else{
+        } else {
 
             alert("사용가능한 쿠폰이 없습니다.")
         }
@@ -84,4 +105,4 @@ async function myCouponListGet() {
 }
 
 
-    
+

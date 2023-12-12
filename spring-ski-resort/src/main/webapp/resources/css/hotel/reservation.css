@@ -302,3 +302,21 @@
 	text-decoration: none;
 	color: gray;
 }
+
+
+
+/************ 쿠폰 관리함 css ******************/
+
+.myCouponListBody{
+	position: absolute;
+	top: 100px;
+	right: -500px;
+	border-radius: 30px;
+	width: 400px;
+	height: 600px;
+	background-color: white;
+}
+
+.couponBox{
+	
+}

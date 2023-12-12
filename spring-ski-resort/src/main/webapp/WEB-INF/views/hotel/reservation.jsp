@@ -81,12 +81,21 @@
             <button id="naver_pay" ><span>네이버페이</span></button>
             <hr>
             <button id="my_coupon_list" value="openWorld" type="button"> <span>쿠폰</span></button>
-            <div id="myCouponList"></div>
-  	
+            
+			<div class="myCouponListBody">
+				 <div class="myCouponListTitle">
+				 	<span><i class="bi bi-envelope"></i>쿠폰함</span> 
+				 </div>
+				 <div class="myCouponList" id="myCouponList">
+				 	
+				 </div>
+			</div>
+			
       </div>
     </div>
   </div>
 </div>
+
 
 
 	<div class="back">
