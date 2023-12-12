@@ -43,7 +43,10 @@
 	width: 150px;
 }
 .dev-notice-modify{
-	width: auto;
+	width: 200px;
+}
+.dev-notice-point-modify{
+	width: 300px;
 }
 
 .dev-notice-tr>td{
@@ -62,6 +65,10 @@
 	color: inherit;
 }
 
+.dev-notice-point-isok{
+	display: inline-table;
+	margin: 5px;
+}
 
 
 

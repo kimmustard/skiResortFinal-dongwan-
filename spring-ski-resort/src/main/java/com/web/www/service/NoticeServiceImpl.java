@@ -96,7 +96,7 @@ public class NoticeServiceImpl implements NoticeService{
 	@Override
 	public List<NoticeVO> noticePointList(PagingVO pgvo) {
 		log.info(">>>>> notice point List service >> ");	
-		return ndao.selectPointList();
+		return ndao.selectPointList(pgvo);
 	}
 	
 	

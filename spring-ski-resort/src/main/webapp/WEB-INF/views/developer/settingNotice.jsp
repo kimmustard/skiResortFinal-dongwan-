@@ -43,8 +43,31 @@
 			        중요 게시물 목록(총 N개)
 			      </button>
 			    </h2>
-			    <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+			    <div id="flush-collapseTwo" class="accordion-collapse collapse show" data-bs-parent="#accordionFlushExample">
 			      <div class="accordion-body" style="background-color: rgb(208 208 208);">
+			      
+			      <!-- 검색 라인  -->		      	
+					<div class="container-fluid">
+						<form action="/developer/settingNotice" class="d-flex" role="search" method="get">
+							<div class="dropdown btn-group">
+							  <select class="dropdown-toggle" name="type" data-bs-toggle="dropdown" aria-expanded="false">
+							   	<option class="dropdown-item" value="tcw" ${typed eq 'tcw' ? 'selected' : '' }>전체</option>
+							   	<option class="dropdown-item" value="t" ${typed eq 't' ? 'selected' : '' }>제목</option>
+							   	<option class="dropdown-item" value="c" ${typed eq 'c' ? 'selected' : '' }>내용</option>
+							   	<option class="dropdown-item" value="w" ${typed eq 'w' ? 'selected' : '' }>작성자</option>
+							  </select>
+							</div>
+							<div class="">
+								<input placeholder="검색어를 입력해 주세요." name="keyword" type="search" value="" class="form-control me-2">
+								<input type="hidden" name="pageNo" value="1">
+								<input type="hidden" name="qty" value="${ph.pgvo.qty }">
+							</div>
+								<button class="btn btn-primary" type="submit"><div>검색</div></button>
+								<a href="/developer/settingNotice">
+								<button type="button" class="btn btn-success" style="margin-left: 5px;">전체</button>
+								</a>
+						</form>
+					</div><br>
 			      
 			      <!-- 테이블 라인 -->
 			      	<table class="table table-dark table-hover">
@@ -55,11 +78,12 @@
 					      <th scope="col" class="dev-notice-title">게시물 제목</th>
 					      <th scope="col" class="dev-notice-writer">작성자</th>
 					      <th scope="col" class="dev-notice-reg">작성일시</th>
-					      <th scope="col" class="dev-notice-modify">게시물 관리</th>
+					      <th scope="col" class="dev-notice-point-modify">게시물 관리</th>
 					    </tr>
 					  </thead>
 					  <tbody>
 					  	<c:forEach items="${plist }" var="pvo">
+					  	<c:if test="${ph.pgvo.keyword == '' || ph.pgvo.keyword == null || ph.pgvo.keyword == '공지사항' || ph.pgvo.keyword == '이벤트' || ph.pgvo.keyword == '보도자료' || ph.pgvo.keyword == '쇼핑몰' || ph.pgvo.keyword == '채용정보' || ph.pgvo.keyword == '기타' }">
 					    <tr class="dev-notice-tr">
 					      <td>${pvo.noticeNum }</td>
 					      <td>${pvo.noticeCategory }</td>
@@ -73,8 +97,23 @@
 							<a href="/developer/noticeRemove?noticeNum=${pvo.noticeNum }">
 								<button type="button" class="btn btn-danger">삭제</button>
 							</a>
+							<div class="dev-notice-point-isok">
+								<div class="form-check form-switch">
+								  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+								   <span>중요공지 등록</span>
+								  <button>적용</button>
+								</div>
+							</div>
+							<div class="dev-notice-point-isok">
+								<div class="form-check form-switch">
+								  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+								   <span>상단슬라이드 등록</span>
+								  <button>적용</button>
+								</div>
+							</div>
 					      </td>
 					    </tr>
+					    </c:if>
 					    </c:forEach>
 					  </tbody>
 					</table>
@@ -135,9 +174,9 @@
 								<input type="hidden" name="pageNo" value="1">
 								<input type="hidden" name="qty" value="${ph.pgvo.qty }">
 							</div>
-								<button class="btn btn-success" type="submit"><div>검색</div></button>
+								<button class="btn btn-primary" type="submit"><div>검색</div></button>
 						</form>
-					</div>			      
+					</div><br>			      
 			 
 			      	<!-- 테이블 라인 -->
 			      	<table class="table table-hover">

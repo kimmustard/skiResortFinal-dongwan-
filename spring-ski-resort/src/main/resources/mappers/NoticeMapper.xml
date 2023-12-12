@@ -25,7 +25,7 @@
 	<select id="selectPointList" resultType="com.web.www.domain.board.NoticeVO">
 		select * from notice where notice_del='N' and notice_point='Y' 
 		<include refid="search"></include>
-		order by notice_num desc  #{pageStart}, #{qty}
+		order by notice_num desc limit #{pageStart}, #{qty}
 	</select>
 	
 	<update id="readCount">
