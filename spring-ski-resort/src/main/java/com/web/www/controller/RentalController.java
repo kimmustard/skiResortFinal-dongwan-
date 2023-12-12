@@ -98,10 +98,12 @@ public class RentalController {
 		List<RentalItemListDTO> skiLowItem = rsv.getSkiLowItem();
 		List<RentalItemListDTO> skiMidItem = rsv.getSkiMidItem();
 		List<RentalItemListDTO> skiPremiumItem = rsv.getSkiPremiumItem();
+		RentalVO rvo = new RentalVO();
 		
 		model.addAttribute("skiLowItem", skiLowItem);
 		model.addAttribute("skiMidItem", skiMidItem);
 		model.addAttribute("skiPremiumItem", skiPremiumItem);
+		model.addAttribute("rvo", rvo);
 		
 		return "/rental/ski-item";
 	}

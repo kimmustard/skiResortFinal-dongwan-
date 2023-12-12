@@ -28,8 +28,10 @@
 						<input type="text" class="form-control" name="rentalItemName" id="rentalItemName" readonly="readonly">
 					</div>
 					<div class="input-group mb-3">
-						<span class="input-group-text">결제금액</span>
-						<input type="text" class="form-control" name="rentalItemPrice" id="rentalItemPrice" readonly="readonly">
+						<span class="input-group-text">성인요금</span>
+						<input type="text" class="form-control" name="rentalReserveAdultFee" id="rentalReserveKidFee" readonly="readonly">
+						<span class="input-group-text">어린이요금</span>
+						<input type="text" class="form-control" name="rentalReserveAdultFee" id="rentalReserveKidFee" readonly="readonly">
 					</div>
 					<a href="/rental/ski-item"><button type="button" class="btn btn-outline-primary">이전으로</button></a>
 					<button type="submit" class="btn btn-outline-primary">결제</button>

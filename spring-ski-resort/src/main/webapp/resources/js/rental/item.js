@@ -23,66 +23,93 @@ premiumItem.addEventListener('click', () => {
 /*     슬라이드 기능     */
 
 
-let nextBtn = document.querySelector('.slideNextBtn'); // 다음 이미지로 넘어가는 버튼
-let prevBtn = document.querySelector('.slidePrevBtn'); // 이전 이미지로 넘어가는 버튼
-let slideList = document.querySelector('.itemImageBox');
-let slideContent = document.querySelectorAll('.slide');
-let slideLen = slideContent.length;
 
-let slideWidth = 400;
-let slideSpeed = 300;
-let startNum = 0;
+let value = 0;
+let rigthWidth = 400;
+let leftWidth = 400;
 
-slideList.style.width = slideWidth * (slideLen + 2) + "px";
+let nextBtn = document.getElementById('slideNextBtn'); // 다음 이미지로 넘어가는 버튼
+let prevBtn = document.getElementById('slidePrevBtn'); // 이전 이미지로 넘어가는 버튼
 
-let firstChild = slideList.firstElementChild;
-let lastChild = slideList.lastElementChild;
-let firstClone = firstChild.cloneNode(true);
-let lastClone = lastChild.cloneNode(true);
+// 처음 이미지 클론
+function clone(container, className) {
+     let slides = container.querySelectorAll(`.${className}`);
+     let firstSlideClone = slides[0].cloneNode(true);
+     let lastSlideClone = slides[slides.length - 1].cloneNode(true);
+     container.appendChild(firstSlideClone);
+     container.insertBefore(lastSlideClone, slides[0]);
+}
 
-slideList.appendChild(firstClone);
-slideList.insertBefore(lastClone, slideList.firstChild);
+let lowItemImage = document.getElementById('lowItemImageBox');
+clone(lowItemImage, 'slide');
 
-slideList.style.transform = "translate3d(-" + (slideWidth * (startNum + 1)) + "px, 0px, 0px)";
+let midItemImage = document.getElementById('midItemImageBox');
+clone(midItemImage, 'slide');
 
-let curIndex = startNum;
-let curSlide = slideContent[curIndex];
-curSlide.classList.add('slide_active');
+let premiumItemImage = document.getElementById('premiumItemImageBox');
+clone(premiumItemImage, 'slide');
 
-nextBtn.addEventListener('click', function () {
-     if (curIndex < slideLen) {
-          slideList.style.transition = slideSpeed + "ms";
-          slideList.style.transform = "translate3d(-" + (slideWidth * (curIndex + 2)) + "px, 0px, 0px)";
-     }
-     if (curIndex === slideLen - 1) {
+function next() {
+     value -= rigthWidth;
+     transitionSlides();
+}
+
+function prev() {
+     value += leftWidth;
+     transitionSlides();
+}
+
+function transitionSlides() {
+     lowItemImage.style.transition = 'transform 0.5s ease';
+     lowItemImage.style.transform = 'translateX(' + value + 'px)';
+
+     midItemImage.style.transition = 'transform 0.5s ease';
+     midItemImage.style.transform = 'translateX(' + value + 'px)';
+
+     premiumItemImage.style.transition = 'transform 0.5s ease';
+     premiumItemImage.style.transform = 'translateX(' + value + 'px)';
+
+     if (value <= -5500) {
           setTimeout(function () {
-               slideList.style.transition = "0ms";
-               slideList.style.transform = "translate3d(-" + (slideWidth * slideLen + 1) + "px, 0px, 0px)";
-          }, slideSpeed);
-          curIndex = -1;
-     }
-     curSlide.classList.remove('slide_active');
-     curSlide = slideContent[++curIndex];
-     curSlide.classList.add('slide_active');
-})
 
-prevBtn.addEventListener('click', function () {
-     if (curIndex >= 0) {
-          slideList.style.transition = slideSpeed + "ms";
-          slideList.style.transform = "translate3d(-" + (slideWidth * curIndex) + "px, 0px, 0px)";
+               lowItemImage.style.transition = '0s';
+               midItemImage.style.transition = '0s';
+               premiumItemImage.style.transition = '0s';
+
+               value = 0;
+               lowItemImage.style.transform = 'translateX(' + value + 'px)';
+               midItemImage.style.transform = 'translateX(' + value + 'px)';
+               premiumItemImage.style.transform = 'translateX(' + value + 'px)';
+
+          }, 300);
      }
-     if (curIndex === 0) {
+
+     if (value >= 0) {
           setTimeout(function () {
-               slideList.style.transition = "0ms";
-               slideList.style.transform = "translate3d(-" + (slideWidth * slideLen) + "px, 0px, 0px)";
-          }, slideSpeed);
-          curIndex = slideLen;
-     }
-     curSlide.classList.remove('slide_active');
-     curSlide = slideContent[--curIndex];
-     curSlide.classList.add('slide_active');
-})
 
+               lowItemImage.style.transition = '0.5s';
+               midItemImage.style.transition = '0.5s';
+               premiumItemImage.style.transition = '0.5s';
+
+               value = -5500;
+               lowItemImage.style.transform = 'translateX(' + value + 'px)';
+               midItemImage.style.transform = 'translateX(' + value + 'px)';
+               premiumItemImage.style.transform = 'translateX(' + value + 'px)';
+
+          }, 300);
+     }
+}
+
+if (nextBtn) {
+     nextBtn.addEventListener('click', function () {
+          next();
+     });
+}
+if (prevBtn) {
+     prevBtn.addEventListener('click', function () {
+          prev();
+     });
+}
 
 
 /*   장바구니 기능    */
