@@ -34,4 +34,13 @@ public interface PayDAO {
 	 */
 	int payStatusCheck(String payMerchantUid);
 
+	
+	
+	/**
+	 * 호텔 객실관련
+	 * @param payMerchantUid
+	 * @return
+	 */
+	int refundRoomInfo(String payMerchantUid);
+
 }
