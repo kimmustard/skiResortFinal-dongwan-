@@ -4,15 +4,8 @@ window.onload = function () {
     if (!(document.getElementById('maintext1'))) {
         document.getElementById("ski-navbar").style.opacity = 0.8;
 
-    } else {
-       
-            }
-        });
-        load();
-
-
     }
-
+    load();
     memberAlarmSpread();
 }
 
@@ -149,23 +142,23 @@ navLinks.forEach(link => {
 //alarm-board 스위치
 
 let bellSwitch = 0;
-if(document.getElementById("alarm-bell")){
-	document.getElementById("alarm-bell").addEventListener('click', () => {
-	    let board = document.getElementById('alarm-board');
-	    if (bellSwitch == 0) {
-	        board.style.right = '-10px';
-	        bellSwitch = 1;
-	    } else if (bellSwitch == 1) {
-	        board.style.right = '-500px';
-	        bellSwitch = 0;
-	    }
-	
-	})
+if (document.getElementById("alarm-bell")) {
+    document.getElementById("alarm-bell").addEventListener('click', () => {
+        let board = document.getElementById('alarm-board');
+        if (bellSwitch == 0) {
+            board.style.right = '-10px';
+            bellSwitch = 1;
+        } else if (bellSwitch == 1) {
+            board.style.right = '-500px';
+            bellSwitch = 0;
+        }
+
+    })
 }
 async function memberAlarmSpread() {
     try {
         const result = await memberAlarmList();
-    
+
 
 
         let div = document.getElementById('alarm-spread');
