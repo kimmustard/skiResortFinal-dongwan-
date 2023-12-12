@@ -24,7 +24,22 @@ public class NoticeVO {
 	private String noticeModAt; //수정일
 	private String noticePoint; //중요공지 상단 노출
 	private String noticeDel; //삭제여부
-
+	private String noticeImageUrl; //이미지url
+	
+	//초기 db에 넣기위한 생성자
+	public NoticeVO(long memberNum, String noticeWriter, String noticeCategory, String noticeTitle,
+			String noticeContent, String noticePoint, String noticeImageUrl) {
+		super();
+		this.memberNum = memberNum;
+		this.noticeWriter = noticeWriter;
+		this.noticeCategory = noticeCategory;
+		this.noticeTitle = noticeTitle;
+		this.noticeContent = noticeContent;
+		this.noticePoint = noticePoint;
+		this.noticeImageUrl = noticeImageUrl;
+	}
+	
+	
 }
 
 

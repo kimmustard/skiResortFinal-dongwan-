@@ -38,7 +38,7 @@
 	color: white;
 	font-family: 'Jua', sans-serif;
 	font-weight: 500;
-	margin-top: 15px;
+	margin-top: 20px;
 	margin-left: 15px;
 	margin-right: 15px;
 }
@@ -46,7 +46,7 @@
 .ski-nav-link>A {
 	display: block;
 	text-decoration: none;
-	line-height: 25px;
+	line-height: 35px;
 	font-family: 'Sunflower', sans-serif;
 	font-size: 20px;
 	color: white;
@@ -121,11 +121,6 @@
 	width: 100%;
 }
 
-.main-title-logo{
-	position: absolute;
-	z-index: 1;
-	left: 100px;
-}
 
 
 /***************** 알람 관련 ********************/
@@ -208,3 +203,10 @@
 .alarm-board-body>ul>li>span{
 	padding-bottom: -10px;
 }
+
+.main-title-logo{
+	margin-top: 3px;
+}
+
+
+

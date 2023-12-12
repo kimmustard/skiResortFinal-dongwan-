@@ -87,6 +87,7 @@ function paymentGateway(pgName) {
 
                     } else {
                         //결제 실패시 처리
+                        
                         window.location.href = '/pay/PayFail?errorMessage=' + data;
                     }
                 })
