@@ -1,19 +1,56 @@
 @charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Jua&family=Nanum+Gothic&display=swap');
+
+body{
+	padding: 0;
+	margin: 0;
+}
 
 .bodyContainer{
 	width: 100%;
-	height: 100%;
+	height: 1500px;
 	margin-top: 100px;
 }
 
-.h1{
+.bodyBackgroundImg1{
+	margin-top: -100px;
+	width: 100%;
+	height: 100vh;
+	position: absolute;
+	background-image: url("https://i.imgur.com/5rOzmJN.png");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	z-index: -5;
+}
+
+.mainContainer{
+	display: flex;
+	flex-direction: column;
+	justify-content:center;
+}
+
+.main-logo1{
+	position: absolute;
+	top: 180px;
+	left: 180px;
+	opacity: 0.8;
+}
+
+
+.lift-Title{
+	font-size: 80px;
 	text-align: center;
+	font-family: 'Jua', sans-serif;
+	font-weight: 500;
+	color: white;
+	-webkit-text-stroke-width: 5px;
+	-webkit-text-stroke-color: #214f78;
 }
 
 .btnContainer{
 	display: flex;
 	justify-content: center;
-	margin-top: 50px;
+	margin-top: 500px;
 }
 
 .btn-outline-info{
@@ -22,15 +59,16 @@
 }
 
 .liftTableContainer{
-	width: 1000px;
 	border-collapse: collapse;
-	margin: 0 auto;
+	margin-left:300px;
+	margin-right: 300px;
 }
 
 .rentalTableContainer{
-	width: 1300px;
+	margin-top: 500px;
+	margin-left:300px;
+	margin-right: 300px;
 	border-collapse: collapse;
-	margin: 0 auto;
 }
 
 .liftTr, .liftTd, .rentalTd, .rentalTr{
