@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+    <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,6 +34,7 @@
 				</a>
 			</div>
 			
+			<!-- 게시글 목록 테이블 라인 -->
 			<div class="accordion accordion-flush" id="accordionFlushExample">
 			  <div class="accordion-item">
 			    <h2 class="accordion-header">
@@ -42,34 +46,55 @@
 			      <div class="accordion-body" style="background-color: rgb(208 208 208);">
 			      	<table class="table table-hover">
 					  <thead>
-					    <tr>
-					      <th scope="col">No.</th>
-					      <th scope="col">게시물 분류</th>
-					      <th scope="col">게시물 제목</th>
-					      <th scope="col">작성자</th>
-					      <th scope="col">작성일시</th>
-					      <th scope="col">게시물 관리</th>
+					    <tr class="dev-notice-tr">
+					      <th scope="col" class="dev-notice-no">No.</th>
+					      <th scope="col" class="dev-notice-category">게시물 분류</th>
+					      <th scope="col" class="dev-notice-title">게시물 제목</th>
+					      <th scope="col" class="dev-notice-writer">작성자</th>
+					      <th scope="col" class="dev-notice-reg">작성일시</th>
+					      <th scope="col" class="dev-notice-modify">게시물 관리</th>
 					    </tr>
 					  </thead>
 					  <tbody>
-					    <tr>
-					      <th scope="row">1</th>
-					      <td>Mark</td>
-					      <td>Otto</td>
-					      <td>@mdo</td>
-					      <td>@mdo</td>
+					  	<c:forEach items="${list }" var="nvo">
+					    <tr class="dev-notice-tr">
+					      <td>${nvo.noticeNum }</td>
+					      <td>${nvo.noticeCategory }</td>
+					      <td class="dev-notice-title-td"><div><a href="/notice/detail?noticeNum=${nvo.noticeNum }">${nvo.noticeTitle }</a></div></td>
+					      <td>${nvo.noticeWriter }</td>
+					      <td>${fn:replace((fn:substring(nvo.noticeRegAt,0,10)),'-','.') }</td>
 					      <td>수정,삭제</td>
 					    </tr>
-					    <tr>
-					      <th scope="row">2</th>
-					      <td>Jacob</td>
-					      <td>Thornton</td>
-					      <td>@fat</td>
-					      <td>@fat</td>
-					      <td>@fat</td>
-					    </tr>
+					    </c:forEach>
 					  </tbody>
 					</table>
+					
+					<br>
+		
+					<!-- 페이징 라인 -->
+					<div class="notice-paging-container">
+					  <nav aria-label="Page navigation example">
+					  	<!-- 이전 -->
+					  	<ul class="pagination notice-paging-ul">
+					  		<li class="page-item ${(ph.prev eq false) ? 'disabled' : '' }">
+						  		<a class="page-link" href="/notice/list?pageNo=${ph.startPage - 1 }&qty=${ph.pgvo.qty}&type=${ph.pgvo.type}&keyword=${ph.pgvo.keyword}" aria-label="Previous">
+						  		<span aria-hidden="true">&laquo;</span>
+						  		</a>
+					  		</li>
+					  		<c:forEach begin="${ph.startPage }" end="${ph.endPage }" var="i">
+			  					<li>
+			  						<a class="page-link" href="/notice/list?pageNo=${i }&qty=${ph.pgvo.qty}&type=${ph.pgvo.type}&keyword=${ph.pgvo.keyword}">${i }</a>
+			  					</li>
+			  				</c:forEach>
+			  			<!-- 다음 -->
+			  				<li class="page-item ${(ph.next eq false) ? 'disabled' : ''}">
+			  					<a class="page-link" href="/notice/list?pageNo=${ph.endPage + 1 }&qty=${ph.pgvo.qty}&type=${ph.pgvo.type}&keyword=${ph.pgvo.keyword}" aria-label="Next">
+			        			<span aria-hidden="true">&raquo;</span>
+			    				</a>
+			  				</li>	
+					  	</ul>
+					  </nav>
+					</div>
 			      </div>
 			    </div>
 			  </div>

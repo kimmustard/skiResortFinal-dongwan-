@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.web.www.domain.FileVO;
+import com.web.www.domain.board.NoticeVO;
 import com.web.www.domain.board.PagingVO;
 import com.web.www.domain.board.QnaVO;
 import com.web.www.domain.coupon.CouponCreate;
@@ -22,6 +24,7 @@ import com.web.www.domain.coupon.CouponSystem;
 import com.web.www.domain.hotel.RoomVO;
 import com.web.www.domain.member.AuthUser;
 import com.web.www.domain.member.MemberVO;
+import com.web.www.handler.PagingHandler;
 import com.web.www.repository.AdminDAO;
 import com.web.www.service.AdminService;
 import com.web.www.service.HotelService;
@@ -187,8 +190,15 @@ public class AdminController {
 	 * @Developer 관리자 페이지 "게시판 관리"
 	 *************************************/
 	@GetMapping("/settingNotice")
-	public String noticeList() {
-		return "/developer/settingNotice";
+	public void noticeList(Model m, PagingVO pgvo) {
+		m.addAttribute("list", nsv.noticeList(pgvo));
+		int totalCount = nsv.getTotalCount(pgvo);
+		PagingHandler ph = new PagingHandler(pgvo, totalCount);
+		m.addAttribute("ph",ph);
+		List<NoticeVO> pvo = nsv.noticePointList(); //중요공지 목록 가져오기
+		m.addAttribute("pvo", pvo);
+		List<FileVO> pfvo = nsv.noticePointFileList(); //중요공지 파일 목록 가져오기
+		m.addAttribute("pfvo", pfvo);
 	}
 	
 
