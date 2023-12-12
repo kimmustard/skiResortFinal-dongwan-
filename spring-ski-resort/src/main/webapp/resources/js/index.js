@@ -39,18 +39,18 @@ async function getFiveEvent(){
   //슬라이드에 이미지와 내용 추가
      getFiveEvent().then(events => {
       for (let i = 0; i < events.length; i++) {
-          let centralEventImageBoxes = document.querySelectorAll("#event-image-box" + (i + 1));
+          let EventImageBoxes = document.querySelectorAll("#event-image-box" + (i + 1));
           
-          centralEventImageBoxes.forEach(function (centralEventImageBox) {
-              centralEventImageBox.style.backgroundImage = "url('" + events[i].noticeImageUrl + "')";
-              centralEventImageBox.onclick = function () {
+          EventImageBoxes.forEach(function (EventImageBox) {
+              EventImageBox.style.backgroundImage = "url('" + events[i].noticeImageUrl + "')";
+              EventImageBox.onclick = function () {
                 moveEventSite(events[i].noticeNum);
             };
           });
-          let centralEventContentBoxes = document.querySelectorAll("#event-content-box" + (i + 1));
+          let EventContentBoxes = document.querySelectorAll("#event-content-box" + (i + 1));
           
-          centralEventContentBoxes.forEach(function (centralEventContentBox) {
-            centralEventContentBox.innerHTML =events[i].noticeContent;
+          EventContentBoxes.forEach(function (EventContentBox) {
+            EventContentBox.innerHTML =events[i].noticeContent;
           });
         }}).catch(error => {
       console.error("Error fetching events:", error);
