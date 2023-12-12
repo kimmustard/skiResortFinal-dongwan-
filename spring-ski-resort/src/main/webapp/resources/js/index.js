@@ -1,3 +1,20 @@
+//슬라이드 만들기
+let Eventslides = document.getElementById("slides").innerHTML;
+makeSlides();
+
+function makeSlides() {
+  Eventslides = "";
+  for (let i = 1; i <= 5; i++) {
+    Eventslides += `<li class="event-li"><div class="event-item-box" id="event-item-box${i}"> <div class="event-image-box"  id="event-image-box${i}"></div><div class="event-content-box" id="event-content-box${i}">이벤트 1</div></div><p></li>`;
+    console.log(Eventslides);
+  }
+
+
+  document.getElementById("slides").innerHTML = Eventslides;
+}
+
+
+
 //공지 두 개 받아오기
 async function getTwoNotice(){
     try {
@@ -12,6 +29,13 @@ async function getTwoNotice(){
         console.log(error);
     }
 }
+//공지 화면에 뿌리기
+   getTwoNotice().then(notice =>{
+       if(notice!=undefined){
+       for(let i = 0; i<notice.length; i++){     
+       document.getElementById('notice-box').innerHTML+= '<ul><li><span class="notice-reg">'+notice[i].noticeRegAt+'</span><a class="notice-title" href="/notice/detail?noticeNum='+notice[i].noticeNum+'">'+notice[i].noticeTitle+'</a></li></ul>'        
+       }}
+   });
 //이벤트 리스트 5개 받아오기
 async function getFiveEvent(){
     try {
@@ -26,20 +50,13 @@ async function getFiveEvent(){
         console.log(error);
     }
 }
- //공지 두 개 받아오기
-    getTwoNotice().then(notice =>{
-        if(notice!=undefined){
-        for(let i = 0; i<notice.length; i++){     
-        document.getElementById('notice-box').innerHTML+= '<ul><li><span class="notice-reg">'+notice[i].noticeRegAt+'</span><a class="notice-title" href="/notice/detail?noticeNum='+notice[i].noticeNum+'">'+notice[i].noticeTitle+'</a></li></ul>'        
-        }}
-    });
    
-
 
   //슬라이드에 이미지와 내용 추가
      getFiveEvent().then(events => {
       for (let i = 0; i < events.length; i++) {
           let EventImageBoxes = document.querySelectorAll("#event-image-box" + (i + 1));
+          let EventContentBoxes = document.querySelectorAll("#event-content-box" + (i + 1));
           
           EventImageBoxes.forEach(function (EventImageBox) {
               EventImageBox.style.backgroundImage = "url('" + events[i].noticeImageUrl + "')";
@@ -47,10 +64,9 @@ async function getFiveEvent(){
                 moveEventSite(events[i].noticeNum);
             };
           });
-          let EventContentBoxes = document.querySelectorAll("#event-content-box" + (i + 1));
           
           EventContentBoxes.forEach(function (EventContentBox) {
-            EventContentBox.innerHTML =events[i].noticeContent;
+            EventContentBox.innerHTML =events[i].noticeTitle; 
           });
         }}).catch(error => {
       console.error("Error fetching events:", error);
