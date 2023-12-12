@@ -18,7 +18,15 @@
 
 function paymentGateway(pgName) {
     //임시로 방이름만 가져옴. 나중에 방이름/렌탈장비/리프트권이름 유연하게 가져와야함.
-    let payName = document.getElementById('room-name').innerText;   
+    let payName;
+    let nameType;
+    if(document.getElementById('room-name')){
+    	payName = document.getElementById('room-name').innerText;
+    	nameType = '호텔';   
+    }else{
+    
+    }
+    
     let roomNum = document.getElementById('room-payinfo-num').value;
 
     IMP.init("imp70464277");
@@ -40,7 +48,6 @@ function paymentGateway(pgName) {
 
         if (rsp.success) {
             console.log("결제된거임?");
-
             // 서버로 데이터를 전송
             fetch("/pay/portOne", {
                 method: "POST",
@@ -58,9 +65,8 @@ function paymentGateway(pgName) {
                     memberEmail: rsp.buyer_email,
                     memberPhoneNum: rsp.buyer_tel,
                     memberAddress: rsp.buyer_addr,
-
-                    // 기타 필요한 데이터가 있으면 추가 전달
                     hotelRoomNum: roomNum,
+                    payNameType: nameType,
 
                 }),
             })
@@ -69,8 +75,6 @@ function paymentGateway(pgName) {
 
                     // 서버에서의 추가 처리
                     if (data == "결제완료") {
-
-                        //이거 아래는 갯수 갱신을 위한거?
                         document.getElementById('payName').value = rsp.name;
                         document.getElementById('payAmount').value = rsp.paid_amount;
                         document.getElementById('payMerchantUid').value = rsp.merchant_uid;

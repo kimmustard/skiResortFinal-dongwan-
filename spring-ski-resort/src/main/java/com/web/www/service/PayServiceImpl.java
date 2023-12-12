@@ -86,19 +86,21 @@ public class PayServiceImpl implements PayService{
 			
 	/***********DB 등록 전  비즈니스 로직 영역 (할인율 등)*********/
 		/*+개선해야할점 호텔/리프트/장비/ 3가지로 switch문(수문장) 나눠서 각자 if문을 타게 하던가 하는게 좋았을듯? +*/
+			log.info("### 결제무슨타입 ? = {}", pivo.getPayNameType());
+
 		
 	    //[호텔]방이없을때 return
 		int cheakRoomCount = hsv.cheakRoomCount(pivo.getHotelRoomNum());// 쓸때없이 타야함.
 		if (cheakRoomCount <= 0) {
-			payMentCancel(access_token, pivo.getPayImpUid(), amount, "이용 가능한 방이 없습니다.");
 			adao.alarmSetting(new AlarmVO(pivo.getMemberNum(), 4, "취소"));// 시스템 알람 반드시 넣어주세요.
+			payMentCancel(access_token, pivo.getPayImpUid(), amount, "이용 가능한 방이 없습니다.");
 			return new ResponseEntity<String>("이용 가능한 방이 없습니다.", HttpStatus.BAD_REQUEST);
 		}
 		
 		//[렌탈]장비가 없을때 return
 		
 	
-		//[호텔] 이미 구매 했으면 return (멤버번호로(room_info) cnt 조회하면 한방에 끝날듯)
+		//XXXX[호텔] 이미 구매 했으면 return (멤버번호로(room_info) cnt 조회하면 한방에 끝날듯)XXXX
 		
 	    
 
@@ -115,7 +117,6 @@ public class PayServiceImpl implements PayService{
 		/*성공시*/
 		pdao.registerPay(pivo);
 		adao.alarmSetting(new AlarmVO(pivo.getMemberNum() , 2, "결제"));// 시스템 알람 반드시 넣어주세요.
-		log.info("결제알람체크");
 		return new ResponseEntity<String>("결제완료", HttpStatus.OK);
 		
 	/*********************************/
@@ -139,6 +140,8 @@ public class PayServiceImpl implements PayService{
 		
 		/********** 환불 비즈니스 로직 **************/
 		
+		log.info("### 환불무슨타입 ? = {}", rfiVO.getRefundNameType());
+		
 		//[공통] 이미 취소된 내역이면 return
 		if(pdao.payStatusCheck(rfiVO.getPayMerchantUid()) != 0) {
 			return new ResponseEntity<String>("이미 취소된 내역입니다.", HttpStatus.BAD_REQUEST);
@@ -146,6 +149,8 @@ public class PayServiceImpl implements PayService{
 		//[공통] 상품 환불가능기간 하루전 기간이 지났으면 return
 		
 		//[호텔] 환불시 room_info 테이블 삭제 로직
+		rfiVO.getPayMerchantUid();
+		
 		
 		//[렌탈] 환불시 테이블 삭제 로직
 		
@@ -176,7 +181,6 @@ public class PayServiceImpl implements PayService{
 		pdao.registerRefund(rfiVO);
 		pdao.payMentRefund(rfiVO.getPayImpUid());
 		adao.alarmSetting(new AlarmVO(memberNum, 3, "환불"));// 시스템 알람 반드시 넣어주세요.
-		log.info("환불알람체크");
 		return new ResponseEntity<String>("정상적으로 환불되었습니다.", HttpStatus.OK);
 	}
 	

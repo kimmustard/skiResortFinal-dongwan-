@@ -1,4 +1,5 @@
 drop table pay;
+drop table refund;
 
 11-30 카드 결제정보 테이블입니다.
 create table pay(
@@ -9,6 +10,7 @@ pay_method varchar(15) not null,
 pay_name varchar(100) not null,
 pay_amount bigint not null,
 pay_status varchar(15) not null,
+pay_name_type varchar(15),
 member_num bigint not null,
 member_email varchar(50)not null,
 member_name varchar(50) not null,
@@ -28,6 +30,7 @@ refund_reason varchar(200) not null,
 refund_name varchar(100) not null,
 refund_amount bigint not null,
 refund_type varchar(20) not null,
+refund_name_type varchar(15),
 refund_reg_at DateTime default now(),
 primary key(refund_imp_uid)
 );

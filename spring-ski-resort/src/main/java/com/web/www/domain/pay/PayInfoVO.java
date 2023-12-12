@@ -19,6 +19,7 @@ public class PayInfoVO {
 	private String payPg; //결제사 정보 ( 카카오인지 이니시스인지..)
 	private String payMethod; //결제 방식	
 	private String payName; // 거래 품목 이름
+	private String payNameType; //거래 품목 타입
 	private long payAmount; //가격
 	private String payRegAt; //결제일자
 	private String payStatus; //결제상태
@@ -28,6 +29,9 @@ public class PayInfoVO {
 	private int hotelRoomNum;	// 방 관리 번호 확인
 	//렌탈 예약번호
 	private String rentalMainNum;
+	
+	
+	
 	
 	//구매자 정보
 	private long memberNum;	

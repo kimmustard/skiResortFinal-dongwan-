@@ -176,19 +176,19 @@ navLinks.forEach(link => {
 //alarm-board 스위치
 
 let bellSwitch = 0;
-
-document.getElementById("alarm-bell").addEventListener('click', () => {
-    let board = document.getElementById('alarm-board');
-    if (bellSwitch == 0) {
-        board.style.right = '-10px';
-        bellSwitch = 1;
-    } else if (bellSwitch == 1) {
-        board.style.right = '-500px';
-        bellSwitch = 0;
-    }
-
-})
-
+if(document.getElementById("alarm-bell")){
+	document.getElementById("alarm-bell").addEventListener('click', () => {
+	    let board = document.getElementById('alarm-board');
+	    if (bellSwitch == 0) {
+	        board.style.right = '-10px';
+	        bellSwitch = 1;
+	    } else if (bellSwitch == 1) {
+	        board.style.right = '-500px';
+	        bellSwitch = 0;
+	    }
+	
+	})
+}
 async function memberAlarmSpread() {
     try {
         const result = await memberAlarmList();

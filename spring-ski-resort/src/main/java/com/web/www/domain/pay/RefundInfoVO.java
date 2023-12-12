@@ -22,4 +22,6 @@ public class RefundInfoVO {
 	private String refundType;
 	private String refundRegAt;
 	
+	private String refundNameType; //결제 물품 타입
+	
 }

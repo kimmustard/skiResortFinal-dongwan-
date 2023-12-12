@@ -267,7 +267,6 @@
 	const memberName= `<c:out value="${mvo.memberName}"/>`;
 	const memberPhoneNum= `<c:out value="${mvo.memberPhoneNum}"/>`;
 	const memberAddress= `<c:out value="${mvo.memberAddress}"/>`;
-	
 	let realAmount = 1;
 
 	</script>
