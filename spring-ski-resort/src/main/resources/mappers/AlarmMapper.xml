@@ -48,7 +48,7 @@
   </delete>
   
   <update id="masCheck">
-  	update member set member_alarm_system = #{memberAlarmSystem} and member_id = #{memberId}
+  	update member set member_alarm_system = #{memberAlarmSystem} where member_id = #{memberId}
   </update>
   
   </mapper>

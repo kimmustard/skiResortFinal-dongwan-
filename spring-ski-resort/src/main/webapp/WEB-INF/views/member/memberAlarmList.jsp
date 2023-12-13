@@ -30,7 +30,7 @@
 					<div class="alarmCheckBox">
 						<div class="form-check form-switch">
 						 <input class="form-check-input" type="checkbox" 
-				        	id="alarmSwitchCheckDefault" ${mvo.member_alarm_system eq 'Y' ? 'checked' : ''} value="${mvo.memberId }">
+				        	id="alarmSwitchCheckDefault" ${mvo.memberAlarmSystem eq 'Y' ? 'checked' : ''} value="${mvo.memberId }">
 				        <label class="form-check-label" for="alarmSwitchCheckDefault">알람 ON/OFF</label>
 				        </div>
 					</div>
