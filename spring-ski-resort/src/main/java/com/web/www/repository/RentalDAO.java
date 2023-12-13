@@ -2,6 +2,9 @@ package com.web.www.repository;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
+import com.web.www.domain.member.MemberVO;
 import com.web.www.domain.rental.RentalItemListDTO;
 import com.web.www.domain.rental.RentalItemVO;
 import com.web.www.domain.rental.RentalLiftVO;
@@ -10,7 +13,7 @@ import com.web.www.domain.rental.rentalItemImageVO;
 
 public interface RentalDAO {
 
-	int liftReserve(RentalLiftVO rlivo);
+
 
 	int rental(RentalVO rvo);
 
@@ -40,6 +43,10 @@ public interface RentalDAO {
 	void insertRentalItemImage(rentalItemImageVO riivo);
 
 	int rentalItemImageCntCheck();
+
+	int updateRentalLift(RentalLiftVO rlivo);
+
+	int rental(@Param("rentalLiftNum") String rentalLiftNum,@Param("mvo") MemberVO mvo);
 
 
 
