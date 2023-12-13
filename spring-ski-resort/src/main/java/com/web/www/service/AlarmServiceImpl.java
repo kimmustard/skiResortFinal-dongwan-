@@ -37,6 +37,17 @@ public class AlarmServiceImpl implements AlarmService{
 	public int alarmReadCheck(AlarmReadDTO arDTO) {
 		return adao.alarmReadCheck(arDTO);
 	}
+
+	@Override
+	public List<AlarmDTO> getMemberAlarmList(long memberNum) {
+		return adao.getMemberAlarmList(memberNum);
+	}
+
+	@Override
+	public void removeMemberAlarm(long memberNum, String alarmRegAt) {
+		adao.removeMemberAlarm(memberNum, alarmRegAt);
+		
+	}
 	
 	
 }

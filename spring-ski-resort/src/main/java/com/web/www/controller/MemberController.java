@@ -21,6 +21,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.web.www.domain.member.AuthUser;
 import com.web.www.domain.member.FindIdDTO;
+import com.web.www.domain.member.FindPwdDTO;
 import com.web.www.domain.member.MemberPwdDTO;
 import com.web.www.domain.member.MemberVO;
 import com.web.www.domain.member.ModifyMemberDTO;
@@ -186,8 +187,8 @@ public class MemberController {
 		if(bindingResult.hasErrors()) {
 			return "/member/findId";
 		}
-		
 		String memberId = msv.findId(fiDTO);
+		log.info("memberId############", memberId);
 		
 		if(memberId != null) {
 			rttr.addFlashAttribute("memberId", memberId);
@@ -210,27 +211,29 @@ public class MemberController {
 	}
 	
 	@PostMapping("/findPwd")
-	public String findPwdPost(@Validated @ModelAttribute("fiDTO")FindIdDTO fiDTO, 
+	public String findPwdPost(@Validated @ModelAttribute("fiDTO")FindPwdDTO fpDTO, 
 			BindingResult bindingResult, RedirectAttributes rttr) {
 		
 		
-		int isPwd = msv.findPwd(fiDTO);
+		int isPwd = msv.findPwd(fpDTO);
 		if(isPwd == 0) {
 			rttr.addFlashAttribute("isPwd", isPwd);
 			return "redirect:/member/login";
 		}
 		
-		String tempPwd = mailService.pwdEmail(fiDTO.getMemberEmail());
+		String tempPwd = mailService.pwdEmail(fpDTO.getMemberEmail());
 
 		String memberPwd = bcEncoder.encode(tempPwd);
-		fiDTO.setMemberPwd(memberPwd);
+		fpDTO.setMemberPwd(memberPwd);
 			
-		msv.findPwdUpdate(fiDTO);
+		msv.findPwdUpdate(fpDTO);
 			
 		rttr.addFlashAttribute("isPwd", isPwd);
 		return "redirect:/member/login";
 		
 	}
+	
+	
 	
 	
 	

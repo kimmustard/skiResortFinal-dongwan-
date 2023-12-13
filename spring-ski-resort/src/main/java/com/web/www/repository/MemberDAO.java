@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import com.web.www.domain.coupon.CouponGetDTO;
 import com.web.www.domain.coupon.CouponSystem;
 import com.web.www.domain.member.FindIdDTO;
+import com.web.www.domain.member.FindPwdDTO;
 import com.web.www.domain.member.MemberCheckDTO;
 import com.web.www.domain.member.MemberPwdDTO;
 import com.web.www.domain.member.MemberVO;
@@ -109,9 +110,9 @@ public interface MemberDAO {
 
 	String findId(FindIdDTO fiDTO);
 
-	int findPwd(FindIdDTO fiDTO);
+	int findPwd(FindPwdDTO fpDTO);
 
-	void findPwdUpdate(FindIdDTO fiDTO);
+	void findPwdUpdate(FindPwdDTO fpDTO);
 
 	long recentMember();
 
