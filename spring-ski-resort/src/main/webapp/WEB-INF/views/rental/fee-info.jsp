@@ -10,14 +10,23 @@
 <body>
 	<jsp:include page="../common/nav.jsp" />
 
-
-	<div class="bodyContainer">
 	
+<div class="bodyContainer">
+		<div class="bodyBackgroundImg1">
 		
+		</div>
 		
-		<h1 class="h1" style="margin-top: 50px;">리프트권 요금</h1>
+		<div class="mainContainer">
+		
 		
 		<div class="liftTableContainer">
+		<div class="main-logo1">
+			<img width="280" height="250" alt="" src="/resources/etc/logo_white.png">
+		</div>
+		
+		
+		
+		<!-- <h1 class="lift-Title">리프트</h1>
 			<table class="table">
 				<thead class="thead">
 					<tr class="liftTr">
@@ -63,12 +72,13 @@
 						<td class="liftTd">380,000</td>
 					</tr>
 				</tbody>
-			</table>
-		</div>
+			</table>-->
+		</div> 
 		
-		<h1 class="h1" style="margin-top: 50px;">렌탈/요금안내</h1>
 		
 		<div class="rentalTableContainer">
+		
+		<!-- <h1 class="lift-Title">렌탈</h1>
 			<table class="table">
 				<thead class="thead">
 					<tr class="rentalTr">
@@ -114,23 +124,23 @@
 					</tr>
 					
 				</tbody>
-			</table>
+			</table> -->
 		</div>
 		
 		
-		<div class="textContainer">
+		<!-- <div class="textContainer">
 			<p>※소인(~ 만 13세) , 대인(만 14세 ~)</p> <br>
 			<p>※오전(09:00 ~ 13:00) , 오후(13:00 ~ 19:00) , 주간(09:00 ~ 17:00) , 야간(17:00 ~ 22:00)</p>
 		</div>
-		
+		-->
 		
 		
 		<div class="btnContainer">
 			<a href="/rental/item"><button type="button" class="btn btn-outline-info">장비안내</button></a>
 			<a href="/rental/reserve"><button type="button" class="btn btn-outline-info">예약페이지</button></a>
-		</div>
-	
+		</div> 
 	</div>
+</div>
 	
 	
 	<jsp:include page="../common/footer.jsp" />
