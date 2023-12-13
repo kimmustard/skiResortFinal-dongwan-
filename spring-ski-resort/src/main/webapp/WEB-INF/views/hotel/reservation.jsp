@@ -46,6 +46,7 @@
 	
 	<jsp:include page="../common/nav.jsp"></jsp:include>
 	<link rel="stylesheet" href="/resources/css/hotel/reservation.css">
+	<link rel="stylesheet" href="/resources/css/coupon/coupon.css">
 	<link rel="stylesheet" href="/resources/css/pay/pay_modal.css">
 
 
@@ -81,12 +82,21 @@
             <button id="naver_pay" ><span>네이버페이</span></button>
             <hr>
             <button id="my_coupon_list" value="openWorld" type="button"> <span>쿠폰</span></button>
-            <div id="myCouponList"></div>
-  	
+            
+			<div id="myCouponListBody" class="myCouponListBody">
+				 <div class="myCouponListTitle">
+				 	<span><i class="bi bi-envelope-paper-heart-fill"></i> 내 쿠폰함</span> 
+				 </div>
+				 <div class="myCouponList" id="myCouponList">
+				 	
+				 </div>
+			</div>
+			
       </div>
     </div>
   </div>
 </div>
+
 
 
 	<div class="back">
