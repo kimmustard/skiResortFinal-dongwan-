@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- 결제 하기위해 imp 받아오기-->
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
    <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 </head>
@@ -233,15 +234,18 @@
 					<div class="paybox input-group mb-3">
 						<input type="text" id="pay1" class="form-control" placeholder="요금" readonly="readonly">	
 						<input type="hidden" id="realpayvalue" class="form-control" name="hotelReserveFee" placeholder="요금">	
-						<input type="hidden" class="form-control" name="memberNum" placeholder="회원번호" value="${mvo.memberNum }">	
-						<input type="hidden" class="form-control" name="payImpUid" id="payImpUid">	
-						<input type="hidden" class="form-control" name="payMerchantUid" id="payMerchantUid">	
-						<input type="hidden" class="form-control" name="payAmount" id="payAmount">	
-						<input type="hidden" class="form-control" name="payName" id="payName">	
+						<input type="hidden" name="memberNum" placeholder="회원번호" value="${mvo.memberNum }">	
+						<input type="hidden" name="payImpUid" id="payImpUid">	
+						<input type="hidden" name="payMerchantUid" id="payMerchantUid">	
+						<input type="hidden" name="payAmount" id="payAmount">	
+						<input type="hidden" name="payName" id="payName">	
+						<input type="hidden" id="name-type" value="호텔">	
+						<input type="hidden" id="productPrice">	
+						<input type="hidden" name="couponCode" id="couponCode" >
+						
 						<button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#hotel-pay">결제</button>
 					 </div>
 					</div>
-						 <input type="hidden" name="couponCode" id="couponCode" >
 						<button id="closeBtn" type="button" class="btn btn-outline-secondary">이전</button>
 				</div>
 				
@@ -277,7 +281,7 @@
 	const memberName= `<c:out value="${mvo.memberName}"/>`;
 	const memberPhoneNum= `<c:out value="${mvo.memberPhoneNum}"/>`;
 	const memberAddress= `<c:out value="${mvo.memberAddress}"/>`;
-	let realAmount = 1;
+	let realAmount = 0;
 
 	</script>
 	<script type="text/javascript" src="/resources/js/pay/pay.js"></script>

@@ -92,13 +92,16 @@ public class PayServiceImpl implements PayService{
 		
 			case "호텔":
 				//[호텔]방이없을때 return
-				int cheakRoomCount = hsv.cheakRoomCount(pivo.getHotelRoomNum());
+				int cheakRoomCount = hsv.cheakRoomCount(pivo.getUniqueNumber());
 				if (cheakRoomCount <= 0) {
+					
 					adao.alarmSetting(new AlarmVO(pivo.getMemberNum(), 4, "취소"));// 시스템 알람 반드시 넣어주세요.
 					payMentCancel(access_token, pivo.getPayImpUid(), amount, "이용 가능한 방이 없습니다.");
 					return new ResponseEntity<String>("이용 가능한 방이 없습니다.", HttpStatus.BAD_REQUEST);
 				}
 				//[호텔] 추가 로직
+				
+				
 				
 				break;
 			case "렌탈":

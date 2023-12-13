@@ -12,7 +12,6 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RentalVO {
-	private long rentalMainNum; // 렌탈 예약번호(pk)
 	private String rentalLiftNum; // 리프트권 일련번호(fk)
 	private long rentalShopNum; // 업체번호
 	private String memberEmail; // 회원이메일
