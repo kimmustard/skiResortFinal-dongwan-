@@ -9,6 +9,7 @@ import com.web.www.domain.FileVO;
 import com.web.www.domain.rental.RentalItemDTO;
 import com.web.www.domain.rental.RentalItemListDTO;
 import com.web.www.domain.rental.RentalLiftVO;
+import com.web.www.domain.rental.RentalReserveVO;
 import com.web.www.domain.rental.RentalVO;
 import com.web.www.repository.FileDAO;
 import com.web.www.repository.RentalDAO;
@@ -125,6 +126,12 @@ public class RentalServiceImpl implements RentalService{
 	public int rentalItemImageCntCheck() {
 		
 		return rdao.rentalItemImageCntCheck();
+	}
+
+	@Override
+	public int itemReserve(RentalReserveVO rrvo) {
+		
+		return rdao.itemReserve(rrvo);
 	}
 
 

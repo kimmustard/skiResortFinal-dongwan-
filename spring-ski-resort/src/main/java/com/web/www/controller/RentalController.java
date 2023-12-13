@@ -23,6 +23,7 @@ import com.web.www.domain.rental.RentalItemListDTO;
 import com.web.www.domain.rental.RentalItemRead;
 import com.web.www.domain.rental.RentalItemVO;
 import com.web.www.domain.rental.RentalLiftVO;
+import com.web.www.domain.rental.RentalReserveVO;
 import com.web.www.domain.rental.RentalVO;
 import com.web.www.handler.FileHandler;
 import com.web.www.service.RentalService;
@@ -133,17 +134,36 @@ public class RentalController {
 	}
 	
 	@GetMapping("/item-reserve")
-	public String itemReserveForm(Model model, RentalLiftVO rlivo, @AuthUser MemberVO mvo) {
+	public String itemReserveForm(Model model, RentalLiftVO rlivo, RentalItemVO ritvo,@AuthUser MemberVO mvo) {
+		
+		log.info("itemReserveForm mvo = {}",mvo);
+		
+		
+		model.addAttribute("rlivo", rlivo);
+		model.addAttribute("ritvo", ritvo);
+		model.addAttribute("mvo", mvo);
 		
 		return "/rental/item-reserve";
 	}
 	
 	@PostMapping("/item-reserve")
-	public String itemReservePost(RentalItemVO ritvo, RentalLiftVO rlivo
-			, @AuthUser MemberVO mvo, Model model) {
+	public String itemReservePost(RentalItemVO ritvo, RentalLiftVO rlivo, RentalReserveVO rrvo,
+			RentalVO rvo, @AuthUser MemberVO mvo, Model model) {
 		
+		rrvo.setRentalLiftNum(rvo.getRentalLiftNum());
+		rrvo.setRentalListItemNum(ritvo.getRentalListItemNum());
+		rrvo.setRentalReserveStart(rlivo.getRentalLiftStart());
+		rrvo.setRentalReserveAdult(rlivo.getRentalLiftAdult());
+		rrvo.setRentalReserveKid(rlivo.getRentalLiftKid());
+		rrvo.setRentalReserveAdultFee(ritvo.getRentalListItemAdultFee());
+		rrvo.setRentalReserveKidFee(ritvo.getRentalListItemKidFee());
+		model.addAttribute("rrvo", rrvo);
 		model.addAttribute("rlivo", rlivo);
+		int isOk = rsv.itemReserve(rrvo);
+		log.info((isOk > 0)? "ok":"fail");
+		
 		return "index";
+		
 	}
 	
 	

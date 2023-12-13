@@ -5,6 +5,7 @@ import java.util.List;
 import com.web.www.domain.rental.RentalItemDTO;
 import com.web.www.domain.rental.RentalItemListDTO;
 import com.web.www.domain.rental.RentalLiftVO;
+import com.web.www.domain.rental.RentalReserveVO;
 import com.web.www.domain.rental.RentalVO;
 
 public interface RentalService {
@@ -34,6 +35,9 @@ public interface RentalService {
 	//실행전 테이블 체크
 	int rentalItemCntCheck();
 	int rentalItemImageCntCheck();
+
+	int itemReserve(RentalReserveVO rrvo);
+
 
 
 
