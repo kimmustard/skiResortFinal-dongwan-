@@ -12,7 +12,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RentalReserveVO {
-	private long rentalMainNum; // 렌탈 예약번호
+	private String rentalLiftNum; // 렌탈 예약번호
 	private long rentalListItemNum; // 장비번호
 	private String rentalReserveStart; // 렌탈 시작일
 	private int rentalReserveAdult; // 인원수(성인)

@@ -23,6 +23,7 @@
 
 .people {
 	caret-color: transparent;
+
 }
 
 .peopleList {
@@ -33,7 +34,7 @@
 	width: 250px;
 	position: absolute;
 	top: 40px;
-	left: 100px;
+	right: 120px;
 	border: solid 1px;
 	border-color: #dee2e6;
 	border-radius: 10px;

@@ -70,12 +70,12 @@ async function load() {
                 weathericon = "cloud-snow";
             }
 
-
+		if(document.getElementById("wrapper")){
             document.getElementById("innerItem2").innerHTML = "<span class='weather-area'>" + region_grand_child[i] + " 날씨</span><br><br>" + weatherDate + "[" + week_array[today_num] + "]" + weatherTime + "갱신";
             document.getElementById("innerItem3").innerHTML = '<i class="weathericon bi bi-' + weathericon + '"></i><span class="weather-info">' + weatherStatus + Temp + '°C' + '</span>';
             document.getElementById("innerItem1");
             document.getElementById("innerItem4");
-
+		}
         });
 
         await timer(10000);

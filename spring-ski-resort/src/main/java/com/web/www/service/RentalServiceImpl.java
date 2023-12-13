@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.web.www.domain.FileVO;
+import com.web.www.domain.member.MemberVO;
 import com.web.www.domain.rental.RentalItemDTO;
 import com.web.www.domain.rental.RentalItemListDTO;
 import com.web.www.domain.rental.RentalLiftVO;
@@ -14,19 +15,21 @@ import com.web.www.repository.FileDAO;
 import com.web.www.repository.RentalDAO;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class RentalServiceImpl implements RentalService{
 
 	private final RentalDAO rdao;
 	
 	private final FileDAO fdao;
 
-	@Override
-	public int liftReserve(RentalLiftVO rlivo) {
-		return rdao.liftReserve(rlivo);
-	}
+//	@Override
+//	public int liftReserve(RentalLiftVO rlivo) {
+//		return rdao.liftReserve(rlivo);
+//	}
 
 	@Override
 	public int rental(RentalVO rvo) {
@@ -125,6 +128,17 @@ public class RentalServiceImpl implements RentalService{
 	public int rentalItemImageCntCheck() {
 		
 		return rdao.rentalItemImageCntCheck();
+	}
+
+	@Override
+	public int updateRentalLift(RentalLiftVO rlivo ,MemberVO mvo) {
+		// TODO Auto-generated method stub
+		int isOk = rdao.updateRentalLift(rlivo);
+			log.info("체크체크체크체크체크체크체크체크체크체크");
+			log.info("체크체크체크체크체크체크체크체크체크체크2222222");
+			isOk *=  rdao.rental(rlivo.getRentalLiftNum(), mvo);;
+			log.info("체크체크체크체크체크체크체크체크체크체크3333333");
+		return isOk;
 	}
 
 
