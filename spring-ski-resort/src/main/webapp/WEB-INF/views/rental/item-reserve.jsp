@@ -17,29 +17,37 @@
 			<div class="reserveBox">
 				<form action="/rental/item-reserve">
 					<div class="input-group mb-3">
-						<span class="input-group-text">리프트권종류</span>
-						<input type="text" class="form-control" name="rentalLiftTicket" id="LiftTicket" value="${rlivo.rentalLiftTicket }" readonly="readonly">
-						<c:out value="${rlivo }"></c:out>
-					</div>
-					<div class="input-group mb-3">
 						<span class="input-group-text">이용날짜</span>
-						<input type="text" class="form-control" name="rentalLiftStart" id="LiftStart" value="${rlivo.rentalLiftStart }" readonly="readonly">
+						<input type="text" class="form-control" name="rentalReserveStart" id="rentalStart" value="${rentalReserveStart }" readonly="readonly">
+						<c:out value="${rentalReserveStart }"></c:out>
 					</div>
-					<div class="input-group mb-3">
-						<span class="input-group-text">인원수(성인)</span>
-						<input type="text" class="form-control" name="rentalReserveAdultFee" id="rentalReserveKidFee" readonly="readonly">
-						<span class="input-group-text">인원수(어린이)</span>
-						<input type="text" class="form-control" name="rentalReserveAdultFee" id="rentalReserveKidFee" readonly="readonly">
+					<div class="people">
+						<div class="input-group mb-3">
+							<span class="input-group-text">인원수(성인)</span>
+							<input type="text" class="form-control" name="rentalReserveAdult" id="rentalReserveAdult" readonly="readonly">
+						</div>
+						<div class="input-group mb-3">
+							<span class="input-group-text">인원수(어린이)</span>
+							<input type="text" class="form-control" name="rentalReserveKid" id="rentalReserveKid" readonly="readonly">
+						</div>
 					</div>
 					<div class="input-group mb-3">
 						<span class="input-group-text">상품명</span>
-						<input type="text" class="form-control" name="rentalItemName" id="rentalItemName" readonly="readonly">
+						<input type="text" class="form-control" name="rentalReserveItem" id="rentalReserveItem" readonly="readonly">
+					</div>
+					<div class="fee">
+						<div class="input-group mb-3">
+							<span class="input-group-text">성인요금</span>
+							<input type="text" class="form-control" name="rentalReserveAdultFee" id="rentalReserveAdultFee" readonly="readonly">
+						</div>
+						<div class="input-group mb-3">
+							<span class="input-group-text">어린이요금</span>
+							<input type="text" class="form-control" name="rentalReserveKidFee" id="rentalReserveKidFee" readonly="readonly">
+						</div>
 					</div>
 					<div class="input-group mb-3">
-						<span class="input-group-text">성인요금</span>
-						<input type="text" class="form-control fee" name="rentalReserveAdultFee" id="rentalReserveKidFee" readonly="readonly">
-						<span class="input-group-text">어린이요금</span>
-						<input type="text" class="form-control fee" name="rentalReserveAdultFee" id="rentalReserveKidFee" readonly="readonly">
+						<span class="input-group-text">총 요금</span>
+						<input type="text" class="form-control" name="rentalReserveTotalFee" id="rentalReserveTotalFee" readonly="readonly">
 					</div>
 					<div class="input-group mb-3">
 						<label class="form-check-label" for="flexRadioDefault2">반납서비스 이용</label>

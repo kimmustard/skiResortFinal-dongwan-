@@ -23,7 +23,6 @@ import com.web.www.domain.rental.RentalItemListDTO;
 import com.web.www.domain.rental.RentalItemRead;
 import com.web.www.domain.rental.RentalItemVO;
 import com.web.www.domain.rental.RentalLiftVO;
-import com.web.www.domain.rental.RentalReserveVO;
 import com.web.www.domain.rental.RentalVO;
 import com.web.www.handler.FileHandler;
 import com.web.www.service.RentalService;
@@ -135,19 +134,15 @@ public class RentalController {
 	
 	@GetMapping("/item-reserve")
 	public String itemReserveForm(Model model, RentalLiftVO rlivo, @AuthUser MemberVO mvo) {
-		model.addAttribute("mvo", mvo);
-		model.addAttribute("rlivo", rlivo);
+		
 		return "/rental/item-reserve";
 	}
 	
 	@PostMapping("/item-reserve")
-	public String itemReservePost(@ModelAttribute("ritvo") RentalItemVO ritvo, @ModelAttribute("rlivo") RentalLiftVO rlivo
-			, @AuthUser MemberVO mvo) {
-		RentalReserveVO rrvo = new RentalReserveVO();
-		rrvo.setRentalReserveTicket(rlivo.getRentalLiftTicket());
-		rrvo.setRentalReserveStart(rlivo.getRentalLiftStart());
-		rrvo.setRentalReserveAdult(rlivo.getRentalLiftAdult());
-		rrvo.setRentalReserveKid(rlivo.getRentalLiftKid());
+	public String itemReservePost(RentalItemVO ritvo, RentalLiftVO rlivo
+			, @AuthUser MemberVO mvo, Model model) {
+		
+		model.addAttribute("rlivo", rlivo);
 		return "index";
 	}
 	

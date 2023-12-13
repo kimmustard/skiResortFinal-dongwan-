@@ -173,5 +173,6 @@
 	<select id="rentalItemImageCntCheck" resultType="int">
 		select count(*) from item_image
 	</select>
+	
 
 </mapper>

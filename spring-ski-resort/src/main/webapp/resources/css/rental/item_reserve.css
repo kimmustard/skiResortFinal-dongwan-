@@ -12,7 +12,7 @@
 	width: 800px;
 	padding: 5px;
 	position: relative;
-	height: 420px;
+	height: 470px;
 	border-radius: 10px;
 	left: 50%;
 	transform: translateX(-50%);
@@ -23,8 +23,13 @@
 	justify-content: center;
 }
 
-.reserveBox .input-group{
-	position: relative;
+.reserveBox div{
 	width: 500px;
 	margin-top: 10px;
+	
+}
+
+.reserveBox div.people, .reserveBox div.fee{
+	display: flex;
+	justify-content: center;
 }
