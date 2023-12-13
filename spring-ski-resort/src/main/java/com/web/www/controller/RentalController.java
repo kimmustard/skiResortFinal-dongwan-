@@ -48,7 +48,7 @@ public class RentalController {
 	}
 	
 	@GetMapping("/reserve")
-	public String reserveForm(@ModelAttribute("mvo")MemberVO mvo) {
+	public String reserveForm(@AuthUser MemberVO mvo) {
 		log.info("MemberController mvo = {}" , mvo);
 		return "/rental/reserve";
 	}
@@ -98,10 +98,12 @@ public class RentalController {
 		List<RentalItemListDTO> skiLowItem = rsv.getSkiLowItem();
 		List<RentalItemListDTO> skiMidItem = rsv.getSkiMidItem();
 		List<RentalItemListDTO> skiPremiumItem = rsv.getSkiPremiumItem();
+		RentalVO rvo = new RentalVO();
 		
 		model.addAttribute("skiLowItem", skiLowItem);
 		model.addAttribute("skiMidItem", skiMidItem);
 		model.addAttribute("skiPremiumItem", skiPremiumItem);
+		model.addAttribute("rvo", rvo);
 		
 		return "/rental/ski-item";
 	}
@@ -131,11 +133,17 @@ public class RentalController {
 	}
 	
 	@GetMapping("/item-reserve")
-	public String itemReserveForm(Model model) {
-		RentalVO rvo = new RentalVO();
-		rvo.setRentalMainLift("Y");
-		model.addAttribute("rvo", rvo);
+	public String itemReserveForm(Model model, RentalLiftVO rlivo, @AuthUser MemberVO mvo) {
+		
 		return "/rental/item-reserve";
+	}
+	
+	@PostMapping("/item-reserve")
+	public String itemReservePost(RentalItemVO ritvo, RentalLiftVO rlivo
+			, @AuthUser MemberVO mvo, Model model) {
+		
+		model.addAttribute("rlivo", rlivo);
+		return "index";
 	}
 	
 	
