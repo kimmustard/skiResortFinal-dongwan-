@@ -2,17 +2,10 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.web.www.repository.RentalDAO">
-	<insert id="liftReserve">
-		insert into rental_lift(rental_lift_num,rental_lift_ticket,rental_lift_adult_fee,
-		rental_lift_kid_fee,rental_lift_adult,rental_lift_kid,rental_lift_start)
-		values(#{rentalLiftNum},#{rentalLiftTicket},#{rentalLiftAdultFee},
-		#{rentalLiftKidFee},#{rentalLiftAdult},#{rentalLiftKid},#{rentalLiftStart})
-	</insert>
-	
+<mapper namespace="com.web.www.repository.RentalDAO">	
 	<insert id="rental">
 		insert into rental(rental_lift_num,member_email,rental_main_lift,member_type)
-		values(#{rentalLiftNum},#{memberEmail},'Y',#{memberType})
+		values(#{rentalLiftNum},#{mvo.memberEmail},'Y',#{mvo.memberType})
 	</insert>
 	
 	<insert id="itemRegister">
@@ -33,7 +26,11 @@
 		insert into item_image(rental_list_item_num, file_name, image_url)
 		values(#{rentalListItemNum}, #{fileName}, #{imageUrl})
 	</insert>
-	
+	<insert id="updateRentalLift">
+		INSERT INTO rental_lift
+		VALUES (#{rentalLiftNum},#{rentalLiftTicket},#{rentalLiftAdultFee},#{rentalLiftKidFee},
+		#{rentalLiftTotalFee},#{rentalLiftAdult},#{rentalLiftKid},#{rentalLiftStart},#{payMerchantUid},#{memberNum});
+	</insert>
 	
 	
 	<select id="selectOneItemNum" resultType="long">

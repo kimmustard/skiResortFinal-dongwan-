@@ -73,6 +73,7 @@ public class PayController {
 	@ResponseBody
 	@PostMapping(value = "/portOne", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.TEXT_PLAIN_VALUE+ ";charset=UTF-8")
 	public ResponseEntity<String> portOnePay(@RequestBody PayInfoVO pivo, @AuthUser MemberVO mvo) throws IOException {
+		log.info(pivo+"pivopivopivopivo");
 		if(mvo == null) {
 			return new ResponseEntity<String>("회원 정보가 없습니다.",HttpStatus.INTERNAL_SERVER_ERROR);
 		}

@@ -24,8 +24,8 @@ public class PayInfoVO {
 	private String payRegAt; //결제일자
 	private String payStatus; //결제상태
 	
-	// 방 관리 번호 확인
-	private int hotelRoomNum;	
+	// 유니크 넘버
+	private int uniqueNumber;	
 	
 	//구매자 정보
 	private long memberNum;	

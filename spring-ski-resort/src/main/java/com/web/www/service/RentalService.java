@@ -2,6 +2,7 @@ package com.web.www.service;
 
 import java.util.List;
 
+import com.web.www.domain.member.MemberVO;
 import com.web.www.domain.rental.RentalItemDTO;
 import com.web.www.domain.rental.RentalItemListDTO;
 import com.web.www.domain.rental.RentalLiftVO;
@@ -10,7 +11,7 @@ import com.web.www.domain.rental.RentalVO;
 
 public interface RentalService {
 
-	int liftReserve(RentalLiftVO rlivo);
+//	int liftReserve(RentalLiftVO rlivo);
 
 	int rental(RentalVO rvo);
 
@@ -36,8 +37,12 @@ public interface RentalService {
 	int rentalItemCntCheck();
 	int rentalItemImageCntCheck();
 
+<<<<<<< HEAD
 	int itemReserve(RentalReserveVO rrvo);
 
+=======
+	int updateRentalLift(RentalLiftVO rlivo, MemberVO mvo);
+>>>>>>> 174b5a56855a1f3daac27df70f971874fdb3c57b
 
 
 
