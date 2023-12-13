@@ -275,17 +275,3 @@ function roomSelectEvent(num) {
 //        document.getElementById('form').submit();
 //    }
 //})
-
-
-
-
-function usecoupon(couponInt, couponrate) {
-    //할인율 계산 (원금-coupon_int)-(원금*coupon_rate/100)-(원금*등급할인율/100)
-
-    let totalprice = (roomprice - couponInt) - (roomprice * couponrate / 100);
-
-    document.getElementById('realpayvalue').value = totalprice;
-    document.getElementById('userViewpay').innerText = totalprice.toLocaleString() + "원";
-    document.getElementById('couponCode').value = document.getElementById('coupon').value;
-    realAmount = totalprice;
-}

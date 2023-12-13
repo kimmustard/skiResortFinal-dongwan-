@@ -1,0 +1,128 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Jua&family=Sunflower:wght@300;500&display=swap');
+
+/************ 쿠폰 관리함 css ******************/
+
+.myCouponListBody{
+	display: none;
+	position: absolute;
+	top: 100px;
+	right: -420px;
+	border-top-left-radius: 20px;
+	border-bottom-left-radius: 20px;
+	width: 420px;
+	height: 587px;
+	background-color: white;
+	max-height: 600px; /* 최대 높이 지정 */
+    background-color: white;
+    overflow-y: auto;
+    overflow-x: hidden; /* 가로 스크롤 숨김 */
+}
+
+.myCouponListBody::-webkit-scrollbar {
+    width: 12px; /* 스크롤 바 너비 */
+}
+
+.myCouponListBody::-webkit-scrollbar-thumb {
+    background-color: #008cff; /* 스크롤 바 색상 */
+	border-radius: 5px;
+}
+
+.myCouponListBody::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* 스크롤 바 트랙 색상 */
+    border-radius: 5px;
+}
+
+.myCouponListTitle{
+	padding-bottom: 30px;
+	margin-top: 30px;
+	margin-bottom: 20px;
+	border-bottom: 2px solid gray;
+	text-align: center;
+}
+
+.myCouponListTitle>span{
+	font-size: 30px;
+	font-family: 'Sunflower', sans-serif;
+	font-weight: 400;
+}
+
+.couponBox{
+	position: relative;
+	display: flex;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	height: 100px;
+	justify-content: center;
+	margin-left: 15px;
+	margin-right: 10px;
+	border: 1px solid black;
+}
+
+.couponBox1{
+	position: relative;
+	width: 100px;
+	background-color: white;
+}
+.couponBox1>span{
+	position: absolute;
+	text-align: center;
+	width: 200px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 30px;
+	font-weight: 700;
+	padding-left: 30px;
+}
+.couponBox2{
+	position: relative;
+    margin-left: 10px;
+    width: 260px;
+    background-color: white;
+}
+
+.endDays{
+	position: absolute;
+    padding-right: 10px;
+    padding-left: 10px;
+    right: 80px;
+    bottom: 73px;
+    display: inline;
+    font-size: 20px;
+    color: white;
+    background-color: #008cff;
+    border-radius: 15px;
+    z-index: 1;
+}
+
+.couponBox2>div{
+	position: absolute;
+	display:flex;
+	flex-direction: column;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 250px;
+	padding-left: 70px;
+}
+.couponBox2>div>p{
+	width: 150px;
+	text-align: center;
+	display:inline-block;
+	background-color: black;
+	padding: 5px;
+	color: white;
+	font-size: 20px;
+	font-family: 'Sunflower', sans-serif;
+	font-weight: 400;
+}
+.couponBox2>div>span{
+	font-family: 'Sunflower', sans-serif;
+	font-weight: 400;
+	font-size: 18px;
+	margin-top: 10px;
+	margin-left: 5px;
+	width: 200px;
+}
