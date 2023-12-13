@@ -47,5 +47,9 @@
   	delete from alarm_system where member_num = #{memberNum} and alarm_reg_at = #{alarmRegAt}
   </delete>
   
+  <update id="masCheck">
+  	update member set member_alarm_system = #{memberAlarmSystem} and member_id = #{memberId}
+  </update>
+  
   </mapper>
 

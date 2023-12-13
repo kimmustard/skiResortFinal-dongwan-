@@ -1,6 +1,5 @@
 package com.web.www.repository;
 
-import java.sql.Timestamp;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;

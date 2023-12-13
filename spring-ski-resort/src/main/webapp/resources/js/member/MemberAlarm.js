@@ -40,3 +40,43 @@ async function memberAlarmCheckCount(checkData) {
         console.log(error);
     }
 }
+
+
+
+//온오프 체크
+document.getElementById('alarmSwitchCheckDefault').addEventListener('click', () => {
+    let id = document.getElementById('alarmSwitchCheckDefault').value;
+    let check = '';
+    if (document.getElementById('alarmSwitchCheckDefault').checked == true) {
+        check = 'N';
+    } else {
+        check = 'Y';
+    }
+
+    let checkData = {
+        memberId: id,
+        memberAlarmSystem: check
+    }
+
+
+    masChecker(checkData);
+})
+
+
+async function masChecker(checkData) {
+    try {
+        const url = '/alarm/systemOnOff';
+        const config = {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json; charset=utf-8'
+            },
+            body: JSON.stringify(checkData)
+        }
+        await fetch(url, config);
+
+    } catch (error) {
+        console.log(error);
+    }
+
+}

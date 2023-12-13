@@ -78,6 +78,8 @@ public interface MemberService {
 
 	void findPwdUpdate(FindPwdDTO fpDTO);
 
+	int masCheck(MemberCheckDTO mcDto);
+
 
 
 

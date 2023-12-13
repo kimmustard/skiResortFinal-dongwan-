@@ -22,6 +22,7 @@ import com.web.www.domain.alarm.AlarmDTO;
 import com.web.www.domain.alarm.AlarmReadDTO;
 import com.web.www.domain.coupon.CouponGetDTO;
 import com.web.www.domain.member.AuthUser;
+import com.web.www.domain.member.MemberCheckDTO;
 import com.web.www.domain.member.MemberVO;
 import com.web.www.service.AlarmService;
 import com.web.www.service.MemberService;
@@ -95,6 +96,13 @@ public class AlarmController {
 		return "redirect:/alarm/memberAlarmList";
 	}
 	
+	//비동기작업 멤버 알람 시스템 기능 on/off
+	@PostMapping(value = "/systemOnOff", consumes = MediaType.APPLICATION_JSON_VALUE)
+	public String cdCheck(@RequestBody MemberCheckDTO mcDto) {
+		log.info("광고 체크 = {}" , mcDto);
+		int isOk = msv.masCheck(mcDto); 
+		return isOk == 1 ? "1" : "0";
+	}
 	
 	
 	

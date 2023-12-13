@@ -436,7 +436,11 @@ textarea{
     overflow:auto;
 }
 
-.alaramTitle>span{
+.alarmTitle{
+	position: relative;
+}
+
+.alarmTitle>span{
 	display: block;
 	text-align: center;
 	font-family: 'Jua', sans-serif;
@@ -445,7 +449,7 @@ textarea{
 	padding: 50px;
 	border-bottom: 3px solid #b3b3b3; 
 }
-.alaramTitle>span>i{
+.alarmTitle>span>i{
 	font-size: 40px;
 	font-weight: 700;
 }
@@ -457,4 +461,10 @@ textarea{
 
 .element.style {
     width: 50px;
+}
+
+.alarmCheckBox{
+	position: absolute;
+	right: 10px;
+	bottom: 10px;
 }

@@ -8,6 +8,7 @@ import com.web.www.domain.alarm.AlarmContentVO;
 import com.web.www.domain.alarm.AlarmDTO;
 import com.web.www.domain.alarm.AlarmReadDTO;
 import com.web.www.domain.alarm.AlarmVO;
+import com.web.www.domain.member.MemberCheckDTO;
 
 public interface AlarmDAO {
 
@@ -26,5 +27,7 @@ public interface AlarmDAO {
 	List<AlarmDTO> getMemberAlarmList(long memberNum);
 
 	void removeMemberAlarm(@Param("memberNum")long memberNum, @Param("alarmRegAt") String alarmRegAt);
+
+	int masCheck(MemberCheckDTO mcDto);
 
 }

@@ -198,6 +198,14 @@ public class MemberServiceImpl implements MemberService {
 		adao.alarmSetting(new AlarmVO(memberNum , 5, "변경"));
 	}
 
+	
+	//멤버 알람 시스템 온오프 비동기작업
+	@Override
+	public int masCheck(MemberCheckDTO mcDto) {
+		
+		return adao.masCheck(mcDto);
+	}
+
 
 
 

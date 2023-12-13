@@ -24,10 +24,19 @@
 		<div class="alarmViewContainer">
 		
 			<div class="alarmViewBox">
-				<div class="alaramTitle">
+				<div class="alarmTitle">
 					<span><i class="bi bi-bell"></i> 서비스알림 메세지함 </span>
+					
+					<div class="alarmCheckBox">
+						<div class="form-check form-switch">
+						 <input class="form-check-input" type="checkbox" 
+				        	id="alarmSwitchCheckDefault" ${mvo.member_alarm_system eq 'Y' ? 'checked' : ''} value="${mvo.memberId }">
+				        <label class="form-check-label" for="alarmSwitchCheckDefault">알람 ON/OFF</label>
+				        </div>
+					</div>
+					
 				</div>
-			
+
 				
 					<table class="table table-hover">
 					  <thead>
@@ -46,7 +55,7 @@
 					    <tr class="table-default">
 					      <th scope="row">${aList.alarmContentName }</th>
 					      <td><a href="${aList.alarmContentUrl}" data-alarmregat="${aList.alarmRegAt}" data-membernum="${aList.memberNum}">${aList.alarmType}</a></td>
-					      <td><a href="${aList.alarmContentUrl}">${aList.alarmContentText}</a></td>
+					      <td><a href="${aList.alarmContentUrl}" data-alarmregat="${aList.alarmRegAt}" data-membernum="${aList.memberNum}">${aList.alarmContentText}</a></td>
 					      <td>${aList.alarmCheck }</td>
 					      <td>${aList.alarmRegAt }</td>
 					      <td> <a href="/alarm/alarmRemove?alarmRegAt=${aList.alarmRegAt}"><button>X</button></a> </td>
