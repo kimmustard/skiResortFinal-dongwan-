@@ -23,7 +23,7 @@
 
 <!-- <div class="notice-img-container" style="background-image: url('https://a.cdn-hotels.com/gdcs/production68/d766/4cc034a7-aeb1-4edd-b2a9-f7feaac49aec.jpg')">	</div>
  -->	
-<!-- <div class="container notice-container"> -->
+<div class="container notice-container">
 <div class="notice-header notice-header-two">
 	<h1 class="notice-header-h1">${nvo.noticeCategory}<span class="notice-header-span"></span></h1>
 </div>
@@ -53,7 +53,7 @@
 			<!-- 내용 표시란 -->
 			<tr>
 				<td class="notice-table-content" colspan="3" style="padding: 30px 20px;">
-					<div class="notice-table-content-child">${nvo.noticeContent }</div>
+					<div class="notice-table-content-child"><pre>${nvo.noticeContent }</pre></div>
 					<div>
 						<!-- 파일표시란 -->
 						<c:set value="${ndto.flist }" var="flist"></c:set>
@@ -89,7 +89,7 @@
 				</c:if>	
 		</div>	
 	
- <!--  </div> -->	
+ 	</div>	
  </div>	
 </div>
 
@@ -97,5 +97,6 @@
 	
 	
 <jsp:include page="../common/footer.jsp" />	
+
 </body>
 </html>

@@ -120,7 +120,7 @@
 					</th>
 					<td class="notice-table-td">
 						<div class="mb-3 notice-table-td-content">
-						  <textarea class="form-control" name="noticeContent" rows="3" placeholder="내용은 1000자 이내로 작성해 주십시오." maxlength="1000"></textarea>
+						  <textarea class="form-control" name="noticeContent" rows="3" placeholder="게시글을 작성해 주세요." style="white-space: pre-line;"></textarea>
 						</div>
 					</td>
 				</tr>

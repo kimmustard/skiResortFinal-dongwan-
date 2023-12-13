@@ -1,0 +1,77 @@
+@charset "UTF-8";
+
+.dev-container{
+	
+}
+.dev-qna-regbtn-container{
+	height: 55px;
+	background-color: #a5b4cc;
+	border-bottom: solid 1px #e5e5e5;
+	text-decoration: underline;
+	position: relative;
+}
+.dev-qna-regbtn-container2{
+	position: absolute;
+  	top: 50%;
+  	left: 50%;
+  	transform: translate(-50%, -50%);
+}
+.dev-qna-container{
+	width: 98%;
+	border: solid 1px black;
+	margin: 0 auto;
+}
+
+
+/*게시글 목록 테이블 라인*/
+.dev-qna-tr>th{
+	text-align: center;
+	border-left: 1px solid #e2e2e2;
+}
+.dev-qna-tr>td{
+	border-left: 1px solid #e2e2e2;
+}
+.dev-qna-no{
+	width: 80px;
+}
+.dev-qna-category{
+	width: 100px;
+}
+.dev-qna-title{
+	width: auto;
+}
+.dev-qna-writer{
+	width: auto;
+}
+.dev-qna-isok{
+	width: 90px;
+}
+.dev-qna-reg{
+	width: 120px;
+}
+.dev-qna-modify{
+	width: 200px;
+}
+.dev-qna-tr>td{
+	text-align: center;
+}
+.dev-qna-title-td>div{
+	text-align: left;
+}
+.dev-qna-title-td>div>a{
+	text-decoration-line: none;
+	color: inherit;
+}
+.dev-qna-tr>td>a{
+	text-decoration-line: none;
+	color: inherit;
+}
+
+
+
+
+
+
+
+
+

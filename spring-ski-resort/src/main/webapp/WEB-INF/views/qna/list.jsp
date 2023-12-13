@@ -254,6 +254,11 @@
 				<button class="qna-btn myqna-btn" type="button">문의하기</button>
 			</a>
 		</sec:authorize>
+		<c:if test="${auths.stream().anyMatch(authVO -> authVO.auth.equals('ROLE_ADMIN')).get()}">
+				<a href="/developer/settingQna">
+					<button type="button" class="qna-btn my-admin-btn">관리자페이지</button>
+				</a>
+		</c:if>
 		
 		<!-- 비회원도 문의할 수 있는 버튼인데 막아놓았음 -->
 		<%-- <sec:authorize access="isAnonymous()"> <!-- 로그인 x -->

@@ -25,7 +25,7 @@ public class BoardTest {
 		for(int i=0; i<300; i++) {
 			NoticeVO nvo = new NoticeVO();
 			nvo.setNoticeTitle("테스트 게시글 "+i);
-			nvo.setNoticeWriter("운영자");
+			nvo.setNoticeWriter("admin");
 			switch((int)(Math.random()*6+1)) {
 			case 1: nvo.setNoticeCategory("공지사항"); break;
 			case 2: nvo.setNoticeCategory("이벤트"); break;

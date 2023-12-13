@@ -96,7 +96,9 @@
 			<!-- 내용 표시란 -->
 			<tr>
 				<td class="qna-table-content" colspan="3" style="padding: 30px 20px;">
-					<div class="qna-table-content-child">${qvo.qnaContent }</div>
+					<div class="qna-table-content-child">
+						<pre>${qvo.qnaContent }</pre>
+					</div>
 					<div>
 						<!-- 파일표시란 -->
 						<c:set value="${qdto.flist }" var="flist"></c:set>
@@ -208,6 +210,9 @@
 			</c:if>	
 			<a href="/qna/list">
 				<button type="button" class="qna-btn myqna-btn">취소</button>
+			</a>
+			<a href="/developer/settingQna">
+				<button type="button" class="qna-btn my-admin-btn">관리자페이지</button>
 			</a>
 		</div>
 	</form>

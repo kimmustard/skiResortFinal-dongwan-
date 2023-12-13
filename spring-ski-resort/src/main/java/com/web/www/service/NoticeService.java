@@ -28,7 +28,7 @@ public interface NoticeService {
 
 	List<NoticeVO> getTwoNotice();
 
-	List<NoticeVO> noticePointList();
+	List<NoticeVO> noticePointList(PagingVO pgvo);
 
 	List<FileVO> noticePointFileList();
 

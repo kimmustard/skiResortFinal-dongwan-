@@ -216,9 +216,9 @@
 		      <th scope="col" class="notice-table-th-count"><div class="notice-table-td-child">조회</div></th>
 		    </tr>
 		  </thead>
-		  <c:if test="${ph.pgvo.keyword == '' || ph.pgvo.keyword == null }">
 		  <tbody>
-		  <c:forEach items="${pvo }" var="pvo">
+		  <c:forEach items="${plist }" var="pvo">
+		  <c:if test="${ph.pgvo.keyword == '' || ph.pgvo.keyword == null || ph.pgvo.keyword == '공지사항' || ph.pgvo.keyword == '이벤트' || ph.pgvo.keyword == '보도자료' || ph.pgvo.keyword == '쇼핑몰' || ph.pgvo.keyword == '채용정보' || ph.pgvo.keyword == '기타' }">
 		    <tr class="notice-table-tr">
 		      <td class="notice-table-td"><div class="notice-table-td-child"><span class="material-symbols-outlined" style="color: red;">campaign</span></div></td>
 		      <td class="notice-table-td"><div class="notice-table-td-child">${pvo.noticeCategory }</div></td>
@@ -227,9 +227,9 @@
 		      <td class="notice-table-td"><div class="notice-table-td-child">${fn:replace((fn:substring(pvo.noticeRegAt,0,10)),'-','.') }</div></td>
 		      <td class="notice-table-td"><div class="notice-table-td-child">${pvo.noticeCount }</div></td>
 		    </tr>
+		  </c:if>
 		  </c:forEach>  
 		  </tbody>
-		  </c:if>
 		  <tbody>
 		  <c:forEach items="${list }" var="nvo">
 		    <tr class="notice-table-tr">
