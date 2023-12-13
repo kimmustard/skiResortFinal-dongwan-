@@ -13,6 +13,8 @@ public interface QnaDAO {
 	long selectOneQnaNum();
 
 	List<QnaVO> selectList(PagingVO pgvo);
+	
+	List<QnaVO> selectListNoPaging();
 
 	int getTotalCount(PagingVO pgvo);
 
@@ -34,6 +36,10 @@ public interface QnaDAO {
 	int qnaIsokUpdate(long qnaNum); //qnaIsok = Y
 
 	int QnaAnsFileModify(QnaAnsVO qavo);
+
+	
+
+	
 
 
 }

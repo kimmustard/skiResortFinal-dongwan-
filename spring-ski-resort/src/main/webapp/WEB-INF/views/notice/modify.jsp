@@ -2,16 +2,25 @@
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+    <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>다이스키 공지사항 수정페이지</title>
+<jsp:include page="../common/nav.jsp" />
 <link rel="stylesheet" href="/resources/css/notice/notice_detail.css">
 </head>
 <body>
-<jsp:include page="../common/nav.jsp" />
 <c:set value="${ndto.nvo }" var="nvo"></c:set>
+<sec:authorize access="isAuthenticated()">
+	<sec:authentication property="principal.mvo.authList" var="auths"/>
+	<sec:authentication property="principal.mvo.memberId" var="authId"/>
+	<sec:authentication property="principal.mvo.memberEmail" var="authEmail"/>
+	<sec:authentication property="principal.mvo.memberType" var="authType"/>
+</sec:authorize>
+
+
 <div class="notice-img-container" style="background-image: url('https://a.cdn-hotels.com/gdcs/production68/d766/4cc034a7-aeb1-4edd-b2a9-f7feaac49aec.jpg')">	</div>
 <br><br><br><br><br><br><br>
 
@@ -173,13 +182,22 @@
 		</div>
 
 
-		
-			<button type="submit" class="btn btn-dark" id="regBtn">수정완료</button>
-			<a href="/notice/list"><button type="button" class="btn btn-dark">취소</button></a>
-	</form>
+		<!-- 버튼 -->
+		<c:if test="${auths.stream().anyMatch(authVO -> authVO.auth.equals('ROLE_ADMIN')).get()}">			
+				<button type="submit" class="btn btn-dark" id="regBtn">수정완료</button>
+			<a href="/notice/list">
+				<button type="button" class="btn btn-dark">취소</button>
+			</a>
 			<a href="/notice/remove?noticeNum=${nvo.noticeNum }">
-			<button type="button" class="btn btn-danger">삭제하기</button>
+				<button type="button" class="btn btn-danger">삭제하기</button>
 			</a>		
+			<div class="notice-detail-btn">			
+			<a href="/developer/settingNotice">
+				<button type="button" class="notice-btn my-admin-btn">관리자페이지</button>
+			</a>
+			</div>
+		</c:if>
+	</form>
 	</div>
 
 <br><br><br><br><br><br><br><br><br><br><br><br>	

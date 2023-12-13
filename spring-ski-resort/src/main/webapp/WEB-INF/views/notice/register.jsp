@@ -104,14 +104,14 @@
 					</th>
 					<td class="notice-table-td">
 						<div class="mb-3 notice-table-td-child">
-						  <input type="checkbox" name="noticePoint" id="noticePoint" value="Y"><span> 상단 슬라이드 공지 게시(※업로드 이미지 파일 필수)</span>
+						  <input type="checkbox" name="noticePoint" id="noticePoint" value="Y"><span> 중요공지 게시 (※등록 순서대로 목록 최상단 게시)</span>
 						</div>
 						<!-- 중요공지 메인 이미지 파일 등록 라인 -->
-						  <div class="mb-3 notice-table-point-file">
+						  <!-- <div class="mb-3 notice-table-point-file">
 							  <input type="file" class="form-control" name="files" id="files" style="display: none;" multiple="multiple">
 							  <div id="point-file" class="notice-table-point-file-child"></div>
-						  <div class="mb-3 notice-table-point-file-child" id="fileZone"><!-- 첨부파일 표시 영역 --></div>
-						  </div>
+						  <div class="mb-3 notice-table-point-file-child" id="fileZone">첨부파일 표시 영역</div>
+						  </div> -->
 					</td>
 				</tr>
 				<tr class="notice-table-tr">
@@ -150,6 +150,9 @@
 			<a href="/notice/list">
 				<button type="button" class="notice-btn mynotice-btn">취소</button>
 			</a>
+			<a href="/developer/settingNotice">
+				<button type="button" class="notice-btn my-admin-btn">관리자페이지</button>
+			</a>
 		</div>
 	</form>
 
@@ -163,49 +166,6 @@
 
 
 <script type="text/javascript" src="/resources/js/notice/noticeFileUpload.js"></script>
-<script type="text/javascript">
-document.addEventListener("DOMContentLoaded", function() {
-    
-    // 체크박스 요소 가져오기
-    var pointCheckbox = document.getElementById('noticePoint');
-
-        // 체크박스 상태가 변경될 때 이벤트 리스너 등록
-        pointCheckbox.addEventListener('change', function() {
-            // 체크박스가 체크되어 있으면 'Y', 그렇지 않으면 'N' 설정
-            var noticePoint = pointCheckbox.checked ? 'Y' : 'N';
-            console.log(noticePoint);
-            
-            let div = document.getElementById('point-file');
-            div.innerHTML = '';
-            
-            if(noticePoint==='Y'){
-    	    	let div = document.getElementById('point-file');
-                div.innerHTML = `<button type="button" id="trigger" class="btn btn-outline-primary">슬라이드 이미지 파일 등록</button>`;
-                console.log(noticePoint);
-                
-             // 트리거 버튼 처리
-                document.getElementById('trigger').addEventListener('click', () => {
-                    document.getElementById('files').click();
-                });
-    	    }
- 
-    	}) 
-     
-    
-
-		/* document.getElementById('notice-secret').addEventListener('click',()=>{
-	    if(Secret==='N'){
-	        let div = document.getElementById('notice-secret-div');
-	        div.innerHTML = `<input type="checkbox" name="qnaSecret" value="N" id="notice-secret"><span> 비밀글 등록 N</span>`;
-            console.log(Secret);
-	    }else if(Secret==='Y'){
-	    	let div = document.getElementById('notice-secret-div');
-            div.innerHTML = `<input type="checkbox" name="qnaSecret" value="Y" id="notice-secret"><span> 비밀글 등록 Y</span>`;
-            console.log(Secret);
-	    }
-	}) */
-});
-</script>
 
 <script type="text/javascript">
 		const isOk = `<c:out value="${isOk}"></c:out>`
@@ -213,6 +173,7 @@ document.addEventListener("DOMContentLoaded", function() {
 			alert('제목을 입력해 주세요.');
 		}
 </script>
+
 
 
 

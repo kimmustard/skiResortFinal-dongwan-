@@ -18,6 +18,7 @@ notice_count int default 0,
 notice_reg_at datetime default now(),
 notice_mod_at datetime default now(),
 notice_point varchar(1) default 'N',
+notice_impact varchar(1) default 'N',
 notice_del varchar(1) default 'N',
 notice_image_url varchar(1000),
 primary key(notice_num)
@@ -33,7 +34,7 @@ qna_num bigint,
 qna_ans_num bigint,
 hotel_room_num int,
 rental_list_item_num bigint,
-notice_point_file varchar(1) default 'N',
+notice_impact_file varchar(1) default 'N',
 file_save varchar(200) not null,
 file_name varchar(100) not null,
 file_isok varchar(1) default 'N',
@@ -130,6 +131,9 @@ Query OK, 0 rows affected
 insert into auth_member values('admin','ROLE_ADMIN');
 
 
+12/14 변경(칼럼추가 변경)
+alter table notice add notice_impact varchar(1) default 'N';
+alter table file change column notice_point_file notice_Impact_file varchar(1) default 'N';
 
 
 

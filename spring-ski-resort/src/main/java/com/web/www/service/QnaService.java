@@ -12,6 +12,8 @@ public interface QnaService {
 	int qnaRegister(QnaDTO qnaDTO);
 
 	List<QnaVO> qnaList(PagingVO pgvo);
+	
+	List<QnaVO> qnaListNoPaging();
 
 	int getTotalCount(PagingVO pgvo);
 
@@ -31,6 +33,9 @@ public interface QnaService {
 	QnaAnsDTO qnaAnsDetail(long qnaNum);
 
 	int qnaAnsFileModify(QnaAnsDTO qadto);
+
+
+	
 
 
 }
