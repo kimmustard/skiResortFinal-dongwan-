@@ -9,7 +9,6 @@ import javax.annotation.PostConstruct;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -113,21 +112,21 @@ public class RentalController {
 	}
 	
 	@GetMapping("/ski-item")
-	public String skiItemForm(Model model) {
+	public String skiItemForm(Model model, @AuthUser MemberVO mvo, RentalLiftVO rlivo) {
 		List<RentalItemListDTO> skiLowItem = rsv.getSkiLowItem();
 		List<RentalItemListDTO> skiMidItem = rsv.getSkiMidItem();
 		List<RentalItemListDTO> skiPremiumItem = rsv.getSkiPremiumItem();
-		RentalVO rvo = new RentalVO();
 		
 		model.addAttribute("skiLowItem", skiLowItem);
 		model.addAttribute("skiMidItem", skiMidItem);
 		model.addAttribute("skiPremiumItem", skiPremiumItem);
-		model.addAttribute("rvo", rvo);
+		model.addAttribute("mvo", mvo);
+		model.addAttribute("rlivo", rlivo);
 		
 		return "/rental/ski-item";
 	}
 	@GetMapping("/board-item")
-	public String boardItemForm(Model model) {
+	public String boardItemForm(Model model, @AuthUser MemberVO mvo) {
 		List<RentalItemListDTO> boardLowItem = rsv.getBoardLowItem();
 		List<RentalItemListDTO> boardMidItem = rsv.getBoardMidItem();
 		List<RentalItemListDTO> boardPremiumItem = rsv.getBoardPremiumItem();
@@ -135,11 +134,12 @@ public class RentalController {
 		model.addAttribute("boardLowItem", boardLowItem);
 		model.addAttribute("boardMidItem", boardMidItem);
 		model.addAttribute("boardPremiumItem", boardPremiumItem);
+		model.addAttribute("mvo", mvo);
 		
 		return "/rental/board-item";
 	}
 	@GetMapping("/wear-item")
-	public String wearItemForm(Model model) {
+	public String wearItemForm(Model model, @AuthUser MemberVO mvo) {
 		List<RentalItemListDTO> wearLowItem = rsv.getWearLowItem();
 		List<RentalItemListDTO> wearMidItem = rsv.getWearMidItem();
 		List<RentalItemListDTO> wearPremiumItem = rsv.getWearPremiumItem();
@@ -147,6 +147,7 @@ public class RentalController {
 		model.addAttribute("wearLowItem", wearLowItem);
 		model.addAttribute("wearMidItem", wearMidItem);
 		model.addAttribute("wearPremiumItem", wearPremiumItem);
+		model.addAttribute("mvo", mvo);
 		
 		return "/rental/wear-item";
 	}

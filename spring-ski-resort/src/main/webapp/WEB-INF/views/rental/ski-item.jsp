@@ -140,6 +140,12 @@
 	
 	
 	<script type="text/javascript" src="/resources/js/rental/item.js"></script>
+	
+	<script type="text/javascript">
+		const memberEmail = <c:out value="${mvo.memberEmail}" />
+		const rentalLiftNum = <c:out value="${rlivo.rentalLiftNum}" />
+	</script>
+	
 	<jsp:include page="../common/footer.jsp" />
 </body>
 </html>
