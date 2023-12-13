@@ -1,29 +1,36 @@
---리프트권 테이블 11/27
+--테이블 삭제
+drop table rental_lift;
+
+--리프트권 테이블 12/12
 create table rental_lift(
 rental_lift_num varchar(200) not null,
 rental_lift_ticket varchar(50),
 rental_lift_adult_fee int,
 rental_lift_kid_fee int,
+rental_lift_total_fee int,
 rental_lift_adult int,
 rental_lift_kid int,
 rental_lift_start date,
+pay_merchant_uid varchar(50),
+member_num int,
 primary key(rental_lift_num));
 
---렌탈 테이블 11/27
+
+drop table rental;
+--렌탈 테이블 12/13
 create table rental(
-rental_main_num bigint not null auto_increment,
 rental_lift_num varchar(200) not null,
 rental_shop_num bigint,
 member_email varchar(50) not null,
 reatal_main_isreturn varchar(1) default 'N',
 rental_main_lift varchar(1) default 'N',
 member_type varchar(20) default 'normal',
-rental_reg_at datetime default now(),
-primary key(rental_main_num));
+rental_reg_at datetime default now()
+);
 
 -- 테이블 삭제
 drop table rental_items;
---장비목록 테이블 11/29
+--장비목록 테이블 12/12
 create table rental_items(
 rental_list_item_num bigint not null,
 rental_list_item_type varchar(50),
@@ -33,6 +40,7 @@ rental_list_mid_item varchar(50),
 rental_list_premium_item varchar(50),
 rental_list_item_adult_fee int,
 rental_list_item_kid_fee int,
+rental_list_total_fee int,
 rental_list_item_count int default 0,
 primary key(rental_list_item_num));
 
@@ -43,9 +51,10 @@ file_name varchar(100),
 image_url varchar(200));
 
 
---장비예약 테이블 12/11
+drop table rental_reserve;
+--장비예약 테이블 12/13
 create table rental_reserve(
-rental_main_num bigint not null,
+rental_lift_num varchar(200),
 rental_list_item_num bigint not null,
 rental_reserve_start date,
 rental_reserve_adult int,
