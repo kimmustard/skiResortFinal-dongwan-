@@ -56,12 +56,17 @@ public class RentalController {
 	@PostMapping("/reserve")
 	public String liftReservePost(@ModelAttribute("rlivo") RentalLiftVO rlivo, @AuthUser MemberVO mvo) {
 		RentalVO rvo = new RentalVO();
+		log.info("");
+		int cheak=0;
+		//결제하고 
+		if(cheak == 1) {
 		rvo.setRentalLiftNum(rlivo.getRentalLiftNum());
 		rvo.setMemberEmail(mvo.getMemberEmail());
 		rvo.setMemberType(mvo.getMemberType());
 		int isOk = rsv.liftReserve(rlivo);
 		isOk = rsv.rental(rvo);
 		log.info((isOk > 0)? "ok":"fail");
+		}
 		return "index";
 	}
 	
@@ -69,7 +74,6 @@ public class RentalController {
 	
 	@GetMapping("/item-register")
 	public String itemRegisterForm() {
-		
 		return "/rental/item-register";
 	}
 	

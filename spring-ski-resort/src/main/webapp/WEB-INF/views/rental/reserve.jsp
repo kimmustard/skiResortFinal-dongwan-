@@ -82,10 +82,9 @@
 			  							<button type="button" id="adult-Btn">
 			  								<svg style="width: 14px; height: 14px; xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.25 12.75H3.75a.75.75 0 0 1 0-1.5h16.5a.75.75 0 0 1 0 1.5z"></path></svg>
 			  							</button>
-			  						</div> 
-			  						 
+			  						</div> 	 
 			  						<div id="adult-Count">
-			  							0
+			  							1
 			  						</div> 
 			  						
 			  						<div>
@@ -128,37 +127,41 @@
 				<div id="innerbox" class="reserveBox" style="display: none;">
 					<p class="fs-2">리프트권 선택</p>
 					<div class="form-check">
-					  <input class="form-check-input" type="radio" name="rentalLiftTicket" value="오전권" id="morningTicket">오전권
+					  <input class="form-check-input" onclick="updateFees(40000,30000)" type="radio" name="rentalLiftTicket" value="오전권" id="morningTicket">오전권
 					</div>
 					<div class="form-check">
-					  <input class="form-check-input" type="radio" name="rentalLiftTicket" value="오후권" id="afternoonTicket">오후권
+					  <input class="form-check-input" onclick="updateFees(50000,40000)" type="radio" name="rentalLiftTicket" value="오후권" id="afternoonTicket">오후권
 					</div>
 					<div class="form-check">
-					  <input class="form-check-input" type="radio" name="rentalLiftTicket" value="주간권" id="dayTimeTicket">주간권
+					  <input class="form-check-input" onclick="updateFees(60000,50000)" type="radio" name="rentalLiftTicket" value="주간권" id="dayTimeTicket">주간권
 					</div>
 					<div class="form-check">
-					  <input class="form-check-input" type="radio" name="rentalLiftTicket" value="야간권" id="nightTimeTicket">야간권
+					  <input class="form-check-input" onclick="updateFees(40000,30000)" type="radio" name="rentalLiftTicket" value="야간권" id="nightTimeTicket">야간권
 					</div>
 					<div class="form-check">
-					  <input class="form-check-input" type="radio" name="rentalLiftTicket" value="종일권" id="allDayTicket">종일권
+					  <input class="form-check-input" onclick="updateFees(75000,65000)" type="radio" name="rentalLiftTicket" value="종일권" id="allDayTicket">종일권
 					</div>
 					<div class="form-check">
-					  <input class="form-check-input" type="radio" name="rentalLiftTicket" value="시즌권" id="seasonTicket">시즌권
+					  <input class="form-check-input" onclick="updateFees(380000,350000)" type="radio" name="rentalLiftTicket" value="시즌권" id="seasonTicket">시즌권
 					</div>
 					
 					<div class="input-group mb-3">
 						<span class="input-group-text">요금(성인)</span>
-						<input type="text" class="form-control" name="rentalLiftAdultFee" id="adultFee" value="0" readonly="readonly">
+						<input type="text" class="form-control" id="showadultFee" value="0" readonly="readonly">
 					</div>
 					<div class="input-group mb-3">
 						<span class="input-group-text">요금(어린이)</span>
-						<input type="text" class="form-control" name="rentalLiftKidFee" id="kidFee" value="0" readonly="readonly">
+						<input type="text" class="form-control" id="showkidFee" value="0" readonly="readonly">
+						
 					</div>
+					<!-- db로 보낼 hiddem input  -->
+						<input type="hidden" class="form-control" name="rentalLiftAdultFee" id="adultFee" value="0" readonly="readonly">
+						<input type="hidden" class="form-control" name="rentalLiftKidFee" id="kidFee" value="0" readonly="readonly">
+						<input type="hidden" name="rentalLiftTotalFee" id="totalFee">
 					
 					<a href="/rental/reserve"><button type="button" class="btn btn-outline-primary">이전으로</button></a>
-					<button type="submit" class="btn btn-outline-primary">결제</button>
+					<button type="button" class="btn btn-outline-primary">결제</button>
 				</div>
-				
 			</form>
 		</div>
 	

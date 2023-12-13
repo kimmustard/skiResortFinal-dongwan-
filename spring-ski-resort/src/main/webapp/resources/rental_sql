@@ -1,9 +1,13 @@
---리프트권 테이블 11/27
+--테이블 삭제
+drop table rental_lift;
+
+--리프트권 테이블 12/12
 create table rental_lift(
 rental_lift_num varchar(200) not null,
 rental_lift_ticket varchar(50),
 rental_lift_adult_fee int,
 rental_lift_kid_fee int,
+rental_lift_total_fee int,
 rental_lift_adult int,
 rental_lift_kid int,
 rental_lift_start date,
@@ -23,7 +27,7 @@ primary key(rental_main_num));
 
 -- 테이블 삭제
 drop table rental_items;
---장비목록 테이블 11/29
+--장비목록 테이블 12/12
 create table rental_items(
 rental_list_item_num bigint not null,
 rental_list_item_type varchar(50),
@@ -33,6 +37,7 @@ rental_list_mid_item varchar(50),
 rental_list_premium_item varchar(50),
 rental_list_item_adult_fee int,
 rental_list_item_kid_fee int,
+rental_list_total_fee int,
 rental_list_item_count int default 0,
 primary key(rental_list_item_num));
 

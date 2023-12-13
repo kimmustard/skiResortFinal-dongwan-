@@ -86,9 +86,7 @@ $(function () {
             customRangeLabel: '사용자 정의 범위'
         }
 
-    },
-
-        function (start, end, label) {
+    },function (start, end, label) {
 
             var dateRange = start.format('YYYY-MM-DD') + ' ~ ' + end.format('YYYY-MM-DD');
             updateCustomText(dateRange, 'dateRangePicker');

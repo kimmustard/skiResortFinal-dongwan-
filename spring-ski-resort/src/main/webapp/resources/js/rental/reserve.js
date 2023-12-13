@@ -1,7 +1,17 @@
+// //총 계산 금액 나타내는 이벤트
+// function showTotalView(){
+//     let totalfee =  document.getElementById("totalFee");
+//     let adultfee =   parseInt(document.getElementById("adultFee").value);
+//     let kidfee =   parseInt(document.getElementById("kidFee").value);
+//     totalfee.value =adultfee+kidfee;
+//     console.log(totalfee);
+// }
+
+
 document.getElementById("nextBtn").addEventListener('click', () => {
     let rentalLiftStart = document.getElementById('rentalLiftStart').value;
     let rentalLiftAdult = document.getElementById('rentalLiftAdult').value;
-    let rentalLiftKid = document.getElementById('rentalLiftKid').value;
+
     if (rentalLiftAdult == "0") {
         alert('인원수를 입력해주세요!');
     } else if (rentalLiftStart == "") {
@@ -56,125 +66,110 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-
-    let morning = document.getElementById('morningTicket');
-    let afternoon = document.getElementById('afternoonTicket');
-    let dayTime = document.getElementById('dayTimeTicket');
-    let nightTime = document.getElementById('nightTimeTicket');
-    let allDay = document.getElementById('allDayTicket');
-    let season = document.getElementById('seasonTicket');
-
-    let rentalLiftAdultFeeInput = document.querySelector('input[name="rentalLiftAdultFee"]');
-    let rentalLiftKidFeeInput = document.querySelector('input[name="rentalLiftKidFee"]');
-
-    function updateFees() {
-        rentalLiftAdultFeeInput.value = parseInt(rentalLiftAdultFeeInput.value).toLocaleString();
-        rentalLiftKidFeeInput.value = parseInt(rentalLiftKidFeeInput.value).toLocaleString();
-
-        // 오전권
-        if (morning.checked && parseInt(rentalLiftAdult.value) == 1) {
-            rentalLiftAdultFeeInput.value = '40000';
-        } else if (morning.checked && parseInt(rentalLiftAdult.value) >= 2) {
-            rentalLiftAdultFeeInput.value = parseInt(40000 * rentalLiftAdult.value);
-        }
-        if (morning.checked && parseInt(rentalLiftKid.value) == 1) {
-            rentalLiftKidFeeInput.value = '30000';
-        } else if (morning.checked && parseInt(rentalLiftKid.value) >= 2) {
-            rentalLiftKidFeeInput.value = parseInt(30000 * rentalLiftKid.value);
-        }
-
-        // 오후권
-        if (afternoon.checked && parseInt(rentalLiftAdult.value) == 1) {
-            rentalLiftAdultFeeInput.value = '50000';
-        } else if (afternoon.checked && parseInt(rentalLiftAdult.value) >= 2) {
-            rentalLiftAdultFeeInput.value = parseInt(50000 * rentalLiftAdult.value);
-        }
-        if (afternoon.checked && parseInt(rentalLiftKid.value) == 1) {
-            rentalLiftKidFeeInput.value = '40000';
-        } else if (afternoon.checked && parseInt(rentalLiftKid.value) >= 2) {
-            rentalLiftKidFeeInput.value = parseInt(40000 * rentalLiftKid.value);
-        }
-
-        // 주간권
-        if (dayTime.checked && parseInt(rentalLiftAdult.value) == 1) {
-            rentalLiftAdultFeeInput.value = '60000';
-        } else if (dayTime.checked && parseInt(rentalLiftAdult.value) >= 2) {
-            rentalLiftAdultFeeInput.value = parseInt(60000 * rentalLiftAdult.value);
-        }
-        if (dayTime.checked && parseInt(rentalLiftKid.value) == 1) {
-            rentalLiftKidFeeInput.value = '50000';
-        } else if (dayTime.checked && parseInt(rentalLiftKid.value) >= 2) {
-            rentalLiftKidFeeInput.value = parseInt(50000 * rentalLiftKid.value);
-        }
-
-        // 야간권
-        if (nightTime.checked && parseInt(rentalLiftAdult.value) == 1) {
-            rentalLiftAdultFeeInput.value = '40000';
-        } else if (nightTime.checked && parseInt(rentalLiftAdult.value) >= 2) {
-            rentalLiftAdultFeeInput.value = parseInt(40000 * rentalLiftAdult.value);
-        }
-        if (nightTime.checked && parseInt(rentalLiftKid.value) == 1) {
-            rentalLiftKidFeeInput.value = '30000';
-        } else if (nightTime.checked && parseInt(rentalLiftKid.value) >= 2) {
-            rentalLiftKidFeeInput.value = parseInt(30000 * rentalLiftKid.value);
-        }
-
-        // 종일권
-        if (allDay.checked && parseInt(rentalLiftAdult.value) == 1) {
-            rentalLiftAdultFeeInput.value = '75000';
-        } else if (allDay.checked && parseInt(rentalLiftAdult.value) >= 2) {
-            rentalLiftAdultFeeInput.value = parseInt(75000 * rentalLiftAdult.value);
-        }
-        if (allDay.checked && parseInt(rentalLiftKid.value) == 1) {
-            rentalLiftKidFeeInput.value = '65000';
-        } else if (allDay.checked && parseInt(rentalLiftKid.value) >= 2) {
-            rentalLiftKidFeeInput.value = parseInt(65000 * rentalLiftKid.value);
-        }
-
-        // 시즌권
-        if (season.checked && parseInt(rentalLiftAdult.value) == 1) {
-            rentalLiftAdultFeeInput.value = '380000';
-        } else if (season.checked && parseInt(rentalLiftAdult.value) >= 2) {
-            rentalLiftAdultFeeInput.value = parseInt(380000 * rentalLiftAdult.value);
-        }
-        if (season.checked && parseInt(rentalLiftKid.value) == 1) {
-            rentalLiftKidFeeInput.value = '350000';
-        } else if (season.checked && parseInt(rentalLiftKid.value) >= 2) {
-            rentalLiftKidFeeInput.value = parseInt(350000 * rentalLiftKid.value);
-        }
-
-    }
-
-
-
-    morning.addEventListener('change', function () {
-        updateFees();
-    })
-    afternoon.addEventListener('change', function () {
-        updateFees();
-    })
-    dayTime.addEventListener('change', function () {
-        updateFees();
-    })
-    nightTime.addEventListener('change', function () {
-        updateFees();
-    })
-    allDay.addEventListener('change', function () {
-        updateFees();
-    })
-    season.addEventListener('change', function () {
-        updateFees();
-    })
 });
 
-function updatePeopleCount(inputElement, increment) {
-    let currentCount = parseInt(inputElement.value, 10);
-    let newCount = currentCount + increment;
+// function updatePeopleCount(inputElement, increment) {
+//     let currentCount = parseInt(inputElement.value, 10);
+//     let newCount = currentCount + increment;
 
-    // 최소값은 1로 설정
-    newCount = Math.max(newCount, 1);
+//     // 최소값은 1로 설정
+//     newCount = Math.max(newCount, 1);
 
-    inputElement.value = newCount;
+//     inputElement.value = newCount;
+// }
+
+
+  //요금 업데이트
+  function updateFees(audult,kid) {
+    let rentalLiftAdultFeeInput = document.getElementById("adultFee");
+    let showrentalLiftAdultFeeInput = document.getElementById("showadultFee");
+    let rentalLiftKidFeeInput = document.getElementById("kidFee");
+    let showrentalLiftKidFeeInput = document.getElementById("showkidFee");
+    let adultFee =0;
+    let kidFee =0;
+    adultFee = audult*parseInt(rentalLiftAdult.value);
+    kidFee = kid*parseInt(rentalLiftKid.value);
+    rentalLiftAdultFeeInput.value =adultFee;
+    rentalLiftKidFeeInput.value =kidFee;
+    showrentalLiftAdultFeeInput.value =adultFee.toLocaleString()+"원";
+    showrentalLiftKidFeeInput.value =kidFee.toLocaleString()+"원";
+    // showTotalView();
+
+    // rentalLiftAdultFeeInput.value.toLocaleString();
+    // rentalLiftKidFeeInput.value.toLocaleString();
+    // 오전권
+    // if (morning.checked && parseInt(rentalLiftAdult.value) == 1) {
+    //     adultFee = '40000';
+    // } else if (morning.checked && parseInt(rentalLiftAdult.value) >= 2) {
+    //     adultFee = parseInt(40000 * rentalLiftAdult.value);
+    // }
+    // if (morning.checked && parseInt(rentalLiftKid.value) == 1) {
+    //     kidFee = '30000';
+    // } else if (morning.checked && parseInt(rentalLiftKid.value) >= 2) {
+    //     kidFee = parseInt(30000 * rentalLiftKid.value);
+    // }
+
+    // // 오후권
+    // if (afternoon.checked && parseInt(rentalLiftAdult.value) == 1) {
+    //     adultFee = '50000';
+    // } else if (afternoon.checked && parseInt(rentalLiftAdult.value) >= 2) {
+    //     adultFee = parseInt(50000 * rentalLiftAdult.value);
+    // }
+    // if (afternoon.checked && parseInt(rentalLiftKid.value) == 1) {
+    //     kidFee = '40000';
+    // } else if (afternoon.checked && parseInt(rentalLiftKid.value) >= 2) {
+    //     kidFee = parseInt(40000 * rentalLiftKid.value);
+    // }
+
+    // // 주간권
+    // if (dayTime.checked && parseInt(rentalLiftAdult.value) == 1) {
+    //     adultFee = '60000';
+    // } else if (dayTime.checked && parseInt(rentalLiftAdult.value) >= 2) {
+    //     adultFee = parseInt(60000 * rentalLiftAdult.value);
+    // }
+    // if (dayTime.checked && parseInt(rentalLiftKid.value) == 1) {
+    //     kidFee = '50000';
+    // } else if (dayTime.checked && parseInt(rentalLiftKid.value) >= 2) {
+    //     kidFee = parseInt(50000 * rentalLiftKid.value);
+    // }
+
+    // // 야간권
+    // if (nightTime.checked && parseInt(rentalLiftAdult.value) == 1) {
+    //     adultFee = '40000';
+    // } else if (nightTime.checked && parseInt(rentalLiftAdult.value) >= 2) {
+    //     adultFee = parseInt(40000 * rentalLiftAdult.value);
+    // }
+    // if (nightTime.checked && parseInt(rentalLiftKid.value) == 1) {
+    //     kidFee = '30000';
+    // } else if (nightTime.checked && parseInt(rentalLiftKid.value) >= 2) {
+    //     kidFee= parseInt(30000 * rentalLiftKid.value);
+    // }
+
+    // // 종일권
+    // if (allDay.checked && parseInt(rentalLiftAdult.value) == 1) {
+    //     adultFee = '75000';
+    // } else if (allDay.checked && parseInt(rentalLiftAdult.value) >= 2) {
+    //     adultFee = parseInt(75000 * rentalLiftAdult.value);
+    // }
+    // if (allDay.checked && parseInt(rentalLiftKid.value) == 1) {
+    //     kidFee = '65000';
+    // } else if (allDay.checked && parseInt(rentalLiftKid.value) >= 2) {
+    //     kidFee = parseInt(65000 * rentalLiftKid.value);
+    // }
+
+    // // 시즌권
+    // if (season.checked && parseInt(rentalLiftAdult.value) == 1) {
+    //     adultFee = '380000';
+    // } else if (season.checked && parseInt(rentalLiftAdult.value) >= 2) {
+    //     adultFee = parseInt(380000 * rentalLiftAdult.value);
+    // }
+    // if (season.checked && parseInt(rentalLiftKid.value) == 1) {
+    //     kidFee = '350000';
+    // } else if (season.checked && parseInt(rentalLiftKid.value) >= 2) {
+    //     kidFee = parseInt(350000 * rentalLiftKid.value);
+    // }
+   
+
 }
 
 //성인 버튼 조작
@@ -236,7 +231,6 @@ var targetArea1 = document.getElementById('peopleList');
 var targetArea2 = document.getElementById('people');
 document.addEventListener('click', function (event) {
     if (!targetArea1.contains(event.target) || !targetArea2.contains(event.target)) {
-        console.log("tq");
         document.getElementById('peopleList').style.display = "none";
     }
 });
@@ -246,3 +240,5 @@ targetArea1.addEventListener('click', function (event) {
 targetArea2.addEventListener('click', function (event) {
     event.stopPropagation();
 });
+
+
