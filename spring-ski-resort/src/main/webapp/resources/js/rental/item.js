@@ -22,38 +22,39 @@ premiumItem.addEventListener('click', () => {
 
 /*     슬라이드 기능     */
 
-let page = 0; // 현재 인덱스 번호
-let imageWidth = 400; // 이미지 width
 
 let value = 0;
-let rigthWidth = 500;
-let leftWidth = 500;
+let slideWidth = 400;
 
 let nextBtn = document.getElementById('slideNextBtn'); // 다음 이미지로 넘어가는 버튼
-let prevBtn = document.getElementById('slidePrevBtn'); // 다음 이미지로 넘어가는 버튼
+let prevBtn = document.getElementById('slidePrevBtn'); // 이전 이미지로 넘어가는 버튼
 
-function cloneAndAppend(container, className) {
+// 이미지 클론
+function clone(container, className) {
      let slides = container.querySelectorAll(`.${className}`);
      let firstSlideClone = slides[0].cloneNode(true);
+     let lastSlideClone = slides[slides.length - 1].cloneNode(true);
      container.appendChild(firstSlideClone);
+     container.appendChild(lastSlideClone);
+    
 }
 
 let lowItemImage = document.getElementById('lowItemImageBox');
-cloneAndAppend(lowItemImage, 'slide');
+clone(lowItemImage, 'slide');
 
 let midItemImage = document.getElementById('midItemImageBox');
-cloneAndAppend(midItemImage, 'slide');
+clone(midItemImage, 'slide');
 
 let premiumItemImage = document.getElementById('premiumItemImageBox');
-cloneAndAppend(premiumItemImage, 'slide');
+clone(premiumItemImage, 'slide');
 
 function next() {
-     value -= rigthWidth;
+     value -= slideWidth;
      transitionSlides();
 }
 
 function prev() {
-     value += leftWidth;
+     value += slideWidth;
      transitionSlides();
 }
 
@@ -67,34 +68,34 @@ function transitionSlides() {
      premiumItemImage.style.transition = 'transform 0.5s ease';
      premiumItemImage.style.transform = 'translateX(' + value + 'px)';
 
-     if (value <= -5000) {
+     if (value <= -5500) {
           setTimeout(function () {
+
+               lowItemImage.style.transition = '0s';
+               midItemImage.style.transition = '0s';
+               premiumItemImage.style.transition = '0s';
+
                value = 0;
-
-               lowItemImage.style.transition = 'transform 0s';
-               midItemImage.style.transition = 'transform 0s';
-               premiumItemImage.style.transition = 'transform 0s';
-
                lowItemImage.style.transform = 'translateX(' + value + 'px)';
                midItemImage.style.transform = 'translateX(' + value + 'px)';
                premiumItemImage.style.transform = 'translateX(' + value + 'px)';
 
-          }, 500);
+          }, 300);
      }
 
      if (value >= 0) {
           setTimeout(function () {
-               value = -5000;
 
-               lowItemImage.style.transition = 'transform 0s';
-               midItemImage.style.transition = 'transform 0s';
-               premiumItemImage.style.transition = 'transform 0s';
+               lowItemImage.style.transition = '0.5s';
+               midItemImage.style.transition = '0.5s';
+               premiumItemImage.style.transition = '0.5s';
 
+               value = -5500;
                lowItemImage.style.transform = 'translateX(' + value + 'px)';
                midItemImage.style.transform = 'translateX(' + value + 'px)';
                premiumItemImage.style.transform = 'translateX(' + value + 'px)';
 
-          }, 500);
+          }, 300);
      }
 }
 
@@ -176,6 +177,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 })
 
+
+// 이미지 클릭시 장바구니에 name, price 담기
 function shoppingBasket(name, price) {
      let shoppingBasketDiv = document.querySelector('.shoppingBasket');
      let itemSelectDiv = document.createElement('div');
@@ -187,8 +190,12 @@ function shoppingBasket(name, price) {
 let imageBox = document.querySelectorAll('.itemImageBox .slide img');
 let shopContainer = document.querySelector('.shopContainer');
 
-imageBox.forEach(function (image) {
-     image.addEventListener('click', function () {
-          shopContainer.style.display = 'block';
+//로그인된 유저가 리프트권이 있다면? true / false
+if (true) {
+     imageBox.forEach(function (image) {
+          image.addEventListener('click', function () {
+               shopContainer.style.display = 'block';
+          })
      })
-})
+
+}

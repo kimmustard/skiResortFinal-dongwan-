@@ -76,6 +76,10 @@
 	cursor: pointer;
 }
 
+.shopContainer{
+	position: relative;
+}
+
 .shoppingBasket{
 	width: 300px;
 	height: 300px;
