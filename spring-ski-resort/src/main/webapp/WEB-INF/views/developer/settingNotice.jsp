@@ -36,15 +36,15 @@
 			
 			
 			<!-- 게시글 목록 테이블 라인 -->
-			<div class="accordion accordion-flush" id="accordionFlushExample">
+			<div class="accordion" id="accordionPanelsStayOpenExample">
 			  <div class="accordion-item">
 			    <h2 class="accordion-header">
-			      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+			      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
 			        중요 게시물 목록(총 N개)
 			      </button>
 			    </h2>
-			    <div id="flush-collapseTwo" class="accordion-collapse collapse show" data-bs-parent="#accordionFlushExample">
-			      <div class="accordion-body" style="background-color: rgb(208 208 208);">
+			    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+      			  <div class="accordion-body" style="background-color: rgb(208 208 208);">
 			      
 			      <!-- 검색 라인  -->		      	
 					<div class="container-fluid">
@@ -150,14 +150,14 @@
 			  
 			  
 			  <div class="accordion-item">
-			    <h2 class="accordion-header">
-			      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="true" aria-controls="flush-collapseOne">
+    			<h2 class="accordion-header">
+      			  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
 			        게시물 목록 (총 N개)
 			      </button>
 			    </h2>
-			    <div id="flush-collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionFlushExample">
-			      <div class="accordion-body" style="background-color: rgb(208 208 208);">
-			      
+			    <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse show">
+      			  <div class="accordion-body" style="background-color: rgb(208 208 208);">
+			    
 			      	<!-- 검색 라인  -->		      	
 					<div class="container-fluid">
 						<form action="/developer/settingNotice" class="d-flex" role="search" method="get">

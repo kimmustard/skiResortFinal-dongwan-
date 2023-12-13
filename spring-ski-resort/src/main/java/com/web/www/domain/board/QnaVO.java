@@ -19,7 +19,7 @@ public class QnaVO {
 	private String qnaCategory; //범주(호텔,스키장,교통,결제 등등)
 	private String qnaTitle; //글제목
 	private String qnaContent; //내용
-	private int qnaCount; //조회수
+	private int qnaQty; //문의글 수
 	private String qnaIsok; //답변 여부
 	private String qnaSecret; //비밀글 여부
 	private String qnaDel; //삭제 여부

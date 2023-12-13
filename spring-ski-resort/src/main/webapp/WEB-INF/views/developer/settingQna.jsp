@@ -41,11 +41,11 @@
 						   <div class="accordion-item">
 						    <h2 class="accordion-header">
     						  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-						        답변 미등록 문의 게시글 목록 (총 N개)
+						        답변 미등록 문의 게시글 목록 (총 <span style="color: red;">${ph.totalCount }</span>개)
 						      </button>
 						    </h2>
-						    <div id="flush-collapseTwo" class="accordion-collapse collapse show" data-bs-parent="#accordionFlushExample">
-			      			  <div class="accordion-body" style="background-color: rgb(208 208 208);">
+						    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+      						  <div class="accordion-body" style="background-color: rgb(208 208 208);">
 						      
 						      	<!-- 검색 라인  -->		      	
 								<div class="container-fluid">
@@ -86,7 +86,7 @@
 								      <td>${qvo.qnaNum }</td>
 								      <td>${qvo.qnaCategory }</td>
 								      <td class="dev-qna-title-td"><div><a href="/qna/detail?qnaNum=${qvo.qnaNum }">${qvo.qnaTitle }</a></div></td>
-								      <td style="color: #0000d5; font-weight: 600;">
+								      <td style="color: #8080ff; font-weight: 600;">
 									      <a href="/developer/settingQnaMember">
 									      ${qvo.qnaWriter }
 									      </a>
@@ -150,14 +150,14 @@
 						
 						<!--전체 문의 게시글 목록 -->
 						  <div class="accordion-item">
-						    <h2 class="accordion-header">
-						      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="true" aria-controls="flush-collapseOne">
-						        문의 게시글 목록 (총 N개)
+    						<h2 class="accordion-header">
+      						  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+						        문의 게시글 목록 (총 <span style="color: red;">${ph.totalCount }</span>개)
 						      </button>
 						    </h2>
-						    <div id="flush-collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionFlushExample">
-			      				<div class="accordion-body" style="background-color: rgb(208 208 208);">
-						      
+						    <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse show">
+      							<div class="accordion-body" style="background-color: rgb(208 208 208);">
+						    
 						      	<!-- 검색 라인  -->		      	
 								<div class="container-fluid">
 									<form action="/developer/settingQna" class="d-flex" role="search" method="get">
@@ -266,6 +266,7 @@
 
 		</div>
 	</div>
+</div>	
 	<script type="text/javascript" src="/resources/js/developer/setting.js"></script>
 </body>
 </html>
