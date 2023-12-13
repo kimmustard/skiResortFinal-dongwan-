@@ -239,7 +239,8 @@
 						<input type="hidden" name="payMerchantUid" id="payMerchantUid">	
 						<input type="hidden" name="payAmount" id="payAmount">	
 						<input type="hidden" name="payName" id="payName">	
-						<input type="hidden" name="payName" id="name-type" value="호텔">	
+						<input type="hidden" id="name-type" value="호텔">	
+						<input type="hidden" id="productPrice">	
 						<input type="hidden" name="couponCode" id="couponCode" >
 						
 						<button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#hotel-pay">결제</button>

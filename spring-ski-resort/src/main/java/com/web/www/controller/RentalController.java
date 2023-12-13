@@ -1,5 +1,7 @@
 package com.web.www.controller;
 
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -13,10 +15,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import com.web.www.domain.FileVO;
 import com.web.www.domain.member.AuthUser;
 import com.web.www.domain.member.MemberVO;
+import com.web.www.domain.pay.PayInfoVO;
 import com.web.www.domain.rental.RentalItemDTO;
 import com.web.www.domain.rental.RentalItemImageRead;
 import com.web.www.domain.rental.RentalItemListDTO;
@@ -48,27 +52,36 @@ public class RentalController {
 	}
 	
 	@GetMapping("/reserve")
-	public String reserveForm(@AuthUser MemberVO mvo) {
+	public String reserveForm(@AuthUser MemberVO mvo , Model m) {
 		log.info("MemberController mvo = {}" , mvo);
+		m.addAttribute("mvo", mvo);
 		return "/rental/reserve";
 	}
 	
 	@PostMapping("/reserve")
-	public String liftReservePost(RentalLiftVO rlivo, @AuthUser MemberVO mvo) {
-		
-		RentalVO rvo = new RentalVO();
+	public String liftReservePost(RentalLiftVO rlivo, @AuthUser MemberVO mvo ,PayInfoVO pivo, RedirectAttributes attributes) {
 		log.info("rlivo>>>>>>>>>>>>>>>>>>>>>"+rlivo);
-		int cheak=0;
+		String paySuccessUrl;
+		//결제 db
+		int isOk =rsv.updateRentalLift(rlivo ,mvo);;
+		String encodedPayName = URLEncoder.encode(pivo.getPayName(), StandardCharsets.UTF_8);
+		UriComponentsBuilder builder = UriComponentsBuilder.fromPath("/pay/PaySuccess")
+				.queryParam("payMerchantUid", pivo.getPayMerchantUid()).queryParam("payName", encodedPayName)
+				.queryParam("payAmount", pivo.getPayAmount());
+
+		paySuccessUrl = "redirect:" + builder.build().toUriString();
+
+		return paySuccessUrl;
+		
 		//결제하고 
-		if(cheak == 1) {
-		rvo.setRentalLiftNum(rlivo.getRentalLiftNum());
-		rvo.setMemberEmail(mvo.getMemberEmail());
-		rvo.setMemberType(mvo.getMemberType());
-		int isOk = rsv.liftReserve(rlivo);
-		isOk = rsv.rental(rvo);
-		log.info((isOk > 0)? "ok":"fail");
-		}
-		return "index";
+//		if(isOk == 1) {
+//		rvo.setRentalLiftNum(rlivo.getRentalLiftNum());
+//		rvo.setMemberEmail(mvo.getMemberEmail());
+//		rvo.setMemberType(mvo.getMemberType());
+//		isOk *= rsv.liftReserve(rlivo);
+//		isOk = rsv.rental(rvo);
+//		log.info((isOk > 0)? "ok":"fail");
+//		}
 	}
 	
 	

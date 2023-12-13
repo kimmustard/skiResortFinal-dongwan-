@@ -252,6 +252,7 @@ function roomSelectEvent(num) {
     //요금표시
     realAmount = roomprice;
     console.log(realAmount);
+    document.getElementById('productPrice').value=roomprice;
     document.getElementById('pay1').value = roomprice.toLocaleString() + "원";
     document.getElementById('realpayvalue').value = roomprice;
     document.getElementById('userViewpay').innerText = roomprice.toLocaleString() + "원";

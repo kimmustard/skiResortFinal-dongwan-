@@ -93,7 +93,8 @@ $(function () {
     document.getElementById("showkidFee").value =kidFee.toLocaleString()+"원"
     let totalfee = adultFee+kidFee;
     realAmount =totalfee;
-    document.getElementById("totalFee").value = totalfee;
+    document.getElementById("realpayvalue").value = totalfee;
+    document.getElementById("productPrice").value = totalfee;
     document.getElementById('userViewpay').innerText = totalfee.toLocaleString() + "원";
     console.log(itemName);
     document.getElementById('item-name').innerText = itemName;

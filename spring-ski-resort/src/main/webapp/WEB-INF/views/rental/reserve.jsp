@@ -197,16 +197,18 @@
 					</div>
 					<!-- db로 보낼 hiddem input  -->
 					
-						<input type="hidden" class="form-control" name="rentalLiftAdultFee" id="adultFee" value="0" readonly="readonly">
-						<input type="hidden" class="form-control" name="rentalLiftKidFee" id="kidFee" value="0" readonly="readonly">
-						<input type="hidden" name="rentalLiftTotalFee" id="totalFee">
-						<input type="hidden" class="form-control" name="memberNum" placeholder="회원번호" value="${mvo.memberNum }">	
-						<input type="hidden" class="form-control" name="payImpUid" id="payImpUid">	
-						<input type="hidden" class="form-control" name="payMerchantUid" id="payMerchantUid">	
-						<input type="hidden" class="form-control" name="payAmount" id="payAmount">	
-						<input type="hidden" class="form-control" name="payName" id="payName">	
-						<input type="hidden" name="payName" id="name-type" value="리프트">	
+						<input type="hidden" name="rentalLiftAdultFee" id="adultFee" value="0" readonly="readonly">
+						<input type="hidden" name="rentalLiftKidFee" id="kidFee" value="0" readonly="readonly">
+						<input type="hidden" name="rentalLiftTotalFee" id="realpayvalue">
+						<input type="hidden" name="memberNum" placeholder="회원번호" value="${mvo.memberNum }">	
+						<input type="hidden" name="payImpUid" id="payImpUid">	
+						<input type="hidden" name="payMerchantUid" id="payMerchantUid">	
+						<input type="hidden" name="payAmount" id="payAmount">
+						<input type="hidden" name="payName" id="payName">		
+						<input type="hidden"  id="name-type" value="리프트">	
+						<input type="hidden" id="productPrice">	
 						<input type="hidden" name="couponCode" id="couponCode" >
+
 					<a href="/rental/reserve"><button type="button" class="btn btn-outline-primary">이전으로</button></a>
 						<button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#hotel-pay">결제</button>
 				</div>

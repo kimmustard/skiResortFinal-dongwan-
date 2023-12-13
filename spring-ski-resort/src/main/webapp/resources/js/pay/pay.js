@@ -30,7 +30,7 @@ function paymentGateway(pgName) {
     let coupon = document.getElementById('couponCode').value;
 
     IMP.init("imp70464277");
-    
+    console.log("결제햐라12");
     IMP.request_pay({
         pg: pgName,
         pay_method: 'card', //card(신용카드), trans(실시간계좌이체), vbank(가상계좌), phone(휴대폰소액결제)
@@ -41,13 +41,13 @@ function paymentGateway(pgName) {
         buyer_name: memberName,
         buyer_tel: memberPhoneNum,
         buyer_addr: memberAddress,
-
     }, function (rsp) {
-        console.log(rsp);
+       
+
 
 
         if (rsp.success) {
-            console.log("결제된거임?");
+           
             // 서버로 데이터를 전송
             fetch("/pay/portOne", {
                 method: "POST",
@@ -65,8 +65,6 @@ function paymentGateway(pgName) {
                     memberEmail: rsp.buyer_email,
                     memberPhoneNum: rsp.buyer_tel,
                     memberAddress: rsp.buyer_addr,
-
-                    //부가정보
                     uniqueNumber: UniqueNumber,
                     payNameType: nameType,
                     couponCode: coupon,
@@ -75,16 +73,14 @@ function paymentGateway(pgName) {
             })
                 .then((response) => response.text())
                 .then((data) => {
-
                     // 서버에서의 추가 처리
                     if (data == "결제완료") {
                         document.getElementById('payName').value = rsp.name;
                         document.getElementById('payAmount').value = rsp.paid_amount;
                         document.getElementById('payMerchantUid').value = rsp.merchant_uid;
                         document.getElementById('payImpUid').value = rsp.imp_uid;
-                        if (document.getElementById("payform")) {
+                        if(document.getElementById("payform")){
                             document.getElementById("payform").submit();
-
                         }
 
 
