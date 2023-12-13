@@ -5,20 +5,31 @@
 }
 
 .reserveContainer{
-	height: 1000px;
-	background-color: gray;
+	height: 700px;
 }
 
 .reserveBox{
 	width: 800px;
 	padding: 5px;
-	background-color: white;
 	position: relative;
-	height: 300px;
+	height: 470px;
 	border-radius: 10px;
 	left: 50%;
 	transform: translateX(-50%);
-	background-color:rgba(255,255, 255, 0.9);
+	background-color:rgba(224,224, 224, 0.9);
 	top: 20%;
 	position: absolute;
+	display: flex;
+	justify-content: center;
+}
+
+.reserveBox div{
+	width: 500px;
+	margin-top: 10px;
+	
+}
+
+.reserveBox div.people, .reserveBox div.fee{
+	display: flex;
+	justify-content: center;
 }
