@@ -29,7 +29,7 @@ public interface NoticeDAO {
 
 	List<NoticeVO> getTwoNotice();
 
-	List<NoticeVO> selectPointList();
+	List<NoticeVO> selectPointList(PagingVO pgvo);
 
 	int selectEventCnt();
 

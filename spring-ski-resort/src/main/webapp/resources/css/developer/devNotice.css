@@ -1,0 +1,86 @@
+@charset "UTF-8";
+
+.dev-container{
+	
+}
+.dev-notice-regbtn-container{
+	height: 55px;
+	background-color: #a5b4cc;
+	border-bottom: solid 1px #e5e5e5;
+	text-decoration: underline;
+	position: relative;
+}
+.dev-notice-regbtn-container2{
+	position: absolute;
+  	top: 50%;
+  	left: 50%;
+  	transform: translate(-50%, -50%);
+}
+.dev-notice-container{
+	width: 98%;
+	border: solid 1px black;
+	margin: 0 auto;
+}
+
+
+/*게시글 목록 테이블 라인*/
+.dev-notice-tr>th{
+	text-align: center;
+}
+.dev-notice-no{
+	width: 80px;
+}
+.dev-notice-category{
+	width: 150px;
+}
+.dev-notice-title{
+	width: auto;
+}
+.dev-notice-writer{
+	width: 120px;
+}
+.dev-notice-reg{
+	width: 150px;
+}
+.dev-notice-modify{
+	width: 200px;
+}
+.dev-notice-point-modify{
+	width: 300px;
+}
+
+.dev-notice-tr>td{
+	text-align: center;
+}
+.dev-notice-title-td>div{
+	text-align: left;
+}
+.dev-notice-title-td>div>a{
+	text-decoration-line: none;
+	color: inherit;
+}
+
+.dev-notice-tr>td>a{
+	text-decoration-line: none;
+	color: inherit;
+}
+
+.dev-notice-point-isok{
+	display: inline-table;
+	margin: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

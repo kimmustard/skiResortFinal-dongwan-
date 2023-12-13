@@ -101,7 +101,7 @@
 					</th>
 					<td class="qna-table-td">
 						<div class="mb-3 qna-table-td-content">
-						  <textarea class="form-control" name="qnaContent" rows="3" placeholder="내용은 1000자 이내로 작성해 주십시오." maxlength="1000"></textarea>
+						  <textarea id="textarea-board" class="form-control" name="qnaContent" rows="3" placeholder="내용은 1000자 이내로 작성해 주십시오." maxlength="1000"></textarea>
 						</div>
 					</td>
 				</tr>
@@ -152,6 +152,7 @@
 
 
 <script type="text/javascript" src="/resources/js/qna/qnaFileUpload.js"></script>
+
 <script type="text/javascript">
 		const isOk = `<c:out value="${isOk}"></c:out>`
 		if(isOk=="2"){
