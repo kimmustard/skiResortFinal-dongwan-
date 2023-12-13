@@ -178,11 +178,14 @@
 						<a href="/qna/ans-register?qnaNum=${qvo.qnaNum }">
 							<button type="submit" class="qna-btn myqna-btn" id="regBtn">답변등록</button>
 						</a>
-				</c:if>		
+				</c:if>
 			</c:if>	
 			<a href="/qna/list">
 				<button type="button" class="qna-btn myqna-btn">취소</button>
 			</a>
+			<a href="/developer/settingQna">
+				<button type="button" class="qna-btn my-admin-btn">관리자페이지</button>
+			</a>		
 		</div>
 	</form>
 	

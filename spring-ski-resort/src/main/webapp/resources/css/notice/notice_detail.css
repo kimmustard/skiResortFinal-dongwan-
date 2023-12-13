@@ -15,9 +15,6 @@ a{
 .notice-container{
 	padding-top: 200px;
 }
-.notice-header-two{
-	margin-top: 200px;
-}
 
 
 
@@ -233,8 +230,12 @@ a{
 	color: #8d8d8d;
 	text-align:left;
 	padding: 30px 20px;
-	height: 10em;
 	line-height:1.5em;
+}
+.notice-table-content-child>pre{
+	white-space:pre-wrap;
+	overflow: auto;
+	font-family: arial;
 }
 .notice-table-content-img-container{
 	width:100%;

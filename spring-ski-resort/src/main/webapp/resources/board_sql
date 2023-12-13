@@ -1,9 +1,12 @@
+## 삭제 구문
+drop table notice;
+drop table qna;
+drop table qna_ans;
+drop table file;
 
 
 
 ## notice table 생성
-drop table notice;
-
 create table notice(
 notice_num bigint not null auto_increment,
 member_num bigint,
@@ -50,7 +53,7 @@ qna_writer varchar(50) not null,
 qna_category varchar(50) not null,
 qna_title varchar(100) not null,
 qna_content text,
-qna_count int default 0,
+qna_qty int default 0,
 qna_isok varchar(1) default 'N',
 qna_secret varchar(1) default 'N',
 qna_del varchar(1) default 'N',
