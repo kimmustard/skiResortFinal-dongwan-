@@ -1,12 +1,9 @@
-// //총 계산 금액 나타내는 이벤트
-// function showTotalView(){
-//     let totalfee =  document.getElementById("totalFee");
-//     let adultfee =   parseInt(document.getElementById("adultFee").value);
-//     let kidfee =   parseInt(document.getElementById("kidFee").value);
-//     totalfee.value =adultfee+kidfee;
-//     console.log(totalfee);
-// }
 
+
+document.getElementById("people").addEventListener('click', ()=>{
+
+    document.getElementById('peopleList').style.display="block";
+})
 
 document.getElementById("nextBtn").addEventListener('click', () => {
     let rentalLiftStart = document.getElementById('rentalLiftStart').value;
@@ -22,52 +19,56 @@ document.getElementById("nextBtn").addEventListener('click', () => {
     }
 })
 
-document.addEventListener('DOMContentLoaded', function () {
-    // DateRangePicker 초기화
+$(function () {
     let dateRangePicker = document.getElementById('dateRangePicker');
 
     if (dateRangePicker) {
-        // DateRangePicker 이벤트 처리
-        dateRangePicker.addEventListener('click', function () {
+        let options = {
+            singleDatePicker: true,
+            showDropdowns: false,
+            locale: {
+                format: 'YYYY-MM-DD',
+                applyLabel: '적용',
+                cancelLabel: '취소',
+            },
+            minDate: moment(),
+            startDate: moment(),
+            autoUpdateInput: false,
+        };
 
-            // DateRangePicker를 호출하여 달력 표시
-            let options = {
-                singleDatePicker: true, // 하나의 날짜만 선택
-                showDropdowns: false, // 년도 및 월 선택 활성화
-                locale: {
-                    format: 'YYYY-MM-DD', // 날짜 형식 설정
-                    applyLabel: '적용',
-                    cancelLabel: '취소',
-                },
-                minDate: moment(),
-            };
+        // 한국어 locale 설정
+        moment.locale('ko');
 
-            // 달력 표시
-            $(this).daterangepicker(options, function (start) {
-                // 선택한 날짜로 "rentalReserveStart" 입력 필드 업데이트
-                document.getElementById('rentalLiftStart').value = start.format('YYYY-MM-DD');
-            });
+        // DateRangePicker를 호출하여 달력 표시
+        $(dateRangePicker).daterangepicker(options, function (start) {
+            let selectedDate = start.format('YYYY-MM-DD');
+            let selectedDayOfWeek = moment(selectedDate).format('dddd');
 
-            $(this).data('daterangepicker').show();
+            // 선택한 날짜로 "rentalLiftStart" 입력 필드 업데이트
+            document.getElementById('rentalLiftStart').value = selectedDate;
+
+            // 동적으로 요일을 표시
+            document.getElementById('dateRangePicker').value = `${selectedDate} (${selectedDayOfWeek})`;
+        });
+
+        // '적용' 버튼을 눌렀을 때 발생하는 이벤트
+        $(dateRangePicker).on('apply.daterangepicker', function (ev, picker) {
+            let selectedDate = picker.startDate.format('YYYY-MM-DD');
+            let selectedDayOfWeek = moment(selectedDate).format('dddd');
+
+            // 선택한 날짜로 "rentalLiftStart" 입력 필드 업데이트
+            document.getElementById('rentalLiftStart').value = selectedDate;
+
+            // 동적으로 요일을 표시
+            let displayValue = `${selectedDate} (${selectedDayOfWeek})`;
+            console.log(displayValue);  // 디버깅용: 출력된 값 확인
+            document.getElementById('dateRangePicker').value = displayValue;
+
+            // 여기에 '적용' 버튼을 클릭했을 때의 추가 동작을 넣으세요.
+          
         });
     }
-
-    let peopleInput = document.getElementById('people');
-    let peopleDiv = document.getElementById('peopleList');
-
-    if (peopleInput && peopleDiv) {
-        peopleInput.addEventListener('click', function () {
-            // 숨겨진 div의 표시 여부
-            if (peopleDiv.style.display === 'none') {
-                peopleDiv.style.display = 'block';
-            } else {
-                peopleDiv.style.display = 'none';
-            }
-        });
-    }
-
 });
-
 // function updatePeopleCount(inputElement, increment) {
 //     let currentCount = parseInt(inputElement.value, 10);
 //     let newCount = currentCount + increment;
@@ -80,21 +81,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   //요금 업데이트
-  function updateFees(audult,kid) {
-    let rentalLiftAdultFeeInput = document.getElementById("adultFee");
-    let showrentalLiftAdultFeeInput = document.getElementById("showadultFee");
-    let rentalLiftKidFeeInput = document.getElementById("kidFee");
-    let showrentalLiftKidFeeInput = document.getElementById("showkidFee");
-    let adultFee =0;
-    let kidFee =0;
+  function updateFees(audult,kid,itemName) {
+      let adultFee =0;
+      let kidFee =0;
+       
     adultFee = audult*parseInt(rentalLiftAdult.value);
     kidFee = kid*parseInt(rentalLiftKid.value);
-    rentalLiftAdultFeeInput.value =adultFee;
-    rentalLiftKidFeeInput.value =kidFee;
-    showrentalLiftAdultFeeInput.value =adultFee.toLocaleString()+"원";
-    showrentalLiftKidFeeInput.value =kidFee.toLocaleString()+"원";
-    // showTotalView();
-
+    document.getElementById("adultFee").value =adultFee;
+    document.getElementById("kidFee").value =kidFee;
+    document.getElementById("showadultFee").value =adultFee.toLocaleString()+"원";
+    document.getElementById("showkidFee").value =kidFee.toLocaleString()+"원"
+    let totalfee = adultFee+kidFee;
+    realAmount =totalfee;
+    document.getElementById("totalFee").value = totalfee;
+    document.getElementById('userViewpay').innerText = totalfee.toLocaleString() + "원";
+    console.log(itemName);
+    document.getElementById('item-name').innerText = itemName;
     // rentalLiftAdultFeeInput.value.toLocaleString();
     // rentalLiftKidFeeInput.value.toLocaleString();
     // 오전권
@@ -217,7 +219,7 @@ document.getElementById("child-Btn").addEventListener('click', () => {
 
 //인원수 세주는거
 function AllPeopleCount() {
-    $('#people').attr('placeholder', `성인 : ${document.getElementById('adult-Count').innerText}명 · 아동 ${document.getElementById('child-Count').innerText}명 `);
+    $('#people').attr('placeholder', `성인 ${document.getElementById('adult-Count').innerText}명 · 아동 ${document.getElementById('child-Count').innerText}명 `);
     document.getElementById('rentalLiftAdult').value = document.getElementById('adult-Count').innerText;
     document.getElementById('rentalLiftKid').value = document.getElementById('child-Count').innerText;
 

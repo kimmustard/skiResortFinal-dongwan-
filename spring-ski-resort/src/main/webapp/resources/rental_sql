@@ -11,7 +11,11 @@ rental_lift_total_fee int,
 rental_lift_adult int,
 rental_lift_kid int,
 rental_lift_start date,
+pay_merchant_uid varchar(50),
+member_num int,
 primary key(rental_lift_num));
+
+
 
 --렌탈 테이블 11/27
 create table rental(

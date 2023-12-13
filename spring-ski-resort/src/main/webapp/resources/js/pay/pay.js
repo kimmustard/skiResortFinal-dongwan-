@@ -18,20 +18,19 @@
 
 function paymentGateway(pgName) {
     //임시로 방이름만 가져옴. 나중에 방이름/렌탈장비/리프트권이름 유연하게 가져와야함.
-    let payName;
-    let nameType;
-    if (document.getElementById('room-name')) {
-        payName = document.getElementById('room-name').innerText;
-        nameType = '호텔';
-    } else {
+    let payName = document.getElementById('item-name').innerText;//상품명
+    let nameType = document.getElementById('name-type').value;  //결제하는곳
+    let UniqueNumber; //호텔 룸 넘버
+    if ( nameType == '호텔') {
+        UniqueNumber = document.getElementById('room-payinfo-num').value;
+    } else if(nameType=="리프트"){
 
-    }
+    }else;
 
-    let roomNum = document.getElementById('room-payinfo-num').value;
     let coupon = document.getElementById('couponCode').value;
 
     IMP.init("imp70464277");
-
+    
     IMP.request_pay({
         pg: pgName,
         pay_method: 'card', //card(신용카드), trans(실시간계좌이체), vbank(가상계좌), phone(휴대폰소액결제)
@@ -68,7 +67,7 @@ function paymentGateway(pgName) {
                     memberAddress: rsp.buyer_addr,
 
                     //부가정보
-                    hotelRoomNum: roomNum,
+                    uniqueNumber: UniqueNumber,
                     payNameType: nameType,
                     couponCode: coupon,
 

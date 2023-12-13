@@ -174,7 +174,7 @@ document.getElementById("child-Btn").addEventListener('click', () => {
 
 //인원수 세주는거
 function AllPeopleCount() {
-    $('#people').attr('placeholder', `성인 : ${document.getElementById('audlt-Count').innerText}명 · 아동 ${document.getElementById('child-Count').innerText}명 `);
+    $('#people').attr('placeholder', `성인 ${document.getElementById('audlt-Count').innerText}명 · 아동 ${document.getElementById('child-Count').innerText}명 `);
     document.getElementById('hotelReservePeople').value = document.getElementById('audlt-Count').innerText;
     document.getElementById('hotelReserveChild').value = document.getElementById('child-Count').innerText;
 

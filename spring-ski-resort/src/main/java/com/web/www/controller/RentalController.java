@@ -54,9 +54,10 @@ public class RentalController {
 	}
 	
 	@PostMapping("/reserve")
-	public String liftReservePost(@ModelAttribute("rlivo") RentalLiftVO rlivo, @AuthUser MemberVO mvo) {
+	public String liftReservePost(RentalLiftVO rlivo, @AuthUser MemberVO mvo) {
+		
 		RentalVO rvo = new RentalVO();
-		log.info("");
+		log.info("rlivo>>>>>>>>>>>>>>>>>>>>>"+rlivo);
 		int cheak=0;
 		//결제하고 
 		if(cheak == 1) {

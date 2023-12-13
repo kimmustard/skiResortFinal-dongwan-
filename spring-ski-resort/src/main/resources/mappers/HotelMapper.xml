@@ -44,7 +44,7 @@
 	    GROUP BY room_info.hotel_room_num ), 0)
 	</update>
 	<select id="getRoomCount" resultType="int">
-		select hotel_room_count from room where hotel_room_num = #{hotelRoomNum};
+		select hotel_room_count from room where hotel_room_num = #{uniqueNumber};
 	</select>
 	
   </mapper>

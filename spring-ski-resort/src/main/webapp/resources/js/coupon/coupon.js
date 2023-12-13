@@ -42,8 +42,6 @@ document.getElementById('my_coupon_list').addEventListener('click', () => {
     } else {
         couponList.style.display = 'none';
     }
-
-
     //쿠폰 목록창 띄우는 코드 
     //리스트 가져오기
     myCouponListGet().then(result => {
@@ -140,7 +138,6 @@ document.getElementById('my_coupon_list').addEventListener('click', () => {
                         couponBox.style.border = '';
                         // 라디오 버튼이 체크가 해제되면 원래 가격으로 설정
                         resetPrice(); //실제값 원래대로 돌림
-                        console.log(realAmount);
                     } else {
                         // 체크된 라디오 박스가 있다면, 모든 라디오 박스의 스타일을 원래대로 되돌린 후, 선택된 라디오 박스에 대해서만 스타일을 변경
                         const radioButtons = document.querySelectorAll('[name="coupon"]');
@@ -157,17 +154,11 @@ document.getElementById('my_coupon_list').addEventListener('click', () => {
                         // 클릭된 라디오 버튼의 값을 couponCode에 설정
                         document.getElementById('couponCode').value = result[index].couponCode;
                     }
-                }
-                
+                }       
             });
-
-
-
         } else {
-
             alert("사용가능한 쿠폰이 없습니다.")
         }
-
     })
 })
 
@@ -185,14 +176,9 @@ async function myCouponListGet() {
     }
 }
 
-
-
-
 function usecoupon(couponInt, couponrate) {
     //할인율 계산 (원금-coupon_int)-(원금*coupon_rate/100)-(원금*등급할인율/100)
     let totalprice = (roomprice - couponInt) - (roomprice * couponrate / 100);
-    console.log("totalprice", totalprice);
-
     document.getElementById('realpayvalue').value = totalprice;
     document.getElementById('userViewpay').innerText = totalprice.toLocaleString() + "원";
     realAmount = totalprice;
