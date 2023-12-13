@@ -132,11 +132,12 @@ public class RentalServiceImpl implements RentalService{
 	}
 
 	@Override
-<<<<<<< HEAD
+
 	public int itemReserve(RentalReserveVO rrvo) {
 		
 		return rdao.itemReserve(rrvo);
-=======
+	}
+	
 	public int updateRentalLift(RentalLiftVO rlivo ,MemberVO mvo) {
 		// TODO Auto-generated method stub
 		int isOk = rdao.updateRentalLift(rlivo);
@@ -145,7 +146,7 @@ public class RentalServiceImpl implements RentalService{
 			isOk *=  rdao.rental(rlivo.getRentalLiftNum(), mvo);;
 			log.info("체크체크체크체크체크체크체크체크체크체크3333333");
 		return isOk;
->>>>>>> 174b5a56855a1f3daac27df70f971874fdb3c57b
+
 	}
 
 

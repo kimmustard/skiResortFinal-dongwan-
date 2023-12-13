@@ -45,13 +45,13 @@ public interface RentalDAO {
 
 	int rentalItemImageCntCheck();
 
-<<<<<<< HEAD
+
 	int itemReserve(RentalReserveVO rrvo);
-=======
+
 	int updateRentalLift(RentalLiftVO rlivo);
 
 	int rental(@Param("rentalLiftNum") String rentalLiftNum,@Param("mvo") MemberVO mvo);
->>>>>>> 174b5a56855a1f3daac27df70f971874fdb3c57b
+
 
 
 
