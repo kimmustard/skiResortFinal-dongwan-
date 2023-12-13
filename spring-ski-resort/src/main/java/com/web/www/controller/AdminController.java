@@ -2,10 +2,15 @@ package com.web.www.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -189,6 +194,8 @@ public class AdminController {
 	/*************************************
 	 * @Developer 관리자 페이지 "게시판 관리"
 	 *************************************/
+	
+	//notice 코드 라인//
 	@GetMapping("/settingNotice")
 	public void noticeList(Model m, PagingVO pgvo) {
 		m.addAttribute("list", nsv.noticeList(pgvo));
@@ -208,13 +215,28 @@ public class AdminController {
 	
 
 	
-	
-	
+	//Q&A 코드 라인//
 	@GetMapping("/settingQna")
-	public void QnaList(Model m, PagingVO pgvo) {
+	public void QnaList(HttpSession ses, Model m, PagingVO pgvo) {
 		m.addAttribute("list", qsv.qnaList(pgvo));
-
+		int totalCount = qsv.getTotalCount(pgvo);
+		PagingHandler ph = new PagingHandler(pgvo, totalCount);
+		m.addAttribute("ph",ph);
 	}
+	
+	@GetMapping("/qnaRemove")
+	public String qnaRemove(@RequestParam("qnaNum")long qnaNum, RedirectAttributes re) {
+		int isOk = qsv.qnaRemove(qnaNum);
+		log.info(">>>>> qna remove >> "+(isOk > 0? "OK" : "Fail"));
+		re.addFlashAttribute("isOk", isOk);
+		return "redirect:/developer/settingQna";
+	}
+	
+	@GetMapping("/settingQnaMember")
+	public String qnaMember() {
+		return "/developer/settingQnaMember";
+	}
+	
 	
 	
 	

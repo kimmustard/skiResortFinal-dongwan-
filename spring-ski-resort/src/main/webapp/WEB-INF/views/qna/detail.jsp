@@ -185,6 +185,9 @@
 							<button type="button" class="qna-btn myqna-btn">답변수정</button>
 						</a>
 				</c:if>
+				<a href="/developer/settingQna">
+					<button type="button" class="qna-btn my-admin-btn">관리자페이지</button>
+				</a>
 			</c:if>	
 		</div>
 	

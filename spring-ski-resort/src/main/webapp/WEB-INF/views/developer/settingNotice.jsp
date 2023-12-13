@@ -90,7 +90,7 @@
 					      <td class="dev-notice-title-td"><div><a href="/notice/detail?noticeNum=${pvo.noticeNum }">${pvo.noticeTitle }</a></div></td>
 					      <td>${pvo.noticeWriter }</td>
 					      <td>${fn:replace((fn:substring(pvo.noticeRegAt,0,10)),'-','.') }</td>
-					      <td>
+					      <td style="text-align: left; background-color: black;">
 					      	<a href="/notice/modify?noticeNum=${pvo.noticeNum }">
 								<button type="button" class="btn btn-warning">수정</button>
 							</a>
