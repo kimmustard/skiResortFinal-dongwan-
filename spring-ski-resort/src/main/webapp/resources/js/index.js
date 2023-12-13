@@ -6,7 +6,6 @@ function makeSlides() {
   Eventslides = "";
   for (let i = 1; i <= 5; i++) {
     Eventslides += `<li class="event-li"><div class="event-item-box" id="event-item-box${i}"> <div class="event-image-box"  id="event-image-box${i}"></div><div class="event-content-box" id="event-content-box${i}">이벤트 1</div><p id="event-content${i}"></div></li>`;
-    console.log(Eventslides);
   }
 
 
