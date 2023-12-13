@@ -46,7 +46,7 @@
 		
 			<div class="skiItemList" id="skiItemList">
 				<div class="itemInfo">
-					<div class="itemImageBox" id="lowItemImageBox">
+					<div class="itemImageBox" id="lowItemImageBox" >
 						<c:forEach items="${skiLowItem }" var="lowItem">
 							<div class="slide">
 								<!-- 이미지파일 -->

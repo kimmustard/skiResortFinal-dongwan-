@@ -127,6 +127,7 @@ public class RentalServiceImpl implements RentalService{
 		return rdao.rentalItemImageCntCheck();
 	}
 
+
 	
 
 
