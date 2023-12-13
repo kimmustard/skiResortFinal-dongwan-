@@ -51,5 +51,7 @@
   	update member set member_alarm_system = #{memberAlarmSystem} where member_id = #{memberId}
   </update>
   
+  <select id="getMemberAlarmCheck"></select>
+  
   </mapper>
 

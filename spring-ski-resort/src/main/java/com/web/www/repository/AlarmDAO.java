@@ -30,4 +30,6 @@ public interface AlarmDAO {
 
 	int masCheck(MemberCheckDTO mcDto);
 
+	String getMemberAlarmCheck(long memberNum);
+
 }

@@ -58,7 +58,7 @@ public class AlarmController {
 	//nav에 표현되는 간이 리스트입니다 (최신 10개만 표시)
 	@GetMapping(value = "/alarmList", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<AlarmDTO>> alarmListTen(@AuthUser MemberVO mvo) {
-		if(mvo == null) {
+		if(mvo == null || mvo.getMemberAlarmSystem().equals("N")) {
 			return null;
 		}
 		
@@ -71,7 +71,6 @@ public class AlarmController {
 	@PostMapping(value = "/alarmReadCheck", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<String> alarmReadCheck(@RequestBody AlarmReadDTO arDTO){
 		int isOk = asv.alarmReadCheck(arDTO);
-		log.info("들어왔나요?????### = {}", arDTO);
 		
 		return isOk > 0 ? new ResponseEntity<String> ("1",HttpStatus.OK) :
 			new ResponseEntity<String> ("0",HttpStatus.NOT_FOUND) ;
@@ -82,7 +81,6 @@ public class AlarmController {
 	public String memberAlarmListForm(@AuthUser MemberVO mvo, Model model) {
 		List<AlarmDTO> alarmList = asv.getMemberAlarmList(mvo.getMemberNum());
 		
-		log.info("알람 리스트 확인##### = {}" , alarmList);
 		model.addAttribute("mvo", mvo);
 		model.addAttribute("alarmList", alarmList);
 		return "/member/memberAlarmList";

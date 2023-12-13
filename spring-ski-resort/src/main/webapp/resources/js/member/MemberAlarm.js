@@ -48,9 +48,9 @@ document.getElementById('alarmSwitchCheckDefault').addEventListener('click', () 
     let id = document.getElementById('alarmSwitchCheckDefault').value;
     let check = '';
     if (document.getElementById('alarmSwitchCheckDefault').checked == true) {
-        check = 'N';
-    } else {
         check = 'Y';
+    } else {
+        check = 'N';
     }
 
     let checkData = {
