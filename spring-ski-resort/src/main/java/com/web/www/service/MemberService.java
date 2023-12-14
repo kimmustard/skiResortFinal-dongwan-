@@ -80,6 +80,8 @@ public interface MemberService {
 
 	int masCheck(MemberCheckDTO mcDto);
 
+	String getMemberMasCheck(long memberNum);
+
 
 
 

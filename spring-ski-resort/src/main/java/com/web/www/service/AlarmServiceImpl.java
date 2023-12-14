@@ -18,9 +18,8 @@ import lombok.RequiredArgsConstructor;
 public class AlarmServiceImpl implements AlarmService{
 
 
-	private final AlarmDAO adao;
-	private final MemberDAO mdao;
-
+	private final AlarmDAO adao; 
+	
 	@Override
 	public int selectAlarmCnt() {
 		return adao.selectAlarmCnt();
@@ -34,7 +33,6 @@ public class AlarmServiceImpl implements AlarmService{
 	@Transactional
 	@Override
 	public List<AlarmDTO> getAlarmListTen(long memberNum) {
-		String alarmCheck = adao.getMemberAlarmCheck(memberNum);
 		return adao.getAlarmListTen(memberNum);
 	}
 

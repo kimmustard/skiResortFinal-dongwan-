@@ -199,11 +199,19 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	
-	//멤버 알람 시스템 온오프 비동기작업
+	//멤버 알람 시스템 온오프 비동기작업 (DB에 Y / N 부여작업)
 	@Override
 	public int masCheck(MemberCheckDTO mcDto) {
 		
 		return adao.masCheck(mcDto);
+	}
+
+	
+	/*멤버 알람체크 on /off 가져오기 **/
+	@Override
+	public String getMemberMasCheck(long memberNum) {
+		
+		return mdao.getMemberMasCheck(memberNum);
 	}
 
 
