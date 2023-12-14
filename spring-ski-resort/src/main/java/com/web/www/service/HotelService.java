@@ -22,4 +22,6 @@ public interface HotelService {
 
 	int cheakRoomCount(int hotelRoomNum);
 
+	RoomVO getRoomDetail(int roomNum);
+
 }

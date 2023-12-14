@@ -228,7 +228,7 @@ function roomSelectEvent(num) {
     roomprice = document.getElementById('room' + num).value;
     let roomname = document.getElementById('room' + num).innerText;
     let imageurl = document.getElementById('image-src' + num).innerText;
-    let roomexplain = document.getElementById('explian-src' + num).innerText;
+ 
 
     //방 갯수 확인을 위한 value값
     document.getElementById('room-payinfo-num').value = num;
@@ -245,8 +245,8 @@ function roomSelectEvent(num) {
     //이미지 아래 사진넣기
     document.getElementById('room-name').innerText = roomname;
 
-    //이미지 설정하기
-    document.getElementById('room-explain').innerText = roomexplain;
+    //상세보기 넣기
+    document.getElementById('room-explain').innerHTML =  "<a  target='_blank' style='text-decoration: none; color: black;'  href='/hotel/roomDetail?roomNum="+num+"'> 방 상세보기</a>";
 
 
     //요금표시
@@ -266,11 +266,11 @@ function roomSelectEvent(num) {
     // }
 
 }
-//document.getElementById('submitBtn').addEventListener('click',()=>{
-//    if(pay1.value==""){
-//        alert("방을 선택해주세요");
-//    }
-//    else{
-//        document.getElementById('form').submit();
-//    }
-//})
+document.getElementById('submitBtn').addEventListener('click',()=>{
+    if(pay1.value==""){
+        alert("방을 선택해주세요");
+    }else{
+    	document.getElementById('modal-btn').click();
+    }
+ 
+})

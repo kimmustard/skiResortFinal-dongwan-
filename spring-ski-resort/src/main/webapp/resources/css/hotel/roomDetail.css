@@ -1,0 +1,163 @@
+@charset "UTF-8";
+
+element.style {
+    line-height: 1.2;
+    font-family: 굴림;
+    font-size: 12pt;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+#room_detail{
+	margin-top: 96px;
+	text-align: center;
+}
+.room_cate{
+	padding: 5px;
+	font-size: 14px;
+	font-weight: 500;
+}
+.room_title{
+	padding: 5px;
+	font-weight: 700;
+}
+li {
+  list-style: none;
+}
+.slide_wrapper {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  height: 670px;
+  max-height: none;
+  overflow: hidden;
+}
+.slides {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.slides.animated {
+  transition: 0.5s ease-out;
+}
+.slides li {
+  margin-top: 10px;
+  float: left;
+  width: 1290px;
+  height: 670px;
+  transform: translateX(305px);
+}
+.slides li:not(:last-child) {
+  margin-right: 30px;
+}
+
+.controls{
+    position: absolute;
+    overflow: hidden;
+    width: 110px;
+    height: 110px;
+    background-color: #292531;
+    transition: all .5s ease;
+    font-size: 3px;
+    color: transparent;
+    text-indent: 100%;
+}
+.controls:hover{
+	background-color: white;
+	color: black;
+}
+.detail_br_text {
+    border-bottom: 1px solid #d9d9d9;
+    color: #9e897d;
+    font-size: 13px;
+    width: 100%;
+    text-align: right;
+    padding: 15px 0;
+}
+#room_detail_img{
+	position: relative;
+}
+.left-control{
+	top: 50%;
+	transform: translateY(-50%);
+}
+.right-control{
+		top: 50%;
+	transform: translateY(-50%);
+	right: 0;
+}
+#room_detail #room_info_2 {
+    padding: 100px 0;
+    width: 100%;
+    display: table;
+}
+#room_detail #room_info_2 .left_text {
+    width: 520px;
+    display: table-cell;
+    font-size: 30px;
+    text-align: right;
+    padding: 0 110px 0 50px;
+    line-height: 1.35em;
+    box-sizing: border-box;
+    color: #000000;
+    font-family: Wonchuri,'Ubuntu';
+    font-weight: bold;
+    word-break: keep-all;
+    vertical-align: top;
+}
+.right_text{
+	text-wrap:balance;
+}
+.wrap {
+    position: relative;
+    width: 1400px;
+    margin: 0 auto;
+    padding: 0 55px;
+    box-sizing: border-box;
+}
+colgroup {
+    display: table-column-group;
+}
+.box1 .box1_wrap {
+    position: relative;
+    width: 100%;
+    display: inline-block;
+    vertical-align: top;
+    background: #fff;
+    box-sizing: border-box;
+    padding: 30px 45px;
+}
+#room_info_4 {
+    width: 100%;
+    padding: 65px 0;
+    margin: 60px 0 50px;
+    background-size: cover;
+}
+#room_detail #room_info_4 .wh_box {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 55px;
+}
+#room_detail #room_info_4 h4 {
+    color: #000000;
+    font-size: 20px;
+    font-family: Wonchuri,' Ubuntu';
+    font-weight: bold;
+    padding: 0 0 20px 0;
+}
+
+#room_detail .room_table td, #room_detail .room_table th {
+    padding: 20px 0;
+    border-bottom: 1px solid #d9d9d9;
+}
+.room_table{
+	margin: auto;
+	width: 85%;
+}
+#room_info_4 .wh_box{
+	text-align: left;
+}
+#room_info_4 ul li {
+    padding: 10px 0 2px 25px;
+    background-size: 5px auto;
+    color: #333;
+}
