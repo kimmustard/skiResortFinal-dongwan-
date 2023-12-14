@@ -11,6 +11,7 @@ import com.web.www.domain.member.MemberCheckDTO;
 import com.web.www.domain.member.MemberPwdDTO;
 import com.web.www.domain.member.MemberVO;
 import com.web.www.domain.member.ModifyMemberDTO;
+import com.web.www.domain.pay.ReceiptDTO;
 
 public interface MemberService {
 
@@ -83,6 +84,8 @@ public interface MemberService {
 	String getMemberMasCheck(long memberNum);
 
 	String getMemberGrade(long memberNum);
+
+	ReceiptDTO getReceipt(String payMerChantUid);
 
 
 

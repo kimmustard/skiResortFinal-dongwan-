@@ -15,6 +15,8 @@ import com.web.www.domain.member.MemberCheckDTO;
 import com.web.www.domain.member.MemberPwdDTO;
 import com.web.www.domain.member.MemberVO;
 import com.web.www.domain.member.ModifyMemberDTO;
+import com.web.www.domain.pay.ReceiptDTO;
+import com.web.www.domain.pay.RefundReceiptDTO;
 import com.web.www.repository.AlarmDAO;
 import com.web.www.repository.MemberDAO;
 
@@ -222,24 +224,46 @@ public class MemberServiceImpl implements MemberService {
 		return mdao.getMemberGrade(memberNum);
 	}
 
+	@Override
+	public ReceiptDTO getReceipt(String payMerChantUid) {
+	    ReceiptDTO riDTO = mdao.getReceipt(payMerChantUid);
 
+	    if (riDTO.getPayStatus().equals("결제취소")) {
+	    	ReceiptDTO RefundReceipt = mdao.getRefundReceipt(payMerChantUid);
+	        riDTO.setRefundImpUid(RefundReceipt.getRefundImpUid());
+	        riDTO.setRefundReason(RefundReceipt.getRefundReason());
+	        riDTO.setRefundRegAt(RefundReceipt.getRefundRegAt());
+	        riDTO.setRefundType(RefundReceipt.getRefundType());
 
+	        return riDTO;
+	    }
 
+	    switch (riDTO.getPayNameType()) {
+	        case "호텔":
+	            ReceiptDTO hotelReceipt = mdao.getHotelReceipt(payMerChantUid);
+	            // 필드 설정
+	            riDTO.setHotelReserveStayStart(hotelReceipt.getHotelReserveStayStart());
+	            riDTO.setHotelReserveStayEnd(hotelReceipt.getHotelReserveStayEnd());
+	            // 필요한 만큼 다른 필드 설정
+	            return riDTO;
+	        case "리프트":
+	            ReceiptDTO liftReceipt = mdao.getLiftReceipt(payMerChantUid);
+	            // 필드 설정
+//	            riDTO.setLiftField1(liftReceipt.getLiftField1());
+//	            riDTO.setLiftField2(liftReceipt.getLiftField2());
+	            // 필요한 만큼 다른 필드 설정
+	            return riDTO;
+	        case "렌탈":
+	            ReceiptDTO rentalReceipt = mdao.getRentalReceipt(payMerChantUid);
+	            // 필드 설정
+//	            riDTO.setRentalField1(rentalReceipt.getRentalField1());
+//	            riDTO.setRentalField2(rentalReceipt.getRentalField2());
+	            // 필요한 만큼 다른 필드 설정
+	            return riDTO;
+	    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	    return riDTO;
+	}
 
 
 

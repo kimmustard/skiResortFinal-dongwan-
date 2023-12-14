@@ -15,14 +15,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.web.www.domain.alarm.AlarmDTO;
 import com.web.www.domain.coupon.CouponGetDTO;
 import com.web.www.domain.coupon.CouponSystem;
 import com.web.www.domain.member.AuthUser;
 import com.web.www.domain.member.MemberCheckDTO;
 import com.web.www.domain.member.MemberVO;
+import com.web.www.domain.pay.ReceiptDTO;
 import com.web.www.handler.MemberEmailHandler;
 import com.web.www.service.MemberService;
+import com.web.www.service.PayService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -54,15 +55,21 @@ public class MemberCheckController {
 	
 	@GetMapping(value = "/num/{email}", produces = MediaType.TEXT_PLAIN_VALUE)
 	public String emailNumCheck(@PathVariable("email")String MemberEmail){
-		log.info("emailNumCheck = {}" , MemberEmail);
 		return mailService.joinEmail(MemberEmail);
 	}
 	
 	@PostMapping(value = "/cdcheck", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public String cdCheck(@RequestBody MemberCheckDTO mcDto) {
-		log.info("광고 체크 = {}" , mcDto);
 		int isOk = msv.cdCheck(mcDto); 
 		return isOk == 1 ? "1" : "0";
+	}
+	
+	// 영수증 조회하기
+	@GetMapping("/receipt/{uid}")
+	public ResponseEntity<ReceiptDTO> receiptGet(@PathVariable("uid") String payMerChantUid){
+		ReceiptDTO rcDTO = msv.getReceipt(payMerChantUid);
+		log.info("제발 나와라= {}", rcDTO);
+		return null;
 	}
 	
 	
