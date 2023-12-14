@@ -228,3 +228,8 @@
 	background-color: #dbecff;
 	color: #dee2e6;
 }
+
+.rentalText {
+	font-family: 'Hahmlet', serif;
+	padding: 50px 0 10px 10px;
+}

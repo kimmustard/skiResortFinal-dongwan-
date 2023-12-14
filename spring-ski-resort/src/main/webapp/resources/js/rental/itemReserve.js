@@ -7,9 +7,9 @@ document.getElementById("nextBtn").addEventListener('click', () => {
     let rentalReserveStart = document.getElementById('rentalReserveStart').value;
     let rentalReserveAdult = document.getElementById('rentalReserveAdult').value;
 
-    if (rentalLiftAdult == "0") {
+    if (rentalReserveAdult == "0") {
         alert('인원수를 입력해주세요!');
-    } else if (rentalLiftStart == "") {
+    } else if (rentalReserveStart == "") {
         alert('날짜를 선택해주세요!');
     } else {
         document.getElementById("innerbox").style.display = "block";
@@ -115,8 +115,8 @@ document.getElementById("child-Btn").addEventListener('click', () => {
 //인원수 세주는거
 function AllPeopleCount() {
     $('#people').attr('placeholder', `성인 ${document.getElementById('adult-Count').innerText}명 · 아동 ${document.getElementById('child-Count').innerText}명 `);
-    document.getElementById('rentalLiftAdult').value = document.getElementById('adult-Count').innerText;
-    document.getElementById('rentalLiftKid').value = document.getElementById('child-Count').innerText;
+    document.getElementById('rentalReserveAdult').value = document.getElementById('adult-Count').innerText;
+    document.getElementById('rentalReserveKid').value = document.getElementById('child-Count').innerText;
 
 }
 
@@ -137,3 +137,9 @@ targetArea1.addEventListener('click', function (event) {
 targetArea2.addEventListener('click', function (event) {
     event.stopPropagation();
 });
+
+
+// 렌탈장비명, 요금 표시
+function updateItemInfo(name, adultFee, kidFee) {
+
+}

@@ -44,11 +44,12 @@
 			<img data-v-c62ee4ac="" src="https://cdn.shymbulak-dev.com/media-test/77032ae86d50f5d61c9cec8b2f30ae39.jpg" alt="" style="width: 100%; height: 100vh;">
 			
 			<div class="box">
+				<p class="fs-3  rentalText">장비렌탈</p>
 				<form action="/rental/item-reserve" method="post" id="payform">
 					<div class="input-box">
 						<input type="hidden" name="rentalReserveStart" id="rentalReserveStart" placeholder="렌탈이용날짜">
 						<input name="rentalReserveAdult" id="rentalReserveAdult" value="0" placeholder="성인인원" type="hidden">
-						<input name="rentalReserveAdult" id="rentalReserveAdult" value="0" placeholder="어린이인원" type="hidden">
+						<input name="rentalReserveKid" id="rentalReserveKid" value="0" placeholder="어린이인원" type="hidden">
 						
 						<div class="date-group">
 							<div class="input-group calendar">
@@ -128,7 +129,17 @@
 						<div class="input-group mb-3">
 							<span class="input-group-text">요금(어린이)</span>
 							<input type="text" class="form-control" id="showkidFee" value="0" readonly="readonly">
-							
+						</div>
+						<div class="input-group mb-3">
+							<span class="input-group-text">총요금</span>
+							<input type="text" class="form-control" id="showkidFee" value="0" readonly="readonly">
+						</div>
+						<p class="fs-4">반납서비스 신청</p>
+						<div class="form-check">
+						  <input class="form-check-input" type="radio" name="rentalLiftTicket" value="Y" id="morningTicket">예
+						</div>
+						<div class="form-check">
+						  <input class="form-check-input" type="radio" name="rentalLiftTicket" value="N" id="afternoonTicket">아니오
 						</div>
 						<!-- db로 보낼 hiddem input  -->
 						
@@ -144,8 +155,8 @@
 							<input type="hidden" id="productPrice">	
 							<input type="hidden" name="couponCode" id="couponCode" >
 	
-						<a href="/rental/reserve"><button type="button" class="btn btn-outline-primary">이전으로</button></a>
-							<button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#hotel-pay">결제</button>
+						<a href="/rental/item-reserve"><button type="button" class="btn btn-outline-primary">이전으로</button></a>
+						<button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#hotel-pay">결제</button>
 					</div>
 				</form>
 			</div>
