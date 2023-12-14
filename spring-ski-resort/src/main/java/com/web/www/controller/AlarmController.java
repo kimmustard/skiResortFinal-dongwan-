@@ -39,6 +39,7 @@ public class AlarmController {
 	private final AlarmService asv;
 	private final MemberService msv;
 	
+	//가입이후 쿠폰지급
 	@GetMapping("/welcomeMember")
 	public String alarmCheckAndCouponGet(@AuthUser MemberVO mvo, RedirectAttributes rttr){
 		CouponGetDTO cgDTO = new CouponGetDTO();
@@ -58,9 +59,12 @@ public class AlarmController {
 	//nav에 표현되는 간이 리스트입니다 (최신 10개만 표시)
 	@GetMapping(value = "/alarmList", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<AlarmDTO>> alarmListTen(@AuthUser MemberVO mvo) {
-		if(mvo == null || mvo.getMemberAlarmSystem().equals("N")) {
+		String alarmCheck = msv.getMemberMasCheck(mvo.getMemberNum());
+		
+		if(mvo == null || alarmCheck.equals("N")) {
 			return null;
 		}
+		
 		
 		List<AlarmDTO> alarmList = asv.getAlarmListTen(mvo.getMemberNum());
 		log.info("테스트 = {}", alarmList);
@@ -80,6 +84,7 @@ public class AlarmController {
 	@GetMapping("/memberAlarmList")
 	public String memberAlarmListForm(@AuthUser MemberVO mvo, Model model) {
 		List<AlarmDTO> alarmList = asv.getMemberAlarmList(mvo.getMemberNum());
+		mvo.setMemberAlarmSystem(msv.getMemberMasCheck(mvo.getMemberNum()));
 		
 		model.addAttribute("mvo", mvo);
 		model.addAttribute("alarmList", alarmList);
