@@ -20,6 +20,10 @@
 		order by qna_num desc limit #{pageStart}, #{qty}
 	</select>
 	
+	<select id="selectListNoPaging" resultType="com.web.www.domain.board.QnaVO">
+		select * from qna where qna_del='N' order by qna_num desc
+	</select>
+	
 	<select id="getTotalCount" resultType="int">
 		select count(qna_num) from qna where qna_del='N' <include refid="search"></include>
 	</select>

@@ -40,7 +40,16 @@
 			  <div class="accordion-item">
 			    <h2 class="accordion-header">
 			      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-			        중요 게시물 목록(총 N개)
+			        중요 게시물 목록 (총 
+			        <span style="color: red;">
+			        	<c:set var="PointCount" value="0" />
+						<c:forEach items="${NoPagingList }" var="pvolist" >
+						    <c:if test="${pvolist.noticePoint eq 'Y'}">
+						        <c:set var="PointCount" value="${PointCount + 1}" />
+						    </c:if>
+						</c:forEach>
+						${PointCount }
+			        </span>개)
 			      </button>
 			    </h2>
 			    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
@@ -96,10 +105,11 @@
 							</a>
 							<a href="/developer/noticeRemove?noticeNum=${pvo.noticeNum }">
 								<button type="button" class="btn btn-danger">삭제</button>
-							</a>
+							</a>						
 							<div class="dev-notice-point-isok">
 								<div class="form-check form-switch">
-								  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+								  <input class="form-check-input" type="checkbox" role="switch" value="Y" id="flexSwitchCheckChecked" checked>
+								  <input class="form-check-input" type="hidden" role="switch" value="N" id="notice-point-hidden" checked>
 								   <span>중요공지 등록</span>
 								  <button>적용</button>
 								</div>
@@ -152,7 +162,7 @@
 			  <div class="accordion-item">
     			<h2 class="accordion-header">
       			  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-			        게시물 목록 (총 N개)
+			        게시물 목록 (총 <span style="color: red;">${ph.totalCount }</span>개)
 			      </button>
 			    </h2>
 			    <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse show">
@@ -249,5 +259,38 @@
 	</div>
 </div>
 <script type="text/javascript" src="/resources/js/developer/setting.js"></script>
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded", function() {
+    
+    var Point = `<c:out value="${qvo.qnaPoint}" />`;
+    // 체크박스 요소 가져오기
+    var qnaPointCheckbox = document.getElementById('qna-Point');
+
+    // qnaPoint 값이 'Y'이면 체크, 'N'이면 해제
+    if (qnaPointCheckbox) {
+        qnaPointCheckbox.checked = Point === 'Y';
+
+        // 체크박스 상태가 변경될 때 이벤트 리스너 등록
+        qnaPointCheckbox.addEventListener('change', function() {
+            // 체크박스가 체크되어 있으면 'Y', 그렇지 않으면 'N' 설정
+            Point = qnaPointCheckbox.checked ? 'Y' : 'N';
+            
+    	}) 
+    } 
+    
+    document.getElementById('qna-Point').addEventListener('click',()=>{
+    	const checkBox =  document.getElementById('qna-Point');
+    	const checkBoxHidden = document.getElementById('qna-Point-hidden');
+    	
+    	console.log("test");
+    	if(checkBox.checked){
+    		checkBoxHidden.disabled = true;
+    	}else{
+    		checkBoxHidden.disabled = false;
+    	}
+    	
+    })
+});
+</script>
 </body>
 </html>

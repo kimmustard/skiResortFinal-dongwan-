@@ -62,6 +62,14 @@ public class QnaServiceImpl implements QnaService{
 		log.info(">>>>> qna List service >> ");
 		return qdao.selectList(pgvo);
 	}
+	
+	
+	
+	@Override
+	public List<QnaVO> qnaListNoPaging() {
+		log.info(">>>>> qna List service >> ");
+		return qdao.selectListNoPaging();
+	}	
 
 
 
@@ -182,7 +190,14 @@ public class QnaServiceImpl implements QnaService{
 			}
 		}
 		return isOk;
-	}	
+	}
+
+
+
+
+
+
+	
 	
 
 }
