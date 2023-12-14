@@ -1,5 +1,11 @@
 @charset "UTF-8";
-
+body{
+	overflow-x: hidden; 
+	
+}
+.fns-1{
+	font-size: 20px;
+}
 .ytLandscape {
     position: relative;
     padding-bottom: 56.25%;
@@ -106,10 +112,12 @@
 	font-size: 25px;
 }
 #notice-box{
+	
 	width: 1150px;
 	color :#666;
 	margin: auto;
 	margin-top: 100px;
+	padding: 100px 0 100px 0;
 }
 #notice{	
 	border-top : dotted 1px #666;
@@ -139,6 +147,7 @@
 margin-top: 150px;
 }
 .box-title{
+	padding : 5px;
 	color : #666;
 	width :100%;
 	text-align : center;
@@ -151,6 +160,7 @@ margin-top: 150px;
 /* 이벤트 관련 */
 .event-box{
 	background-color: #e9e9e9;
+	padding: 50px 0 50px 0;
 }
   .slide_wrapper {
   position: relative;

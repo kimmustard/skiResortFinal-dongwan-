@@ -47,4 +47,8 @@
 		select hotel_room_count from room where hotel_room_num = #{uniqueNumber};
 	</select>
 	
+	<select id="getRoomDetail" resultType="com.web.www.domain.hotel.RoomVO">
+		select * from room where hotel_room_num=#{roomNum}
+	</select>
+	
   </mapper>

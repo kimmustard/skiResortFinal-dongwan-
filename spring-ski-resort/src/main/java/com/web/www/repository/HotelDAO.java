@@ -23,4 +23,6 @@ public interface HotelDAO {
 
 	int getRoomCount(int hotelRoomNum);
 
+	RoomVO getRoomDetail(int roomNum);
+
 }

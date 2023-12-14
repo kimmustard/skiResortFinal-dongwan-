@@ -66,4 +66,10 @@ public class HotelServiceImpl implements HotelService{
 		return hdao.getRoomCount(hotelRoomNum);
 	}
 
+	@Override
+	public RoomVO getRoomDetail(int roomNum) {
+		// TODO Auto-generated method stub
+		return hdao.getRoomDetail(roomNum);
+	}
+
 }
