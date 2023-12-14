@@ -140,6 +140,6 @@ targetArea2.addEventListener('click', function (event) {
 
 
 // 렌탈장비명, 요금 표시
-function updateItemInfo(name, adultFee, kidFee) {
+function updateItemInfo(itemName, adultFee, kidFee) {
 
 }
