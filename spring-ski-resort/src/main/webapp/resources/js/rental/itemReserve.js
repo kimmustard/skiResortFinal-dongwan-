@@ -3,6 +3,20 @@ document.getElementById("people").addEventListener('click', () => {
     document.getElementById('peopleList').style.display = "block";
 })
 
+document.getElementById("nextBtn").addEventListener('click', () => {
+    let rentalReserveStart = document.getElementById('rentalReserveStart').value;
+    let rentalReserveAdult = document.getElementById('rentalReserveAdult').value;
+
+    if (rentalLiftAdult == "0") {
+        alert('인원수를 입력해주세요!');
+    } else if (rentalLiftStart == "") {
+        alert('날짜를 선택해주세요!');
+    } else {
+        document.getElementById("innerbox").style.display = "block";
+        document.getElementById('nextBtn').style.display = 'none';
+    }
+})
+
 
 $(function () {
     let dateRangePicker = document.getElementById('dateRangePicker');

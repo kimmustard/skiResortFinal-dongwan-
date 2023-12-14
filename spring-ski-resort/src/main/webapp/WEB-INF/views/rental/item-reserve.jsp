@@ -40,13 +40,16 @@
 	
 	<div class="bodyContainer">
 	
-		<div class="reserveContainer">
+		<div class="back">
 			<img data-v-c62ee4ac="" src="https://cdn.shymbulak-dev.com/media-test/77032ae86d50f5d61c9cec8b2f30ae39.jpg" alt="" style="width: 100%; height: 100vh;">
 			
 			<div class="box">
-				<form action="/rental/item-reserve">
+				<form action="/rental/item-reserve" method="post" id="payform">
 					<div class="input-box">
 						<input type="hidden" name="rentalReserveStart" id="rentalReserveStart" placeholder="렌탈이용날짜">
+						<input name="rentalReserveAdult" id="rentalReserveAdult" value="0" placeholder="성인인원" type="hidden">
+						<input name="rentalReserveAdult" id="rentalReserveAdult" value="0" placeholder="어린이인원" type="hidden">
+						
 						<div class="date-group">
 							<div class="input-group calendar">
 			              	 	<div class="input-group-prepend">
@@ -106,59 +109,49 @@
 		  						</div>
 		  					
 		  					</div>
-						</div>
-						<div id="innerbox">
-						<div class="peo">
-							<div class="input-group mb-3">
-								<span class="input-group-text">인원수(성인)</span>
-								<input type="text" class="form-control" name="rentalReserveAdult" id="rentalReserveAdult" readonly="readonly">
-							</div>
-							<div class="input-group mb-3">
-								<span class="input-group-text">인원수(어린이)</span>
-								<input type="text" class="form-control" name="rentalReserveKid" id="rentalReserveKid" readonly="readonly">
-							</div>
-						</div>
-						<div class="input-group mb-3">
-							<span class="input-group-text">상품명</span>
-							<input type="text" class="form-control" name="rentalReserveItem" id="rentalReserveItem" readonly="readonly">
-						</div>
-						<div class="fee">
-							<div class="input-group mb-3">
-								<span class="input-group-text">성인요금</span>
-								<input type="text" class="form-control" name="rentalReserveAdultFee" id="rentalReserveAdultFee" readonly="readonly">
-							</div>
-							<div class="input-group mb-3">
-								<span class="input-group-text">어린이요금</span>
-								<input type="text" class="form-control" name="rentalReserveKidFee" id="rentalReserveKidFee" readonly="readonly">
-							</div>
-						</div>
-						<div class="input-group mb-3">
-							<span class="input-group-text">총 요금</span>
-							<input type="text" class="form-control" name="rentalReserveTotalFee" id="rentalReserveTotalFee" readonly="readonly">
-						</div>
-						<div class="input-group mb-3">
-							<label class="form-check-label" for="flexRadioDefault2">반납서비스 이용</label>
-						</div>
-						<div class="form-check">
-						  	<input class="form-check-input" type="radio" name="rentalReserveIsreturn" id="yesCheck" value="Y">
-						  	<label class="form-check-label" for="flexRadioDefault1">
-						    예
-						  	</label>
-						</div>
-						<div class="form-check">
-							<input class="form-check-input" type="radio" name="rentalReserveIsreturn" id="noCheck" value="N">
-							<label class="form-check-label" for="flexRadioDefault1">
-							아니오
-							</label>
-						</div>
+						</div>	
 					</div>
+					
+					
+					
+					<div id="innerbox" class="reserveBox" style="display: none;">
+						
+						
+						<div class="input-group mb-3">
+							<span class="input-group-text">렌탈장비명</span>
+							<input type="text" class="form-control" id="showItemName" readonly="readonly">
+						</div>
+						<div class="input-group mb-3">
+							<span class="input-group-text">요금(성인)</span>
+							<input type="text" class="form-control" id="showadultFee" value="0" readonly="readonly">
+						</div>
+						<div class="input-group mb-3">
+							<span class="input-group-text">요금(어린이)</span>
+							<input type="text" class="form-control" id="showkidFee" value="0" readonly="readonly">
+							
+						</div>
+						<!-- db로 보낼 hiddem input  -->
+						
+							<input type="hidden" name="rentalLiftAdultFee" id="adultFee" value="0" readonly="readonly">
+							<input type="hidden" name="rentalLiftKidFee" id="kidFee" value="0" readonly="readonly">
+							<input type="hidden" name="rentalLiftTotalFee" id="realpayvalue">
+							<input type="hidden" name="memberNum" placeholder="회원번호" value="${mvo.memberNum }">	
+							<input type="hidden" name="payImpUid" id="payImpUid">	
+							<input type="hidden" name="payMerchantUid" id="payMerchantUid">	
+							<input type="hidden" name="payAmount" id="payAmount">
+							<input type="hidden" name="payName" id="payName">		
+							<input type="hidden"  id="name-type" value="리프트">	
+							<input type="hidden" id="productPrice">	
+							<input type="hidden" name="couponCode" id="couponCode" >
+	
+						<a href="/rental/reserve"><button type="button" class="btn btn-outline-primary">이전으로</button></a>
+							<button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#hotel-pay">결제</button>
 					</div>
-					<a href="/rental/ski-item"><button type="button" class="btn btn-outline-primary">이전으로</button></a>
-					<button type="submit" class="btn btn-outline-primary">결제</button>
 				</form>
 			</div>
+		
 		</div>
-	
+		
 	</div>
 	
 	
