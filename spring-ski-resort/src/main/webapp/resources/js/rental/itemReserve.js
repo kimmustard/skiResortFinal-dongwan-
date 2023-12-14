@@ -141,5 +141,11 @@ targetArea2.addEventListener('click', function (event) {
 
 // 렌탈장비명, 요금 표시
 function updateItemInfo(itemName, adultFee, kidFee) {
+    let rentalItemName = "";
+    let rentalAdultFee = 0;
+    let rentalKidFee = 0;
+
+    rentalAdultFee = adultFee * parseInt(rentalReserveAdult.value);
+    rentalKidFee = kidFee * parseInt(rentalReserveKid.value);
 
 }
