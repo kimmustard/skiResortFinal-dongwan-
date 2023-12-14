@@ -198,7 +198,8 @@ public class AdminController {
 	//notice 코드 라인//
 	@GetMapping("/settingNotice")
 	public void noticeList(Model m, PagingVO pgvo) {
-		m.addAttribute("list", nsv.noticeList(pgvo));
+		m.addAttribute("list", nsv.noticeList(pgvo)); //페이징처리 리스트
+		m.addAttribute("NoPagingList", nsv.noticeListNoPaging()); //페이징처리x 리스트
 		m.addAttribute("plist", nsv.noticePointList(pgvo)); //중요공지 목록 가져오기
 		int totalCount = nsv.getTotalCount(pgvo);
 		PagingHandler ph = new PagingHandler(pgvo, totalCount);
@@ -218,11 +219,13 @@ public class AdminController {
 	//Q&A 코드 라인//
 	@GetMapping("/settingQna")
 	public void QnaList(HttpSession ses, Model m, PagingVO pgvo) {
-		m.addAttribute("list", qsv.qnaList(pgvo));
+		m.addAttribute("list", qsv.qnaList(pgvo)); //페이징처리 리스트
+		m.addAttribute("NoPagingList", qsv.qnaListNoPaging()); //페이징처리x 리스트
 		int totalCount = qsv.getTotalCount(pgvo);
 		PagingHandler ph = new PagingHandler(pgvo, totalCount);
 		m.addAttribute("ph",ph);
 	}
+
 	
 	@GetMapping("/qnaRemove")
 	public String qnaRemove(@RequestParam("qnaNum")long qnaNum, RedirectAttributes re) {

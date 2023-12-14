@@ -41,7 +41,16 @@
 						   <div class="accordion-item">
 						    <h2 class="accordion-header">
     						  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-						        답변 미등록 문의 게시글 목록 (총 <span style="color: red;">${ph.totalCount }</span>개)
+						        답변 미등록 문의 게시글 목록 (총 
+						        <span style="color: red;">
+						        	<c:set var="CountNo" value="0" />
+									<c:forEach items="${NoPagingList }" var="qvolist" >
+									    <c:if test="${qvolist.qnaIsok eq 'N'}">
+									        <c:set var="CountNo" value="${CountNo + 1}" />
+									    </c:if>
+									</c:forEach>
+									${CountNo }
+						        </span>개)
 						      </button>
 						    </h2>
 						    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
@@ -82,6 +91,7 @@
 								  </thead>
 								  <tbody>
 								  	<c:forEach items="${list }" var="qvo">
+								  	<c:if test="${qvo.qnaIsok eq 'N'}">
 								    <tr class="dev-qna-tr">
 								      <td>${qvo.qnaNum }</td>
 								      <td>${qvo.qnaCategory }</td>
@@ -112,6 +122,7 @@
 										</a>
 								      </td>
 								    </tr>
+								    </c:if>
 								    </c:forEach>
 								  </tbody>
 								</table>
