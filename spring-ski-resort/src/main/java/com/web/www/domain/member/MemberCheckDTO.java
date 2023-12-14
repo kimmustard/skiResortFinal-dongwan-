@@ -14,6 +14,7 @@ import lombok.ToString;
 public class MemberCheckDTO {
 
 	private String memberId;
+	private String memberAlarmSystem;
 	private String memberTerms3; //이용약관
 	
 }

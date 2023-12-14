@@ -1,6 +1,5 @@
 package com.web.www.domain.member;
 
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 import lombok.AllArgsConstructor;
