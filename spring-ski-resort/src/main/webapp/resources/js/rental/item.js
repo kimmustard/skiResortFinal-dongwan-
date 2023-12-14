@@ -133,8 +133,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     console.log(itemName, itemAdultFee);
                     shoppingBasket(itemName, itemAdultFee);
                }
-
-               document.getElementById('rentalItemName').value = itemName;
+               
 
           }
      });
@@ -180,6 +179,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // 이미지 클릭시 장바구니에 itemname, price 담기
 function shoppingBasket(itemName, price) {
+     console.log(itemName, price);
      let shoppingBasketDiv = document.querySelector('.shoppingBasket');
 
      if (shoppingBasketDiv.children.length < 8) {
@@ -206,3 +206,34 @@ if (true) {
           })
      })
 } 
+
+function sendShoppingBasketData() {
+     // 장바구니에서 데이터 수집
+     let rentalItemName = document.getElementById('showItemName').value;
+     let adultFee = document.getElementById('showAdultFee').value;
+     let kidFee = document.getElementById('showKidFee').value;
+
+     // JSON으로 보낼 객체 생성
+     let requestData = {
+          rentalItemName: rentalItemName,
+          adultFee: adultFee,
+          kidFee: kidFee
+     };
+
+     // Ajax 요청 보내기
+     $.ajax({
+          type: 'POST',
+          url: '/rental/item-reserve', // 올바른 엔드포인트로 업데이트
+          contentType: 'application/json',
+          data: JSON.stringify(requestData),
+          success: function (response) {
+               // 필요한 경우 응답 처리
+               console.log(response);
+
+               
+          },
+          error: function (error) {
+               console.error('에러:', error);
+          }
+     });
+}

@@ -127,15 +127,15 @@
 						
 						<div class="input-group mb-3">
 							<span class="input-group-text">렌탈장비명</span>
-							<input type="text" class="form-control" id="showItemName" value="" readonly="readonly">
+							<input type="text" class="form-control" id="showItemName" value="${itemName}" readonly="readonly">
 						</div>
 						<div class="input-group mb-3">
 							<span class="input-group-text">요금(성인)</span>
-							<input type="text" class="form-control" id="showAdultFee" value="0" readonly="readonly">
+							<input type="text" class="form-control" id="showAdultFee" value="${itemAdultFee}" readonly="readonly">
 						</div>
 						<div class="input-group mb-3">
 							<span class="input-group-text">요금(어린이)</span>
-							<input type="text" class="form-control" id="showKidFee" value="0" readonly="readonly">
+							<input type="text" class="form-control" id="showKidFee" value="${itemKidFee}" readonly="readonly">
 						</div>
 						
 						<div class="input-group mb-3">

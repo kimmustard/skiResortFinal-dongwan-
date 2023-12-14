@@ -2,10 +2,13 @@ package com.web.www.controller;
 
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -160,8 +163,10 @@ public class RentalController {
 		
 		model.addAttribute("mvo", mvo);
 		
+		
 		return "/rental/item-reserve";
 	}
+	
 	
 	@PostMapping("/item-reserve")
 	public String itemReservePost(RentalItemVO ritvo, RentalLiftVO rlivo, RentalReserveVO rrvo,
