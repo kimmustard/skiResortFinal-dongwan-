@@ -39,6 +39,7 @@ public class MemberVO {
 	private String memberLastAt;	//마지막 로그인 날짜
 	private String memberPwdModAt;	//마지막 비밀번호 변경 날짜
 	
+	private String memberAlarmSystem; //알람시스템 기능 온오프
 	private List<AuthVO> authList;	//여러개의 권한을 리스트로 관리
 	
 	

@@ -157,9 +157,15 @@ async function memberAlarmSpread() {
         const result = await memberAlarmList();
 
 
-
         let div = document.getElementById('alarm-spread');
         div.innerHTML = '';
+        
+		if(result == null){
+			let str = `<ul><li>알람 기능 OFF 상태입니다.</li></ul>`;
+			div.innerHTML += str;
+			return;
+		}
+		
         let str = `<ul>`;
         for (let i = 0; i < result.length; i++) {
             //  href = "${result[i].alarmContentUrl}"
@@ -278,6 +284,7 @@ async function memberAlarmCheckCount(checkData) {
         }
         const resp = await fetch(url, config);
         const result = await resp.text();
+        return result;
     } catch (error) {
         console.log(error);
     }

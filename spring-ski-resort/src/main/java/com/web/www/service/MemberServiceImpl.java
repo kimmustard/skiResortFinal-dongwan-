@@ -10,6 +10,7 @@ import com.web.www.domain.alarm.AlarmVO;
 import com.web.www.domain.coupon.CouponGetDTO;
 import com.web.www.domain.coupon.CouponSystem;
 import com.web.www.domain.member.FindIdDTO;
+import com.web.www.domain.member.FindPwdDTO;
 import com.web.www.domain.member.MemberCheckDTO;
 import com.web.www.domain.member.MemberPwdDTO;
 import com.web.www.domain.member.MemberVO;
@@ -186,15 +187,31 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public int findPwd(FindIdDTO fiDTO) {
-		return mdao.findPwd(fiDTO);
+	public int findPwd(FindPwdDTO fpDTO) {
+		return mdao.findPwd(fpDTO);
 	}
 
 	@Override
-	public void findPwdUpdate(FindIdDTO fiDTO) {
-		mdao.findPwdUpdate(fiDTO);
-		long memberNum = adao.getAlarmMemberNum(fiDTO.getMemberId());
-		adao.alarmSetting(new AlarmVO(memberNum , 4, "변경"));
+	public void findPwdUpdate(FindPwdDTO fpDTO) {
+		mdao.findPwdUpdate(fpDTO);
+		long memberNum = adao.getAlarmMemberNum(fpDTO.getMemberId());
+		adao.alarmSetting(new AlarmVO(memberNum , 5, "변경"));
+	}
+
+	
+	//멤버 알람 시스템 온오프 비동기작업 (DB에 Y / N 부여작업)
+	@Override
+	public int masCheck(MemberCheckDTO mcDto) {
+		
+		return adao.masCheck(mcDto);
+	}
+
+	
+	/*멤버 알람체크 on /off 가져오기 **/
+	@Override
+	public String getMemberMasCheck(long memberNum) {
+		
+		return mdao.getMemberMasCheck(memberNum);
 	}
 
 

@@ -21,12 +21,17 @@ member_last_at datetime default now(),
 member_pwd_mod_at datetime default now(),
 member_grade varchar(15) default 'Bronze',
 member_del varchar(1) default 'N',
+member_alarm_system varchar(1) default 'Y',
 member_terms1 varchar(15) default 'non-check',
 member_terms2 varchar(15) default 'non-check',
 member_terms3 varchar(15) default 'non-check',
+member_alarm_system varchar(1) default 'Y',
 member_type varchar(20) default 'normal',
 primary key(member_num)
 );
+
+## 12-13 멤버 알람시스템 on/off 기능
+ALTER TABLE member ADD member_alarm_system varchar(1) default 'Y';
 
 ## security 인증관련 테이블 11-20
 create table auth_member(
