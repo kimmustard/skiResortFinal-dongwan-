@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.web.www.domain.alarm.AlarmContentVO;
@@ -100,11 +102,13 @@ public class AlarmController {
 	}
 	
 	//비동기작업 멤버 알람 시스템 기능 on/off
+	@ResponseStatus(code = HttpStatus.OK)
+	@ResponseBody
 	@PostMapping(value = "/systemOnOff", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public String cdCheck(@RequestBody MemberCheckDTO mcDto) {
 		log.info("광고 체크 = {}" , mcDto);
 		int isOk = msv.masCheck(mcDto); 
-		return isOk == 1 ? "1" : "0";
+		return isOk > 0 ? "1" : "0";
 	}
 	
 	

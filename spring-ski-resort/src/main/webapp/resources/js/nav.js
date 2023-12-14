@@ -70,12 +70,12 @@ async function load() {
                 weathericon = "cloud-snow";
             }
 
-		if(document.getElementById("wrapper")){
-            document.getElementById("innerItem2").innerHTML = "<span class='weather-area'>" + region_grand_child[i] + " 날씨</span><br><br>" + weatherDate + "[" + week_array[today_num] + "]" + weatherTime + "갱신";
-            document.getElementById("innerItem3").innerHTML = '<i class="weathericon bi bi-' + weathericon + '"></i><span class="weather-info">' + weatherStatus + Temp + '°C' + '</span>';
-            document.getElementById("innerItem1");
-            document.getElementById("innerItem4");
-		}
+            if (document.getElementById("wrapper")) {
+                document.getElementById("innerItem2").innerHTML = "<span class='weather-area'>" + region_grand_child[i] + " 날씨</span><br><br>" + weatherDate + "[" + week_array[today_num] + "]" + weatherTime + "갱신";
+                document.getElementById("innerItem3").innerHTML = '<i class="weathericon bi bi-' + weathericon + '"></i><span class="weather-info">' + weatherStatus + Temp + '°C' + '</span>';
+                document.getElementById("innerItem1");
+                document.getElementById("innerItem4");
+            }
         });
 
         await timer(10000);
@@ -116,10 +116,6 @@ async function weatherListSearch() {
 
 }
 
-document.getElementById("ski-navbar-brand").addEventListener("mouseout", (e) => {
-
-    e.target.querySelector("span").style.width = "0px";
-})
 
 const navLinks = document.querySelectorAll(".ski-nav-link");
 
@@ -159,13 +155,13 @@ async function memberAlarmSpread() {
 
         let div = document.getElementById('alarm-spread');
         div.innerHTML = '';
-        
-		if(result == null){
-			let str = `<ul><li>알람 기능 OFF 상태입니다.</li></ul>`;
-			div.innerHTML += str;
-			return;
-		}
-		
+
+        if (result == null) {
+            let str = `<ul><li>알람 기능 OFF 상태입니다.</li></ul>`;
+            div.innerHTML += str;
+            return;
+        }
+
         let str = `<ul>`;
         for (let i = 0; i < result.length; i++) {
             //  href = "${result[i].alarmContentUrl}"
