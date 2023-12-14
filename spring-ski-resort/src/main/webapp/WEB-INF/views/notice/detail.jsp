@@ -86,6 +86,9 @@
 					<a href="/notice/modify?noticeNum=${nvo.noticeNum }">
 						<button type="button" class="notice-btn mynotice-btn">수정</button>
 					</a>
+					<a href="/developer/settingNotice">
+						<button type="button" class="notice-btn my-admin-btn">관리자페이지</button>
+					</a>
 				</c:if>	
 		</div>	
 	

@@ -24,7 +24,7 @@ public class FileVO {
 	private long qnaNum; //Q&A 글번호
 	private long qnaAnsNum; //Q&A답변 글번호
 	private long rentalListItemNum; //장비이미지 번호
-	private String noticePointFile; //중요공지 파일 여부 Y,N
+	private String noticeImpactFile; //상단 슬라이드 공지 이미지 파일 여부 Y,N
 
 	
 	

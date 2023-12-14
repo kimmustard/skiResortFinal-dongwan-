@@ -5,17 +5,17 @@
 <mapper namespace="com.web.www.repository.FileDAO">
 	<!-- notice 코드 라인 -->
 	<insert id="insertNoticeFile">
-		insert into file(file_uuid, file_save, file_name, file_isok, file_type, file_size, notice_num, notice_point_file)
-		values(#{fileUuid}, #{fileSave}, #{fileName}, #{fileIsok}, #{fileType}, #{fileSize}, #{noticeNum}, #{noticePointFile})
+		insert into file(file_uuid, file_save, file_name, file_isok, file_type, file_size, notice_num, notice_impact_file)
+		values(#{fileUuid}, #{fileSave}, #{fileName}, #{fileIsok}, #{fileType}, #{fileSize}, #{noticeNum}, #{noticeImpactFile})
 	</insert>
 	
 	<select id="getNoticeFileList" resultType="com.web.www.domain.FileVO">
-		select * from file where notice_num = #{noticeNum} and file_isok='Y' and notice_point_file='N'  
+		select * from file where notice_num = #{noticeNum} and file_isok='Y' and notice_impact_file='N'  
 		order by file_reg_at asc
 	</select>
 	
-	<select id="selectFilePointList" resultType="com.web.www.domain.FileVO">
-		select * from file where notice_point_file='Y' and file_isok='Y' 
+	<select id="selectFileImpactList" resultType="com.web.www.domain.FileVO">
+		select * from file where notice_impact_file='Y' and file_isok='Y' 
 		order by notice_num desc
 	</select>
 	

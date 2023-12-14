@@ -13,6 +13,12 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 <body>
+<sec:authorize access="isAuthenticated()">
+	<sec:authentication property="principal.mvo.authList" var="auths"/>
+	<sec:authentication property="principal.mvo.memberId" var="authId"/>
+	<sec:authentication property="principal.mvo.memberEmail" var="authEmail"/>
+	<sec:authentication property="principal.mvo.memberType" var="authType"/>
+</sec:authorize>
 
 
 <!-- 슬라이드 라인 -->
@@ -24,15 +30,15 @@
 	<input type="radio" name="slide" id="slide05">
 	<div class="slidewrap">
 		<ul class="slidelist">
-		  <c:forEach items="${pfvo }" var="pfvo">
+		  <c:forEach items="${Ifvo }" var="Ifvo">
 				<!-- 슬라이드 영역 -->
 				<li class="slideitem">
-					<a href="/notice/detail?noticeNum=${pfvo.noticeNum }">
+					<a href="/notice/detail?noticeNum=${Ifvo.noticeNum }">
 						<div class="textbox">
 							<h3>첫번째 슬라이드</h3>
 							<p>첫번째 슬라이드 입니다.</p>
 						</div>
-						<img src="/upload/${fn: replace(pfvo.fileSave,'\\','/')}/${pfvo.fileUuid}_${pfvo.fileName}">
+						<img src="/upload/${fn: replace(Ifvo.fileSave,'\\','/')}/${Ifvo.fileUuid}_${Ifvo.fileName}">
 					</a>
 				</li>
 		  </c:forEach>			
@@ -271,9 +277,19 @@
 		</div>
 		
 		
-		<!-- <a href="/notice/register">
-			<button type="button">글작성</button>
-		</a> -->
+		<!-- 버튼 -->
+		<c:if test="${auths.stream().anyMatch(authVO -> authVO.auth.equals('ROLE_ADMIN')).get()}">			
+			<div class="notice-detail-btn" style="text-align: center;">
+			<!-- <a href="/notice/register">
+				<button type="button">글작성</button>
+			</a> -->			
+			<a href="/developer/settingNotice">
+				<button type="button" class="notice-btn my-admin-btn">관리자페이지</button>
+			</a>
+			</div>
+		</c:if>
+		
+		
 	</div>
   </div>		
 </div>

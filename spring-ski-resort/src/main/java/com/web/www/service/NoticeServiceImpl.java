@@ -37,6 +37,9 @@ public class NoticeServiceImpl implements NoticeService{
 		if(ndto.getNvo().getNoticePoint()==null) { //중요공지 미체크시 null값 대신 'N'
 			ndto.getNvo().setNoticePoint("N");
 		}
+		if(ndto.getNvo().getNoticeImpact()==null) {
+			ndto.getNvo().setNoticeImpact("N");
+		}
 		int isOk = ndao.insert(ndto.getNvo());
 		if(ndto.getFlist()==null) {
 			isOk*=1;
@@ -45,16 +48,17 @@ public class NoticeServiceImpl implements NoticeService{
 		if(isOk > 0 && ndto.getFlist().size() > 0) {
 			long noticeNum = ndao.selectOneNoticeNum(); //가장 마지막에 등록된 notice_num
 			//모든 파일에 bno set
-			if(ndto.getNvo().getNoticePoint().equals("Y")) { //중요공지 체크시 noticePointFile에 "Y"
+			if(ndto.getNvo().getNoticeImpact().equals("Y")) { //상단 슬라이드 체크시 file 테이블에 noticeImpactFile에 "Y" 또는 "N"
 				for(FileVO fvo : ndto.getFlist()) {
 					fvo.setNoticeNum(noticeNum);
-					fvo.setNoticePointFile("Y");
+					fvo.setNoticeImpactFile("Y");
 					isOk*=fdao.insertNoticeFile(fvo);
 				}
-			}else{
+			}
+			if(ndto.getNvo().getNoticeImpact().equals("N") || ndto.getNvo().getNoticeImpact()==null){
 				for(FileVO fvo : ndto.getFlist()) {
 					fvo.setNoticeNum(noticeNum);
-					fvo.setNoticePointFile("N");
+					fvo.setNoticeImpactFile("N");
 					isOk*=fdao.insertNoticeFile(fvo);
 				}				
 			}
@@ -91,6 +95,13 @@ public class NoticeServiceImpl implements NoticeService{
 		log.info(">>>>> notice List service >> ");
 		return ndao.selectList(pgvo);
 	}
+	
+	
+	@Override
+	public List<NoticeVO> noticeListNoPaging() {
+		log.info(">>>>> notice List service >> ");
+		return ndao.selectListNoPaging();
+	}
 
 	
 	@Override
@@ -101,8 +112,8 @@ public class NoticeServiceImpl implements NoticeService{
 	
 	
 	@Override
-	public List<FileVO> noticePointFileList() {
-		return fdao.selectFilePointList();
+	public List<FileVO> noticeImpactFileList() {
+		return fdao.selectFileImpactList();
 	}
 
 	
@@ -175,6 +186,11 @@ public class NoticeServiceImpl implements NoticeService{
 
 	@Override
 	public void addEvent(NoticeVO noticeVO) {
+		if(noticeVO.getNoticePoint()==null) { //중요공지 미체크시 null값 대신 'N'
+			noticeVO.setNoticePoint("N");
+		}else if(noticeVO.getNoticeImpact()==null) {
+			noticeVO.setNoticeImpact("N");
+		}
 		ndao.addEvent(noticeVO);
 		
 	}
@@ -185,6 +201,9 @@ public class NoticeServiceImpl implements NoticeService{
 		// TODO Auto-generated method stub
 		return ndao.getFiveEvent();
 	}
+
+
+	
 
 
 
