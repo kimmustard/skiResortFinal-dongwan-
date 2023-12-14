@@ -157,6 +157,8 @@ public class RentalController {
 		
 		log.info("itemReserveForm mvo = {}",mvo);
 		
+		
+		
 		model.addAttribute("ritvo", ritvo);
 		model.addAttribute("mvo", mvo);
 		
