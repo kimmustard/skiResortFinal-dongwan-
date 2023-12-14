@@ -191,11 +191,12 @@ let imageBox = document.querySelectorAll('.itemImageBox .slide img');
 let shopContainer = document.querySelector('.shopContainer');
 
 //로그인된 유저가 리프트권이 있다면? true / false
+
 if (true) {
+
      imageBox.forEach(function (image) {
           image.addEventListener('click', function () {
                shopContainer.style.display = 'block';
           })
      })
-
-}
+} 

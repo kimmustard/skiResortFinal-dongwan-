@@ -153,12 +153,10 @@ public class RentalController {
 	}
 	
 	@GetMapping("/item-reserve")
-	public String itemReserveForm(Model model, RentalLiftVO rlivo, RentalItemVO ritvo,@AuthUser MemberVO mvo) {
+	public String itemReserveForm(Model model, RentalItemVO ritvo,@AuthUser MemberVO mvo) {
 		
 		log.info("itemReserveForm mvo = {}",mvo);
 		
-		
-		model.addAttribute("rlivo", rlivo);
 		model.addAttribute("ritvo", ritvo);
 		model.addAttribute("mvo", mvo);
 		

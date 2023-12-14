@@ -97,7 +97,11 @@
 						<c:forEach items="${skiPremiumItem }" var="premiumItem">
 							<div class="slide">
 								<!-- 이미지파일 -->
-								<img alt="SkiPremiumItem" data-name="${premiumItem.rentalListPremiumItem }" data-adultFee="${premiumItem.rentalListItemAdultFee }" data-kidFee="${premiumItem.rentalListItemKidFee }" src="${premiumItem.imageUrl }">
+								<img alt="SkiPremiumItem" data-name="${premiumItem.rentalListPremiumItem }"
+								 data-adultFee="${premiumItem.rentalListItemAdultFee }" 
+								 data-kidFee="${premiumItem.rentalListItemKidFee }" 
+								 onclick="setItemInfo('${lowItem.rentalListLowItem}', ${lowItem.rentalListItemAdultFee}, ${lowItem.rentalListItemKidFee})"
+								 src="${premiumItem.imageUrl }">
 								<p class="fs-5">${premiumItem.rentalListPremiumItem }</p>
 								<c:choose>
 									<c:when test="${fn:contains(premiumItem.rentalListPremiumItem,'주니어') }">
@@ -140,10 +144,11 @@
 	
 	
 	<script type="text/javascript" src="/resources/js/rental/item.js"></script>
+	<script type="text/javascript" src="/resources/js/rental/itemReserve.js"></script>
 	
 	<script type="text/javascript">
-		const memberEmail = <c:out value="${mvo.memberEmail}" />
-		const rentalLiftNum = <c:out value="${rlivo.rentalLiftNum}" />
+		const memberEmail= `<c:out value="${mvo.memberEmail}"/>`;
+		console.log(memberEmail);
 	</script>
 	
 	<jsp:include page="../common/footer.jsp" />
