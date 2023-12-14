@@ -278,6 +278,7 @@ async function memberAlarmCheckCount(checkData) {
         }
         const resp = await fetch(url, config);
         const result = await resp.text();
+        return result;
     } catch (error) {
         console.log(error);
     }

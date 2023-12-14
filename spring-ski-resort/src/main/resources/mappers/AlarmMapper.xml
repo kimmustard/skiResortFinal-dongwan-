@@ -36,5 +36,22 @@
   </update>
   
   
+  <select id="getMemberAlarmList" resultType="com.web.www.domain.alarm.AlarmDTO">
+  	SELECT alarm_system.*, alarm_content.*
+	FROM alarm_system
+	JOIN alarm_content ON alarm_system.alarm_content_num = alarm_content.alarm_content_num
+	WHERE alarm_system.member_num = #{memberNum};
+  </select> 
+  
+  <delete id="removeMemberAlarm">
+  	delete from alarm_system where member_num = #{memberNum} and alarm_reg_at = #{alarmRegAt}
+  </delete>
+  
+  <update id="masCheck">
+  	update member set member_alarm_system = #{memberAlarmSystem} where member_id = #{memberId}
+  </update>
+  
+  <select id="getMemberAlarmCheck"></select>
+  
   </mapper>
 

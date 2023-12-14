@@ -20,5 +20,10 @@ public interface AlarmService {
 	
 	//읽음 체크
 	int alarmReadCheck(AlarmReadDTO arDTO);
+	
+	//멤버의 알람 리스트 불러오기
+	List<AlarmDTO> getMemberAlarmList(long memberNum);
+	
+	void removeMemberAlarm(long memberNum, String alarmRegAt);
 
 }
