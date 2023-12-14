@@ -64,7 +64,7 @@ public class AlarmController {
 		String alarmCheck = msv.getMemberMasCheck(mvo.getMemberNum());
 		
 		if(mvo == null || alarmCheck.equals("N")) {
-			return null;
+			return ResponseEntity.noContent().build();
 		}
 		
 		

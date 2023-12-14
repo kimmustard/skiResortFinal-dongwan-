@@ -150,7 +150,7 @@ if (document.getElementById("alarm-bell")) {
 }
 async function memberAlarmSpread() {
     try {
-        const result = await memberAlarmList();
+        let result = await memberAlarmList();
 
 
         let div = document.getElementById('alarm-spread');
@@ -193,6 +193,11 @@ async function memberAlarmList() {
             method: 'get'
         };
         const resp = await fetch(url, config);
+
+        if (resp.status === 204) {
+            // No Content 상태일 경우, null을 반환하거나 다른 처리를 수행할 수 있음
+            return null;
+        }
         const result = await resp.json();
         return result;
     } catch (error) {
