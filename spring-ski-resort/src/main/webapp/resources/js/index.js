@@ -1,7 +1,7 @@
-//슬라이드 만들기
 let Eventslides = document.getElementById("slides").innerHTML;
 makeSlides();
 
+/**슬라이드 만들기*/
 function makeSlides() {
   Eventslides = "";
   for (let i = 1; i <= 5; i++) {
@@ -30,19 +30,18 @@ async function getTwoNotice(){
 }
 //공지 화면에 뿌리기
    getTwoNotice().then(notice =>{
-    let originalDate = notice[i].noticeRegAt;
-
-    /**   년, 월, 일 추출*/
-    let year = originalDate.getFullYear();
-    let month = String(originalDate.getMonth() + 1).padStart(2, '0');  // 월은 0부터 시작하므로 +1, 두 자리로 패딩
-    let day = String(originalDate.getDate()).padStart(2, '0');  // 두 자리로 패딩
-
-    // 포맷팅된 날짜
-    let formattedDate = `${year}-${month}-${day}`;
-
-       if(notice!=undefined){
+     if(notice!=undefined){
        for(let i = 0; i<notice.length; i++){     
-       document.getElementById('notice').innerHTML+= '<ul><li><span class="notice-reg">'+notice[i].noticeRegAt+'</span><a class="notice-title" href="/notice/detail?noticeNum='+notice[i].noticeNum+'">'+notice[i].noticeTitle+'</a></li></ul>'        
+        
+         let originalDate = notice[i].noticeRegAt;
+         originalDate = new Date(originalDate);
+         /**   년, 월, 일 추출*/
+         let year = originalDate.getFullYear();
+         let month = String(originalDate.getMonth() + 1).padStart(2, '0');  // 월은 0부터 시작하므로 +1, 두 자리로 패딩
+         let day = String(originalDate.getDate()).padStart(2, '0');  // 두 자리로 패딩
+         // 포맷팅된 날짜
+         let formattedDate = `${year}-${month}-${day}`;
+       document.getElementById('notice').innerHTML+= '<ul><li><span class="notice-reg">'+formattedDate+'</span><a class="notice-title" href="/notice/detail?noticeNum='+notice[i].noticeNum+'">'+notice[i].noticeTitle+'</a></li></ul>'        
        }}
    });
 //*이벤트 리스트 5개 받아오기 */
@@ -145,17 +144,26 @@ function makeClone() {
 function updateWidth() {
   let currentSlides = document.querySelectorAll(".slides li");
   let newSlideCount = currentSlides.length;
+  // 가운데 정렬
+  let centerOffset = ((slideWidth + slideMargin) * slideCount - slideMargin) / 2;
+  let centerTranslateX = centerOffset - (currentIdx * (slideWidth + slideMargin));
+  slides.style.transform = "translateX(" + centerTranslateX + "px)";
 
   let newWidth =
     (slideWidth + slideMargin) * newSlideCount - slideMargin + "px";
   slides.style.width = newWidth;
   moveSlide(currentIdx - 1);
+
+
+
 }
 
 function setinit() {
   let TranslateValue = -(slideWidth + slideMargin) * slideCount;
   slides.style.transform = "translateX(" + TranslateValue + "px)";
 }
+
+
 
 function updateOpacity() {
   // 중앙에 있는 아이템의 인덱스 계산
@@ -175,9 +183,9 @@ function updateOpacity() {
   if(centralItemIndex==6){
     centralItemIndex= 1;
   }
-
+  document.getElementById('slide-page-num').innerText=centralItemIndex+'/5'
   let centralEventItemBoxes = document.querySelectorAll("#event-item-box" + (centralItemIndex));
-
+  
   centralEventItemBoxes.forEach(function (centralEventItemBox) {
       centralEventItemBox.style.opacity = "1";
       centralEventItemBox.style.backgroundColor = "black";
