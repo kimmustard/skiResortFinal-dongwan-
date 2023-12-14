@@ -82,6 +82,8 @@ public interface MemberService {
 
 	String getMemberMasCheck(long memberNum);
 
+	String getMemberGrade(long memberNum);
+
 
 
 

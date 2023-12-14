@@ -25,6 +25,7 @@ import com.web.www.domain.member.MemberVO;
 import com.web.www.domain.pay.PayInfoVO;
 import com.web.www.domain.pay.RefundInfoVO;
 import com.web.www.service.HotelService;
+import com.web.www.service.MemberService;
 import com.web.www.service.PayService;
 
 import lombok.RequiredArgsConstructor;
@@ -37,7 +38,7 @@ import lombok.extern.slf4j.Slf4j;
 public class HotelController {
 
 	private final HotelService hsv;
-	private final PayService psv;
+	private final MemberService msv;
 
 	/*
 	 * 예약페이지 매핑
@@ -45,6 +46,9 @@ public class HotelController {
 	@GetMapping("/reservation")
 	public String reservForm(Model m, @AuthUser MemberVO mvo) {
 		List<RoomVO> roomList = hsv.getRoomList();
+		
+		mvo.setMemberGrade(msv.getMemberGrade(mvo.getMemberNum()));	//멤버 등급 가져오기
+		
 		m.addAttribute("roomList", roomList);
 		m.addAttribute("mvo", mvo);
 

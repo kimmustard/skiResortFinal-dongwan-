@@ -1,3 +1,6 @@
+//등급별 금액연산
+let grade = document.getElementById('memberGradeInput').value;
+let discountRate = 0;  // 기본값은 할인율이 0%
 
 //홈페이지 버튼눌러서 쿠폰받기
 
@@ -63,8 +66,6 @@ document.getElementById('my_coupon_list').addEventListener('click', () => {
         myCouponList.innerHTML = '';
 
         if (result.length != 0) {
-            console.log('사용자 쿠폰 리스트 :' + JSON.stringify(result));
-            console.log(result);
 
             const today = new Date();
 
@@ -94,8 +95,8 @@ document.getElementById('my_coupon_list').addEventListener('click', () => {
                     diffInDays += daysInCurrentMonth;
                     diffInMonths -= 1;
                 }
-            
-             
+
+
 
                 couponInt = parseInt(result[0].couponInt);
                 console.log(couponInt);
@@ -117,7 +118,6 @@ document.getElementById('my_coupon_list').addEventListener('click', () => {
 
                 str += `</div>`;
                 str += `</label>`;
-                // `${result[i].couponName} <input type="radio" id="coupon" name="coupon" onclick="usecoupon(${result[0].couponInt},${result[0].couponRate})" value="${result[i].couponCode}">`
                 myCouponList.innerHTML += str;
             }
 
@@ -126,7 +126,7 @@ document.getElementById('my_coupon_list').addEventListener('click', () => {
                 if (e.target.type !== 'radio' || e.target.name !== 'coupon') {
                     return;
                 }
-                
+
                 const index = e.target.id.slice(1);
                 const couponBox = document.getElementById(`cbox${index}`);
 
@@ -136,7 +136,7 @@ document.getElementById('my_coupon_list').addEventListener('click', () => {
                         e.target.checked = false;
                         couponBox.style.border = '';
                         // 라디오 버튼이 체크가 해제되면 원래 가격으로 설정
-                        usecoupon(0, 0); //실제값 원래대로 돌림
+                        usecoupon(discountRate, 0, 0); //실제값 원래대로 돌림
                     } else {
                         // 체크된 라디오 박스가 있다면, 모든 라디오 박스의 스타일을 원래대로 되돌린 후, 선택된 라디오 박스에 대해서만 스타일을 변경
                         const radioButtons = document.querySelectorAll('[name="coupon"]');
@@ -149,11 +149,11 @@ document.getElementById('my_coupon_list').addEventListener('click', () => {
                         couponBox.style.border = '3px solid red'; // 여기에 굵게 하고 싶은 border 스타일을 적용
 
                         // 할인율 계산
-                        usecoupon(result[index].couponInt, result[index].couponRate);
+                        usecoupon(discountRate, result[index].couponInt, result[index].couponRate);
                         // 클릭된 라디오 버튼의 값을 couponCode에 설정
                         document.getElementById('couponCode').value = result[index].couponCode;
                     }
-                }       
+                }
             });
         } else {
             alert("사용가능한 쿠폰이 없습니다.")
@@ -175,12 +175,43 @@ async function myCouponListGet() {
     }
 }
 
-function usecoupon(couponInt, couponrate) {
-    let productPrice = document.getElementById("productPrice").value;
-    //할인율 계산 (원금-coupon_int)-(원금*coupon_rate/100)-(원금*등급할인율/100)
-    let totalprice = (productPrice - couponInt) - (productPrice * couponrate / 100);
+/** 할인적용 이벤트
+ * 
+ *  
+ */
+function usecoupon(discountRate, couponInt, couponrate) {
+
+    if (grade == 'Silver') {
+        discountRate = 3;
+    } else if (grade == 'Gold') {
+        discountRate = 5;
+    } else if (grade == 'Manager') {
+        discountRate = 7;
+    } else if (grade == 'VIP') {
+        discountRate = 10;
+    } else {
+        discountRate = 0;
+    }
+
+    //등급과 할인율 표시
+    document.getElementById('userGradeRate').innerHTML = `<span style="font-weight:bold;">${grade}</span><span style="font-weight:bold;">(${discountRate}%)</span>`;
+
+    let productPrice = parseFloat(document.getElementById("productPrice").value);
+    console.log(productPrice);
+
+    // 할인율 계산 (원금*discountRate/100)
+    let discountAmount = productPrice * (discountRate / 100);
+
+    // 나머지 할인 및 쿠폰 적용
+    let totalprice = productPrice - discountAmount - couponInt - (productPrice * (couponrate / 100));
+    console.log(productPrice, totalprice);
+
     document.getElementById('realpayvalue').value = totalprice;
-    document.getElementById('userViewpay').innerText = totalprice.toLocaleString() + "원";
+    document.getElementById('userViewpay').innerHTML = `${totalprice.toLocaleString()}원 <del>${productPrice.toLocaleString()}</del>원`;
     realAmount = totalprice;
 }
+
+
+
+
 

@@ -117,6 +117,8 @@ public interface MemberDAO {
 
 	String getMemberMasCheck(long memberNum);
 
+	String getMemberGrade(long memberNum);
+
 
 
 

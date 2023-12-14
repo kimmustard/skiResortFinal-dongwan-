@@ -213,6 +213,14 @@ public class MemberServiceImpl implements MemberService {
 		
 		return mdao.getMemberMasCheck(memberNum);
 	}
+	
+	/**
+	 * @getMemberGrade 결제전 멤버 등급 조회
+	 */
+	@Override
+	public String getMemberGrade(long memberNum) {
+		return mdao.getMemberGrade(memberNum);
+	}
 
 
 

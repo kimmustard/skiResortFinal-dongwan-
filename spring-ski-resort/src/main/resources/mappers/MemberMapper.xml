@@ -168,9 +168,14 @@
 		select max(member_num) from member where member_del = 'N' order by member_reg_at desc;
 	</select>
 	
-	<!-- 알람 on/off 체크 -->
+	<!-- 시스템 알람 on/off 체크 -->
 	<select id="getMemberMasCheck" resultType="string">
 		select member_alarm_system from member where member_num = #{memberNum}		
+	</select>
+
+	<!-- 멤버 등급 조회 -->
+	<select id="getMemberGrade" resultType="string">
+		select member_grade from member where member_num = "${memberNum}"
 	</select>
 
   </mapper>
