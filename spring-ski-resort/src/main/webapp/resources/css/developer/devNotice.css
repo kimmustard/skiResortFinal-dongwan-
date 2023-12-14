@@ -26,6 +26,10 @@
 /*게시글 목록 테이블 라인*/
 .dev-notice-tr>th{
 	text-align: center;
+	border-left: 1px solid #dee2e6;
+}
+.dev-notice-tr>td{
+	border-left: 1px solid #dee2e6;
 }
 .dev-notice-no{
 	width: 80px;

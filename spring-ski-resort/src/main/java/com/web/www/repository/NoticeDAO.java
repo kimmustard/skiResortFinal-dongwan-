@@ -14,6 +14,8 @@ public interface NoticeDAO {
 	NoticeVO selectDetail(long noticeNum);
 
 	List<NoticeVO> selectList(PagingVO pgvo);
+	
+	List<NoticeVO> selectListNoPaging();
 
 	int update(NoticeVO nvo);
 
@@ -36,5 +38,7 @@ public interface NoticeDAO {
 	void addEvent(NoticeVO noticeVO);
 
 	List<NoticeVO> getFiveEvent();
+
+	
 
 }

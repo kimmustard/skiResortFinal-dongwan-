@@ -30,7 +30,7 @@ public interface FileDAO {
 
 	List<FileVO> getQnaAnsFileList(long qnaNum);
 
-	List<FileVO> selectFilePointList();
+	List<FileVO> selectFileImpactList();
 
 
 }

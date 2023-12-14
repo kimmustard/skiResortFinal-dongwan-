@@ -22,7 +22,8 @@ public class NoticeVO {
 	private int noticeCount; //조회수
 	private String noticeRegAt; //등록일
 	private String noticeModAt; //수정일
-	private String noticePoint; //중요공지 상단 노출
+	private String noticePoint; //중요공지 등록 여부
+	private String noticeImpact; //상단 슬라이드 이미지 파일 등록 여부
 	private String noticeDel; //삭제여부
 	private String noticeImageUrl; //이미지url
 	
