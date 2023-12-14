@@ -6,6 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>장비 렌탈 페이지</title>
+
+	<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+   <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 	<!-- Bootstrap 4 CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
@@ -32,13 +35,17 @@
 
 
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-
-<link rel="stylesheet" href="/resources/css/rental/item_reserve.css">
+	<link rel="stylesheet" href="/resources/css/coupon/coupon.css">
+	<link rel="stylesheet" href="/resources/css/pay/pay_modal.css">
+	<link rel="stylesheet" href="/resources/css/rental/item_reserve.css">
 </head>
 <body>
 	<jsp:include page="../common/nav.jsp" />
 	
 	<div class="bodyContainer">
+		
+	
+	
 	
 		<div class="back">
 			<img data-v-c62ee4ac="" src="https://cdn.shymbulak-dev.com/media-test/77032ae86d50f5d61c9cec8b2f30ae39.jpg" alt="" style="width: 100%; height: 100vh;">
@@ -120,19 +127,20 @@
 						
 						<div class="input-group mb-3">
 							<span class="input-group-text">렌탈장비명</span>
-							<input type="text" class="form-control" id="showItemName" readonly="readonly">
+							<input type="text" class="form-control" id="showItemName" value="" readonly="readonly">
 						</div>
 						<div class="input-group mb-3">
 							<span class="input-group-text">요금(성인)</span>
-							<input type="text" class="form-control" id="showadultFee" value="0" readonly="readonly">
+							<input type="text" class="form-control" id="showAdultFee" value="0" readonly="readonly">
 						</div>
 						<div class="input-group mb-3">
 							<span class="input-group-text">요금(어린이)</span>
-							<input type="text" class="form-control" id="showkidFee" value="0" readonly="readonly">
+							<input type="text" class="form-control" id="showKidFee" value="0" readonly="readonly">
 						</div>
+						
 						<div class="input-group mb-3">
 							<span class="input-group-text">총요금</span>
-							<input type="text" class="form-control" id="showkidFee" value="0" readonly="readonly">
+							<input type="text" class="form-control" id="showTotalFee" value="0" readonly="readonly">
 						</div>
 						<p class="fs-4">반납서비스 신청</p>
 						<div class="form-check">
@@ -141,19 +149,9 @@
 						<div class="form-check">
 						  <input class="form-check-input" type="radio" name="rentalLiftTicket" value="N" id="afternoonTicket">아니오
 						</div>
-						<!-- db로 보낼 hiddem input  -->
+						<!-- db로 보낼 hidden input  -->
 						
-							<input type="hidden" name="rentalLiftAdultFee" id="adultFee" value="0" readonly="readonly">
-							<input type="hidden" name="rentalLiftKidFee" id="kidFee" value="0" readonly="readonly">
-							<input type="hidden" name="rentalLiftTotalFee" id="realpayvalue">
-							<input type="hidden" name="memberNum" placeholder="회원번호" value="${mvo.memberNum }">	
-							<input type="hidden" name="payImpUid" id="payImpUid">	
-							<input type="hidden" name="payMerchantUid" id="payMerchantUid">	
-							<input type="hidden" name="payAmount" id="payAmount">
-							<input type="hidden" name="payName" id="payName">		
-							<input type="hidden"  id="name-type" value="리프트">	
-							<input type="hidden" id="productPrice">	
-							<input type="hidden" name="couponCode" id="couponCode" >
+							
 	
 						<a href="/rental/item-reserve"><button type="button" class="btn btn-outline-primary">이전으로</button></a>
 						<button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#hotel-pay">결제</button>

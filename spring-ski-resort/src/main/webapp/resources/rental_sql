@@ -40,7 +40,6 @@ rental_list_mid_item varchar(50),
 rental_list_premium_item varchar(50),
 rental_list_item_adult_fee int,
 rental_list_item_kid_fee int,
-rental_list_total_fee int,
 rental_list_item_count int default 0,
 primary key(rental_list_item_num));
 

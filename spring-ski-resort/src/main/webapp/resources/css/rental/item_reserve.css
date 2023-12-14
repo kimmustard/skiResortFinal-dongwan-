@@ -233,3 +233,13 @@
 	font-family: 'Hahmlet', serif;
 	padding: 50px 0 10px 10px;
 }
+
+.move-hotel {
+	text-decoration: none;
+	color: gray;
+}
+
+.move-hotel:hover {
+	text-decoration: none;
+	color: gray;
+}

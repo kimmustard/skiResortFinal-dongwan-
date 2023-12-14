@@ -5,6 +5,7 @@ import java.util.List;
 import com.web.www.domain.member.MemberVO;
 import com.web.www.domain.rental.RentalItemDTO;
 import com.web.www.domain.rental.RentalItemListDTO;
+import com.web.www.domain.rental.RentalItemVO;
 import com.web.www.domain.rental.RentalLiftVO;
 import com.web.www.domain.rental.RentalReserveVO;
 import com.web.www.domain.rental.RentalVO;
@@ -41,6 +42,7 @@ public interface RentalService {
 	int itemReserve(RentalReserveVO rrvo);
 
 	int updateRentalLift(RentalLiftVO rlivo, MemberVO mvo);
+
 
 
 

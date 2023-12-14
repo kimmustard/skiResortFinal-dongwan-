@@ -153,13 +153,11 @@ public class RentalController {
 	}
 	
 	@GetMapping("/item-reserve")
-	public String itemReserveForm(Model model, RentalItemVO ritvo,@AuthUser MemberVO mvo) {
+	public String itemReserveForm(Model model, @AuthUser MemberVO mvo) {
 		
 		log.info("itemReserveForm mvo = {}",mvo);
 		
 		
-		
-		model.addAttribute("ritvo", ritvo);
 		model.addAttribute("mvo", mvo);
 		
 		return "/rental/item-reserve";
@@ -171,11 +169,6 @@ public class RentalController {
 		
 		rrvo.setRentalLiftNum(rvo.getRentalLiftNum());
 		rrvo.setRentalListItemNum(ritvo.getRentalListItemNum());
-		rrvo.setRentalReserveStart(rlivo.getRentalLiftStart());
-		rrvo.setRentalReserveAdult(rlivo.getRentalLiftAdult());
-		rrvo.setRentalReserveKid(rlivo.getRentalLiftKid());
-		rrvo.setRentalReserveAdultFee(ritvo.getRentalListItemAdultFee());
-		rrvo.setRentalReserveKidFee(ritvo.getRentalListItemKidFee());
 		model.addAttribute("rrvo", rrvo);
 		model.addAttribute("rlivo", rlivo);
 		int isOk = rsv.itemReserve(rrvo);

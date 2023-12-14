@@ -50,7 +50,10 @@
 						<c:forEach items="${skiLowItem }" var="lowItem">
 							<div class="slide">
 								<!-- 이미지파일 -->
-								<img alt="SkiLowItem" data-name="${lowItem.rentalListLowItem }" data-adultFee="${lowItem.rentalListItemAdultFee }" data-kidFee="${lowItem.rentalListItemKidFee }" src="${lowItem.imageUrl }">
+								<img alt="SkiLowItem" data-name="${lowItem.rentalListLowItem }" 
+								data-adultFee="${lowItem.rentalListItemAdultFee }" 
+								data-kidFee="${lowItem.rentalListItemKidFee }" 
+								src="${lowItem.imageUrl }">
 								<p class="fs-5">${lowItem.rentalListLowItem }</p>
 								<c:choose>
 									<c:when test="${fn:contains(lowItem.rentalListLowItem,'주니어') }">
@@ -73,7 +76,10 @@
 						<c:forEach items="${skiMidItem }" var="midItem">
 							<div class="slide">
 								<!-- 이미지파일 -->
-								<img alt="SkiMidItem" data-name="${midItem.rentalListMidItem }" data-adultFee="${midItem.rentalListItemAdultFee }" data-kidFee="${midItem.rentalListItemKidFee }" src="${midItem.imageUrl }">
+								<img alt="SkiMidItem" data-name="${midItem.rentalListMidItem }" 
+								data-adultFee="${midItem.rentalListItemAdultFee }" 
+								data-kidFee="${midItem.rentalListItemKidFee }" 
+								src="${midItem.imageUrl }">
 								<p class="fs-5">${midItem.rentalListMidItem }</p>
 								<c:choose>
 									<c:when test="${fn:contains(midItem.rentalListMidItem,'주니어') }">
@@ -100,7 +106,6 @@
 								<img alt="SkiPremiumItem" data-name="${premiumItem.rentalListPremiumItem }"
 								 data-adultFee="${premiumItem.rentalListItemAdultFee }" 
 								 data-kidFee="${premiumItem.rentalListItemKidFee }" 
-								 onclick="setItemInfo('${lowItem.rentalListLowItem}', ${lowItem.rentalListItemAdultFee}, ${lowItem.rentalListItemKidFee})"
 								 src="${premiumItem.imageUrl }">
 								<p class="fs-5">${premiumItem.rentalListPremiumItem }</p>
 								<c:choose>

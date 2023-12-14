@@ -36,7 +36,7 @@ function clone(container, className) {
      let lastSlideClone = slides[slides.length - 1].cloneNode(true);
      container.appendChild(firstSlideClone);
      container.appendChild(lastSlideClone);
-    
+
 }
 
 let lowItemImage = document.getElementById('lowItemImageBox');
@@ -178,14 +178,20 @@ document.addEventListener('DOMContentLoaded', function () {
 })
 
 
-// 이미지 클릭시 장바구니에 name, price 담기
-function shoppingBasket(name, price) {
+// 이미지 클릭시 장바구니에 itemname, price 담기
+function shoppingBasket(itemName, price) {
      let shoppingBasketDiv = document.querySelector('.shoppingBasket');
-     let itemSelectDiv = document.createElement('div');
-     itemSelectDiv.innerHTML = `<p class="fs-5">${name}</p>`;
-     itemSelectDiv.innerHTML += `<p class="fs-5">${price}원</p>`;
-     shoppingBasketDiv.appendChild(itemSelectDiv);
+
+     if (shoppingBasketDiv.children.length < 8) {
+          let itemSelectDiv = document.createElement('div');
+          itemSelectDiv.innerHTML = `<p class="fs-5">${itemName}</p><br><p class="fs-5">요금 : ${price}원</p><br>`;
+          shoppingBasketDiv.appendChild(itemSelectDiv);
+     } else {
+          alert("최대 5개만 예약 가능합니다");
+     }
+
 }
+
 
 let imageBox = document.querySelectorAll('.itemImageBox .slide img');
 let shopContainer = document.querySelector('.shopContainer');

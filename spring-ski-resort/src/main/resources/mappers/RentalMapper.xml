@@ -171,7 +171,6 @@
 		select count(*) from item_image
 	</select>
 	
-	
 	<insert id="itemReserve">
 		insert into rental_reserve(rental_lift_num, rental_list_item_num, rental_reserve_start, rental_reserve_adult,rental_reserve_kid,
 		rental_reserve_item, rental_reserve_adult_fee, rental_reserve_kid_fee, rental_reserve_total_fee,
