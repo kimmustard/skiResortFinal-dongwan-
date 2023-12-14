@@ -43,33 +43,38 @@
 	</div>
 
 	<!-- index 영상 아래 들어갈 내용은 여기에  -->
-	<div class="index-content">
-		<div id="notice-box">
+		<div class="index-content" >
+		<div id="notice-box">		
 			<h1 class="notice-logo">INFORMATION</h1>
-
-		</div>
-		<div class="news-topic-box">
-			<p class="fs-1 box-title">News & Topic</p>
-			<p class="fs-3 box-title">뉴스 & 토픽</p>
+		<div id="notice">
+		
 		</div>
 
+		</div>
+		<div class="triangle-top"></div>
 		<div class="event-box">
 			<p class="fs-1 box-title">Event</p>
 			<p class="fs-3 box-title">이벤트</p>
 			<div class="contentBox">
 				  <div class="slide_wrapper">
 		      <ul class="slides" id="slides" >
-      </ul>
+     			</ul>
 		    </div>
-		
 		    <p class="controls">
-		      <span class="prev">prev</span>
-		      <span class="next">next</span>
+		      <span class="prev"><i class="bi bi-chevron-compact-left"></i></span>
+		       <span id="slide-page-num">1/6</span>
+		      <span class="next"><i class="bi bi-chevron-compact-right"></i></span>
 		    </p>
   		    </div>
 		</div>
+		<div class="triangle-bottom"></div>
 	</div>
-
+	
+<!-- 	<div class="news-topic-box"> -->
+<!-- 			<p class="fs-1 box-title">News & Topic</p> -->
+<!-- 			<p class="fs-3 box-title">뉴스 & 토픽</p> -->
+<!-- 		</div> -->
+	
 
 	<jsp:include page="common/footer.jsp"></jsp:include>
 </body>
