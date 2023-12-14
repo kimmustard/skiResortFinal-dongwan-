@@ -43,8 +43,8 @@
 			        중요 게시물 목록 (총 
 			        <span style="color: red;">
 			        	<c:set var="PointCount" value="0" />
-						<c:forEach items="${NoPagingList }" var="pvolist" >
-						    <c:if test="${pvolist.noticePoint eq 'Y'}">
+						<c:forEach items="${NoPagingList }" var="npvolist" >
+						    <c:if test="${npvolist.noticePoint eq 'Y'}">
 						        <c:set var="PointCount" value="${PointCount + 1}" />
 						    </c:if>
 						</c:forEach>
@@ -91,19 +91,19 @@
 					    </tr>
 					  </thead>
 					  <tbody>
-					  	<c:forEach items="${plist }" var="pvo">
+					  	<c:forEach items="${plist }" var="npvo">
 					  	<c:if test="${ph.pgvo.keyword == '' || ph.pgvo.keyword == null || ph.pgvo.keyword == '공지사항' || ph.pgvo.keyword == '이벤트' || ph.pgvo.keyword == '보도자료' || ph.pgvo.keyword == '쇼핑몰' || ph.pgvo.keyword == '채용정보' || ph.pgvo.keyword == '기타' }">
 					    <tr class="dev-notice-tr">
-					      <td>${pvo.noticeNum }</td>
-					      <td>${pvo.noticeCategory }</td>
-					      <td class="dev-notice-title-td"><div><a href="/notice/detail?noticeNum=${pvo.noticeNum }">${pvo.noticeTitle }</a></div></td>
-					      <td>${pvo.noticeWriter }</td>
-					      <td>${fn:replace((fn:substring(pvo.noticeRegAt,0,10)),'-','.') }</td>
+					      <td>${npvo.noticeNum }</td>
+					      <td>${npvo.noticeCategory }</td>
+					      <td class="dev-notice-title-td"><div><a href="/notice/detail?noticeNum=${npvo.noticeNum }">${npvo.noticeTitle }</a></div></td>
+					      <td>${npvo.noticeWriter }</td>
+					      <td>${fn:replace((fn:substring(npvo.noticeRegAt,0,10)),'-','.') }</td>
 					      <td style="text-align: left; background-color: black;">
-					      	<a href="/notice/modify?noticeNum=${pvo.noticeNum }">
+					      	<a href="/notice/modify?noticeNum=${npvo.noticeNum }">
 								<button type="button" class="btn btn-warning">수정</button>
 							</a>
-							<a href="/developer/noticeRemove?noticeNum=${pvo.noticeNum }">
+							<a href="/developer/noticeRemove?noticeNum=${npvo.noticeNum }">
 								<button type="button" class="btn btn-danger">삭제</button>
 							</a>						
 							<div class="dev-notice-point-isok">
