@@ -115,6 +115,8 @@ public interface MemberDAO {
 
 	long recentMember();
 
+	String getMemberMasCheck(long memberNum);
+
 
 
 
