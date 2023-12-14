@@ -61,9 +61,13 @@ public class AlarmController {
 	//nav에 표현되는 간이 리스트입니다 (최신 10개만 표시)
 	@GetMapping(value = "/alarmList", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<AlarmDTO>> alarmListTen(@AuthUser MemberVO mvo) {
-		String alarmCheck = msv.getMemberMasCheck(mvo.getMemberNum());
+		if(mvo == null) {
+			return ResponseEntity.noContent().build();
+		}
 		
-		if(mvo == null || alarmCheck.equals("N")) {
+		
+		String alarmCheck = msv.getMemberMasCheck(mvo.getMemberNum());
+		if(alarmCheck.equals("N")) {
 			return ResponseEntity.noContent().build();
 		}
 		
