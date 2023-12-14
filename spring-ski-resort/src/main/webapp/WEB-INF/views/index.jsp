@@ -30,7 +30,7 @@
 			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
 			allowfullscreen></iframe>
 			
-		<h1 id="maintext1">好き</h1>
+		<h1 id="maintext1"  >好き</h1>
 		<h1 id="maintext2">DAISUSKI</h1>
 
 
@@ -45,16 +45,16 @@
 	<!-- index 영상 아래 들어갈 내용은 여기에  -->
 		<div class="index-content" >
 		<div id="notice-box">		
-			<h1 class="notice-logo">INFORMATION</h1>
+			<h1 class="notice-logo eventbgc">INFORMATION</h1>
 		<div id="notice">
 		
 		</div>
 
 		</div>
 		<div class="triangle-top"></div>
-		<div class="event-box">
+		<div class="event-box none-click" >
 			<p class="fs-1 box-title">Event</p>
-			<p class="fs-3 box-title">이벤트</p>
+			<p class=" box-title">이벤트</p>
 			<div class="contentBox">
 				  <div class="slide_wrapper">
 		      <ul class="slides" id="slides" >
@@ -62,7 +62,7 @@
 		    </div>
 		    <p class="controls">
 		      <span class="prev"><i class="bi bi-chevron-compact-left"></i></span>
-		       <span id="slide-page-num">1/6</span>
+		       <span id="slide-page-num" >1/6</span>
 		      <span class="next"><i class="bi bi-chevron-compact-right"></i></span>
 		    </p>
   		    </div>
