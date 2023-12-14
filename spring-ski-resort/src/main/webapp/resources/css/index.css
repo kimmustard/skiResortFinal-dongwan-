@@ -107,11 +107,18 @@
 }
 #notice-box{
 	width: 1150px;
-	border: solid 1px black;
+	color :#666;
 	margin: auto;
-	padding: 10px;
 	margin-top: 100px;
 }
+#notice{	
+	border-top : dotted 1px #666;
+	border-bottom : dotted 1px #666;
+	margin: auto;
+	padding: 10px;		
+}
+
+
 .notice-title{
 	color: black;
 	padding-left: 10px;

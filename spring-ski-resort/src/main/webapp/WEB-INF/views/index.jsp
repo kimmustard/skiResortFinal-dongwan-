@@ -43,9 +43,12 @@
 	</div>
 
 	<!-- index 영상 아래 들어갈 내용은 여기에  -->
-	<div class="index-content">
-		<div id="notice-box">
+		<div class="index-content">
+		<div id="notice-box">		
 			<h1 class="notice-logo">INFORMATION</h1>
+		<div id="notice">
+		
+		</div>
 
 		</div>
 		<div class="news-topic-box">

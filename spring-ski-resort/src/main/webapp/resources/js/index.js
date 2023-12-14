@@ -30,12 +30,22 @@ async function getTwoNotice(){
 }
 //공지 화면에 뿌리기
    getTwoNotice().then(notice =>{
+    let originalDate = notice[i].noticeRegAt;
+
+    /**   년, 월, 일 추출*/
+    let year = originalDate.getFullYear();
+    let month = String(originalDate.getMonth() + 1).padStart(2, '0');  // 월은 0부터 시작하므로 +1, 두 자리로 패딩
+    let day = String(originalDate.getDate()).padStart(2, '0');  // 두 자리로 패딩
+
+    // 포맷팅된 날짜
+    let formattedDate = `${year}-${month}-${day}`;
+
        if(notice!=undefined){
        for(let i = 0; i<notice.length; i++){     
-       document.getElementById('notice-box').innerHTML+= '<ul><li><span class="notice-reg">'+notice[i].noticeRegAt+'</span><a class="notice-title" href="/notice/detail?noticeNum='+notice[i].noticeNum+'">'+notice[i].noticeTitle+'</a></li></ul>'        
+       document.getElementById('notice').innerHTML+= '<ul><li><span class="notice-reg">'+notice[i].noticeRegAt+'</span><a class="notice-title" href="/notice/detail?noticeNum='+notice[i].noticeNum+'">'+notice[i].noticeTitle+'</a></li></ul>'        
        }}
    });
-//이벤트 리스트 5개 받아오기
+//*이벤트 리스트 5개 받아오기 */
 async function getFiveEvent(){
     try {
         const url = "/notice/getFiveEvent";
@@ -73,7 +83,7 @@ async function getFiveEvent(){
 
 
         }})
-//이벤트 페이지 이동 이벤트
+/**이벤트 페이지 이동 이벤트 */
   function moveEventSite(num){
     location.href = "/notice/detail?noticeNum="+num;
  }
@@ -112,7 +122,7 @@ let slides = document.querySelector(".slides"),
   nextBtn = document.querySelector(".next");
 
 makeClone();
-
+/** 슬라이드 클론 만들기 */
 function makeClone() {
   for (let i = 0; i < slideCount; i++) {
     let cloneSlide = slide[i].cloneNode(true);
