@@ -245,8 +245,8 @@
 						<input type="hidden" id="name-type" value="호텔">	
 						<input type="hidden" id="productPrice">	
 						<input type="hidden" name="couponCode" id="couponCode" >
-						
-						<button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#hotel-pay" onclick="usecoupon(0, 0, 0)">결제</button>
+						<button type="button" class="btn btn-outline-secondary" id="modal-btn"  data-bs-toggle="modal" data-bs-target="#hotel-pay" style="display: none" onclick="usecoupon(0, 0, 0)">결제</button>
+						<button type="button" class="btn btn-outline-secondary"  id="submitBtn">결제</button>
 					 </div>
 					</div>
 						<button id="closeBtn" type="button" class="btn btn-outline-secondary">이전</button>
@@ -260,9 +260,7 @@
 			<p class="hidden-info" id="image-src${room.hotelRoomNum}">
 				${room.hotelImage}
 			</p>
-			<p class="hidden-info" id="explian-src${room.hotelRoomNum}">
-				${room.hotelRoomExplain}
-			</p>
+		
 		
 			
 			</c:forEach>

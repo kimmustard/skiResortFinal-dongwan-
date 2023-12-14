@@ -46,12 +46,9 @@ public class HotelController {
 	@GetMapping("/reservation")
 	public String reservForm(Model m, @AuthUser MemberVO mvo) {
 		List<RoomVO> roomList = hsv.getRoomList();
-		
 		mvo.setMemberGrade(msv.getMemberGrade(mvo.getMemberNum()));	//멤버 등급 가져오기
-		
 		m.addAttribute("roomList", roomList);
 		m.addAttribute("mvo", mvo);
-
 		return "/hotel/reservation";
 	}
 
@@ -69,8 +66,12 @@ public class HotelController {
 
 		return paySuccessUrl;
 	}
-
-
+	@GetMapping("/roomDetail")
+	public String roomDetail(int roomNum,Model m) {
+		RoomVO rvo = hsv.getRoomDetail(roomNum);
+		m.addAttribute("rvo",rvo);
+		return "/hotel/roomDetail";
+	}
 	
 	@PostConstruct
 	public void addRoomList() {
