@@ -261,8 +261,13 @@
 <script type="text/javascript" src="/resources/js/developer/setting.js"></script>
 <script type="text/javascript">
 document.addEventListener("DOMContentLoaded", function() {
+	const plist = `<c:out value="${plist.noticePoint}" />`;
+	
+	for(let pnvo of plist){
+		
+	}
     
-    var Point = `<c:out value="${qvo.qnaPoint}" />`;
+    var Point = pnvo.noticePoint;
     // 체크박스 요소 가져오기
     var qnaPointCheckbox = document.getElementById('qna-Point');
 
