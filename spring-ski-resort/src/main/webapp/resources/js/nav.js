@@ -116,10 +116,6 @@ async function weatherListSearch() {
 
 }
 
-document.getElementById("ski-navbar-brand").addEventListener("mouseout", (e) => {
-
-    e.target.querySelector("span").style.width = "0px";
-})
 
 const navLinks = document.querySelectorAll(".ski-nav-link");
 
