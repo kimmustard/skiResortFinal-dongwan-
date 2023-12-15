@@ -99,6 +99,7 @@
 				<td class="qna-table-content" colspan="3" style="padding: 30px 20px;">
 					<div class="qna-table-content-child">${qvo.qnaContent }</div>
 					<div>
+					<div class="qna-table-content-child"> 주문번호 : <a id="member-merchantUid" data-merchantUid="${qvo.qnaMerchantUid }">${qvo.qnaMerchantUid}</a> </div>
 						<!-- 파일표시란 -->
 						<c:set value="${qdto.flist }" var="flist"></c:set>
 						<ul class="list-group list-group-flush">
@@ -195,6 +196,7 @@
 
 
 
+<script type="text/javascript" src="/resources/js/qna/ansRegister.js"></script>
 <script type="text/javascript" src="/resources/js/qna/qnaFileModify.js"></script>
 <script type="text/javascript" src="/resources/js/qna/qnaFileUpload.js"></script>
 <jsp:include page="../common/footer.jsp" />

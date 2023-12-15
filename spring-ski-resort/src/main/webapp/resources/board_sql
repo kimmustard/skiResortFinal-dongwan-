@@ -61,7 +61,7 @@ qna_del varchar(1) default 'N',
 qna_reg_at datetime default now(),
 qna_mod_at datetime default now(),
 qna_ans_reg_at datetime default now(),
-qua_merchant_uid
+qna_merchant_uid varchar(50),
 primary key(qna_num)
 );
 

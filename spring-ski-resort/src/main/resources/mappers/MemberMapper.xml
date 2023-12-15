@@ -209,7 +209,7 @@
 	
 	<!-- 문의게시판 주문번호 체크 -->
 	<select id="checkMarchantUid" resultType="int">
-		select count(*) pay where pay_merchant_uid = #{payMerchantUid}
+		select count(*) from pay where pay_merchant_uid = #{payMerchantUid}
 	</select>
 	
 	

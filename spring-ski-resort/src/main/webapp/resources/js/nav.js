@@ -250,7 +250,7 @@ function changeDate(datetime) {
 
 document.addEventListener('click', (e) => {
     const clickedElement = e.target;
-    if (clickedElement.tagName == 'A') {
+    if (clickedElement.tagName == 'A' && clickedElement.closest('nav')) {
         // data-alarm-id 값을 가져옴
         const regAt = e.target.dataset.alarmregat;
         const num = e.target.dataset.membernum;
