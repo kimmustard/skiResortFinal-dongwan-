@@ -249,6 +249,7 @@ public class MemberServiceImpl implements MemberService {
 	            
 	            return hotelReceipt;
 	        case "리프트":
+	        	//문제위치
 	            ReceiptDTO liftReceipt = mdao.getLiftReceipt(payMerChantUid);
 	            
 	            // 필드 설정

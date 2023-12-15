@@ -3,15 +3,26 @@
 
 
 //비밀글 체크박스 화면표시
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     console.log(qnaSecret);
     if (qnaSecret === 'Y') {
         var qnaSecretCheckbox = document.getElementById('qna-secret');
         if (qnaSecretCheckbox) {
             qnaSecretCheckbox.checked = true;
         }
-    }    
+    }
 })
+
+
+document.getElementById('member-merchantUid').addEventListener('click', (e) => {
+    // 클릭된 요소가 'member-merchantUid'인지 확인
+    if (e.target.id === 'member-merchantUid') {
+        // data-merchantUid 값을 얻음
+        const merchantUid = e.target.getAttribute('data-merchantUid');
+        console.log(merchantUid);
+    }
+});
+
 
 
 // document.addEventListener("DOMContentLoaded", function() {

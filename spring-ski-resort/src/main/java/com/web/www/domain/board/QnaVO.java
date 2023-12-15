@@ -25,6 +25,7 @@ public class QnaVO {
 	private String qnaDel; //삭제 여부
 	private String qnaRegAt; //글 작성일
 	private String qnaModAt; //글 수정일
+	private String qnaMerchantUid; //고객 주문번호
 	private String qnaAnsRegAt; //답변 등록일
 
 }

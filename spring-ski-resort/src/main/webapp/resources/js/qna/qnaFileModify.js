@@ -14,7 +14,6 @@ async function removeFileToServer(uuid) {
 
 
 document.addEventListener('click', (e) => {
-  console.log(e.target);
   if (e.target.classList.contains('file-x')) {
     let uuid = e.target.dataset.uuid;
     console.log(uuid);
