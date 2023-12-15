@@ -3,6 +3,7 @@ package com.web.www.service;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,6 +16,8 @@ import com.web.www.domain.member.MemberCheckDTO;
 import com.web.www.domain.member.MemberPwdDTO;
 import com.web.www.domain.member.MemberVO;
 import com.web.www.domain.member.ModifyMemberDTO;
+import com.web.www.domain.pay.ReceiptDTO;
+import com.web.www.domain.pay.RefundReceiptDTO;
 import com.web.www.repository.AlarmDAO;
 import com.web.www.repository.MemberDAO;
 
@@ -213,25 +216,56 @@ public class MemberServiceImpl implements MemberService {
 		
 		return mdao.getMemberMasCheck(memberNum);
 	}
+	
+	/**
+	 * @getMemberGrade 결제전 멤버 등급 조회
+	 */
+	@Override
+	public String getMemberGrade(long memberNum) {
+		return mdao.getMemberGrade(memberNum);
+	}
 
+	@Override
+	public ReceiptDTO getReceipt(String payMerChantUid) {
+	    ReceiptDTO originalReceipt = mdao.getReceipt(payMerChantUid);
+	    ModelMapper modelMapper = new ModelMapper();
+	    modelMapper.getConfiguration().setSkipNullEnabled(true);
 
+	    if (originalReceipt.getPayStatus().equals("결제취소")) {
+	        ReceiptDTO refundReceipt = mdao.getRefundReceipt(payMerChantUid);
 
+	        // originalReceipt에서 refundReceipt로 매핑
+	        modelMapper.map(originalReceipt, refundReceipt);
+	        log.info("환불 = {}", refundReceipt);
 
+	        return refundReceipt;
+	    }
+	    switch (originalReceipt.getPayNameType()) {
+	        case "호텔":
+	            ReceiptDTO hotelReceipt = mdao.getHotelReceipt(payMerChantUid);
+	           
+	            // 필드 설정
+	            modelMapper.map(originalReceipt, hotelReceipt);
+	            
+	            return hotelReceipt;
+	        case "리프트":
+	            ReceiptDTO liftReceipt = mdao.getLiftReceipt(payMerChantUid);
+	            
+	            // 필드 설정
+	            modelMapper.map(originalReceipt, liftReceipt);
+	            return liftReceipt;
+	        case "렌탈":
+	            ReceiptDTO rentalReceipt = mdao.getRentalReceipt(payMerChantUid);
+	            
+	            // 필드 설정
+	            modelMapper.map(originalReceipt, rentalReceipt);
+	            return rentalReceipt;
+	        default:
+	            	
+	            return null;
+	    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	}
 
 
 
