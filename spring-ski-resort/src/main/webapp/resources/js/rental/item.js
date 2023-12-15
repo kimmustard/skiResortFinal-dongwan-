@@ -117,23 +117,27 @@ function fnContains(str, substr) {
      return str.indexOf(substr) !== -1;
 }
 
+///
+let itemsArray = [];
+
 // 스키 아이템
 document.addEventListener('DOMContentLoaded', function () {
 
      document.getElementById('skiItemList').addEventListener('click', (e) => {
           if (e.target.tagName === 'IMG') {
+               let itemNum = e.target.getAttribute('data-num');
                let itemName = e.target.getAttribute('data-name');
                let itemAdultFee = e.target.getAttribute('data-adultFee');
                let itemKidFee = e.target.getAttribute('data-kidFee');
 
-               if (fnContains(itemName, '주니어')) {
-                    console.log(itemName, itemKidFee);
-                    shoppingBasket(itemName, itemKidFee);
+               if (fnContains(itemNum, itemName, '주니어')) {
+                    console.log(itemNum, itemName, itemKidFee);
+                    shoppingBasket(itemNum, itemName, itemKidFee);
                } else {
-                    console.log(itemName, itemAdultFee);
-                    shoppingBasket(itemName, itemAdultFee);
+                    console.log(itemNum, itemName, itemAdultFee);
+                    shoppingBasket(itemNum, itemName, itemAdultFee);
                }
-               
+
 
           }
      });
@@ -145,16 +149,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
      document.getElementById('boardItemList').addEventListener('click', (e) => {
           if (e.target.tagName === 'IMG') {
+               let itemNum = e.target.getAttribute('data-num');
                let itemName = e.target.getAttribute('data-name');
                let itemAdultFee = e.target.getAttribute('data-adultFee');
                let itemKidFee = e.target.getAttribute('data-kidFee');
 
                if (fnContains(itemName, '주니어')) {
-                    console.log(itemName, itemKidFee);
-                    shoppingBasket(itemName, itemKidFee);
+                    console.log(itemNum, itemName, itemKidFee);
+                    shoppingBasket(itemNum, itemName, itemKidFee);
                } else {
-                    console.log(itemName, itemAdultFee);
-                    shoppingBasket(itemName, itemAdultFee);
+                    console.log(itemNum, itemName, itemAdultFee);
+                    shoppingBasket(itemNum, itemName, itemAdultFee);
                }
 
           }
@@ -167,25 +172,29 @@ document.addEventListener('DOMContentLoaded', function () {
 
      document.getElementById('wearItemList').addEventListener('click', (e) => {
           if (e.target.tagName === 'IMG') {
+               let itemNum = e.target.getAttribute('data-num');
                let itemName = e.target.getAttribute('data-name');
                let itemAdultFee = e.target.getAttribute('data-adultFee');
-               console.log(itemName);
-               shoppingBasket(itemName, itemAdultFee);
+               console.log(itemNum, itemName);
+               shoppingBasket(itemNum, itemName, itemAdultFee);
           }
      });
 
 })
 
-
 // 이미지 클릭시 장바구니에 itemname, price 담기
-function shoppingBasket(itemName, price) {
-     console.log(itemName, price);
+function shoppingBasket(itemNum, itemName, price) {
+     console.log(itemNum, itemName, price);
+
      let shoppingBasketDiv = document.querySelector('.shoppingBasket');
 
      if (shoppingBasketDiv.children.length < 8) {
-          let itemSelectDiv = document.createElement('div');
-          itemSelectDiv.innerHTML = `<p class="fs-5">${itemName}</p><br><p class="fs-5">요금 : ${price}원</p><br>`;
-          shoppingBasketDiv.appendChild(itemSelectDiv);
+          let itemSelectDiv = document.getElementById('itemSelectDiv');
+          itemSelectDiv.innerHTML += `<p class="fs-5">${itemName}</p><br><p class="fs-5">요금 : ${price}원</p><br>`;
+          itemSelectDiv.innerHTML += `<input type="hidden" name="rentalItemNum" value="${itemNum}">`;
+          itemSelectDiv.innerHTML += `<input type="hidden" name="rentalItemName" value="${itemName}">`;
+          itemSelectDiv.innerHTML += `<input type="hidden" name="rentalItemPrice" value="${price}">`;
+
      } else {
           alert("최대 5개만 예약 가능합니다");
      }
@@ -205,35 +214,4 @@ if (true) {
                shopContainer.style.display = 'block';
           })
      })
-} 
-
-function sendShoppingBasketData() {
-     // 장바구니에서 데이터 수집
-     let rentalItemName = document.getElementById('showItemName').value;
-     let adultFee = document.getElementById('showAdultFee').value;
-     let kidFee = document.getElementById('showKidFee').value;
-
-     // JSON으로 보낼 객체 생성
-     let requestData = {
-          rentalItemName: rentalItemName,
-          adultFee: adultFee,
-          kidFee: kidFee
-     };
-
-     // Ajax 요청 보내기
-     $.ajax({
-          type: 'POST',
-          url: '/rental/item-reserve',
-          contentType: 'application/json',
-          data: JSON.stringify(requestData),
-          success: function (response) {
-               
-               console.log(response);
-
-               
-          },
-          error: function (error) {
-               console.error('에러:', error);
-          }
-     });
 }

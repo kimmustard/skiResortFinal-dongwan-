@@ -53,6 +53,7 @@
 								<img alt="SkiLowItem" data-name="${lowItem.rentalListLowItem }" 
 								data-adultFee="${lowItem.rentalListItemAdultFee }" 
 								data-kidFee="${lowItem.rentalListItemKidFee }" 
+								data-num="${lowItem.rentalListItemNum }" 
 								src="${lowItem.imageUrl }">
 								<p class="fs-5">${lowItem.rentalListLowItem }</p>
 								<c:choose>
@@ -79,6 +80,7 @@
 								<img alt="SkiMidItem" data-name="${midItem.rentalListMidItem }" 
 								data-adultFee="${midItem.rentalListItemAdultFee }" 
 								data-kidFee="${midItem.rentalListItemKidFee }" 
+								data-num="${midItem.rentalListItemNum }" 
 								src="${midItem.imageUrl }">
 								<p class="fs-5">${midItem.rentalListMidItem }</p>
 								<c:choose>
@@ -106,6 +108,7 @@
 								<img alt="SkiPremiumItem" data-name="${premiumItem.rentalListPremiumItem }"
 								 data-adultFee="${premiumItem.rentalListItemAdultFee }" 
 								 data-kidFee="${premiumItem.rentalListItemKidFee }" 
+								 data-num="${premiumItem.rentalListItemNum }" 
 								 src="${premiumItem.imageUrl }">
 								<p class="fs-5">${premiumItem.rentalListPremiumItem }</p>
 								<c:choose>
@@ -136,11 +139,16 @@
 		
 		
 		<div class="shopContainer" style="display: none;">
+				<form action="/rental/itemsBasket" method="post">
 			<div class="shoppingBasket">
 				<input type="hidden" name="rentalMainLift" id="rentalMainLift" placeholder="리프트권 구매여부" readonly="readonly">
 				<p class="fs-4">장바구니</p>
-				<a href="/rental/item-reserve"><button type="button" class="btn btn-outline-info reserveBtn" id="reserveBtn">예약신청하기</button></a>
+				<div id="itemSelectDiv">
+				
+				</div>
+				<button type="submit" class="btn btn-outline-info reserveBtn" id="reserveBtn">예약신청하기</button>
 			</div>
+				</form>
 		</div>
 		
 

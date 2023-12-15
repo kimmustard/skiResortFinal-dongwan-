@@ -46,7 +46,11 @@
 						<c:forEach items="${boardLowItem }" var="lowItem">
 							<div class="slide">
 								<!-- 이미지파일 -->
-								<img alt="BoardLowItem" data-name="${lowItem.rentalListLowItem }" data-adultFee="${lowItem.rentalListItemAdultFee }" data-kidFee="${lowItem.rentalListItemKidFee }" src="${lowItem.imageUrl }">
+								<img alt="BoardLowItem" data-name="${lowItem.rentalListLowItem }" 
+								data-adultFee="${lowItem.rentalListItemAdultFee }" 
+								data-kidFee="${lowItem.rentalListItemKidFee }" 
+								data-num="${lowItem.rentalListItemNum }"
+								src="${lowItem.imageUrl }">
 								<p class="fs-5">${lowItem.rentalListLowItem }</p>
 								<c:choose>
 									<c:when test="${fn:contains(lowItem.rentalListLowItem,'주니어') }">
@@ -68,7 +72,11 @@
 						<c:forEach items="${boardMidItem }" var="midItem">
 							<div class="slide">
 								<!-- 이미지파일 -->
-								<img alt="BoardMidItem" data-name="${midItem.rentalListMidItem }" data-adultFee="${midItem.rentalListItemAdultFee }" data-kidFee="${midItem.rentalListItemKidFee }" src="${midItem.imageUrl }">
+								<img alt="BoardMidItem" data-name="${midItem.rentalListMidItem }" 
+								data-adultFee="${midItem.rentalListItemAdultFee }" 
+								data-kidFee="${midItem.rentalListItemKidFee }" 
+								data-num="${midItem.rentalListItemNum }"
+								src="${midItem.imageUrl }">
 								<p class="fs-5">${midItem.rentalListMidItem }</p>
 								<c:choose>
 									<c:when test="${fn:contains(midItem.rentalListMidItem,'주니어') }">
@@ -92,7 +100,11 @@
 						<c:forEach items="${boardPremiumItem }" var="premiumItem">
 							<div class="slide">
 								<!-- 이미지파일 -->
-								<img alt="BoardPremiumItem" data-name="${premiumItem.rentalListPremiumItem }" data-adultFee="${premiumItem.rentalListItemAdultFee }" data-kidFee="${premiumItem.rentalListItemKidFee }" src="${premiumItem.imageUrl }">
+								<img alt="BoardPremiumItem" data-name="${premiumItem.rentalListPremiumItem }" 
+								data-adultFee="${premiumItem.rentalListItemAdultFee }" 
+								data-kidFee="${premiumItem.rentalListItemKidFee }" 
+								data-num="${premiumItem.rentalListItemNum }"
+								src="${premiumItem.imageUrl }">
 								<p class="fs-5">${premiumItem.rentalListPremiumItem }</p>
 								<c:choose>
 									<c:when test="${fn:contains(premiumItem.rentalListPremiumItem,'주니어') }">

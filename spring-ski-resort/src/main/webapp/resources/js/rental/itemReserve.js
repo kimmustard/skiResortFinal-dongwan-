@@ -138,23 +138,6 @@ targetArea2.addEventListener('click', function (event) {
     event.stopPropagation();
 });
 
-$(document).ready(function () {
-    // 페이지 로드 시 서버에서 데이터 가져오기
-    $.ajax({
-        type: 'GET',
-        url: '/rental/ski-item',
-        success: function (data) {
-            // 아이템 등록 페이지의 필드 채우기
-            $('#showItemName').val(data.rentalItemName);
-            $('#showAdultFee').val(data.adultFee);
-            $('#showKidFee').val(data.kidFee);
-        },
-        error: function (error) {
-            console.error('에러:', error);
-        }
-    });
-});
-
 
 
 // 렌탈장비명, 요금 표시

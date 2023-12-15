@@ -150,7 +150,6 @@
 						  <input class="form-check-input" type="radio" name="rentalLiftTicket" value="N" id="afternoonTicket">아니오
 						</div>
 						<!-- db로 보낼 hidden input  -->
-						
 							
 	
 						<a href="/rental/item-reserve"><button type="button" class="btn btn-outline-primary">이전으로</button></a>

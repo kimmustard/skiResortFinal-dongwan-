@@ -2,16 +2,14 @@ package com.web.www.controller;
 
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.annotation.PostConstruct;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,14 +21,13 @@ import com.web.www.domain.FileVO;
 import com.web.www.domain.member.AuthUser;
 import com.web.www.domain.member.MemberVO;
 import com.web.www.domain.pay.PayInfoVO;
+import com.web.www.domain.rental.RantelItemsBasketDTO;
 import com.web.www.domain.rental.RentalItemDTO;
 import com.web.www.domain.rental.RentalItemImageRead;
 import com.web.www.domain.rental.RentalItemListDTO;
 import com.web.www.domain.rental.RentalItemRead;
 import com.web.www.domain.rental.RentalItemVO;
 import com.web.www.domain.rental.RentalLiftVO;
-import com.web.www.domain.rental.RentalReserveVO;
-import com.web.www.domain.rental.RentalVO;
 import com.web.www.handler.FileHandler;
 import com.web.www.service.RentalService;
 
@@ -155,33 +152,32 @@ public class RentalController {
 		return "/rental/wear-item";
 	}
 	
-	@GetMapping("/item-reserve")
-	public String itemReserveForm(Model model, @AuthUser MemberVO mvo) {
+	@PostMapping("/itemsBasket")
+	public String itemReserveForm(@RequestParam List<RantelItemsBasketDTO> ritvoList) {
 		
-		log.info("itemReserveForm mvo = {}",mvo);
+		for (RantelItemsBasketDTO rtibDTO : ritvoList) {
+			log.info("넘어가는지 확인##### = {}", rtibDTO);
+			
+		}
 		
-		
-		model.addAttribute("mvo", mvo);
-		
-		
-		return "/rental/item-reserve";
+		return null;
 	}
 	
 	
-	@PostMapping("/item-reserve")
-	public String itemReservePost(RentalItemVO ritvo, RentalLiftVO rlivo, RentalReserveVO rrvo,
-			RentalVO rvo, @AuthUser MemberVO mvo, Model model) {
-		
-		rrvo.setRentalLiftNum(rvo.getRentalLiftNum());
-		rrvo.setRentalListItemNum(ritvo.getRentalListItemNum());
-		model.addAttribute("rrvo", rrvo);
-		model.addAttribute("rlivo", rlivo);
-		int isOk = rsv.itemReserve(rrvo);
-		log.info((isOk > 0)? "ok":"fail");
-		
-		return "index";
-		
-	}
+//	@PostMapping("/item-reserve")
+//	public String itemReservePost(RentalItemVO ritvo, RentalLiftVO rlivo, RentalReserveVO rrvo,
+//			RentalVO rvo, @AuthUser MemberVO mvo, Model model) {
+//		
+//		rrvo.setRentalLiftNum(rvo.getRentalLiftNum());
+//		rrvo.setRentalListItemNum(ritvo.getRentalListItemNum());
+//		model.addAttribute("rrvo", rrvo);
+//		model.addAttribute("rlivo", rlivo);
+//		int isOk = rsv.itemReserve(rrvo);
+//		log.info((isOk > 0)? "ok":"fail");
+//		
+//		return "index";
+//		
+//	}
 	
 	
 	
