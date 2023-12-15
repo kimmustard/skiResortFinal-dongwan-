@@ -117,8 +117,9 @@ function fnContains(str, substr) {
      return str.indexOf(substr) !== -1;
 }
 
+
 ///
-let itemsArray = [];
+
 
 // 스키 아이템
 document.addEventListener('DOMContentLoaded', function () {
@@ -137,7 +138,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     console.log(itemName, itemAdultFee);
                     shoppingBasket(itemNum, itemName, itemAdultFee);
                }
-
 
           }
      });
@@ -182,18 +182,33 @@ document.addEventListener('DOMContentLoaded', function () {
 
 })
 
+let itemsArray = [];
+
 // 이미지 클릭시 장바구니에 itemname, price 담기
 function shoppingBasket(itemNum, itemName, price) {
      console.log(itemNum, itemName, price);
 
      let shoppingBasketDiv = document.querySelector('.shoppingBasket');
 
-     if (shoppingBasketDiv.children.length < 8) {
-          let itemSelectDiv = document.getElementById('itemSelectDiv');
+     let itemSelectDiv = document.getElementById('itemSelectDiv');
+
+     if (itemsArray.length < 5) {
+
+          // 선택된 아이템을 배열에 추가
+          itemsConfig = {
+               rentalItemNum: itemNum,
+               rentalItemName: itemName,
+               rentalItemPrice: price
+          };
+
+          itemsArray.push(itemsConfig);
+
+
           itemSelectDiv.innerHTML += `<p class="fs-5">${itemName}</p><br><p class="fs-5">요금 : ${price}원</p><br>`;
-          itemSelectDiv.innerHTML += `<input type="hidden" name="rentalItemNum" value="${itemNum}">`;
-          itemSelectDiv.innerHTML += `<input type="hidden" name="rentalItemName" value="${itemName}">`;
-          itemSelectDiv.innerHTML += `<input type="hidden" name="rentalItemPrice" value="${price}">`;
+          itemSelectDiv.innerHTML += `<input type="hidden" name="ritvoList[${itemsArray.length - 1}].rentalItemNum" value="${itemNum}">`;
+          itemSelectDiv.innerHTML += `<input type="hidden" name="ritvoList[${itemsArray.length - 1}].rentalItemName" value="${itemName}">`;
+          itemSelectDiv.innerHTML += `<input type="hidden" name="ritvoList[${itemsArray.length - 1}].rentalItemPrice" value="${price}">`;
+
 
      } else {
           alert("최대 5개만 예약 가능합니다");
@@ -202,13 +217,45 @@ function shoppingBasket(itemNum, itemName, price) {
 }
 
 
+
+async function ItemsBasketToServer() {
+     try {
+          const url = '/rental/itemsBasket';
+          const config = {
+               method: 'post',
+               headers: {
+                    'Content-Type': 'application/json; charset=UTF-8',
+               },
+               body: JSON.stringify(itemsArray)
+          };
+
+          console.log('ItemsBasketToServer :', JSON.stringify(itemsArray));
+
+          let resp = await fetch(url, config);
+          let result = await resp.text();
+          return result;
+     } catch (error) {
+          console.log(error);
+     }
+}
+
+
+document.getElementById('reserveBtn').addEventListener('click', () => {
+     ItemsBasketToServer().then(result => {
+          if (result > 0) {
+               console.log('성공');
+          }
+     })
+})
+
+
+
 let imageBox = document.querySelectorAll('.itemImageBox .slide img');
 let shopContainer = document.querySelector('.shopContainer');
 
 //로그인된 유저가 리프트권이 있다면? true / false
 
 if (true) {
-
      imageBox.forEach(function (image) {
           image.addEventListener('click', function () {
                shopContainer.style.display = 'block';

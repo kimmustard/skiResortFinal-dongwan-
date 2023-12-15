@@ -135,12 +135,11 @@
 		<div class="shopContainer" style="display: none;">
 			<form action="/rental/itemsBasket" method="post">
 				<div class="shoppingBasket">
-					<input type="hidden" name="rentalMainLift" id="rentalMainLift" placeholder="리프트권 구매여부" readonly="readonly">
 					<p class="fs-4">장바구니</p>
+					<button type="submit" class="btn btn-outline-info reserveBtn" id="reserveBtn">예약신청하기</button>
 					<div id="itemSelectDiv">
 					
 					</div>
-					<button type="submit" class="btn btn-outline-info reserveBtn" id="reserveBtn">예약신청하기</button>
 				</div>
 			</form>
 		</div>

@@ -11,9 +11,9 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class RantelItemsBasketDTO {
+public class RentalItemsBasketDTO {
 
-	private String rentalItemNum;
+	private long rentalItemNum;
 	private String rentalItemName;
-	private String rentalItemPrice;
+	private int rentalItemPrice;
 }

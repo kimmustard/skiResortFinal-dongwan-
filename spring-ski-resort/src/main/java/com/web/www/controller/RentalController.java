@@ -6,13 +6,15 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -21,7 +23,7 @@ import com.web.www.domain.FileVO;
 import com.web.www.domain.member.AuthUser;
 import com.web.www.domain.member.MemberVO;
 import com.web.www.domain.pay.PayInfoVO;
-import com.web.www.domain.rental.RantelItemsBasketDTO;
+import com.web.www.domain.rental.RentalItemsBasketDTO;
 import com.web.www.domain.rental.RentalItemDTO;
 import com.web.www.domain.rental.RentalItemImageRead;
 import com.web.www.domain.rental.RentalItemListDTO;
@@ -152,15 +154,17 @@ public class RentalController {
 		return "/rental/wear-item";
 	}
 	
-	@PostMapping("/itemsBasket")
-	public String itemReserveForm(@RequestParam List<RantelItemsBasketDTO> ritvoList) {
+	@ResponseBody
+	@PostMapping(value = "/itemsBasket", consumes =MediaType.APPLICATION_JSON_VALUE)
+	public String itemReserveForm(@RequestBody List<RentalItemsBasketDTO> ritvoList) {
 		
-		for (RantelItemsBasketDTO rtibDTO : ritvoList) {
-			log.info("넘어가는지 확인##### = {}", rtibDTO);
-			
-		}
-		
-		return null;
+	    for (RentalItemsBasketDTO rtibDTO : ritvoList) {
+	    	
+	        log.info("넘어가는지 확인##### = {}", rtibDTO);
+	        
+	    }
+	    
+	    return null;
 	}
 	
 	
