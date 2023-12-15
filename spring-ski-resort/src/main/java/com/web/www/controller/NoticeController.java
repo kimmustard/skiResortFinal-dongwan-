@@ -25,7 +25,6 @@ import com.web.www.domain.FileVO;
 import com.web.www.domain.board.NoticeDTO;
 import com.web.www.domain.board.NoticeVO;
 import com.web.www.domain.board.PagingVO;
-import com.web.www.domain.hotel.RoomVO;
 import com.web.www.handler.FileHandler;
 import com.web.www.handler.PagingHandler;
 import com.web.www.service.NoticeService;
