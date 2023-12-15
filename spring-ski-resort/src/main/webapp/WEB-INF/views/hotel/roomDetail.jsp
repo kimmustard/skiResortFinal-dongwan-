@@ -21,11 +21,12 @@
 				<div id="room_detail_img">
 						 <div class="slide_wrapper">
 						      <ul class="slides">
-						        <li><img  src="https://high1.com/DATA/tnrummanage/2021031511340632354663.jpg" alt=""/> </li>
-						        <li><img  src="https://high1.com/DATA/tnrummanage/2021031511340632354663.jpg" alt=""/> </li>
-						        <li><img  src="https://high1.com/DATA/tnrummanage/2021031511340632354663.jpg" alt=""/> </li>
-						        <li><img  src="https://high1.com/DATA/tnrummanage/2021031511340632354663.jpg" alt=""/> </li>
-						        <li><img  src="https://high1.com/DATA/tnrummanage/2021031511340632354663.jpg" alt=""/> </li>
+						        <li><img width="100%" src="${rivo.hotelRoomImage1}" alt=""/> </li>
+						        <li><img width="100%" src="${rivo.hotelRoomImage2}" alt=""/> </li>
+						        <li><img width="100%" src="${rivo.hotelRoomImage3}" alt=""/> </li>
+						        <li><img width="100%" src="${rivo.hotelRoomImage4}" alt=""/> </li>
+						       
+						     
 				      </ul>
 						
 						</div>
