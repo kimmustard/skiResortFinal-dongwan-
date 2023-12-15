@@ -3,6 +3,7 @@ package com.web.www.service;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -226,43 +227,45 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public ReceiptDTO getReceipt(String payMerChantUid) {
-	    ReceiptDTO riDTO = mdao.getReceipt(payMerChantUid);
+	    ReceiptDTO originalReceipt = mdao.getReceipt(payMerChantUid);
+	    ModelMapper modelMapper = new ModelMapper();
+	    modelMapper.getConfiguration().setSkipNullEnabled(true);
 
-	    if (riDTO.getPayStatus().equals("결제취소")) {
-	    	ReceiptDTO RefundReceipt = mdao.getRefundReceipt(payMerChantUid);
-	        riDTO.setRefundImpUid(RefundReceipt.getRefundImpUid());
-	        riDTO.setRefundReason(RefundReceipt.getRefundReason());
-	        riDTO.setRefundRegAt(RefundReceipt.getRefundRegAt());
-	        riDTO.setRefundType(RefundReceipt.getRefundType());
+	    if (originalReceipt.getPayStatus().equals("결제취소")) {
+	        ReceiptDTO refundReceipt = mdao.getRefundReceipt(payMerChantUid);
 
-	        return riDTO;
+	        // originalReceipt에서 refundReceipt로 매핑
+	        modelMapper.map(originalReceipt, refundReceipt);
+	        log.info("환불 = {}", refundReceipt);
+
+	        return refundReceipt;
 	    }
+//	    switch (riDTO.getPayNameType()) {
+//	        case "호텔":
+//	            ReceiptDTO hotelReceipt = mdao.getHotelReceipt(payMerChantUid);
+//	           
+//	            // 필드 설정
+//	            riDTO.setHotelReserveStayStart(hotelReceipt.getHotelReserveStayStart());
+//	            riDTO.setHotelReserveStayEnd(hotelReceipt.getHotelReserveStayEnd());
+//	            // 필요한 만큼 다른 필드 설정
+//	            return riDTO;
+//	        case "리프트":
+//	            ReceiptDTO liftReceipt = mdao.getLiftReceipt(payMerChantUid);
+//	            // 필드 설정
+////	            riDTO.setLiftField1(liftReceipt.getLiftField1());
+////	            riDTO.setLiftField2(liftReceipt.getLiftField2());
+//	            // 필요한 만큼 다른 필드 설정
+//	            return riDTO;
+//	        case "렌탈":
+//	            ReceiptDTO rentalReceipt = mdao.getRentalReceipt(payMerChantUid);
+//	            // 필드 설정
+////	            riDTO.setRentalField1(rentalReceipt.getRentalField1());
+////	            riDTO.setRentalField2(rentalReceipt.getRentalField2());
+//	            // 필요한 만큼 다른 필드 설정
+//	            return riDTO;
+//	    }
 
-	    switch (riDTO.getPayNameType()) {
-	        case "호텔":
-	            ReceiptDTO hotelReceipt = mdao.getHotelReceipt(payMerChantUid);
-	            // 필드 설정
-	            riDTO.setHotelReserveStayStart(hotelReceipt.getHotelReserveStayStart());
-	            riDTO.setHotelReserveStayEnd(hotelReceipt.getHotelReserveStayEnd());
-	            // 필요한 만큼 다른 필드 설정
-	            return riDTO;
-	        case "리프트":
-	            ReceiptDTO liftReceipt = mdao.getLiftReceipt(payMerChantUid);
-	            // 필드 설정
-//	            riDTO.setLiftField1(liftReceipt.getLiftField1());
-//	            riDTO.setLiftField2(liftReceipt.getLiftField2());
-	            // 필요한 만큼 다른 필드 설정
-	            return riDTO;
-	        case "렌탈":
-	            ReceiptDTO rentalReceipt = mdao.getRentalReceipt(payMerChantUid);
-	            // 필드 설정
-//	            riDTO.setRentalField1(rentalReceipt.getRentalField1());
-//	            riDTO.setRentalField2(rentalReceipt.getRentalField2());
-	            // 필요한 만큼 다른 필드 설정
-	            return riDTO;
-	    }
-
-	    return riDTO;
+	    return null;
 	}
 
 
