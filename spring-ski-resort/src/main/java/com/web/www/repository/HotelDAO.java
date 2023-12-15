@@ -2,6 +2,7 @@ package com.web.www.repository;
 
 import java.util.List;
 
+import com.web.www.domain.hotel.RoomDetailImageVO;
 import com.web.www.domain.hotel.RoomInfoVO;
 import com.web.www.domain.hotel.RoomVO;
 
@@ -24,5 +25,11 @@ public interface HotelDAO {
 	int getRoomCount(int hotelRoomNum);
 
 	RoomVO getRoomDetail(int roomNum);
+
+	void addRoomImage(RoomDetailImageVO roomDetailImageVO);
+
+	RoomDetailImageVO getRoomDetailImageVO(int roomNum);
+
+	List<RoomDetailImageVO> getimageList();
 
 }
