@@ -62,6 +62,7 @@
       <div class="modal-body pay-info">
       	<div>상품명<div class="pay-value" id="item-name"></div></div>
       	<div>판매자  <div class="pay-value">다이스키</div></div>
+      	<div>등급<div class="pay-value" id="userGradeRate"></div></div>
 	    <div class="pay3-box">결제금액<div class="pay-value" id="userViewpay"></div></div> 
   
       </div>
@@ -166,6 +167,7 @@
 				
 				
 				<div id="innerbox" class="reserveBox" style="display: none;">
+					<input id="memberGradeInput" type="hidden" value="${mvo.memberGrade }">
 					<p class="fs-2">리프트권 선택</p>
 					<div class="form-check">
 					  <input class="form-check-input" onclick="updateFees(40000,30000,'오전권')" type="radio" name="rentalLiftTicket" value="오전권" id="morningTicket">오전권
@@ -210,7 +212,7 @@
 						<input type="hidden" name="couponCode" id="couponCode" >
 
 					<a href="/rental/reserve"><button type="button" class="btn btn-outline-primary">이전으로</button></a>
-						<button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#hotel-pay">결제</button>
+						<button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#hotel-pay" onclick="usecoupon(0, 0, 0)">결제</button>
 				</div>
 			</form>
 		</div>

@@ -72,7 +72,10 @@
       <div class="modal-body pay-info">
       	<div>상품명<div class="pay-value" id="item-name"></div></div>
       	<div>판매자  <div class="pay-value">다이스키</div></div>
-	    <div class="pay3-box">결제금액<div class="pay-value" id="userViewpay"></div></div> 
+      	<div>등급<div class="pay-value" id="userGradeRate"></div></div>
+	    <div class="pay3-box">결제금액
+	    	<div class="pay-value" id="userViewpay"></div>
+	    </div> 
   
       </div>
       <div class="pay-method">
@@ -114,7 +117,7 @@
 		<div class="box">
 		<form action="/hotel/reservation" method="post" id="payform">
 			<div id="box">
-		
+			<input id="memberGradeInput" type="hidden" value="${mvo.memberGrade }">
 			<p class="fs-3 hotelText">호텔예약/<a class="move-rental" href="/rental/reserve">리프트권 예약</a></p>
 			<div class="input-box">
 			<!--실제 값을 저장하는 애들 화면에는 없음-->
@@ -242,7 +245,7 @@
 						<input type="hidden" id="name-type" value="호텔">	
 						<input type="hidden" id="productPrice">	
 						<input type="hidden" name="couponCode" id="couponCode" >
-						<button type="button" class="btn btn-outline-secondary" id="modal-btn"  data-bs-toggle="modal" data-bs-target="#hotel-pay" style="display: none">결제</button>
+						<button type="button" class="btn btn-outline-secondary" id="modal-btn"  data-bs-toggle="modal" data-bs-target="#hotel-pay" style="display: none" onclick="usecoupon(0, 0, 0)">결제</button>
 						<button type="button" class="btn btn-outline-secondary"  id="submitBtn">결제</button>
 					 </div>
 					</div>

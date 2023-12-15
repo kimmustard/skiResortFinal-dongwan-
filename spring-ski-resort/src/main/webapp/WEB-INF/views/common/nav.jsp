@@ -53,10 +53,6 @@
         	<sec:authentication property="principal.mvo.memberType" var="authType"/>
         	<sec:authentication property="principal.mvo.authList" var="auths"/>
         	
-	       	<!-- admin 관리페이지 -->
-            <c:if test="${auths.stream().anyMatch(authVO -> authVO.auth.equals('ROLE_ADMIN')).get()}">
-             
-            </c:if>
         	<c:if test="${authType == 'normal' }">
 	       		<li>${authId}님 환영합니다.</li>
 		       	<li><a href="/member/detail">회원정보</a></li>
@@ -89,9 +85,13 @@
 				
 			</div>
 			
+	       	<!-- admin 관리페이지 -->
+            <c:if test="${auths.stream().anyMatch(authVO -> authVO.auth.equals('ROLE_ADMIN')).get()}">
 	       	  <li class="admin-page-icon">
 			   		<a class="developer_page" href="/developer/settingMain" ><i class="bi bi-gear-fill" id="bi-gear-fill"></i></a>
-               </li>
+               </li>  
+            </c:if>
+			
      
 		</sec:authorize>
        </ul>
