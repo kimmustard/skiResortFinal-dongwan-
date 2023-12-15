@@ -391,8 +391,8 @@ a{
 /* 주문번호버튼 */
 .qna-uid-btn{
   	outline: none;
-  	width: 60px;
-  	height: 35px;
+  	width: 120px;
+  	height: 40px;
   	padding: 10px 25px;
   	font-family: 'Lato', sans-serif;
   	font-weight: 500;
@@ -401,6 +401,7 @@ a{
   	transition: all 0.1s ease;
   	position: relative;
   	display: inline-block;
+  	margin-left: 37px;
 }
 .myqna-uid-btn {
   border-radius: 5px;
@@ -440,6 +441,9 @@ a{
 }
 
 
-
-
+#qna-table-errorMessage{
+	position: absolute;
+	right: 100px;
+	top: 20px;
+}
 

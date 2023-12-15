@@ -97,14 +97,21 @@
 				</tr>
 				<tr class="qna-table-tr">
 					<th class="qna-table-th">
-					  	<div class="qna-table-th-child">주문번호</div>
+					  	<div class="qna-table-th-child" id="qna-marchantUid">주문번호</div>
 					</th>
 					<td class="qna-table-td">
 						<span class="mb-3 qna-table-td-uid">
-						  <input type="text" class="form-control" name="qnaTitle" id="exampleFormControlInput1" placeholder="주문관련 문의사항 시 주문번호를 입력해주세요" style="width: 400px;">
+						  <input type="text" class="form-control" name="qnaMerchantUid" id="qna-merchantUid"  placeholder="주문관련 문의사항 시 주문번호를 입력해주세요" style="width: 400px;">
 						  
 						</span>
-						<span class="qna-table-td-uid-button"><button class="qna-uid-btn myqna-btn myqna-uid-btn" type="button" name="quaMerchantUid">입력</button></span>  
+						<span class="qna-table-td-uid-button">
+							<button class="qna-uid-btn myqna-btn myqna-uid-btn" id="qna-merchantUid-btn" type="button">주문번호 확인</button>
+						</span> 
+						<br> 
+						<div id="qna-table-errorMessage">
+						
+						</div>
+						
 					</td>	
 				</tr>
 				<tr class="qna-table-tr">

@@ -66,7 +66,7 @@ public class MemberCheckController {
 	//
 	//
 	// 영수증 조회하기
-	@GetMapping("/receipt/{uid}")
+	@GetMapping(value = "/receipt/{uid}", produces =  MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<ReceiptDTO> receiptGet(@PathVariable("uid") String payMerChantUid){
 		ReceiptDTO rcDTO = msv.getReceipt(payMerChantUid);
 		
@@ -74,10 +74,9 @@ public class MemberCheckController {
 				: new ResponseEntity<> (HttpStatus.BAD_REQUEST);
 	}
 	
-	@GetMapping("/marchant/{uid}")
+	@GetMapping("/merchant/{uid}")
 	public ResponseEntity<String> checkMarchantUid(@PathVariable("uid") String payMerChantUid){
 		int isOk = msv.checkMarchantUid(payMerChantUid);
-		
 		return isOk > 0 ? new ResponseEntity<String> ("1", HttpStatus.OK) :
 			new ResponseEntity<String> ("0", HttpStatus.BAD_REQUEST);
 	}
