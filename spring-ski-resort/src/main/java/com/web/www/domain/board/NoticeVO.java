@@ -23,9 +23,10 @@ public class NoticeVO {
 	private String noticeRegAt; //등록일
 	private String noticeModAt; //수정일
 	private String noticePoint; //중요공지 등록 여부
-	private String noticeImpact; //상단 슬라이드 이미지 파일 등록 여부
+	private String noticeImpact; //메인 슬라이드 이미지 파일 등록 여부
 	private String noticeDel; //삭제여부
 	private String noticeImageUrl; //이미지url
+
 	
 	//초기 db에 넣기위한 생성자
 	public NoticeVO(long memberNum, String noticeWriter, String noticeCategory, String noticeTitle,
