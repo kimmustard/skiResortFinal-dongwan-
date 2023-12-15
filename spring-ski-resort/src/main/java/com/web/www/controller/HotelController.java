@@ -46,6 +46,9 @@ public class HotelController {
 	@GetMapping("/reservation")
 	public String reservForm(Model m, @AuthUser MemberVO mvo) {
 		List<RoomVO> roomList = hsv.getRoomList();
+		if(mvo ==null) {
+			return "index";
+		}
 		mvo.setMemberGrade(msv.getMemberGrade(mvo.getMemberNum()));	//멤버 등급 가져오기
 		m.addAttribute("roomList", roomList);
 		m.addAttribute("mvo", mvo);
