@@ -276,11 +276,13 @@ document.addEventListener("DOMContentLoaded", function() {
     	const checkBox =  document.getElementById('qna-secret');
     	const checkBoxHidden = document.getElementById('qna-secret-hidden');
     	
-    	console.log("test");
+    	
     	if(checkBox.checked){
     		checkBoxHidden.disabled = true;
+    		console.log(checkBoxHidden);
     	}else{
     		checkBoxHidden.disabled = false;
+    		console.log(checkBoxHidden);
     	}
     	
     })

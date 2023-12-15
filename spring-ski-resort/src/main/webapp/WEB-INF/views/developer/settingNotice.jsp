@@ -43,8 +43,8 @@
 			        중요 게시물 목록 (총 
 			        <span style="color: red;">
 			        	<c:set var="PointCount" value="0" />
-						<c:forEach items="${NoPagingList }" var="pvolist" >
-						    <c:if test="${pvolist.noticePoint eq 'Y'}">
+						<c:forEach items="${NoPagingList }" var="npvolist" >
+						    <c:if test="${npvolist.noticePoint eq 'Y'}">
 						        <c:set var="PointCount" value="${PointCount + 1}" />
 						    </c:if>
 						</c:forEach>
@@ -91,25 +91,25 @@
 					    </tr>
 					  </thead>
 					  <tbody>
-					  	<c:forEach items="${plist }" var="pvo">
+					  	<c:forEach items="${plist }" var="npvo">
 					  	<c:if test="${ph.pgvo.keyword == '' || ph.pgvo.keyword == null || ph.pgvo.keyword == '공지사항' || ph.pgvo.keyword == '이벤트' || ph.pgvo.keyword == '보도자료' || ph.pgvo.keyword == '쇼핑몰' || ph.pgvo.keyword == '채용정보' || ph.pgvo.keyword == '기타' }">
 					    <tr class="dev-notice-tr">
-					      <td>${pvo.noticeNum }</td>
-					      <td>${pvo.noticeCategory }</td>
-					      <td class="dev-notice-title-td"><div><a href="/notice/detail?noticeNum=${pvo.noticeNum }">${pvo.noticeTitle }</a></div></td>
-					      <td>${pvo.noticeWriter }</td>
-					      <td>${fn:replace((fn:substring(pvo.noticeRegAt,0,10)),'-','.') }</td>
+					      <td class="dev-notice-point-td" data-noticepoint="${npvo.noticePoint }">${npvo.noticeNum }</td>
+					      <td>${npvo.noticeCategory }</td>
+					      <td class="dev-notice-title-td"><div><a href="/notice/detail?noticeNum=${npvo.noticeNum }">${npvo.noticeTitle }</a></div></td>
+					      <td>${npvo.noticeWriter }</td>
+					      <td>${fn:replace((fn:substring(npvo.noticeRegAt,0,10)),'-','.') }</td>
 					      <td style="text-align: left; background-color: black;">
-					      	<a href="/notice/modify?noticeNum=${pvo.noticeNum }">
+					      	<a href="/notice/modify?noticeNum=${npvo.noticeNum }">
 								<button type="button" class="btn btn-warning">수정</button>
 							</a>
-							<a href="/developer/noticeRemove?noticeNum=${pvo.noticeNum }">
+							<a href="/developer/noticeRemove?noticeNum=${npvo.noticeNum }">
 								<button type="button" class="btn btn-danger">삭제</button>
 							</a>						
 							<div class="dev-notice-point-isok">
 								<div class="form-check form-switch">
-								  <input class="form-check-input" type="checkbox" role="switch" value="Y" id="flexSwitchCheckChecked" checked>
-								  <input class="form-check-input" type="hidden" role="switch" value="N" id="notice-point-hidden" checked>
+								  <input class="form-check-input notice-point-input${npvo.noticeNum }" type="checkbox" role="switch" value="Y" name="noticePoint" id="noticepointinput${npvo.noticeNum }" checked>
+								  <input class="form-check-input" type="hidden" role="switch" value="N" name="noticePoint" id="notice-point-hidden${npvo.noticeNum }" checked>
 								   <span>중요공지 등록</span>
 								  <button>적용</button>
 								</div>
@@ -259,38 +259,55 @@
 	</div>
 </div>
 <script type="text/javascript" src="/resources/js/developer/setting.js"></script>
-<script type="text/javascript">
-document.addEventListener("DOMContentLoaded", function() {
-    
-    var Point = `<c:out value="${qvo.qnaPoint}" />`;
-    // 체크박스 요소 가져오기
-    var qnaPointCheckbox = document.getElementById('qna-Point');
+<script type="text/javascript" src="/resources/js/developer/settingNotice.js"></script>
 
-    // qnaPoint 값이 'Y'이면 체크, 'N'이면 해제
-    if (qnaPointCheckbox) {
-        qnaPointCheckbox.checked = Point === 'Y';
+	
 
-        // 체크박스 상태가 변경될 때 이벤트 리스너 등록
-        qnaPointCheckbox.addEventListener('change', function() {
-            // 체크박스가 체크되어 있으면 'Y', 그렇지 않으면 'N' 설정
-            Point = qnaPointCheckbox.checked ? 'Y' : 'N';
-            
-    	}) 
-    } 
-    
-    document.getElementById('qna-Point').addEventListener('click',()=>{
-    	const checkBox =  document.getElementById('qna-Point');
-    	const checkBoxHidden = document.getElementById('qna-Point-hidden');
-    	
-    	console.log("test");
-    	if(checkBox.checked){
-    		checkBoxHidden.disabled = true;
-    	}else{
-    		checkBoxHidden.disabled = false;
-    	}
-    	
-    })
+<!-- <script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+
+      let pointList = document.querySelectorAll(".dev-notice-point-td");
+  		//console.log(pointList);
+	  for (let pnvo of pointList) {
+	    	console.log(pnvo);
+	      let Point = pnvo.dataset.noticepoint;
+	      let Number = pnvo.innerText;
+	      	console.log(Number);
+		  // 체크박스 요소 가져오기
+		  let noticePointCheckbox = document.getElementById(`noticepointinput${Number}`);
+		  console.log(noticePointCheckbox);
+		  // noticePoint 값이 'Y'이면 체크, 'N'이면 해제
+		  if (noticePointCheckbox) {
+			  console.log(noticePointCheckbox.checked);
+		      noticePointCheckbox.checked = Point === 'Y';
+			  // 체크박스 상태가 변경될 때 이벤트 리스너 등록
+			  noticePointCheckbox.addEventListener('change', function () {
+			    // 체크박스가 체크되어 있으면 'Y', 그렇지 않으면 'N' 설정
+			    Point = noticePointCheckbox.checked ? 'Y' : 'N';
+			  	console.log(Point);		  			 
+			});
+		}
+	  }
+ 
+  document.addEventListener('click',(e)=>{
+	if(e.target.classList.contains('notice-point-input')){
+		//let checkBox = document.getElementById('flexSwitchCheckChecked');
+		let checkBox = e.target;
+  		let checkBoxHidden = e.target.closest('input');
+  		//let checkBoxHidden = document.getElementById('notice-point-hidden');
+
+		  if (checkBox.checked) {
+		    checkBoxHidden.disabled = true;
+		  	console.log(checkBoxHidden);
+						    } else {
+		    checkBoxHidden.disabled = false;
+		  	console.log(checkBoxHidden);
+						    }
+		}
+
+	 })
 });
-</script>
+</script> -->
+
 </body>
 </html>
