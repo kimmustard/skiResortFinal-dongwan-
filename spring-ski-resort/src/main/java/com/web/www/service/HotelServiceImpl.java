@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.web.www.domain.coupon.Coupon;
+import com.web.www.domain.hotel.RoomDetailImageVO;
 import com.web.www.domain.hotel.RoomInfoVO;
 import com.web.www.domain.hotel.RoomVO;
 import com.web.www.repository.HotelDAO;
@@ -70,6 +71,25 @@ public class HotelServiceImpl implements HotelService{
 	public RoomVO getRoomDetail(int roomNum) {
 		// TODO Auto-generated method stub
 		return hdao.getRoomDetail(roomNum);
+	}
+
+	@Override
+	public void addRoomImage(RoomDetailImageVO roomDetailImageVO) {
+		log.info(roomDetailImageVO+"roomDetailImageVO");
+		hdao.addRoomImage(roomDetailImageVO);
+		
+	}
+
+	@Override
+	public RoomDetailImageVO getRoomDetailImageVO(int roomNum) {
+		
+		return hdao.getRoomDetailImageVO(roomNum);
+	}
+
+	@Override
+	public List<RoomDetailImageVO> getimageList() {
+		// TODO Auto-generated method stub
+		return hdao.getimageList();
 	}
 
 }
