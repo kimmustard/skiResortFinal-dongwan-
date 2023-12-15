@@ -8,6 +8,15 @@ let slides = document.querySelector(".slides"),
   nextBtn = document.querySelector(".next");
 
 makeClone();
+//연타방지
+function clickdeilay(){
+  nextBtn.style.pointerEvents = "none";
+  prevBtn.style.pointerEvents = "none";
+  setTimeout(function () {
+    nextBtn.style.pointerEvents = "auto";
+    prevBtn.style.pointerEvents = "auto";
+  }, 600);
+}
 
 function makeClone() {
   for (let i = 0; i < slideCount; i++) {
@@ -51,10 +60,12 @@ function setinit() {
 
 nextBtn.addEventListener("click", function () {
   // 지금 보고있는 슬라이드 수 +1 로 이동
+  clickdeilay();
   moveSlide(currentIdx + 1);
 });
 prevBtn.addEventListener("click", function () {
   // 지금 보고있는 슬라이드 수 +1 로 이동
+  clickdeilay();
   moveSlide(currentIdx - 1);
 });
 

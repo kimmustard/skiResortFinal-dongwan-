@@ -175,25 +175,19 @@ $(function () {
 
 }
 
+
 //성인 버튼 조작
-document.getElementById("adult+Btn").addEventListener('click', () => {
-    let cnt = parseInt(document.getElementById('adult-Count').innerText);
+function addAudltCnt(int){
+    let cnt = parseInt(document.getElementById('audlt-Count').innerText);
     if (cnt < 30) {
-        cnt += 1;
+        cnt += int;
+        if(cnt == 0){
+            cnt =1;
+        }
     }
-
-    document.getElementById('adult-Count').innerText = cnt;
+    document.getElementById('audlt-Count').innerText = cnt;
     AllPeopleCount();
-})
-
-document.getElementById("adult-Btn").addEventListener('click', () => {
-    let cnt = parseInt(document.getElementById('adult-Count').innerText);
-    if (cnt > 1) {
-        cnt -= 1;
-    }
-    document.getElementById('adult-Count').innerText = cnt;
-    AllPeopleCount();
-})
+}
 
 
 //어린이 버튼 조작
@@ -218,12 +212,15 @@ document.getElementById("child-Btn").addEventListener('click', () => {
     //  childAgeSelectCreater();
 })
 
-//인원수 세주는거
+/**인원수 세주는거 */
 function AllPeopleCount() {
-    $('#people').attr('placeholder', `성인 ${document.getElementById('adult-Count').innerText}명 · 아동 ${document.getElementById('child-Count').innerText}명 `);
-    document.getElementById('rentalLiftAdult').value = document.getElementById('adult-Count').innerText;
-    document.getElementById('rentalLiftKid').value = document.getElementById('child-Count').innerText;
-
+    if(document.getElementById('child-Count').innerText!=0){
+    $('#people').attr('placeholder', `성인 ${document.getElementById('audlt-Count').innerText}명 · 아동 ${document.getElementById('child-Count').innerText}명 `);
+    }else{
+        $('#people').attr('placeholder', `성인 ${document.getElementById('audlt-Count').innerText}명`);
+    }
+    document.getElementById('hotelReservePeople').value = document.getElementById('audlt-Count').innerText;
+    document.getElementById('hotelReserveChild').value = document.getElementById('child-Count').innerText;
 }
 
 //peoplelist 사라지는 이벤트

@@ -113,7 +113,7 @@
 					<div class="input-box1">
 						<div class="input-group mb-3">
 							<span class="input-group-text" id="basic-addon1"><i class="bi bi-person-fill"></i></span>
-							<input type="text" id="people" class="form-control people" placeholder="인원수" aria-label="Username" readonly="readonly" aria-describedby="basic-addon1">
+							<input type="text" id="people" class="form-control people" placeholder="인원수" aria-label="Username" readonly="readonly" aria-describedby="basic-addon1" onclick="addAudltCnt(0)">
 							<button id="nextBtn" type="button" class="btn btn-light">다음</button>
 						</div>
 						<div class="peopleList"  id="peopleList" style="display: none;">
@@ -121,16 +121,16 @@
 		  						성인    
 		  						<div class="people-Btn"> 
 			  						<div>
-			  							<button type="button" id="adult-Btn">
+			  							<button type="button" onclick="addAudltCnt(-1)">
 			  								<svg style="width: 14px; height: 14px; xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.25 12.75H3.75a.75.75 0 0 1 0-1.5h16.5a.75.75 0 0 1 0 1.5z"></path></svg>
 			  							</button>
 			  						</div> 	 
-			  						<div id="adult-Count">
+			  						<div id="audlt-Count">
 			  							1
 			  						</div> 
 			  						
 			  						<div>
-			  							<button type="button" id="adult+Btn">
+			  							<button type="button" onclick="addAudltCnt(1)">
 			  							<svg style="width: 14px; height: 14px; xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.25 11.25h-7.5v-7.5a.75.75 0 0 0-1.5 0v7.5h-7.5a.75.75 0 0 0 0 1.5h7.5v7.5a.75.75 0 0 0 1.5 0v-7.5h7.5a.75.75 0 0 0 0-1.5z"></path></svg>
 			  							</button>
 			  						</div> 

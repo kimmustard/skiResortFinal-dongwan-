@@ -21,10 +21,10 @@
 				<div id="room_detail_img">
 						 <div class="slide_wrapper">
 						      <ul class="slides">
-						        <li><img width="100%" src="${rivo.hotelRoomImage1}" alt=""/> </li>
-						        <li><img width="100%" src="${rivo.hotelRoomImage2}" alt=""/> </li>
-						        <li><img width="100%" src="${rivo.hotelRoomImage3}" alt=""/> </li>
-						        <li><img width="100%" src="${rivo.hotelRoomImage4}" alt=""/> </li>
+						        <li><img width="100%" height ="670px" src="${rivo.hotelRoomImage1}" alt=""/> </li>
+						        <li><img width="100%" height ="670px" src="${rivo.hotelRoomImage2}" alt=""/> </li>
+						        <li><img width="100%" height ="670px" src="${rivo.hotelRoomImage3}" alt=""/> </li>
+						        <li><img width="100%" height ="670px" src="${rivo.hotelRoomImage4}" alt=""/> </li>
 						       
 						     
 				      </ul>

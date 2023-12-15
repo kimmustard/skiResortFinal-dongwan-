@@ -20,6 +20,7 @@ element.style {
 .room_title{
 	padding: 5px;
 	font-weight: 700;
+	font-size: 30px;
 }
 li {
   list-style: none;
@@ -160,4 +161,34 @@ colgroup {
     padding: 10px 0 2px 25px;
     background-size: 5px auto;
     color: #333;
+}
+#room_detail .box1 .box1_wrap {
+    padding: 20px 50px 40px;
+    line-height: 2em;
+    text-align: left;
+}
+#room_detail .box1 h3 {
+    font-size: 30px;
+    margin: 30px 0;
+    font-weight: bold;
+    font-family: Wonchuri,'Ubuntu';
+    color: #333;
+    text-align: center;
+}
+.box1 {
+    width: 100%;
+    display: inline-block;
+    vertical-align: top;
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 0 0 20px 0;
+    border: dotted 3px #666; 
+}
+#room_detail #room_info_4 h3 {
+    font-size: 30px;
+    font-weight: 600;
+    font-family: Wonchuri,'Ubuntu';
+    text-align: center;
+    padding: 0 0 40px 0;
+    letter-spacing: 0px;
 }

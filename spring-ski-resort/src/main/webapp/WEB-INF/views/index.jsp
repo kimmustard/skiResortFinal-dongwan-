@@ -43,12 +43,36 @@
 	</div>
 
 	<!-- index 영상 아래 들어갈 내용은 여기에  -->
+		<div class="news-topic-box">
+			<p class="fs-1 box-title">News & Topic</p>
+			<p class="fs-3 box-title">뉴스 & 토픽</p>
+			 <div class="news_topic_slide_wrapper">
+		      <ul class="news_topic_slides" id="new_topic_slides" >
+		      	<li class="slide_li"> <img alt="" src=""> </li>
+		      	<li class="slide_li" style="background-color: black"> <img alt="" src=""> </li>
+		      	<li class="slide_li" style="background-color: red"> <img alt="" src=""> </li>
+		      	<li class="slide_li" style="background-color: purple;"> <img alt="" src=""> </li>
+     		  </ul>
+    		
+     		  <div class="news_topic_slide_botton_box"> 
+     		  	<ul>
+     		  		<li><button class="news_topic_btn" onclick="newsSlideBtnEvent(1)">O</button></li>
+     		  		<li><button class="news_topic_btn" onclick="newsSlideBtnEvent(2)">O</button></li>
+     		  		<li><button class="news_topic_btn" onclick="newsSlideBtnEvent(3)">O</button></li>
+     		  		<li><button class="news_topic_btn" onclick="newsSlideBtnEvent(4)">O</button></li>		  	
+     		  	</ul>
+     		  </div>
+		    </div>
+		</div>
+		
+		
 		<div class="index-content" >
 		<div id="notice-box">		
 			<h1 class="notice-logo eventbgc">INFORMATION</h1>
 		<div id="notice">
-		
 		</div>
+		
+	
 
 		</div>
 		<div class="triangle-top"></div>
@@ -56,9 +80,9 @@
 			<p class="fs-1 box-title">Event</p>
 			<p class=" box-title">이벤트</p>
 			<div class="contentBox">
-				  <div class="slide_wrapper">
+			 <div class="slide_wrapper">
 		      <ul class="slides" id="slides" >
-     			</ul>
+     		  </ul>
 		    </div>
 		    <p class="controls">
 		      <span class="prev"><i class="bi bi-chevron-compact-left"></i></span>
@@ -70,11 +94,7 @@
 		<div class="triangle-bottom"></div>
 	</div>
 	
-<!-- 	<div class="news-topic-box"> -->
-<!-- 			<p class="fs-1 box-title">News & Topic</p> -->
-<!-- 			<p class="fs-3 box-title">뉴스 & 토픽</p> -->
-<!-- 		</div> -->
-	
+
 
 	<jsp:include page="common/footer.jsp"></jsp:include>
 </body>
