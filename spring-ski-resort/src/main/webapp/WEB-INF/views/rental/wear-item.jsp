@@ -46,7 +46,10 @@
 						<c:forEach items="${wearLowItem }" var="lowItem">
 							<div class="slide">
 								<!-- 이미지파일 -->
-								<img alt="WearLowItem" data-name="${lowItem.rentalListLowItem }" data-adultFee="${lowItem.rentalListItemAdultFee }" src="${lowItem.imageUrl }">
+								<img alt="WearLowItem" data-name="${lowItem.rentalListLowItem }" 
+								data-adultFee="${lowItem.rentalListItemAdultFee }" 
+								data-num="${lowItem.rentalListItemNum }"
+								src="${lowItem.imageUrl }">
 								<p class="fs-5">${lowItem.rentalListLowItem }</p>
 								<p class="fs-5">${lowItem.rentalListItemAdultFee }원</p>
 							</div>
@@ -59,7 +62,10 @@
 						<c:forEach items="${wearMidItem }" var="midItem">
 							<div class="slide">
 								<!-- 이미지파일 -->
-								<img alt="WearMidItem" data-name="${midItem.rentalListMidItem }" data-adultFee="${midItem.rentalListItemAdultFee }" src="${midItem.imageUrl }">
+								<img alt="WearMidItem" data-name="${midItem.rentalListMidItem }" 
+								data-adultFee="${midItem.rentalListItemAdultFee }" 
+								data-num="${midItem.rentalListItemNum }"
+								src="${midItem.imageUrl }">
 								<p class="fs-5">${midItem.rentalListMidItem }</p>
 								<p class="fs-5">${midItem.rentalListItemAdultFee }원</p>
 							</div>
@@ -73,7 +79,10 @@
 						<c:forEach items="${wearPremiumItem }" var="premiumItem">
 							<div class="slide">
 								<!-- 이미지파일 -->
-								<img alt="WearPremiumItem" data-name="${premiumItem.rentalListPremiumItem }" data-adultFee="${premiumItem.rentalListItemAdultFee }" src="${premiumItem.imageUrl }">
+								<img alt="WearPremiumItem" data-name="${premiumItem.rentalListPremiumItem }" 
+								data-adultFee="${premiumItem.rentalListItemAdultFee }" 
+								data-num="${premiumItem.rentalListItemNum }"
+								src="${premiumItem.imageUrl }">
 								<p class="fs-5">${premiumItem.rentalListPremiumItem }</p>
 								<p class="fs-5">${premiumItem.rentalListItemAdultFee }원</p>
 							</div>
@@ -93,10 +102,15 @@
 		</div>
 		
 		<div class="shopContainer" style="display: none;">
-			<div class="shoppingBasket">
-				<p class="fs-4">장바구니</p>
-				<a href="/rental/item-reserve"><button type="button" class="btn btn-outline-info reserveBtn">예약신청하기</button></a>
-			</div>
+			<form action="/rental/itemsBasket" method="post">
+				<div class="shoppingBasket">
+					<p class="fs-4">장바구니</p>
+					<button type="submit" class="btn btn-outline-info reserveBtn" id="reserveBtn">예약신청하기</button>
+					<div id="itemSelectDiv">
+					
+					</div>
+				</div>
+			</form>
 		</div>
 		
 		
