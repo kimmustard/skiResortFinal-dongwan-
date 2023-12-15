@@ -67,8 +67,8 @@
 		select count(*) from notice where notice_category = "이벤트";
 	</select>
 	<insert id="addEvent">
-		INSERT INTO notice (member_num, notice_writer, notice_category, notice_title,notice_content,notice_impact,notice_image_url)
-		VALUES (#{memberNum}, #{noticeWriter}, #{noticeCategory}, #{noticeTitle} ,#{noticeContent}, #{noticeImpact}, #{noticeImageUrl});
+		INSERT INTO notice (member_num, notice_writer, notice_category, notice_title,notice_content,notice_image_url)
+		VALUES (#{memberNum}, #{noticeWriter}, #{noticeCategory}, #{noticeTitle} ,#{noticeContent}, #{noticeImageUrl});
 	</insert>
 	<select id="getFiveEvent" resultType="com.web.www.domain.board.NoticeVO">
 		select notice_num, notice_title , notice_content, notice_image_url from notice where notice_category = "이벤트" AND notice_del = "N" order by notice_num desc LIMIT 5
