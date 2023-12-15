@@ -38,29 +38,11 @@
 							<h3>첫번째 슬라이드</h3>
 							<p>첫번째 슬라이드 입니다.</p>
 						</div>
-						<img src="/upload/${fn: replace(Ifvo.fileSave,'\\','/')}/${Ifvo.fileUuid}_${Ifvo.fileName}">
+						<img src="https://res.klook.com/image/upload/fl_lossy.progressive,q_85/c_fill,w_680/v1607058234/blog/o0utli2bj9krx0qe7b6u.jpg">
 					</a>
 				</li>
 		  </c:forEach>			
-				<li class="slideitem">
-					<a>				
-						<div class="textbox">
-							<h3>두번째 슬라이드</h3>
-							<p>두번째 슬라이드 입니다.</p>
-						</div>
-						<img src="/resources/img/slide.jpg">
-					</a>
-				</li>
-				<li class="slideitem">
-					<a>
-						
-						<div class="textbox">
-							<h3>세번째 슬라이드</h3>
-							<p>세번째 슬라이드 입니다.</p>
-						</div>
-						<img src="/resources/img/slide.jpg">
-					</a>
-				</li>
+				
 	
 				<!-- 좌,우 슬라이드 버튼 -->
 				<div class="slide-control">

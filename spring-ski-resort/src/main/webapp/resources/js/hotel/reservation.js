@@ -127,32 +127,21 @@ function updatehotelReserveStay(startDate, endDate) {
     document.getElementById('hotelReserveStayEnd').value = endDate;
 }
 
-/** 인원수 인풋 처음 눌렀을 때  */
-document.getElementById('people').addEventListener('click',()=>{
-    document.getElementById('audlt-Count').innerText = cnt;
-    AllPeopleCount();
-})
+
 
 //성인 버튼 조작
-function addAudltCnt(){
+function addAudltCnt(int){
     let cnt = parseInt(document.getElementById('audlt-Count').innerText);
     if (cnt < 30) {
-        cnt += 1;
+        cnt += int;
+        if(cnt == 0){
+            cnt =1;
+        }
     }
-
-    document.getElementById('audlt-Count').innerText = cnt;
+    document.getElementById('audlt-Count').innerText = cnt; 
     AllPeopleCount();
 }
 
-
-document.getElementById("adult-Btn").addEventListener('click', () => {
-    let cnt = parseInt(document.getElementById('audlt-Count').innerText);
-    if (cnt > 1) {
-        cnt -= 1;
-    }
-    document.getElementById('audlt-Count').innerText = cnt;
-    AllPeopleCount();
-})
 
 
 //어린이 버튼 조작
@@ -160,7 +149,9 @@ document.getElementById("child+Btn").addEventListener('click', () => {
     let cnt = parseInt(document.getElementById('child-Count').innerText);
     if (cnt < 10) {
         cnt += 1;
+        
     }
+    
 
     document.getElementById('child-Count').innerText = cnt;
     AllPeopleCount();

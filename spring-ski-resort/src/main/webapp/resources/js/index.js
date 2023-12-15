@@ -1,7 +1,7 @@
 let Eventslides = document.getElementById("slides").innerHTML;
 makeSlides();
 
-/**슬라이드 만들기*/
+/**이벤트 슬라이드 만들기*/
 function makeSlides() {
   Eventslides = "";
   for (let i = 1; i <= 5; i++) {
@@ -60,7 +60,7 @@ async function getFiveEvent(){
 }
    
 
-  //슬라이드에 이미지와 내용 추가
+  //이벤트 슬라이드에 이미지와 내용 추가
      getFiveEvent().then(events => {
       for (let i = 0; i < events.length; i++) {
           let EventImageBoxes = document.querySelectorAll("#event-image-box" + (i + 1));
@@ -82,6 +82,10 @@ async function getFiveEvent(){
 
 
         }})
+
+
+
+      
 /**이벤트 페이지 이동 이벤트 */
   function moveEventSite(num){
     location.href = "/notice/detail?noticeNum="+num;
@@ -162,9 +166,6 @@ function setinit() {
   let TranslateValue = -(slideWidth + slideMargin) * slideCount;
   slides.style.transform = "translateX(" + TranslateValue + "px)";
 }
-
-
-
 function updateOpacity() {
   // 중앙에 있는 아이템의 인덱스 계산
 
@@ -241,4 +242,10 @@ function moveSlide(num) {
       slides.classList.add("animated");
     }, 600);
   }
+}
+
+/** 뉴스 슬라이드 버튼 */
+function newsSlideBtnEvent(num){
+  let translate = (num-1)* -25;
+  document.getElementById("new_topic_slides").style.transform= `translateX(${translate}%)`;
 }
