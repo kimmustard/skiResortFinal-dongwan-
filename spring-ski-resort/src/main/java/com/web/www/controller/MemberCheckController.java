@@ -64,12 +64,15 @@ public class MemberCheckController {
 		return isOk == 1 ? "1" : "0";
 	}
 	
+	//
+	//
 	// 영수증 조회하기
 	@GetMapping("/receipt/{uid}")
 	public ResponseEntity<ReceiptDTO> receiptGet(@PathVariable("uid") String payMerChantUid){
 		ReceiptDTO rcDTO = msv.getReceipt(payMerChantUid);
-		log.info("제발 나와라= {}", rcDTO);
-		return null;
+		
+		return rcDTO != null ? new ResponseEntity<ReceiptDTO> (rcDTO, HttpStatus.OK) 
+				: new ResponseEntity<> (HttpStatus.BAD_REQUEST);
 	}
 	
 	

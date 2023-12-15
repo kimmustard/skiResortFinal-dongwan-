@@ -240,32 +240,31 @@ public class MemberServiceImpl implements MemberService {
 
 	        return refundReceipt;
 	    }
-//	    switch (riDTO.getPayNameType()) {
-//	        case "호텔":
-//	            ReceiptDTO hotelReceipt = mdao.getHotelReceipt(payMerChantUid);
-//	           
-//	            // 필드 설정
-//	            riDTO.setHotelReserveStayStart(hotelReceipt.getHotelReserveStayStart());
-//	            riDTO.setHotelReserveStayEnd(hotelReceipt.getHotelReserveStayEnd());
-//	            // 필요한 만큼 다른 필드 설정
-//	            return riDTO;
-//	        case "리프트":
-//	            ReceiptDTO liftReceipt = mdao.getLiftReceipt(payMerChantUid);
-//	            // 필드 설정
-////	            riDTO.setLiftField1(liftReceipt.getLiftField1());
-////	            riDTO.setLiftField2(liftReceipt.getLiftField2());
-//	            // 필요한 만큼 다른 필드 설정
-//	            return riDTO;
-//	        case "렌탈":
-//	            ReceiptDTO rentalReceipt = mdao.getRentalReceipt(payMerChantUid);
-//	            // 필드 설정
-////	            riDTO.setRentalField1(rentalReceipt.getRentalField1());
-////	            riDTO.setRentalField2(rentalReceipt.getRentalField2());
-//	            // 필요한 만큼 다른 필드 설정
-//	            return riDTO;
-//	    }
+	    switch (originalReceipt.getPayNameType()) {
+	        case "호텔":
+	            ReceiptDTO hotelReceipt = mdao.getHotelReceipt(payMerChantUid);
+	           
+	            // 필드 설정
+	            modelMapper.map(originalReceipt, hotelReceipt);
+	            
+	            return hotelReceipt;
+	        case "리프트":
+	            ReceiptDTO liftReceipt = mdao.getLiftReceipt(payMerChantUid);
+	            
+	            // 필드 설정
+	            modelMapper.map(originalReceipt, liftReceipt);
+	            return liftReceipt;
+	        case "렌탈":
+	            ReceiptDTO rentalReceipt = mdao.getRentalReceipt(payMerChantUid);
+	            
+	            // 필드 설정
+	            modelMapper.map(originalReceipt, rentalReceipt);
+	            return rentalReceipt;
+	        default:
+	            	
+	            return null;
+	    }
 
-	    return null;
 	}
 
 
