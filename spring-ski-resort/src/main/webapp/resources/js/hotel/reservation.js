@@ -127,7 +127,11 @@ function updatehotelReserveStay(startDate, endDate) {
     document.getElementById('hotelReserveStayEnd').value = endDate;
 }
 
-
+/** 인원수 인풋 처음 눌렀을 때  */
+document.getElementById('people').addEventListener('click',()=>{
+    document.getElementById('audlt-Count').innerText = cnt;
+    AllPeopleCount();
+})
 
 //성인 버튼 조작
 function addAudltCnt(){
