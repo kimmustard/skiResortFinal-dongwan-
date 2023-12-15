@@ -13,9 +13,9 @@
 	</insert>
   	<insert id="addRoom">
 		INSERT INTO room (hotel_room_name, hotel_room_explain,hotel_room_standard_people,
-		hotel_room_type,hotel_room_area,hotel_room_fee,hotel_room_count,hotel_initial_count,hotel_image)
+		hotel_room_type,hotel_room_area,hotel_room_fee,hotel_room_count,hotel_initial_count)
 		VALUES (#{hotelRoomName},#{hotelRoomExplain} ,#{hotelRoomStandardPeople},
-		#{hotelRoomType},#{hotelRoomArea},#{hotelRoomFee},#{hotelRoomCount},#{hotelInitialCount},#{hotelImage}
+		#{hotelRoomType},#{hotelRoomArea},#{hotelRoomFee},#{hotelRoomCount},#{hotelInitialCount}
 		);	
 	</insert>
 	<select id="getRoomList" resultType="com.web.www.domain.hotel.RoomVO">
@@ -29,11 +29,18 @@
 		update room set hotel_room_name = #{hotelRoomName} ,hotel_room_explain = #{hotelRoomExplain},
 		hotel_room_standard_people = #{hotelRoomStandardPeople} ,hotel_room_type = #{hotelRoomType},
 		hotel_room_area = #{hotelRoomArea}, hotel_room_fee = #{hotelRoomFee} ,
-		hotel_initial_count=#{hotelInitialCount}, hotel_image=#{hotelImage}
+		hotel_initial_count=#{hotelInitialCount}
 		where hotel_room_num =#{hotelRoomNum}								
 	</update>
 	<select id="selectRoomCnt" resultType="int">
 		select count(*) from room
+		
+		
+		
+		
+		
+		
+		
 	</select>
 	
 	<update id="updateRoomCount">
@@ -50,5 +57,17 @@
 	<select id="getRoomDetail" resultType="com.web.www.domain.hotel.RoomVO">
 		select * from room where hotel_room_num=#{roomNum}
 	</select>
+	<insert id="addRoomImage">
+		INSERT INTO room_detail_image
+		VALUES (#{hotelRoomNum},#{hotelRoomImage1},#{hotelRoomImage2},#{hotelRoomImage3},#{hotelRoomImage4})
+
+	</insert>
+	<select id="getRoomDetailImageVO" resultType="com.web.www.domain.hotel.RoomDetailImageVO">
+		select * from room_detail_image where hotel_room_num = #{roomNum}
+	</select>
+	<select id="getimageList"  resultType="com.web.www.domain.hotel.RoomDetailImageVO">
+		select * from room_detail_image
+	</select>
+	
 	
   </mapper>

@@ -253,9 +253,9 @@
 			
 			
 			<!-- 방 이미지 링크는 여기 -->
-			<c:forEach items="${roomList}" var="room">
+			<c:forEach items="${imageList}" var="room">
 			<p class="hidden-info" id="image-src${room.hotelRoomNum}">
-				${room.hotelImage}
+				${room.hotelRoomImage1}
 			</p>
 		
 		

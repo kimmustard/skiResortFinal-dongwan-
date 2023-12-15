@@ -7,7 +7,7 @@ CREATE TABLE hotel (
 //삭제구문
     drop table hotel;
 
-//2023-11-30 수정
+//2023-12-15 수정
 	 drop table room; 삭제후 아래구문 입력
 
 CREATE TABLE room(
@@ -21,8 +21,17 @@ hotel_room_area varchar(100),
 hotel_room_fee int,
 hotel_room_count int,
 hotel_initial_count int,
-hotel_image varchar(1000),
  primary key(hotel_room_num)	
+);
+
+//2023-12-15생성
+
+CREATE TABLE room_detail_image(
+hotel_room_num int,
+hotel_room_image1 varchar(1000),
+hotel_room_image2 varchar(1000),
+hotel_room_image3 varchar(1000),
+hotel_room_image4 varchar(1000)
 );
 
 
