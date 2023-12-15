@@ -108,8 +108,8 @@
 							</a>						
 							<div class="dev-notice-point-isok">
 								<div class="form-check form-switch">
-								  <input class="form-check-input notice-point-input" type="checkbox" role="switch" value="Y" id="flexSwitchCheckChecked" checked>
-								  <input class="form-check-input" type="hidden" role="switch" value="N" id="notice-point-hidden" checked>
+								  <input class="form-check-input notice-point-input${npvo.noticeNum }" type="checkbox" role="switch" value="Y" name="noticePoint" id="noticepointinput${npvo.noticeNum }" checked>
+								  <input class="form-check-input" type="hidden" role="switch" value="N" name="noticePoint" id="notice-point-hidden${npvo.noticeNum }" checked>
 								   <span>중요공지 등록</span>
 								  <button>적용</button>
 								</div>
@@ -259,79 +259,42 @@
 	</div>
 </div>
 <script type="text/javascript" src="/resources/js/developer/setting.js"></script>
-<!-- <script type="text/javascript" src="/resources/js/developer/settingNotice.js"></script> -->
+<script type="text/javascript" src="/resources/js/developer/settingNotice.js"></script>
 
-<script type="text/javascript">
-/* document.addEventListener("DOMContentLoaded", function () {
-	
-	  let Point =
-	  console.log(typeof plist);
-	  for (let pnvo of plist) {
-		  console.log(pnvo);
-		    let Point = pnvo.noticePoint;
-		    console.log(Point);
-		    // 체크박스 요소 가져오기
-		    let noticePointCheckbox = document.getElementById('flexSwitchCheckChecked');
-		    // noticePoint 값이 'Y'이면 체크, 'N'이면 해제
-		    if (noticePointCheckbox) {
-			      noticePointCheckbox.checked = Point === 'Y';
-			      // 체크박스 상태가 변경될 때 이벤트 리스너 등록
-			      noticePointCheckbox.addEventListener('change', function () {
-			        // 체크박스가 체크되어 있으면 'Y', 그렇지 않으면 'N' 설정
-			        Point = noticePointCheckbox.checked ? 'Y' : 'N';
-			        console.log(Point);
-			      })
-		    }
-	  }
-
-	  document.addEventListener('click',(e)=>{
-		  if(e.target.classList.contains('notice-point-input')){
-		    	const checkBox = document.getElementById('flexSwitchCheckChecked');
-			  	console.log(checkBox);
-			  	const checkBoxHidden = document.getElementById('notice-point-hidden');
-			  	
-			  	if (checkBox.checked) {
-				      checkBoxHidden.disabled = true;
-				      console.log(checkBoxHidden);
-				    } else {
-				      checkBoxHidden.disabled = false;
-				      console.log(checkBoxHidden);
-				    }
-		  }
-
-	  })
-	}); */
-</script>
 	
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
   document.addEventListener("DOMContentLoaded", function () {
 
       let pointList = document.querySelectorAll(".dev-notice-point-td");
   		//console.log(pointList);
 	  for (let pnvo of pointList) {
-	    	//console.log(pnvo);
+	    	console.log(pnvo);
 	      let Point = pnvo.dataset.noticepoint;
-	      	//console.log(Point);
+	      let Number = pnvo.innerText;
+	      	console.log(Number);
 		  // 체크박스 요소 가져오기
-		  let noticePointCheckbox = document.getElementById('flexSwitchCheckChecked');
+		  let noticePointCheckbox = document.getElementById(`noticepointinput${Number}`);
+		  console.log(noticePointCheckbox);
 		  // noticePoint 값이 'Y'이면 체크, 'N'이면 해제
 		  if (noticePointCheckbox) {
+			  console.log(noticePointCheckbox.checked);
 		      noticePointCheckbox.checked = Point === 'Y';
 			  // 체크박스 상태가 변경될 때 이벤트 리스너 등록
 			  noticePointCheckbox.addEventListener('change', function () {
 			    // 체크박스가 체크되어 있으면 'Y', 그렇지 않으면 'N' 설정
 			    Point = noticePointCheckbox.checked ? 'Y' : 'N';
-			  	//console.log(Point);
-				})
-			}
-		  }
-  
+			  	console.log(Point);		  			 
+			});
+		}
+	  }
+ 
   document.addEventListener('click',(e)=>{
 	if(e.target.classList.contains('notice-point-input')){
-		let checkBox = document.getElementById('flexSwitchCheckChecked');
-  		//let checkBoxHidden = e.target.closest('input');
-  		let checkBoxHidden = document.getElementById('notice-point-hidden');
+		//let checkBox = document.getElementById('flexSwitchCheckChecked');
+		let checkBox = e.target;
+  		let checkBoxHidden = e.target.closest('input');
+  		//let checkBoxHidden = document.getElementById('notice-point-hidden');
 
 		  if (checkBox.checked) {
 		    checkBoxHidden.disabled = true;
@@ -344,7 +307,7 @@
 
 	 })
 });
-</script>
+</script> -->
 
 </body>
 </html>
