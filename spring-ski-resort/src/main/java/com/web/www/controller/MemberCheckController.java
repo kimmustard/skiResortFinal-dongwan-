@@ -23,7 +23,6 @@ import com.web.www.domain.member.MemberVO;
 import com.web.www.domain.pay.ReceiptDTO;
 import com.web.www.handler.MemberEmailHandler;
 import com.web.www.service.MemberService;
-import com.web.www.service.PayService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -73,6 +72,14 @@ public class MemberCheckController {
 		
 		return rcDTO != null ? new ResponseEntity<ReceiptDTO> (rcDTO, HttpStatus.OK) 
 				: new ResponseEntity<> (HttpStatus.BAD_REQUEST);
+	}
+	
+	@GetMapping("/marchant/{uid}")
+	public ResponseEntity<String> checkMarchantUid(@PathVariable("uid") String payMerChantUid){
+		int isOk = msv.checkMarchantUid(payMerChantUid);
+		
+		return isOk > 0 ? new ResponseEntity<String> ("1", HttpStatus.OK) :
+			new ResponseEntity<String> ("0", HttpStatus.BAD_REQUEST);
 	}
 	
 	

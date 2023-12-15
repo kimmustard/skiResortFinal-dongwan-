@@ -267,6 +267,11 @@ public class MemberServiceImpl implements MemberService {
 
 	}
 
+	@Override
+	public int checkMarchantUid(String payMerChantUid) {
+		return mdao.checkMarchantUid(payMerChantUid);
+	}
+
 
 
 

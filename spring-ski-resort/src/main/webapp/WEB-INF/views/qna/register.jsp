@@ -164,6 +164,7 @@
 
 
 <script type="text/javascript" src="/resources/js/qna/qnaFileUpload.js"></script>
+<script type="text/javascript" src="/resources/js/qna/qnaRegister.js"></script>
 
 <script type="text/javascript">
 		const isOk = `<c:out value="${isOk}"></c:out>`
