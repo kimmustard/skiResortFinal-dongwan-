@@ -25,6 +25,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.web.www.domain.alarm.AlarmVO;
 import com.web.www.domain.pay.PayInfoVO;
+import com.web.www.domain.pay.ReceiptDTO;
 import com.web.www.domain.pay.RefundInfoVO;
 import com.web.www.repository.AlarmDAO;
 import com.web.www.repository.MemberDAO;

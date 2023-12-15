@@ -86,13 +86,13 @@ $(function () {
             customRangeLabel: '사용자 정의 범위'
         }
 
-    },function (start, end, label) {
+    }, function (start, end, label) {
 
-            var dateRange = start.format('YYYY-MM-DD') + ' ~ ' + end.format('YYYY-MM-DD');
-            updateCustomText(dateRange, 'dateRangePicker');
-            updatehotelReserveStay(start.format('YYYY-MM-DD'), end.format('YYYY-MM-DD'));
+        var dateRange = start.format('YYYY-MM-DD') + ' ~ ' + end.format('YYYY-MM-DD');
+        updateCustomText(dateRange, 'dateRangePicker');
+        updatehotelReserveStay(start.format('YYYY-MM-DD'), end.format('YYYY-MM-DD'));
 
-        });
+    });
     $('#dateRangePicker').on('change.daterangepicker', function (ev, picker) {
         console.log('날짜 선택됨:', picker.startDate.format('YYYY-MM-DD'), '부터', picker.endDate.format('YYYY-MM-DD'));
         // 여기에 원하는 동작을 추가하세요.
@@ -252,14 +252,15 @@ function roomSelectEvent(num) {
     //요금표시
     realAmount = roomprice;
     console.log(realAmount);
-    document.getElementById('productPrice').value=roomprice;
+    document.getElementById('productPrice').value = roomprice;
     document.getElementById('pay1').value = roomprice.toLocaleString() + "원";
     document.getElementById('realpayvalue').value = roomprice;
-    document.getElementById('userViewpay').innerText = roomprice.toLocaleString() + "원";
 
-
-    //상품명 
+    //상품명
     document.getElementById('item-name').innerText = roomname;
+
+
+
     // if(할인율){
     //     document.getElementById('pay2').value = (roomprice*할인율)+;
 
