@@ -171,5 +171,14 @@
 		select count(*) from item_image
 	</select>
 	
+	<insert id="itemReserve">
+		insert into rental_reserve(rental_lift_num, rental_list_item_num, rental_reserve_start, rental_reserve_adult,rental_reserve_kid,
+		rental_reserve_item, rental_reserve_adult_fee, rental_reserve_kid_fee, rental_reserve_total_fee,
+		rental_reserve_isok, rental_reserve_isreturn, rental_reserve_reg_at)
+		values(#{rentalLiftNum}, #{rentalListItemNum}, #{rentalReserveStart}, #{rentalReserveAdult}, #{rentalReserveKid},
+		#{rentalReserveItem}, #{rentalReserveAdultFee}, #{rentalReserveKidFee}, #{rentalReserveTotalFee},
+		#{rentalReserveIsok}, #{rentalReserveIsreturn}, #{rentalReserveRegAt})
+	</insert>
+	
 
 </mapper>

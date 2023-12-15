@@ -19,7 +19,7 @@
 .itemContainer{
 	position: relative;
 	margin-left: 350px;
-	width: 1200px;
+	width: 1260px;
 	height: 800px;
 	overflow: hidden;
 	display: flex;
@@ -49,6 +49,10 @@
 	height: 600px;
 	object-fit: cover;
 	cursor: pointer;
+}
+
+.itemImageBox div img:not(:last-chlid){
+	margin-right: 20px;
 }
 
 .itemImageBox div p.fs-5{
