@@ -1,19 +1,21 @@
+
+let numberBox = [];
+
 document.addEventListener("DOMContentLoaded", function () {
 
   let pointList = document.querySelectorAll(".dev-notice-point-td");
   //console.log(pointList);
-  let numberBox = [];
 
   for (let pnvo of pointList) {
       console.log(pnvo);
       let Point = pnvo.dataset.noticepoint;
       let Number = pnvo.innerText;
-      numberBox = [pnvo.length];
-      numberBox = Number;
+      //numberBox = [pnvo.length];
+      numberBox.push(Number);
         console.log(numberBox);
     // 체크박스 요소 가져오기
     let noticePointCheckbox = document.getElementById(`noticepointinput${Number}`);
-    console.log(noticePointCheckbox);
+    //console.log(noticePointCheckbox);
     // noticePoint 값이 'Y'이면 체크, 'N'이면 해제
     if (noticePointCheckbox) {
       console.log(noticePointCheckbox.checked);
@@ -29,11 +31,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   document.addEventListener('click',(e)=>{
-      for(let i=0; i<numberBox.length; i++){
-        console.log(numberBox[i]);
-        if(e.target.type==='checkbox' && e.target.name==='noticePoint'){
-          let checkBox = document.getElementById(`noticepointinput${numberBox[i]}`);console.log(checkBox);
-          let checkBoxHidden = document.getElementById(`notice-point-hidden${numberBox[i]}`);console.log(checkBoxHidden);
+    for(let i=0; i<numberBox.length; i++){
+      if (e.target.type === 'checkbox' && e.target.name === 'noticePoint' && e.target.id === `noticepointinput${numberBox[i]}`){
+          let checkBox = document.getElementById(`noticepointinput${numberBox[i]}`);
+            console.log(checkBox);
+          let checkBoxHidden = document.getElementById(`notice-point-hidden${numberBox[i]}`);
+            console.log(checkBoxHidden);
       
           if (checkBox.checked) {
             checkBoxHidden.disabled = true;
