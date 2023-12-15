@@ -173,7 +173,7 @@ document.getElementById("child-Btn").addEventListener('click', () => {
     //  childAgeSelectCreater();
 })
 
-//인원수 세주는거
+/**인원수 세주는거 */
 function AllPeopleCount() {
     if(document.getElementById('child-Count').innerText!=0){
     $('#people').attr('placeholder', `성인 ${document.getElementById('audlt-Count').innerText}명 · 아동 ${document.getElementById('child-Count').innerText}명 `);
