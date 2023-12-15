@@ -87,6 +87,8 @@ public interface MemberService {
 
 	ReceiptDTO getReceipt(String payMerChantUid);
 
+	int checkMarchantUid(String payMerChantUid);
+
 
 
 

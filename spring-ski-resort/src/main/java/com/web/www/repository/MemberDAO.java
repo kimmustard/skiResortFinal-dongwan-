@@ -131,6 +131,9 @@ public interface MemberDAO {
 	/*환불영수증 가져오기*/
 	ReceiptDTO getRefundReceipt(String payMerChantUid);
 
+	//주문번호 확인하기
+	int checkMarchantUid(String payMerChantUid);
+
 
 
 
