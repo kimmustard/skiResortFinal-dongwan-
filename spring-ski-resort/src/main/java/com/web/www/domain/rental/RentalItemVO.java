@@ -22,5 +22,5 @@ public class RentalItemVO {
 	private int rentalListItemAdultFee; // 성인요금
 	private int rentalListItemKidFee; // 어린이요금
 	private int rentalListItemCount; // 장비수량
-	
 }
+

@@ -6,13 +6,15 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -21,13 +23,13 @@ import com.web.www.domain.FileVO;
 import com.web.www.domain.member.AuthUser;
 import com.web.www.domain.member.MemberVO;
 import com.web.www.domain.pay.PayInfoVO;
+import com.web.www.domain.rental.RentalItemsBasketDTO;
 import com.web.www.domain.rental.RentalItemDTO;
 import com.web.www.domain.rental.RentalItemImageRead;
 import com.web.www.domain.rental.RentalItemListDTO;
 import com.web.www.domain.rental.RentalItemRead;
 import com.web.www.domain.rental.RentalItemVO;
 import com.web.www.domain.rental.RentalLiftVO;
-import com.web.www.domain.rental.RentalVO;
 import com.web.www.handler.FileHandler;
 import com.web.www.service.RentalService;
 
@@ -112,21 +114,21 @@ public class RentalController {
 	}
 	
 	@GetMapping("/ski-item")
-	public String skiItemForm(Model model) {
+	public String skiItemForm(Model model, @AuthUser MemberVO mvo, RentalLiftVO rlivo) {
 		List<RentalItemListDTO> skiLowItem = rsv.getSkiLowItem();
 		List<RentalItemListDTO> skiMidItem = rsv.getSkiMidItem();
 		List<RentalItemListDTO> skiPremiumItem = rsv.getSkiPremiumItem();
-		RentalVO rvo = new RentalVO();
 		
 		model.addAttribute("skiLowItem", skiLowItem);
 		model.addAttribute("skiMidItem", skiMidItem);
 		model.addAttribute("skiPremiumItem", skiPremiumItem);
-		model.addAttribute("rvo", rvo);
+		model.addAttribute("mvo", mvo);
+		model.addAttribute("rlivo", rlivo);
 		
 		return "/rental/ski-item";
 	}
 	@GetMapping("/board-item")
-	public String boardItemForm(Model model) {
+	public String boardItemForm(Model model, @AuthUser MemberVO mvo) {
 		List<RentalItemListDTO> boardLowItem = rsv.getBoardLowItem();
 		List<RentalItemListDTO> boardMidItem = rsv.getBoardMidItem();
 		List<RentalItemListDTO> boardPremiumItem = rsv.getBoardPremiumItem();
@@ -134,11 +136,12 @@ public class RentalController {
 		model.addAttribute("boardLowItem", boardLowItem);
 		model.addAttribute("boardMidItem", boardMidItem);
 		model.addAttribute("boardPremiumItem", boardPremiumItem);
+		model.addAttribute("mvo", mvo);
 		
 		return "/rental/board-item";
 	}
 	@GetMapping("/wear-item")
-	public String wearItemForm(Model model) {
+	public String wearItemForm(Model model, @AuthUser MemberVO mvo) {
 		List<RentalItemListDTO> wearLowItem = rsv.getWearLowItem();
 		List<RentalItemListDTO> wearMidItem = rsv.getWearMidItem();
 		List<RentalItemListDTO> wearPremiumItem = rsv.getWearPremiumItem();
@@ -146,23 +149,39 @@ public class RentalController {
 		model.addAttribute("wearLowItem", wearLowItem);
 		model.addAttribute("wearMidItem", wearMidItem);
 		model.addAttribute("wearPremiumItem", wearPremiumItem);
+		model.addAttribute("mvo", mvo);
 		
 		return "/rental/wear-item";
 	}
 	
-	@GetMapping("/item-reserve")
-	public String itemReserveForm(Model model, RentalLiftVO rlivo, @AuthUser MemberVO mvo) {
+	@ResponseBody
+	@PostMapping(value = "/itemsBasket", consumes =MediaType.APPLICATION_JSON_VALUE)
+	public String itemReserveForm(@RequestBody List<RentalItemsBasketDTO> ritvoList) {
 		
-		return "/rental/item-reserve";
+	    for (RentalItemsBasketDTO rtibDTO : ritvoList) {
+	    	
+	        log.info("넘어가는지 확인##### = {}", rtibDTO);
+	        
+	    }
+	    
+	    return null;
 	}
 	
-	@PostMapping("/item-reserve")
-	public String itemReservePost(RentalItemVO ritvo, RentalLiftVO rlivo
-			, @AuthUser MemberVO mvo, Model model) {
-		
-		model.addAttribute("rlivo", rlivo);
-		return "index";
-	}
+	
+//	@PostMapping("/item-reserve")
+//	public String itemReservePost(RentalItemVO ritvo, RentalLiftVO rlivo, RentalReserveVO rrvo,
+//			RentalVO rvo, @AuthUser MemberVO mvo, Model model) {
+//		
+//		rrvo.setRentalLiftNum(rvo.getRentalLiftNum());
+//		rrvo.setRentalListItemNum(ritvo.getRentalListItemNum());
+//		model.addAttribute("rrvo", rrvo);
+//		model.addAttribute("rlivo", rlivo);
+//		int isOk = rsv.itemReserve(rrvo);
+//		log.info((isOk > 0)? "ok":"fail");
+//		
+//		return "index";
+//		
+//	}
 	
 	
 	
