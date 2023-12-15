@@ -223,11 +223,11 @@ function sendShoppingBasketData() {
      // Ajax 요청 보내기
      $.ajax({
           type: 'POST',
-          url: '/rental/item-reserve', // 올바른 엔드포인트로 업데이트
+          url: '/rental/item-reserve',
           contentType: 'application/json',
           data: JSON.stringify(requestData),
           success: function (response) {
-               // 필요한 경우 응답 처리
+               
                console.log(response);
 
                
