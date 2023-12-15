@@ -124,7 +124,7 @@
 					
 					<div id="innerbox" class="reserveBox" style="display: none;">
 						
-						
+						<input name="rentalListItemNum" id="rentalItemNum" value="0" type="hidden">
 						<div class="input-group mb-3">
 							<span class="input-group-text">렌탈장비명</span>
 							<input type="text" class="form-control" id="showItemName" value="${itemName}" readonly="readonly">
