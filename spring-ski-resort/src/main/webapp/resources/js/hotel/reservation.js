@@ -130,7 +130,7 @@ function updatehotelReserveStay(startDate, endDate) {
 
 
 //성인 버튼 조작
-document.getElementById("adult+Btn").addEventListener('click', () => {
+function addAudltCnt(){
     let cnt = parseInt(document.getElementById('audlt-Count').innerText);
     if (cnt < 30) {
         cnt += 1;
@@ -138,7 +138,8 @@ document.getElementById("adult+Btn").addEventListener('click', () => {
 
     document.getElementById('audlt-Count').innerText = cnt;
     AllPeopleCount();
-})
+}
+
 
 document.getElementById("adult-Btn").addEventListener('click', () => {
     let cnt = parseInt(document.getElementById('audlt-Count').innerText);
@@ -174,11 +175,15 @@ document.getElementById("child-Btn").addEventListener('click', () => {
 
 //인원수 세주는거
 function AllPeopleCount() {
+    if(document.getElementById('child-Count').innerText!=0){
     $('#people').attr('placeholder', `성인 ${document.getElementById('audlt-Count').innerText}명 · 아동 ${document.getElementById('child-Count').innerText}명 `);
+    }else{
+        $('#people').attr('placeholder', `성인 ${document.getElementById('audlt-Count').innerText}명`);
+    }
     document.getElementById('hotelReservePeople').value = document.getElementById('audlt-Count').innerText;
     document.getElementById('hotelReserveChild').value = document.getElementById('child-Count').innerText;
-
 }
+
 
 
 // function childAgeSelectCreater(){
