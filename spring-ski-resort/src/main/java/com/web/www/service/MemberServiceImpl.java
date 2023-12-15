@@ -225,6 +225,7 @@ public class MemberServiceImpl implements MemberService {
 		return mdao.getMemberGrade(memberNum);
 	}
 
+	@Transactional
 	@Override
 	public ReceiptDTO getReceipt(String payMerChantUid) {
 	    ReceiptDTO originalReceipt = mdao.getReceipt(payMerChantUid);
@@ -268,6 +269,7 @@ public class MemberServiceImpl implements MemberService {
 
 	}
 
+	//문의사항 유저 주문번호 체크하기
 	@Override
 	public int checkMarchantUid(String payMerChantUid) {
 		return mdao.checkMarchantUid(payMerChantUid);

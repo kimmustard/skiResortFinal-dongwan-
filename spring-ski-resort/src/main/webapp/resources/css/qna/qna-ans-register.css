@@ -410,10 +410,62 @@ a{
 
 
 
+/* 회원 주문번호와 모달창 관련*/
 
+#member-merchantUid{
+	cursor: pointer;
+}
 
+.member-receipt{
+	position: fixed;
+	right: -400px;
+	top: 95px;
+	width: 400px;
+	height: 800px;
+	background-color: white;
+	border-bottom-left-radius: 30px;
+	transition: 0.5s;
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+}
 
+.member-receipt-header{
+	position: relative;
+	width: 500px;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: 500;
+	font-size: 20px;
+}
 
+.receiptMainLogo{
+	position: absolute;
+	right: 100px;
+	top: -30px;
+}
 
+.member-receipt-header>h3{
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: 700;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	margin-left: 30px;
+	font-size: 30px;
+}
 
+.member-receipt-body{
+	text-align: center;
+}
+
+.member-receipt-body>h3{
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 23px;
+	font-weight: 700;
+	margin-bottom: 20px;
+}
+
+.member-receipt-body>p{
+	font-weight: 500;
+	font-size: 18px;
+	font-family: 'Noto Sans KR', sans-serif;
+	margin-bottom: 10px;
+}
 

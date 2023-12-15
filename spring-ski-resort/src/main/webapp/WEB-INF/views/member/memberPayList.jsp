@@ -28,27 +28,31 @@
 				<div class="infoBox ibox6">
 					<div class="iboxList iboxList2">
 						<span>결제/환불 내역</span>
-						<span>총 결제 금액 : ${sum} 원 </span>
+						<span>
+							총 결제 금액 :<font style="color:black;"> ${sum} 원 </font><br>
+							<font style="font-size:20px;">(결제취소 금액은 제외됩니다.)</font>
+						</span>
 					</div>
 					<table class="table table-hover">
 						<thead>
-							<tr>
+							<tr class="table-dark">
 								<th>주문번호</th>
 								<th>결제은행</th>
 								<th>주문명</th>
 								<th>금액</th>
-								<th>이름</th>
+								<th>결제자</th>
 								<th>연락처</th>
 								<th>상태</th>
-								<th>결제일자</th>
-								<th>요청</th>
+								<th style="display:none">결제일자</th>
+								<!-- <th>요청</th> -->
 							</tr>
 						</thead>
 						<tbody>
 							<c:forEach items="${pivoList}" var="pList">
-								<tr>
+								<tr class="tr-div">
 									<td>
-										${pList.payMerchantUid }
+										<p class="payMerchantUid">${pList.payMerchantUid }</p>
+										<p>${pList.payRegAt }</p>
 										<input type="hidden" value="${pList.payImpUid }">
 									</td>
 									<td>${pList.payPg }</td>
@@ -57,27 +61,47 @@
 									<td>${pList.memberName }</td>
 									<td>${pList.memberPhoneNum }</td>
 									<td>${pList.payStatus }</td>
-									<td>${pList.payRegAt }</td>
+									<td style="display:none">${pList.payRegAt }</td>
 									<td style="display:none">${pList.payNameType}</td>
-									<c:choose>
-									<c:when test="${pList.payStatus eq '결제완료' }">
-										<td>
+									<c:if test="${pList.payStatus eq '결제완료' }">
+										<td style="display:none">
 											<button type="button" class="refunds"  onclick="showRowData(this)" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
 											  환불요청
 											</button>
 										</td>
-									</c:when>
-									<c:otherwise>
-										<td>
-											<button type="button" class="receipts" onclick="receiptRowData(this)" data-bs-toggle="modal" data-bs-target="#receiptModal">환불영수증</button>
-										</td>
-									</c:otherwise>
-									</c:choose>
+									</c:if>
 								</tr>
 							</c:forEach>
 						</tbody>
-					</table>			
-					</div>	
+					</table>	
+					<div>
+						  <ul class="pagination">
+						    <li class="page-item disabled">
+						      <a class="page-link" href="#">&laquo;</a>
+						    </li>
+						    <li class="page-item active">
+						      <a class="page-link" href="#">1</a>
+						    </li>
+						    <li class="page-item">
+						      <a class="page-link" href="#">2</a>
+						    </li>
+						    <li class="page-item">
+						      <a class="page-link" href="#">3</a>
+						    </li>
+						    <li class="page-item">
+						      <a class="page-link" href="#">4</a>
+						    </li>
+						    <li class="page-item">
+						      <a class="page-link" href="#">5</a>
+						    </li>
+						    <li class="page-item">
+						      <a class="page-link" href="#">&raquo;</a>
+						    </li>
+						  </ul>
+						</div>		
+					</div>
+					
+						
 				</div>
 			</div>
 				
@@ -124,15 +148,12 @@
 	       		</div>
 	       		<h3> 주문 내역서 </h3>
 	       		<hr>
-	       		<div id="receiptMember"> 
-	       			구매자 
+	       		<div id="member-receipt-body"> 
 	       		
 	       		</div>
+	       		<div id="member-receipt-footer">
 	       		
-	       		<div id="receiptInfo"> 
-	       			구매내역 
-	       		
-	       		</div>	
+	       		</div>
 	       	</div>
 	      </div>
 	    </div>

@@ -22,6 +22,19 @@
 	<sec:authentication property="principal.mvo.memberType" var="authType"/>
 </sec:authorize>
 
+<!-- 회원 결제내역 히든 창 -->
+<div class="member-receipt" id="receipt-board">
+  <div class="member-receipt-header">
+  	<h3>회원주문내역</h3>
+  	<div class="receiptMainLogo">
+		<img alt="" width="120" height="100" src="/resources/etc/logo_basic.png">
+	</div>
+	<hr>
+  </div>
+  <div class="member-receipt-body" id="member-receipt-body">
+
+  </div>
+</div>
 
 
 <!-- <div class="qna-img-container" style="background-image: url('https://www.princehotels.com/shinfurano/wp-content/uploads/sites/40/2022/11/2022_11_1920_ski_2-1.jpg')">	</div>
@@ -30,6 +43,7 @@
 <div class="qna-header qna-header-two">
 	<h1 class="qna-header-h1">고객문의<span class="qna-header-span">Question And Answer</span></h1>
 </div>
+
 
 
 <div class="qna-menu-container">
@@ -99,7 +113,9 @@
 				<td class="qna-table-content" colspan="3" style="padding: 30px 20px;">
 					<div class="qna-table-content-child">${qvo.qnaContent }</div>
 					<div>
-					<div class="qna-table-content-child"> 주문번호 : <a id="member-merchantUid" data-merchantUid="${qvo.qnaMerchantUid }">${qvo.qnaMerchantUid}</a> </div>
+					<div class="qna-table-content-child contetn-member-merchantUid"> 
+						<strong>회원 주문번호 : <a id="member-merchantUid" data-merchantUid="${qvo.qnaMerchantUid }">${qvo.qnaMerchantUid}</a> (클릭) </strong>
+					</div>
 						<!-- 파일표시란 -->
 						<c:set value="${qdto.flist }" var="flist"></c:set>
 						<ul class="list-group list-group-flush">
@@ -192,9 +208,9 @@
 	
 	  </div>
 	</div>
+	
+	
 </div>	 
-
-
 
 <script type="text/javascript" src="/resources/js/qna/ansRegister.js"></script>
 <script type="text/javascript" src="/resources/js/qna/qnaFileModify.js"></script>

@@ -19,8 +19,10 @@ public class ReceiptDTO {
 	
 	//1. 결제정보 가져오기
 	private String payMerchantUid;
-	private String memberNum;
 	private String payStatus;
+	private String memberNum;
+	private String memberType;
+	private String payPg;
 	
 	//구매자 정보
 	private String memberId;
@@ -35,14 +37,16 @@ public class ReceiptDTO {
 	//구매중인 물건 기타정보 (사람수, 시작일, 종료일)
 	private String hotelReservePeople;
 	private String hotelReserveChild;
-	private String rentalLiftAdult;
-	private String rentalLiftKid;
-	private String rentalReserveAdult;
-	private String rentalReserveKid;
-	
 	private String hotelReserveStayStart;
 	private String hotelReserveStayEnd;
+	
+	private String rentalLiftTicket;	//리프트권 이름
 	private String rentalLiftStart;
+	private String rentalLiftAdult;
+	private String rentalLiftKid;
+	
+	private String rentalReserveAdult;
+	private String rentalReserveKid;
 	private String rentalReserveStart;
 	
 	//환불정보
