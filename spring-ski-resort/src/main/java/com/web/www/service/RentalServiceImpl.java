@@ -9,7 +9,9 @@ import com.web.www.domain.FileVO;
 import com.web.www.domain.member.MemberVO;
 import com.web.www.domain.rental.RentalItemDTO;
 import com.web.www.domain.rental.RentalItemListDTO;
+import com.web.www.domain.rental.RentalItemVO;
 import com.web.www.domain.rental.RentalLiftVO;
+import com.web.www.domain.rental.RentalReserveVO;
 import com.web.www.domain.rental.RentalVO;
 import com.web.www.repository.FileDAO;
 import com.web.www.repository.RentalDAO;
@@ -131,6 +133,12 @@ public class RentalServiceImpl implements RentalService{
 	}
 
 	@Override
+
+	public int itemReserve(RentalReserveVO rrvo) {
+		
+		return rdao.itemReserve(rrvo);
+	}
+	
 	public int updateRentalLift(RentalLiftVO rlivo ,MemberVO mvo) {
 		// TODO Auto-generated method stub
 		int isOk = rdao.updateRentalLift(rlivo);
@@ -139,6 +147,7 @@ public class RentalServiceImpl implements RentalService{
 			isOk *=  rdao.rental(rlivo.getRentalLiftNum(), mvo);;
 			log.info("체크체크체크체크체크체크체크체크체크체크3333333");
 		return isOk;
+
 	}
 
 

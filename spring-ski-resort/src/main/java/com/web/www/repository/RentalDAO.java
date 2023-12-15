@@ -8,6 +8,7 @@ import com.web.www.domain.member.MemberVO;
 import com.web.www.domain.rental.RentalItemListDTO;
 import com.web.www.domain.rental.RentalItemVO;
 import com.web.www.domain.rental.RentalLiftVO;
+import com.web.www.domain.rental.RentalReserveVO;
 import com.web.www.domain.rental.RentalVO;
 import com.web.www.domain.rental.rentalItemImageVO;
 
@@ -44,9 +45,14 @@ public interface RentalDAO {
 
 	int rentalItemImageCntCheck();
 
+
+	int itemReserve(RentalReserveVO rrvo);
+
 	int updateRentalLift(RentalLiftVO rlivo);
 
 	int rental(@Param("rentalLiftNum") String rentalLiftNum,@Param("mvo") MemberVO mvo);
+
+
 
 
 
