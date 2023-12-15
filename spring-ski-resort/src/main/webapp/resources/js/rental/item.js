@@ -130,11 +130,11 @@ document.addEventListener('DOMContentLoaded', function () {
                let itemAdultFee = e.target.getAttribute('data-adultFee');
                let itemKidFee = e.target.getAttribute('data-kidFee');
 
-               if (fnContains(itemNum, itemName, '주니어')) {
+               if (fnContains(itemName, '주니어')) {
                     console.log(itemNum, itemName, itemKidFee);
                     shoppingBasket(itemNum, itemName, itemKidFee);
                } else {
-                    console.log(itemNum, itemName, itemAdultFee);
+                    console.log(itemName, itemAdultFee);
                     shoppingBasket(itemNum, itemName, itemAdultFee);
                }
 
