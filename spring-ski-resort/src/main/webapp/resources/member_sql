@@ -25,7 +25,6 @@ member_alarm_system varchar(1) default 'Y',
 member_terms1 varchar(15) default 'non-check',
 member_terms2 varchar(15) default 'non-check',
 member_terms3 varchar(15) default 'non-check',
-member_alarm_system varchar(1) default 'Y',
 member_type varchar(20) default 'normal',
 primary key(member_num)
 );
