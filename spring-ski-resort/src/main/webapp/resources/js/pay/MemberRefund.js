@@ -139,3 +139,41 @@ function closeModalAndRedirect() {
     // 리다이렉션을 수행하고 페이지를 이동
     window.location.href = '/pay/memberPayList';
 }
+
+
+function receiptRowData(button) {
+    let receiptMemberDiv = document.getElementById('receiptMember');
+    let receiptInfoDiv = document.getElementById('receiptInfo');
+    let row = button.closest('tr');
+    let tds = row.querySelectorAll('td');
+    let rowData = [];
+
+    receiptMemberDiv.innerHTML = '';
+
+    receiptInfoDiv.innerHTML = '';
+
+
+    tds.forEach(function (td) {
+        rowData.push(td.innerText);
+    });
+    
+    detailToReceipt(rowData[0]).then(result => {
+        
+    })
+
+
+}
+
+async function detailToReceipt(payMerchantUid){
+    try {
+        const url = '/member/check/receipt/' + payMerchantUid;
+        const config = {
+            method: 'get'
+        }
+        const resp = await fetch(url, config);
+        const result = await resp.json();
+        return result;
+    } catch (error) {
+        console.log(error);
+    }
+}

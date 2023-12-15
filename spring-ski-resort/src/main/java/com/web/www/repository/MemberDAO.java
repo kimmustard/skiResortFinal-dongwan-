@@ -12,6 +12,8 @@ import com.web.www.domain.member.MemberCheckDTO;
 import com.web.www.domain.member.MemberPwdDTO;
 import com.web.www.domain.member.MemberVO;
 import com.web.www.domain.member.ModifyMemberDTO;
+import com.web.www.domain.pay.ReceiptDTO;
+import com.web.www.domain.pay.RefundReceiptDTO;
 import com.web.www.security.AuthVO;
 
 public interface MemberDAO {
@@ -116,6 +118,18 @@ public interface MemberDAO {
 	long recentMember();
 
 	String getMemberMasCheck(long memberNum);
+
+	String getMemberGrade(long memberNum);
+
+	
+	/*영수증 */
+	ReceiptDTO getReceipt(String payMerChantUid);
+	ReceiptDTO getHotelReceipt(String payMerChantUid);
+	ReceiptDTO getLiftReceipt(String payMerChantUid);
+	ReceiptDTO getRentalReceipt(String payMerChantUid);
+
+	/*환불영수증 가져오기*/
+	ReceiptDTO getRefundReceipt(String payMerChantUid);
 
 
 

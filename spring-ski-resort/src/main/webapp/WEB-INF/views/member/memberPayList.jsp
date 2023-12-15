@@ -69,7 +69,7 @@
 									</c:when>
 									<c:otherwise>
 										<td>
-											<button>환불영수증</button>
+											<button type="button" class="receipts" onclick="receiptRowData(this)" data-bs-toggle="modal" data-bs-target="#receiptModal">환불영수증</button>
 										</td>
 									</c:otherwise>
 									</c:choose>
@@ -103,6 +103,37 @@
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-primary" id="refundInfoBtn">환불 요청하기</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
+	
+	<!-- 영수증 모달 창 -->
+	<div class="modal fade" id="receiptModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="receiptModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h1>환불처리 내역</h1>
+	        <button type="button" class="btn-close" data-bs-dismiss="modal" id="receipt-close" aria-label="Close"></button>
+	      </div>
+	      <div class="modal-body receipt-body">
+	       	<div class="receiptInfo" id="receiptInfo1">
+	       		<div class="receiptMainLogo">
+	       			<img alt="" width="120" height="100" src="/resources/etc/logo_basic.png">
+	       		</div>
+	       		<h3> 주문 내역서 </h3>
+	       		<hr>
+	       		<div id="receiptMember"> 
+	       			구매자 
+	       		
+	       		</div>
+	       		
+	       		<div id="receiptInfo"> 
+	       			구매내역 
+	       		
+	       		</div>	
+	       	</div>
 	      </div>
 	    </div>
 	  </div>
