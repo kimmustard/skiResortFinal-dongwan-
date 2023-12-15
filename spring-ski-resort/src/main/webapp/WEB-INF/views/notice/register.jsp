@@ -133,7 +133,8 @@
 						  <input type="file" class="form-control" name="files" id="files" style="display: none;" multiple="multiple">
 						  <!-- input button trigger 용도의 button -->
 						  <button type="button" id="trigger" class="btn btn-outline-primary">첨부파일</button>
-						  <span style="color: #ac0000;">※ 첨부파일은 20MB 이하의 png, gif, jpg 형식의 파일만 등록이 가능.</span>
+						  <span style="color: #ac0000;">※ 첫번째로 올린 이미지는 본문에 업로드 되지 않고 썸네일용으로 등록 됩니다.</span>
+						  <div style="color: #ac0000;">※ 첨부파일은 20MB 이하의 png, gif, jpg 형식의 파일만 등록이 가능.</div>
 						  <div class="mb-3" id="fileZone">
 						  <!-- 첨부파일 표시 영역 -->
 						  </div>
