@@ -6,7 +6,9 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,12 +25,12 @@ import com.web.www.domain.FileVO;
 import com.web.www.domain.member.AuthUser;
 import com.web.www.domain.member.MemberVO;
 import com.web.www.domain.pay.PayInfoVO;
-import com.web.www.domain.rental.RentalItemsBasketDTO;
 import com.web.www.domain.rental.RentalItemDTO;
 import com.web.www.domain.rental.RentalItemImageRead;
 import com.web.www.domain.rental.RentalItemListDTO;
 import com.web.www.domain.rental.RentalItemRead;
 import com.web.www.domain.rental.RentalItemVO;
+import com.web.www.domain.rental.RentalItemsBasketDTO;
 import com.web.www.domain.rental.RentalLiftVO;
 import com.web.www.handler.FileHandler;
 import com.web.www.service.RentalService;
@@ -154,9 +156,8 @@ public class RentalController {
 		return "/rental/wear-item";
 	}
 	
-	@ResponseBody
-	@PostMapping(value = "/itemsBasket", consumes =MediaType.APPLICATION_JSON_VALUE)
-	public String itemReserveForm(@RequestBody List<RentalItemsBasketDTO> ritvoList) {
+	@PostMapping(value = "/itemsBasket", consumes = MediaType.APPLICATION_JSON_VALUE)
+	public String itemsBasketToServer(@RequestBody List<RentalItemsBasketDTO> ritvoList) {
 		
 	    for (RentalItemsBasketDTO rtibDTO : ritvoList) {
 	    	
@@ -164,7 +165,7 @@ public class RentalController {
 	        
 	    }
 	    
-	    return null;
+	    return "index";
 	}
 	
 	

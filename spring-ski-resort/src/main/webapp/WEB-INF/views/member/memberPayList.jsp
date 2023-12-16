@@ -64,7 +64,7 @@
 										${pList.payStatus }
 										<c:if test="${pList.payStatus eq '결제완료' }">
 											/
-											<button type="button"  class="refunds"  onclick="showRowData(this)" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+											<button type="button"  class="refunds" onclick="showRowData(this)" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
 											  환불요청
 											</button>
 										</c:if>

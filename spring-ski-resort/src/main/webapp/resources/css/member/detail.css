@@ -82,6 +82,17 @@
 	background-size: 100% 100%;
 	animation: background-ani 0.4s linear forwards;
 }
+
+.backgroundImgAlarm{
+	position: absolute;
+	width: 1800px;
+	height: 1000px;
+	right: -150px;
+	z-index: -5;
+	background-image: url("https://i.imgur.com/7FhToIJ.png");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
 /* 왼쪽 카테고리 */
 .mainCategory{
 	width: 350px;
@@ -535,13 +546,6 @@ textarea{
 /*모달창 수정*/
 .modal-content{
 	top: 100px;
-}
-
-modal-dialog{
-	left: 0px;
-}
-.modal-content-receipt{
-	right: 0px;
 }
 
 .modal-header{

@@ -18,6 +18,7 @@ public class ReceiptDTO {
 	 */
 	
 	//1. 결제정보 가져오기
+	private String payImpUid;
 	private String payMerchantUid;
 	private String payStatus;
 	private String memberNum;

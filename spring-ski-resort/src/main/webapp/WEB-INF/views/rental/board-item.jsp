@@ -133,15 +133,11 @@
 		</div>
 		
 		<div class="shopContainer" style="display: none;">
-			<form action="/rental/itemsBasket" method="post">
-				<div class="shoppingBasket">
-					<p class="fs-4">장바구니</p>
-					<button type="submit" class="btn btn-outline-info reserveBtn" id="reserveBtn">예약신청하기</button>
-					<div id="itemSelectDiv">
-					
-					</div>
-				</div>
-			</form>
+			<div class="shoppingBasket">
+				<p class="fs-4">장바구니</p>
+				<button class="btn btn-outline-info reserveBtn" id="reserveBtn">예약신청하기</button>
+				
+			</div>
 		</div>
 
 	</div>

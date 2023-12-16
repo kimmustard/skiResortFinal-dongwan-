@@ -212,6 +212,35 @@
 	
 </div>	 
 
+
+<!-- Modal -->
+	<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h1 class="modal-title fs-5" id="staticBackdropLabel">환불 요청</h1>
+	        <button type="button" data-bs-dismiss="modal" id="refund-close" aria-label="Close">X</button>
+	      </div>
+	      <div class="modal-body refundInfo-body">
+	       	<div class="transactionInfo" id="transactionInfo">
+	       		
+	       	</div>
+	       	<hr>
+	       	<div class="refundInfo" id="refundInfo">
+	       		 
+	       	</div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-primary" id="refundInfoBtn">환불 요청하기</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
+
+
+
+
 <script type="text/javascript" src="/resources/js/qna/ansRegister.js"></script>
 <script type="text/javascript" src="/resources/js/qna/qnaFileModify.js"></script>
 <script type="text/javascript" src="/resources/js/qna/qnaFileUpload.js"></script>

@@ -22,7 +22,9 @@
 	</div>
 	<!-- 오른쪽 메인화면 -->
 		<div class="alarmViewContainer">
-		
+			<div class="backgroundImgAlarm">
+				
+			</div>
 			<div class="alarmViewBox">
 				<div class="alarmTitle">
 					<span><i class="bi bi-bell"></i> 서비스알림 메세지함 </span>

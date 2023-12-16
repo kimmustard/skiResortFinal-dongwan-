@@ -202,13 +202,9 @@ function shoppingBasket(itemNum, itemName, price) {
           };
 
           itemsArray.push(itemsConfig);
-
+          console.log(itemsArray);
 
           itemSelectDiv.innerHTML += `<p class="fs-5">${itemName}</p><br><p class="fs-5">요금 : ${price}원</p><br>`;
-          itemSelectDiv.innerHTML += `<input type="hidden" name="ritvoList[${itemsArray.length - 1}].rentalItemNum" value="${itemNum}">`;
-          itemSelectDiv.innerHTML += `<input type="hidden" name="ritvoList[${itemsArray.length - 1}].rentalItemName" value="${itemName}">`;
-          itemSelectDiv.innerHTML += `<input type="hidden" name="ritvoList[${itemsArray.length - 1}].rentalItemPrice" value="${price}">`;
-
 
      } else {
           alert("최대 5개만 예약 가능합니다");
@@ -217,20 +213,28 @@ function shoppingBasket(itemNum, itemName, price) {
 }
 
 
+if (document.getElementById('reserveBtn')) {
 
-async function ItemsBasketToServer() {
+     document.getElementById('reserveBtn').addEventListener('click', () => {
+          itemsBasketToServer().then(result => {
+               if (result == '1') {
+                    console.log('완료');
+               }
+          });
+     })
+
+}
+
+async function itemsBasketToServer() {
      try {
           const url = '/rental/itemsBasket';
           const config = {
                method: 'post',
                headers: {
-                    'Content-Type': 'application/json; charset=UTF-8',
+                    'Content-Type': 'application/json; charset=utf-8'
                },
                body: JSON.stringify(itemsArray)
           };
-
-          console.log('ItemsBasketToServer :', JSON.stringify(itemsArray));
-
           let resp = await fetch(url, config);
           let result = await resp.text();
           return result;
@@ -238,15 +242,6 @@ async function ItemsBasketToServer() {
           console.log(error);
      }
 }
-
-
-document.getElementById('reserveBtn').addEventListener('click', () => {
-     ItemsBasketToServer().then(result => {
-          if (result > 0) {
-               console.log('성공');
-          }
-     })
-})
 
 
 
