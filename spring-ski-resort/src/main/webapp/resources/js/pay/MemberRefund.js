@@ -1,5 +1,5 @@
 document.querySelectorAll('.tr-div').forEach((row) => {
-    row.addEventListener('click', function () {
+    row.addEventListener('click', function (event) {
         // 클릭된 행의 payMerchantUid 값을 가져옴
         let payMerchantUid = this.querySelector('.payMerchantUid').textContent.trim();
 
@@ -21,6 +21,7 @@ document.querySelectorAll('.tr-div').forEach((row) => {
             }
             str += `<p>이름 : ${result.memberName}</p>`;
             str += `<p>번호 : ${result.memberPhoneNum}</p>`;
+            str += `<p>주문번호 : ${result.payMerchantUid}</p>`;
             str += `<p>결제회사 : ${result.payPg}</p>`;
             str += `<p>결제상태 : ${result.payStatus}</p>`;
             str += `<p>결제금액 : ${result.payAmount}원</p>`;
@@ -35,28 +36,6 @@ document.querySelectorAll('.tr-div').forEach((row) => {
                 str += `<p>환불신청인 : ${result.refundType}</p>`;
                 div.innerHTML = str;
                 return;
-            } else {
-                // 환불요청 버튼 생성
-                let refundButton = document.createElement('button');
-                refundButton.type = 'button';
-                refundButton.className = 'refunds';
-                refundButton.innerText = '환불요청';
-
-                // 환불 버튼에 click 이벤트 추가
-                refundButton.addEventListener('click', function () {
-                    // receiptModal 닫기
-                    receiptModal.hide();
-
-                    // 숨은 버튼 클릭 시뮬레이션
-                    let hiddenButton = row.querySelector('.refunds');
-                    if (hiddenButton) {
-                        hiddenButton.click();
-                    }
-                });
-
-                // 버튼을 모달의 특정 위치에 추가
-                document.getElementById('member-receipt-footer').innerHTML = '';
-                document.getElementById('member-receipt-footer').appendChild(refundButton);
             }
 
             str += `<p><font style="color:red;font-size:20px;"><strong>"${result.payNameType}" 상품을 구매한 회원입니다. </strong></font></p>`;
@@ -70,34 +49,23 @@ document.querySelectorAll('.tr-div').forEach((row) => {
                 str += `<p>인원수 : 성인 ${result.rentalReserveAdult} 명 / 어린이 ${result.rentalReserveKid} 입니다.</p>`;
                 str += `<p>렌탈대여 시작일 : ${result.rentalReserveStart}</p>`;
             }
+
             div.innerHTML = str;
         });
+
+        // 클릭된 행의 이벤트 전파 중지
+        event.stopPropagation();
     });
 });
 
-// 환불 모달을 열 때
-document.getElementById('refundInfoBtn').addEventListener('click', function () {
-    // 중복 호출 방지 플래그 설정
-    if (isSubmitting) {
-        return;
-    }
+// "환불요청" 버튼에 대한 이벤트 리스너 추가
+document.querySelectorAll('.tr-div .refunds').forEach((button) => {
+    button.addEventListener('click', function (event) {
+        // 이벤트 전파 중지
+        event.stopPropagation();
 
-    // 중복 호출 방지 플래그 설정
-    isSubmitting = true;
-
-    // receiptModal이 이미 생성되었는지 확인
-    if (!receiptModal) {
-        receiptModal = new bootstrap.Modal(document.getElementById('receiptModal'));
-    }
-
-    // receiptModal을 열기 전에 현재 열려있는 modal이 있는지 확인하고 닫음
-    let existingModal = bootstrap.Modal.getInstance(document.getElementById('staticBackdrop'));
-    if (existingModal) {
-        existingModal.hide();
-    }
-
-    // receiptModal 열기
-    receiptModal.show();
+        showRowData(this);
+    });
 });
 
 
@@ -127,7 +95,16 @@ function showRowData(button) {
     let rowData = [];
 
     tds.forEach(function (td) {
-        rowData.push(td.innerText);
+        let pTags = td.querySelectorAll('p');
+        pTags.forEach(function (pTag) {
+            if (!pTag.classList.contains('payRegAt')) {
+                rowData.push(pTag.innerText);
+            }
+        });
+
+        if (td.querySelectorAll('p.payRegAt').length === 0) {
+            rowData.push(td.innerText);
+        }
     });
     console.log('알려줘', rowData);
     div.innerHTML = '';
@@ -163,6 +140,7 @@ function showRowData(button) {
 
     /*환불에 필요한 정보를 서버에 넘기는 코드 시작*/
     document.getElementById('refundInfoBtn').addEventListener('click', () => {
+
         // 중복 호출 방지
         if (isSubmitting) {
             return;

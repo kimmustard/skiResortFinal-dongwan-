@@ -52,7 +52,7 @@
 								<tr class="tr-div">
 									<td>
 										<p class="payMerchantUid">${pList.payMerchantUid }</p>
-										<p>${pList.payRegAt }</p>
+										<p class="payRegAt">${pList.payRegAt }</p>
 										<input type="hidden" value="${pList.payImpUid }">
 									</td>
 									<td>${pList.payPg }</td>
@@ -60,16 +60,18 @@
 									<td>${pList.payAmount } 원</td>
 									<td>${pList.memberName }</td>
 									<td>${pList.memberPhoneNum }</td>
-									<td>${pList.payStatus }</td>
-									<td style="display:none">${pList.payRegAt }</td>
-									<td style="display:none">${pList.payNameType}</td>
-									<c:if test="${pList.payStatus eq '결제완료' }">
-										<td style="display:none">
-											<button type="button" class="refunds"  onclick="showRowData(this)" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+									<td>
+										${pList.payStatus }
+										<c:if test="${pList.payStatus eq '결제완료' }">
+											/
+											<button type="button"  class="refunds"  onclick="showRowData(this)" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
 											  환불요청
 											</button>
-										</td>
-									</c:if>
+										</c:if>
+									</td>
+									<td style="display:none">${pList.payRegAt }</td>
+									<td style="display:none">${pList.payNameType}</td>
+									
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -138,8 +140,8 @@
 	  <div class="modal-dialog">
 	    <div class="modal-content">
 	      <div class="modal-header">
-	        <h1>환불처리 내역</h1>
-	        <button type="button" class="btn-close" data-bs-dismiss="modal" id="receipt-close" aria-label="Close"></button>
+	        <h1>주문 내역</h1>
+	        <button type="button" data-bs-dismiss="modal" id="receipt-close" aria-label="Close">X</button>
 	      </div>
 	      <div class="modal-body receipt-body">
 	       	<div class="receiptInfo" id="receiptInfo1">
