@@ -40,13 +40,18 @@
 				
 					<table class="table table-hover">
 					  <thead>
-					    <tr class="table-info">
-					      <th style="width: 80px;" scope="col">보낸사람</th>
+					    <tr class="table-dark">
+					      <th style="width: 90px;" scope="col">보낸사람</th>
 					      <th style="width: 50px;" scope="col">분류</th>
-					      <th scope="col">메세지 내용 (클릭시 이동)</th>
+					      <th scope="col">
+					      	<p> 메세지 내용 </p>
+					      	<p>(클릭시 이동) </p>
+					      	</th>
 					      <th style="width: 50px;" scope="col">읽음</th>
 					      <th scope="col">시간</th>
-					      <th scope="col"></th>
+					      <th id="allDelete" scope="col">
+						 	 <i class="bi bi-trash3-fill"></i>
+				      	  </th>
 					    </tr>
 					  </thead>
 					  <tbody>
@@ -58,7 +63,7 @@
 					      <td><a href="${aList.alarmContentUrl}" data-alarmregat="${aList.alarmRegAt}" data-membernum="${aList.memberNum}">${aList.alarmContentText}</a></td>
 					      <td>${aList.alarmCheck }</td>
 					      <td>${aList.alarmRegAt }</td>
-					      <td> <a href="/alarm/alarmRemove?alarmRegAt=${aList.alarmRegAt}"><button>X</button></a> </td>
+					      <td> <a href="/alarm/alarmRemove?alarmRegAt=${aList.alarmRegAt}"><i class="bi bi-x"></i></a> </td>
 					    </tr>
 				</c:forEach>
 					  </tbody>

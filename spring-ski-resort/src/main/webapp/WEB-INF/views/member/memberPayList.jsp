@@ -116,7 +116,7 @@
 	    <div class="modal-content">
 	      <div class="modal-header">
 	        <h1 class="modal-title fs-5" id="staticBackdropLabel">환불 요청</h1>
-	        <button type="button" class="btn-close" data-bs-dismiss="modal" id="refund-close" aria-label="Close"></button>
+	        <button type="button" data-bs-dismiss="modal" id="refund-close" aria-label="Close">X</button>
 	      </div>
 	      <div class="modal-body refundInfo-body">
 	       	<div class="transactionInfo" id="transactionInfo">

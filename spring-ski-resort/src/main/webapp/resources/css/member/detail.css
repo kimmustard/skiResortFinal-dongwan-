@@ -190,7 +190,7 @@
 }
 
 .bi-bell-fill{
-	font-size: 35px;
+	font-size: 23px;
 }
 
 /* 오른쪽 화면 */
@@ -328,6 +328,10 @@
 	margin-bottom: 10px;
 }
 
+#refundInfoBtn{
+	background-color: rgb(35,55,86);
+}
+
 textarea{
     resize: none;
     width: 100%;
@@ -339,6 +343,34 @@ textarea{
 	margin-left: 35px;
 }
 
+
+#transactionInfo{
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: 500;
+	font-size: 18px;
+}
+#transactionInfo>h3{
+	font-size: 35px;
+	margin-bottom: 15px;
+}
+
+#transactionInfo>p{
+	margin-bottom: 10px;
+}
+
+#refundInfo{
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: 500;
+	font-size: 18px;
+}
+
+.refunds{
+	width: 100px;
+	height: 30px;
+	background-color: rgb(35,55,86);
+	color: white;
+	border:1px solid transparent; 
+}
 
 /* 비밀번호 변경 창*/
 .mainViewBox4>form{
@@ -492,6 +524,14 @@ textarea{
 	bottom: 10px;
 }
 
+.bi-x{
+	font-size: 30px;
+}
+
+.bi-trash3-fill{
+	font-size: 25px;
+}
+
 /*모달창 수정*/
 .modal-content{
 	top: 100px;
@@ -510,6 +550,15 @@ modal-dialog{
 	font-size: 20px;
 	font-weight: 700;
 	color: white;
+}
+
+#refund-close{
+	border: none; 
+	box-shadow: none; 
+	color: white;
+	font-size: 23px;
+	font-weight: 700;
+	background-color: transparent;
 }
 
 #receipt-close{

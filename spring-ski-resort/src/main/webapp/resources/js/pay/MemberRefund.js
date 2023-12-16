@@ -106,22 +106,21 @@ function showRowData(button) {
             rowData.push(td.innerText);
         }
     });
-    console.log('알려줘', rowData);
     div.innerHTML = '';
-    let str = `<span style="font-weight:bold">결제정보</span> <br><br>`;
-    str += `<span>주문번호 : ${rowData[0]}</span> <br>`;
-    str += `<span>결제은행 : ${rowData[1]}</span> <br>`;
-    str += `<span>주문명 : ${rowData[2]}</span> <br>`;
-    str += `<span>금액 : ${rowData[3]}</span> <br>`;
-    str += `<span>이름 : ${rowData[4]}</span> <br>`;
-    str += `<span>연락처 : ${rowData[5]}</span> <br>`;
-    str += `<span>결제일자 : ${rowData[7]}</span> <br>`;
+    let str = `<h3 style="font-weight:bold">결제정보</h3>`;
+    str += `<p>주문번호 : ${rowData[0]}</p>`;
+    str += `<p>결제은행 : ${rowData[1]}</p>`;
+    str += `<p>주문명 : ${rowData[2]}</p>`;
+    str += `<p>금액 : ${rowData[3]}</p>`;
+    str += `<p>이름 : ${rowData[4]}</p>`;
+    str += `<p>연락처 : ${rowData[5]}</p>`;
+    str += `<p>결제일자 : ${rowData[7]}</p>`;
     div.innerHTML = str;
 
 
     refundDiv.innerHTML = '';
     let str2 = `<div class="refund-title">`;
-    str2 += `<span>환불사유를 작성해주세요.</span>`;
+    str2 += `<p>환불사유를 작성해주세요.</p>`;
     str2 += `</div>`;
     str2 += `<div class="form-check">`;
     str2 += `<input class="form-check-input" type="radio" name="optionsRadios" id="optionsRadios1" value="개인사정" checked="">`;
