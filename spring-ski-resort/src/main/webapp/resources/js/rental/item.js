@@ -349,6 +349,10 @@ let localStorageSwitch = -1;
 function shoppingBasket(itemNum, itemName, price, itemImageUrl) {
 
     
+     if (memberEmail.length <= 0) {
+          alert('상품구매는 회원만 가능합니다.');
+          return;
+     }
 
      let shoppingBasket = document.getElementById('shoppingBasket');
      let itemContainer = document.getElementById('itemContainer');
@@ -360,10 +364,6 @@ function shoppingBasket(itemNum, itemName, price, itemImageUrl) {
 
      }
 
-     if (memberEmail.length <= 0) {
-          alert('상품구매는 회원만 가능합니다.');
-          return;
-     }
 
      if (itemsArray.length >= 5) {
           alert("최대 5개만 예약 가능합니다");
