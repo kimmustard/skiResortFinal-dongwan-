@@ -329,7 +329,7 @@ document.addEventListener('DOMContentLoaded', function () {
                let itemAdultFee = e.target.getAttribute('data-adultFee');
                let itemImageUrl = e.target.getAttribute('data-img');
 
-               shoppingBasket(itemNum, itemName, price, itemImageUrl);
+               shoppingBasket(itemNum, itemName, itemAdultFee, itemImageUrl);
           }
      });
 
@@ -388,7 +388,7 @@ function shoppingBasket(itemNum, itemName, price, itemImageUrl) {
 function renderBasket() {
      let itemSelectDiv = document.getElementById('itemSelectDiv');
      itemSelectDiv.innerHTML = '';
-     localStorage.clear();   
+     // localStorage.clear();   
      itemsArray.forEach(function (item, index) {
           let basketTemp = `<div class="basketContainer" data-index="${index}">
                     <div>
@@ -401,7 +401,7 @@ function renderBasket() {
                     </div>
                </div>`;
           itemSelectDiv.innerHTML += basketTemp;
-          localStorage.setItem(`${index}`, item);
+          // localStorage.setItem(`${index}`, item);
      });
 
      let basketTemp = `
@@ -415,7 +415,7 @@ function renderBasket() {
 function removeItem(index) {
      let removedItem = itemsArray.splice(index, 1)[0];
      itemSum -= parseInt(removedItem.rentalItemPrice);
-     localStorage.removeItem(`${index}`);
+     // localStorage.removeItem(`${index}`);
      renderBasket();
 
      let shoppingBasket = document.getElementById('shoppingBasket');
