@@ -124,6 +124,24 @@ public class RentalController {
 		model.addAttribute("skiLowItem", skiLowItem);
 		model.addAttribute("skiMidItem", skiMidItem);
 		model.addAttribute("skiPremiumItem", skiPremiumItem);
+		
+		List<RentalItemListDTO> boardLowItem = rsv.getBoardLowItem();
+		List<RentalItemListDTO> boardMidItem = rsv.getBoardMidItem();
+		List<RentalItemListDTO> boardPremiumItem = rsv.getBoardPremiumItem();
+		
+		model.addAttribute("boardLowItem", boardLowItem);
+		model.addAttribute("boardMidItem", boardMidItem);
+		model.addAttribute("boardPremiumItem", boardPremiumItem);
+		
+		List<RentalItemListDTO> wearLowItem = rsv.getWearLowItem();
+		List<RentalItemListDTO> wearMidItem = rsv.getWearMidItem();
+		List<RentalItemListDTO> wearPremiumItem = rsv.getWearPremiumItem();
+		
+		model.addAttribute("wearLowItem", wearLowItem);
+		model.addAttribute("wearMidItem", wearMidItem);
+		model.addAttribute("wearPremiumItem", wearPremiumItem);
+		
+		
 		model.addAttribute("mvo", mvo);
 		model.addAttribute("rlivo", rlivo);
 		
