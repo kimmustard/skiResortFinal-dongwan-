@@ -181,9 +181,9 @@ public class PayServiceImpl implements PayService{
 			break;
 		case "렌탈":
 			//[렌탈] 환불 로직
-//			if(pdao.checkRantalDay(rfiVO.getPayMerchantUid()) > 0) {
-//				return new ResponseEntity<String>("환불가능한 날짜가 지났습니다.", HttpStatus.BAD_REQUEST); 
-//			}
+			if(pdao.checkLiftDay(rfiVO.getPayMerchantUid()) == 0) {
+			    return new ResponseEntity<String>("환불가능한 날짜가 지났습니다.", HttpStatus.BAD_REQUEST); 
+			}
 			
 			break;
 		case "리프트":
@@ -219,6 +219,7 @@ public class PayServiceImpl implements PayService{
 		 */
 		pdao.registerRefund(rfiVO);
 		pdao.payMentRefund(rfiVO.getPayImpUid());
+		
 		
 		adao.alarmSetting(new AlarmVO(memberNum, 3, "환불"));// 시스템 알람 반드시 넣어주세요.
 		return new ResponseEntity<String>("정상적으로 환불되었습니다.", HttpStatus.OK);

@@ -38,8 +38,16 @@
 	<select id="checkRoomDay" resultType="int">
         <![CDATA[
 		    SELECT COUNT(*) FROM room_info
-		    WHERE pay_merchant_uid = #{payMerchantUid}
-		    AND CURDATE() - INTERVAL 1 DAY < hotel_reserve_stay_start;
+			WHERE pay_merchant_uid = #{payMerchantUid}
+			AND DATE_ADD(CURDATE(), INTERVAL 1 DAY) < hotel_reserve_stay_start;
+		]]>
+    </select>
+  	<!-- 환불하기전 마감날짜 체크 -->
+	<select id="checkLiftDay" resultType="int">
+        <![CDATA[
+		    SELECT COUNT(*) FROM rental_lift
+			WHERE pay_merchant_uid = #{payMerchantUid}
+			AND DATE_ADD(CURDATE(), INTERVAL 1 DAY) < rental_lift_start;
 		]]>
     </select>
  	

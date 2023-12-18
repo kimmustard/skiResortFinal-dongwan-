@@ -50,7 +50,7 @@ public interface PayDAO {
 	 * @return
 	 */
 	int checkRoomDay(String payMerchantUid);
-//	int checkLiftDay(String payMerchantUid);
+	int checkLiftDay(String payMerchantUid);
 //	int checkRantalDay(String payMerchantUid);
 
 
