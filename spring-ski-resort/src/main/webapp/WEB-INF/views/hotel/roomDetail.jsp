@@ -14,7 +14,6 @@
 	<div id="room_detail">
 	
 				<div class="room_detail_title_box">
-					<p class="room_cate">다이스키</p>
 					<h3 class="room_title">스탠다드 트윈</h3>
 				</div>
 
@@ -62,7 +61,7 @@
 								<span class="icon room_icon_line"></span>객실코드
 							</th>
 							<th>
-								<span class="icon room_icon_1"></span>이용요금
+								<span class="icon room_icon_1"></span>이용요금(1박)
 							</th>
 							<th>
 								<span class="icon room_icon_2"></span>기준인원
