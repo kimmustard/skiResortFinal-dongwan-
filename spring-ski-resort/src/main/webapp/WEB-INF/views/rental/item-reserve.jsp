@@ -70,18 +70,19 @@
 					
 					<div id="innerbox" class="reserveBox" style="display: none;">
 						
-						<input name="rentalListItemNum" id="rentalItemNum" value="${item.rentalItemNum }" type="hidden">
+						<input name="rentalListItemNum" id="rentalItemNum" value="${rentalItemNum }" type="text">
+						
 						<div class="input-group mb-3">
 							<span class="input-group-text">렌탈장비명</span>
-							<input type="text" class="form-control" id="showItemName" value="${item.rentalItemName}" readonly="readonly">
+							<input type="text" class="form-control" id="showItemName" value="${rentalItemName}" readonly="readonly">
 						</div>
 						<div class="input-group mb-3">
 							<span class="input-group-text">요금(성인)</span>
-							<input type="text" class="form-control" id="showAdultFee" value="${item.rentalItemPrice}" readonly="readonly">
+							<input type="text" class="form-control" id="showAdultFee" value="${rentalItemPrice}" readonly="readonly">
 						</div>
 						<div class="input-group mb-3">
 							<span class="input-group-text">요금(어린이)</span>
-							<input type="text" class="form-control" id="showKidFee" value="${item.rentalItemPrice}" readonly="readonly">
+							<input type="text" class="form-control" id="showKidFee" value="${rentalItemPrice}" readonly="readonly">
 						</div>
 						
 						<div class="input-group mb-3">
@@ -97,7 +98,7 @@
 						</div>
 						<!-- db로 보낼 hidden input  -->
 							
-	
+						
 						<a href="/rental/item-reserve"><button type="button" class="btn btn-outline-primary">이전으로</button></a>
 						<button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#hotel-pay">결제</button>
 					</div>
@@ -105,8 +106,6 @@
 			</div>
 		
 		</div>
-		
-		<button id="localStorageTest"> 테스트 </button>
 		
 	</div>
 	

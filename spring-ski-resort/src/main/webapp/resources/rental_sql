@@ -55,7 +55,7 @@ image_url varchar(200));
 create table rental_reserve(
 rental_list_item_num bigint not null,
 rental_reserve_start datetime,
-rental_reserve_item varchar(50),
+rental_reserve_item varchar(200),
 rental_reserve_adult_fee int,
 rental_reserve_kid_fee int,
 rental_reserve_total_fee int,

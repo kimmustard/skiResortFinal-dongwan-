@@ -1,25 +1,8 @@
-document.getElementById('localStorageTest').addEventListener('click', () => {
-    console.log('ddd');
+function fnContains(str, substr) {
+    return str.indexOf(substr) !== -1;
+}
 
-    document.getElementById('rentalItemNum').value = "";
-    document.getElementById('showItemName').value = "";
-    document.getElementById('showAdultFee').value = "";
-    document.getElementById('showKidFee').value = "";
-
-    for (let i = 0; i < localStorage.length; i++) {
-        let item = JSON.parse(localStorage.getItem(`${i}`));
-        console.log(item);
-        document.getElementById('rentalItemNum').value = item.rentalItemNum;
-        document.getElementById('showItemName').value = item.rentalItemName;
-        document.getElementById('showAdultFee').value = item.rentalItemPrice;
-        document.getElementById('showKidFee').value = item.rentalItemPrice;
-
-
-    }
-
-})
-
-
+let itemSum = 0;
 
 document.getElementById("nextBtn").addEventListener('click', () => {
     let rentalReserveStart = document.getElementById('rentalReserveStart').value;
@@ -30,6 +13,41 @@ document.getElementById("nextBtn").addEventListener('click', () => {
         document.getElementById("innerbox").style.display = "block";
         document.getElementById('nextBtn').style.display = 'none';
     }
+
+    document.getElementById('rentalItemNum').value = "";
+    document.getElementById('showItemName').value = "";
+    document.getElementById('showAdultFee').value = "0";
+    document.getElementById('showKidFee').value = "0";
+    document.getElementById('showTotalFee').value = "0";
+
+    let itemNames = '';
+    let itemFee = 0;
+
+    for (let i = 0; i < localStorage.length; i++) {
+        let itemArr = JSON.parse(localStorage.getItem(`${i}`));
+        console.log(itemArr);
+
+        document.getElementById('rentalItemNum').value = itemArr[i].rentalItemNum;
+
+        itemNames += itemArr[i].rentalItemName + ',';
+
+
+
+        if (fnContains(itemArr[i].rentalItemName, '주니어')) {
+            document.getElementById('showKidFee').value = parseInt(itemArr[i].rentalItemPrice).toLocaleString() + "원";
+        } else {
+            document.getElementById('showAdultFee').value = parseInt(itemArr[i].rentalItemPrice).toLocaleString() + "원";
+        }
+
+
+        itemSum += parseInt(itemArr[i].rentalItemPrice);
+
+    }
+
+    itemNames = itemNames.slice(0, -2);
+
+    document.getElementById('showItemName').value = itemNames;
+    document.getElementById('showTotalFee').value = itemSum.toLocaleString() + "원";
 })
 
 
