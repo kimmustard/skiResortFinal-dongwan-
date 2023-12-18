@@ -121,7 +121,7 @@ const navLinks = document.querySelectorAll(".ski-nav-link");
 
 navLinks.forEach(link => {
     link.addEventListener("mouseover", (e) => {
-        e.target.querySelector("span").style.width = "100%";
+        e.target.querySelector("span").style.width = "80%";
     });
 
     link.addEventListener("mouseout", (e) => {
