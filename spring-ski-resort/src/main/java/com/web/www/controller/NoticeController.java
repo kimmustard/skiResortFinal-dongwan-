@@ -82,9 +82,10 @@ public class NoticeController {
 		int totalCount = nsv.getTotalCount(pgvo);
 		PagingHandler ph = new PagingHandler(pgvo, totalCount);
 		m.addAttribute("ph",ph);
-		List<FileVO> Ifvo = nsv.noticeImpactFileList(); //중요공지 파일 목록 가져오기
-		log.info(Ifvo+"IfvoIfvoIfvoIfvo");
+		List<FileVO> Ifvo = nsv.noticeImpactFileList(); //noticeImpact 파일 목록 가져오기
 		m.addAttribute("Ifvo", Ifvo);
+		List<FileVO> fvo = nsv.noticeListFile(); //리스트 썸네일 파일 가져오기
+		m.addAttribute("fvo",fvo);
 	}
 	
 	

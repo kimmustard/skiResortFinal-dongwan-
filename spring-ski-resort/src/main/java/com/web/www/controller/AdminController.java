@@ -206,6 +206,14 @@ public class AdminController {
 		m.addAttribute("ph",ph);
 	}
 	
+	@PostMapping("/settingNoticeModify")
+	public String noticePointModify(NoticeVO nvo) {
+		log.info(">>>>>setting nvo >> "+nvo);
+		int isOk = nsv.settingNoticePointModify(nvo);
+		log.info(">>>>>setting notice point modify >> "+(isOk > 0? "OK" : "Fail"));
+		return "redirect:/developer/settingNotice";
+	}
+	
 	@GetMapping("/noticeRemove")
 	public String noticeRemove(@RequestParam("noticeNum")long noticeNum, RedirectAttributes re) {
 		int isOk = nsv.noticeRemove(noticeNum);

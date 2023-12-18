@@ -26,6 +26,7 @@ primary key(notice_num)
 
 
 
+==12/18 업데이트==
 ## file table 생성
 create table file(
 file_uuid varchar(200) not null,
@@ -40,6 +41,7 @@ file_name varchar(100) not null,
 file_isok varchar(1) default 'N',
 file_type tinyint(1) default 0,
 file_size bigint,
+file_asc int default 0,
 file_reg_at datetime default now(),
 primary key(file_uuid)
 );
@@ -135,6 +137,8 @@ insert into auth_member values('admin','ROLE_ADMIN');
 12/14 변경(칼럼추가 변경)
 alter table notice add notice_impact varchar(1) default 'N';
 alter table file change column notice_point_file notice_Impact_file varchar(1) default 'N';
+12/18 변경(칼럼추가 변경)
+alter table file add column file_asc int default 0;
 
 
 
