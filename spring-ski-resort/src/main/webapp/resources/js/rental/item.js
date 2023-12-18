@@ -27,7 +27,7 @@ skiItem.addEventListener('click', () => {
 })
 boardItem.addEventListener('click', () => {
      console.log('보드 선택');
-     itemTitle = '보드';   
+     itemTitle = '보드';
      document.getElementById('skiItemList').style.display = 'none';
      document.getElementById('boardItemList').style.display = 'block';
      document.getElementById('wearItemList').style.display = 'none';
@@ -43,7 +43,7 @@ boardItem.addEventListener('click', () => {
 })
 wearItem.addEventListener('click', () => {
      console.log('의류 선택');
-     itemTitle = '의류'; 
+     itemTitle = '의류';
      document.getElementById('skiItemList').style.display = 'none';
      document.getElementById('boardItemList').style.display = 'none';
      document.getElementById('wearItemList').style.display = 'block';
@@ -348,7 +348,7 @@ let localStorageSwitch = -1;
 
 function shoppingBasket(itemNum, itemName, price, itemImageUrl) {
 
-    
+
      if (memberEmail.length <= 0) {
           alert('상품구매는 회원만 가능합니다.');
           return;
@@ -440,11 +440,16 @@ document.getElementById('itemSelectDiv').addEventListener('click', function (eve
 
 
 if (document.getElementById('reserveBtn')) {
-
      document.getElementById('reserveBtn').addEventListener('click', () => {
-          console.log('장바구니 물건',itemsArray);
-     })
 
+          localStorage.clear();
+
+          for (let i = 0; i < itemsArray.length; i++) {
+               localStorage.setItem(`${i}`, JSON.stringify(itemsArray));
+          }
+
+          location.href = '/rental/item-reserve';
+     })
 }
 
 async function itemsBasketToServer() {

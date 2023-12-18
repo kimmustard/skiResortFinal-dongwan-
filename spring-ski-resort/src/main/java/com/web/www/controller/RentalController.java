@@ -168,36 +168,24 @@ public class RentalController {
 //		
 //		return "/rental/wear-item";
 //	}
-	
-	@PostMapping(value = "/itemsBasket", consumes = MediaType.APPLICATION_JSON_VALUE)
-	public String itemsBasketToServer(@RequestBody List<RentalItemsBasketDTO> ritvoList) {
-		
-	    for (RentalItemsBasketDTO rtibDTO : ritvoList) {
-	    	
-	        log.info("넘어가는지 확인##### = {}", rtibDTO);
-	        
-	    }
-	    
-	    return "index";
-	}
-	
-	
-//	@PostMapping("/item-reserve")
-//	public String itemReservePost(RentalItemVO ritvo, RentalLiftVO rlivo, RentalReserveVO rrvo,
-//			RentalVO rvo, @AuthUser MemberVO mvo, Model model) {
+//	
+//	@PostMapping(value = "/itemsBasket", consumes = MediaType.APPLICATION_JSON_VALUE)
+//	public String itemsBasketToServer(@RequestBody List<RentalItemsBasketDTO> ritvoList) {
 //		
-//		rrvo.setRentalLiftNum(rvo.getRentalLiftNum());
-//		rrvo.setRentalListItemNum(ritvo.getRentalListItemNum());
-//		model.addAttribute("rrvo", rrvo);
-//		model.addAttribute("rlivo", rlivo);
-//		int isOk = rsv.itemReserve(rrvo);
-//		log.info((isOk > 0)? "ok":"fail");
-//		
-//		return "index";
-//		
+//	    for (RentalItemsBasketDTO rtibDTO : ritvoList) {
+//	    	
+//	        log.info("넘어가는지 확인##### = {}", rtibDTO);
+//	        
+//	    }
+//	    
+//	    return "redirect:/";
 //	}
 	
+	 @GetMapping("/item-reserve")
+	    public String itemsPayForm() {
 	
+	        return "/rental/item-reserve";
+	    }
 	
 	
 	@PostConstruct
