@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 
 import com.web.www.domain.pay.PayInfoVO;
-import com.web.www.domain.pay.ReceiptDTO;
 import com.web.www.domain.pay.RefundInfoVO;
 
 public interface PayService {

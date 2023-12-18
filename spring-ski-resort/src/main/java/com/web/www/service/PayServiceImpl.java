@@ -135,6 +135,10 @@ public class PayServiceImpl implements PayService{
 		}
 		pdao.registerPay(pivo);
 		
+		/**
+		 * @amountSum 회원의 결제금액 합산
+		 * 결제금액으로 등급을 조정하는 로직입니다.
+		 */
 		long amountSum = pdao.memberAmountSum(pivo.getMemberNum());
 		if(amountSum > 1000000 && amountSum < 2000000) {
 			mdao.memberGradeUpdate(pivo.getMemberNum(), "Silver");
@@ -142,6 +146,8 @@ public class PayServiceImpl implements PayService{
 			mdao.memberGradeUpdate(pivo.getMemberNum(), "Gold");
 		}else if(amountSum >= 3000000) {
 			mdao.memberGradeUpdate(pivo.getMemberNum(), "VIP");
+		}else {
+			mdao.memberGradeUpdate(pivo.getMemberNum(), "Bronze");
 		}
 		
 		
@@ -231,14 +237,25 @@ public class PayServiceImpl implements PayService{
 		pdao.registerRefund(rfiVO);
 		pdao.payMentRefund(rfiVO.getPayImpUid());
 		
+		
+		/**
+		 * @amountSum 회원의 결제금액 합산
+		 * 결제금액으로 등급을 조정하는 로직입니다.
+		 */
+		log.info("환불시 회원번호 = {}" , memberNum);
+		
 		long amountSum = pdao.memberAmountSum(memberNum);
+		log.info("금액 = {}" , amountSum);
 		if(amountSum > 1000000 && amountSum < 2000000) {
 			mdao.memberGradeUpdate(memberNum, "Silver");
 		}else if(amountSum >= 2000000 && amountSum < 3000000) {
 			mdao.memberGradeUpdate(memberNum, "Gold");
 		}else if(amountSum >= 3000000) {
 			mdao.memberGradeUpdate(memberNum, "VIP");
+		}else {
+			mdao.memberGradeUpdate(memberNum, "Bronze");
 		}
+	
 		
 		adao.alarmSetting(new AlarmVO(memberNum, 6, "등급"));
 		adao.alarmSetting(new AlarmVO(memberNum, 3, "환불"));// 시스템 알람 반드시 넣어주세요.

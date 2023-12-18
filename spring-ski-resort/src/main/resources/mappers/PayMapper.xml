@@ -57,8 +57,8 @@
  	
  	
  	<!-- 멤버등급 갱신 -->
- 	<select id="memberAmountSum" resultType="long">
- 		select sum(pay_amount) from pay where member_num = #{memberNum} and pay_status = '결제완료'
+ 	<select id="memberAmountSum" resultType="Long">
+ 		select COALESCE(sum(pay_amount), 0) from pay where member_num = #{memberNum} and pay_status = '결제완료'
  	</select>
   	
   </mapper>
