@@ -70,14 +70,14 @@
 		
 		<div class="itemMenuContainer">
 			<ul class="nav nav-tabs justify-content-center">
-			  <li class="nav-item" id="skiItem">
-			    <a class="nav-link" href="/rental/ski-item">스키</a>
+			  <li class="nav-item">
+			    <a class="nav-link" id="skiItem" href="/rental/ski-item">스키</a>
 			  </li>
-			  <li class="nav-item" id="boardItem">
-			    <a class="nav-link" href="#">스노우보드</a>
+			  <li class="nav-item">
+			    <a class="nav-link" id="boardItem" href="#">스노우보드</a>
 			  </li>
-			  <li class="nav-item" id="wearItem">
-			    <a class="nav-link" href="#">의류/보호장비</a>
+			  <li class="nav-item">
+			    <a class="nav-link" id="wearItem" href="#">의류/보호장비</a>
 			  </li>  
 			</ul>
 		</div>
