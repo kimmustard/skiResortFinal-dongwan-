@@ -193,14 +193,26 @@
 
 	<!-- 영수증 조회 -->
 	<select id="getReceipt" resultType="com.web.www.domain.pay.ReceiptDTO">
-		select * from pay where pay_merchant_uid = #{payMerchantUid}
+		SELECT pay.*, member.member_id, member.member_type
+		FROM pay
+		INNER JOIN member ON pay.member_num = member.member_num
+		WHERE pay.pay_merchant_uid = #{payMerchantUid}
 	</select>
 
 	<select id="getHotelReceipt" resultType="com.web.www.domain.pay.ReceiptDTO">
 		select hotel_reserve_stay_start, hotel_reserve_stay_end, hotel_reserve_people, hotel_reserve_child from room_info
 		where pay_merchant_uid = #{payMerchantUid}
 	</select>
+	
+	<select id="getLiftReceipt" resultType="com.web.www.domain.pay.ReceiptDTO">
+		select rental_lift_ticket, rental_lift_adult, rental_lift_kid, rental_lift_start from rental_lift
+		where pay_merchant_uid = #{payMerchantUid}
+	</select>
 
+	<select id="getRentalReceipt" resultType="com.web.www.domain.pay.ReceiptDTO">
+		select hotel_reserve_stay_start, hotel_reserve_stay_end, hotel_reserve_people, hotel_reserve_child from room_info
+		where pay_merchant_uid = #{payMerchantUid}
+	</select>
 
 	<!-- 환불영수증일때 가져오기  -->
 	<select id="getRefundReceipt" resultType="com.web.www.domain.pay.ReceiptDTO">

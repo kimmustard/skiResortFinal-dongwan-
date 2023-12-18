@@ -69,11 +69,11 @@ public class MemberCheckController {
 	@GetMapping(value = "/receipt/{uid}", produces =  MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<ReceiptDTO> receiptGet(@PathVariable("uid") String payMerChantUid){
 		ReceiptDTO rcDTO = msv.getReceipt(payMerChantUid);
-		
 		return rcDTO != null ? new ResponseEntity<ReceiptDTO> (rcDTO, HttpStatus.OK) 
 				: new ResponseEntity<> (HttpStatus.BAD_REQUEST);
 	}
 	
+	//주문번호 조회
 	@GetMapping("/merchant/{uid}")
 	public ResponseEntity<String> checkMarchantUid(@PathVariable("uid") String payMerChantUid){
 		int isOk = msv.checkMarchantUid(payMerChantUid);

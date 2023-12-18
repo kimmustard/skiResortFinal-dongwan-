@@ -1,3 +1,88 @@
+document.querySelectorAll('.tr-div').forEach((row) => {
+    row.addEventListener('click', function (event) {
+        // 클릭된 행의 payMerchantUid 값을 가져옴
+        let payMerchantUid = this.querySelector('.payMerchantUid').textContent.trim();
+
+        // Bootstrap의 modal 메서드를 사용하여 모달 띄우기
+        let receiptModal = new bootstrap.Modal(document.getElementById('receiptModal'));
+        receiptModal.show();
+
+        let div = document.getElementById('member-receipt-body');
+        div.innerHTML = '';
+
+        ansQnamerchantUidToServer(payMerchantUid).then(result => {
+            console.log(result);
+            // 객체의 각 속성을 특정 형식으로 출력하되, null 값은 출력하지 않음
+            let str = `<h3>회원정보</h3>`;
+            if (result.memberType !== 'normal') {
+                str += `<p>회원ID : ${result.memberEmail}</p>`;
+            } else {
+                str += `<p>회원ID : ${result.memberId}</p>`;
+            }
+            str += `<p>이름 : ${result.memberName}</p>`;
+            str += `<p>번호 : ${result.memberPhoneNum}</p>`;
+            str += `<p>주문번호 : ${result.payMerchantUid}</p>`;
+            str += `<p>결제회사 : ${result.payPg}</p>`;
+            str += `<p>결제상태 : ${result.payStatus}</p>`;
+            str += `<p>결제금액 : ${result.payAmount}원</p>`;
+            str += `<p>결제시간 : ${result.payRegAt}</p>`;
+            str += `<p>결제상품 : ${result.payName}</p><hr>`
+
+            if (result.payStatus !== '결제완료') {
+                str += `<p><font style="color:red;font-size:20px;"><strong>환불 완료된 회원입니다. </strong></font></p>`;
+                str += `<p>환불번호 : ${result.refundImpUid}</p>`;
+                str += `<p>환불사유 : ${result.refundReason}</p>`;
+                str += `<p>환불일자 : ${result.refundRegAt}</p>`;
+                str += `<p>환불신청인 : ${result.refundType}</p>`;
+                div.innerHTML = str;
+                return;
+            }
+
+            str += `<p><font style="color:red;font-size:20px;"><strong>"${result.payNameType}" 상품을 구매한 회원입니다. </strong></font></p>`;
+            if (result.payNameType === '호텔') {
+                str += `<p>인원수 : 성인 ${result.hotelReservePeople} 명 / 어린이 ${result.hotelReserveChild} 입니다.</p>`;
+                str += `<p>숙박 시작일 : ${result.hotelReserveStayEnd}</p> <p>숙박 종료일 : ${result.hotelReserveStayStart}</p>`;
+            } else if (result.payNameType === '리프트') {
+                str += `<p>인원수 : 성인 ${result.rentalLiftAdult} 명 / 어린이 ${result.rentalLiftKid} 입니다.</p>`;
+                str += `<p>리프트권 시작일 : ${result.rentalLiftStart}</p>`;
+            } else {
+                str += `<p>인원수 : 성인 ${result.rentalReserveAdult} 명 / 어린이 ${result.rentalReserveKid} 입니다.</p>`;
+                str += `<p>렌탈대여 시작일 : ${result.rentalReserveStart}</p>`;
+            }
+
+            div.innerHTML = str;
+        });
+
+        // 클릭된 행의 이벤트 전파 중지
+        event.stopPropagation();
+    });
+});
+
+// "환불요청" 버튼에 대한 이벤트 리스너 추가
+document.querySelectorAll('.tr-div .refunds').forEach((button) => {
+    button.addEventListener('click', function (event) {
+        // 이벤트 전파 중지
+        event.stopPropagation();
+
+        showRowData(this);
+    });
+});
+
+
+async function ansQnamerchantUidToServer(payMerchantUid) {
+    try {
+        const url = '/member/check/receipt/' + payMerchantUid;
+        const config = {
+            method: 'get'
+        }
+        const resp = await fetch(url, config);
+        const result = await resp.json();
+        return result;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 
 // 중복 호출 방지 플래그
 let isSubmitting = false;
@@ -10,24 +95,32 @@ function showRowData(button) {
     let rowData = [];
 
     tds.forEach(function (td) {
-        rowData.push(td.innerText);
+        let pTags = td.querySelectorAll('p');
+        pTags.forEach(function (pTag) {
+            if (!pTag.classList.contains('payRegAt')) {
+                rowData.push(pTag.innerText);
+            }
+        });
+
+        if (td.querySelectorAll('p.payRegAt').length === 0) {
+            rowData.push(td.innerText);
+        }
     });
-    console.log('알려줘', rowData);
     div.innerHTML = '';
-    let str = `<span style="font-weight:bold">결제정보</span> <br><br>`;
-    str += `<span>주문번호 : ${rowData[0]}</span> <br>`;
-    str += `<span>결제은행 : ${rowData[1]}</span> <br>`;
-    str += `<span>주문명 : ${rowData[2]}</span> <br>`;
-    str += `<span>금액 : ${rowData[3]}</span> <br>`;
-    str += `<span>이름 : ${rowData[4]}</span> <br>`;
-    str += `<span>연락처 : ${rowData[5]}</span> <br>`;
-    str += `<span>결제일자 : ${rowData[7]}</span> <br>`;
+    let str = `<h3 style="font-weight:bold">결제정보</h3>`;
+    str += `<p>주문번호 : ${rowData[0]}</p>`;
+    str += `<p>결제은행 : ${rowData[1]}</p>`;
+    str += `<p>주문명 : ${rowData[2]}</p>`;
+    str += `<p>금액 : ${rowData[3]}</p>`;
+    str += `<p>이름 : ${rowData[4]}</p>`;
+    str += `<p>연락처 : ${rowData[5]}</p>`;
+    str += `<p>결제일자 : ${rowData[7]}</p>`;
     div.innerHTML = str;
 
 
     refundDiv.innerHTML = '';
     let str2 = `<div class="refund-title">`;
-    str2 += `<span>환불사유를 작성해주세요.</span>`;
+    str2 += `<p>환불사유를 작성해주세요.</p>`;
     str2 += `</div>`;
     str2 += `<div class="form-check">`;
     str2 += `<input class="form-check-input" type="radio" name="optionsRadios" id="optionsRadios1" value="개인사정" checked="">`;
@@ -46,6 +139,7 @@ function showRowData(button) {
 
     /*환불에 필요한 정보를 서버에 넘기는 코드 시작*/
     document.getElementById('refundInfoBtn').addEventListener('click', () => {
+
         // 중복 호출 방지
         if (isSubmitting) {
             return;
@@ -89,7 +183,6 @@ function showRowData(button) {
 
     })
 }
-
 
 //서버로 환불정보를 보냅니다.
 async function detailToRefund(refundInfo) {
@@ -138,42 +231,4 @@ function closeModalAndRedirect() {
 
     // 리다이렉션을 수행하고 페이지를 이동
     window.location.href = '/pay/memberPayList';
-}
-
-
-function receiptRowData(button) {
-    let receiptMemberDiv = document.getElementById('receiptMember');
-    let receiptInfoDiv = document.getElementById('receiptInfo');
-    let row = button.closest('tr');
-    let tds = row.querySelectorAll('td');
-    let rowData = [];
-
-    receiptMemberDiv.innerHTML = '';
-
-    receiptInfoDiv.innerHTML = '';
-
-
-    tds.forEach(function (td) {
-        rowData.push(td.innerText);
-    });
-    
-    detailToReceipt(rowData[0]).then(result => {
-        
-    })
-
-
-}
-
-async function detailToReceipt(payMerchantUid){
-    try {
-        const url = '/member/check/receipt/' + payMerchantUid;
-        const config = {
-            method: 'get'
-        }
-        const resp = await fetch(url, config);
-        const result = await resp.json();
-        return result;
-    } catch (error) {
-        console.log(error);
-    }
 }

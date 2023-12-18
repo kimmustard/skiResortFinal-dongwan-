@@ -14,6 +14,20 @@
 	<jsp:include page="../common/nav.jsp" />
 	<div class="bodyContainer">
 	
+	<!-- 장바구니 -->
+	<div class="shopContainer">
+		<div class="shoppingBasket" id="shoppingBasket">
+			<div class="shoppingBasketTitle">
+				<p class="fs-4">장바구니</p>
+				<p><button class="btn btn-outline-info reserveBtn" id="reserveBtn">예약신청하기</button></p>
+			</div>
+			<div class="itemSelectDiv" id="itemSelectDiv">
+			
+			
+			</div>
+		</div>
+	</div>
+	
 		<div class="itemMenuContainer">
 			<ul class="nav nav-tabs justify-content-center">
 			  <li class="nav-item" id="skiItem">
@@ -38,7 +52,7 @@
 			</div>
 		</div>
 		
-		<div class="itemContainer">
+		<div class="itemContainer" id="itemContainer">
 			<div class="boardItemList" id="boardItemList">
 				
 				<div class="itemInfo">	
@@ -50,6 +64,7 @@
 								data-adultFee="${lowItem.rentalListItemAdultFee }" 
 								data-kidFee="${lowItem.rentalListItemKidFee }" 
 								data-num="${lowItem.rentalListItemNum }"
+								data-img="${lowItem.imageUrl }"
 								src="${lowItem.imageUrl }">
 								<p class="fs-5">${lowItem.rentalListLowItem }</p>
 								<c:choose>
@@ -76,6 +91,7 @@
 								data-adultFee="${midItem.rentalListItemAdultFee }" 
 								data-kidFee="${midItem.rentalListItemKidFee }" 
 								data-num="${midItem.rentalListItemNum }"
+								data-img="${midItem.imageUrl }"
 								src="${midItem.imageUrl }">
 								<p class="fs-5">${midItem.rentalListMidItem }</p>
 								<c:choose>
@@ -104,6 +120,7 @@
 								data-adultFee="${premiumItem.rentalListItemAdultFee }" 
 								data-kidFee="${premiumItem.rentalListItemKidFee }" 
 								data-num="${premiumItem.rentalListItemNum }"
+								data-img="${premiumItem.imageUrl }"
 								src="${premiumItem.imageUrl }">
 								<p class="fs-5">${premiumItem.rentalListPremiumItem }</p>
 								<c:choose>
@@ -131,21 +148,13 @@
 				
 			</div>
 		</div>
-		
-		<div class="shopContainer" style="display: none;">
-			<form action="/rental/itemsBasket" method="post">
-				<div class="shoppingBasket">
-					<p class="fs-4">장바구니</p>
-					<button type="submit" class="btn btn-outline-info reserveBtn" id="reserveBtn">예약신청하기</button>
-					<div id="itemSelectDiv">
-					
-					</div>
-				</div>
-			</form>
-		</div>
 
 	</div>
 	
+	<script type="text/javascript">
+		const memberEmail= `<c:out value="${mvo.memberEmail}"/>`;
+		console.log(memberEmail);
+	</script>	
 	
 	<script type="text/javascript" src="/resources/js/rental/item.js"></script>
 	<jsp:include page="../common/footer.jsp" />

@@ -1,8 +1,12 @@
 @charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Juafamily=Noto+Sans+KR:wght@300&family=Sunflower:wght@300;500&display=swap');
+
 
 .bodyContainer{
 	margin-top: 100px;
 }
+
+
 
 .itemMenuContainer{
 	margin: 0 auto;
@@ -23,6 +27,7 @@
 	height: 800px;
 	overflow: hidden;
 	display: flex;
+	transition: 0.5s;
 }
 
 .skiItemList{
@@ -56,7 +61,6 @@
 }
 
 .itemImageBox div p.fs-5{
-	
 	text-align: center;
 	margin: 0 10px;
 	height: 50px;
@@ -84,29 +88,67 @@
 	position: relative;
 }
 
+
 .shoppingBasket{
-	width: 300px;
-	height: 300px;
-	overflow-y: auto;
-	max-height: 300px;
-	background-color:rgba(224,224,224, 0.9);
-	border-radius: 10px;
 	position: absolute;
-	bottom: 0;
-	right: 0;
+	background-color: white;
+	border-radius: 5px;
+	width: 350px;
+	height: 800px;
+	border: 2px solid black;
+	right: -350px;
+	z-index: 1;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: 500;
+	font-size: 18px;
+	transition: 0.5s;
+}
+.shoppingBasket>.shoppingBasketTitle{
+	height: 100px;
+	border-bottom: 1px solid gray;
 }
 
-.shoppingBasket p{
+.shoppingBasketTitle>p{
 	text-align: center;
+	margin-top: 20px;
+}
+
+.itemSelectDiv{
+	display: flex;
+	flex-direction: column;
+}
+
+.basketContainer{
+	position: relative;
+	display: flex;
+	font-size: 18px;
+}
+.basketContainer>div>p{
 	margin-top: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.basketClose {
+	position: absolute;
+	font-size: 30px;
+	top: 15px;
+	right: 8px;
+	cursor: pointer;
 }
 
 .reserveBtn {
-	margin-top: 10px;
-    position: sticky;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 50%;
-    z-index: 1;
+	text-align: center;
+	width: 150px;
+}
+
+.itemPriceSum{
+	position: absolute;
+	bottom: 0px;
+	border-top: 1px solid gray;
+	border-bottom: 1px solid gray;
+	width:350px;
+	height:100px;
+	padding-top: 30px;
+	text-align: center;
 }

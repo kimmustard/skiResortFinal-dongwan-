@@ -6,7 +6,9 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,12 +25,12 @@ import com.web.www.domain.FileVO;
 import com.web.www.domain.member.AuthUser;
 import com.web.www.domain.member.MemberVO;
 import com.web.www.domain.pay.PayInfoVO;
-import com.web.www.domain.rental.RentalItemsBasketDTO;
 import com.web.www.domain.rental.RentalItemDTO;
 import com.web.www.domain.rental.RentalItemImageRead;
 import com.web.www.domain.rental.RentalItemListDTO;
 import com.web.www.domain.rental.RentalItemRead;
 import com.web.www.domain.rental.RentalItemVO;
+import com.web.www.domain.rental.RentalItemsBasketDTO;
 import com.web.www.domain.rental.RentalLiftVO;
 import com.web.www.handler.FileHandler;
 import com.web.www.service.RentalService;
@@ -118,45 +120,57 @@ public class RentalController {
 		List<RentalItemListDTO> skiLowItem = rsv.getSkiLowItem();
 		List<RentalItemListDTO> skiMidItem = rsv.getSkiMidItem();
 		List<RentalItemListDTO> skiPremiumItem = rsv.getSkiPremiumItem();
+		List<RentalItemListDTO> boardLowItem = rsv.getBoardLowItem();
+		List<RentalItemListDTO> boardMidItem = rsv.getBoardMidItem();
+		List<RentalItemListDTO> boardPremiumItem = rsv.getBoardPremiumItem();
+		List<RentalItemListDTO> wearLowItem = rsv.getWearLowItem();
+		List<RentalItemListDTO> wearMidItem = rsv.getWearMidItem();
+		List<RentalItemListDTO> wearPremiumItem = rsv.getWearPremiumItem();
 		
 		model.addAttribute("skiLowItem", skiLowItem);
 		model.addAttribute("skiMidItem", skiMidItem);
 		model.addAttribute("skiPremiumItem", skiPremiumItem);
+		model.addAttribute("boardLowItem", boardLowItem);
+		model.addAttribute("boardMidItem", boardMidItem);
+		model.addAttribute("boardPremiumItem", boardPremiumItem);
+		model.addAttribute("wearLowItem", wearLowItem);
+		model.addAttribute("wearMidItem", wearMidItem);
+		model.addAttribute("wearPremiumItem", wearPremiumItem);
+		
 		model.addAttribute("mvo", mvo);
 		model.addAttribute("rlivo", rlivo);
 		
 		return "/rental/ski-item";
 	}
-	@GetMapping("/board-item")
-	public String boardItemForm(Model model, @AuthUser MemberVO mvo) {
-		List<RentalItemListDTO> boardLowItem = rsv.getBoardLowItem();
-		List<RentalItemListDTO> boardMidItem = rsv.getBoardMidItem();
-		List<RentalItemListDTO> boardPremiumItem = rsv.getBoardPremiumItem();
-		
-		model.addAttribute("boardLowItem", boardLowItem);
-		model.addAttribute("boardMidItem", boardMidItem);
-		model.addAttribute("boardPremiumItem", boardPremiumItem);
-		model.addAttribute("mvo", mvo);
-		
-		return "/rental/board-item";
-	}
-	@GetMapping("/wear-item")
-	public String wearItemForm(Model model, @AuthUser MemberVO mvo) {
-		List<RentalItemListDTO> wearLowItem = rsv.getWearLowItem();
-		List<RentalItemListDTO> wearMidItem = rsv.getWearMidItem();
-		List<RentalItemListDTO> wearPremiumItem = rsv.getWearPremiumItem();
-		
-		model.addAttribute("wearLowItem", wearLowItem);
-		model.addAttribute("wearMidItem", wearMidItem);
-		model.addAttribute("wearPremiumItem", wearPremiumItem);
-		model.addAttribute("mvo", mvo);
-		
-		return "/rental/wear-item";
-	}
+//	@GetMapping("/board-item")
+//	public String boardItemForm(Model model, @AuthUser MemberVO mvo) {
+//		List<RentalItemListDTO> boardLowItem = rsv.getBoardLowItem();
+//		List<RentalItemListDTO> boardMidItem = rsv.getBoardMidItem();
+//		List<RentalItemListDTO> boardPremiumItem = rsv.getBoardPremiumItem();
+//		
+//		model.addAttribute("boardLowItem", boardLowItem);
+//		model.addAttribute("boardMidItem", boardMidItem);
+//		model.addAttribute("boardPremiumItem", boardPremiumItem);
+//		model.addAttribute("mvo", mvo);
+//		
+//		return "/rental/board-item";
+//	}
+//	@GetMapping("/wear-item")
+//	public String wearItemForm(Model model, @AuthUser MemberVO mvo) {
+//		List<RentalItemListDTO> wearLowItem = rsv.getWearLowItem();
+//		List<RentalItemListDTO> wearMidItem = rsv.getWearMidItem();
+//		List<RentalItemListDTO> wearPremiumItem = rsv.getWearPremiumItem();
+//		
+//		model.addAttribute("wearLowItem", wearLowItem);
+//		model.addAttribute("wearMidItem", wearMidItem);
+//		model.addAttribute("wearPremiumItem", wearPremiumItem);
+//		model.addAttribute("mvo", mvo);
+//		
+//		return "/rental/wear-item";
+//	}
 	
-	@ResponseBody
-	@PostMapping(value = "/itemsBasket", consumes =MediaType.APPLICATION_JSON_VALUE)
-	public String itemReserveForm(@RequestBody List<RentalItemsBasketDTO> ritvoList) {
+	@PostMapping(value = "/itemsBasket", consumes = MediaType.APPLICATION_JSON_VALUE)
+	public String itemsBasketToServer(@RequestBody List<RentalItemsBasketDTO> ritvoList) {
 		
 	    for (RentalItemsBasketDTO rtibDTO : ritvoList) {
 	    	
@@ -164,7 +178,7 @@ public class RentalController {
 	        
 	    }
 	    
-	    return null;
+	    return "index";
 	}
 	
 	

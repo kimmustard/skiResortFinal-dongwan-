@@ -219,8 +219,8 @@ function AllPeopleCount() {
     }else{
         $('#people').attr('placeholder', `성인 ${document.getElementById('audlt-Count').innerText}명`);
     }
-    document.getElementById('hotelReservePeople').value = document.getElementById('audlt-Count').innerText;
-    document.getElementById('hotelReserveChild').value = document.getElementById('child-Count').innerText;
+    document.getElementById('rentalLiftAdult').value = document.getElementById('audlt-Count').innerText;
+    document.getElementById('rentalLiftKid').value = document.getElementById('child-Count').innerText;
 }
 
 //peoplelist 사라지는 이벤트
