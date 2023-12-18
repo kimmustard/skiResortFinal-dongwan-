@@ -1,20 +1,55 @@
-document.getElementById("people").addEventListener('click', () => {
+function fnContains(str, substr) {
+    return str.indexOf(substr) !== -1;
+}
 
-    document.getElementById('peopleList').style.display = "block";
-})
+let itemSum = 0;
+let itemAdultFee = 0;
+let itemKidFee = 0;
 
 document.getElementById("nextBtn").addEventListener('click', () => {
     let rentalReserveStart = document.getElementById('rentalReserveStart').value;
-    let rentalReserveAdult = document.getElementById('rentalReserveAdult').value;
 
-    if (rentalReserveAdult == "0") {
-        alert('인원수를 입력해주세요!');
-    } else if (rentalReserveStart == "") {
+    if (rentalReserveStart == "") {
         alert('날짜를 선택해주세요!');
     } else {
         document.getElementById("innerbox").style.display = "block";
         document.getElementById('nextBtn').style.display = 'none';
     }
+
+    document.getElementById('rentalItemNum').value = "";
+    document.getElementById('showItemName').value = "";
+    document.getElementById('showAdultFee').value = "0";
+    document.getElementById('showKidFee').value = "0";
+    document.getElementById('showTotalFee').value = "0";
+
+    let itemNames = '';
+
+    for (let i = 0; i < localStorage.length; i++) {
+        let itemArr = JSON.parse(localStorage.getItem(`${i}`));
+        console.log(itemArr);
+
+        document.getElementById('rentalItemNum').value = itemArr[i].rentalItemNum;
+
+        itemNames += itemArr[i].rentalItemName + ', ';
+
+
+        if (fnContains(itemArr[i].rentalItemName, '주니어')) {
+            itemKidFee += parseInt(itemArr[i].rentalItemPrice);
+            document.getElementById('showKidFee').value = itemKidFee.toLocaleString() + "원";
+        } else {
+            itemAdultFee += parseInt(itemArr[i].rentalItemPrice);
+            document.getElementById('showAdultFee').value = itemAdultFee.toLocaleString() + "원";
+        }
+
+
+        itemSum += parseInt(itemArr[i].rentalItemPrice);
+
+    }
+
+    itemNames = itemNames.slice(0, -2);
+
+    document.getElementById('showItemName').value = itemNames;
+    document.getElementById('showTotalFee').value = itemSum.toLocaleString() + "원";
 })
 
 
@@ -68,76 +103,4 @@ $(function () {
         });
     }
 });
-
-//성인 버튼 조작
-document.getElementById("adult+Btn").addEventListener('click', () => {
-    let cnt = parseInt(document.getElementById('adult-Count').innerText);
-    if (cnt < 30) {
-        cnt += 1;
-    }
-
-    document.getElementById('adult-Count').innerText = cnt;
-    AllPeopleCount();
-})
-
-document.getElementById("adult-Btn").addEventListener('click', () => {
-    let cnt = parseInt(document.getElementById('adult-Count').innerText);
-    if (cnt > 1) {
-        cnt -= 1;
-    }
-    document.getElementById('adult-Count').innerText = cnt;
-    AllPeopleCount();
-})
-
-
-//어린이 버튼 조작
-document.getElementById("child+Btn").addEventListener('click', () => {
-    let cnt = parseInt(document.getElementById('child-Count').innerText);
-    if (cnt < 10) {
-        cnt += 1;
-    }
-
-    document.getElementById('child-Count').innerText = cnt;
-    AllPeopleCount();
-    //  childAgeSelectCreater();
-})
-
-document.getElementById("child-Btn").addEventListener('click', () => {
-    let cnt = parseInt(document.getElementById('child-Count').innerText);
-    if (cnt > 0) {
-        cnt -= 1;
-    }
-    document.getElementById('child-Count').innerText = cnt;
-    AllPeopleCount();
-    //  childAgeSelectCreater();
-})
-
-//인원수 세주는거
-function AllPeopleCount() {
-    $('#people').attr('placeholder', `성인 ${document.getElementById('adult-Count').innerText}명 · 아동 ${document.getElementById('child-Count').innerText}명 `);
-    document.getElementById('rentalReserveAdult').value = document.getElementById('adult-Count').innerText;
-    document.getElementById('rentalReserveKid').value = document.getElementById('child-Count').innerText;
-
-}
-
-//peoplelist 사라지는 이벤트
-document.getElementById('peoplelistClose').addEventListener('click', () => {
-    document.getElementById('peopleList').style.display = "none";
-})
-var targetArea1 = document.getElementById('peopleList');
-var targetArea2 = document.getElementById('people');
-document.addEventListener('click', function (event) {
-    if (!targetArea1.contains(event.target) || !targetArea2.contains(event.target)) {
-        document.getElementById('peopleList').style.display = "none";
-    }
-});
-targetArea1.addEventListener('click', function (event) {
-    event.stopPropagation();
-});
-targetArea2.addEventListener('click', function (event) {
-    event.stopPropagation();
-});
-
-
-
 
