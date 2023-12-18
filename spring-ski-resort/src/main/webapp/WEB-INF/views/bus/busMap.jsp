@@ -22,17 +22,38 @@
 
 <div class="bus-img-container" style="background-image: url('https://rusutsu.com/wp-content/uploads/rusutsu-powder-day-trip.jpg')">	</div>
 
-
-
 <div class="container bus-container">
+	<div class="bus-menu-container">
+	  <div class="bus-menu-container-child">
+	    <div class="bus-tag-container">
+			<ul>
+				<li>
+					<a>
+						<button type="button" class="bus-btn mybus-btn">셔틀버스 예약</button>
+					</a>
+				</li>
+				<li>
+					<a>
+						<button type="button" class="bus-btn mybus-btn">예약 안내</button>
+					</a>
+				</li>
+				<li>
+					<a>
+						<button type="button" class="bus-btn mybus-btn">노선 보기</button>
+					</a>
+				</li>
+			</ul>
+	    </div>
+
+
+
+
+
+
+
+	  </div>
+	</div>
 </div>
-
-
-
-
-
-
-
 
 <jsp:include page="../common/footer.jsp" />	
 </body>
