@@ -410,10 +410,141 @@ a{
 
 
 
+/* 회원 주문번호와 모달창 관련*/
+
+#member-merchantUid{
+	cursor: pointer;
+}
+
+.member-receipt{
+	position: fixed;
+	right: -400px;
+	top: 95px;
+	width: 400px;
+	height: 800px;
+	background-color: white;
+	border-bottom-left-radius: 30px;
+	transition: 0.5s;
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+}
+
+.member-receipt-header{
+	position: relative;
+	width: 500px;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: 500;
+	font-size: 20px;
+}
+
+.receiptMainLogo{
+	position: absolute;
+	right: 100px;
+	top: -30px;
+}
+
+.member-receipt-header>h3{
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: 700;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	margin-left: 30px;
+	font-size: 30px;
+}
+
+.member-receipt-body{
+	text-align: center;
+}
+
+.member-receipt-body>h3{
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 23px;
+	font-weight: 700;
+	margin-bottom: 20px;
+}
+
+.member-receipt-body>p{
+	font-weight: 500;
+	font-size: 18px;
+	font-family: 'Noto Sans KR', sans-serif;
+	margin-bottom: 10px;
+}
 
 
 
+/* 환불 모달창 */
+.modal-content{
+	top: 100px;
+}
 
+.modal-header{
+	background-color: rgb(35,55,86);
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 20px;
+	font-weight: 700;
+	color: white;
+}
 
+#refund-close{
+	border: none; 
+	box-shadow: none; 
+	color: white;
+	font-size: 23px;
+	font-weight: 700;
+	background-color: transparent;
+}
 
+#transactionInfo{
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: 500;
+	font-size: 18px;
+}
+#transactionInfo>h3{
+	font-size: 35px;
+	margin-bottom: 15px;
+}
 
+#transactionInfo>p{
+	margin-bottom: 10px;
+}
+
+#refundInfo{
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: 500;
+	font-size: 18px;
+}
+
+.refunds{
+	width: 100px;
+	height: 30px;
+	background-color: rgb(35,55,86);
+	color: white;
+	border:1px solid transparent; 
+}
+.refundInfo-body{
+	margin: 10px;	
+}
+.refund-title, .refundInfo>.form-check{
+	margin-bottom: 10px;
+}
+
+#refundInfoBtn{
+	background-color: rgb(35,55,86);
+}
+
+#refundText{
+	resize: none;
+    width: 100%;
+    height: 6.25em;
+}
+
+.admin-refund-check{
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: 500;
+	font-size: 18px;
+	color: white;
+	width: 150px;
+	height: 40px;
+	margin-top: 50px;
+	background-color: rgb(35,55,86);
+	border:1px solid transparent; 
+}

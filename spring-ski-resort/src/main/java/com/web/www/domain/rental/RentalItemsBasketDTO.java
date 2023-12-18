@@ -13,7 +13,7 @@ import lombok.ToString;
 @ToString
 public class RentalItemsBasketDTO {
 
-	private long rentalItemNum;
+	private String rentalItemNum;
 	private String rentalItemName;
-	private int rentalItemPrice;
+	private String rentalItemPrice;
 }

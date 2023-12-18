@@ -39,22 +39,22 @@
 		</div>
 		
 		<div class="itemContainer">
-			<div class="wearItemList" id="wearItemList">
-				
-				<div class="itemInfo">	
-					<div class="itemImageBox" id="lowItemImageBox">
-						<c:forEach items="${wearLowItem }" var="lowItem">
-							<div class="slide">
-								<!-- 이미지파일 -->
-								<img alt="WearLowItem" data-name="${lowItem.rentalListLowItem }" 
-								data-adultFee="${lowItem.rentalListItemAdultFee }" 
-								data-num="${lowItem.rentalListItemNum }"
-								src="${lowItem.imageUrl }">
-								<p class="fs-5">${lowItem.rentalListLowItem }</p>
-								<p class="fs-5">${lowItem.rentalListItemAdultFee }원</p>
+					<div class="wearItemList" id="wearItemList">
+						
+						<div class="itemInfo">	
+							<div class="itemImageBox" id="lowItemImageBox">
+								<c:forEach items="${wearLowItem }" var="lowItem">
+									<div class="slide">
+										<!-- 이미지파일 -->
+										<img alt="WearLowItem" data-name="${lowItem.rentalListLowItem }" 
+										data-adultFee="${lowItem.rentalListItemAdultFee }" 
+										data-num="${lowItem.rentalListItemNum }"
+										src="${lowItem.imageUrl }">
+										<p class="fs-5">${lowItem.rentalListLowItem }</p>
+										<p class="fs-5">${lowItem.rentalListItemAdultFee }원</p>
+									</div>
+								</c:forEach>
 							</div>
-						</c:forEach>
-					</div>
 					
 					
 					<div class="itemImageBox" id="midItemImageBox" style="display: none;">

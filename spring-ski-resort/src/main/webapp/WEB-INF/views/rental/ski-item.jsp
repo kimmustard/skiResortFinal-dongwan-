@@ -12,20 +12,34 @@
 </head>
 
 
-<body>
+<body style="overflow-x: hidden">
 	<jsp:include page="../common/nav.jsp" />
 	<div class="bodyContainer">
 	
+	<!-- 장바구니 -->
+	<div class="shopContainer">
+		<div class="shoppingBasket" id="shoppingBasket">
+			<div class="shoppingBasketTitle">
+				<p class="fs-4">장바구니</p>
+				<p><button class="btn btn-outline-info reserveBtn" id="reserveBtn">예약신청하기</button></p>
+			</div>
+			<div class="itemSelectDiv" id="itemSelectDiv">
+			
+			
+			</div>
+		</div>
+	</div>
+	
 		<div class="itemMenuContainer">
 			<ul class="nav nav-tabs justify-content-center">
-			  <li class="nav-item" id="skiItem">
-			    <a class="nav-link" href="/rental/ski-item">스키</a>
+			  <li class="nav-item">
+			    <a class="nav-link" id="skiItem" href="#">스키</a>
 			  </li>
-			  <li class="nav-item" id="boardItem">
-			    <a class="nav-link" href="/rental/board-item">스노우보드</a>
+			  <li class="nav-item">
+			    <a class="nav-link" id="boardItem" href="#">스노우보드</a>
 			  </li>
-			  <li class="nav-item" id="wearItem">
-			    <a class="nav-link" href="/rental/wear-item">의류/보호장비</a>
+			  <li class="nav-item">
+			    <a class="nav-link" id="wearItem" href="#">의류/보호장비</a>
 			  </li>  
 			</ul>
 		</div>
@@ -42,19 +56,23 @@
 		
 		
 		
-		<div class="itemContainer">
+		<div class="itemContainer" id="itemContainer">
 		
 			<div class="skiItemList" id="skiItemList">
 				<div class="itemInfo">
-					<div class="itemImageBox" id="lowItemImageBox" >
+					<!-- 스키시작 -->
+					<!-- 스키시작 -->
+					<!-- 스키시작 -->
+					<div class="itemImageBox" id="skiLowItemImageBox" >
 						<c:forEach items="${skiLowItem }" var="lowItem">
 							<div class="slide">
 								<!-- 이미지파일 -->
-								<img alt="SkiLowItem" data-name="${lowItem.rentalListLowItem }" 
+								<img alt="SkiLowItem" src="${lowItem.imageUrl }"
+								data-name="${lowItem.rentalListLowItem }" 
 								data-adultFee="${lowItem.rentalListItemAdultFee }" 
 								data-kidFee="${lowItem.rentalListItemKidFee }" 
 								data-num="${lowItem.rentalListItemNum }" 
-								src="${lowItem.imageUrl }">
+								data-img="${lowItem.imageUrl }">
 								<p class="fs-5">${lowItem.rentalListLowItem }</p>
 								<c:choose>
 									<c:when test="${fn:contains(lowItem.rentalListLowItem,'주니어') }">
@@ -73,7 +91,7 @@
 					
 					
 					
-					<div class="itemImageBox" id="midItemImageBox" style="display: none;">
+					<div class="itemImageBox" id="skiMidItemImageBox" style="display: none;">
 						<c:forEach items="${skiMidItem }" var="midItem">
 							<div class="slide">
 								<!-- 이미지파일 -->
@@ -81,6 +99,7 @@
 								data-adultFee="${midItem.rentalListItemAdultFee }" 
 								data-kidFee="${midItem.rentalListItemKidFee }" 
 								data-num="${midItem.rentalListItemNum }" 
+								data-img="${midItem.imageUrl }"
 								src="${midItem.imageUrl }">
 								<p class="fs-5">${midItem.rentalListMidItem }</p>
 								<c:choose>
@@ -100,7 +119,7 @@
 					
 						
 					
-					<div class="itemImageBox" id="premiumItemImageBox" style="display: none;">
+					<div class="itemImageBox" id="skiPremiumItemImageBox" style="display: none;">
 						
 						<c:forEach items="${skiPremiumItem }" var="premiumItem">
 							<div class="slide">
@@ -109,6 +128,7 @@
 								 data-adultFee="${premiumItem.rentalListItemAdultFee }" 
 								 data-kidFee="${premiumItem.rentalListItemKidFee }" 
 								 data-num="${premiumItem.rentalListItemNum }" 
+								 data-img="${premiumItem.imageUrl }"
 								 src="${premiumItem.imageUrl }">
 								<p class="fs-5">${premiumItem.rentalListPremiumItem }</p>
 								<c:choose>
@@ -124,6 +144,161 @@
 						</c:forEach>
 						
 					</div>
+				</div>
+			</div>
+			
+			<div class="boardItemList" id="boardItemList" style="display: none;">
+				<div class="itemInfo">
+			
+					<!-- 보드 시작 -->
+					<!-- 보드 시작 -->
+					<!-- 보드 시작 -->
+					<div class="itemImageBox" id="boardLowItemImageBox" style="display: none;">
+						<c:forEach items="${boardLowItem }" var="lowItem">
+							<div class="slide">
+								<!-- 이미지파일 -->
+								<img alt="BoardLowItem" data-name="${lowItem.rentalListLowItem }" 
+								data-adultFee="${lowItem.rentalListItemAdultFee }" 
+								data-kidFee="${lowItem.rentalListItemKidFee }" 
+								data-num="${lowItem.rentalListItemNum }"
+								data-img="${lowItem.imageUrl }"
+								src="${lowItem.imageUrl }">
+								<p class="fs-5">${lowItem.rentalListLowItem }</p>
+								<c:choose>
+									<c:when test="${fn:contains(lowItem.rentalListLowItem,'주니어') }">
+										<p class="fs-5">${lowItem.rentalListItemKidFee }원</p>
+									</c:when>
+									<c:otherwise>
+										<p class="fs-5">${lowItem.rentalListItemAdultFee }원</p>
+									</c:otherwise>
+								</c:choose>
+							</div>
+						</c:forEach>
+					</div>
+					
+					<div class="itemImageBox" id="boardMidItemImageBox" style="display: none;">
+						
+						<c:forEach items="${boardMidItem }" var="midItem">
+							<div class="slide">
+								<!-- 이미지파일 -->
+								<img alt="BoardMidItem" data-name="${midItem.rentalListMidItem }" 
+								data-adultFee="${midItem.rentalListItemAdultFee }" 
+								data-kidFee="${midItem.rentalListItemKidFee }" 
+								data-num="${midItem.rentalListItemNum }"
+								data-img="${midItem.imageUrl }"
+								src="${midItem.imageUrl }">
+								<p class="fs-5">${midItem.rentalListMidItem }</p>
+								<c:choose>
+									<c:when test="${fn:contains(midItem.rentalListMidItem,'주니어') }">
+										<p class="fs-5">${midItem.rentalListItemKidFee }원</p>
+									</c:when>
+									<c:otherwise>
+										<p class="fs-5">${midItem.rentalListItemAdultFee }원</p>
+									</c:otherwise>
+								</c:choose>
+							</div>
+						</c:forEach>
+						
+					</div>
+					
+					<div class="itemImageBox" id="boardPremiumItemImageBox" style="display: none;">
+						
+						<c:forEach items="${boardPremiumItem }" var="premiumItem">
+							<div class="slide">
+								<!-- 이미지파일 -->
+								<img alt="BoardPremiumItem" data-name="${premiumItem.rentalListPremiumItem }" 
+								data-adultFee="${premiumItem.rentalListItemAdultFee }" 
+								data-kidFee="${premiumItem.rentalListItemKidFee }" 
+								data-num="${premiumItem.rentalListItemNum }"
+								data-img="${premiumItem.imageUrl }"
+								src="${premiumItem.imageUrl }">
+								<p class="fs-5">${premiumItem.rentalListPremiumItem }</p>
+								<c:choose>
+									<c:when test="${fn:contains(premiumItem.rentalListPremiumItem,'주니어') }">
+										<p class="fs-5">${premiumItem.rentalListItemKidFee }원</p>
+									</c:when>
+									<c:otherwise>
+										<p class="fs-5">${premiumItem.rentalListItemAdultFee }원</p>
+									</c:otherwise>
+								</c:choose>
+							</div>
+						</c:forEach>
+						
+					</div>
+					
+				</div>
+			</div>
+			
+			<div class="wearItemList" id="wearItemList" style="display: none;">
+				<div class="itemInfo">
+					
+					<!-- 의류시작 -->
+					<!-- 의류시작 -->
+					<!-- 의류시작 -->
+					<div class="itemImageBox" id="wearLowItemImageBox"  style="display: none;">
+						<c:forEach items="${wearLowItem }" var="lowItem">
+							<div class="slide">
+								<!-- 이미지파일 -->
+								<img alt="WearLowItem" data-name="${lowItem.rentalListLowItem }" 
+								data-adultFee="${lowItem.rentalListItemAdultFee }" 
+								data-num="${lowItem.rentalListItemNum }"
+								data-img="${lowItem.imageUrl }"
+								src="${lowItem.imageUrl }">
+								<p class="fs-5">${lowItem.rentalListLowItem }</p>
+								<p class="fs-5">${lowItem.rentalListItemAdultFee }원</p>
+							</div>
+						</c:forEach>
+					</div>
+					
+					<div class="itemImageBox" id="wearMidItemImageBox" style="display: none;">
+						
+						<c:forEach items="${wearMidItem }" var="midItem">
+							<div class="slide">
+								<!-- 이미지파일 -->
+								<img alt="WearMidItem" data-name="${midItem.rentalListMidItem }" 
+								data-adultFee="${midItem.rentalListItemAdultFee }" 
+								data-num="${midItem.rentalListItemNum }"
+								data-img="${midItem.imageUrl }"
+								src="${midItem.imageUrl }">
+								<p class="fs-5">${midItem.rentalListMidItem }</p>
+								<p class="fs-5">${midItem.rentalListItemAdultFee }원</p>
+							</div>
+						</c:forEach>
+						
+					</div>
+					
+					<div class="itemImageBox" id="wearPremiumItemImageBox" style="display: none;">
+						
+						<c:forEach items="${wearPremiumItem }" var="premiumItem">
+							<div class="slide">
+								<!-- 이미지파일 -->
+								<img alt="WearPremiumItem" data-name="${premiumItem.rentalListPremiumItem }" 
+								data-adultFee="${premiumItem.rentalListItemAdultFee }" 
+								data-num="${premiumItem.rentalListItemNum }"
+								data-img="${premiumItem.imageUrl }"
+								src="${premiumItem.imageUrl }">
+								<p class="fs-5">${premiumItem.rentalListPremiumItem }</p>
+								<p class="fs-5">${premiumItem.rentalListItemAdultFee }원</p>
+							</div>
+						</c:forEach>
+						
+					</div>
+					
+					
+					
+						</div>
+			</div>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
 					
 					<div class="slide-btn">
 						
@@ -135,35 +310,14 @@
 				</div>
 			</div>
 
-		</div>
-		
-		
-		<div class="shopContainer" style="display: none;">
-			<form action="/rental/itemsBasket" method="post">
-				<div class="shoppingBasket">
-					<p class="fs-4">장바구니</p>
-					<button type="submit" class="btn btn-outline-info reserveBtn" id="reserveBtn">예약신청하기</button>
-					<div id="itemSelectDiv">
-					
-					</div>
-					
-					
-				</div>
-			</form>
-		</div>
-		
-
-	</div>
-	
-	
-	
-	<script type="text/javascript" src="/resources/js/rental/item.js"></script>
-	<script type="text/javascript" src="/resources/js/rental/itemReserve.js"></script>
 	
 	<script type="text/javascript">
 		const memberEmail= `<c:out value="${mvo.memberEmail}"/>`;
 		console.log(memberEmail);
 	</script>
+	
+	<script type="text/javascript" src="/resources/js/rental/item.js"></script>
+	
 	
 	<jsp:include page="../common/footer.jsp" />
 </body>
