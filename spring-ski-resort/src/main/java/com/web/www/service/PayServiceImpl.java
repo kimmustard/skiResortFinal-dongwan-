@@ -134,7 +134,19 @@ public class PayServiceImpl implements PayService{
 			mdao.useCoupon(pivo.getMemberNum(),pivo.getCouponCode());	//쿠폰 사용 처리
 		}
 		pdao.registerPay(pivo);
-		adao.alarmSetting(new AlarmVO(pivo.getMemberNum() , 2, "결제"));// 시스템 알람 반드시 넣어주세요.
+		
+		long amountSum = pdao.memberAmountSum(pivo.getMemberNum());
+		if(amountSum > 1000000 && amountSum < 2000000) {
+			mdao.memberGradeUpdate(pivo.getMemberNum(), "Silver");
+		}else if(amountSum >= 2000000 && amountSum < 3000000) {
+			mdao.memberGradeUpdate(pivo.getMemberNum(), "Gold");
+		}else if(amountSum >= 3000000) {
+			mdao.memberGradeUpdate(pivo.getMemberNum(), "VIP");
+		}
+		
+		
+		adao.alarmSetting(new AlarmVO(pivo.getMemberNum(), 6, "등급"));
+		adao.alarmSetting(new AlarmVO(pivo.getMemberNum(), 2, "결제"));// 시스템 알람 반드시 넣어주세요.
 		return new ResponseEntity<String>("결제완료", HttpStatus.OK);
 		
 	}
@@ -167,7 +179,7 @@ public class PayServiceImpl implements PayService{
 		
 		switch (rfiVO.getRefundNameType()) {
 		case "호텔":
-			
+			//[호텔] 상품 환불가능기간 하루전 기간이 지났으면 return
 			if(pdao.checkRoomDay(rfiVO.getPayMerchantUid()) == 0) {
 			    return new ResponseEntity<String>("환불가능한 날짜가 지났습니다.", HttpStatus.BAD_REQUEST); 
 			}
@@ -181,16 +193,15 @@ public class PayServiceImpl implements PayService{
 			break;
 		case "렌탈":
 			//[렌탈] 환불 로직
-			if(pdao.checkLiftDay(rfiVO.getPayMerchantUid()) == 0) {
-			    return new ResponseEntity<String>("환불가능한 날짜가 지났습니다.", HttpStatus.BAD_REQUEST); 
-			}
+			
+			
 			
 			break;
 		case "리프트":
 			//[리프트] 상품 환불가능기간 하루전 기간이 지났으면 return
-//			if(pdao.checkLiftDay(rfiVO.getPayMerchantUid()) > 0) {
-//				return new ResponseEntity<String>("환불가능한 날짜가 지났습니다.", HttpStatus.BAD_REQUEST);
-//			}
+			if(pdao.checkLiftDay(rfiVO.getPayMerchantUid()) == 0) {
+			    return new ResponseEntity<String>("환불가능한 날짜가 지났습니다.", HttpStatus.BAD_REQUEST); 
+			}
 			break;
 
 		default:
@@ -220,7 +231,16 @@ public class PayServiceImpl implements PayService{
 		pdao.registerRefund(rfiVO);
 		pdao.payMentRefund(rfiVO.getPayImpUid());
 		
+		long amountSum = pdao.memberAmountSum(memberNum);
+		if(amountSum > 1000000 && amountSum < 2000000) {
+			mdao.memberGradeUpdate(memberNum, "Silver");
+		}else if(amountSum >= 2000000 && amountSum < 3000000) {
+			mdao.memberGradeUpdate(memberNum, "Gold");
+		}else if(amountSum >= 3000000) {
+			mdao.memberGradeUpdate(memberNum, "VIP");
+		}
 		
+		adao.alarmSetting(new AlarmVO(memberNum, 6, "등급"));
 		adao.alarmSetting(new AlarmVO(memberNum, 3, "환불"));// 시스템 알람 반드시 넣어주세요.
 		return new ResponseEntity<String>("정상적으로 환불되었습니다.", HttpStatus.OK);
 	}

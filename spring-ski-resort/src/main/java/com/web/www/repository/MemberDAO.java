@@ -134,6 +134,10 @@ public interface MemberDAO {
 	//주문번호 확인하기
 	int checkMarchantUid(String payMerChantUid);
 
+	
+	// 사용 금액에 따라 멤버 등급 갱신
+	void memberGradeUpdate(@Param("memberNum") long memberNum,@Param("memberGrade") String memberGrade);
+
 
 
 

@@ -215,6 +215,8 @@ async function detailToRefund(refundInfo) {
     } catch (error) {
         console.log(error.message);
         alert(error.message);
+        // 환불 요청이 실패했으면 모달 창을 닫고 리다이렉트 수행
+        closeModalAndRedirect();
     } finally {
         // 중복 호출 방지 플래그 해제
         isSubmitting = false;

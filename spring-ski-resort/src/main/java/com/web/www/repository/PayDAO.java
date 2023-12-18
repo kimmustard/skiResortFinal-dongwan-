@@ -53,6 +53,10 @@ public interface PayDAO {
 	int checkLiftDay(String payMerchantUid);
 //	int checkRantalDay(String payMerchantUid);
 
+	
+	//결제금액 합산후 등급 갱신
+	long memberAmountSum(long memberNum);
+
 
 
 	
