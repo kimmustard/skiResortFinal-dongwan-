@@ -87,7 +87,7 @@
 					      <th scope="col" class="dev-notice-title">게시물 제목</th>
 					      <th scope="col" class="dev-notice-writer">작성자</th>
 					      <th scope="col" class="dev-notice-reg">작성일시</th>
-					      <th scope="col" class="dev-notice-point-modify">게시물 관리</th>
+					      <th scope="col" class="dev-notice-point-modify">게시물 관리</th>						   
 					    </tr>
 					  </thead>
 					  <tbody>
@@ -105,22 +105,25 @@
 							</a>
 							<a href="/developer/noticeRemove?noticeNum=${npvo.noticeNum }">
 								<button type="button" class="btn btn-danger">삭제</button>
-							</a>						
-							<div class="dev-notice-point-isok">
-								<div class="form-check form-switch">
-								  <input class="form-check-input notice-point-input${npvo.noticeNum }" type="checkbox" role="switch" value="Y" name="noticePoint" id="noticepointinput${npvo.noticeNum }" checked>
-								  <input class="form-check-input" type="hidden" role="switch" value="N" name="noticePoint" id="notice-point-hidden${npvo.noticeNum }" checked>
-								   <span>중요공지 등록</span>
-								  <button>적용</button>
+							</a>
+							<form action="/developer/settingNoticeModify" method="post" enctype="multipart/form-data">
+								<div class="dev-notice-point-isok">
+									<div class="form-check form-switch">
+									  <input class="form-check-input notice-point-input${npvo.noticeNum }" type="checkbox" role="switch" value="Y" name="noticePoint" id="noticepointinput${npvo.noticeNum }" checked>
+									  <input class="form-check-input" type="hidden" role="switch" value="N" name="noticePoint" id="notice-point-hidden${npvo.noticeNum }" disabled checked>
+									  <input class="form-check-input" type="hidden" role="switch" value="${npvo.noticeNum }" name="noticeNum" id="notice-point-hidden" checked>
+									   <span>중요공지 등록</span>
+									   <button type="submit">적용</button>
+									</div>
 								</div>
-							</div>
-							<div class="dev-notice-point-isok">
+							</form>						
+							<!-- <div class="dev-notice-point-isok">
 								<div class="form-check form-switch">
 								  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
 								   <span>상단슬라이드 등록</span>
 								  <button>적용</button>
 								</div>
-							</div>
+							</div> -->
 					      </td>
 					    </tr>
 					    </c:if>
@@ -203,18 +206,29 @@
 					  <tbody>
 					  	<c:forEach items="${list }" var="nvo">
 					    <tr class="dev-notice-tr">
-					      <td>${nvo.noticeNum }</td>
+					      <td class="dev-notice-point2-td" data-noticepoint="${nvo.noticePoint }">${nvo.noticeNum }</td>
 					      <td>${nvo.noticeCategory }</td>
 					      <td class="dev-notice-title-td"><div><a href="/notice/detail?noticeNum=${nvo.noticeNum }">${nvo.noticeTitle }</a></div></td>
 					      <td>${nvo.noticeWriter }</td>
 					      <td>${fn:replace((fn:substring(nvo.noticeRegAt,0,10)),'-','.') }</td>
-					      <td>
+					      <td style="text-align: left;">
 					      	<a href="/notice/modify?noticeNum=${nvo.noticeNum }">
 								<button type="button" class="btn btn-warning">수정</button>
 							</a>
 							<a href="/developer/noticeRemove?noticeNum=${nvo.noticeNum }">
 								<button type="button" class="btn btn-danger">삭제</button>
 							</a>
+							<form action="/developer/settingNoticeModify" method="post" enctype="multipart/form-data">
+								<div class="dev-notice-point-isok">
+									<div class="form-check form-switch">
+									  <input class="form-check-input notice-point2-input${nvo.noticeNum }" type="checkbox" role="switch" value="Y" name="noticePoint" id="noticepoint2input${nvo.noticeNum }" checked>
+									  <input class="form-check-input" type="hidden" role="switch" value="N" name="noticePoint" id="notice-point2-hidden${nvo.noticeNum }">
+									  <input class="form-check-input" type="hidden" role="switch" value="${nvo.noticeNum }" name="noticeNum" id="notice-point-hidden" checked>
+									   <span>중요공지 등록</span>
+									  <button type="submit">적용</button>
+									</div>
+								</div>
+							</form>	
 					      </td>
 					    </tr>
 					    </c:forEach>

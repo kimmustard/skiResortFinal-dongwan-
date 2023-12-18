@@ -39,6 +39,8 @@ public interface NoticeDAO {
 
 	List<NoticeVO> getFiveEvent();
 
+	int settingNoticePointModify(NoticeVO nvo);
+
 	
 
 }

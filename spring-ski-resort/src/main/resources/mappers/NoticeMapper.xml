@@ -48,6 +48,10 @@
 		where notice_num = #{noticeNum}
 	</update>
 	
+	<update id="settingNoticePointModify">
+		update notice set notice_point=#{noticePoint} where notice_num=#{noticeNum}
+	</update>
+	
 	<update id="delete">
 		update notice set notice_del='Y' where notice_num=#{noticeNum}
 	</update>

@@ -32,5 +32,7 @@ public interface FileDAO {
 
 	List<FileVO> selectFileImpactList();
 
+	List<FileVO> selectNoticeListFile();
+
 
 }

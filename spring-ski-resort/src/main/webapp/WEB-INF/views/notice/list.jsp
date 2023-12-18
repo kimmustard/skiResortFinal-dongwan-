@@ -21,8 +21,10 @@
 </sec:authorize>
 
 
+<div class="notice-img-container" style="background-image: url('https://a.cdn-hotels.com/gdcs/production68/d766/4cc034a7-aeb1-4edd-b2a9-f7feaac49aec.jpg')">	</div>
+
 <!-- 슬라이드 라인 -->
-<div class="section">
+<%-- <div class="section">
 	<input type="radio" name="slide" id="slide01" checked>
 	<input type="radio" name="slide" id="slide02">
 	<input type="radio" name="slide" id="slide03">
@@ -78,7 +80,7 @@
 				<li><label for="slide05"></label></li>	
 		</ul>	  	
 	</div>
-</div>
+</div> --%>
 
 
 
@@ -223,7 +225,18 @@
 		    <tr class="notice-table-tr">
 		      <td class="notice-table-td"><div class="notice-table-td-child">${nvo.noticeNum }</div></td>
 		      <td class="notice-table-td"><div class="notice-table-td-child">${nvo.noticeCategory }</div></td>
-		      <td class="notice-table-td"><div class="notice-table-td-child-title"><a href="/notice/detail?noticeNum=${nvo.noticeNum }">${nvo.noticeTitle }</a></div></td>
+		      <td class="notice-table-td">
+		      	<div class="notice-table-td-child-title">
+			      	<a href="/notice/detail?noticeNum=${nvo.noticeNum }">
+			      	  <c:forEach items="${fvo }" var="fvo">
+			      		<c:if test="${fvo.noticeNum == nvo.noticeNum }">
+			      			<span><img alt="그림이 없음." src="/upload/${fn: replace(fvo.fileSave,'\\','/')}/${fvo.fileUuid}_th_${fvo.fileName}"></span>
+			      		</c:if>
+			      	  </c:forEach>
+			      		${nvo.noticeTitle }
+			      	</a>
+		      	</div>
+		      </td>
 		      <td class="notice-table-td"><div class="notice-table-td-child">${nvo.noticeWriter }</div></td>
 		      <td class="notice-table-td"><div class="notice-table-td-child">${fn:replace((fn:substring(nvo.noticeRegAt,0,10)),'-','.') }</div></td>
 		      <td class="notice-table-td"><div class="notice-table-td-child">${nvo.noticeCount }</div></td>
