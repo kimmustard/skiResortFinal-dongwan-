@@ -43,4 +43,6 @@ public interface PayDAO {
 	 */
 	int refundRoomInfo(String payMerchantUid);
 
+	
+
 }

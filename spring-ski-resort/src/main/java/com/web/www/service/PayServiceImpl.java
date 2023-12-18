@@ -175,12 +175,13 @@ public class PayServiceImpl implements PayService{
 			
 			break;
 		case "렌탈":
-			//[렌탈] 환불시 테이블 삭제 로직
-			
+			//[렌탈] 환불 로직
 			break;
 		case "리프트":
-			//[리프트] 환불시 테이블 삭제 로직
-			
+			//[리프트] 상품 환불가능기간 하루전 기간이 지났으면 return
+			if(pdao.refundLiftInfo(rfiVO.getPayMerchantUid()) > 0) {
+				return new ResponseEntity<String>("환불할 거래 정보가 없습니다.", HttpStatus.BAD_REQUEST);
+			}
 			break;
 
 		default:
