@@ -248,4 +248,11 @@ function moveSlide(num) {
 function newsSlideBtnEvent(num){
   let translate = (num-1)* -25;
   document.getElementById("new_topic_slides").style.transform= `translateX(${translate}%)`;
+
+  // NodeList를 배열로 변환하여 각 요소에 접근
+  let newsTopicBtns = document.querySelectorAll(".news_topic_btn");
+  newsTopicBtns.forEach((btn, index) => {
+    btn.style.backgroundColor = index + 1 === num ? 'white' : 'transparent';
+  });
+
 }
