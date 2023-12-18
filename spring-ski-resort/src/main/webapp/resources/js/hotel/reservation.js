@@ -1,5 +1,7 @@
 //할인율 계산 (원금-coupon_int)-(원금*coupon_rate/100)-(원금*등급할인율/100)
 let roomprice;
+let StayDate;
+
 document.getElementById("payBtn").addEventListener('click', () => {
     let hotelReservePeople = document.getElementById('hotelReservePeople').value;
     let hotelReserveStayStart = document.getElementById('hotelReserveStayStart').value;
@@ -23,9 +25,7 @@ document.getElementById("payBtn").addEventListener('click', () => {
 
 document.getElementById("closeBtn").addEventListener('click', () => {
 
-    document.getElementById("innerbox").style.display = "none";
-    document.getElementById("box").style.opacity = 0.9;
-
+  location.reload();
 })
 
 function updateCustomText(dateRange, resultId) {
@@ -34,6 +34,7 @@ function updateCustomText(dateRange, resultId) {
     if (getDayOfWeek(startDate) == "Invalid date") {
 
     } else {
+     
         var customText = dateRange + " (" + getDayOfWeek(startDate) + " ~ " + getDayOfWeek(endDate) + ")";
         $('#' + resultId).attr('placeholder', customText);
     }
@@ -87,15 +88,12 @@ $(function () {
         }
 
     }, function (start, end, label) {
-
+    
+        StayDate =  moment(end.format('YYYY-MM-DD')).diff(moment(start.format('YYYY-MM-DD')), 'days');
         var dateRange = start.format('YYYY-MM-DD') + ' ~ ' + end.format('YYYY-MM-DD');
         updateCustomText(dateRange, 'dateRangePicker');
         updatehotelReserveStay(start.format('YYYY-MM-DD'), end.format('YYYY-MM-DD'));
 
-    });
-    $('#dateRangePicker').on('change.daterangepicker', function (ev, picker) {
-        console.log('날짜 선택됨:', picker.startDate.format('YYYY-MM-DD'), '부터', picker.endDate.format('YYYY-MM-DD'));
-        // 여기에 원하는 동작을 추가하세요.
     });
     toggleApplyButton('#dateRangePicker', false);
     // 초기화면에도 적용하기 위해 한 번 호출
@@ -225,17 +223,17 @@ targetArea2.addEventListener('click', function (event) {
 
 //방 선택 이벤트
 function roomSelectEvent(num) {
-    roomprice = document.getElementById('room' + num).value;
+    if(StayDate == 1){discountRate = 0}if(StayDate == 2){discountRate = 10} if(StayDate == 3){discountRate = 12}if(StayDate == 4){discountRate = 14}if(StayDate == 5){discountRate = 16}
+    if(StayDate == 6){discountRate = 18}if(StayDate == 7){discountRate = 20}if(StayDate == 8){discountRate = 23}if(StayDate == 9){discountRate = 26}if(StayDate == 10){discountRate = 30}
+    roomprice = (document.getElementById('room' + num).value*StayDate)-(document.getElementById('room' + num).value*StayDate/100*discountRate);
     let roomname = document.getElementById('room' + num).innerText;
     let imageurl = document.getElementById('image-src' + num).innerText;
  
 
     //방 갯수 확인을 위한 value값
     document.getElementById('room-payinfo-num').value = num;
-
-    console.log('select' + num);
     document.getElementById('select' + num).checked = "true";
-    console.log(imageurl);
+
 
 
 
@@ -251,13 +249,16 @@ function roomSelectEvent(num) {
 
     //요금표시
     realAmount = roomprice;
-    console.log(realAmount);
     document.getElementById('productPrice').value = roomprice;
     document.getElementById('pay1').value = roomprice.toLocaleString() + "원";
     document.getElementById('realpayvalue').value = roomprice;
 
     //상품명
+    if(roomprice==1){
     document.getElementById('item-name').innerText = roomname;
+    }else{
+    document.getElementById('item-name').innerText = roomname+'('+(StayDate-1)+'박'+StayDate+'일)';
+    }
 
 
 
