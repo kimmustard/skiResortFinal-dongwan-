@@ -1,13 +1,5 @@
 @charset "UTF-8";
-
-.bodyContainer{
-	margin-top: 100px;
-}
-
-.back {
-	width: 100%;
-	height: 100vh;
-}
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Jua&family=Nanum+Gothic&display=swap');
 
 .date-group {
 	width: 400px;
@@ -46,10 +38,7 @@
 	position: relative;
 	height: 70px;
 	border-radius: 10px;
-	left: 50px;
 	background-color:rgba(211,211, 211, 0.9);
-	top: 15%;
-	position: absolute;
 }
 
 .box>* {
@@ -133,4 +122,257 @@
 .move-hotel:hover {
 	text-decoration: none;
 	color: gray;
+}
+
+
+
+
+
+/*결제 디자인**/
+
+
+.bodyContainer{
+	margin-top: 100px;
+}
+
+.back {
+	width: 100%;
+	height: 2000px;
+}
+
+
+.mainLogo{
+	position: absolute;
+	right: 180px;
+}
+.rentalAndPay{
+	display: flex;
+	flex-direction: column;
+	margin-top: 50px;
+}
+.rentalAndPayTitle{
+	width: 100%;
+	height: 200px;
+	margin-top: -4px;
+	background-color: rgb(60,68,94);
+	text-align: center;
+	font-size: 40px;
+	font-weight: 600;
+	border-bottom: 1.5px solid gray;
+	padding-bottom: 250px;
+	border-bottom-right-radius: 50%;
+	border-bottom-left-radius: 50%;
+}
+.rentalAndPayTitle>h3{
+	font-family: 'Nanum Gothic', sans-serif;
+	font-weight: 600;
+	color: white;
+	font-size: 40px;
+	margin-top: 20px;
+	margin-left: 50px;
+	margin-bottom: 50px;
+}
+
+.rentalAndPayTitle>.rentalAndPayTitleBox{
+	font-family: 'Nanum Gothic', sans-serif;
+	margin-top: 20px;
+	margin-left: 30px;
+	margin-bottom: 20px;
+	display: flex;
+	justify-content: center;
+}	
+.rentalAndPayTitleBox>div{
+	margin-right: 100px;
+	margin-left: 100px;
+}
+.rentalAndPayTitleBox>div>p{
+	color: white;
+	margin-top: 20px;
+	font-size: 25px;
+	font-weight: 500;
+}
+
+.conBox>.bi{
+	width: 100px;
+	height: 100px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 6px;
+	padding-bottom: 6px;
+	background-color: gray;
+	border-radius: 100%;
+	color: white;
+}
+
+.conBox>.bi-coin{
+	background-color: rgb(40, 40, 40);
+	color: white;
+}
+
+.con-2{
+	margin-top: 20px;
+}
+
+.rentalContainer{
+	width: 1600px;
+	height: 600px;
+	background-color: white;
+	display: flex;
+	justify-content: space-around;
+	text-align: center;
+	margin-top: 50px;
+	margin-bottom: 80px;
+	margin-left: 180px;
+}
+.payContainer{
+	border-top: 1px solid rgb(60,68,94);
+	padding-top: 20px;
+	margin-left: 150px;
+	width: 1600px;
+	background-color: white;
+	display: flex;
+}
+.payContainer>.payBox1{
+	width: 1000px;
+	height: 700px;
+}
+.payContainer>.payBox2{
+	width: 600px;
+	height: 700px;
+}
+
+.rentalItemBox{
+	display: flex;
+	flex-direction: column;
+	justify-content:space-around;
+	margin: 20px;
+}
+
+.rentalItemBox>div{
+	margin-top: -50px;
+}
+
+.rentalItemBox>.rentalImg>img{
+	width: 250px;
+	height: 350px;
+	box-shadow: 0 15px 15px rgba(0, 0, 0, 0.7);
+}
+
+.rentalItemBox>.rentalContent{
+	
+}
+
+.rentalContent>p{
+	font-family: 'Nanum Gothic', sans-serif;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.section-title{
+	font-family: 'Nanum Gothic', sans-serif;
+	margin-top: 10px;
+	margin-left: 10px;
+	font-size: 30px;
+	display: flex;
+	justify-content: space-between;
+}
+.section-title1{
+	margin-left: 170px;
+	margin-top: 10px;
+	font-size: 20px;
+	font-weight: bold;
+}
+.section-title2{
+	margin-top: 10px;
+	font-size: 20px;
+	font-weight: bold;
+	margin-right: 170px;
+}
+
+
+/*페이*/
+.modal-content{
+    transform: translateY(5%);
+}
+
+.pay-header{
+	display: block;
+	text-align: center;
+}
+.pay-info{
+	background-color: #585858;
+	margin: 10px;
+	border-radius: 10px;
+	color: white;
+}
+.pay-method{
+	background-color: green;
+	margin: 10px;
+	border-radius: 10px;
+	background-color: white;
+	border: solid 1px #666;
+	border-radius: 10px;
+	height: 400px;
+}
+.pay-method>button{
+	width: 50px;
+	height: 50px;
+	border: none;
+	background-color: white;
+	position: relative;
+	margin: 30px 15px 0 15px;
+	border-radius: 10px;
+}
+.pay-method>hr{
+	margin-top: 50px;
+	boar
+}
+.pay-method>button>span{
+		position: absolute;
+		bottom: -20px;
+		 white-space: nowrap;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+#inicis_pay{
+	background-image: url("/resources/etc/pay_icon.png");
+	background-size: cover;
+	margin-left: 37px;
+	}
+#kakao_pay{
+	background-image: url("/resources/etc/kakaopay.png");
+	background-size: cover;
+	}
+#toss_pay{
+	background-image: url("/resources/etc/tosspay.png");
+	background-size: cover;
+	}
+#payco_pay{
+	background-image: url("/resources/etc/payco.jpg");
+	background-size: cover;
+	}
+#naver_pay{
+	background-image: url("/resources/etc/naverpay.png");
+	background-size: cover;
+	}
+#my_coupon_list{
+	margin-top:5px;
+	background-image: url("/resources/etc/coupon.png");
+	background-size: cover;
+	margin-left: 37px;
+	width: 40px;
+	height: 40px;
+}
+.pay3-box{
+	margin-top :10px;
+	border-radius: 10px;
+	font-size: 20px;
+	background-color: #2b2b2b;
+
+}
+.pay-info>div{
+	padding: 15px;
+}
+.pay-value{
+	float: right;
 }

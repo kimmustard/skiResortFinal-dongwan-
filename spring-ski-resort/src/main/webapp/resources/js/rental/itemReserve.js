@@ -13,10 +13,7 @@ document.getElementById("nextBtn").addEventListener('click', () => {
         alert('날짜를 선택해주세요!');
     } else {
         document.getElementById('nextBtn').style.display = 'none';
-        for (let i = 0; i < localStorage.length; i++) {
-            let itemArr = JSON.parse(localStorage.getItem(`${i}`));
-            console.log(itemArr);
-        }
+        
     }
 
     //     document.getElementById('rentalItemNum').value = "";
