@@ -45,13 +45,8 @@
 	
 		
 		<div class="index-content" >
-		<div id="notice-box">		
-			<h1 class="notice-logo eventbgc">INFORMATION</h1>
-		<div id="notice">
-		</div>
-		</div>
 		
-		<!-- index 영상 아래 들어갈 내용은 여기에  -->
+			<!-- index 영상 아래 들어갈 내용은 여기에  -->
 		<div class="news-topic-box ">
 <!-- 			<p class="fs-1 box-title">NEWS & TOPIC</p> -->
 			 <div class="news_topic_slide_wrapper">
@@ -74,14 +69,56 @@
     		
      		  <div class="news_topic_slide_botton_box"> 
      		  	<ul>
-     		  		<li><button class="news_topic_btn" onclick="newsSlideBtnEvent(1)">O</button></li>
-     		  		<li><button class="news_topic_btn" onclick="newsSlideBtnEvent(2)">O</button></li>
-     		  		<li><button class="news_topic_btn" onclick="newsSlideBtnEvent(3)">O</button></li>
-     		  		<li><button class="news_topic_btn" onclick="newsSlideBtnEvent(4)">O</button></li>		  	
+     		  		<li><button class="news_topic_btn" onclick="newsSlideBtnEvent(1)" style="background-color: white;"></button></li>
+     		  		<li><button class="news_topic_btn" onclick="newsSlideBtnEvent(2)"></button></li>
+     		  		<li><button class="news_topic_btn" onclick="newsSlideBtnEvent(3)"></button></li>
+     		  		<li><button class="news_topic_btn" onclick="newsSlideBtnEvent(4)"></button></li>		  	
      		  	</ul>
      		  </div>
 		    </div>
 		</div>	
+		
+		<div id="notice-box">		
+			<h1 class="notice-logo eventbgc">INFORMATION</h1>
+		<div id="notice">
+		
+		</div>
+		<div class="notice_inquiry_box">
+			<div class="inquiry_background1">
+	            <div class="inner">
+	                <h2 class="inquiry_title">객실 예약</h2>
+	                <div class="phone">
+	                    <p>전화문의</p>
+	                    <strong>033-123-0000</strong>
+	                    <p>오전 09:00 ~ 오후 05:00</p>
+	                </div>
+	            </div>
+	        </div>
+	        <div class="inquiry_background2">
+	            <div class="inner">
+	                <h2 class="inquiry_title">회원권 분양</h2>
+	                <div class="phone">
+	                    <p>전화문의</p>
+	                    <strong>032-123-4567</strong>
+	                    <p>오전 09:00 ~ 오후 05:00</p>
+	                </div>
+	            </div>
+	        </div>
+	        <div class="inquiry_background3">
+	            <div class="inner">
+	                <h2 class="inquiry_title">스키 시즌권</h2>
+	                <div class="phone">
+	                    <p>전화문의</p>
+	                    <strong>033-321-4321</strong>
+	                    <p>오전 08:30 ~ 오후 05:30</p>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+		</div>
+		
+	
+
 
 		<div class="triangle-top"></div>
 		<div class="event-box none-click" >
