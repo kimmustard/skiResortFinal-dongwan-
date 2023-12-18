@@ -53,15 +53,21 @@ image_url varchar(200));
 
 --장비예약 테이블 12/13
 create table rental_reserve(
-rental_list_item_num bigint not null,
+rental_reserve_num bigint,
 rental_reserve_start datetime,
-rental_reserve_item varchar(200),
-rental_reserve_adult_fee int,
-rental_reserve_kid_fee int,
 rental_reserve_total_fee int,
 rental_reserve_isok varchar(1) default 'Y',
 rental_reserve_isreturn varchar(1) default 'N',
 rental_reserve_reg_at datetime default now(),
 member_num int,
 pay_merchant_uid varchar(50)
+);
+
+-- 장비예약 테이블2 12/18
+create table rental_reserve_list(
+rental_reserve_num bigint,
+rental_list_item_num bigint not null,
+rental_reserve_item varchar(100),
+rental_reserve_adult_fee int,
+rental_reserve_kid_fee int
 );

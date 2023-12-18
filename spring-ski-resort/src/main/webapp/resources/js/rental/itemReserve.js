@@ -3,6 +3,8 @@ function fnContains(str, substr) {
 }
 
 let itemSum = 0;
+let itemAdultFee = 0;
+let itemKidFee = 0;
 
 document.getElementById("nextBtn").addEventListener('click', () => {
     let rentalReserveStart = document.getElementById('rentalReserveStart').value;
@@ -21,7 +23,6 @@ document.getElementById("nextBtn").addEventListener('click', () => {
     document.getElementById('showTotalFee').value = "0";
 
     let itemNames = '';
-    let itemFee = 0;
 
     for (let i = 0; i < localStorage.length; i++) {
         let itemArr = JSON.parse(localStorage.getItem(`${i}`));
@@ -29,14 +30,15 @@ document.getElementById("nextBtn").addEventListener('click', () => {
 
         document.getElementById('rentalItemNum').value = itemArr[i].rentalItemNum;
 
-        itemNames += itemArr[i].rentalItemName + ',';
-
+        itemNames += itemArr[i].rentalItemName + ', ';
 
 
         if (fnContains(itemArr[i].rentalItemName, '주니어')) {
-            document.getElementById('showKidFee').value = parseInt(itemArr[i].rentalItemPrice).toLocaleString() + "원";
+            itemKidFee += parseInt(itemArr[i].rentalItemPrice);
+            document.getElementById('showKidFee').value = itemKidFee.toLocaleString() + "원";
         } else {
-            document.getElementById('showAdultFee').value = parseInt(itemArr[i].rentalItemPrice).toLocaleString() + "원";
+            itemAdultFee += parseInt(itemArr[i].rentalItemPrice);
+            document.getElementById('showAdultFee').value = itemAdultFee.toLocaleString() + "원";
         }
 
 
