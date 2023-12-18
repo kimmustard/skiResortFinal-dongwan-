@@ -35,8 +35,14 @@
   	</delete>
   	
   	<!-- 환불하기전 마감날짜 체크 -->
- 	<select id="checkRoomDay" resultType="int">
- 		select * from room_info where pay_merchant_uid = #{payMerchantUid}
- 	</select>
+	<select id="checkRoomDay" resultType="int">
+        <![CDATA[
+		    SELECT COUNT(*) FROM room_info
+		    WHERE pay_merchant_uid = #{payMerchantUid}
+		    AND CURDATE() - INTERVAL 1 DAY < hotel_reserve_stay_start;
+		]]>
+    </select>
+ 	
+ 	
   	
   </mapper>

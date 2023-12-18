@@ -168,28 +168,29 @@ public class PayServiceImpl implements PayService{
 		switch (rfiVO.getRefundNameType()) {
 		case "호텔":
 			
-			//[호텔] 환불시 room_info 테이블 삭제 로직
+			if(pdao.checkRoomDay(rfiVO.getPayMerchantUid()) == 0) {
+			    return new ResponseEntity<String>("환불가능한 날짜가 지났습니다.", HttpStatus.BAD_REQUEST); 
+			}
+			
+			//[호텔] 환불시 room_info 테이블 삭제 로직 (쿼리문이 delete라서 젤 뒤에 배치합니다.)
 			if(pdao.refundRoomInfo(rfiVO.getPayMerchantUid()) == 0) {
 				return new ResponseEntity<String>("환불할 거래 정보가 없습니다.", HttpStatus.BAD_REQUEST);
 			}
 			
-			if(pdao.checkRoomDay(rfiVO.getPayMerchantUid()) == 0) {
-				return new ResponseEntity<String>("환불가능한 날짜가 지났습니다.", HttpStatus.BAD_REQUEST); 
-			}
 			
 			break;
 		case "렌탈":
 			//[렌탈] 환불 로직
-			if(pdao.checkRantalDay(rfiVO.getPayMerchantUid()) == 0) {
-				return new ResponseEntity<String>("환불가능한 날짜가 지났습니다.", HttpStatus.BAD_REQUEST); 
-			}
+//			if(pdao.checkRantalDay(rfiVO.getPayMerchantUid()) > 0) {
+//				return new ResponseEntity<String>("환불가능한 날짜가 지났습니다.", HttpStatus.BAD_REQUEST); 
+//			}
 			
 			break;
 		case "리프트":
 			//[리프트] 상품 환불가능기간 하루전 기간이 지났으면 return
-			if(pdao.checkLiftDay(rfiVO.getPayMerchantUid()) == 0) {
-				return new ResponseEntity<String>("환불가능한 날짜가 지났습니다.", HttpStatus.BAD_REQUEST);
-			}
+//			if(pdao.checkLiftDay(rfiVO.getPayMerchantUid()) > 0) {
+//				return new ResponseEntity<String>("환불가능한 날짜가 지났습니다.", HttpStatus.BAD_REQUEST);
+//			}
 			break;
 
 		default:

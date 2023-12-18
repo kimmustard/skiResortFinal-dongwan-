@@ -41,7 +41,7 @@ document.querySelectorAll('.tr-div').forEach((row) => {
             str += `<p><font style="color:red;font-size:20px;"><strong>"${result.payNameType}" 상품을 구매한 회원입니다. </strong></font></p>`;
             if (result.payNameType === '호텔') {
                 str += `<p>인원수 : 성인 ${result.hotelReservePeople} 명 / 어린이 ${result.hotelReserveChild} 입니다.</p>`;
-                str += `<p>숙박 시작일 : ${result.hotelReserveStayEnd}</p> <p>숙박 종료일 : ${result.hotelReserveStayStart}</p>`;
+                str += `<p>숙박 시작일 : ${result.hotelReserveStayStart}</p> <p>숙박 종료일 : ${result.hotelReserveStayEnd}</p>`;
             } else if (result.payNameType === '리프트') {
                 str += `<p>인원수 : 성인 ${result.rentalLiftAdult} 명 / 어린이 ${result.rentalLiftKid} 입니다.</p>`;
                 str += `<p>리프트권 시작일 : ${result.rentalLiftStart}</p>`;
