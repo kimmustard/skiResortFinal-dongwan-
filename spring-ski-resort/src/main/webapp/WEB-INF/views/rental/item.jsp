@@ -74,10 +74,10 @@
 			    <a class="nav-link" href="/rental/ski-item">스키</a>
 			  </li>
 			  <li class="nav-item" id="boardItem">
-			    <a class="nav-link" href="/rental/board-item">스노우보드</a>
+			    <a class="nav-link" href="#">스노우보드</a>
 			  </li>
 			  <li class="nav-item" id="wearItem">
-			    <a class="nav-link" href="/rental/wear-item">의류/보호장비</a>
+			    <a class="nav-link" href="#">의류/보호장비</a>
 			  </li>  
 			</ul>
 		</div>
