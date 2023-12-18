@@ -38,19 +38,177 @@
 					</a>
 				</li>
 				<li>
-					<a>
+					<a href="/bus/busMap">
 						<button type="button" class="bus-btn mybus-btn">노선 보기</button>
 					</a>
 				</li>
 			</ul>
+			
+			
+			<div class="bus-list-container">
+			<h1>강남선</h1>
+			<div class="accordion accordion-flush bus-list" id="accordionFlushExample">
+			  <div class="accordion-item">
+			    <h2 class="accordion-header">
+			      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+			        <span class="bus-time">08:10</span>
+			        <span class="bus-location">신논현역 6번 출구 (교보타워 건물 입구)</span>
+			      </button>
+			    </h2>
+			    <div class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+			      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+			    </div>
+			  </div>
+			  <div class="accordion-item">
+			    <h2 class="accordion-header">
+			      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+			        <span class="bus-time">08:15</span>
+			        <span class="bus-location">강남역 5번 출구 (삼성화재 건물)</span>
+			      </button>
+			    </h2>
+			    <div class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+			      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+			    </div>
+			  </div>
+			  <div class="accordion-item">
+			    <h2 class="accordion-header">
+			      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+			        <span class="bus-time">08:18</span>
+			        <span class="bus-location">양재역 2번 출구 KW컨벤션센터 앞</span>
+			      </button>
+			    </h2>
+			    <div class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+			      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+			    </div>
+			  </div>
+			</div>
+			</div>
+			
+			
+			<div class="bus-list-container">
+			<h1>광화문</h1>
+			<div class="accordion accordion-flush bus-list" id="accordionFlushExample">
+			  <div class="accordion-item">
+			    <h2 class="accordion-header">
+			      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+			        <span class="bus-time">07:40</span>
+			        <span class="bus-location">세종미술관 앞</span>
+			      </button>
+			    </h2>
+			    <div class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+			      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+			    </div>
+			  </div>
+			  <div class="accordion-item">
+			    <h2 class="accordion-header">
+			      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+			        <span class="bus-time">07:50</span>
+			        <span class="bus-location">회현동 우리은행 후문 앞(3호 터널 입구)</span>
+			      </button>
+			    </h2>
+			    <div class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+			      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+			    </div>
+			  </div>
+			  <div class="accordion-item">
+			    <h2 class="accordion-header">
+			      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+			        <span class="bus-time">07:55</span>
+			        <span class="bus-location">이태원 크라운호텔 건너편 육교</span>
+			      </button>
+			    </h2>
+			    <div class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+			      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+			    </div>
+			  </div>
+			  <div class="accordion-item">
+			    <h2 class="accordion-header">
+			      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+			        <span class="bus-time">08:05</span>
+			        <span class="bus-location">반포쇼핑타운 8동 맞은편 GS주유소 가기전</span>
+			      </button>
+			    </h2>
+			    <div class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+			      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+			    </div>
+			  </div>
+			</div>
+			</div>
+			
+			
+			<div class="bus-list-container">
+			<h1>분당선</h1>
+			<div class="accordion accordion-flush bus-list" id="accordionFlushExample">
+			  <div class="accordion-item">
+			    <h2 class="accordion-header">
+			      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+			        <span class="bus-time">07:50</span>
+			        <span class="bus-location">낙성육교(서현방향)</span>
+			      </button>
+			    </h2>
+			    <div class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+			      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+			    </div>
+			  </div>
+			  <div class="accordion-item">
+			    <h2 class="accordion-header">
+			      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+			        <span class="bus-time">07:58</span>
+			        <span class="bus-location">서현역 공항버스정류장 50M 앞 육교아래(수내방향)</span>
+			      </button>
+			    </h2>
+			    <div class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+			      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+			    </div>
+			  </div>
+			  <div class="accordion-item">
+			    <h2 class="accordion-header">
+			      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+			        <span class="bus-time">08:05</span>
+			        <span class="bus-location">정자역 3번출구(100M앞 파리바게뜨)</span>
+			      </button>
+			    </h2>
+			    <div class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+			      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+			    </div>
+			  </div>
+			  <div class="accordion-item">
+			    <h2 class="accordion-header">
+			      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+			        <span class="bus-time">08:05</span>
+			        <span class="bus-location">반포쇼핑타운 8동 맞은편 GS주유소 가기전</span>
+			      </button>
+			    </h2>
+			    <div class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+			      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+			    </div>
+			  </div>
+			  <div class="accordion-item">
+			    <h2 class="accordion-header">
+			      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+			        <span class="bus-time">08:05</span>
+			        <span class="bus-location">반포쇼핑타운 8동 맞은편 GS주유소 가기전</span>
+			      </button>
+			    </h2>
+			    <div class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+			      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+			    </div>
+			  </div>
+			  <div class="accordion-item">
+			    <h2 class="accordion-header">
+			      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+			        <span class="bus-time">08:05</span>
+			        <span class="bus-location">반포쇼핑타운 8동 맞은편 GS주유소 가기전</span>
+			      </button>
+			    </h2>
+			    <div class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+			      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+			    </div>
+			  </div>
+			</div>
+			</div>
+			
 	    </div>
-
-
-
-
-
-
-
 	  </div>
 	</div>
 </div>
