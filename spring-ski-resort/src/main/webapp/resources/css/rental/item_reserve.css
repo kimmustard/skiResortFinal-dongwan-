@@ -66,6 +66,8 @@
 .box>* {
 	margin-left: 50px;
 	margin-top: 5px;
+	display: flex;
+	justify-content: center;
 }
 
 #innerbox {
@@ -161,6 +163,7 @@
 .rentalText {
 	font-family: 'Hahmlet', serif;
 	padding: 50px 0 10px 10px;
+	margin-left: -250px;
 }
 
 .move-hotel {

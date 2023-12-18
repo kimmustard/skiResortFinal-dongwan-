@@ -181,18 +181,9 @@ public class RentalController {
 //	    return "redirect:/";
 //	}
 	
-	 @PostMapping("/item-reserve")
-	    public String itemsPayForm(@RequestParam List<RentalItemsBasketDTO> itemName,
-	                               Model model) {
-	        // Process the received data
-	        for (RentalItemsBasketDTO item : itemName) {
-	            System.out.println("Item Name: " + item);
-	        }
-
-	        // You can add the processed data to the model if needed
-	        model.addAttribute("itemNames", itemName);
-	        
-	        // Return the view name or redirect to another page
+	 @GetMapping("/item-reserve")
+	    public String itemsPayForm() {
+	
 	        return "/rental/item-reserve";
 	    }
 	

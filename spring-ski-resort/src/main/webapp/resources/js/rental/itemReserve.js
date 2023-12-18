@@ -1,15 +1,30 @@
-document.getElementById("people").addEventListener('click', () => {
+document.getElementById('localStorageTest').addEventListener('click', () => {
+    console.log('ddd');
 
-    document.getElementById('peopleList').style.display = "block";
+    document.getElementById('rentalItemNum').value = "";
+    document.getElementById('showItemName').value = "";
+    document.getElementById('showAdultFee').value = "";
+    document.getElementById('showKidFee').value = "";
+
+    for (let i = 0; i < localStorage.length; i++) {
+        let item = JSON.parse(localStorage.getItem(`${i}`));
+        console.log(item);
+        document.getElementById('rentalItemNum').value = item.rentalItemNum;
+        document.getElementById('showItemName').value = item.rentalItemName;
+        document.getElementById('showAdultFee').value = item.rentalItemPrice;
+        document.getElementById('showKidFee').value = item.rentalItemPrice;
+
+
+    }
+
 })
+
+
 
 document.getElementById("nextBtn").addEventListener('click', () => {
     let rentalReserveStart = document.getElementById('rentalReserveStart').value;
-    let rentalReserveAdult = document.getElementById('rentalReserveAdult').value;
 
-    if (rentalReserveAdult == "0") {
-        alert('인원수를 입력해주세요!');
-    } else if (rentalReserveStart == "") {
+    if (rentalReserveStart == "") {
         alert('날짜를 선택해주세요!');
     } else {
         document.getElementById("innerbox").style.display = "block";
@@ -68,76 +83,4 @@ $(function () {
         });
     }
 });
-
-//성인 버튼 조작
-document.getElementById("adult+Btn").addEventListener('click', () => {
-    let cnt = parseInt(document.getElementById('adult-Count').innerText);
-    if (cnt < 30) {
-        cnt += 1;
-    }
-
-    document.getElementById('adult-Count').innerText = cnt;
-    AllPeopleCount();
-})
-
-document.getElementById("adult-Btn").addEventListener('click', () => {
-    let cnt = parseInt(document.getElementById('adult-Count').innerText);
-    if (cnt > 1) {
-        cnt -= 1;
-    }
-    document.getElementById('adult-Count').innerText = cnt;
-    AllPeopleCount();
-})
-
-
-//어린이 버튼 조작
-document.getElementById("child+Btn").addEventListener('click', () => {
-    let cnt = parseInt(document.getElementById('child-Count').innerText);
-    if (cnt < 10) {
-        cnt += 1;
-    }
-
-    document.getElementById('child-Count').innerText = cnt;
-    AllPeopleCount();
-    //  childAgeSelectCreater();
-})
-
-document.getElementById("child-Btn").addEventListener('click', () => {
-    let cnt = parseInt(document.getElementById('child-Count').innerText);
-    if (cnt > 0) {
-        cnt -= 1;
-    }
-    document.getElementById('child-Count').innerText = cnt;
-    AllPeopleCount();
-    //  childAgeSelectCreater();
-})
-
-//인원수 세주는거
-function AllPeopleCount() {
-    $('#people').attr('placeholder', `성인 ${document.getElementById('adult-Count').innerText}명 · 아동 ${document.getElementById('child-Count').innerText}명 `);
-    document.getElementById('rentalReserveAdult').value = document.getElementById('adult-Count').innerText;
-    document.getElementById('rentalReserveKid').value = document.getElementById('child-Count').innerText;
-
-}
-
-//peoplelist 사라지는 이벤트
-document.getElementById('peoplelistClose').addEventListener('click', () => {
-    document.getElementById('peopleList').style.display = "none";
-})
-var targetArea1 = document.getElementById('peopleList');
-var targetArea2 = document.getElementById('people');
-document.addEventListener('click', function (event) {
-    if (!targetArea1.contains(event.target) || !targetArea2.contains(event.target)) {
-        document.getElementById('peopleList').style.display = "none";
-    }
-});
-targetArea1.addEventListener('click', function (event) {
-    event.stopPropagation();
-});
-targetArea2.addEventListener('click', function (event) {
-    event.stopPropagation();
-});
-
-
-
 

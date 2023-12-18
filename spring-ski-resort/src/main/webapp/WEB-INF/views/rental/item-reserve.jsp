@@ -55,8 +55,6 @@
 				<form action="/rental/item-reserve" method="post" id="payform">
 					<div class="input-box">
 						<input type="hidden" name="rentalReserveStart" id="rentalReserveStart" placeholder="렌탈이용날짜">
-						<input name="rentalReserveAdult" id="rentalReserveAdult" value="0" placeholder="성인인원" type="hidden">
-						<input name="rentalReserveKid" id="rentalReserveKid" value="0" placeholder="어린이인원" type="hidden">
 						
 						<div class="date-group">
 							<div class="input-group calendar">
@@ -64,6 +62,7 @@
 			                		 <span class="input-group-text"><i class="bi bi-calendar"></i></span>
 			                	</div>
 								<input type="text" class="form-control" id="dateRangePicker" placeholder="날짜를 선택하세요" readonly="readonly">
+								<button id="nextBtn" type="button" class="btn btn-light">다음</button>
 							</div>
 						</div>
 					</div>
@@ -71,18 +70,18 @@
 					
 					<div id="innerbox" class="reserveBox" style="display: none;">
 						
-						<input name="rentalListItemNum" id="rentalItemNum" value="${itemNum }" type="hidden">
+						<input name="rentalListItemNum" id="rentalItemNum" value="${item.rentalItemNum }" type="hidden">
 						<div class="input-group mb-3">
 							<span class="input-group-text">렌탈장비명</span>
-							<input type="text" class="form-control" id="showItemName" value="${itemName}" readonly="readonly">
+							<input type="text" class="form-control" id="showItemName" value="${item.rentalItemName}" readonly="readonly">
 						</div>
 						<div class="input-group mb-3">
 							<span class="input-group-text">요금(성인)</span>
-							<input type="text" class="form-control" id="showAdultFee" value="${itemAdultFee}" readonly="readonly">
+							<input type="text" class="form-control" id="showAdultFee" value="${item.rentalItemPrice}" readonly="readonly">
 						</div>
 						<div class="input-group mb-3">
 							<span class="input-group-text">요금(어린이)</span>
-							<input type="text" class="form-control" id="showKidFee" value="${itemKidFee}" readonly="readonly">
+							<input type="text" class="form-control" id="showKidFee" value="${item.rentalItemPrice}" readonly="readonly">
 						</div>
 						
 						<div class="input-group mb-3">
@@ -107,11 +106,12 @@
 		
 		</div>
 		
+		<button id="localStorageTest"> 테스트 </button>
+		
 	</div>
 	
 	
-	
-	<script type="text/javascript" src="/resources/js/rental/item.js"></script>
+
 	<script type="text/javascript" src="/resources/js/rental/itemReserve.js"></script>
 	<jsp:include page="../common/footer.jsp" />
 </body>

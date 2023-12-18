@@ -373,7 +373,7 @@ function shoppingBasket(itemNum, itemName, price, itemImageUrl) {
      let itemsConfig = {
           rentalItemNum: itemNum,
           rentalItemName: itemName,
-          rentalItemPrice: parseInt(price),
+          rentalItemPrice: price,
           rentalItemUrl: itemImageUrl,
      };
 
@@ -441,28 +441,15 @@ document.getElementById('itemSelectDiv').addEventListener('click', function (eve
 
 if (document.getElementById('reserveBtn')) {
      document.getElementById('reserveBtn').addEventListener('click', () => {
-          console.log('Shopping cart items', itemsArray);
 
-          // Create a form element
-          const form = document.createElement('form');
-          form.method = 'POST';
-          form.action = '/rental/item-reserve';
+          localStorage.clear();
 
-          // Create a hidden input field for each item in itemsArray
-          itemsArray.forEach((item, index) => {
-               const input = document.createElement('input');
-               input.type = 'hidden';
-               input.name = `itemsConfig[${index}]`; // Use array notation for parameters
-               input.value = item;
-               form.appendChild(input);
-          });
+          for (let i = 0; i < itemsArray.length; i++) {
+               localStorage.setItem(`${i}`, JSON.stringify(itemsArray));
+          }
 
-          // Append the form to the document body
-          document.body.appendChild(form);
-
-          // Submit the form
-          form.submit();
-     });
+          location.href = '/rental/item-reserve';
+     })
 }
 
 async function itemsBasketToServer() {
