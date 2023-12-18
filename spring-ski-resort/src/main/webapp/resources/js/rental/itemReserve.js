@@ -12,47 +12,53 @@ document.getElementById("nextBtn").addEventListener('click', () => {
     if (rentalReserveStart == "") {
         alert('날짜를 선택해주세요!');
     } else {
-        document.getElementById("innerbox").style.display = "block";
         document.getElementById('nextBtn').style.display = 'none';
-    }
-
-    document.getElementById('rentalItemNum').value = "";
-    document.getElementById('showItemName').value = "";
-    document.getElementById('showAdultFee').value = "0";
-    document.getElementById('showKidFee').value = "0";
-    document.getElementById('showTotalFee').value = "0";
-
-    let itemNames = '';
-
-    for (let i = 0; i < localStorage.length; i++) {
-        let itemArr = JSON.parse(localStorage.getItem(`${i}`));
-        console.log(itemArr);
-
-        document.getElementById('rentalItemNum').value = itemArr[i].rentalItemNum;
-
-        itemNames += itemArr[i].rentalItemName + ', ';
-
-
-        if (fnContains(itemArr[i].rentalItemName, '주니어')) {
-            itemKidFee += parseInt(itemArr[i].rentalItemPrice);
-            document.getElementById('showKidFee').value = itemKidFee.toLocaleString() + "원";
-        } else {
-            itemAdultFee += parseInt(itemArr[i].rentalItemPrice);
-            document.getElementById('showAdultFee').value = itemAdultFee.toLocaleString() + "원";
+        for (let i = 0; i < localStorage.length; i++) {
+            let itemArr = JSON.parse(localStorage.getItem(`${i}`));
+            console.log(itemArr);
         }
-
-
-        itemSum += parseInt(itemArr[i].rentalItemPrice);
-
     }
 
-    itemNames = itemNames.slice(0, -2);
+    //     document.getElementById('rentalItemNum').value = "";
+    //     document.getElementById('showItemName').value = "";
+    //     document.getElementById('showAdultFee').value = "0";
+    //     document.getElementById('showKidFee').value = "0";
+    //     document.getElementById('showTotalFee').value = "0";
 
-    document.getElementById('showItemName').value = itemNames;
-    document.getElementById('showTotalFee').value = itemSum.toLocaleString() + "원";
+    //     let itemNames = '';
+
+    //     for (let i = 0; i < localStorage.length; i++) {
+    //         let itemArr = JSON.parse(localStorage.getItem(`${i}`));
+    //         console.log(itemArr);
+
+    //         document.getElementById('rentalItemNum').value = itemArr[i].rentalItemNum;
+
+    //         itemNames += itemArr[i].rentalItemName + ', ';
+
+
+    //         if (fnContains(itemArr[i].rentalItemName, '주니어')) {
+    //             itemKidFee += parseInt(itemArr[i].rentalItemPrice);
+    //             document.getElementById('showKidFee').value = itemKidFee.toLocaleString() + "원";
+    //         } else {
+    //             itemAdultFee += parseInt(itemArr[i].rentalItemPrice);
+    //             document.getElementById('showAdultFee').value = itemAdultFee.toLocaleString() + "원";
+    //         }
+
+
+    //         itemSum += parseInt(itemArr[i].rentalItemPrice);
+
+    //     }
+
+    //     itemNames = itemNames.slice(0, -2);
+
+    //     document.getElementById('showItemName').value = itemNames;
+    //     document.getElementById('showTotalFee').value = itemSum.toLocaleString() + "원";
+    // 
 })
 
 
+
+// 달력
 $(function () {
     let dateRangePicker = document.getElementById('dateRangePicker');
 
