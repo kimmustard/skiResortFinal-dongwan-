@@ -173,14 +173,22 @@ public class PayServiceImpl implements PayService{
 				return new ResponseEntity<String>("환불할 거래 정보가 없습니다.", HttpStatus.BAD_REQUEST);
 			}
 			
+			if(pdao.checkRoomDay(rfiVO.getPayMerchantUid()) == 0) {
+				return new ResponseEntity<String>("환불가능한 날짜가 지났습니다.", HttpStatus.BAD_REQUEST); 
+			}
+			
 			break;
 		case "렌탈":
 			//[렌탈] 환불 로직
+			if(pdao.checkRantalDay(rfiVO.getPayMerchantUid()) == 0) {
+				return new ResponseEntity<String>("환불가능한 날짜가 지났습니다.", HttpStatus.BAD_REQUEST); 
+			}
+			
 			break;
 		case "리프트":
 			//[리프트] 상품 환불가능기간 하루전 기간이 지났으면 return
-			if(pdao.refundLiftInfo(rfiVO.getPayMerchantUid()) > 0) {
-				return new ResponseEntity<String>("환불할 거래 정보가 없습니다.", HttpStatus.BAD_REQUEST);
+			if(pdao.checkLiftDay(rfiVO.getPayMerchantUid()) == 0) {
+				return new ResponseEntity<String>("환불가능한 날짜가 지났습니다.", HttpStatus.BAD_REQUEST);
 			}
 			break;
 

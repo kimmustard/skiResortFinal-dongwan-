@@ -33,7 +33,10 @@
   	<delete id="refundRoomInfo">
   		delete from room_info where pay_merchant_uid = #{payMerchantUid}
   	</delete>
-  	<!-- 환불 하기전 리프트권 체크 -->
-  	<select id=""></select>
+  	
+  	<!-- 환불하기전 마감날짜 체크 -->
+ 	<select id="checkRoomDay" resultType="int">
+ 		select * from room_info where pay_merchant_uid = #{payMerchantUid}
+ 	</select>
   	
   </mapper>

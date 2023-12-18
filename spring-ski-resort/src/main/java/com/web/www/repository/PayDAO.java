@@ -44,5 +44,17 @@ public interface PayDAO {
 	int refundRoomInfo(String payMerchantUid);
 
 	
+	/**
+	 * 날짜 마감일 확인
+	 * @param payMerchantUid
+	 * @return
+	 */
+	int checkRoomDay(String payMerchantUid);
+	int checkLiftDay(String payMerchantUid);
+	int checkRantalDay(String payMerchantUid);
+
+
+
+	
 
 }
