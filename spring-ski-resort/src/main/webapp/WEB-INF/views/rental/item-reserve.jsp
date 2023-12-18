@@ -66,60 +66,7 @@
 								<input type="text" class="form-control" id="dateRangePicker" placeholder="날짜를 선택하세요" readonly="readonly">
 							</div>
 						</div>
-						<div class="input-box1">
-							<div class="input-group mb-3">
-								<span class="input-group-text" id="basic-addon1"><i class="bi bi-person-fill"></i></span>
-								<input type="text" id="people" class="form-control people" placeholder="인원수" aria-label="Username" readonly="readonly" aria-describedby="basic-addon1">
-								<button id="nextBtn" type="button" class="btn btn-light">다음</button>
-							</div>
-							<div class="peopleList"  id="peopleList" style="display: none;">
-			  					<div class="list-Btn-Box">
-			  						성인    
-			  						<div class="people-Btn"> 
-				  						<div>
-				  							<button type="button" id="adult-Btn">
-				  								<svg style="width: 14px; height: 14px; xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.25 12.75H3.75a.75.75 0 0 1 0-1.5h16.5a.75.75 0 0 1 0 1.5z"></path></svg>
-				  							</button>
-				  						</div> 	 
-				  						<div id="adult-Count">
-				  							1
-				  						</div> 
-				  						
-				  						<div>
-				  							<button type="button" id="adult+Btn">
-				  							<svg style="width: 14px; height: 14px; xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.25 11.25h-7.5v-7.5a.75.75 0 0 0-1.5 0v7.5h-7.5a.75.75 0 0 0 0 1.5h7.5v7.5a.75.75 0 0 0 1.5 0v-7.5h7.5a.75.75 0 0 0 0-1.5z"></path></svg>
-				  							</button>
-				  						</div> 
-			  						</div> 
-			  					</div>
-			  					
-			  					<div class="list-Btn-Box">
-			  						어린이
-			  						<div class="people-Btn"> 
-				  						<div>
-				  							<button type="button" id="child-Btn">
-				  								<svg style="width: 14px; height: 14px; xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.25 12.75H3.75a.75.75 0 0 1 0-1.5h16.5a.75.75 0 0 1 0 1.5z"></path></svg>
-				  							</button>
-				  						</div> 
-				  						 
-				  						<div id="child-Count">
-				  							0
-				  						</div> 
-				  						<div>
-				  							<button type="button" id="child+Btn">
-				  							<svg style="width: 14px; height: 14px; xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.25 11.25h-7.5v-7.5a.75.75 0 0 0-1.5 0v7.5h-7.5a.75.75 0 0 0 0 1.5h7.5v7.5a.75.75 0 0 0 1.5 0v-7.5h7.5a.75.75 0 0 0 0-1.5z"></path></svg>
-				  							</button>
-				  						</div> 
-			  						</div> 
-			  					</div>
-		  						<div>
-		  							<button id="peoplelistClose" type="button" class="btn btn-outline-primary">닫기</button>
-		  						</div>
-		  					
-		  					</div>
-						</div>	
 					</div>
-					
 					
 					
 					<div id="innerbox" class="reserveBox" style="display: none;">

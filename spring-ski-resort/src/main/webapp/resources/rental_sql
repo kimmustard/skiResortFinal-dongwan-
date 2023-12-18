@@ -13,7 +13,8 @@ rental_lift_kid int,
 rental_lift_start date,
 pay_merchant_uid varchar(50),
 member_num int,
-primary key(rental_lift_num));
+primary key(rental_lift_num)
+);
 
 
 drop table rental;
@@ -49,19 +50,20 @@ rental_list_item_num bigint,
 file_name varchar(100),
 image_url varchar(200));
 
-
+-- 12/18 rental_reserve 테이블 삭제
 drop table rental_reserve;
+
 --장비예약 테이블 12/13
 create table rental_reserve(
-rental_lift_num varchar(200),
 rental_list_item_num bigint not null,
 rental_reserve_start date,
-rental_reserve_adult int,
-rental_reserve_kid int,
 rental_reserve_item varchar(50),
 rental_reserve_adult_fee int,
 rental_reserve_kid_fee int,
 rental_reserve_total_fee int,
 rental_reserve_isok varchar(1) default 'Y',
 rental_reserve_isreturn varchar(1) default 'N',
-rental_reserve_reg_at datetime default now());
+rental_reserve_reg_at datetime default now(),
+member_num int,
+pay_merchant_uid varchar(50)
+);
