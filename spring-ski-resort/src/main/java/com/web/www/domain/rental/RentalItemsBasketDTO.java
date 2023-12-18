@@ -13,7 +13,9 @@ import lombok.ToString;
 @ToString
 public class RentalItemsBasketDTO {
 
+
 	private String rentalItemNum;
 	private String rentalItemName;
-	private String rentalItemPrice;
+	private int rentalItemPrice;
+	private String rentalItemUrl;
 }
