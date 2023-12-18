@@ -48,16 +48,21 @@ public class NoticeServiceImpl implements NoticeService{
 		if(isOk > 0 && ndto.getFlist().size() > 0) {
 			long noticeNum = ndao.selectOneNoticeNum(); //가장 마지막에 등록된 notice_num
 			//모든 파일에 bno set
+			int cnt = 0;
 			if(ndto.getNvo().getNoticeImpact().equals("Y")) { //상단 슬라이드 체크시 file 테이블에 noticeImpactFile에 "Y" 또는 "N"
 				for(FileVO fvo : ndto.getFlist()) {
+					cnt++;
 					fvo.setNoticeNum(noticeNum);
+					fvo.setFileAsc(cnt);
 					fvo.setNoticeImpactFile("Y");
 					isOk*=fdao.insertNoticeFile(fvo);
 				}
 			}
 			if(ndto.getNvo().getNoticeImpact().equals("N") || ndto.getNvo().getNoticeImpact()==null){
 				for(FileVO fvo : ndto.getFlist()) {
+					cnt++;
 					fvo.setNoticeNum(noticeNum);
+					fvo.setFileAsc(cnt);
 					fvo.setNoticeImpactFile("N");
 					isOk*=fdao.insertNoticeFile(fvo);
 				}				
@@ -112,6 +117,13 @@ public class NoticeServiceImpl implements NoticeService{
 	
 	
 	@Override
+	public List<FileVO> noticeListFile() {
+		log.info(">>>>> notice list file service >> ");
+		return fdao.selectNoticeListFile();
+	}
+	
+	
+	@Override
 	public List<FileVO> noticeImpactFileList() {
 		return fdao.selectFileImpactList();
 	}
@@ -138,9 +150,12 @@ public class NoticeServiceImpl implements NoticeService{
 			isOk*=1;
 		}else {
 			if(isOk > 0 && ndto.getFlist().size() > 0) {
+				int cnt = 0;
 				long NoticeNum = ndto.getNvo().getNoticeNum();
 				for(FileVO fvo : ndto.getFlist()) {
+					cnt++;
 					fvo.setNoticeNum(NoticeNum);
+					fvo.setFileAsc(cnt);
 					isOk *= fdao.insertNoticeFile(fvo);
 				}
 			}
@@ -201,6 +216,19 @@ public class NoticeServiceImpl implements NoticeService{
 		// TODO Auto-generated method stub
 		return ndao.getFiveEvent();
 	}
+
+	
+	
+	
+	//**관리자 세팅 라인**//
+	@Override
+	public int settingNoticePointModify(NoticeVO nvo) {
+		int isOk = ndao.settingNoticePointModify(nvo);
+		return isOk;
+	}
+
+
+	
 
 
 	

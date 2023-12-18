@@ -17,6 +17,8 @@ public interface NoticeService {
 	List<NoticeVO> noticeList(PagingVO pgvo);
 	
 	List<NoticeVO> noticeListNoPaging();
+	
+	List<FileVO> noticeListFile();
 
 	int noticeModify(NoticeVO nvo);
 
@@ -39,6 +41,9 @@ public interface NoticeService {
 	void addEvent(NoticeVO noticeVO);
 
 	List<NoticeVO> getFiveEvent();
+
+	int settingNoticePointModify(NoticeVO nvo);
+
 
 	
 
