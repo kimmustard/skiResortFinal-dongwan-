@@ -211,7 +211,7 @@
 					<c:forEach items="${roomList }" var="room">
 						<c:if test="${room.hotelRoomType eq 'nomal' && room.hotelRoomCount >= 0}">
 						
-						<li onclick="roomSelectEvent(${room.hotelRoomNum})" value="${room.hotelRoomFee }" id="room${room.hotelRoomNum}">${room.hotelRoomName }(${room.hotelRoomStandardPeople}인)</li>	
+						<li onclick="roomSelectEvent(${room.hotelRoomNum})" value="${room.hotelRoomFee }" id="room${room.hotelRoomNum}">${room.hotelRoomName }</li>	
 					</c:if >
 				</c:forEach>
 			
@@ -220,7 +220,7 @@
 						<li class="room-rank">vip객실</li>
 					<c:forEach items="${roomList }" var="room" >
 						<c:if test="${room.hotelRoomType eq 'vip' && room.hotelRoomCount >= 0}">
-						<li onclick="roomSelectEvent(${room.hotelRoomNum})" value="${room.hotelRoomFee }" id="room${room.hotelRoomNum}">${room.hotelRoomName }(${room.hotelRoomStandardPeople}인)</li>
+						<li onclick="roomSelectEvent(${room.hotelRoomNum})" value="${room.hotelRoomFee }" id="room${room.hotelRoomNum}">${room.hotelRoomName }</li>
 				
 					</c:if> 
 					</c:forEach>
