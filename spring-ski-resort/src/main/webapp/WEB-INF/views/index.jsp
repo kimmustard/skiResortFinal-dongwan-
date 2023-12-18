@@ -42,16 +42,34 @@
 		</div>
 	</div>
 
-	<!-- index 영상 아래 들어갈 내용은 여기에  -->
-		<div class="news-topic-box">
-			<p class="fs-1 box-title">News & Topic</p>
-			<p class="fs-3 box-title">뉴스 & 토픽</p>
+	
+		
+		<div class="index-content" >
+		<div id="notice-box">		
+			<h1 class="notice-logo eventbgc">INFORMATION</h1>
+		<div id="notice">
+		</div>
+		</div>
+		
+		<!-- index 영상 아래 들어갈 내용은 여기에  -->
+		<div class="news-topic-box ">
+<!-- 			<p class="fs-1 box-title">NEWS & TOPIC</p> -->
 			 <div class="news_topic_slide_wrapper">
 		      <ul class="news_topic_slides" id="new_topic_slides" >
-		      	<li class="slide_li"> <img alt="" src=""> </li>
-		      	<li class="slide_li" style="background-color: black"> <img alt="" src=""> </li>
-		      	<li class="slide_li" style="background-color: red"> <img alt="" src=""> </li>
-		      	<li class="slide_li" style="background-color: purple;"> <img alt="" src=""> </li>
+	
+		 	
+		      	<li class="news_slide_li" style="background-image: url('https://rusutsu.com/wp-content/uploads/winter-bg.jpg');" > <div class="news_slide_li_filter">
+		      	AsAELLDOO ED FDFVLVLSS <div class="news_slide_li_detial none-click"> 상세보기</div>
+		     	</div> </li>
+		      	<li class="news_slide_li" style="background-image: url('https://rusutsu.com/assets/img/home/summer-bg.jpg');"><div class="news_slide_li_filter">
+		      	AsAELLDOO ED FDFVLVLSS<div class="news_slide_li_detial none-click"> 상세보기</div>
+		     	</div></li>
+		      	<li class="news_slide_li" style="background-color: red"> <div class="news_slide_li_filter">
+		      	AsAELLDOO ED FDFVLVLSS<div class="news_slide_li_detial none-click"> 상세보기</div>
+		     	</div> </li>
+		      	<li class="news_slide_li" style="background-color: purple;"><div class="news_slide_li_filter">
+		      	AsAELLDOO ED FDFVLVLSS<div class="news_slide_li_detial none-click"> 상세보기</div>
+		     	</div> </li>
      		  </ul>
     		
      		  <div class="news_topic_slide_botton_box"> 
@@ -63,22 +81,11 @@
      		  	</ul>
      		  </div>
 		    </div>
-		</div>
-		
-		
-		<div class="index-content" >
-		<div id="notice-box">		
-			<h1 class="notice-logo eventbgc">INFORMATION</h1>
-		<div id="notice">
-		</div>
-		
-	
+		</div>	
 
-		</div>
 		<div class="triangle-top"></div>
 		<div class="event-box none-click" >
-			<p class="fs-1 box-title">Event</p>
-			<p class=" box-title">이벤트</p>
+			<p class="fs-1 box-title">EVENT</p>
 			<div class="contentBox">
 			 <div class="slide_wrapper">
 		      <ul class="slides" id="slides" >
