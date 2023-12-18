@@ -351,6 +351,7 @@ function shoppingBasket(itemNum, itemName, price, itemImageUrl) {
 
      if (memberEmail.length <= 0) {
           alert('상품구매는 회원만 가능합니다.');
+          location.href = '/member/login';
           return;
      }
 
