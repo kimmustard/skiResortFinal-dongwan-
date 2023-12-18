@@ -27,7 +27,7 @@ skiItem.addEventListener('click', () => {
 })
 boardItem.addEventListener('click', () => {
      console.log('보드 선택');
-     itemTitle = '보드';   
+     itemTitle = '보드';
      document.getElementById('skiItemList').style.display = 'none';
      document.getElementById('boardItemList').style.display = 'block';
      document.getElementById('wearItemList').style.display = 'none';
@@ -43,7 +43,7 @@ boardItem.addEventListener('click', () => {
 })
 wearItem.addEventListener('click', () => {
      console.log('의류 선택');
-     itemTitle = '의류'; 
+     itemTitle = '의류';
      document.getElementById('skiItemList').style.display = 'none';
      document.getElementById('boardItemList').style.display = 'none';
      document.getElementById('wearItemList').style.display = 'block';
@@ -348,7 +348,7 @@ let localStorageSwitch = -1;
 
 function shoppingBasket(itemNum, itemName, price, itemImageUrl) {
 
-    
+
      if (memberEmail.length <= 0) {
           alert('상품구매는 회원만 가능합니다.');
           return;
@@ -373,7 +373,7 @@ function shoppingBasket(itemNum, itemName, price, itemImageUrl) {
      let itemsConfig = {
           rentalItemNum: itemNum,
           rentalItemName: itemName,
-          rentalItemPrice: price,
+          rentalItemPrice: parseInt(price),
           rentalItemUrl: itemImageUrl,
      };
 
@@ -440,11 +440,29 @@ document.getElementById('itemSelectDiv').addEventListener('click', function (eve
 
 
 if (document.getElementById('reserveBtn')) {
-
      document.getElementById('reserveBtn').addEventListener('click', () => {
-          console.log('장바구니 물건',itemsArray);
-     })
+          console.log('Shopping cart items', itemsArray);
 
+          // Create a form element
+          const form = document.createElement('form');
+          form.method = 'POST';
+          form.action = '/rental/item-reserve';
+
+          // Create a hidden input field for each item in itemsArray
+          itemsArray.forEach((item, index) => {
+               const input = document.createElement('input');
+               input.type = 'hidden';
+               input.name = `itemsConfig[${index}]`; // Use array notation for parameters
+               input.value = item;
+               form.appendChild(input);
+          });
+
+          // Append the form to the document body
+          document.body.appendChild(form);
+
+          // Submit the form
+          form.submit();
+     });
 }
 
 async function itemsBasketToServer() {

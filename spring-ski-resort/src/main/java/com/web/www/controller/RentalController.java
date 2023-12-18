@@ -168,36 +168,33 @@ public class RentalController {
 //		
 //		return "/rental/wear-item";
 //	}
-	
-	@PostMapping(value = "/itemsBasket", consumes = MediaType.APPLICATION_JSON_VALUE)
-	public String itemsBasketToServer(@RequestBody List<RentalItemsBasketDTO> ritvoList) {
-		
-	    for (RentalItemsBasketDTO rtibDTO : ritvoList) {
-	    	
-	        log.info("넘어가는지 확인##### = {}", rtibDTO);
-	        
-	    }
-	    
-	    return "index";
-	}
-	
-	
-//	@PostMapping("/item-reserve")
-//	public String itemReservePost(RentalItemVO ritvo, RentalLiftVO rlivo, RentalReserveVO rrvo,
-//			RentalVO rvo, @AuthUser MemberVO mvo, Model model) {
+//	
+//	@PostMapping(value = "/itemsBasket", consumes = MediaType.APPLICATION_JSON_VALUE)
+//	public String itemsBasketToServer(@RequestBody List<RentalItemsBasketDTO> ritvoList) {
 //		
-//		rrvo.setRentalLiftNum(rvo.getRentalLiftNum());
-//		rrvo.setRentalListItemNum(ritvo.getRentalListItemNum());
-//		model.addAttribute("rrvo", rrvo);
-//		model.addAttribute("rlivo", rlivo);
-//		int isOk = rsv.itemReserve(rrvo);
-//		log.info((isOk > 0)? "ok":"fail");
-//		
-//		return "index";
-//		
+//	    for (RentalItemsBasketDTO rtibDTO : ritvoList) {
+//	    	
+//	        log.info("넘어가는지 확인##### = {}", rtibDTO);
+//	        
+//	    }
+//	    
+//	    return "redirect:/";
 //	}
 	
-	
+	 @PostMapping("/item-reserve")
+	    public String itemsPayForm(@RequestParam List<RentalItemsBasketDTO> itemName,
+	                               Model model) {
+	        // Process the received data
+	        for (RentalItemsBasketDTO item : itemName) {
+	            System.out.println("Item Name: " + item);
+	        }
+
+	        // You can add the processed data to the model if needed
+	        model.addAttribute("itemNames", itemName);
+	        
+	        // Return the view name or redirect to another page
+	        return "/rental/item-reserve";
+	    }
 	
 	
 	@PostConstruct
