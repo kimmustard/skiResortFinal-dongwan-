@@ -254,7 +254,7 @@ function roomSelectEvent(num) {
     document.getElementById('realpayvalue').value = roomprice;
 
     //상품명
-    if(roomprice==1){
+    if(StayDate==1){
     document.getElementById('item-name').innerText = roomname;
     }else{
     document.getElementById('item-name').innerText = roomname+'('+(StayDate-1)+'박'+StayDate+'일)';
