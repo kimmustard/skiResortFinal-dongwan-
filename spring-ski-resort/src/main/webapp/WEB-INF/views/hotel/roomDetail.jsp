@@ -14,7 +14,7 @@
 	<div id="room_detail">
 	
 				<div class="room_detail_title_box">
-					<h3 class="room_title">스탠다드 트윈</h3>
+					<h3 class="room_title">${rvo.hotelRoomName}</h3>
 				</div>
 
 				<div id="room_detail_img">
