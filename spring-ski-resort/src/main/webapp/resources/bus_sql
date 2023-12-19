@@ -1,0 +1,11 @@
+-- bus 테이블 생성 12/19
+create table bus(
+bus_num int,
+member_num bigint,
+bus_region varchar(20),
+bus_start_date datetime,
+bus_people int,
+bus_isok varchar(1) default 'Y',
+bus_people_limit int default 30,
+primary key(bus_num)
+);
