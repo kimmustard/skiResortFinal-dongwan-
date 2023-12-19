@@ -76,9 +76,60 @@
 				  </tbody>
 				</table>
 			</div>
+			<div class="bus-guid-p">
+				<p>마감시간이 지나면 예약이 불가합니다. (전화예약 불가)</p>
+				<p>운행 노선 및 운행사는 매 시즌마다 변경될 수 있습니다.</p>
+			</div>
 			
-			
-			
+			<h1>노선별 운행일정 안내</h1>
+			<div class="bus-guid-table-container1">
+				<table class="table bus-guid-table1">
+				  <thead>
+				    <tr>
+				      <th>노선</th>
+				      <th style="border-left: 1px solid #bcbcbc; border-right: 1px solid #bcbcbc;">운행일</th>
+				      <th>운행종료일</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr>
+				      <td>강남선</td>
+				      <td rowspan="7" style="border-left: 1px solid #bcbcbc; border-right: 1px solid #bcbcbc;">오픈후 익일부터</td>
+				      <td rowspan="8">2024년 2월 21일</td>
+				    </tr>			 			 
+				    <tr>
+				      <td>천안평택</td>
+				    </tr>			 
+				    <tr>
+				      <td>광화문</td>
+				    </tr>			 
+				    <tr>
+				      <td>잠실선</td>
+				    </tr>			 
+				    <tr>
+				      <td>분당, 수지</td>
+				    </tr>			 
+				    <tr>
+				      <td>수원선</td>
+				    </tr>			 
+				    <tr>
+				      <td>강남선(야간)</td>
+				    </tr>			 
+				    <tr>
+				      <td>강남선(심야)</td>
+				      <td style="border-left: 1px solid #bcbcbc; border-right: 1px solid #bcbcbc;">심야 운영일부터</td>
+				    </tr>			 
+				  </tbody>
+				</table>
+			</div>
+			<div class="bus-guid-p">
+				<p>상황에 따라 탑승장 및 운행시간이 다소 변동 될수 있습니다</p>
+				<p>셔틀버스 안내 사무실 Tel. 033-123-5678, 운영시간 07 : 00 ~ 19 : 00 (19시 이후 심야안내는 종합안내실에서 운영)</p>
+				<p>인터넷 예약 및 현장 예약 가능 (귀가차량 현장예약시 잔여좌석에 한함)</p>
+				<p>셔틀버스 안내는 아래 노선별 담당으로 문의</p>
+				<p>강남/분당/수원/천안평택 노선 : ㈜다이스키 여행사(카카오톡 아이디 : 다이스키 여행사 검색)</p>
+				<p>광화문/잠실 노선 : 이젠버스관광(02-232-0101)</p>
+			</div>
 			
 			
 			</div>

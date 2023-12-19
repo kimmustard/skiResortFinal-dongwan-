@@ -173,7 +173,8 @@ li{
 }
 .bus-guid-table1>tbody>tr>td{
 	padding: 30px;
-	color: #bcbcbc;
+	color: #a0a0a0;
+	border-bottom: 1px solid #bcbcbc;
 }
 .bus-guid-table1>tbody{
 	border-bottom: 1px solid #bcbcbc;
