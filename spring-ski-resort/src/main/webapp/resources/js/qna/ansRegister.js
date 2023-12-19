@@ -52,10 +52,10 @@ document.getElementById('member-merchantUid').addEventListener('click', (e) => {
             if (result.payNameType == '호텔') {
                 str += `<p>인원수 : 성인 ${result.hotelReservePeople} 명 / 어린이 ${result.hotelReserveChild} 입니다.</p>`;
                 str += `<p>숙박 시작일 : ${result.hotelReserveStayEnd}</p> <p>숙박 종료일 : ${result.hotelReserveStayStart}</p>`;
-            }else if (result.payNameType == '리프트') {
+            } else if (result.payNameType == '리프트') {
                 str += `<p>인원수 : 성인 ${result.rentalLiftAdult} 명 / 어린이 ${result.rentalLiftKid} 입니다.</p>`;
                 str += `<p>리프트권 시작일 : ${result.rentalLiftStart}</p>`;
-            }else {
+            } else {
                 str += `<p>인원수 : 성인 ${result.rentalReserveAdult} 명 / 어린이 ${result.rentalReserveKid} 입니다.</p>`;
                 str += `<p>렌탈대여 시작일 : ${result.rentalReserveStart}</p>`;
             }
@@ -63,7 +63,7 @@ document.getElementById('member-merchantUid').addEventListener('click', (e) => {
             str += `<button class="admin-refund-check" id="admin-refund-check" data-bs-toggle="modal" data-bs-target="#staticBackdrop">환불승인</button>`;
 
             div.innerHTML = str;
-            
+
             if (document.getElementById('admin-refund-check')) {
                 document.getElementById('admin-refund-check').addEventListener('click', () => {
                     showRowData(result);
@@ -102,7 +102,7 @@ function showRowData(result) {
     let div = document.getElementById('transactionInfo');
     let refundDiv = document.getElementById('refundInfo');
 
-   
+
     div.innerHTML = '';
     let str = `<h3 style="font-weight:bold">결제정보</h3>`;
     str += `<p>주문번호 : ${result.payMerchantUid}</p>`;

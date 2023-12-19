@@ -1,26 +1,24 @@
 package com.web.www.controller;
 
+import java.io.IOException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.web.www.domain.FileVO;
 import com.web.www.domain.member.AuthUser;
 import com.web.www.domain.member.MemberVO;
@@ -142,6 +140,51 @@ public class RentalController {
 		
 		return "/rental/ski-item";
 	}
+	
+	@GetMapping("/item-reserve")
+	public String itemsPayForm(@RequestParam(name = "data", required = false) String data, Model model) {
+		
+		int sum = 0;
+		
+	    if (data != null) {
+	        try {
+	            ObjectMapper objectMapper = new ObjectMapper();
+	            List<RentalItemsBasketDTO> rtiList = 
+	            		objectMapper.readValue(data, new TypeReference<List<RentalItemsBasketDTO>>() {});
+	            model.addAttribute("rtiList", rtiList);
+	            for (RentalItemsBasketDTO temp : rtiList) {
+	            	sum += temp.getRentalItemPrice();
+	            }
+	        } catch (IOException e) {
+	            log.info("에러발생", e);
+	        }
+	    }
+	    
+	    model.addAttribute("sum", sum);
+	    return "/rental/item-reserve";
+	}
+	
+	
+	@PostConstruct
+	public void rentalItemCreate() {
+		
+		int isOk = rsv.rentalItemCntCheck();
+		// 테이블에 지역정보가 있는지 확인
+		if(isOk == 0) {
+			rir.read();
+		}
+		
+	}
+	
+	@PostConstruct
+	public void rentalItemImageCreate() {
+		int isOk = rsv.rentalItemImageCntCheck();
+		// 테이블에 지역정보가 있는지 확인
+		if(isOk == 0) {
+			rii.read();
+		}
+	}
+	
 //	@GetMapping("/board-item")
 //	public String boardItemForm(Model model, @AuthUser MemberVO mvo) {
 //		List<RentalItemListDTO> boardLowItem = rsv.getBoardLowItem();
@@ -168,45 +211,6 @@ public class RentalController {
 //		
 //		return "/rental/wear-item";
 //	}
-//	
-//	@PostMapping(value = "/itemsBasket", consumes = MediaType.APPLICATION_JSON_VALUE)
-//	public String itemsBasketToServer(@RequestBody List<RentalItemsBasketDTO> ritvoList) {
-//		
-//	    for (RentalItemsBasketDTO rtibDTO : ritvoList) {
-//	    	
-//	        log.info("넘어가는지 확인##### = {}", rtibDTO);
-//	        
-//	    }
-//	    
-//	    return "redirect:/";
-//	}
-	
-	 @GetMapping("/item-reserve")
-	    public String itemsPayForm() {
-	
-	        return "/rental/item-reserve";
-	    }
-	
-	
-	@PostConstruct
-	public void rentalItemCreate() {
-		
-		int isOk = rsv.rentalItemCntCheck();
-		// 테이블에 지역정보가 있는지 확인
-		if(isOk == 0) {
-			rir.read();
-		}
-		
-	}
-	
-	@PostConstruct
-	public void rentalItemImageCreate() {
-		int isOk = rsv.rentalItemImageCntCheck();
-		// 테이블에 지역정보가 있는지 확인
-		if(isOk == 0) {
-			rii.read();
-		}
-	}
 	
 	
 }

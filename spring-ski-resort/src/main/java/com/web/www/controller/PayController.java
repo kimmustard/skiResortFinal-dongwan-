@@ -35,12 +35,6 @@ public class PayController {
 	private final PayService psv;
 	private final MemberService msv;
 	
-	@GetMapping("/testForm")
-	public String payForm() {
-		
-		return "/pay/testForm";
-	}
-	
 	//유저 결제 상세 페이지
 	@GetMapping("/memberPayList")
 	public String memberPayList(@AuthUser MemberVO mvo, Model model) {
@@ -103,25 +97,5 @@ public class PayController {
 		model.addAttribute("errorMessage", errorMessage);
 		return "/pay/PayFail";
 	}
-	
-	
-	
-	
-	
-//	private finzal KakaoPay kakaoPay;
-//	
-//	@PostMapping("/order")
-//	public String order() {
-//		log.info("123123");
-//		
-//		return"redirect:"+kakaoPay.kakaoPayReady();
-//	}
-//	
-//	@GetMapping("/kakaoPaySuccess")
-//	public void kakaoPaySuccess(@RequestParam("pg_token") String pg_token, Model model) {
-//		log.info("kakaoPaySuccess get............................................");
-//		log.info("kakaoPaySuccess pg_token : " + pg_token);
-//		model.addAttribute("info", kakaoPay.kakaoPayInfo(pg_token));
-//		
-//	}
+
 }

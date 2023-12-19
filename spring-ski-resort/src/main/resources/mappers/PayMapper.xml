@@ -29,8 +29,36 @@
   	</select>
   	
   	<!-- 환불 후 호텔방 갱신 -->
+  	<!-- 호텔은 방갯수 갱신 특성상 삭제를 합니다. -->
   	<delete id="refundRoomInfo">
   		delete from room_info where pay_merchant_uid = #{payMerchantUid}
   	</delete>
+  	
+  	<!-- 호텔 환불하기전 마감날짜 체크 -->
+	<select id="checkRoomDay" resultType="int">
+        <![CDATA[
+		    SELECT COUNT(*) FROM room_info
+			WHERE pay_merchant_uid = #{payMerchantUid}
+			AND DATE_ADD(CURDATE(), INTERVAL 1 DAY) < hotel_reserve_stay_start;
+		]]>
+    </select>
+  	<!-- 리프트 환불하기전 마감날짜 체크 -->
+	<select id="checkLiftDay" resultType="int">
+        <![CDATA[
+		    SELECT COUNT(*) FROM rental_lift
+			WHERE pay_merchant_uid = #{payMerchantUid}
+			AND DATE_ADD(CURDATE(), INTERVAL 1 DAY) < rental_lift_start;
+		]]>
+    </select>
+ 	<!-- 렌탈 환불하기전 마감날짜 체크 -->
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	<!-- 멤버등급 갱신 -->
+ 	<select id="memberAmountSum" resultType="Long">
+ 		select COALESCE(sum(pay_amount), 0) from pay where member_num = #{memberNum} and pay_status = '결제완료'
+ 	</select>
   	
   </mapper>

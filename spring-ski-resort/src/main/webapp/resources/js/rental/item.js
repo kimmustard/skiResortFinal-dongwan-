@@ -437,20 +437,24 @@ document.getElementById('itemSelectDiv').addEventListener('click', function (eve
 });
 
 /***************************************/
+/***예 약 하 기 ***/
+// if (document.getElementById('reserveBtn')) {
+//      document.getElementById('reserveBtn').addEventListener('click', () => {
+
+//           localStorage.clear();
+
+//           for (let i = 0; i < itemsArray.length; i++) {
+//                localStorage.setItem(`${i}`, JSON.stringify(itemsArray));
+//           }
+
+//           location.href = '/rental/item-reserve';
+//      })
+// }
 
 
 
-if (document.getElementById('reserveBtn')) {
-     document.getElementById('reserveBtn').addEventListener('click', () => {
-
-          localStorage.clear();
-
-          for (let i = 0; i < itemsArray.length; i++) {
-               localStorage.setItem(`${i}`, JSON.stringify(itemsArray));
-          }
-
-          location.href = '/rental/item-reserve';
-     })
+function reservationBtn() {
+     window.location.href = '/rental/item-reserve?data=' + encodeURIComponent(JSON.stringify(itemsArray));
 }
 
 async function itemsBasketToServer() {
@@ -464,8 +468,14 @@ async function itemsBasketToServer() {
                body: JSON.stringify(itemsArray)
           };
           let resp = await fetch(url, config);
-          let result = await resp.text();
-          return result;
+          if (resp.ok) {
+               let result = await resp.json();
+               console.log("배열값 :: ", result);
+               window.location.href = '/rental/item-reserve?data=' + encodeURIComponent(JSON.stringify(result));
+          } else {
+               console.error('비동기 통신 실패', resp.status);
+          }
+         
      } catch (error) {
           console.log(error);
      }

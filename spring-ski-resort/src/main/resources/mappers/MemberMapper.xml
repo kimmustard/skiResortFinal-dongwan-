@@ -178,8 +178,10 @@
 		select member_grade from member where member_num = ${memberNum}
 	</select>
 	
-	
-	
+	<!-- 멤버 등급 갱신 -->
+	<update id="memberGradeUpdate">
+		update member set member_grade = #{memberGrade} where member_num = #{memberNum}
+	</update>
 	
 	
 	
