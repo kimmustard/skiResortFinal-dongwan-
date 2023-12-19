@@ -21,7 +21,7 @@
 		<div class="shoppingBasket" id="shoppingBasket">
 			<div class="shoppingBasketTitle">
 				<p class="fs-4">장바구니</p>
-				<p><button class="btn btn-outline-info reserveBtn" id="reserveBtn">예약신청하기</button></p>
+				<p><button class="btn btn-outline-info reserveBtn" onclick="reservationBtn()">예약신청하기</button></p>
 			</div>
 			<div class="itemSelectDiv" id="itemSelectDiv">
 			
