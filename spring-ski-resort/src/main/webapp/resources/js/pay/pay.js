@@ -26,7 +26,7 @@ function paymentGateway(pgName) {
     } else if (nameType == "리프트") {
 
     } else {
-
+        console.log("렌탈입니다");
     };
 
     let coupon = document.getElementById('couponCode').value;

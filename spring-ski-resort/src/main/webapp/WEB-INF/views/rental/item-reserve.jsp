@@ -101,7 +101,7 @@
 						<input type="hidden" id="name-type" value="렌탈">
 						<input type="hidden" name="couponCode" id="couponCode" >
 						<input type="hidden" id="rentalPriceSum" value="${sum }">
-						<input type="hidden" id="productPrice">
+						<input type="hidden" id="productPrice" value="${sum }" >
 						<input type="hidden" id="realpayvalue">
 	
 					</div>
@@ -158,9 +158,35 @@
 	const memberAddress= `<c:out value="${mvo.memberAddress}"/>`;
 
 	</script>
+	<script type="text/javascript">
+	   // JavaScript 배열을 선언합니다.
+	    var itemsArray = [];
+	
+	    // rtiList를 순회하면서 필요한 정보를 추출하여 배열에 저장합니다.
+	   	 <c:forEach var="rti" items="${rtiList}">
+	        // JSTL을 사용하여 rtiList의 각 항목에서 필요한 정보를 추출합니다.
+	        var itemNum = '${rti.rentalItemNum}';
+	        var itemName = '${rti.rentalItemName}';
+	        var price = '${rti.rentalItemPrice}';
+	        var itemImageUrl = '${rti.rentalItemUrl}';
+	
+	        // 추출한 정보로 JavaScript 객체를 생성합니다.
+	        var itemsConfig = {
+	            rentalItemNum: itemNum,
+	            rentalItemName: itemName,
+	            rentalItemPrice: price,
+	            rentalItemUrl: itemImageUrl
+	        };
+	
+	        // 생성한 JavaScript 객체를 배열에 추가합니다.
+	        itemsArray.push(itemsConfig);
+    </c:forEach>
+	
+	</script>
 	<script type="text/javascript" src="/resources/js/pay/pay.js"></script>
 	<script type="text/javascript" src="/resources/js/coupon/coupon.js"></script>
 	<script type="text/javascript" src="/resources/js/rental/itemReserve.js"></script>
+	
 	
 	<jsp:include page="../common/footer.jsp" />
 </body>

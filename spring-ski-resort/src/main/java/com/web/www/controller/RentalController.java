@@ -173,7 +173,11 @@ public class RentalController {
 	            model.addAttribute("rtiList", rtiList);
 	            
 	            //상품명 파싱 로직
-	            payName = rtiList.get(0).getRentalItemName()+" 외"+(rtiList.size()-1)+"종";
+	            if(rtiList.size() > 1) {
+	            	payName = rtiList.get(0).getRentalItemName()+" 외"+(rtiList.size()-1)+"종";
+	            }else {
+	            	payName = rtiList.get(0).getRentalItemName();
+	            }
 	            for (RentalItemsBasketDTO temp : rtiList) {
 	            	sum += temp.getRentalItemPrice();
 	            }
