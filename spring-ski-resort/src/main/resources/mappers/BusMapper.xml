@@ -3,8 +3,17 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.web.www.repository.BusDAO">
+	<select id="busCount" resultType="int">
+		select count(*) from bus_info
+	</select>
+	
+	<insert id="addBusInfo">
+		insert into bus_info(bus_num, bus_region, bus_people_limit)
+		values(#{busNum},#{busRegion},#{busPeopleLimit})
+	</insert>
+
 	<insert id="busReserve">
-		insert into bus(bus_num, member_num, bus_region, bus_start_date, bus_people, bus_people_limit)
-		values(#{busNum}, #{memberNum}, #{busRegion}, #{busStartDate}, #{busPeople}, #{calculatedBusLimit})
+		insert into bus(bus_num, member_num, bus_region, bus_start_date, bus_people)
+		values(#{busNum}, #{memberNum}, #{busRegion}, #{busStartDate}, #{busPeople})
 	</insert>
 </mapper>

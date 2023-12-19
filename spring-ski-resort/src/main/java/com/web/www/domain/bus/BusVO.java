@@ -18,6 +18,5 @@ public class BusVO {
 	private String busStartDate; // 출발날짜
 	private int busPeople; // 탑승인원
 	private String busIsok; // 버스 이용가능여부
-	private int busPeopleLimit; // 버스 총 정원
 	
 }
