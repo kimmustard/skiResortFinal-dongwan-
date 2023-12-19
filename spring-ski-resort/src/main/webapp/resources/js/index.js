@@ -5,7 +5,8 @@ makeSlides();
 function makeSlides() {
   Eventslides = "";
   for (let i = 1; i <= 5; i++) {
-    Eventslides += `<li class="event-li"><div class="event-item-box" id="event-item-box${i}"> <div class="event-image-box"  id="event-image-box${i}"></div><div class="event-content-box" id="event-content-box${i}">이벤트 1</div><p id="event-content${i}"></div></li>`;
+    Eventslides += `<li class="event-li"><div class="event-item-box" id="event-item-box${i}"> <div class="event-image-box"  id="event-image-box${i}"></div><div  class="event-filter-box"><div class="event-content-box" id="event-content-box${i}">이벤트 1</div><p id="event-content${i}" class="event-content"><div></div><span class="diamond event-dia"><i
+    class="bi bi-chevron-right "></i> </span></li>`;
   }
 
 
@@ -166,43 +167,6 @@ function setinit() {
   let TranslateValue = -(slideWidth + slideMargin) * slideCount;
   slides.style.transform = "translateX(" + TranslateValue + "px)";
 }
-function updateOpacity() {
-  // 중앙에 있는 아이템의 인덱스 계산
-
-  let centralItemIndex = ((currentIdx % slideCount + slideCount) % slideCount)+2;
-  let allEventItemBoxes = document.querySelectorAll(".event-item-box");
-  allEventItemBoxes.forEach(function (itemBox) {
-    let pTagInsideBox = itemBox.querySelector("p");
-      if (pTagInsideBox) {
-       pTagInsideBox.style.display = "none";
-      }
-    itemBox.style.opacity = "0.7";
-    itemBox.style.backgroundColor="white";
-    itemBox.style.color = "black";
-  });
-  // 중앙에 있는 아이템의 투명도를 1로 설정
-  if(centralItemIndex==6){
-    centralItemIndex= 1;
-  }
-  document.getElementById('slide-page-num').innerText=centralItemIndex+'/5'
-  let centralEventItemBoxes = document.querySelectorAll("#event-item-box" + (centralItemIndex));
-  
-  centralEventItemBoxes.forEach(function (centralEventItemBox) {
-      centralEventItemBox.style.opacity = "1";
-      centralEventItemBox.style.backgroundColor = "black";
-      centralEventItemBox.style.color = "white";
-      let pTagInsideBox = centralEventItemBox.querySelector("p");
-      if (pTagInsideBox) {
-        pTagInsideBox.style.display = "-webkit-box";
-        pTagInsideBox.style.color ="black";
-        setTimeout(function () {
-          pTagInsideBox.style.color ="white";
-        }, 500);
-      }
-      
-
-  });
-}
 
 
 //연타방지
@@ -230,13 +194,13 @@ function moveSlide(num) {
   slides.style.left = -num * (slideWidth + slideMargin) + "px";
   currentIdx = num;
   
-	 updateOpacity();
+	
   if (currentIdx == slideCount || currentIdx == -slideCount) {
     setTimeout(function () {
       slides.classList.remove("animated");
       slides.style.left = "0px";
       currentIdx = 0;
-      updateOpacity();
+    
     }, 500);
     setTimeout(function () {
       slides.classList.add("animated");
