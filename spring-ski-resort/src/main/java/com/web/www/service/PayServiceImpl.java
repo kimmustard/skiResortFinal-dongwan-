@@ -161,7 +161,7 @@ public class PayServiceImpl implements PayService{
 		}
 		
 		
-		adao.alarmSetting(new AlarmVO(pivo.getMemberNum(), 6, "등급"));
+//		adao.alarmSetting(new AlarmVO(pivo.getMemberNum(), 6, "등급"));
 		adao.alarmSetting(new AlarmVO(pivo.getMemberNum(), 2, "결제"));// 시스템 알람 반드시 넣어주세요.
 		return new ResponseEntity<String>("결제완료", HttpStatus.OK);
 		
@@ -261,7 +261,7 @@ public class PayServiceImpl implements PayService{
 		}
 	
 		
-		adao.alarmSetting(new AlarmVO(memberNum, 6, "등급"));
+//		adao.alarmSetting(new AlarmVO(memberNum, 6, "등급"));
 		adao.alarmSetting(new AlarmVO(memberNum, 3, "환불"));// 시스템 알람 반드시 넣어주세요.
 		return new ResponseEntity<String>("정상적으로 환불되었습니다.", HttpStatus.OK);
 	}

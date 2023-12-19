@@ -44,10 +44,6 @@ function paymentGateway(pgName) {
         buyer_tel: memberPhoneNum,
         buyer_addr: memberAddress,
     }, function (rsp) {
-
-
-
-
         if (rsp.success) {
 
             // 서버로 데이터를 전송
@@ -69,9 +65,8 @@ function paymentGateway(pgName) {
                     memberAddress: rsp.buyer_addr,
                     uniqueNumber: UniqueNumber,
                     payNameType: nameType,
+                    itemsArray: itemsArray,
                     couponCode: coupon,
-                    itemList: itemsConfig,
-
                 }),
             })
                 .then((response) => response.text())

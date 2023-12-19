@@ -1,5 +1,9 @@
 package com.web.www.domain.pay;
 
+import java.util.List;
+
+import com.web.www.domain.rental.ItemsArray;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -37,5 +41,8 @@ public class PayInfoVO {
 	
 	//사용 쿠폰번호
 	private String couponCode;
+	
+	//렌탈장비 상세리스트
+	private List<ItemsArray> itemsArray;
 	
 }
