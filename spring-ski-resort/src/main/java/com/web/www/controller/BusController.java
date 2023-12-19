@@ -18,5 +18,10 @@ public class BusController {
 	public String busMap() {
 		return "/bus/busMap";
 	}
+	
+	@GetMapping("/busGuid")
+	public String busGuid() {
+		return "/bus/busGuid";
+	}
 
 }
