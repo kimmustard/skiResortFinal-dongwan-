@@ -291,8 +291,8 @@
 
 
 /*페이*/
-.modal-content{
-    transform: translateY(5%);
+.pay-content{
+	margin-right: 50px;
 }
 
 .pay-header{

@@ -21,7 +21,7 @@
     <!-- Moment.js -->
     <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/locale/ko.js"></script> <!-- 한국어 locale 파일 추가 -->
-
+	
     <!-- DateRangePicker CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker@3.1.0/daterangepicker.css" />
 
@@ -105,8 +105,7 @@
 
 				</div>
 				<div class="payBox2">
-					
-
+	
 					<div class="pay-content">
 				      <div class="pay-header">
 				        <p class="payTitle">결제선택하기</p>
