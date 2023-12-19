@@ -31,6 +31,8 @@ import com.web.www.domain.rental.RentalItemVO;
 import com.web.www.domain.rental.RentalItemsBasketDTO;
 import com.web.www.domain.rental.RentalLiftVO;
 import com.web.www.handler.FileHandler;
+import com.web.www.service.MemberService;
+import com.web.www.service.PayService;
 import com.web.www.service.RentalService;
 
 import lombok.RequiredArgsConstructor;
@@ -46,6 +48,8 @@ public class RentalController {
 	private final FileHandler fh;
 	private final RentalItemRead rir;
 	private final RentalItemImageRead rii;
+	private final PayService psv;
+	private final MemberService msv;
 
 	@GetMapping("/fee-info")
 	public String rentalForm() {
@@ -142,16 +146,34 @@ public class RentalController {
 	}
 	
 	@GetMapping("/item-reserve")
-	public String itemsPayForm(@RequestParam(name = "data", required = false) String data, Model model) {
+	public String itemsPayForm(@RequestParam(name = "data", required = false) String data, 
+			@AuthUser MemberVO mvo,RedirectAttributes rttr ,Model model) {
+		
+		//결제전 유저등급 갱신
+		mvo.setMemberGrade(msv.getMemberGrade(mvo.getMemberNum()));
+		
+		RentalLiftVO rlVO = rsv.getRentalLift(mvo.getMemberNum());
+		log.info("잘얻어졌나요 ? = {}", rlVO);
+		
+		if(rlVO == null) {
+			
+			rttr.addFlashAttribute("isOk", 1);
+			return "redirect:/rental/reserve";
+		}
 		
 		int sum = 0;
+		String payName = "";
 		
 	    if (data != null) {
 	        try {
+	        	//역직렬화
 	            ObjectMapper objectMapper = new ObjectMapper();
 	            List<RentalItemsBasketDTO> rtiList = 
 	            		objectMapper.readValue(data, new TypeReference<List<RentalItemsBasketDTO>>() {});
 	            model.addAttribute("rtiList", rtiList);
+	            
+	            //상품명 파싱 로직
+	            payName = rtiList.get(0).getRentalItemName()+" 외"+(rtiList.size()-1)+"종";
 	            for (RentalItemsBasketDTO temp : rtiList) {
 	            	sum += temp.getRentalItemPrice();
 	            }
@@ -160,7 +182,10 @@ public class RentalController {
 	        }
 	    }
 	    
+	    model.addAttribute("rlVO", rlVO);
+	    model.addAttribute("mvo", mvo);
 	    model.addAttribute("sum", sum);
+	    model.addAttribute("payName", payName);
 	    return "/rental/item-reserve";
 	}
 	
@@ -185,32 +210,6 @@ public class RentalController {
 		}
 	}
 	
-//	@GetMapping("/board-item")
-//	public String boardItemForm(Model model, @AuthUser MemberVO mvo) {
-//		List<RentalItemListDTO> boardLowItem = rsv.getBoardLowItem();
-//		List<RentalItemListDTO> boardMidItem = rsv.getBoardMidItem();
-//		List<RentalItemListDTO> boardPremiumItem = rsv.getBoardPremiumItem();
-//		
-//		model.addAttribute("boardLowItem", boardLowItem);
-//		model.addAttribute("boardMidItem", boardMidItem);
-//		model.addAttribute("boardPremiumItem", boardPremiumItem);
-//		model.addAttribute("mvo", mvo);
-//		
-//		return "/rental/board-item";
-//	}
-//	@GetMapping("/wear-item")
-//	public String wearItemForm(Model model, @AuthUser MemberVO mvo) {
-//		List<RentalItemListDTO> wearLowItem = rsv.getWearLowItem();
-//		List<RentalItemListDTO> wearMidItem = rsv.getWearMidItem();
-//		List<RentalItemListDTO> wearPremiumItem = rsv.getWearPremiumItem();
-//		
-//		model.addAttribute("wearLowItem", wearLowItem);
-//		model.addAttribute("wearMidItem", wearMidItem);
-//		model.addAttribute("wearPremiumItem", wearPremiumItem);
-//		model.addAttribute("mvo", mvo);
-//		
-//		return "/rental/wear-item";
-//	}
 	
 	
 }

@@ -68,6 +68,12 @@ public class PayServiceImpl implements PayService{
 		private long amount;
 	}
 	
+	/***************************************************************************************************/
+	/***************************************************************************************************/
+	/**************************************  비  즈  니  스  로  직  ***************************************/
+	/***************************************************************************************************/
+	/***************************************************************************************************/
+	
 	/**
 	 * @return 
 	 * @throws IOException 
@@ -87,7 +93,7 @@ public class PayServiceImpl implements PayService{
 			
 			
 			
-		/*********** 비즈니스 로직 영역 *********/
+		/*********** 내부 비즈니스 로직 영역 *********/
 
 		switch (pivo.getPayNameType()) {
 		
@@ -113,7 +119,11 @@ public class PayServiceImpl implements PayService{
 				break;
 			case "리프트":
 				
-				//[렌탈] 로직
+				//[리프트] 리프트권을 이미 구매했으면 return
+				if(pdao.getLiftBuyCheck(pivo.getMemberNum()) > 0) {
+					payMentCancel(access_token, pivo.getPayImpUid(), amount, "현재 이용중인 리프트권이 있습니다.");
+					return new ResponseEntity<String>("현재 이용중인 리프트권이 있습니다.", HttpStatus.BAD_REQUEST);
+				}
 				
 				break;
 	
@@ -157,13 +167,7 @@ public class PayServiceImpl implements PayService{
 		
 	}
 
-	/**
-	 * @Method 회원 결제정보 리스트
-	 */
-	@Override
-	public List<PayInfoVO> getPayInfoList(long memberNum) {
-		return pdao.getPayInfoList(memberNum);
-	}
+
 
 	/**
 	 * @throws IOException 
@@ -261,6 +265,31 @@ public class PayServiceImpl implements PayService{
 		adao.alarmSetting(new AlarmVO(memberNum, 3, "환불"));// 시스템 알람 반드시 넣어주세요.
 		return new ResponseEntity<String>("정상적으로 환불되었습니다.", HttpStatus.OK);
 	}
+	
+	
+	/***************************************************************************************************/
+	/***************************************************************************************************/
+	/***************************************************************************************************/
+	/***************************************************************************************************/
+	/***************************************************************************************************/
+	
+	
+	/**
+	 * @Method 회원 결제정보 리스트
+	 */
+	@Override
+	public List<PayInfoVO> getPayInfoList(long memberNum) {
+		return pdao.getPayInfoList(memberNum);
+	}
+	
+	/**
+	 * @Method 회원 리프트권 구매여부 체크
+	 */
+	@Override
+	public int getLiftBuyCheck(long memberNum) {
+		return pdao.getLiftBuyCheck(memberNum);
+	}
+	
 	
 	
 	//아임포트 엑세스 토큰 가져오기
@@ -366,5 +395,6 @@ public class PayServiceImpl implements PayService{
 		
 		
 	}
+
 	
 }

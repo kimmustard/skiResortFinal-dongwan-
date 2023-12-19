@@ -88,21 +88,23 @@
 			<div class="payContainer">
 				<div class="payBox1">
 
-					<div class="box">
-						<div class="input-box">
-							<input type="hidden" name="rentalReserveStart" id="rentalReserveStart" placeholder="렌탈이용날짜">
-							<div class="date-group">
-								<div class="input-group calendar">
-				              	 	<div class="input-group-prepend">
-				                		 <span class="input-group-text"><i class="bi bi-calendar"></i></span>
-				                	</div>
-									<input type="text" class="form-control" id="dateRangePicker" placeholder="날짜를 선택하세요" readonly="readonly">
-									<button id="nextBtn" type="button" class="btn btn-light">다음</button>
-								</div>
-							</div>
-						</div>	
+					<h3>회원님이 구매하신 리프트 이용권은 "${rlVO.rentalLiftTicket } " 입니다</h3>
+					<div>
+						<p>리프트권 주문번호 : ${rlVO.payMerchantUid }</p>
+						<p>리프트권 시작일 : ${rlVO.rentalLiftStart }</p>
+						<p>인원 : 성인${rlVO.rentalLiftAdult}명 / 어린이 ${rlVO.rentalLiftKid}명</p>
+						<p>장비 렌탈기간은 리프트권 기간과 동일하게 설정됩니다.</p>
+						
+						<input type="hidden" value="${rlVO.memberNum }">
+						<input type="hidden" value="${rlVO.rentalLiftStart }">
+						<input type="hidden" id="memberGradeInput" value="${mvo.memberGrade}">
+						<input type="hidden" id="name-type" value="렌탈">
+						<input type="hidden" name="couponCode" id="couponCode" >
+						<input type="hidden" id="rentalPriceSum" value="${sum }">
+						<input type="hidden" id="productPrice">
+						<input type="hidden" id="realpayvalue">
+	
 					</div>
-
 				</div>
 				<div class="payBox2">
 	
@@ -111,9 +113,9 @@
 				        <p class="payTitle">결제선택하기</p>
 				      </div>
 				      <div class="modal-body pay-info">
-				      	<div>상품명<div class="pay-value" id="item-name"></div></div>
+				      	<div>상품명<div class="pay-value" id="item-name">${payName }</div></div>
 				      	<div>판매자  <div class="pay-value">다이스키</div></div>
-				      	<div>등급<div class="pay-value" id="userGradeRate"></div></div>
+				      	<div>등급<div class="pay-value" id="userGradeRate">${mvo.memberGrade }</div></div>
 					    <div class="pay3-box">결제금액<div class="pay-value" id="userViewpay"></div></div> 
 				  
 				      </div>
@@ -149,10 +151,17 @@
 		</div>
 		
 	</div>
-	
-	
+	<script type="text/javascript">
+	const memberEmail= `<c:out value="${mvo.memberEmail}"/>`;
+	const memberName= `<c:out value="${mvo.memberName}"/>`;
+	const memberPhoneNum= `<c:out value="${mvo.memberPhoneNum}"/>`;
+	const memberAddress= `<c:out value="${mvo.memberAddress}"/>`;
 
+	</script>
+	<script type="text/javascript" src="/resources/js/pay/pay.js"></script>
+	<script type="text/javascript" src="/resources/js/coupon/coupon.js"></script>
 	<script type="text/javascript" src="/resources/js/rental/itemReserve.js"></script>
+	
 	<jsp:include page="../common/footer.jsp" />
 </body>
 </html>

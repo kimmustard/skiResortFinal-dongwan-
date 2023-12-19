@@ -171,6 +171,15 @@
 		select count(*) from item_image
 	</select>
 	
+	<!-- 유저 리프트권 얻기 -->
+	<select id="getMemberPayMerchantUid" resultType="string">
+		select pay_merchant_uid from pay where member_num = #{memberNum} 
+		and pay_name_type = '리프트' and pay_status = '결제완료'
+	</select>
+	
+	<select id="getMemberRentalLift" resultType="com.web.www.domain.rental.RentalLiftVO">
+		select * from rental_lift where pay_merchant_uid = #{payMerchantUid}
+	</select>
 	
 
 </mapper>

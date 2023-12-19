@@ -55,6 +55,13 @@
  	
  	
  	
+ 	<!-- 리프트권 구매여부 체크 -->
+	<select id="getLiftBuyCheck" resultType="int">
+		  SELECT COUNT(*) FROM pay
+		  WHERE member_num = #{memberNum} AND pay_name_type = '리프트'
+		  AND pay_status = '결제완료';
+	</select>
+ 	
  	
  	<!-- 멤버등급 갱신 -->
  	<select id="memberAmountSum" resultType="Long">
