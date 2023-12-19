@@ -6,6 +6,7 @@ drop table file;
 
 
 
+==12/19 업데이트==
 ## notice table 생성
 create table notice(
 notice_num bigint not null auto_increment,
@@ -13,6 +14,7 @@ member_num bigint,
 notice_writer varchar(50) not null,
 notice_category varchar(20) not null,
 notice_title varchar(100) not null,
+notice_subcontent text,
 notice_content text,
 notice_count int default 0,
 notice_reg_at datetime default now(),

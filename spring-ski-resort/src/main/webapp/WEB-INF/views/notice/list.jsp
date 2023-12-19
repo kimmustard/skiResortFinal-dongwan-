@@ -11,6 +11,9 @@
 <jsp:include page="../common/nav.jsp" />
 <link rel="stylesheet" href="/resources/css/notice/notice_list.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
 <sec:authorize access="isAuthenticated()">
@@ -89,14 +92,78 @@
 
 
 
-	<!-- <div class="notice-img-container" style="background-image: url('https://a.cdn-hotels.com/gdcs/production68/d766/4cc034a7-aeb1-4edd-b2a9-f7feaac49aec.jpg')">	
-	</div> -->
+
 	
 <div class="container notice-container" id="notice-container">
 <c:set value="${ph.pgvo.type }" var="typed"></c:set>
 
 	<div class="notice-menu-container">
 	  <div class="notice-menu-container-child">
+	  
+	  
+	  <!-- 카테고리 라인 -->
+	  <div class="notice-category-containeer">
+		<div class="notice-category">
+		<ul class="nav justify-content-center" id="myTab" role="tablist">	
+			  <li class="nav-item" role="presentation">
+			  	<form action="/notice/list" method="get">
+			  	<input type="hidden" name="type" value="g" ${typed eq 'g' ? 'selected' : '' }>
+			  	<input type="hidden" name="keyword" type="search" value="">
+			    <button class="nav-link active" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="submit" role="tab" aria-controls="contact-tab-pane" aria-selected="false">
+			    All</button>
+			    </form>
+			  </li>
+		  <li class="nav-item" role="presentation">
+			  	<form action="/notice/list" method="get">
+			  	<input type="hidden" name="type" value="g" ${typed eq 'g' ? 'selected' : '' }>
+			  	<input type="hidden" name="keyword" type="search" value="공지사항"> 
+			    <button class="nav-link notice-category-btn" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="submit" role="tab" aria-controls="contact-tab-pane" aria-selected="false">
+			    Notice</button>
+			  	</form>
+		  </li>
+		  <li class="nav-item" role="presentation">
+		  		<form action="/notice/list" method="get">
+		  		<input type="hidden" name="type" value="g" ${typed eq 'g' ? 'selected' : '' }>
+			  	<input type="hidden" name="keyword" type="search" value="이벤트">
+			    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="submit" role="tab" aria-controls="contact-tab-pane" aria-selected="false">
+			    Event</button>
+			    </form>
+		  </li>
+		  <li class="nav-item" role="presentation">
+		  		<form action="/notice/list" method="get">
+		  		<input type="hidden" name="type" value="g" ${typed eq 'g' ? 'selected' : '' }>
+			  	<input type="hidden" name="keyword" type="search" value="보도자료">
+			    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="submit" role="tab" aria-controls="contact-tab-pane" aria-selected="false">
+			    News</button>
+			    </form>
+		  </li>
+		  <li class="nav-item" role="presentation">
+		  		<form action="/notice/list" method="get">
+		  		<input type="hidden" name="type" value="g" ${typed eq 'g' ? 'selected' : '' }>
+			  	<input type="hidden" name="keyword" type="search" value="쇼핑몰">
+			    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="submit" role="tab" aria-controls="contact-tab-pane" aria-selected="false">
+			    Shopping mall</button>
+			    </form>
+		  </li>
+		  <li class="nav-item" role="presentation">
+		 		<form action="/notice/list" method="get">
+		  		<input type="hidden" name="type" value="g" ${typed eq 'g' ? 'selected' : '' }>
+			  	<input type="hidden" name="keyword" type="search" value="채용정보">
+			    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="submit" role="tab" aria-controls="contact-tab-pane" aria-selected="false">
+			    Recruitment</button>
+			    </form>
+		  </li>
+		  <li class="nav-item" role="presentation">
+		  		<form action="/notice/list" method="get">
+		  		<input type="hidden" name="type" value="g" ${typed eq 'g' ? 'selected' : '' }>
+			  	<input type="hidden" name="keyword" type="search" value="기타">
+			    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="submit" role="tab" aria-controls="contact-tab-pane" aria-selected="false">
+			    Other</button>
+			    </form>
+		  </li>
+		</ul>
+		</div>
+	  </div>
 	  
 	  
 		<!-- 검색 라인  -->
@@ -131,70 +198,61 @@
 			</form>
 		</div>
 
-		<!-- 카테고리 라인 -->
-		<div class="notice-category">
-		<ul class="nav nav-tabs" id="myTab" role="tablist">	
-			  <li class="nav-item" role="presentation">
-			  	<form action="/notice/list" method="get">
-			  	<input type="hidden" name="type" value="g" ${typed eq 'g' ? 'selected' : '' }>
-			  	<input type="hidden" name="keyword" type="search" value="">
-			    <button class="nav-link active" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="submit" role="tab" aria-controls="contact-tab-pane" aria-selected="false">
-			    전체</button>
-			    </form>
-			  </li>
-		  <li class="nav-item" role="presentation">
-			  	<form action="/notice/list" method="get">
-			  	<input type="hidden" name="type" value="g" ${typed eq 'g' ? 'selected' : '' }>
-			  	<input type="hidden" name="keyword" type="search" value="공지사항"> 
-			    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="submit" role="tab" aria-controls="contact-tab-pane" aria-selected="false">
-			    공지사항</button>
-			  	</form>
-		  </li>
-		  <li class="nav-item" role="presentation">
-		  		<form action="/notice/list" method="get">
-		  		<input type="hidden" name="type" value="g" ${typed eq 'g' ? 'selected' : '' }>
-			  	<input type="hidden" name="keyword" type="search" value="이벤트">
-			    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="submit" role="tab" aria-controls="contact-tab-pane" aria-selected="false">
-			    이벤트</button>
-			    </form>
-		  </li>
-		  <li class="nav-item" role="presentation">
-		  		<form action="/notice/list" method="get">
-		  		<input type="hidden" name="type" value="g" ${typed eq 'g' ? 'selected' : '' }>
-			  	<input type="hidden" name="keyword" type="search" value="보도자료">
-			    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="submit" role="tab" aria-controls="contact-tab-pane" aria-selected="false">
-			    보도자료</button>
-			    </form>
-		  </li>
-		  <li class="nav-item" role="presentation">
-		  		<form action="/notice/list" method="get">
-		  		<input type="hidden" name="type" value="g" ${typed eq 'g' ? 'selected' : '' }>
-			  	<input type="hidden" name="keyword" type="search" value="쇼핑몰">
-			    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="submit" role="tab" aria-controls="contact-tab-pane" aria-selected="false">
-			    쇼핑몰</button>
-			    </form>
-		  </li>
-		  <li class="nav-item" role="presentation">
-		 		<form action="/notice/list" method="get">
-		  		<input type="hidden" name="type" value="g" ${typed eq 'g' ? 'selected' : '' }>
-			  	<input type="hidden" name="keyword" type="search" value="채용정보">
-			    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="submit" role="tab" aria-controls="contact-tab-pane" aria-selected="false">
-			    채용정보</button>
-			    </form>
-		  </li>
-		  <li class="nav-item" role="presentation">
-		  		<form action="/notice/list" method="get">
-		  		<input type="hidden" name="type" value="g" ${typed eq 'g' ? 'selected' : '' }>
-			  	<input type="hidden" name="keyword" type="search" value="기타">
-			    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="submit" role="tab" aria-controls="contact-tab-pane" aria-selected="false">
-			    기타</button>
-			    </form>
-		  </li>
-		</ul>
-		</div>
 		
 		
-		<!-- 리스트 테이블 라인 -->
+		<!-- 리스트 라인 -->
+		<article>
+			<c:forEach items="${list }" var="nvo">
+			<section class="notice-list-container">
+			<div class="notice-list-box">
+				<a href="/notice/detail?noticeNum=${nvo.noticeNum }">
+					<div class="notice-list-img-container">	
+				      	  <c:forEach items="${fvo }" var="fvo">
+				      		<c:if test="${fvo.noticeNum == nvo.noticeNum }">
+				      			<div class="notice-list-imgbox"><img alt="그림이 없음." src="/upload/${fn: replace(fvo.fileSave,'\\','/')}/${fvo.fileUuid}_th_${fvo.fileName}"></div>
+				      		</c:if>
+				      	  </c:forEach>		      			
+					</div>						
+					<div class="notice-list-inpo">
+						<span class="notice-list-category">
+							<c:if test="${nvo.noticeCategory=='공지사항' }">
+								<span style="background-color: #005280;">${nvo.noticeCategory }</span>
+							</c:if>
+							<c:if test="${nvo.noticeCategory=='이벤트' }">
+								<span style="background-color: #800040;">${nvo.noticeCategory }</span>
+							</c:if>
+							<c:if test="${nvo.noticeCategory=='보도자료' }">
+								<span style="background-color: #002480;">${nvo.noticeCategory }</span>
+							</c:if>
+							<c:if test="${nvo.noticeCategory=='쇼핑몰' }">
+								<span style="background-color: #ccb700;">${nvo.noticeCategory }</span>
+							</c:if>
+							<c:if test="${nvo.noticeCategory=='채용정보' }">
+								<span style="background-color: #769400;">${nvo.noticeCategory }</span>
+							</c:if>
+							<c:if test="${nvo.noticeCategory=='기타' }">
+								<span style="background-color: #086a00;">${nvo.noticeCategory }</span>
+							</c:if>
+						</span>
+						<span class="notice-list-regat">${fn:replace((fn:substring(nvo.noticeRegAt,0,10)),'-','.') }</span>
+						<span class="notice-list-count">View ${nvo.noticeCount }</span>
+					</div>
+					<div class="notice-list-textbox">
+						<h3>${nvo.noticeTitle }</h3>
+						<p>${nvo.noticeSubcontent }</p>
+					</div>
+				</a>
+			</div>
+			</section>		
+			</c:forEach>
+		</article>
+		
+		
+		
+		
+		
+		
+		<%-- <!-- 리스트 테이블 라인 -->
 		<table class="table notice-table"  >
 		  <thead class="table-light" >
 		    <tr class="notice-table-tr">
@@ -243,7 +301,7 @@
 		    </tr>
 		  </c:forEach>  
 		  </tbody>
-		</table>
+		</table> --%>
 		<br>
 		
 		<!-- 페이징 라인 -->
