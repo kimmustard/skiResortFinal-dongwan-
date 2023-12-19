@@ -161,7 +161,7 @@
 	<script type="text/javascript">
 	   // JavaScript 배열을 선언합니다.
 	    var itemsArray = [];
-	
+	   
 	    // rtiList를 순회하면서 필요한 정보를 추출하여 배열에 저장합니다.
 	   	 <c:forEach var="rti" items="${rtiList}">
 	        // JSTL을 사용하여 rtiList의 각 항목에서 필요한 정보를 추출합니다.

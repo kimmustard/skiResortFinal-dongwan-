@@ -70,6 +70,7 @@ function paymentGateway(pgName) {
                     uniqueNumber: UniqueNumber,
                     payNameType: nameType,
                     couponCode: coupon,
+                    itemList: itemsConfig,
 
                 }),
             })
