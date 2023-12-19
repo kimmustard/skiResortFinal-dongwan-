@@ -4,8 +4,8 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.web.www.repository.NoticeDAO">
 	<insert id="insert" parameterType="com.web.www.domain.board.NoticeVO">
-		insert into notice(notice_writer, notice_category, notice_title, notice_content, notice_point, notice_impact)
-		values(#{noticeWriter}, #{noticeCategory}, #{noticeTitle}, #{noticeContent}, #{noticePoint}, #{noticeImpact})
+		insert into notice(notice_writer, notice_category, notice_title, notice_subcontent, notice_content, notice_point, notice_impact)
+		values(#{noticeWriter}, #{noticeCategory}, #{noticeTitle}, #{noticeSubcontent}, #{noticeContent}, #{noticePoint}, #{noticeImpact})
 	</insert>
 	
 	<select id="selectOneNoticeNum" resultType="long">
