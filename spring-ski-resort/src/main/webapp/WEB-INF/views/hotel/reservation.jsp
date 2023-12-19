@@ -285,7 +285,6 @@
 	const memberAddress= `<c:out value="${mvo.memberAddress}"/>`;
 	let realAmount = 0;
 	var itemsArray = [];
-
 	</script>
 	<script type="text/javascript" src="/resources/js/pay/pay.js"></script>
 	<script type="text/javascript" src="/resources/js/coupon/coupon.js"></script>

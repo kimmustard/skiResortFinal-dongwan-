@@ -9,6 +9,7 @@ import javax.annotation.PostConstruct;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,12 +18,15 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.web.www.domain.FileVO;
 import com.web.www.domain.member.AuthUser;
 import com.web.www.domain.member.MemberVO;
 import com.web.www.domain.pay.PayInfoVO;
+import com.web.www.domain.rental.ItemsArray;
 import com.web.www.domain.rental.RentalItemDTO;
 import com.web.www.domain.rental.RentalItemImageRead;
 import com.web.www.domain.rental.RentalItemListDTO;
@@ -30,6 +34,7 @@ import com.web.www.domain.rental.RentalItemRead;
 import com.web.www.domain.rental.RentalItemVO;
 import com.web.www.domain.rental.RentalItemsBasketDTO;
 import com.web.www.domain.rental.RentalLiftVO;
+import com.web.www.domain.rental.RentalReserveDTO;
 import com.web.www.handler.FileHandler;
 import com.web.www.service.MemberService;
 import com.web.www.service.PayService;
@@ -65,7 +70,7 @@ public class RentalController {
 	}
 	
 	@PostMapping("/reserve")
-	public String liftReservePost(RentalLiftVO rlivo, @AuthUser MemberVO mvo ,PayInfoVO pivo, RedirectAttributes attributes) {
+	public String liftReservePost(RentalLiftVO rlivo, @AuthUser MemberVO mvo , PayInfoVO pivo, RedirectAttributes attributes) {
 		log.info("rlivo>>>>>>>>>>>>>>>>>>>>>"+rlivo);
 		String paySuccessUrl;
 		//결제 db
@@ -79,15 +84,6 @@ public class RentalController {
 
 		return paySuccessUrl;
 		
-		//결제하고 
-//		if(isOk == 1) {
-//		rvo.setRentalLiftNum(rlivo.getRentalLiftNum());
-//		rvo.setMemberEmail(mvo.getMemberEmail());
-//		rvo.setMemberType(mvo.getMemberType());
-//		isOk *= rsv.liftReserve(rlivo);
-//		isOk = rsv.rental(rvo);
-//		log.info((isOk > 0)? "ok":"fail");
-//		}
 	}
 	
 	
@@ -191,6 +187,23 @@ public class RentalController {
 	    model.addAttribute("sum", sum);
 	    model.addAttribute("payName", payName);
 	    return "/rental/item-reserve";
+	}
+	
+	@PostMapping("/item-reserve")
+	public String itemsPay(RentalReserveDTO rrDTO, PayInfoVO pivo, @AuthUser MemberVO mvo, Model model){
+		String paySuccessUrl;
+
+	    
+		log.info("하나## = {}", pivo);
+		log.info("둘## = {}", rrDTO);
+		String encodedPayName = URLEncoder.encode(pivo.getPayName(), StandardCharsets.UTF_8);
+		UriComponentsBuilder builder = UriComponentsBuilder.fromPath("/pay/PaySuccess")
+				.queryParam("payMerchantUid", pivo.getPayMerchantUid()).queryParam("payName", encodedPayName)
+				.queryParam("payAmount", pivo.getPayAmount());
+
+		paySuccessUrl = "redirect:" + builder.build().toUriString();
+
+		return paySuccessUrl;
 	}
 	
 	

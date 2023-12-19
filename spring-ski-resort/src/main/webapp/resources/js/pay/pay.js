@@ -30,7 +30,6 @@ function paymentGateway(pgName) {
     };
 
     let coupon = document.getElementById('couponCode').value;
-
     IMP.init("imp70464277");
     console.log("결제햐라12");
     IMP.request_pay({
@@ -77,6 +76,10 @@ function paymentGateway(pgName) {
                         document.getElementById('payAmount').value = rsp.paid_amount;
                         document.getElementById('payMerchantUid').value = rsp.merchant_uid;
                         document.getElementById('payImpUid').value = rsp.imp_uid;
+                        if (document.getElementById('itemsArray')) {
+                            document.getElementById('itemsArray').value = JSON.stringify(itemsArray);
+                        }
+
                         if (document.getElementById("payform")) {
                             document.getElementById("payform").submit();
                         }

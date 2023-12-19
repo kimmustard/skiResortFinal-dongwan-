@@ -94,16 +94,22 @@
 						<p>리프트권 시작일 : ${rlVO.rentalLiftStart }</p>
 						<p>인원 : 성인${rlVO.rentalLiftAdult}명 / 어린이 ${rlVO.rentalLiftKid}명</p>
 						<p>장비 렌탈기간은 리프트권 기간과 동일하게 설정됩니다.</p>
-						
-						<input type="hidden" value="${rlVO.memberNum }">
-						<input type="hidden" value="${rlVO.rentalLiftStart }">
-						<input type="hidden" id="memberGradeInput" value="${mvo.memberGrade}">
-						<input type="hidden" id="name-type" value="렌탈">
-						<input type="hidden" name="couponCode" id="couponCode" >
-						<input type="hidden" id="rentalPriceSum" value="${sum }">
-						<input type="hidden" id="productPrice" value="${sum }" >
-						<input type="hidden" id="realpayvalue">
-	
+						<form action="/rental/item-reserve" method="post" id="payform">
+							<input type="hidden" name="memberNum" value="${rlVO.memberNum }">
+							<input type="hidden" value="${rlVO.rentalLiftStart }">
+							<input type="hidden" id="memberGradeInput" value="${mvo.memberGrade}">
+							<input type="hidden" id="name-type" value="렌탈">
+							<input type="hidden" name="couponCode" id="couponCode" >
+							<input type="hidden" name="rentalReserveTotalFee" id="rentalPriceSum" value="${sum }">
+							<input type="hidden" name="rentalReserveStart" value="${rlVO.rentalLiftStart }">
+							<input type="hidden" name="itemsArray" id="itemsArray">
+							<input type="hidden" id="productPrice" value="${sum }">
+							<input type="hidden" id="realpayvalue">
+							<input type="hidden" name="payImpUid" id="payImpUid">	
+							<input type="hidden" name="payMerchantUid" id="payMerchantUid">	
+							<input type="hidden" name="payAmount" id="payAmount">
+							<input type="hidden" name="payName" id="payName">
+						</form>
 					</div>
 				</div>
 				<div class="payBox2">

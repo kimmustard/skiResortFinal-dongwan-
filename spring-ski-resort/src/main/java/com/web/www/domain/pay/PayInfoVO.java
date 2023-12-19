@@ -42,7 +42,4 @@ public class PayInfoVO {
 	//사용 쿠폰번호
 	private String couponCode;
 	
-	//렌탈장비 상세리스트
-	private List<ItemsArray> itemsArray;
-	
 }

@@ -116,6 +116,8 @@ public class PayServiceImpl implements PayService{
 				
 				//[렌탈] 추가 로직
 				
+				
+				
 				break;
 			case "리프트":
 				
