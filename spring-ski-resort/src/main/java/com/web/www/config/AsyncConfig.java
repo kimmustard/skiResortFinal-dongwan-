@@ -10,8 +10,8 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 @Configuration
 public class AsyncConfig {
 	
-    @Bean(name = "WeatherInit")
-    public Executor weatherInitExecutor() {
+    @Bean(name = "weatherInit")
+    public Executor weatherThreadPoolExecutor() {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
         executor.setCorePoolSize(5);	//스레드풀 사이즈
         executor.setMaxPoolSize(5);	//스레드 풀 최대 개수
