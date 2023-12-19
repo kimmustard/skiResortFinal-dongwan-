@@ -64,7 +64,7 @@ public class FileHandler {
 					fvo.setFileType(1);
 					//썸네일 생성
 					File thumbNail = new File(folders, uuid.toString()+"_th_"+fileName);
-					Thumbnails.of(storeFile).size(75, 75).toFile(thumbNail);
+					Thumbnails.of(storeFile).size(300, 300).toFile(thumbNail);
 				}
 			} catch (Exception e) {
 				log.info(">>>>> file 생성 오류 >>>");

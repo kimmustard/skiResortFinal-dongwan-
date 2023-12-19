@@ -116,11 +116,21 @@
 				</tr>
 				<tr class="notice-table-tr">
 					<th class="notice-table-th">
+					  	<div class="notice-table-th-child">머리글</div>
+					</th>
+					<td class="notice-table-td">
+						<div class="mb-3 notice-table-td-content">
+						  <textarea class="form-control notice-table-subcontent" name="noticeSubcontent" rows="3" placeholder="작성된 내용은 공지목록에서 표시됩니다. 200글자 이하의 짧은 글을 작성해 주세요." style="white-space: pre-line;" maxlength="200"></textarea>
+						</div>
+					</td>
+				</tr>
+				<tr class="notice-table-tr">
+					<th class="notice-table-th">
 					  	<div class="notice-table-th-child">내용</div>
 					</th>
 					<td class="notice-table-td">
 						<div class="mb-3 notice-table-td-content">
-						  <textarea class="form-control" name="noticeContent" rows="3" placeholder="게시글을 작성해 주세요." style="white-space: pre-line;"></textarea>
+						  <textarea class="form-control notice-table-text-content" name="noticeContent" rows="3" placeholder="본문 게시글을 작성해 주세요." style="white-space: pre-line;"></textarea>
 						</div>
 					</td>
 				</tr>

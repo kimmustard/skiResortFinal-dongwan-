@@ -141,7 +141,13 @@ a{
 	padding: 10px;
 }
 
-.notice-table textarea{
+.notice-table-subcontent{
+	height: 120px;
+	padding: 20px;
+	width: calc(100% - 40px);
+}
+
+.notice-table-text-content{
 	height: 300px;
 	padding: 20px;
 	width: calc(100% - 40px);	
