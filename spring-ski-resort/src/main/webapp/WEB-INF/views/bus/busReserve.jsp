@@ -66,7 +66,6 @@
 				</ul>
 				
 				
-				
 				<div class="busReserveContainer">
 					<h3>버스 예약 선택</h3>
 					<div class="busReserveBox">

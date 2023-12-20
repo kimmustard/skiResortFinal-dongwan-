@@ -3,9 +3,11 @@
 .bus-tag-container ul li a{
 	text-decoration-line: none;
 }
-li{
+
+.bus-tag-container>ul>li{
 	display: inline;
 }
+
 
 .bus-img-container{
 	margin-top: 96px;

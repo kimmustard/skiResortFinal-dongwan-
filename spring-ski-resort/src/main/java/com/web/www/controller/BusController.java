@@ -60,7 +60,7 @@ public class BusController {
 	public String busReserveCancel() {
 		int isOk = bsv.busCancel();
 		log.info((isOk > 0)? "ok":"fail");
-		return "/member/memberQna";
+		return "redirect:/member/memberQna";
 	}
 	
 	@PostConstruct
