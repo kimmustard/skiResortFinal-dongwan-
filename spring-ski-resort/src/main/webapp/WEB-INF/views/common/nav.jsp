@@ -34,7 +34,7 @@
     </a> -->
        <div class="ski-nav-link" id="ski-nav-link"><a href="/notice/list"> NEWS <span class="nav-ani"></span></a></div>
        <div class="ski-nav-link" id="ski-nav-link"><a href="/resort/resortForm"> RESORT <span class="nav-ani"></span></a></div>
-       <div class="ski-nav-link" id="ski-nav-link"><a href="/rental/fee-info">SKI / RENTAL <span class="nav-ani"></span></a></div>
+       <div class="ski-nav-link" id="ski-nav-link"><a href="/rental/item">SKI / RENTAL <span class="nav-ani"></span></a></div>
     		<span class="main-title-logo"><a href="/"><img alt="" width="110" height="90" src="/resources/etc/logo_white.png"></a> </span>
        <div class="ski-nav-link" id="ski-nav-link"><a href="/hotel/reservation"> HOTEL <span class="nav-ani"></span></a></div>
        <div class="ski-nav-link" id="ski-nav-link"><a href="/qna/list"> SERVICE <span class="nav-ani"></span></a></div>
