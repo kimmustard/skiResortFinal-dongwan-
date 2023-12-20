@@ -34,11 +34,12 @@ public class BusController {
 		return "/bus/busMap";
 	}
 	
-<<<<<<< HEAD
+
 	@GetMapping("/busGuid")
 	public String busGuid() {
 		return "/bus/busGuid";
-=======
+	}
+
 	@GetMapping("/busReserve")
 	public String busReserveForm(@AuthUser MemberVO mvo, Model model, BusInfoVO bivo) {
 		log.info("bus mvo = {}",mvo);
@@ -71,7 +72,7 @@ public class BusController {
 				bsv.addBusInfo(busList.get(i));
 			}
 		}
->>>>>>> 80e675c8045fc53e2f290360a4a7eba0164276ff
+
 	}
 
 }
