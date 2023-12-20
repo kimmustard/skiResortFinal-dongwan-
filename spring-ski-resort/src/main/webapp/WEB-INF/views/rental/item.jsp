@@ -69,9 +69,14 @@
     height: 140px;
     transform: translateY(-10px);
     background-size: cover;
-    width: 131px;
-    margin-left: 15px;
-    margin-right: 15px;
+    width: 130px;
+    margin-left: 35px;
+    margin-right: 35px;
+     transition: 0.2s;
+	}
+	.itemMenuContainer>ul>li:hover{
+	height: 150px;
+    width: 140px;
 	}
 	.main_text_box{
 	position: absolute;
@@ -103,7 +108,7 @@
     PADDING: 5PX;
     box-shadow: 0px 0px 10px rgba(0,0,0,0.8);
     position: absolute;
-    left:800px;
+    left:600px;
     bottom: 65px;
 	}
 	.move_rental:hover {
@@ -117,6 +122,7 @@
 	    border-radius: 100px;
 	    box-shadow: 30px 35px 10px 1px rgba(0,0,0);
 	}
+	
 	
 </style>
 </head>
@@ -144,9 +150,9 @@
 			<span class="slidebtn"><i class=" bi bi-chevron-compact-left"></i></span>
 			<ul>
 				<li style="background-image: url('https://i.imgur.com/17yQAx0.png');"> <div class="showdow"></div> </li>
-				<li style="background-image: url('https://i.imgur.com/17yQAx0.png');"><div class="showdow"></div> </li>
-				<li style="background-image: url('https://i.imgur.com/17yQAx0.png');"><div class="showdow"></div> </li>
-				<li style="background-image: url('https://i.imgur.com/17yQAx0.png');"><div class="showdow"></div> </li>
+				<li style="background-image: url('https://m.sportscore.co.kr/web/product/medium/202309/e4ca4a2288e8e3f9a1d2e2809f1d2a0d.png');"><div class="showdow"></div> </li>
+				<li style="background-image: url('https://m.phoenixsports.co.kr/web/product/big/202210/5394612fb6cb33d6430c6676e5efd1e6.png');"><div class="showdow"></div> </li>
+				<li style="background-image: url('https://koskomro.kr/jhj/img/dome/S-%ED%8C%A8%EB%94%A9%EC%9E%A5%EA%B0%91_1.jpg');"><div class="showdow"></div> </li>
 				<li style="background-image: url('https://i.imgur.com/17yQAx0.png');"><div class="showdow"></div> </li>
 				<li style="background-image: url('https://i.imgur.com/17yQAx0.png');"><div class="showdow"></div> </li>
 				
