@@ -11,6 +11,7 @@ import com.web.www.domain.rental.RentalItemDTO;
 import com.web.www.domain.rental.RentalItemListDTO;
 import com.web.www.domain.rental.RentalItemVO;
 import com.web.www.domain.rental.RentalLiftVO;
+import com.web.www.domain.rental.RentalReserveDTO;
 import com.web.www.domain.rental.RentalReserveVO;
 import com.web.www.domain.rental.RentalVO;
 import com.web.www.repository.FileDAO;
@@ -156,6 +157,14 @@ public class RentalServiceImpl implements RentalService{
 	public RentalLiftVO getRentalLift(long memberNum) {
 		String payMerchantUid = rdao.getMemberPayMerchantUid(memberNum);
 		return rdao.getMemberRentalLift(payMerchantUid);
+	}
+
+	//결제 성공시 렌탈대여관련 정보저장
+	@Transactional
+	@Override
+	public void itemsPayInfoRegister(RentalReserveDTO rrDTO) {
+		rdao.itemsPayInfoRegister(rrDTO);
+		
 	}
 
 

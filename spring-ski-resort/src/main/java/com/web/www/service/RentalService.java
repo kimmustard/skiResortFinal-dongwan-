@@ -7,6 +7,7 @@ import com.web.www.domain.rental.RentalItemDTO;
 import com.web.www.domain.rental.RentalItemListDTO;
 import com.web.www.domain.rental.RentalItemVO;
 import com.web.www.domain.rental.RentalLiftVO;
+import com.web.www.domain.rental.RentalReserveDTO;
 import com.web.www.domain.rental.RentalReserveVO;
 import com.web.www.domain.rental.RentalVO;
 
@@ -46,6 +47,10 @@ public interface RentalService {
 	
 	//회원이 구매한 리프트권 가져오기
 	RentalLiftVO getRentalLift(long memberNum);
+
+	
+	//결제성공시 거래내역 테이블저장
+	void itemsPayInfoRegister(RentalReserveDTO rrDTO);
 
 
 

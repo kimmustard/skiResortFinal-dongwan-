@@ -32,7 +32,7 @@ body {
 	border-bottom-left-radius: 30px;
 	border-bottom-right-radius: 30px;
 	width: 600px;
-	height: 600px;
+	height: 700px;
 	top: 40%;
   	left: 50%;
   	transform: translate(-50%, -50%);
@@ -58,6 +58,7 @@ body {
 	font-weight: 600;
 }
 .success-Box6>p{
+	text-align: center;
 	margin-top: -15px;
 	font-family: 'Gowun Dodum', sans-serif;
 	font-size: 20px;

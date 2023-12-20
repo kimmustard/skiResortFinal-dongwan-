@@ -181,5 +181,19 @@
 		select * from rental_lift where pay_merchant_uid = #{payMerchantUid}
 	</select>
 	
+	
+	<!-- 장비 개수 체크 -->
+	<select id="itemAmountCheck" resultType="int">
+	    SELECT CASE WHEN rental_list_item_count = 0 THEN 0 ELSE 1 END
+	    FROM rental_items
+	    WHERE rental_list_item_num = #{rentalItemNum}
+	</select>
+
+	<!-- 렌탈 대여 정보 등록 -->
+	<insert id="itemsPayInfoRegister">
+		insert into(rental_reserve_start, rental_reserve_total_fee, member_num, pay_merchant_uid)
+		value(#{rentalReserveStart}, #{rentalReserveTotalFee}, #{member_num}, #{pay_merchant_uid})
+	</insert>
+
 
 </mapper>

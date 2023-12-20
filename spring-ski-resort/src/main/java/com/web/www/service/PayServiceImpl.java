@@ -6,9 +6,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.URL;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
-import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -25,11 +23,12 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.web.www.domain.alarm.AlarmVO;
 import com.web.www.domain.pay.PayInfoVO;
-import com.web.www.domain.pay.ReceiptDTO;
 import com.web.www.domain.pay.RefundInfoVO;
+import com.web.www.domain.rental.ItemsArray;
 import com.web.www.repository.AlarmDAO;
 import com.web.www.repository.MemberDAO;
 import com.web.www.repository.PayDAO;
+import com.web.www.repository.RentalDAO;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -46,6 +45,7 @@ public class PayServiceImpl implements PayService{
 	private final AlarmDAO adao;
 	private final HotelService hsv;
 	private final MemberDAO mdao;
+	private final RentalDAO rdao;
 	
 	@Value("${pay.imp}")
 	private String imp_uid;
@@ -113,10 +113,38 @@ public class PayServiceImpl implements PayService{
 				break;
 			case "렌탈":
 				//[렌탈]장비가 없을때 return
-				
+				//수량없으면 임시보관후 사용자에게 물건명단 출력
+				int itemCnt = 1;
+				List<String> itemLack = new ArrayList<>();
+				for (ItemsArray item : pivo.getRentalItems()) {
+					String temp = item.getRentalItemName();
+					int isOk = rdao.itemAmountCheck(item.getRentalItemNum());
+					if (isOk == 0) {
+						itemLack.add(temp);
+					}
+					itemCnt *= isOk;
+				}
+			
+				if(itemCnt == 0) {
+					adao.alarmSetting(new AlarmVO(pivo.getMemberNum(), 4, "취소"));// 시스템 알람 반드시 넣어주세요.
+					payMentCancel(access_token, pivo.getPayImpUid(), amount, "렌탈 장비 품절");
+					
+					//품절 상품이 1개면 ?
+					if(itemLack.size() == 1) {
+						return new ResponseEntity<String>("상품 품절 상태입니다.<br>(" + itemLack.get(0) + ")" , HttpStatus.BAD_REQUEST);
+					}
+					
+					//품절 상품이 2개 이상이면 ?	
+					String resultStr = "";
+					for (String str : itemLack) {
+						resultStr +=  str + "<br>";
+					}
+					resultStr = resultStr.replaceAll("<br>$", "");
+					return new ResponseEntity<String>("상품 품절 상태입니다. <br><span style=\"font-size:16px;\">" + resultStr + "</span>", HttpStatus.BAD_REQUEST);
+
+				}
+
 				//[렌탈] 추가 로직
-				
-				
 				
 				break;
 			case "리프트":
@@ -151,19 +179,11 @@ public class PayServiceImpl implements PayService{
 		 * @amountSum 회원의 결제금액 합산
 		 * 결제금액으로 등급을 조정하는 로직입니다.
 		 */
-		long amountSum = pdao.memberAmountSum(pivo.getMemberNum());
-		if(amountSum > 1000000 && amountSum < 2000000) {
-			mdao.memberGradeUpdate(pivo.getMemberNum(), "Silver");
-		}else if(amountSum >= 2000000 && amountSum < 3000000) {
-			mdao.memberGradeUpdate(pivo.getMemberNum(), "Gold");
-		}else if(amountSum >= 3000000) {
-			mdao.memberGradeUpdate(pivo.getMemberNum(), "VIP");
-		}else {
-			mdao.memberGradeUpdate(pivo.getMemberNum(), "Bronze");
+		memberGradeUpdate(pivo.getMemberNum());
+		if(!(pivo.getMemberGrade().equals(mdao.getMemberGrade(pivo.getMemberNum())))) {
+			adao.alarmSetting(new AlarmVO(pivo.getMemberNum(), 6, "등급"));
 		}
 		
-		
-//		adao.alarmSetting(new AlarmVO(pivo.getMemberNum(), 6, "등급"));
 		adao.alarmSetting(new AlarmVO(pivo.getMemberNum(), 2, "결제"));// 시스템 알람 반드시 넣어주세요.
 		return new ResponseEntity<String>("결제완료", HttpStatus.OK);
 		
@@ -177,7 +197,7 @@ public class PayServiceImpl implements PayService{
 	 */
 	@Transactional
 	@Override
-	public ResponseEntity<String> payMentRefund(RefundInfoVO rfiVO, long memberNum) throws IOException {
+	public ResponseEntity<String> payMentRefund(RefundInfoVO rfiVO, long memberNum, String memberGrade) throws IOException {
 		
 		/********** 환불 비즈니스 로직 **************/
 		
@@ -248,21 +268,16 @@ public class PayServiceImpl implements PayService{
 		 * @amountSum 회원의 결제금액 합산
 		 * 결제금액으로 등급을 조정하는 로직입니다.
 		 */
-		log.info("환불시 회원번호 = {}" , memberNum);
-		
-		long amountSum = pdao.memberAmountSum(memberNum);
-		log.info("금액 = {}" , amountSum);
-		if(amountSum > 1000000 && amountSum < 2000000) {
-			mdao.memberGradeUpdate(memberNum, "Silver");
-		}else if(amountSum >= 2000000 && amountSum < 3000000) {
-			mdao.memberGradeUpdate(memberNum, "Gold");
-		}else if(amountSum >= 3000000) {
-			mdao.memberGradeUpdate(memberNum, "VIP");
-		}else {
-			mdao.memberGradeUpdate(memberNum, "Bronze");
+		/**
+		 * @amountSum 회원의 결제금액 합산
+		 * 결제금액으로 등급을 조정하는 로직입니다.
+		 */
+		memberGradeUpdate(memberNum);
+		if(!(memberGrade.equals(mdao.getMemberGrade(memberNum)))) {
+			adao.alarmSetting(new AlarmVO(memberNum, 6, "등급"));
 		}
 	
-		
+
 //		adao.alarmSetting(new AlarmVO(memberNum, 6, "등급"));
 		adao.alarmSetting(new AlarmVO(memberNum, 3, "환불"));// 시스템 알람 반드시 넣어주세요.
 		return new ResponseEntity<String>("정상적으로 환불되었습니다.", HttpStatus.OK);
@@ -274,6 +289,22 @@ public class PayServiceImpl implements PayService{
 	/***************************************************************************************************/
 	/***************************************************************************************************/
 	/***************************************************************************************************/
+	
+	
+	//등급 계산 로직
+	private void memberGradeUpdate(long memberNum) {
+		long amountSum = pdao.memberAmountSum(memberNum);
+		if(amountSum > 1000000 && amountSum < 2000000) {
+			mdao.memberGradeUpdate(memberNum, "Silver");
+		}else if(amountSum >= 2000000 && amountSum < 3000000) {
+			mdao.memberGradeUpdate(memberNum, "Gold");
+		}else if(amountSum >= 3000000) {
+			mdao.memberGradeUpdate(memberNum, "VIP");
+		}else {
+			mdao.memberGradeUpdate(memberNum, "Bronze");
+		}
+	}
+	
 	
 	
 	/**

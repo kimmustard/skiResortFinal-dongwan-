@@ -64,6 +64,7 @@ public class PayController {
 		
 		try {
 	        pivo.setMemberNum(mvo.getMemberNum());
+	        pivo.setMemberGrade(mvo.getMemberGrade());
 	        log.info("##결제 정보##  = {}" , pivo);
 	        //결제정보 테이블 저장
 	        return psv.registerPay(pivo);
@@ -75,10 +76,10 @@ public class PayController {
 	
 	@ResponseBody
 	@PostMapping(value = "/refund", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.TEXT_PLAIN_VALUE+ ";charset=UTF-8")
-	public ResponseEntity<String> refunt(@RequestBody RefundInfoVO rfiVO, @AuthUser MemberVO mvo) throws IOException {
+	public ResponseEntity<String> refund(@RequestBody RefundInfoVO rfiVO, @AuthUser MemberVO mvo) throws IOException {
 		
 		log.info("##환불정보## = {}", rfiVO);
-		ResponseEntity<String> isOk = psv.payMentRefund(rfiVO, mvo.getMemberNum());
+		ResponseEntity<String> isOk = psv.payMentRefund(rfiVO, mvo.getMemberNum(), mvo.getMemberGrade());
 		return isOk;
 	}
 	
