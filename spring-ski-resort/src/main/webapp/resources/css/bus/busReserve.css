@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-a{
+.bus-tag-container ul li a{
 	text-decoration-line: none;
 }
 li{
@@ -118,7 +118,7 @@ li{
 	border-radius: 10px;
 	padding-left: 5px;
 	padding-top: 10px;
-	height: 200px;
+	height: 130px;
 	z-index: 1000;
 }
 
