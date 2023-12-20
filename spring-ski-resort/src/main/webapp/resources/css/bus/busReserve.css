@@ -1,0 +1,316 @@
+@charset "UTF-8";
+
+a{
+	text-decoration-line: none;
+}
+li{
+	display: inline;
+}
+
+.bus-img-container{
+	margin-top: 96px;
+	height: 40vh;
+	background-size: cover;
+	background-position: 0px -20vh;
+	max-width: 100%;
+}
+
+/* 헤더 부분 */
+.bus-container{
+	margin-top: 50px;
+}
+.bus-menu-container{
+	margin-top: 150px;
+	margin-bottom: 200px;
+	/* border: 1px solid #dddddd; */
+}
+.bus-menu-container-child{
+	/* 수평 중앙 정렬하기 */
+  	margin: 0 auto;
+  	margin-bottom: 200px; 
+}
+.bus-tag-container{
+	text-align: center;
+}
+
+
+/*상단 버튼 라인*/
+.bus-btn {
+  outline: none;
+  width: 33%;
+  height: 60px;
+  padding: 10px 25px;
+  border: 1px solid #dbdbdb;
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  text-decoration-line: none;
+}
+.mybus-btn {
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+.mybus-btn:after {
+  position: absolute;
+  content: " ";
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  transition: all 0.3s ease;
+  -webkit-transform: scale(.1);
+  transform: scale(.1);
+}
+.mybus-btn:hover {
+  color: #fff;
+}
+.mybus-btn:hover:after {
+  background: #222222;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+
+.busReserveContainer h3{
+	font-size: 30px;
+	font-weight: 700;
+	margin-top: 20px;
+	margin-right: 1050px;
+}
+
+.busReserveBox{
+	position: relative;
+	width: 1300px;
+	height: 500px;
+	border-top: 1px solid #ddd;
+	margin-top: 30px;
+}
+
+.date-group {
+	width: 350px;
+}
+
+.input-box {
+	position: relative;
+	margin: 10px auto;
+}
+
+.people {
+	caret-color: transparent;
+
+}
+
+.peopleList {
+	position: relative;
+	color: #6c757d;
+	margin: 0;
+	background-color: white;
+	width: 250px;
+	position: absolute;
+	top: 175px;
+	right: 30px;
+	border: solid 1px;
+	border-color: #dee2e6;
+	border-radius: 10px;
+	padding-left: 5px;
+	padding-top: 10px;
+	height: 200px;
+	z-index: 1000;
+}
+
+#dateRangePicker {
+	caret-color: transparent;
+}
+
+#dateRangePicker:hover {
+	cursor: pointer;
+}
+
+.people>span {
+	float: right;
+	margin-right: 10px;
+}
+
+.people:hover {
+	cursor: pointer;
+}
+
+.calendar {
+	margin-bottom: 5px;
+}
+
+.calendar:hover {
+	cursor: pointer;
+}
+
+
+.input-group .btn {
+	position: relative;
+	z-index: 0;
+}
+
+.date-group,
+.input-box1,
+.regionBox {
+  	margin-top: 40px;
+}
+
+.input-box1{
+	margin-top: 53px;
+}
+
+.box {
+	width: 1200px;
+	height: 400px;
+	padding: 5px;
+	
+	position: relative;
+	border-radius: 10px;
+	left: 50%;
+	top: 10%;
+	transform: translateX(-50%);
+}
+
+.box>* {
+	margin-top: 10px;
+	display: flex;
+	justify-content: center;
+}
+
+.input-box{
+	display: flex;
+	margin-left: 55px;
+	flex-direction: column;
+}
+
+.input-box1 {
+	width: 350px;
+	
+}
+
+.daterangepicker {
+	width: 300px !important; /* 전체 너비로 설정 */
+	max-width: none !important; /* 최대 너비 설정 해제 */
+	margin: 0 !important; /* 여백 제거 */
+}
+
+.daterangepicker .drp-calendar {
+	display: none;
+	max-width: 1000px;
+}
+
+.daterangepicker .ranges, .daterangepicker .drp-calendar {
+	float: left;
+	width: 100%;
+}
+
+.daterangepicker .calendar-table th, .daterangepicker .calendar-table td
+	{
+	font-size: 15px;
+	height: 40px;
+}
+
+.daterangepicker.show-calendar .ranges {
+	margin-top: 0px;
+}
+
+.daterangepicker select.hourselect, .daterangepicker select.minuteselect,
+	.daterangepicker select.secondselect, .daterangepicker select.ampmselect
+	{
+	font-size: 15px;
+	height: 35px;
+	background-color: #357ebd;
+	color: white;
+	border-radius: 7px;
+}
+
+.daterangepicker .drp-selected {
+	font-size: 15px;
+}
+
+.daterangepicker .drp-buttons .btn {
+	font-size: 15px;
+	font-weight: normal;
+}
+
+.form-control:read-only {
+	background-color: white;
+}
+
+.people-Btn {
+	display: flex;
+	float: right;
+	border: solid 1px;
+	width: 126px;
+	height: 42px;
+	border-radius: 5px;
+}
+
+.people-Btn>div {
+	width: 100%;
+	text-align: center;
+}
+
+.people-Btn>div>button {
+	border: 0px;
+	width: 40px;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	border-radius: 5px;
+	color: #006ce4;
+	font-size: 25px;
+	background-color: none;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	background-color: white;
+}
+
+.people-Btn>div>button>svg {
+	fill: #006ce4;
+}
+
+.people-Btn>div>button:hover {
+	background-color: #dbecff;
+}
+
+#peoplelistClose {
+	width: 80%;
+	position: absolute;
+	bottom: 10px;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.list-Btn-Box {
+	margin-left: 10px;
+	height: 40px;
+	line-height: 40px;
+	margin-top: 10px;
+	margin-right: 10px;
+}
+
+.regionBox{
+	width: 350px;
+	
+}
+
+.busReserveBtn{
+	position: absolute;
+	bottom: 30px;
+	left: 30px;
+	
+}
+
+.regionImgBox{
+	width: 550px;
+	height: 350px;
+	margin-top: 10px;
+	margin-right: 110px;
+}

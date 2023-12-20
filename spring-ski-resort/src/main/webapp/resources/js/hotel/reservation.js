@@ -25,7 +25,7 @@ document.getElementById("payBtn").addEventListener('click', () => {
 
 document.getElementById("closeBtn").addEventListener('click', () => {
 
-  location.reload();
+    location.reload();
 })
 
 function updateCustomText(dateRange, resultId) {
@@ -34,7 +34,7 @@ function updateCustomText(dateRange, resultId) {
     if (getDayOfWeek(startDate) == "Invalid date") {
 
     } else {
-     
+
         var customText = dateRange + " (" + getDayOfWeek(startDate) + " ~ " + getDayOfWeek(endDate) + ")";
         $('#' + resultId).attr('placeholder', customText);
     }
@@ -88,8 +88,8 @@ $(function () {
         }
 
     }, function (start, end, label) {
-    
-        StayDate =  moment(end.format('YYYY-MM-DD')).diff(moment(start.format('YYYY-MM-DD')), 'days');
+
+        StayDate = moment(end.format('YYYY-MM-DD')).diff(moment(start.format('YYYY-MM-DD')), 'days');
         var dateRange = start.format('YYYY-MM-DD') + ' ~ ' + end.format('YYYY-MM-DD');
         updateCustomText(dateRange, 'dateRangePicker');
         updatehotelReserveStay(start.format('YYYY-MM-DD'), end.format('YYYY-MM-DD'));
@@ -128,15 +128,15 @@ function updatehotelReserveStay(startDate, endDate) {
 
 
 //성인 버튼 조작
-function addAudltCnt(int){
+function addAudltCnt(int) {
     let cnt = parseInt(document.getElementById('audlt-Count').innerText);
     if (cnt < 30) {
         cnt += int;
-        if(cnt == 0){
-            cnt =1;
+        if (cnt == 0) {
+            cnt = 1;
         }
     }
-    document.getElementById('audlt-Count').innerText = cnt; 
+    document.getElementById('audlt-Count').innerText = cnt;
     AllPeopleCount();
 }
 
@@ -147,9 +147,9 @@ document.getElementById("child+Btn").addEventListener('click', () => {
     let cnt = parseInt(document.getElementById('child-Count').innerText);
     if (cnt < 10) {
         cnt += 1;
-        
+
     }
-    
+
 
     document.getElementById('child-Count').innerText = cnt;
     AllPeopleCount();
@@ -168,9 +168,9 @@ document.getElementById("child-Btn").addEventListener('click', () => {
 
 /**인원수 세주는거 */
 function AllPeopleCount() {
-    if(document.getElementById('child-Count').innerText!=0){
-    $('#people').attr('placeholder', `성인 ${document.getElementById('audlt-Count').innerText}명 · 아동 ${document.getElementById('child-Count').innerText}명 `);
-    }else{
+    if (document.getElementById('child-Count').innerText != 0) {
+        $('#people').attr('placeholder', `성인 ${document.getElementById('audlt-Count').innerText}명 · 아동 ${document.getElementById('child-Count').innerText}명 `);
+    } else {
         $('#people').attr('placeholder', `성인 ${document.getElementById('audlt-Count').innerText}명`);
     }
     document.getElementById('hotelReservePeople').value = document.getElementById('audlt-Count').innerText;
@@ -223,12 +223,12 @@ targetArea2.addEventListener('click', function (event) {
 
 //방 선택 이벤트
 function roomSelectEvent(num) {
-    if(StayDate == 1){discountRate = 0}if(StayDate == 2){discountRate = 10} if(StayDate == 3){discountRate = 12}if(StayDate == 4){discountRate = 14}if(StayDate == 5){discountRate = 16}
-    if(StayDate == 6){discountRate = 18}if(StayDate == 7){discountRate = 20}if(StayDate == 8){discountRate = 23}if(StayDate == 9){discountRate = 26}if(StayDate == 10){discountRate = 30}
-    roomprice = (document.getElementById('room' + num).value*StayDate)-(document.getElementById('room' + num).value*StayDate/100*discountRate);
+    if (StayDate == 1) { discountRate = 0 } if (StayDate == 2) { discountRate = 10 } if (StayDate == 3) { discountRate = 12 } if (StayDate == 4) { discountRate = 14 } if (StayDate == 5) { discountRate = 16 }
+    if (StayDate == 6) { discountRate = 18 } if (StayDate == 7) { discountRate = 20 } if (StayDate == 8) { discountRate = 23 } if (StayDate == 9) { discountRate = 26 } if (StayDate == 10) { discountRate = 30 }
+    roomprice = (document.getElementById('room' + num).value * StayDate) - (document.getElementById('room' + num).value * StayDate / 100 * discountRate);
     let roomname = document.getElementById('room' + num).innerText;
     let imageurl = document.getElementById('image-src' + num).innerText;
- 
+
 
     //방 갯수 확인을 위한 value값
     document.getElementById('room-payinfo-num').value = num;
@@ -244,7 +244,7 @@ function roomSelectEvent(num) {
     document.getElementById('room-name').innerText = roomname;
 
     //상세보기 넣기
-    document.getElementById('room-explain').innerHTML =  "<a  target='_blank' style='text-decoration: none; color: black;'  href='/hotel/roomDetail?roomNum="+num+"'> 방 상세보기</a>";
+    document.getElementById('room-explain').innerHTML = "<a  target='_blank' style='text-decoration: none; color: black;'  href='/hotel/roomDetail?roomNum=" + num + "'> 방 상세보기</a>";
 
 
     //요금표시
@@ -254,10 +254,10 @@ function roomSelectEvent(num) {
     document.getElementById('realpayvalue').value = roomprice;
 
     //상품명
-    if(StayDate==1){
-    document.getElementById('item-name').innerText = roomname;
-    }else{
-    document.getElementById('item-name').innerText = roomname+'('+(StayDate-1)+'박'+StayDate+'일)';
+    if (StayDate == 1) {
+        document.getElementById('item-name').innerText = roomname;
+    } else {
+        document.getElementById('item-name').innerText = roomname + '(' + (StayDate - 1) + '박' + StayDate + '일)';
     }
 
 
@@ -268,11 +268,11 @@ function roomSelectEvent(num) {
     // }
 
 }
-document.getElementById('submitBtn').addEventListener('click',()=>{
-    if(pay1.value==""){
+document.getElementById('submitBtn').addEventListener('click', () => {
+    if (pay1.value == "") {
         alert("방을 선택해주세요");
-    }else{
-    	document.getElementById('modal-btn').click();
+    } else {
+        document.getElementById('modal-btn').click();
     }
- 
+
 })
