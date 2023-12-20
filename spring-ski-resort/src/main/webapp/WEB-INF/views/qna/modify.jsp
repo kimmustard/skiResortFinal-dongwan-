@@ -247,7 +247,7 @@
 
 
 
-<script type="text/javascript" src="/resources/js/qna/qnaModify.js"></script>
+
 <script type="text/javascript" src="/resources/js/qna/qnaFileModify.js"></script>
 <script type="text/javascript" src="/resources/js/qna/qnaFileUpload.js"></script>	   
 <script type="text/javascript">
