@@ -60,6 +60,8 @@ public interface PayDAO {
 	//리프트권 구매여부 체크
 	int getLiftBuyCheck(long memberNum);
 
+	
+
 
 
 	

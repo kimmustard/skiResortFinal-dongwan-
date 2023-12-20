@@ -67,5 +67,6 @@
  	<select id="memberAmountSum" resultType="Long">
  		select COALESCE(sum(pay_amount), 0) from pay where member_num = #{memberNum} and pay_status = '결제완료'
  	</select>
-  	
+ 	
+ 
   </mapper>

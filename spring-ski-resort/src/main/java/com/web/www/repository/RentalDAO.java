@@ -63,10 +63,6 @@ public interface RentalDAO {
 	//렌탈 장비 개수 체크
 	int itemAmountCheck(long rentalItemNum);
 	
-	//결제 정보 저장 전 갯수 체킹
-
-	
-	
 	// 결제 정보 저장
 	void itemsPayInfoRegister(RentalReserveDTO rrDTO);
 	long itemsPayInfoPrimaryKeyGet(String payMerchantUid);
