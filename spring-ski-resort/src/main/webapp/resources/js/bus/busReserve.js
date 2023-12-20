@@ -171,3 +171,32 @@ function getImagePath(region) {
                return "https://rusutsu.com/wp-content/uploads/rusutsu-powder-day-trip_sp.jpg";
      }
 }
+
+// 버스 예약 취소
+$(document).ready(function () {
+     // 예약 취소 버튼 클릭 시
+     $("#busCancelBtn").on("click", function () {
+          // 해당 예약 번호 가져오기
+          let busNum = $(this).closest("tr").find("td:eq(1)").text(); // 예약 번호의 위치에 따라 수정
+
+          // Ajax로 서버에 예약 취소 요청 보내기
+          $.ajax({
+               type: "POST",
+               url: "/bus/cancelReservation", // 실제 서버의 요청 처리 URL로 수정
+               data: { "busNum": busNum },
+               success: function (data) {
+                    // 성공적으로 처리됐을 때의 동작
+                    if (data.result === "success") {
+                         alert("예약이 취소되었습니다.");
+                         // 페이지 새로고침 또는 예약 목록 갱신 로직 추가
+                    } else {
+                         alert("예약 취소에 실패했습니다.");
+                    }
+               },
+               error: function () {
+                    // 요청 실패 시 동작
+                    alert("서버 오류로 인해 예약 취소에 실패했습니다.");
+               }
+          });
+     });
+});

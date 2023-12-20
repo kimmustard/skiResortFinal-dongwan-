@@ -56,6 +56,13 @@ public class BusController {
 		return "index";
 	}
 	
+	@GetMapping("/cancel")
+	public String busReserveCancel() {
+		int isOk = bsv.busCancel();
+		log.info((isOk > 0)? "ok":"fail");
+		return "/member/memberQna";
+	}
+	
 	@PostConstruct
 	public void addBusList() {
 		int busCount = bsv.busCount();

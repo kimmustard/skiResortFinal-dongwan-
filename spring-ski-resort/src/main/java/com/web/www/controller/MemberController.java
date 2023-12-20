@@ -1,5 +1,6 @@
 package com.web.www.controller;
 
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -31,6 +32,7 @@ import com.web.www.domain.member.RegisterMemberDTO;
 import com.web.www.domain.pay.PayInfoVO;
 import com.web.www.handler.MemberEmailHandler;
 import com.web.www.handler.PagingHandler;
+import com.web.www.service.BusService;
 import com.web.www.service.MemberService;
 import com.web.www.service.QnaService;
 
@@ -46,6 +48,7 @@ public class MemberController {
 	private final MemberService msv;
 	private final MemberEmailHandler mailService;
 	private final QnaService qsv;
+	private final BusService bsv;
 	
 	/**
 	 * @BCryptPasswordEncoder 사용자 pwd 인코더
@@ -241,6 +244,7 @@ public class MemberController {
 	@GetMapping("/memberQna")
 	public void memberQna(HttpSession ses, Model m, PagingVO pgvo) {
 		m.addAttribute("list", qsv.qnaList(pgvo));
+		m.addAttribute("blist", bsv.busReserveList(pgvo));
 		int totalCount = qsv.getTotalCount(pgvo);
 		PagingHandler ph = new PagingHandler(pgvo, totalCount);
 		m.addAttribute("ph",ph);

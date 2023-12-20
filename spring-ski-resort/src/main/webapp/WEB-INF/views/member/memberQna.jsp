@@ -103,6 +103,55 @@
 					
 						
 				</div>
+				
+				<!-- 버스 예약 내역 -->
+				<div class="infoBox ibox6">
+					<div class="iboxList iboxList2">
+						<span>버스예약 내역</span>
+					</div>
+					<table class="table table-hover">
+						<thead>
+							<tr class="table-dark">
+								<th style="width: 10%; border-left: 1px solid;">회원번호</th>
+								<th style="width: 18%; border-left: 1px solid;">차량번호</th>
+								<th style="width: 18%; border-left: 1px solid;">출발지역</th>
+								<th style="width: 18%; border-left: 1px solid;">인원수</th>
+								<th style="width: 18%; border-left: 1px solid;">예약상태</th>
+								<th style="width: 18%; border-left: 1px solid;">예약신청일</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach items="${blist}" var="bvo">
+								
+								<tr class="tr-div">
+									<td>${bvo.memberNum }</td>
+									<td>${bvo.busNum }</td>
+									<td>${bvo.busRegion }</td>
+									<td>${bvo.busPeople }</td>
+									<c:if test="${bvo.busCancel eq 'N' }">
+										<td>
+											예약완료
+											<a href="/bus/cancel"><button type="button" id="busCancelBtn">예약취소</button></a>
+										</td>
+									</c:if>
+									<c:if test="${bvo.busCancel eq 'Y' }">
+										<td>
+											예약취소
+										</td>
+									</c:if>
+									<td>${bvo.busStartDate }</td>									
+								</tr>
+								
+							</c:forEach>
+						</tbody>
+					</table>
+					
+						
+					
+					
+						
+				</div>
+				
 			</div>
 				
 		</div>

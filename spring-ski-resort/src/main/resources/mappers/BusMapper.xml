@@ -22,4 +22,12 @@
         SET bus_people_limit = bus_people_limit - #{busPeople}
         WHERE bus_num = #{busNum} AND bus_region = #{busRegion}
 	</update>
+	
+	<select id="busReserveList" resultType="com.web.www.domain.bus.BusVO">
+		select * from bus
+	</select>
+	
+	<update id="busCancel">
+		update bus set bus_cancel = 'Y'
+	</update>
 </mapper>
