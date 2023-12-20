@@ -188,6 +188,11 @@
 	    FROM rental_items
 	    WHERE rental_list_item_num = #{rentalItemNum}
 	</select>
+	
+	
+
+
+
 
 	<!-- 렌탈 대여 정보 등록 -->
 	<insert id="itemsPayInfoRegister">
@@ -203,5 +208,6 @@
 		insert into rental_reserve_list(rental_reserve_num, rental_list_item_num, rental_reserve_item, rental_reserve_fee, image_url)
 		value(#{rentalReserveNum}, #{rentalItemNum}, #{rentalItemName}, #{rentalItemPrice}, #{rentalItemUrl})
 	</insert>
+	
 
 </mapper>

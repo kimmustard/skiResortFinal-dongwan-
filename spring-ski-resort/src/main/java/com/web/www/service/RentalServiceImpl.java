@@ -1,7 +1,9 @@
 package com.web.www.service;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,7 +15,6 @@ import com.web.www.domain.member.MemberVO;
 import com.web.www.domain.rental.ItemsArray;
 import com.web.www.domain.rental.RentalItemDTO;
 import com.web.www.domain.rental.RentalItemListDTO;
-import com.web.www.domain.rental.RentalItemVO;
 import com.web.www.domain.rental.RentalLiftVO;
 import com.web.www.domain.rental.RentalReserveDTO;
 import com.web.www.domain.rental.RentalReserveVO;
@@ -164,13 +165,7 @@ public class RentalServiceImpl implements RentalService{
 	@Transactional
 	@Override
 	public void itemsPayInfoRegister(RentalReserveDTO rrDTO) {
-		
-		
-		//개수 갱신 로직
-		rdao.getItemPayInfo();
-		
-		
-		
+
 		/***********************************************************/
 		/************** 렌탈 장비 테이블 등록 비즈니스 로직 ******************/
 		/***********************************************************/
@@ -191,13 +186,10 @@ public class RentalServiceImpl implements RentalService{
 		/***********************************************************/
 		/***********************************************************/
 		/***********************************************************/
+
+		
+		
 	}
-
-
-
-
-	
-
 
 
 
