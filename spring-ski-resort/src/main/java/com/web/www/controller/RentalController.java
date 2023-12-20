@@ -194,21 +194,7 @@ public class RentalController {
 	public String itemsPay(RentalReserveDTO rrDTO, PayInfoVO pivo, @AuthUser MemberVO mvo, Model model) throws JsonMappingException, JsonProcessingException{
 		String paySuccessUrl;
 
-//		rsv.itemsPayInfoRegister(rrDTO);
-		
-		log.info("리스트 출력 = {}" ,rrDTO.getItemsArray());
-	
-		// ObjectMapper를 생성
-		ObjectMapper objectMapper = new ObjectMapper();
-		try {
-		    List<ItemsArray> itemsList = objectMapper.readValue(rrDTO.getItemsArray(), new TypeReference<List<ItemsArray>>() {});
-		    // itemsList를 사용하세요
-		    log.info("제발@@@@ = {}", itemsList);
-		} catch (IOException e) {
-		    log.info("상품 리스트 오류발생= {}", e);
-		}
-		
-
+		rsv.itemsPayInfoRegister(rrDTO);
 	
 		String encodedPayName = URLEncoder.encode(pivo.getPayName(), StandardCharsets.UTF_8);
 		UriComponentsBuilder builder = UriComponentsBuilder.fromPath("/pay/PaySuccess")

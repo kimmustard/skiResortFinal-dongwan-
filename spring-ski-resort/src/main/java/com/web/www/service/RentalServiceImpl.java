@@ -1,12 +1,16 @@
 package com.web.www.service;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.web.www.domain.FileVO;
 import com.web.www.domain.member.MemberVO;
+import com.web.www.domain.rental.ItemsArray;
 import com.web.www.domain.rental.RentalItemDTO;
 import com.web.www.domain.rental.RentalItemListDTO;
 import com.web.www.domain.rental.RentalItemVO;
@@ -163,7 +167,21 @@ public class RentalServiceImpl implements RentalService{
 	@Transactional
 	@Override
 	public void itemsPayInfoRegister(RentalReserveDTO rrDTO) {
+		
 		rdao.itemsPayInfoRegister(rrDTO);
+		
+		// ObjectMapper를 생성
+		ObjectMapper objectMapper = new ObjectMapper();
+		try {
+		    List<ItemsArray> itemsList = objectMapper.readValue(rrDTO.getItemsArray(), new TypeReference<List<ItemsArray>>() {});
+		    for (ItemsArray arr : itemsList) {
+				
+			}
+		} catch (IOException e) {
+		    log.info("상품 리스트 오류발생= {}", e);
+		}
+		
+		
 	}
 
 
