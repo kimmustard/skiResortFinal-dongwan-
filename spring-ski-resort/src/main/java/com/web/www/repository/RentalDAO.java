@@ -72,6 +72,18 @@ public interface RentalDAO {
 	
 	void itemsPayInfoListRegister(ItemsArray arr);
 
+	
+	// 결제정보 저장 토대로 갯수 합산
+	List<Long> getRentalItemNumList(long rentalReserveNum);
+
+	// 수량 빼기
+	void rentalItemListMinus(Long itemListNum);
+	// 수량 채우기
+	void rentalItemListPlus(Long itemListNum);
+	// 환불 이후 반납 리턴 체크
+	void itemPayInfoReturnCheck(String payMerchantUid);
+
+
 
 
 

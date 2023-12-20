@@ -113,6 +113,14 @@ public class PayServiceImpl implements PayService{
 				break;
 			case "렌탈":
 				//[렌탈]장비가 없을때 return
+				
+				/*
+				 *  구매한 물건의 넘버, 개수가 그대로 넘어와서
+				 * 전부 검증을 해야합니다.
+				 * ex) 3개가 남았을때 구매하고싶은게 4개라면 -1로 되니까 쳐내야함.
+				 * */
+				
+				
 				//수량없으면 임시보관후 사용자에게 물건명단 출력
 				int itemCnt = 1;
 				List<String> itemLack = new ArrayList<>();
@@ -224,7 +232,13 @@ public class PayServiceImpl implements PayService{
 			
 			break;
 		case "렌탈":
-			//[렌탈] 환불 로직
+			//[렌탈] 환불시 아이템 개수 재충전 and 테이블 반납여부 Y로 변경
+			long rentalReserveNum = rdao.itemsPayInfoPrimaryKeyGet(rfiVO.getPayMerchantUid());
+			List<Long> rentalItemNumList = rdao.getRentalItemNumList(rentalReserveNum);
+			for (Long itemListNum : rentalItemNumList) {
+				rdao.rentalItemListPlus(itemListNum);
+			}
+			rdao.itemPayInfoReturnCheck(rfiVO.getPayMerchantUid());
 			
 			
 			

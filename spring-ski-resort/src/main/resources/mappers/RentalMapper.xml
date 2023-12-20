@@ -188,11 +188,6 @@
 	    FROM rental_items
 	    WHERE rental_list_item_num = #{rentalItemNum}
 	</select>
-	
-	
-
-
-
 
 	<!-- 렌탈 대여 정보 등록 -->
 	<insert id="itemsPayInfoRegister">
@@ -209,5 +204,22 @@
 		value(#{rentalReserveNum}, #{rentalItemNum}, #{rentalItemName}, #{rentalItemPrice}, #{rentalItemUrl})
 	</insert>
 	
+	<!-- 렌탈 대여 정보 등록 토대로 개수 갱신 -->
+	<select id="getRentalItemNumList" resultType="Long">
+		select rental_list_item_num from rental_reserve_list where rental_reserve_num = #{rentalReserveNum}
+	</select>
+	
+	<update id="rentalItemListMinus">
+		update rental_items set rental_list_item_count = rental_list_item_count - 1 
+		where rental_list_item_num = #{itemListNum}
+	</update>
+	<update id="rentalItemListPlus">
+		update rental_items set rental_list_item_count = rental_list_item_count + 1 
+		where rental_list_item_num = #{itemListNum}
+	</update>
+	<update id="itemPayInfoReturnCheck">
+		update rental_reserve set rental_reserve_return = 'Y' 
+		where pay_merchant_uid = #{payMerchantUid}
+	</update>	
 
 </mapper>

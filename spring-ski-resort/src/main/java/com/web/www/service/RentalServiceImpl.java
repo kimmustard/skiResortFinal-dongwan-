@@ -1,9 +1,8 @@
 package com.web.www.service;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -187,8 +186,10 @@ public class RentalServiceImpl implements RentalService{
 		/***********************************************************/
 		/***********************************************************/
 
-		
-		
+		List<Long> rentalItemNumList = rdao.getRentalItemNumList(rentalReserveNum);
+		for (Long itemListNum : rentalItemNumList) {
+			rdao.rentalItemListMinus(itemListNum);
+		}
 	}
 
 
