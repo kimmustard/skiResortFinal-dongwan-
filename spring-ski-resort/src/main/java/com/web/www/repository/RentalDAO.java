@@ -8,6 +8,7 @@ import com.web.www.domain.member.MemberVO;
 import com.web.www.domain.rental.RentalItemListDTO;
 import com.web.www.domain.rental.RentalItemVO;
 import com.web.www.domain.rental.RentalLiftVO;
+import com.web.www.domain.rental.RentalReserveDTO;
 import com.web.www.domain.rental.RentalReserveVO;
 import com.web.www.domain.rental.RentalVO;
 import com.web.www.domain.rental.rentalItemImageVO;
@@ -55,6 +56,13 @@ public interface RentalDAO {
 	String getMemberPayMerchantUid(long memberNum);
 
 	RentalLiftVO getMemberRentalLift(String payMerchantUid);
+
+	
+	//렌탈 장비 개수 체크
+	int itemAmountCheck(String rentalItemNum);
+	
+	// 결제 정보 저장
+	void itemsPayInfoRegister(RentalReserveDTO rrDTO);
 
 
 

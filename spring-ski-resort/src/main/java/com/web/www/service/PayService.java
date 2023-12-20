@@ -24,7 +24,7 @@ public interface PayService {
 	 * @return 환불 insert 이후 응답값
 	 * @throws IOException
 	 */
-	ResponseEntity<String> payMentRefund(RefundInfoVO rfiVO, long memberNum) throws IOException;
+	ResponseEntity<String> payMentRefund(RefundInfoVO rfiVO, long memberNum, String memberGrade) throws IOException;
 
 	
 	//멤버의 리프트권 활성화 여부

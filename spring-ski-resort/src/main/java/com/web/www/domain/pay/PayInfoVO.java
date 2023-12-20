@@ -33,6 +33,7 @@ public class PayInfoVO {
 	
 	//구매자 정보
 	private long memberNum;	
+	private String memberGrade;
 	
 	private String memberEmail;
 	private String memberName;
@@ -41,5 +42,8 @@ public class PayInfoVO {
 	
 	//사용 쿠폰번호
 	private String couponCode;
+	
+	//결제시 사용할 리스트
+	private List<ItemsArray> rentalItems;
 	
 }

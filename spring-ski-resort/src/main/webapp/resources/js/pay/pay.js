@@ -64,7 +64,7 @@ function paymentGateway(pgName) {
                     memberAddress: rsp.buyer_addr,
                     uniqueNumber: UniqueNumber,
                     payNameType: nameType,
-                    itemsArray: itemsArray,
+                    rentalItems: itemsArray,
                     couponCode: coupon,
                 }),
             })

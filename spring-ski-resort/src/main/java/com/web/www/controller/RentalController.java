@@ -75,7 +75,7 @@ public class RentalController {
 		log.info("rlivo>>>>>>>>>>>>>>>>>>>>>"+rlivo);
 		String paySuccessUrl;
 		//결제 db
-		int isOk =rsv.updateRentalLift(rlivo ,mvo);;
+		int isOk = rsv.updateRentalLift(rlivo ,mvo);;
 		String encodedPayName = URLEncoder.encode(pivo.getPayName(), StandardCharsets.UTF_8);
 		UriComponentsBuilder builder = UriComponentsBuilder.fromPath("/pay/PaySuccess")
 				.queryParam("payMerchantUid", pivo.getPayMerchantUid()).queryParam("payName", encodedPayName)
@@ -191,13 +191,10 @@ public class RentalController {
 	}
 	
 	@PostMapping("/item-reserve")
-	public String itemsPay(RentalReserveDTO rrDTO, PayInfoVO pivo, @AuthUser MemberVO mvo, Model model){
+	public String itemsPay(RentalReserveDTO rrDTO, PayInfoVO pivo, @AuthUser MemberVO mvo, Model model) throws JsonMappingException, JsonProcessingException{
 		String paySuccessUrl;
 
-	    
-		log.info("하나## = {}", pivo);
-		log.info("둘## = {}", rrDTO);
-		
+		rsv.itemsPayInfoRegister(rrDTO);
 	
 		String encodedPayName = URLEncoder.encode(pivo.getPayName(), StandardCharsets.UTF_8);
 		UriComponentsBuilder builder = UriComponentsBuilder.fromPath("/pay/PaySuccess")
