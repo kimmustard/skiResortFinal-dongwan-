@@ -80,6 +80,7 @@
    	top:20%;
    	position: absolute;
    	background-color:rgba(255,255, 255, 0.9);
+   	    box-shadow: 0px 0px 5px black;
    
    	 
 }
@@ -262,7 +263,7 @@
     right: 20px;
     width: 680px;
     height: 480px;
-    border: solid 1px black;
+    box-shadow: 0px 0px 5px black;
     user-select: none;
     
 }.room-image{
@@ -271,6 +272,7 @@
 	background-size: cover;
 	margin: auto;
 	margin-top:30px;
+	
 }.room-explain{
 	padding:5px;
 	padding-top:15px;
