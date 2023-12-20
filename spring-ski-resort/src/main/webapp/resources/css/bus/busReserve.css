@@ -85,7 +85,7 @@ li{
 .busReserveBox{
 	position: relative;
 	width: 1300px;
-	height: 300px;
+	height: 500px;
 	background-color:rgba(211,211, 211, 0.9);
 	border-radius: 10px;
 	margin-top: 30px;
@@ -112,14 +112,15 @@ li{
 	background-color: white;
 	width: 250px;
 	position: absolute;
-	top: 40px;
-	right: 460px;
+	top: 175px;
+	right: 30px;
 	border: solid 1px;
 	border-color: #dee2e6;
 	border-radius: 10px;
 	padding-left: 5px;
 	padding-top: 10px;
 	height: 200px;
+	z-index: 1000;
 }
 
 #dateRangePicker {
@@ -156,18 +157,22 @@ li{
 .date-group,
 .input-box1,
 .regionBox {
-  	margin-right: 15px;
+  	margin-top: 40px;
+}
+
+.input-box1{
+	margin-top: 53px;
 }
 
 .box {
 	width: 1200px;
-	height: 200px;
+	height: 400px;
 	padding: 5px;
 	background-color: white;
 	position: relative;
 	border-radius: 10px;
 	left: 50%;
-	top: 15%;
+	top: 10%;
 	transform: translateX(-50%);
 }
 
@@ -180,6 +185,7 @@ li{
 .input-box{
 	display: flex;
 	margin-left: 55px;
+	flex-direction: column;
 }
 
 .input-box1 {
@@ -299,7 +305,13 @@ li{
 .busReserveBtn{
 	position: absolute;
 	bottom: 30px;
-	right: 30px;
+	left: 30px;
 	
 }
 
+.regionImgBox{
+	width: 550px;
+	height: 350px;
+	margin-top: 10px;
+	margin-right: 110px;
+}

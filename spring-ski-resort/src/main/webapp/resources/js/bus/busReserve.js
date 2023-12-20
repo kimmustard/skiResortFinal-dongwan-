@@ -1,8 +1,21 @@
 console.log(memberEmail);
+
 document.getElementById('busReserveBtn').addEventListener('click', () => {
-     if (memberEmail == "") {
+     let busStartDate = document.getElementById('busStartDate').value;
+     let busPeople = document.getElementById('busPeople').value;
+     let busRegion = document.getElementById('busRegion').value;
+
+     if (memberEmail === "") {
           alert('버스예약은 회원만 가능합니다.');
           location.href = '/member/login';
+     } else if (busStartDate === "") {
+          alert('날짜를 선택해주세요.');
+     } else if (busPeople === "") {
+          alert('인원수를 선택해주세요.');
+     } else if (busRegion === "") {
+          alert('탑승하실 지역을 선택해주세요.');
+     } else if (busPeople === 5) {
+          alert('버스예약은 최대 4명까지만 가능합니다.');
      }
 })
 
@@ -67,7 +80,7 @@ document.getElementById("people").addEventListener('click', () => {
 //성인 버튼 조작
 function addAudltCnt(int) {
      let cnt = parseInt(document.getElementById('adult-Count').innerText);
-     if (cnt < 30) {
+     if (cnt < 10) {
           cnt += int;
           if (cnt == 0) {
                cnt = 1;
@@ -114,6 +127,10 @@ function updateRegion() {
 
      let busNum = updateBusNum(selectRegion);
 
+     let imagePath = getImagePath(selectRegion);
+
+     document.getElementById("regionImage").src = imagePath;
+
      document.getElementById('busNum').value = busNum;
 
      function updateBusNum(region) {
@@ -131,5 +148,22 @@ function updateRegion() {
                case '천안-평택선':
                     return 1006;
           }
+     }
+}
+
+function getImagePath(region) {
+     switch (region) {
+          case '강남선':
+               return "https://i.namu.wiki/i/KJmURamoD2t16saSVzLomUJOQ1hNjOicO06lwQIwdB5gHhgMF8uyRp9aCjkVJ9h01RLdn2Y8Q1tPykUumTiKDQ.webp";
+          case '광화문':
+               return "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/2011%EB%85%84_11%EC%9B%94_%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD_%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C_%EB%AA%85%EC%86%8C_%28Seoul_best_attractions%29_%EA%B4%91%ED%99%94%EB%AC%B8.JPG/1920px-2011%EB%85%84_11%EC%9B%94_%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD_%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C_%EB%AA%85%EC%86%8C_%28Seoul_best_attractions%29_%EA%B4%91%ED%99%94%EB%AC%B8.JPG";
+          case '분당선':
+               return "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/2011%EB%85%84_11%EC%9B%94_%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD_%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C_%EB%AA%85%EC%86%8C_%28Seoul_best_attractions%29_%EA%B4%91%ED%99%94%EB%AC%B8.JPG/1920px-2011%EB%85%84_11%EC%9B%94_%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD_%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C_%EB%AA%85%EC%86%8C_%28Seoul_best_attractions%29_%EA%B4%91%ED%99%94%EB%AC%B8.JPG";
+          case '수원선':
+               return "https://img.hani.co.kr/imgdb/resize/2013/0501/00468417301_20130501.JPG";
+          case '잠실선':
+               return "https://www.lottehotel.com/content/dam/lotte-hotel/global/common/company/seoul-signiel.jpg";
+          case '천안-평택선':
+               return "https://www.i815.or.kr/2017/images/tour/img_visu01.jpg";
      }
 }

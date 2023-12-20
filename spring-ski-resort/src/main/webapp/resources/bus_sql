@@ -5,7 +5,8 @@ member_num bigint,
 bus_region varchar(20),
 bus_start_date datetime,
 bus_people int,
-bus_isok varchar(1) default 'Y'
+bus_isok varchar(1) default 'Y',
+bus_cancel varchar(1) default 'N'
 );
 
 -- bus_info 테이블 생성 12/19

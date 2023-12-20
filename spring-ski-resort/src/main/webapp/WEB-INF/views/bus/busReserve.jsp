@@ -134,6 +134,9 @@
 										</div>
 									</div>
 								</div>
+								<div class="regionImgBox" id="regionImgBox">
+									 <img src="" alt="지역 이미지" id="regionImage" class="img-fluid" style="width: 100%; height: 100%;">
+								</div>
 								<button type="submit" class="btn btn-outline-primary busReserveBtn" id="busReserveBtn">예약</button>	
 							</form>
 						</div>
