@@ -72,7 +72,8 @@
 								data-adultFee="${lowItem.rentalListItemAdultFee }" 
 								data-kidFee="${lowItem.rentalListItemKidFee }" 
 								data-num="${lowItem.rentalListItemNum }" 
-								data-img="${lowItem.imageUrl }">
+								data-img="${lowItem.imageUrl }"
+								data-count="${lowItem.rentalListItemCount }">
 								<p class="fs-5">${lowItem.rentalListLowItem }</p>
 								<c:choose>
 									<c:when test="${fn:contains(lowItem.rentalListLowItem,'주니어') }">
@@ -82,7 +83,7 @@
 										<p class="fs-5">${lowItem.rentalListItemAdultFee }원</p>
 									</c:otherwise>
 								</c:choose>
-								
+								<p class="fs-5">수량 : ${lowItem.rentalListItemCount }개</p>
 							</div>
 						</c:forEach>
 					</div>
@@ -100,7 +101,8 @@
 								data-kidFee="${midItem.rentalListItemKidFee }" 
 								data-num="${midItem.rentalListItemNum }" 
 								data-img="${midItem.imageUrl }"
-								src="${midItem.imageUrl }">
+								src="${midItem.imageUrl }"
+								data-count="${midItem.rentalListItemCount }">
 								<p class="fs-5">${midItem.rentalListMidItem }</p>
 								<c:choose>
 									<c:when test="${fn:contains(midItem.rentalListMidItem,'주니어') }">
@@ -110,6 +112,7 @@
 										<p class="fs-5">${midItem.rentalListItemAdultFee }원</p>
 									</c:otherwise>
 								</c:choose>
+								<p class="fs-5">수량 : ${midItem.rentalListItemCount }개</p>
 							</div>
 						</c:forEach>
 					</div>
@@ -129,7 +132,8 @@
 								 data-kidFee="${premiumItem.rentalListItemKidFee }" 
 								 data-num="${premiumItem.rentalListItemNum }" 
 								 data-img="${premiumItem.imageUrl }"
-								 src="${premiumItem.imageUrl }">
+								 src="${premiumItem.imageUrl }"
+								 data-count="${premiumItem.rentalListItemCount }">
 								<p class="fs-5">${premiumItem.rentalListPremiumItem }</p>
 								<c:choose>
 									<c:when test="${fn:contains(premiumItem.rentalListPremiumItem,'주니어') }">
@@ -139,7 +143,7 @@
 										<p class="fs-5">${premiumItem.rentalListItemAdultFee }원</p>
 									</c:otherwise>
 								</c:choose>
-								
+								<p class="fs-5">수량 : ${premiumItem.rentalListItemCount }개</p>
 							</div>
 						</c:forEach>
 						
@@ -162,7 +166,8 @@
 								data-kidFee="${lowItem.rentalListItemKidFee }" 
 								data-num="${lowItem.rentalListItemNum }"
 								data-img="${lowItem.imageUrl }"
-								src="${lowItem.imageUrl }">
+								src="${lowItem.imageUrl }"
+								data-count="${lowItem.rentalListItemCount }">
 								<p class="fs-5">${lowItem.rentalListLowItem }</p>
 								<c:choose>
 									<c:when test="${fn:contains(lowItem.rentalListLowItem,'주니어') }">
@@ -172,6 +177,7 @@
 										<p class="fs-5">${lowItem.rentalListItemAdultFee }원</p>
 									</c:otherwise>
 								</c:choose>
+								<p class="fs-5">수량 : ${lowItem.rentalListItemCount }개</p>
 							</div>
 						</c:forEach>
 					</div>
@@ -186,7 +192,8 @@
 								data-kidFee="${midItem.rentalListItemKidFee }" 
 								data-num="${midItem.rentalListItemNum }"
 								data-img="${midItem.imageUrl }"
-								src="${midItem.imageUrl }">
+								src="${midItem.imageUrl }"
+								data-count="${midItem.rentalListItemCount }">
 								<p class="fs-5">${midItem.rentalListMidItem }</p>
 								<c:choose>
 									<c:when test="${fn:contains(midItem.rentalListMidItem,'주니어') }">
@@ -196,6 +203,7 @@
 										<p class="fs-5">${midItem.rentalListItemAdultFee }원</p>
 									</c:otherwise>
 								</c:choose>
+								<p class="fs-5">수량 : ${midItem.rentalListItemCount }개</p>
 							</div>
 						</c:forEach>
 						
@@ -211,7 +219,8 @@
 								data-kidFee="${premiumItem.rentalListItemKidFee }" 
 								data-num="${premiumItem.rentalListItemNum }"
 								data-img="${premiumItem.imageUrl }"
-								src="${premiumItem.imageUrl }">
+								src="${premiumItem.imageUrl }"
+								data-count="${premiumItem.rentalListItemCount }">
 								<p class="fs-5">${premiumItem.rentalListPremiumItem }</p>
 								<c:choose>
 									<c:when test="${fn:contains(premiumItem.rentalListPremiumItem,'주니어') }">
@@ -221,6 +230,7 @@
 										<p class="fs-5">${premiumItem.rentalListItemAdultFee }원</p>
 									</c:otherwise>
 								</c:choose>
+								<p class="fs-5">수량 : ${premiumItem.rentalListItemCount }개</p>
 							</div>
 						</c:forEach>
 						
@@ -243,9 +253,11 @@
 								data-adultFee="${lowItem.rentalListItemAdultFee }" 
 								data-num="${lowItem.rentalListItemNum }"
 								data-img="${lowItem.imageUrl }"
-								src="${lowItem.imageUrl }">
+								src="${lowItem.imageUrl }"
+								data-count="${lowItem.rentalListItemCount }">
 								<p class="fs-5">${lowItem.rentalListLowItem }</p>
 								<p class="fs-5">${lowItem.rentalListItemAdultFee }원</p>
+								<p class="fs-5">수량 : ${lowItem.rentalListItemCount }개</p>
 							</div>
 						</c:forEach>
 					</div>
@@ -259,9 +271,11 @@
 								data-adultFee="${midItem.rentalListItemAdultFee }" 
 								data-num="${midItem.rentalListItemNum }"
 								data-img="${midItem.imageUrl }"
-								src="${midItem.imageUrl }">
+								src="${midItem.imageUrl }"
+								data-count="${midItem.rentalListItemCount }">
 								<p class="fs-5">${midItem.rentalListMidItem }</p>
 								<p class="fs-5">${midItem.rentalListItemAdultFee }원</p>
+								<p class="fs-5">수량 : ${midItem.rentalListItemCount }개</p>
 							</div>
 						</c:forEach>
 						
@@ -276,9 +290,11 @@
 								data-adultFee="${premiumItem.rentalListItemAdultFee }" 
 								data-num="${premiumItem.rentalListItemNum }"
 								data-img="${premiumItem.imageUrl }"
-								src="${premiumItem.imageUrl }">
+								src="${premiumItem.imageUrl }"
+								data-count="${premiumItem.rentalListItemCount }">
 								<p class="fs-5">${premiumItem.rentalListPremiumItem }</p>
 								<p class="fs-5">${premiumItem.rentalListItemAdultFee }원</p>
+								<p class="fs-5">수량 : ${premiumItem.rentalListItemCount }개</p>
 							</div>
 						</c:forEach>
 						

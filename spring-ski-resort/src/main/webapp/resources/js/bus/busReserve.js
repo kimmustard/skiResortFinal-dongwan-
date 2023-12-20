@@ -14,6 +14,8 @@ document.getElementById('busReserveBtn').addEventListener('click', () => {
           alert('인원수를 선택해주세요.');
      } else if (busRegion === "") {
           alert('탑승하실 지역을 선택해주세요.');
+     } else if (busPeople.length > 5) {
+          alert('버스예약은 최대 4명까지만 가능합니다.');
      } else {
           document.getElementById('busReserveForm').submit();
      }
