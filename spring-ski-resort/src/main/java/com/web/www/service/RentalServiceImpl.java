@@ -164,7 +164,6 @@ public class RentalServiceImpl implements RentalService{
 	@Override
 	public void itemsPayInfoRegister(RentalReserveDTO rrDTO) {
 		rdao.itemsPayInfoRegister(rrDTO);
-		
 	}
 
 

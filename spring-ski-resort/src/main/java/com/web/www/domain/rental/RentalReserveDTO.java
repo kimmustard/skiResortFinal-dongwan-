@@ -25,5 +25,5 @@ public class RentalReserveDTO {
 	private String payMerchantUid;
 	
 	//결제후 사용할 렌탈장비 상세리스트
-	private List<String> itemsArray;
+	private String itemsArray;
 }
