@@ -88,21 +88,29 @@
 			<div class="payContainer">
 				<div class="payBox1">
 
-					<div class="box">
-						<div class="input-box">
-							<input type="hidden" name="rentalReserveStart" id="rentalReserveStart" placeholder="렌탈이용날짜">
-							<div class="date-group">
-								<div class="input-group calendar">
-				              	 	<div class="input-group-prepend">
-				                		 <span class="input-group-text"><i class="bi bi-calendar"></i></span>
-				                	</div>
-									<input type="text" class="form-control" id="dateRangePicker" placeholder="날짜를 선택하세요" readonly="readonly">
-									<button id="nextBtn" type="button" class="btn btn-light">다음</button>
-								</div>
-							</div>
-						</div>	
+					<h3>회원님이 구매하신 리프트 이용권은 "${rlVO.rentalLiftTicket } " 입니다</h3>
+					<div>
+						<p>리프트권 주문번호 : ${rlVO.payMerchantUid }</p>
+						<p>리프트권 시작일 : ${rlVO.rentalLiftStart }</p>
+						<p>인원 : 성인${rlVO.rentalLiftAdult}명 / 어린이 ${rlVO.rentalLiftKid}명</p>
+						<p>장비 렌탈기간은 리프트권 기간과 동일하게 설정됩니다.</p>
+						<form action="/rental/item-reserve" method="post" id="payform">
+							<input type="hidden" name="memberNum" value="${rlVO.memberNum }">
+							<input type="hidden" value="${rlVO.rentalLiftStart }">
+							<input type="hidden" id="memberGradeInput" value="${mvo.memberGrade}">
+							<input type="hidden" id="name-type" value="렌탈">
+							<input type="hidden" name="couponCode" id="couponCode" >
+							<input type="hidden" name="rentalReserveTotalFee" id="rentalPriceSum" value="${sum }">
+							<input type="hidden" name="rentalReserveStart" value="${rlVO.rentalLiftStart }">
+							<input type="hidden" name="itemsArray" id="itemsArray">
+							<input type="hidden" id="productPrice" value="${sum }">
+							<input type="hidden" id="realpayvalue">
+							<input type="hidden" name="payImpUid" id="payImpUid">	
+							<input type="hidden" name="payMerchantUid" id="payMerchantUid">	
+							<input type="hidden" name="payAmount" id="payAmount">
+							<input type="hidden" name="payName" id="payName">
+						</form>
 					</div>
-
 				</div>
 				<div class="payBox2">
 	
@@ -111,9 +119,9 @@
 				        <p class="payTitle">결제선택하기</p>
 				      </div>
 				      <div class="modal-body pay-info">
-				      	<div>상품명<div class="pay-value" id="item-name"></div></div>
+				      	<div>상품명<div class="pay-value" id="item-name">${payName }</div></div>
 				      	<div>판매자  <div class="pay-value">다이스키</div></div>
-				      	<div>등급<div class="pay-value" id="userGradeRate"></div></div>
+				      	<div>등급<div class="pay-value" id="userGradeRate">${mvo.memberGrade }</div></div>
 					    <div class="pay3-box">결제금액<div class="pay-value" id="userViewpay"></div></div> 
 				  
 				      </div>
@@ -149,10 +157,39 @@
 		</div>
 		
 	</div>
+	<script type="text/javascript">
+	const memberEmail= `<c:out value="${mvo.memberEmail}"/>`;
+	const memberName= `<c:out value="${mvo.memberName}"/>`;
+	const memberPhoneNum= `<c:out value="${mvo.memberPhoneNum}"/>`;
+	const memberAddress= `<c:out value="${mvo.memberAddress}"/>`;
 	
-	
+	</script>
+	<script type="text/javascript">
+   		var itemsArray = [];
 
+    <c:forEach var="rti" items="${rtiList}">
+        var itemNum = '<c:out value="${rti.rentalItemNum}" />';
+        var itemName = '<c:out value="${rti.rentalItemName}" />';
+        var itemPrice = '<c:out value="${rti.rentalItemPrice}" />';
+        var itemImageUrl = '<c:out value="${rti.rentalItemUrl}" />';
+
+        var itemsConfig = {
+            rentalItemNum: itemNum,
+            rentalItemName: itemName,
+            rentalItemPrice: itemPrice,
+            rentalItemUrl: itemImageUrl
+        };
+
+        itemsArray.push(itemsConfig);
+    </c:forEach>
+	</script>
+	
+	
+	<script type="text/javascript" src="/resources/js/pay/pay.js"></script>
+	<script type="text/javascript" src="/resources/js/coupon/coupon.js"></script>
 	<script type="text/javascript" src="/resources/js/rental/itemReserve.js"></script>
+	
+	
 	<jsp:include page="../common/footer.jsp" />
 </body>
 </html>

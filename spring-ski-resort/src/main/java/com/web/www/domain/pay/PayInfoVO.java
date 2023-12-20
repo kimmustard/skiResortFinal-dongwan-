@@ -1,5 +1,9 @@
 package com.web.www.domain.pay;
 
+import java.util.List;
+
+import com.web.www.domain.rental.ItemsArray;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

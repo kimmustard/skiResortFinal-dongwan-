@@ -57,6 +57,9 @@ public interface PayDAO {
 	//결제금액 합산후 등급 갱신
 	long memberAmountSum(long memberNum);
 
+	//리프트권 구매여부 체크
+	int getLiftBuyCheck(long memberNum);
+
 
 
 	

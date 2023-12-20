@@ -18,17 +18,18 @@
 
 function paymentGateway(pgName) {
     //임시로 방이름만 가져옴. 나중에 방이름/렌탈장비/리프트권이름 유연하게 가져와야함.
-    let payName = document.getElementById('item-name').innerText;//상품명
+    let payName = document.getElementById('item-name').innerText; //상품명
     let nameType = document.getElementById('name-type').value;  //결제하는곳
     let UniqueNumber; //호텔 룸 넘버
-    if ( nameType == '호텔') {
+    if (nameType == '호텔') {
         UniqueNumber = document.getElementById('room-payinfo-num').value;
-    } else if(nameType=="리프트"){
+    } else if (nameType == "리프트") {
 
-    }else;
+    } else {
+        console.log("렌탈입니다");
+    };
 
     let coupon = document.getElementById('couponCode').value;
-
     IMP.init("imp70464277");
     console.log("결제햐라12");
     IMP.request_pay({
@@ -42,12 +43,8 @@ function paymentGateway(pgName) {
         buyer_tel: memberPhoneNum,
         buyer_addr: memberAddress,
     }, function (rsp) {
-       
-
-
-
         if (rsp.success) {
-           
+
             // 서버로 데이터를 전송
             fetch("/pay/portOne", {
                 method: "POST",
@@ -67,8 +64,8 @@ function paymentGateway(pgName) {
                     memberAddress: rsp.buyer_addr,
                     uniqueNumber: UniqueNumber,
                     payNameType: nameType,
+                    itemsArray: itemsArray,
                     couponCode: coupon,
-
                 }),
             })
                 .then((response) => response.text())
@@ -79,7 +76,11 @@ function paymentGateway(pgName) {
                         document.getElementById('payAmount').value = rsp.paid_amount;
                         document.getElementById('payMerchantUid').value = rsp.merchant_uid;
                         document.getElementById('payImpUid').value = rsp.imp_uid;
-                        if(document.getElementById("payform")){
+                        if (document.getElementById('itemsArray')) {
+                            document.getElementById('itemsArray').value = JSON.stringify(itemsArray);
+                        }
+
+                        if (document.getElementById("payform")) {
                             document.getElementById("payform").submit();
                         }
 

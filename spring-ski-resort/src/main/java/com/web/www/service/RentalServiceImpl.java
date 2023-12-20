@@ -150,6 +150,14 @@ public class RentalServiceImpl implements RentalService{
 
 	}
 
+	//결제테이블에서 조건부 payMerchantUid 값을 얻고, 리프트권을 조회합니다.
+	@Transactional
+	@Override
+	public RentalLiftVO getRentalLift(long memberNum) {
+		String payMerchantUid = rdao.getMemberPayMerchantUid(memberNum);
+		return rdao.getMemberRentalLift(payMerchantUid);
+	}
+
 
 	
 

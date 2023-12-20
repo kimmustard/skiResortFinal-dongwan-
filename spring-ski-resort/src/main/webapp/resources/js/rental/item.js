@@ -386,6 +386,7 @@ function shoppingBasket(itemNum, itemName, price, itemImageUrl) {
      renderBasket();
 }
 
+
 function renderBasket() {
      let itemSelectDiv = document.getElementById('itemSelectDiv');
      itemSelectDiv.innerHTML = '';
@@ -457,29 +458,29 @@ function reservationBtn() {
      window.location.href = '/rental/item-reserve?data=' + encodeURIComponent(JSON.stringify(itemsArray));
 }
 
-async function itemsBasketToServer() {
-     try {
-          const url = '/rental/itemsBasket';
-          const config = {
-               method: 'post',
-               headers: {
-                    'Content-Type': 'application/json; charset=utf-8'
-               },
-               body: JSON.stringify(itemsArray)
-          };
-          let resp = await fetch(url, config);
-          if (resp.ok) {
-               let result = await resp.json();
-               console.log("배열값 :: ", result);
-               window.location.href = '/rental/item-reserve?data=' + encodeURIComponent(JSON.stringify(result));
-          } else {
-               console.error('비동기 통신 실패', resp.status);
-          }
-         
-     } catch (error) {
-          console.log(error);
-     }
-}
+// async function itemsBasketToServer() {
+//      try {
+//           const url = '/rental/itemsBasket';
+//           const config = {
+//                method: 'post',
+//                headers: {
+//                     'Content-Type': 'application/json; charset=utf-8'
+//                },
+//                body: JSON.stringify(itemsArray)
+//           };
+//           let resp = await fetch(url, config);
+//           if (resp.ok) {
+//                let result = await resp.json();
+//                console.log("배열값 :: ", result);
+//                window.location.href = '/rental/item-reserve?data=' + encodeURIComponent(JSON.stringify(result));
+//           } else {
+//                console.error('비동기 통신 실패', resp.status);
+//           }
+
+//      } catch (error) {
+//           console.log(error);
+//      }
+// }
 
 
 

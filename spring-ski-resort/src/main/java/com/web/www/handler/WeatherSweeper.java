@@ -39,7 +39,7 @@ public class WeatherSweeper {
 	 * 기존 핸들러에서 발생한 체크예외는 (throws IOException, ParseException) 
 	 * 언체크예외로 변경하여 종속성을 삭제합니다.
 	 */
-	@Async("WeatherInit")
+	@Async("weatherInit")
 	@Retryable(
 			value = RuntimeException.class,
 			maxAttempts = 2,
