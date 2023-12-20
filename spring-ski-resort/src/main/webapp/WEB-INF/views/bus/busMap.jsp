@@ -33,13 +33,13 @@
 					</a>
 				</li>
 				<li>
-					<a>
+					<a href="/bus/busGuid">
 						<button type="button" class="bus-btn mybus-btn">예약 안내</button>
 					</a>
 				</li>
 				<li>
 					<a href="/bus/busMap">
-						<button type="button" class="bus-btn mybus-btn">노선 보기</button>
+						<button type="button" class="bus-btn mybus-btn" style="background-color: #222222; color: white;">노선 보기</button>
 					</a>
 				</li>
 			</ul>
@@ -57,8 +57,17 @@
 			      </button>
 			    </h2>
 			    <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-			      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
-			    </div>
+			      <div class="accordion-body">
+			      	<div>
+				      	<div class="bus-map-img">
+				      		<img src="https://www.jisanresort.co.kr/downloads/shuttle/shuttle_gangnam_01.jpg">
+				      	</div>
+				      	<div class="bus-map-img-text">			      		
+							<p><span class="material-symbols-outlined">directions_bus</span>신논현역 6번 출구 (교보타워 건물 입구)</p>
+				      		<span>※ 다음 거리뷰를 사용하는 서비스 입니다. 일부 위치에서는 위치가 다소 다르게 표현될 수 있으며 현재보다 이전에 촬영되어 현재와 다를 수 있습니다.</span>
+				      	</div>
+			      	</div>
+			      </div>
 			  </div>
 			  <div class="accordion-item">
 			    <h2 class="accordion-header">
@@ -68,7 +77,17 @@
 			      </button>
 			    </h2>
 			    <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-			      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
+					<div class="accordion-body">
+				      	<div>
+					      	<div class="bus-map-img">
+					      		<img src="https://www.jisanresort.co.kr/downloads/shuttle/shuttle_gangnam_02.jpg">
+					      	</div>
+					      	<div class="bus-map-img-text">			      		
+								<p><span class="material-symbols-outlined">directions_bus</span>강남역 5번 출구 (삼성화재 건물)</p>
+					      		<span>※ 다음 거리뷰를 사용하는 서비스 입니다. 일부 위치에서는 위치가 다소 다르게 표현될 수 있으며 현재보다 이전에 촬영되어 현재와 다를 수 있습니다.</span>
+					      	</div>
+				      	</div>
+				      </div>
 			    </div>
 			  </div>
 			  <div class="accordion-item">
@@ -79,7 +98,17 @@
 			      </button>
 			    </h2>
 			    <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-			      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
+			      <div class="accordion-body">
+			      	<div>
+				      	<div class="bus-map-img">
+				      		<img src="https://www.jisanresort.co.kr/downloads/shuttle/shuttle_gangnam_03.jpg">
+				      	</div>
+				      	<div class="bus-map-img-text">			      		
+							<p><span class="material-symbols-outlined">directions_bus</span>양재역 2번 출구 KW컨벤션센터 앞</p>
+				      		<span>※ 다음 거리뷰를 사용하는 서비스 입니다. 일부 위치에서는 위치가 다소 다르게 표현될 수 있으며 현재보다 이전에 촬영되어 현재와 다를 수 있습니다.</span>
+				      	</div>
+			      	</div>
+			      </div>
 			    </div>
 			  </div>
 			</div>
@@ -97,7 +126,17 @@
 			      </button>
 			    </h2>
 			    <div id="flush-collapsefour" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-			      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+			    	<div class="accordion-body">
+			      	<div>
+				      	<div class="bus-map-img">
+				      		<img src="https://www.jisanresort.co.kr/downloads/shuttle/shuttle_banpo_01.jpg">
+				      	</div>
+				      	<div class="bus-map-img-text">			      		
+							<p><span class="material-symbols-outlined">directions_bus</span>세종미술관 앞</p>
+				      		<span>※ 다음 거리뷰를 사용하는 서비스 입니다. 일부 위치에서는 위치가 다소 다르게 표현될 수 있으며 현재보다 이전에 촬영되어 현재와 다를 수 있습니다.</span>
+				      	</div>
+			      	</div>
+			      </div>
 			    </div>
 			  </div>
 			  <div class="accordion-item">
@@ -108,7 +147,17 @@
 			      </button>
 			    </h2>
 			    <div id="flush-collapse5" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-			      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+			    	<div class="accordion-body">
+			      	<div>
+				      	<div class="bus-map-img">
+				      		<img src="https://www.jisanresort.co.kr/downloads/shuttle/shuttle_banpo_02.jpg">
+				      	</div>
+				      	<div class="bus-map-img-text">			      		
+							<p><span class="material-symbols-outlined">directions_bus</span>회현동 우리은행 후문 앞(3호 터널 입구)</p>
+				      		<span>※ 다음 거리뷰를 사용하는 서비스 입니다. 일부 위치에서는 위치가 다소 다르게 표현될 수 있으며 현재보다 이전에 촬영되어 현재와 다를 수 있습니다.</span>
+				      	</div>
+			      	</div>
+			      </div>
 			    </div>
 			  </div>
 			  <div class="accordion-item">
@@ -119,7 +168,17 @@
 			      </button>
 			    </h2>
 			    <div id="flush-collapse6" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-			      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+			    	<div class="accordion-body">
+			      	<div>
+				      	<div class="bus-map-img">
+				      		<img src="https://www.jisanresort.co.kr/downloads/shuttle/shuttle_banpo_03.jpg">
+				      	</div>
+				      	<div class="bus-map-img-text">			      		
+							<p><span class="material-symbols-outlined">directions_bus</span>이태원 크라운호텔 건너편 육교</p>
+				      		<span>※ 다음 거리뷰를 사용하는 서비스 입니다. 일부 위치에서는 위치가 다소 다르게 표현될 수 있으며 현재보다 이전에 촬영되어 현재와 다를 수 있습니다.</span>
+				      	</div>
+			      	</div>
+			      </div>
 			    </div>
 			  </div>
 			  <div class="accordion-item">
@@ -130,7 +189,17 @@
 			      </button>
 			    </h2>
 			    <div id="flush-collapse7" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-			      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+			    	<div class="accordion-body">
+			      	<div>
+				      	<div class="bus-map-img">
+				      		<img src="https://www.jisanresort.co.kr/downloads/shuttle/shuttle_banpo_04.jpg">
+				      	</div>
+				      	<div class="bus-map-img-text">			      		
+							<p><span class="material-symbols-outlined">directions_bus</span>반포쇼핑타운 8동 맞은편 GS주유소 가기전</p>
+				      		<span>※ 다음 거리뷰를 사용하는 서비스 입니다. 일부 위치에서는 위치가 다소 다르게 표현될 수 있으며 현재보다 이전에 촬영되어 현재와 다를 수 있습니다.</span>
+				      	</div>
+			      	</div>
+			      </div>
 			    </div>
 			  </div>
 			</div>
@@ -148,7 +217,17 @@
 			      </button>
 			    </h2>
 			    <div id="flush-collapse8" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-			      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+			    	<div class="accordion-body">
+			      	<div>
+				      	<div class="bus-map-img">
+				      		<img src="https://www.jisanresort.co.kr/downloads/shuttle/shuttle_bundang_01.jpg">
+				      	</div>
+				      	<div class="bus-map-img-text">			      		
+							<p><span class="material-symbols-outlined">directions_bus</span>낙성육교(서현방향)</p>
+				      		<span>※ 다음 거리뷰를 사용하는 서비스 입니다. 일부 위치에서는 위치가 다소 다르게 표현될 수 있으며 현재보다 이전에 촬영되어 현재와 다를 수 있습니다.</span>
+				      	</div>
+			      	</div>
+			      </div>
 			    </div>
 			  </div>
 			  <div class="accordion-item">
@@ -159,7 +238,17 @@
 			      </button>
 			    </h2>
 			    <div id="flush-collapse9" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-			      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+			    	<div class="accordion-body">
+			      	<div>
+				      	<div class="bus-map-img">
+				      		<img src="https://www.jisanresort.co.kr/downloads/shuttle/shuttle_bundang_02.jpg">
+				      	</div>
+				      	<div class="bus-map-img-text">			      		
+							<p><span class="material-symbols-outlined">directions_bus</span>서현역 공항버스정류장 50M 앞 육교아래(수내방향)</p>
+				      		<span>※ 다음 거리뷰를 사용하는 서비스 입니다. 일부 위치에서는 위치가 다소 다르게 표현될 수 있으며 현재보다 이전에 촬영되어 현재와 다를 수 있습니다.</span>
+				      	</div>
+			      	</div>
+			      </div>
 			    </div>
 			  </div>
 			  <div class="accordion-item">
@@ -170,7 +259,17 @@
 			      </button>
 			    </h2>
 			    <div id="flush-collapse10" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-			      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+			    	<div class="accordion-body">
+			      	<div>
+				      	<div class="bus-map-img">
+				      		<img src="https://www.jisanresort.co.kr/downloads/shuttle/shuttle_bundang_03.jpg">
+				      	</div>
+				      	<div class="bus-map-img-text">			      		
+							<p><span class="material-symbols-outlined">directions_bus</span>정자역 3번출구(100M앞 파리바게뜨)</p>
+				      		<span>※ 다음 거리뷰를 사용하는 서비스 입니다. 일부 위치에서는 위치가 다소 다르게 표현될 수 있으며 현재보다 이전에 촬영되어 현재와 다를 수 있습니다.</span>
+				      	</div>
+			      	</div>
+			      </div>
 			    </div>
 			  </div>
 			  <div class="accordion-item">
@@ -181,7 +280,17 @@
 			      </button>
 			    </h2>
 			    <div id="flush-collapse11" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-			      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+			    	<div class="accordion-body">
+			      	<div>
+				      	<div class="bus-map-img">
+				      		<img src="https://www.jisanresort.co.kr/downloads/shuttle/shuttle_bundang_04.jpg">
+				      	</div>
+				      	<div class="bus-map-img-text">			      		
+							<p><span class="material-symbols-outlined">directions_bus</span>동천역 2번 출구</p>
+				      		<span>※ 다음 거리뷰를 사용하는 서비스 입니다. 일부 위치에서는 위치가 다소 다르게 표현될 수 있으며 현재보다 이전에 촬영되어 현재와 다를 수 있습니다.</span>
+				      	</div>
+			      	</div>
+			      </div>
 			    </div>
 			  </div>
 			  <div class="accordion-item">
@@ -192,7 +301,17 @@
 			      </button>
 			    </h2>
 			    <div id="flush-collapse12" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-			      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+			    	<div class="accordion-body">
+			      	<div>
+				      	<div class="bus-map-img">
+				      		<img src="https://www.jisanresort.co.kr/downloads/shuttle/shuttle_bundang_05.jpg">
+				      	</div>
+				      	<div class="bus-map-img-text">			      		
+							<p><span class="material-symbols-outlined">directions_bus</span>죽전역 1번출구 버스정류장</p>
+				      		<span>※ 다음 거리뷰를 사용하는 서비스 입니다. 일부 위치에서는 위치가 다소 다르게 표현될 수 있으며 현재보다 이전에 촬영되어 현재와 다를 수 있습니다.</span>
+				      	</div>
+			      	</div>
+			      </div>
 			    </div>
 			  </div>
 			  <div class="accordion-item">
@@ -203,7 +322,17 @@
 			      </button>
 			    </h2>
 			    <div id="flush-collapse13" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-			      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+			    	<div class="accordion-body">
+			      	<div>
+				      	<div class="bus-map-img">
+				      		<img src="https://www.jisanresort.co.kr/downloads/shuttle/shuttle_bundang_06.jpg">
+				      	</div>
+				      	<div class="bus-map-img-text">			      		
+							<p><span class="material-symbols-outlined">directions_bus</span>동백이마트 정문 버스정류장</p>
+				      		<span>※ 다음 거리뷰를 사용하는 서비스 입니다. 일부 위치에서는 위치가 다소 다르게 표현될 수 있으며 현재보다 이전에 촬영되어 현재와 다를 수 있습니다.</span>
+				      	</div>
+			      	</div>
+			      </div>
 			    </div>
 			  </div>
 			</div>
@@ -220,7 +349,17 @@
 			      </button>
 			    </h2>
 			    <div id="flush-collapse14" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-			      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+			    	<div class="accordion-body">
+			      	<div>
+				      	<div class="bus-map-img">
+				      		<img src="https://www.jisanresort.co.kr/downloads/shuttle/shuttle_suwon_01.jpg">
+				      	</div>
+				      	<div class="bus-map-img-text">			      		
+							<p><span class="material-symbols-outlined">directions_bus</span>수원역 10번 출구 버스정류장</p>
+				      		<span>※ 다음 거리뷰를 사용하는 서비스 입니다. 일부 위치에서는 위치가 다소 다르게 표현될 수 있으며 현재보다 이전에 촬영되어 현재와 다를 수 있습니다.</span>
+				      	</div>
+			      	</div>
+			      </div>
 			    </div>
 			  </div>
 			  <div class="accordion-item">
@@ -231,7 +370,17 @@
 			      </button>
 			    </h2>
 			    <div id="flush-collapse15" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-			      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
+			    	<div class="accordion-body">
+			      	<div>
+				      	<div class="bus-map-img">
+				      		<img src="https://www.jisanresort.co.kr/downloads/shuttle/shuttle_suwon_02.jpg">
+				      	</div>
+				      	<div class="bus-map-img-text">			      		
+							<p><span class="material-symbols-outlined">directions_bus</span>동수원병원 건너편 버스정류장</p>
+				      		<span>※ 다음 거리뷰를 사용하는 서비스 입니다. 일부 위치에서는 위치가 다소 다르게 표현될 수 있으며 현재보다 이전에 촬영되어 현재와 다를 수 있습니다.</span>
+				      	</div>
+			      	</div>
+			      </div>
 			    </div>
 			  </div>
 			  <div class="accordion-item">
@@ -242,7 +391,17 @@
 			      </button>
 			    </h2>
 			    <div id="flush-collapse16" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-			      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
+			    	<div class="accordion-body">
+			      	<div>
+				      	<div class="bus-map-img">
+				      		<img src="https://www.jisanresort.co.kr/downloads/shuttle/shuttle_suwon_03.jpg">
+				      	</div>
+				      	<div class="bus-map-img-text">			      		
+							<p><span class="material-symbols-outlined">directions_bus</span>아주대 시외버스정류장 (맑은약국 앞)</p>
+				      		<span>※ 다음 거리뷰를 사용하는 서비스 입니다. 일부 위치에서는 위치가 다소 다르게 표현될 수 있으며 현재보다 이전에 촬영되어 현재와 다를 수 있습니다.</span>
+				      	</div>
+			      	</div>
+			      </div>
 			    </div>
 			  </div>
 			  <div class="accordion-item">
@@ -253,7 +412,17 @@
 			      </button>
 			    </h2>
 			    <div id="flush-collapse17" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-			      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
+			    	<div class="accordion-body">
+			      	<div>
+				      	<div class="bus-map-img">
+				      		<img src="https://www.jisanresort.co.kr/downloads/shuttle/shuttle_suwon_04.jpg">
+				      	</div>
+				      	<div class="bus-map-img-text">			      		
+							<p><span class="material-symbols-outlined">directions_bus</span>영통역 1번 출구 홈플러스 정문 앞</p>
+				      		<span>※ 다음 거리뷰를 사용하는 서비스 입니다. 일부 위치에서는 위치가 다소 다르게 표현될 수 있으며 현재보다 이전에 촬영되어 현재와 다를 수 있습니다.</span>
+				      	</div>
+			      	</div>
+			      </div>
 			    </div>
 			  </div>
 			  <div class="accordion-item">
@@ -264,7 +433,17 @@
 			      </button>
 			    </h2>
 			    <div id="flush-collapse18" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-			      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
+			    	<div class="accordion-body">
+			      	<div>
+				      	<div class="bus-map-img">
+				      		<img src="https://www.jisanresort.co.kr/downloads/shuttle/shuttle_suwon_05.jpg">
+				      	</div>
+				      	<div class="bus-map-img-text">			      		
+							<p><span class="material-symbols-outlined">directions_bus</span>수원 TG 두진 아파트 버스정류장</p>
+				      		<span>※ 다음 거리뷰를 사용하는 서비스 입니다. 일부 위치에서는 위치가 다소 다르게 표현될 수 있으며 현재보다 이전에 촬영되어 현재와 다를 수 있습니다.</span>
+				      	</div>
+			      	</div>
+			      </div>
 			    </div>
 			  </div>
 			</div>
@@ -281,7 +460,17 @@
 			      </button>
 			    </h2>
 			    <div id="flush-collapse19" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-			      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+			    	<div class="accordion-body">
+			      	<div>
+				      	<div class="bus-map-img">
+				      		<img src="https://www.jisanresort.co.kr/downloads/shuttle/shuttle_jamsil_01.jpg">
+				      	</div>
+				      	<div class="bus-map-img-text">			      		
+							<p><span class="material-symbols-outlined">directions_bus</span>건대 롯데백화점(스타시티몰)</p>
+				      		<span>※ 다음 거리뷰를 사용하는 서비스 입니다. 일부 위치에서는 위치가 다소 다르게 표현될 수 있으며 현재보다 이전에 촬영되어 현재와 다를 수 있습니다.</span>
+				      	</div>
+			      	</div>
+			      </div>
 			    </div>
 			  </div>
 			  <div class="accordion-item">
@@ -292,7 +481,17 @@
 			      </button>
 			    </h2>
 			    <div id="flush-collapse20" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-			      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
+			    	<div class="accordion-body">
+			      	<div>
+				      	<div class="bus-map-img">
+				      		<img src="https://www.jisanresort.co.kr/downloads/shuttle/shuttle_jamsil_02.jpg">
+				      	</div>
+				      	<div class="bus-map-img-text">			      		
+							<p><span class="material-symbols-outlined">directions_bus</span>잠실롯데마트 정문 앞</p>
+				      		<span>※ 다음 거리뷰를 사용하는 서비스 입니다. 일부 위치에서는 위치가 다소 다르게 표현될 수 있으며 현재보다 이전에 촬영되어 현재와 다를 수 있습니다.</span>
+				      	</div>
+			      	</div>
+			      </div>
 			    </div>
 			  </div>
 			  <div class="accordion-item">
@@ -303,7 +502,17 @@
 			      </button>
 			    </h2>
 			    <div id="flush-collapse21" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-			      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
+			    	<div class="accordion-body">
+			      	<div>
+				      	<div class="bus-map-img">
+				      		<img src="https://www.jisanresort.co.kr/downloads/shuttle/shuttle_jamsil_03.jpg">
+				      	</div>
+				      	<div class="bus-map-img-text">			      		
+							<p><span class="material-symbols-outlined">directions_bus</span>가락동 일신여상 정문 건너편 송파농협 앞</p>
+				      		<span>※ 다음 거리뷰를 사용하는 서비스 입니다. 일부 위치에서는 위치가 다소 다르게 표현될 수 있으며 현재보다 이전에 촬영되어 현재와 다를 수 있습니다.</span>
+				      	</div>
+			      	</div>
+			      </div>
 			    </div>
 			  </div>
 			  <div class="accordion-item">
@@ -314,7 +523,17 @@
 			      </button>
 			    </h2>
 			    <div id="flush-collapse22" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-			      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
+			    	<div class="accordion-body">
+			      	<div>
+				      	<div class="bus-map-img">
+				      		<img src="https://www.jisanresort.co.kr/downloads/shuttle/shuttle_jamsil_04.jpg">
+				      	</div>
+				      	<div class="bus-map-img-text">			      		
+							<p><span class="material-symbols-outlined">directions_bus</span>성남 모란역 8번출구 앞</p>
+				      		<span>※ 다음 거리뷰를 사용하는 서비스 입니다. 일부 위치에서는 위치가 다소 다르게 표현될 수 있으며 현재보다 이전에 촬영되어 현재와 다를 수 있습니다.</span>
+				      	</div>
+			      	</div>
+			      </div>
 			    </div>
 			  </div>
 			</div>
@@ -331,7 +550,17 @@
 			      </button>
 			    </h2>
 			    <div id="flush-collapse23" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-			      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+			    	<div class="accordion-body">
+			      	<div>
+				      	<div class="bus-map-img">
+				      		<img src="https://www.jisanresort.co.kr/downloads/shuttle/shuttle_chunan_01.jpg">
+				      	</div>
+				      	<div class="bus-map-img-text">			      		
+							<p><span class="material-symbols-outlined">directions_bus</span>천안종합운동장 앞</p>
+				      		<span>※ 다음 거리뷰를 사용하는 서비스 입니다. 일부 위치에서는 위치가 다소 다르게 표현될 수 있으며 현재보다 이전에 촬영되어 현재와 다를 수 있습니다.</span>
+				      	</div>
+			      	</div>
+			      </div>
 			    </div>
 			  </div>
 			  <div class="accordion-item">
@@ -342,7 +571,17 @@
 			      </button>
 			    </h2>
 			    <div id="flush-collapse24" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-			      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
+			    	<div class="accordion-body">
+			      	<div>
+				      	<div class="bus-map-img">
+				      		<img src="https://www.jisanresort.co.kr/downloads/shuttle/shuttle_chunan_02.jpg">
+				      	</div>
+				      	<div class="bus-map-img-text">			      		
+							<p><span class="material-symbols-outlined">directions_bus</span>천안 터미널사거리 아라리오 갤러리 앞</p>
+				      		<span>※ 다음 거리뷰를 사용하는 서비스 입니다. 일부 위치에서는 위치가 다소 다르게 표현될 수 있으며 현재보다 이전에 촬영되어 현재와 다를 수 있습니다.</span>
+				      	</div>
+			      	</div>
+			      </div>
 			    </div>
 			  </div>
 			  <div class="accordion-item">
@@ -353,7 +592,17 @@
 			      </button>
 			    </h2>
 			    <div id="flush-collapse25" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-			      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
+			    	<div class="accordion-body">
+			      	<div>
+				      	<div class="bus-map-img">
+				      		<img src="https://www.jisanresort.co.kr/downloads/shuttle/shuttle_chunan_03.jpg">
+				      	</div>
+				      	<div class="bus-map-img-text">			      		
+							<p><span class="material-symbols-outlined">directions_bus</span>천안 성환문화회관앞 사거리 성환게이트볼장 맞은편</p>
+				      		<span>※ 다음 거리뷰를 사용하는 서비스 입니다. 일부 위치에서는 위치가 다소 다르게 표현될 수 있으며 현재보다 이전에 촬영되어 현재와 다를 수 있습니다.</span>
+				      	</div>
+			      	</div>
+			      </div>
 			    </div>
 			  </div>
 			  <div class="accordion-item">
@@ -364,7 +613,17 @@
 			      </button>
 			    </h2>
 			    <div id="flush-collapse26" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-			      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
+			    	<div class="accordion-body">
+			      	<div>
+				      	<div class="bus-map-img">
+				      		<img src="https://www.jisanresort.co.kr/downloads/shuttle/shuttle_chunan_04.jpg">
+				      	</div>
+				      	<div class="bus-map-img-text">			      		
+							<p><span class="material-symbols-outlined">directions_bus</span>평택 뉴코아 아울렛 맞은편</p>
+				      		<span>※ 다음 거리뷰를 사용하는 서비스 입니다. 일부 위치에서는 위치가 다소 다르게 표현될 수 있으며 현재보다 이전에 촬영되어 현재와 다를 수 있습니다.</span>
+				      	</div>
+			      	</div>
+			      </div>
 			    </div>
 			  </div>
 			</div>
@@ -374,7 +633,7 @@
 	  </div>
 	</div>
 </div>
-
+</div>
 <jsp:include page="../common/footer.jsp" />	
 </body>
 </html>

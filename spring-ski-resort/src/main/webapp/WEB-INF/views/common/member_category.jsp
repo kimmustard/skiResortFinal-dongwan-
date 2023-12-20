@@ -39,7 +39,7 @@
 				</a>
 			</div>
 			<div class="category cbox4">
-				<a href="#"> 
+				<a href="/member/memberQna"> 
 						<i class="bi bi-chat-right-text-fill"></i>
 					<span class="category-span">
 						 문의내역

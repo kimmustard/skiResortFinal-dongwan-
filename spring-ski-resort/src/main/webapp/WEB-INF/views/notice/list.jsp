@@ -24,7 +24,7 @@
 </sec:authorize>
 
 
-<div class="notice-img-container" style="background-image: url('https://a.cdn-hotels.com/gdcs/production68/d766/4cc034a7-aeb1-4edd-b2a9-f7feaac49aec.jpg')">	</div>
+<div class="notice-img-container" style="background-image: url('https://www.wallpaperflare.com/static/303/362/478/snowboarding-trick-jump-snow-wallpaper.jpg')">	</div>
 
 <!-- 슬라이드 라인 -->
 <%-- <div class="section">
@@ -89,10 +89,6 @@
 
 
 
-
-
-
-
 	
 <div class="container notice-container" id="notice-container">
 <c:set value="${ph.pgvo.type }" var="typed"></c:set>
@@ -101,7 +97,64 @@
 	  <div class="notice-menu-container-child">
 	  
 	  
-	  <!-- 카테고리 라인 -->
+	  
+	  
+	  <div class="event-box none-click">
+	  	<p class="box-title event-title">IMPORTANT NEWS</p>
+			다이스키에서는 매월 다양한 이벤트를 개최합니다! 할인 혜택, 강의, 대회 등 다채로운 활동으로 여러분의 스키 체험을 특별하게 만들어봐요. 최신 정보는 웹사이트와 소셜 미디어를 통해 확인하세요. 흥미진진한 순간들이 기다리고 있습니다!
+			<div class="contentBox">
+				<div class="slide_wrapper">
+					<ul class="slides" id="slides">
+					</ul>
+				</div>
+				
+				
+				<p class="controls">
+					<span class="prev"><i class="bi bi-chevron-compact-left"></i></span>
+						 <span class="next"><i
+						class="bi bi-chevron-compact-right"></i></span>
+				</p>
+			</div>
+		</div>
+
+	  
+	  
+	  
+		<!-- 검색 라인  -->
+		<div class="notice-search-form">
+			<form action="/notice/list" method="get">
+			<div class="notice-search-container">
+				<div class="dropdown notice-search-category">
+				  <select class="notice-search-category dropdown-toggle" name="type" data-bs-toggle="dropdown" aria-expanded="false">
+				   	<option class="dropdown-item" value="tcw" ${typed eq 'tcw' ? 'selected' : '' }>전체</option>
+				   	<option class="dropdown-item" value="t" ${typed eq 't' ? 'selected' : '' }>제목</option>
+				   	<option class="dropdown-item" value="c" ${typed eq 'c' ? 'selected' : '' }>내용</option>
+				   	<option class="dropdown-item" value="w" ${typed eq 'w' ? 'selected' : '' }>작성자</option>
+				  </select>
+				  <!-- <button class="notice-search-category dropdown-toggle" name="type" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+				   		제목
+				  </button>
+				  <ul class="dropdown-menu">
+				    <li class="dropdown-item">제목</li>
+				    <li class="dropdown-item">내용</li>
+				    <li class="dropdown-item">전체</li>
+				  </ul> -->
+				</div>
+				<div class="notice-input-container">
+					<input placeholder="검색어를 입력해 주세요." name="keyword" type="search" value="" class="notice-search-input">
+					<input type="hidden" name="pageNo" value="1">
+					<input type="hidden" name="qty" value="${ph.pgvo.qty }">
+				</div>
+				<div class="notice-button-container">
+					<button class="notice-search-button" type="submit"><div><span class="material-symbols-outlined" style="color: white;">search</span>검색</div></button>
+				</div>
+			</div>
+			</form>
+		</div>
+
+		
+
+		<!-- 카테고리 라인 -->
 	  <div class="notice-category-containeer">
 		<div class="notice-category">
 		<ul class="nav justify-content-center" id="myTab" role="tablist">	
@@ -166,39 +219,7 @@
 	  </div>
 	  
 	  
-		<!-- 검색 라인  -->
-		<div class="notice-search-form">
-			<form action="/notice/list" method="get">
-			<div class="notice-search-container">
-				<div class="dropdown notice-search-category">
-				  <select class="notice-search-category dropdown-toggle" name="type" data-bs-toggle="dropdown" aria-expanded="false">
-				   	<option class="dropdown-item" value="tcw" ${typed eq 'tcw' ? 'selected' : '' }>전체</option>
-				   	<option class="dropdown-item" value="t" ${typed eq 't' ? 'selected' : '' }>제목</option>
-				   	<option class="dropdown-item" value="c" ${typed eq 'c' ? 'selected' : '' }>내용</option>
-				   	<option class="dropdown-item" value="w" ${typed eq 'w' ? 'selected' : '' }>작성자</option>
-				  </select>
-				  <!-- <button class="notice-search-category dropdown-toggle" name="type" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-				   		제목
-				  </button>
-				  <ul class="dropdown-menu">
-				    <li class="dropdown-item">제목</li>
-				    <li class="dropdown-item">내용</li>
-				    <li class="dropdown-item">전체</li>
-				  </ul> -->
-				</div>
-				<div class="notice-input-container">
-					<input placeholder="검색어를 입력해 주세요." name="keyword" type="search" value="" class="notice-search-input">
-					<input type="hidden" name="pageNo" value="1">
-					<input type="hidden" name="qty" value="${ph.pgvo.qty }">
-				</div>
-				<div class="notice-button-container">
-					<button class="notice-search-button" type="submit"><div><span class="material-symbols-outlined" style="color: white;">search</span>검색</div></button>
-				</div>
-			</div>
-			</form>
-		</div>
-
-		
+	  
 		
 		<!-- 리스트 라인 -->
 		<article>
@@ -353,7 +374,6 @@
 
 </script>
 <script type="text/javascript" src="/resources/js/notice/noticeList.js"></script>
-
 <jsp:include page="../common/footer.jsp" />
 </body>
 </html>
