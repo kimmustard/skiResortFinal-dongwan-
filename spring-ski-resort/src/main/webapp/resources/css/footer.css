@@ -1,21 +1,21 @@
 @charset "UTF-8";
-
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@500&display=swap');
 .footer{
-	padding: 10px 15px;
+	padding: 30px;
+	height: 75px;
 }
 
-.footContainer{
-	padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
-    font-size: 13px;
-}
 
 
 .foot-color{
 	background-color: black;
 	color: #c5c3c3;
+}
+.footHeader{
+	font-family: 'Bebas Neue', sans-serif;
+    font-size: 41px;
+    text-align: center;
+    padding: 40px 0;
 }
 .footer-hr{
 	margin: 0;
@@ -29,16 +29,25 @@
 	margin-bottom: 15px;
 }
 .footContainer{
-	padding-bottom: 50px;
+	 height: 300px;
+	padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 13px;
+	padding: 50px 0;
     font-weight: 100;
     line-height: 25px;
+    display: flex;
+    justify-content: space-evenly;
 }
 .foot{
 	float: left;
 	margin-right: 10px;
+	font-size: 30px;
 }
 .foot-items{
-	float: right;
+	float: left;
 }
 .foot-select{
 	
@@ -67,3 +76,43 @@
 	border: 1px solid black;
 
 }
+.sns{
+	font-size: 30px;
+
+}
+.sns>li{
+		margin-right: 30px;
+		    transform: translateY(-8px);
+		
+}
+.sns>li:hover {
+	cursor: pointer;
+}
+.footContainer_item1{
+	font-family: 'Bebas Neue', sans-serif;
+    font-size: 30px;
+	
+}
+.footContainer_item1>ul>li{
+	margin-top: 15px;
+}
+.footContainer_item1>ul>li:hover {
+	cursor: pointer;
+}
+.footContainer_item2>ul>li{
+	  font-size: 14px;	
+	  margin-bottom: 10px;
+}
+.footContainer_item_title{
+	font-family: 'Bebas Neue', sans-serif;
+    font-size: 30px;
+    padding: 20px 0;
+}
+.footer_email{
+	text-align: center;
+	font-size:15px;
+	transform: translateY(-110px);
+	}
+	.footer_right{
+	 transform: translateY(-50px);
+	}
