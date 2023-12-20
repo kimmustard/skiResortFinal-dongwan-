@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.web.www.domain.board.PagingVO;
+import com.web.www.domain.bus.BusVO;
 import com.web.www.domain.member.AuthUser;
 import com.web.www.domain.member.FindIdDTO;
 import com.web.www.domain.member.FindPwdDTO;

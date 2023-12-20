@@ -16,6 +16,6 @@ public interface BusService {
 
 	List<BusVO> busReserveList(PagingVO pgvo);
 
-	int busCancel();
+	void busCancel(int busNum, long memberNum);
 
 }

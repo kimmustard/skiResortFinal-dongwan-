@@ -2,6 +2,8 @@ package com.web.www.repository;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.web.www.domain.board.PagingVO;
 import com.web.www.domain.bus.BusInfoVO;
 import com.web.www.domain.bus.BusVO;
@@ -18,6 +20,14 @@ public interface BusDAO {
 
 	List<BusVO> busReserveList(PagingVO pgvo);
 
-	int busCancel();
+//	int busCancel();
+
+	BusVO busReserveInfo(@Param("busNum") int busNum, @Param("memberNum") long memberNum);
+
+	void updateBusReserve(BusVO bvo);
+
+	BusInfoVO findBusInfo(int busNum);
+
+	void updateBusInfo(BusInfoVO bivo);
 
 }

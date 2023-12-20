@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.web.www.domain.bus.BusInfoVO;
 import com.web.www.domain.bus.BusVO;
@@ -57,10 +58,11 @@ public class BusController {
 	}
 	
 	@GetMapping("/cancel")
-	public String busReserveCancel() {
-		int isOk = bsv.busCancel();
-		log.info((isOk > 0)? "ok":"fail");
-		return "redirect:/member/memberQna";
+	public String busReserveCancel(@RequestParam("busNum") int busNum, @RequestParam("memberNum") long memberNum) {
+		
+		bsv.busCancel(busNum, memberNum);
+		
+		return "redirect:/member/memberQna?busNum&memberNum";
 	}
 	
 	@PostConstruct

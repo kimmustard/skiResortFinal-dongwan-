@@ -131,7 +131,7 @@
 									<c:if test="${bvo.busCancel eq 'N' }">
 										<td>
 											예약완료
-											<a href="/bus/cancel"><button type="button" id="busCancelBtn">예약취소</button></a>
+											<a href="/bus/cancel?bus_num=${bvo.busNum}&member_num=${bvo.memberNum}"><button type="button" id="busCancelBtn">예약취소</button></a>
 										</td>
 									</c:if>
 									<c:if test="${bvo.busCancel eq 'Y' }">
