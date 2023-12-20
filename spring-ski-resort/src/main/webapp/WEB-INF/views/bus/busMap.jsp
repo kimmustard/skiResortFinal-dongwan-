@@ -39,7 +39,7 @@
 				</li>
 				<li>
 					<a href="/bus/busMap">
-						<button type="button" class="bus-btn mybus-btn">노선 보기</button>
+						<button type="button" class="bus-btn mybus-btn" style="background-color: #222222; color: white;">노선 보기</button>
 					</a>
 				</li>
 			</ul>

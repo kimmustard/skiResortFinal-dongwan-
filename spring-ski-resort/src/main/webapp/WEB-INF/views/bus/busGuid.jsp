@@ -34,7 +34,7 @@
 				</li>
 				<li>
 					<a href="/bus/busGuid">
-						<button type="button" class="bus-btn mybus-btn">예약 안내</button>
+						<button type="button" class="bus-btn mybus-btn" style="background-color: #222222; color: white;">예약 안내</button>
 					</a>
 				</li>
 				<li>
@@ -58,8 +58,8 @@
 			</div>
 			
 			<h1>무료셔틀예약/취소 마감시간 안내</h1>
-			<div class="bus-guid-table-container1">
-				<table class="table bus-guid-table1">
+			<div class="bus-guid-table-container">
+				<table class="table bus-guid-table">
 				  <thead>
 				    <tr>
 				      <th>이용노선</th>
@@ -82,8 +82,8 @@
 			</div>
 			
 			<h1>노선별 운행일정 안내</h1>
-			<div class="bus-guid-table-container1">
-				<table class="table bus-guid-table1">
+			<div class="bus-guid-table-container">
+				<table class="table bus-guid-table">
 				  <thead>
 				    <tr>
 				      <th>노선</th>
@@ -94,8 +94,8 @@
 				  <tbody>
 				    <tr>
 				      <td>강남선</td>
-				      <td rowspan="7" style="border-left: 1px solid #bcbcbc; border-right: 1px solid #bcbcbc;">오픈후 익일부터</td>
-				      <td rowspan="8">2024년 2월 21일</td>
+				      <td rowspan="7" style="border-left: 1px solid #bcbcbc; border-right: 1px solid #bcbcbc;"><div>오픈후 익일부터</div></td>
+				      <td rowspan="8"><div>2024년 2월 21일</div></td>
 				    </tr>			 			 
 				    <tr>
 				      <td>천안평택</td>

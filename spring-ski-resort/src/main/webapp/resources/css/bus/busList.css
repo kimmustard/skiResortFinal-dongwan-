@@ -156,28 +156,35 @@ li{
 
 
 /* 테이블 라인 */
-.bus-guid-table-container1{
+.bus-guid-table-container{
 
 }
-.bus-guid-table1{
+.bus-guid-table{
 	text-align: center;
 	border-top: 2px solid #2d2d2d;
 }
-.bus-guid-table1>thead{
+.bus-guid-table>thead{
 	border-bottom: 1px solid #bcbcbc;
 }
-.bus-guid-table1>thead>tr>th{
+.bus-guid-table>thead>tr>th{
 	width: 33.33%;
 	padding: 30px;
 	color: #414141;
 }
-.bus-guid-table1>tbody>tr>td{
+.bus-guid-table>tbody>tr>td{
 	padding: 30px;
 	color: #a0a0a0;
 	border-bottom: 1px solid #bcbcbc;
+	position: relative;
 }
-.bus-guid-table1>tbody{
+.bus-guid-table>tbody{
 	border-bottom: 1px solid #bcbcbc;
+}
+.bus-guid-table>tbody>tr>td>div{
+	position: absolute;
+  	top: 50%;
+  	left: 50%;
+  	transform: translate(-50%, -50%);
 }
 
 
