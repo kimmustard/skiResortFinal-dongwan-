@@ -17,7 +17,7 @@
 	</select>
 	
 	<select id="selectList" resultType="com.web.www.domain.board.NoticeVO">
-		select * from notice where notice_del='N' and notice_point='N' 
+		select * from notice where notice_del='N'  
 		<include refid="search"></include>
 		order by notice_num desc limit #{pageStart}, #{qty}
 	</select>
