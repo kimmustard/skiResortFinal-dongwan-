@@ -43,6 +43,10 @@ public interface RentalService {
 
 	int updateRentalLift(RentalLiftVO rlivo, MemberVO mvo);
 
+	
+	//회원이 구매한 리프트권 가져오기
+	RentalLiftVO getRentalLift(long memberNum);
+
 
 
 

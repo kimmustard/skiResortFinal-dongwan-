@@ -52,6 +52,10 @@ public interface RentalDAO {
 
 	int rental(@Param("rentalLiftNum") String rentalLiftNum,@Param("mvo") MemberVO mvo);
 
+	String getMemberPayMerchantUid(long memberNum);
+
+	RentalLiftVO getMemberRentalLift(String payMerchantUid);
+
 
 
 

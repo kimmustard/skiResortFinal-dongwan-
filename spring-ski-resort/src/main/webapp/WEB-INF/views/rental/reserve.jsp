@@ -219,6 +219,12 @@
 	
 	</div>
 	<script type="text/javascript">
+	
+	const isOk = `<c:out value="${isOk}" />`;
+	if(isOk == 1){
+		alert('리프트권 구매후 결제해주세요.');
+	}
+	var itemsArray = [];
 	const memberEmail= `<c:out value="${mvo.memberEmail}"/>`;
 	const memberName= `<c:out value="${mvo.memberName}"/>`;
 	const memberPhoneNum= `<c:out value="${mvo.memberPhoneNum}"/>`;

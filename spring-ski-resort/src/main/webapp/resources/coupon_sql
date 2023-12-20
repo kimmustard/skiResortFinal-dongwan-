@@ -5,7 +5,7 @@ drop table coupon_system;
 create table coupon(
 coupon_member_num bigint not null auto_increment,
 member_num bigint not null,
-coupon_code varchar(20) not null,
+coupon_code varchar(100) not null,
 coupon_member_check varchar(1) default 'Y',
 coupon_start DateTime,
 coupon_end DateTime,
@@ -15,7 +15,7 @@ primary key(coupon_member_num)
 
 ## 12-05 쿠폰 테이블입니다
 create table coupon_system(
-coupon_code varchar(20) not null,
+coupon_code varchar(100) not null,
 coupon_admin_check varchar(1) default 'N',
 coupon_search varchar(1) default 'N',
 coupon_dupli varchar(1) default 'N',
