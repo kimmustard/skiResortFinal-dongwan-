@@ -36,7 +36,7 @@
 	</select>
 	
 	<update id="updateNoticeFile">
-		update file set file_asc = #{fileAsc} where notice_num = #{noticeNum}
+		update file set file_asc = #{fileAsc} where notice_num = #{noticeNum} and file_uuid = #{fileUuid}
 	</update>
 	
 	
