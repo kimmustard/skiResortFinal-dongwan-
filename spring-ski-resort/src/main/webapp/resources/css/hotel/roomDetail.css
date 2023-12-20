@@ -59,9 +59,13 @@ li {
     height: 110px;
     background-color: #292531;
     transition: all .5s ease;
-    font-size: 3px;
-    color: transparent;
-    text-indent: 100%;
+    font-size: 40px;
+    color: white;
+    padding-top: 35px;
+
+}
+.controls>i{
+	    transform: translate(10px, 10px);
 }
 .controls:hover{
 	background-color: white;
