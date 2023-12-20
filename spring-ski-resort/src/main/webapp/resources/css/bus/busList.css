@@ -2,9 +2,6 @@
 a{
 	text-decoration-line: none;
 }
-li{
-	display: inline;
-}
 
 
 /***** 버스 노선 안내 코드 *****/
@@ -33,7 +30,9 @@ li{
 .bus-tag-container{
 	text-align: center;
 }
-
+.bus-tag-container>ul>li{
+	display: inline;
+}
 
 /*상단 버튼 라인*/
 .bus-btn {
