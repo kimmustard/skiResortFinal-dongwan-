@@ -71,7 +71,7 @@
 					<h3>버스 예약 선택</h3>
 					<div class="busReserveBox">
 						<div class="box">
-							<form action="/bus/busReserve" method="post">
+							<form action="/bus/busReserve" method="post" id="busReserveForm">
 								<div class="input-box">
 									<input type="hidden" name="busNum" id="busNum" placeholder="차량번호">
 									<input type="hidden" name="memberNum" value="${mvo.memberNum }" placeholder="회원번호">
@@ -135,9 +135,9 @@
 									</div>
 								</div>
 								<div class="regionImgBox" id="regionImgBox">
-									 <img src="" alt="지역 이미지" id="regionImage" class="img-fluid" style="width: 100%; height: 100%;">
+									 <img src="https://rusutsu.com/wp-content/uploads/rusutsu-powder-day-trip_sp.jpg" alt="지역 이미지" id="regionImage" class="img-fluid" style="width: 100%; height: 100%;">
 								</div>
-								<button type="submit" class="btn btn-outline-primary busReserveBtn" id="busReserveBtn">예약</button>	
+								<button type="button" class="btn btn-outline-primary busReserveBtn" id="busReserveBtn">예약</button>	
 							</form>
 						</div>
 					</div>

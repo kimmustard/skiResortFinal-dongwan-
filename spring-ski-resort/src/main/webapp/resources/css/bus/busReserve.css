@@ -86,8 +86,7 @@ li{
 	position: relative;
 	width: 1300px;
 	height: 500px;
-	background-color:rgba(211,211, 211, 0.9);
-	border-radius: 10px;
+	border-top: 1px solid #ddd;
 	margin-top: 30px;
 }
 
@@ -168,7 +167,7 @@ li{
 	width: 1200px;
 	height: 400px;
 	padding: 5px;
-	background-color: white;
+	
 	position: relative;
 	border-radius: 10px;
 	left: 50%;

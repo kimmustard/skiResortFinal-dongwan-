@@ -14,8 +14,8 @@ document.getElementById('busReserveBtn').addEventListener('click', () => {
           alert('인원수를 선택해주세요.');
      } else if (busRegion === "") {
           alert('탑승하실 지역을 선택해주세요.');
-     } else if (busPeople === 5) {
-          alert('버스예약은 최대 4명까지만 가능합니다.');
+     } else {
+          document.getElementById('busReserveForm').submit();
      }
 })
 
@@ -158,12 +158,14 @@ function getImagePath(region) {
           case '광화문':
                return "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/2011%EB%85%84_11%EC%9B%94_%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD_%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C_%EB%AA%85%EC%86%8C_%28Seoul_best_attractions%29_%EA%B4%91%ED%99%94%EB%AC%B8.JPG/1920px-2011%EB%85%84_11%EC%9B%94_%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD_%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C_%EB%AA%85%EC%86%8C_%28Seoul_best_attractions%29_%EA%B4%91%ED%99%94%EB%AC%B8.JPG";
           case '분당선':
-               return "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/2011%EB%85%84_11%EC%9B%94_%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD_%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C_%EB%AA%85%EC%86%8C_%28Seoul_best_attractions%29_%EA%B4%91%ED%99%94%EB%AC%B8.JPG/1920px-2011%EB%85%84_11%EC%9B%94_%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD_%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C_%EB%AA%85%EC%86%8C_%28Seoul_best_attractions%29_%EA%B4%91%ED%99%94%EB%AC%B8.JPG";
+               return "https://t1.daumcdn.net/cfile/tistory/233BBC48538AA7A81C";
           case '수원선':
                return "https://img.hani.co.kr/imgdb/resize/2013/0501/00468417301_20130501.JPG";
           case '잠실선':
                return "https://www.lottehotel.com/content/dam/lotte-hotel/global/common/company/seoul-signiel.jpg";
           case '천안-평택선':
                return "https://www.i815.or.kr/2017/images/tour/img_visu01.jpg";
+          default:
+               return "https://rusutsu.com/wp-content/uploads/rusutsu-powder-day-trip_sp.jpg";
      }
 }
