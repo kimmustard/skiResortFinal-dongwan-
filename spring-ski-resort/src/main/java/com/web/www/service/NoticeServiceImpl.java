@@ -152,10 +152,18 @@ public class NoticeServiceImpl implements NoticeService{
 			if(isOk > 0 && ndto.getFlist().size() > 0) {
 				int cnt = 0;
 				long NoticeNum = ndto.getNvo().getNoticeNum();
+				//썸네일 중복등록 방지기능 라인
+				List<FileVO> firstFvo = fdao.selectNoticeListFirstFile(NoticeNum); 
 				for(FileVO fvo : ndto.getFlist()) {
 					cnt++;
 					fvo.setNoticeNum(NoticeNum);
 					fvo.setFileAsc(cnt);
+					for(FileVO ffvo : firstFvo) {
+						if(fvo.getFileAsc()==ffvo.getFileAsc()) { 
+							ffvo.setFileAsc(cnt+1);
+							fdao.insertNoticeFile(ffvo);
+						}				
+					}
 					isOk *= fdao.insertNoticeFile(fvo);
 				}
 			}

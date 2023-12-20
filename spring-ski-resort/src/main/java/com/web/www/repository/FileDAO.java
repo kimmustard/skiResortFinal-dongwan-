@@ -34,5 +34,7 @@ public interface FileDAO {
 
 	List<FileVO> selectNoticeListFile();
 
+	List<FileVO> selectNoticeListFirstFile(long noticeNum);
+
 
 }

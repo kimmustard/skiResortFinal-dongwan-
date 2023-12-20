@@ -49,12 +49,12 @@
 		    <div class="bus-tag-container">
 				<ul>
 					<li>
-						<a>
-							<button type="button" class="bus-btn mybus-btn">셔틀버스 예약</button>
+						<a href="/bus/busReserve">
+							<button type="button" class="bus-btn mybus-btn" style="background-color: #222222; color: white;">셔틀버스 예약</button>
 						</a>
 					</li>
 					<li>
-						<a>
+						<a href="/bus/busGuid">
 							<button type="button" class="bus-btn mybus-btn">예약 안내</button>
 						</a>
 					</li>
