@@ -195,7 +195,7 @@
 		value(#{rentalReserveStart}, #{rentalReserveTotalFee}, #{memberNum}, #{payMerchantUid})
 	</insert>
 	
-	<select id="itemsPayInfoPrimaryKeyGet" resultType="long">
+	<select id="itemsPayInfoPrimaryKeyGet" resultType="Long">
 		select rental_reserve_num from rental_reserve where pay_merchant_uid = #{payMerchantUid}
 	</select>
 
@@ -221,5 +221,11 @@
 		update rental_reserve set rental_reserve_return = 'Y' 
 		where pay_merchant_uid = #{payMerchantUid}
 	</update>	
+	
+	<select id="getRentaiItemAmount" resultType="java.util.Map">
+		SELECT rental_list_item_num, rental_list_item_count
+        FROM rental_items where rental_list_item_num = #{rentalItemNum}
+	</select>
+
 
 </mapper>

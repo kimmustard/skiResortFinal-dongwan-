@@ -15,7 +15,7 @@ public class ItemsArray {
 
 	private long rentalReserveNum;
 	
-    private String rentalItemNum;
+    private long rentalItemNum;
     private String rentalItemName;
     private int rentalItemPrice;
     private String rentalItemUrl;

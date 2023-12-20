@@ -7,8 +7,10 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -117,34 +119,73 @@ public class PayServiceImpl implements PayService{
 				/*
 				 *  구매한 물건의 넘버, 개수가 그대로 넘어와서
 				 * 전부 검증을 해야합니다.
-				 * ex) 3개가 남았을때 구매하고싶은게 4개라면 -1로 되니까 쳐내야함.
+				 * ex) 3개가 남았을때 구매하고싶은게 4개라면 -1로 되니까 이런걸 쳐내야함.
+				 * 
+				 * 로직순서
+				 * 1. 상품 고유번호를 얻고, 고유번호별 개수를 구한다(스트림 사용)
+				 * 2. 고유 번호로 상품을 조회한다. 그리고 상품 개수와 고유번호별 개수를 비교한다.
+				 * 3. 상품개수가 적으면 itemLack.add하면 끝
 				 * */
 				
-				
-				//수량없으면 임시보관후 사용자에게 물건명단 출력
-				int itemCnt = 1;
-				List<String> itemLack = new ArrayList<>();
-				for (ItemsArray item : pivo.getRentalItems()) {
-					String temp = item.getRentalItemName();
-					int isOk = rdao.itemAmountCheck(item.getRentalItemNum());
-					if (isOk == 0) {
-						itemLack.add(temp);
-					}
-					itemCnt *= isOk;
+				//구매하려는 상품들 고유번호 얻기
+				List<Long> rentalItemNum = new ArrayList<>();
+				for (ItemsArray arr : pivo.getRentalItems()) {
+					rentalItemNum.add(arr.getRentalItemNum());
 				}
-			
-				if(itemCnt == 0) {
+				// 장바구니 고유번호별 물건 개수
+				Map<Long, Long> basketAmount = rentalItemNum.stream()
+						.collect(Collectors.groupingBy(e -> e, Collectors.counting()));
+				// 상품 고유번호별 물건 개수
+				List<Long> distinctRentalItemNums = rentalItemNum.stream()
+			                .distinct()
+			                .collect(Collectors.toList());
+				
+				// 장바구니 vs 상품 개수 비교 로직
+				Map<Long, Integer> rentalItemAmount = new HashMap<>();
+				for (Long rentalItemNum2 : distinctRentalItemNums) {
+				    Map<Long, Object> rawResult = rdao.getRentaiItemAmount(rentalItemNum2);
+
+				    // rawResult에서 값을 얻어와서 Map<Long, Integer>로 변환
+				    Long key = (Long) rawResult.get("rental_list_item_num");
+				    Object value = rawResult.get("rental_list_item_count");
+
+				    // value가 Integer 타입이라면 변환하여 담기
+				    if (value instanceof Integer) {
+				        rentalItemAmount.put(key, (Integer) value);
+				    }
+				}
+				
+				int itemCnt = 0;
+				List<String> itemLack = new ArrayList<>();
+				
+				for (Long key : distinctRentalItemNums) {
+				    if (rentalItemAmount.containsKey(key) && basketAmount.containsKey(key)) {
+				        int rentalItemValue = rentalItemAmount.get(key);
+				        long basketAmountValue = basketAmount.get(key);
+				        
+				        // rentalItemAmount의 값이 작다면 처리 추가
+				        if (rentalItemValue < basketAmountValue) {
+				        	for (ItemsArray item : pivo.getRentalItems()) {
+				        		if(item.getRentalItemNum() == key) {
+				        			String temp = item.getRentalItemName();
+				        			itemLack.add(temp);
+				        		}
+							}
+				        	itemCnt++;
+				        }
+				    }
+				}
+
+				if(itemCnt > 0) {
+					List<String> distinctItemLack = itemLack.stream()
+							.distinct()
+			                .collect(Collectors.toList());
+					
 					adao.alarmSetting(new AlarmVO(pivo.getMemberNum(), 4, "취소"));// 시스템 알람 반드시 넣어주세요.
 					payMentCancel(access_token, pivo.getPayImpUid(), amount, "렌탈 장비 품절");
-					
-					//품절 상품이 1개면 ?
-					if(itemLack.size() == 1) {
-						return new ResponseEntity<String>("상품 품절 상태입니다.<br>(" + itemLack.get(0) + ")" , HttpStatus.BAD_REQUEST);
-					}
-					
-					//품절 상품이 2개 이상이면 ?	
+
 					String resultStr = "";
-					for (String str : itemLack) {
+					for (String str : distinctItemLack) {
 						resultStr +=  str + "<br>";
 					}
 					resultStr = resultStr.replaceAll("<br>$", "");

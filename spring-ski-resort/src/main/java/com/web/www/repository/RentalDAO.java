@@ -1,6 +1,7 @@
 package com.web.www.repository;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 
@@ -60,7 +61,7 @@ public interface RentalDAO {
 
 	
 	//렌탈 장비 개수 체크
-	int itemAmountCheck(String rentalItemNum);
+	int itemAmountCheck(long rentalItemNum);
 	
 	//결제 정보 저장 전 갯수 체킹
 
@@ -72,6 +73,8 @@ public interface RentalDAO {
 	
 	void itemsPayInfoListRegister(ItemsArray arr);
 
+	//구매시 렌탈아이템 개수 구하는 로직에 사용될 코드입니다.
+	Map<Long, Object> getRentaiItemAmount(Long rentalItemNum);
 	
 	// 결제정보 저장 토대로 갯수 합산
 	List<Long> getRentalItemNumList(long rentalReserveNum);
@@ -82,6 +85,8 @@ public interface RentalDAO {
 	void rentalItemListPlus(Long itemListNum);
 	// 환불 이후 반납 리턴 체크
 	void itemPayInfoReturnCheck(String payMerchantUid);
+
+	
 
 
 
