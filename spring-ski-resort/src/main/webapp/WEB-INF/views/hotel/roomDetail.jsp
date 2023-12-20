@@ -30,8 +30,8 @@
 						
 						</div>
 				  
-					      <div class="prev controls left-control">이전<i class="bi bi-chevron-compact-left"></i></div>
-					      <div class="next controls right-control" >다음<i class="bi bi-chevron-compact-right"></i></div>
+					      <div class="prev controls left-control"><i class="bi bi-chevron-compact-left"></i></div>
+					      <div class="next controls right-control" ><i class="bi bi-chevron-compact-right"></i></div>
 					
 				</div><!-- #room_detail_img 종료 -->
 
