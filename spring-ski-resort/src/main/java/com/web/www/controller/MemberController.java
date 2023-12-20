@@ -2,6 +2,7 @@ package com.web.www.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.security.core.Authentication;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.web.www.domain.board.PagingVO;
 import com.web.www.domain.member.AuthUser;
 import com.web.www.domain.member.FindIdDTO;
 import com.web.www.domain.member.FindPwdDTO;
@@ -28,7 +30,9 @@ import com.web.www.domain.member.ModifyMemberDTO;
 import com.web.www.domain.member.RegisterMemberDTO;
 import com.web.www.domain.pay.PayInfoVO;
 import com.web.www.handler.MemberEmailHandler;
+import com.web.www.handler.PagingHandler;
 import com.web.www.service.MemberService;
+import com.web.www.service.QnaService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -41,6 +45,7 @@ public class MemberController {
 
 	private final MemberService msv;
 	private final MemberEmailHandler mailService;
+	private final QnaService qsv;
 	
 	/**
 	 * @BCryptPasswordEncoder 사용자 pwd 인코더
@@ -233,8 +238,13 @@ public class MemberController {
 		
 	}
 	
-	
-	
+	@GetMapping("/memberQna")
+	public void memberQna(HttpSession ses, Model m, PagingVO pgvo) {
+		m.addAttribute("list", qsv.qnaList(pgvo));
+		int totalCount = qsv.getTotalCount(pgvo);
+		PagingHandler ph = new PagingHandler(pgvo, totalCount);
+		m.addAttribute("ph",ph);
+	}
 	
 	
 	
