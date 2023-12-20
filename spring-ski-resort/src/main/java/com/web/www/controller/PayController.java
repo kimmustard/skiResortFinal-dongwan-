@@ -53,15 +53,6 @@ public class PayController {
 		return "/member/memberPayList";
 	}
 	
-	@ResponseBody
-	@PostMapping(value = "/refund", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.TEXT_PLAIN_VALUE+ ";charset=UTF-8")
-	public ResponseEntity<String> refunt(@RequestBody RefundInfoVO rfiVO, @AuthUser MemberVO mvo) throws IOException {
-		
-		log.info("##환불정보## = {}", rfiVO);
-		ResponseEntity<String> isOk = psv.payMentRefund(rfiVO, mvo.getMemberNum());
-		return isOk;
-	}
-	
 	
 	@ResponseBody
 	@PostMapping(value = "/portOne", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.TEXT_PLAIN_VALUE+ ";charset=UTF-8")
@@ -80,6 +71,15 @@ public class PayController {
 	        log.error("결제 처리 중 오류 발생", e);
 	        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	    }
+	}
+	
+	@ResponseBody
+	@PostMapping(value = "/refund", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.TEXT_PLAIN_VALUE+ ";charset=UTF-8")
+	public ResponseEntity<String> refunt(@RequestBody RefundInfoVO rfiVO, @AuthUser MemberVO mvo) throws IOException {
+		
+		log.info("##환불정보## = {}", rfiVO);
+		ResponseEntity<String> isOk = psv.payMentRefund(rfiVO, mvo.getMemberNum());
+		return isOk;
 	}
 	
 	//결제 성공시 안내 페이지

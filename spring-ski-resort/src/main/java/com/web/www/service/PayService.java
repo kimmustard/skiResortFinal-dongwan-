@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 
 import com.web.www.domain.pay.PayInfoVO;
 import com.web.www.domain.pay.RefundInfoVO;
+import com.web.www.domain.rental.RentalLiftVO;
 
 public interface PayService {
 
@@ -24,5 +25,9 @@ public interface PayService {
 	 * @throws IOException
 	 */
 	ResponseEntity<String> payMentRefund(RefundInfoVO rfiVO, long memberNum) throws IOException;
+
+	
+	//멤버의 리프트권 활성화 여부
+	int getLiftBuyCheck(long memberNum);
 
 }
