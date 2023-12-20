@@ -3,6 +3,7 @@ package com.web.www.controller;
 import java.io.IOException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -196,6 +197,8 @@ public class RentalController {
 	    
 		log.info("하나## = {}", pivo);
 		log.info("둘## = {}", rrDTO);
+		
+	
 		String encodedPayName = URLEncoder.encode(pivo.getPayName(), StandardCharsets.UTF_8);
 		UriComponentsBuilder builder = UriComponentsBuilder.fromPath("/pay/PaySuccess")
 				.queryParam("payMerchantUid", pivo.getPayMerchantUid()).queryParam("payName", encodedPayName)
