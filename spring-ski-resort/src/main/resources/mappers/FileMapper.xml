@@ -10,12 +10,12 @@
 	</insert>
 	
 	<select id="getNoticeFileList" resultType="com.web.www.domain.FileVO">
-		select * from file where notice_num = #{noticeNum} and file_isok='Y' and notice_impact_file='N'  
+		select * from file where notice_num = #{noticeNum} and file_isok='Y'   
 		order by file_asc limit 1, 999
 	</select>
 	
 	<select id="selectNoticeListFile" resultType="com.web.www.domain.FileVO">
-		select * from file where file_isok='Y' and notice_impact_file='N' and file_asc=1
+		select * from file where file_isok='Y' and file_asc=1
 	</select>
 	
 	<select id="selectFileImpactList" resultType="com.web.www.domain.FileVO">
