@@ -147,10 +147,7 @@ public class RentalServiceImpl implements RentalService{
 	public int updateRentalLift(RentalLiftVO rlivo ,MemberVO mvo) {
 		// TODO Auto-generated method stub
 		int isOk = rdao.updateRentalLift(rlivo);
-			log.info("체크체크체크체크체크체크체크체크체크체크");
-			log.info("체크체크체크체크체크체크체크체크체크체크2222222");
 			isOk *=  rdao.rental(rlivo.getRentalLiftNum(), mvo);;
-			log.info("체크체크체크체크체크체크체크체크체크체크3333333");
 		return isOk;
 
 	}
@@ -168,21 +165,35 @@ public class RentalServiceImpl implements RentalService{
 	@Override
 	public void itemsPayInfoRegister(RentalReserveDTO rrDTO) {
 		
+		
+		//개수 갱신 로직
+		rdao.getItemPayInfo();
+		
+		
+		
+		/***********************************************************/
+		/************** 렌탈 장비 테이블 등록 비즈니스 로직 ******************/
+		/***********************************************************/
 		rdao.itemsPayInfoRegister(rrDTO);
+		long rentalReserveNum = rdao.itemsPayInfoPrimaryKeyGet(rrDTO.getPayMerchantUid());
 		
 		// ObjectMapper를 생성
 		ObjectMapper objectMapper = new ObjectMapper();
 		try {
 		    List<ItemsArray> itemsList = objectMapper.readValue(rrDTO.getItemsArray(), new TypeReference<List<ItemsArray>>() {});
 		    for (ItemsArray arr : itemsList) {
-				
+		    	arr.setRentalReserveNum(rentalReserveNum);
+				rdao.itemsPayInfoListRegister(arr);
 			}
 		} catch (IOException e) {
 		    log.info("상품 리스트 오류발생= {}", e);
 		}
-		
-		
+		/***********************************************************/
+		/***********************************************************/
+		/***********************************************************/
 	}
+
+
 
 
 	

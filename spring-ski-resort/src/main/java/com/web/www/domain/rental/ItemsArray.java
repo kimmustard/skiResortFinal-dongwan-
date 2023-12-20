@@ -13,9 +13,11 @@ import lombok.ToString;
 @ToString
 public class ItemsArray {
 
+	private long rentalReserveNum;
+	
     private String rentalItemNum;
     private String rentalItemName;
-    private String rentalItemPrice;
+    private int rentalItemPrice;
     private String rentalItemUrl;
 
 }

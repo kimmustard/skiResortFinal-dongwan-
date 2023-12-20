@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.web.www.domain.member.MemberVO;
+import com.web.www.domain.rental.ItemsArray;
 import com.web.www.domain.rental.RentalItemListDTO;
 import com.web.www.domain.rental.RentalItemVO;
 import com.web.www.domain.rental.RentalLiftVO;
@@ -63,6 +64,10 @@ public interface RentalDAO {
 	
 	// 결제 정보 저장
 	void itemsPayInfoRegister(RentalReserveDTO rrDTO);
+	long itemsPayInfoPrimaryKeyGet(String payMerchantUid);
+	
+	void itemsPayInfoListRegister(ItemsArray arr);
+
 
 
 

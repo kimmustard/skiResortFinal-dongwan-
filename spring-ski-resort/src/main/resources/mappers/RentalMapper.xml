@@ -191,9 +191,17 @@
 
 	<!-- 렌탈 대여 정보 등록 -->
 	<insert id="itemsPayInfoRegister">
-		insert into(rental_reserve_start, rental_reserve_total_fee, member_num, pay_merchant_uid)
-		value(#{rentalReserveStart}, #{rentalReserveTotalFee}, #{member_num}, #{pay_merchant_uid})
+		insert into rental_reserve(rental_reserve_start, rental_reserve_total_fee, member_num, pay_merchant_uid)
+		value(#{rentalReserveStart}, #{rentalReserveTotalFee}, #{memberNum}, #{payMerchantUid})
 	</insert>
+	
+	<select id="itemsPayInfoPrimaryKeyGet" resultType="long">
+		select rental_reserve_num from rental_reserve where pay_merchant_uid = #{payMerchantUid}
+	</select>
 
+	<insert id="itemsPayInfoListRegister">
+		insert into rental_reserve_list(rental_reserve_num, rental_list_item_num, rental_reserve_item, rental_reserve_fee, image_url)
+		value(#{rentalReserveNum}, #{rentalItemNum}, #{rentalItemName}, #{rentalItemPrice}, #{rentalItemUrl})
+	</insert>
 
 </mapper>
