@@ -213,11 +213,6 @@ public class PayServiceImpl implements PayService{
 
 		/*********************************/
 		
-		
-		/*실패시(복붙용)*/
-//		payMentCancel(access_token, upiDTO.getPayImpUid(), amount, "카드회사에 전달할 사유");
-//		return new ResponseEntity<String>("취소사유", HttpStatus.BAD_REQUEST);
-		
 		/*성공시*/
 		if(!(pivo.getCouponCode().isEmpty())) {
 			mdao.useCoupon(pivo.getMemberNum(),pivo.getCouponCode());	//쿠폰 사용 처리
