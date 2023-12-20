@@ -16,4 +16,10 @@
 		insert into bus(bus_num, member_num, bus_region, bus_start_date, bus_people)
 		values(#{busNum}, #{memberNum}, #{busRegion}, #{busStartDate}, #{busPeople})
 	</insert>
+	
+	<update id="updateBusCount">
+		UPDATE bus_info
+        SET bus_people_limit = bus_people_limit - #{busPeople}
+        WHERE bus_num = #{busNum} AND bus_region = #{busRegion}
+	</update>
 </mapper>

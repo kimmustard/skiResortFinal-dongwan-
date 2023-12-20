@@ -11,4 +11,6 @@ public interface BusDAO {
 
 	void addBusInfo(BusInfoVO busInfoVO);
 
+	void updateBusCount(BusVO bvo);
+
 }

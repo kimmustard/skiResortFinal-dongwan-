@@ -12,8 +12,8 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 public class BusInfoVO {
-	private int busNum;
-	private String busRegion;
-	private int busPeopleLimit;
+	private int busNum; // 차량번호
+	private String busRegion; // 지역
+	private int busPeopleLimit; // 버스 총 정원
 
 }
