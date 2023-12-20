@@ -6,6 +6,8 @@ li{
 	display: inline;
 }
 
+
+/***** 버스 노선 안내 코드 *****/
 .bus-img-container{
 	margin-top: 96px;
 	height: 40vh;
@@ -82,7 +84,8 @@ li{
 }
 .bus-list-container>h1{
 	font-size: 30px;
-	padding-bottom: 10px; 
+	padding-bottom: 10px;
+	letter-spacing : -1px; 
 }
 .bus-list{
 	border-top: 2px solid #696969;
@@ -101,16 +104,88 @@ li{
 }
 
 
+/* 이미지태그 라인 */
+.bus-map-img{
+	display: inline-block;
+	width: 30%;
+}
+.bus-map-img-text{
+    width: 64%;
+    height: 250px;
+	display: inline-block;
+    float: right;
+    padding: 20px;
+}	
+.bus-map-img-text>p {
+	font-size: 20px;
+	font-weight: 600;
+	margin-bottom: 30px;
+}
+.bus-map-img-text>span{
+	font-size: 14px;
+	color: #c0c0c0;
+}
+.bus-map-img-text>p>span {
+	float: left;
+	font-size: 25px;
+    color: #3535df;
+}
 
 
 
 
+/***** 버스 예약 안내 코드 *****/
+.bus-guid-container{
+	text-align: left;
+}
+.bus-guid-container>h1{
+	font-size: 30px;
+	padding-bottom: 10px; 
+	letter-spacing : -1px;
+	word-spacing : -4px;
+	margin-top: 100px;
+	margin-bottom: 20px;
+}
+.bus-guid-p{
+	color: #bcbcbc;
+	padding-left: 10px;
+}
+.bus-guid-p>p{
+	margin-bottom: 6px;	
+}
 
 
+/* 테이블 라인 */
+.bus-guid-table-container{
 
-
-
-
+}
+.bus-guid-table{
+	text-align: center;
+	border-top: 2px solid #2d2d2d;
+}
+.bus-guid-table>thead{
+	border-bottom: 1px solid #bcbcbc;
+}
+.bus-guid-table>thead>tr>th{
+	width: 33.33%;
+	padding: 30px;
+	color: #414141;
+}
+.bus-guid-table>tbody>tr>td{
+	padding: 30px;
+	color: #a0a0a0;
+	border-bottom: 1px solid #bcbcbc;
+	position: relative;
+}
+.bus-guid-table>tbody{
+	border-bottom: 1px solid #bcbcbc;
+}
+.bus-guid-table>tbody>tr>td>div{
+	position: absolute;
+  	top: 50%;
+  	left: 50%;
+  	transform: translate(-50%, -50%);
+}
 
 
 
