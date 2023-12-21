@@ -5,11 +5,11 @@ makeSlides();
 function makeSlides() {
   Eventslides = "";
   for (let i = 1; i <= 5; i++) {
-    Eventslides += `<li class="event-li"><div class="event-item-box" id="event-item-box${i}"> 
-    <div class="event-image-box"  id="event-image-box${i}"></div>
-    <div  class="event-filter-box">
-    <div class="event-content-box" id="event-content-box${i}">이벤트 1</div>
-    <p id="event-content${i}" class="event-content">
+    Eventslides += `<li class="event-li"><div class="notice-point-item-box" id="notice-point-item-box${i}"> 
+    <div class="notice-point-image-box"  id="notice-point-image-box${i}"></div>
+    <div  class="notice-point-filter-box">
+    <div class="notice-point-content-box" id="notice-point-content-box${i}">이벤트 1</div>
+    <p id="notice-point-content${i}" class="notice-point-content">
     <div></div><span class="diamond event-dia">
     <i class="bi bi-chevron-right "></i> </span></li>`;
   }
@@ -37,29 +37,29 @@ async function getFiveEvent() {
 }
 
 
-//이벤트 슬라이드에 이미지와 내용 추가
-getFiveEvent().then(events => {
-  for (let i = 0; i < events.length; i++) {
-    let EventImageBoxes = document.querySelectorAll("#event-image-box" + (i + 1));
-    let EventContentBoxes = document.querySelectorAll("#event-content-box" + (i + 1));
-    let EventContent = document.querySelectorAll("#event-content" + (i + 1));
+// //이벤트 슬라이드에 이미지와 내용 추가
+// getFiveEvent().then(events => {
+//   for (let i = 0; i < events.length; i++) {
+//     let EventImageBoxes = document.querySelectorAll("#notice-point-image-box" + (i + 1));
+//     let EventContentBoxes = document.querySelectorAll("#notice-point-content-box" + (i + 1));
+//     let EventContent = document.querySelectorAll("#notice-point-content" + (i + 1));
 
-    EventImageBoxes.forEach(function (EventImageBox) {
-      EventImageBox.style.backgroundImage = "url('" + events[i].noticeImageUrl + "')";
-      EventImageBox.onclick = function () {
-        moveEventSite(events[i].noticeNum);
-      };
-    });
-    EventContentBoxes.forEach(function (EventContentBox) {
-      EventContentBox.innerHTML = events[i].noticeTitle;
-    });
-    EventContent.forEach(function (EventContent) {
-      EventContent.innerText = events[i].noticeContent;
-    });
+//     EventImageBoxes.forEach(function (EventImageBox) {
+//       EventImageBox.style.backgroundImage = "url('" + events[i].noticeImageUrl + "')";
+//       EventImageBox.onclick = function () {
+//         moveEventSite(events[i].noticeNum);
+//       };
+//     });
+//     EventContentBoxes.forEach(function (EventContentBox) {
+//       EventContentBox.innerHTML = events[i].noticeTitle;
+//     });
+//     EventContent.forEach(function (EventContent) {
+//       EventContent.innerText = events[i].noticeContent;
+//     });
 
 
-  }
-})
+//   }
+// })
 
 
 

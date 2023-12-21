@@ -98,13 +98,14 @@
 	  
 	  
 	  
-	  
+
 	  <div class="event-box none-click">
 	  	<p class="box-title event-title">IMPORTANT NEWS</p>
 			다이스키에서는 매월 다양한 이벤트를 개최합니다! 할인 혜택, 강의, 대회 등 다채로운 활동으로 여러분의 스키 체험을 특별하게 만들어봐요. 최신 정보는 웹사이트와 소셜 미디어를 통해 확인하세요. 흥미진진한 순간들이 기다리고 있습니다!
 			<div class="contentBox">
 				<div class="slide_wrapper">
 					<ul class="slides" id="slides">
+						
 					</ul>
 				</div>
 				
@@ -217,6 +218,46 @@
 		</ul>
 		</div>
 	  </div>
+	  
+	  
+	  
+	  
+	  
+	  <!-- 임시  -->
+	  <table class="table notice-table"  >
+		  <thead class="table-light" >
+		    <tr class="notice-table-tr">
+		      <th scope="col" class="notice-table-th-no"><div class="notice-table-td-child">번호</div></th>
+		      <th scope="col" class="notice-table-th-cago"><div class="notice-table-td-child">카테고리</div></th>
+		      <th scope="col" class="notice-table-th-title"><div class="notice-table-td-child">제목</div></th>
+		      <th scope="col" class="notice-table-th-writer"><div class="notice-table-td-child">작성자</div></th>
+		      <th scope="col" class="notice-table-th-reg"><div class="notice-table-td-child">등록일</div></th>
+		      <th scope="col" class="notice-table-th-count"><div class="notice-table-td-child">조회</div></th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		  <c:forEach items="${plist }" var="pvo">
+		  <c:if test="${ph.pgvo.keyword == '' || ph.pgvo.keyword == null || ph.pgvo.keyword == '공지사항' || ph.pgvo.keyword == '이벤트' || ph.pgvo.keyword == '보도자료' || ph.pgvo.keyword == '쇼핑몰' || ph.pgvo.keyword == '채용정보' || ph.pgvo.keyword == '기타' }">
+		    <tr class="notice-table-tr">
+		      <td class="notice-table-td"><div class="notice-table-td-child"><span class="material-symbols-outlined" style="color: red;">campaign</span></div></td>
+		      <td class="notice-table-td"><div class="notice-table-td-child">${pvo.noticeCategory }</div></td>
+		      <td class="notice-table-td"><div class="notice-table-td-child-title"><a href="/notice/detail?noticeNum=${pvo.noticeNum }">${pvo.noticeTitle }</a></div></td>
+		      <td class="notice-table-td"><div class="notice-table-td-child">${pvo.noticeWriter }</div></td>
+		      <td class="notice-table-td"><div class="notice-table-td-child">${fn:replace((fn:substring(pvo.noticeRegAt,0,10)),'-','.') }</div></td>
+		      <td class="notice-table-td"><div class="notice-table-td-child">${pvo.noticeCount }</div></td>
+		    </tr>
+		  </c:if>
+		  </c:forEach>  
+		  </tbody>
+		</table>  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
 	  
 	  
 	  
