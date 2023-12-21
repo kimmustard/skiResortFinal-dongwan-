@@ -14,9 +14,8 @@ document.getElementById('busReserveBtn').addEventListener('click', () => {
           alert('인원수를 선택해주세요.');
      } else if (busRegion === "") {
           alert('탑승하실 지역을 선택해주세요.');
-     } else if (busPeople.length > 5) {
-          alert('버스예약은 최대 4명까지만 가능합니다.');
      } else {
+          alert('예약이 완료되었습니다.');
           document.getElementById('busReserveForm').submit();
      }
 })
@@ -131,7 +130,10 @@ function updateRegion() {
 
      let imagePath = getImagePath(selectRegion);
 
+     let busText = textBus(selectRegion);
+
      document.getElementById("regionImage").src = imagePath;
+     document.getElementById('textBox').value = busText;
 
      document.getElementById('busNum').value = busNum;
 
@@ -169,5 +171,34 @@ function getImagePath(region) {
                return "https://www.i815.or.kr/2017/images/tour/img_visu01.jpg";
           default:
                return "https://rusutsu.com/wp-content/uploads/rusutsu-powder-day-trip_sp.jpg";
+     }
+}
+
+function textBus(region) {
+     let textBox = document.querySelector('.textBox');
+
+     textBox.innerHTML = "";
+
+     switch (region) {
+          case '강남선':
+               textBox.innerHTML = `<p class="fs-5">신논현역 6번 출구 -> 강남역 5번 출구 -> 양재역 2번 출구</p>`;
+               break;
+          case '광화문':
+               textBox.innerHTML = `<p class="fs-5">세종 미술관 앞 -> 회현동 우리은행 후문 앞 -> 이태원 크라운호텔 건너편 육교 -> 반포쇼핑타운 8동 맞은편 GS주유소 가기전</p>`;
+               break;
+          case '분당선':
+               textBox.innerHTML = `<p class="fs-5">낙성육교 -> 서현역 공항버스정류장 50M 앞 육교아래 -> 정자역 3번출구 -> 동천역 2번 출구 -> 죽전역 1번출구 버스정류장 -> 동백이마트 정문 버스정류장</p>`;
+               break;
+          case '수원선':
+               textBox.innerHTML = `<p class="fs-5">수원역 10번 출구 버스정류장 -> 동수원병원 건너편 버스정류장 -> 아주대 시외버스정류장 -> 영통역 1번 출구 홈플러스 정문 앞 -> 수원 TG 두진 아파트 버스정류장</p>`;
+               break;
+          case '잠실선':
+               textBox.innerHTML = `<p class="fs-5">건대 롯데백화점 -> 잠실롯데마트 정문 앞 -> 가락동 일신여상 정문 건너편 송파농협 앞 -> 성남 모란역 8번출구 앞</p>`;
+               break;
+          case '천안-평택선':
+               textBox.innerHTML = `<p class="fs-5">천안종합운동장 앞 -> 천안 터미널사거리 아라리오 갤러리 앞 -> 천안 성환문화회관앞 사거리 성환게이트볼장 맞은편 -> 평택 뉴코아 아울렛 맞은편</p>`;
+               break;
+          default:
+               textBox.innerHTML = ``;
      }
 }

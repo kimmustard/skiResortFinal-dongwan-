@@ -22,4 +22,34 @@
         SET bus_people_limit = bus_people_limit - #{busPeople}
         WHERE bus_num = #{busNum} AND bus_region = #{busRegion}
 	</update>
+	
+	<select id="busReserveList" resultType="com.web.www.domain.bus.BusVO">
+		select * from bus order by bus_reserve_num desc
+	</select>
+	
+	<select id="busReserveInfo" resultType="com.web.www.domain.bus.BusVO">
+		select * from bus where bus_reserve_num = #{busReserveNum} and member_num = #{memberNum}
+	</select>
+	
+	<update id="updateBusReserve">
+		update bus set bus_cancel = #{busCancel} 
+		where bus_num = #{busNum} and member_num = #{memberNum}
+	</update>
+	
+	<select id="findBusInfo" resultType="com.web.www.domain.bus.BusInfoVO">
+		select * from bus_info where bus_num = #{busNum}
+	</select>
+	
+	<select id="getMemberBusCheck" resultType="int">
+		select count(*) from bus where member_num = #{memberNum} and bus_cancel = 'N';
+	</select>
+	
+	<update id="updateBusInfo">
+		update bus_info set bus_people_limit = #{busPeopleLimit}
+		where bus_num = #{busNum}
+	</update>
+	
+	<!-- <update id="busCancel">
+		update bus set bus_cancel = 'Y'
+	</update> -->
 </mapper>
