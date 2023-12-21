@@ -31,6 +31,14 @@
 		update file set file_isok='N' where notice_num=#{noticeNum}
 	</update>
 	
+	<select id="selectNoticeListFirstFile" resultType="com.web.www.domain.FileVO">
+		select * from file where notice_num=#{noticeNum};
+	</select>
+	
+	<update id="updateNoticeFile">
+		update file set file_asc = #{fileAsc} where notice_num = #{noticeNum} and file_uuid = #{fileUuid}
+	</update>
+	
 	
 	<!-- Q&A 코드 라인 -->
 	<insert id="insertQnaFile">

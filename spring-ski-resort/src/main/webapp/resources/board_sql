@@ -142,8 +142,8 @@ alter table file change column notice_point_file notice_Impact_file varchar(1) d
 12/18 변경(칼럼추가 변경)
 alter table file add column file_asc int default 0;
 
-
-
+**파일조회용**
+select * from file where file_reg_at > current_date() and file_isok='Y';
 
 
 

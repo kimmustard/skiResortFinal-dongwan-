@@ -50,7 +50,7 @@
 				<ul>
 					<li>
 						<a href="/bus/busReserve">
-							<button type="button" class="bus-btn mybus-btn">셔틀버스 예약</button>
+							<button type="button" class="bus-btn mybus-btn" style="background-color: #222222; color: white;">셔틀버스 예약</button>
 						</a>
 					</li>
 					<li>

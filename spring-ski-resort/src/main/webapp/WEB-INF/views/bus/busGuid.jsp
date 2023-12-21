@@ -28,7 +28,7 @@
 	    <div class="bus-tag-container">
 			<ul>
 				<li>
-					<a>
+					<a href="/bus/busReserve">
 						<button type="button" class="bus-btn mybus-btn">셔틀버스 예약</button>
 					</a>
 				</li>

@@ -243,12 +243,20 @@ public class MemberController {
 	}
 	
 	@GetMapping("/memberQna")
-	public void memberQna(HttpSession ses, Model m, PagingVO pgvo) {
+	public void memberQna(HttpSession ses, Model m, PagingVO pgvo, @AuthUser MemberVO mvo) {
+		pgvo.setType("w");
+		if (mvo.getMemberType().equals("normal")) {
+			pgvo.setKeyword(mvo.getMemberId());			
+		}else {
+			pgvo.setKeyword(mvo.getMemberEmail());
+		}
 		m.addAttribute("list", qsv.qnaList(pgvo));
 		m.addAttribute("blist", bsv.busReserveList(pgvo));
 		int totalCount = qsv.getTotalCount(pgvo);
 		PagingHandler ph = new PagingHandler(pgvo, totalCount);
+		log.info(">>>>ph>>>"+ ph);
 		m.addAttribute("ph",ph);
+		m.addAttribute("mvo", mvo);
 	}
 	
 	
