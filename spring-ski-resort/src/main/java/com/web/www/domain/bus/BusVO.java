@@ -12,6 +12,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 public class BusVO {
+	private long busReserveNum; // 버스 예약번호
 	private int busNum; // 차량번호
 	private long memberNum; // 회원번호
 	private String busRegion; // 출발지역

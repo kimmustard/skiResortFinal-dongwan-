@@ -22,6 +22,8 @@ public class ProductRenewalSweeper {
 	@Autowired
 	private ProductRenewalDAO prdao;
 	
+	
+	
 	@Autowired
 	private RentalDAO rdao;
 	
@@ -55,6 +57,7 @@ public class ProductRenewalSweeper {
 		prdao.couponRenewal();
 		
 		//버스 좌석 갱신
+		
 		
 		//알람 테이블 청소
 		prdao.alarmRenewal();
