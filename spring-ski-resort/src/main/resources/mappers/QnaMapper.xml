@@ -6,8 +6,8 @@
 
 	<!-- Q&A 코드 라인 -->
 	<insert id="insert" parameterType="com.web.www.domain.board.QnaVO">
-		insert into qna(qna_writer, qna_category, qna_title, qna_content, qna_secret, qna_merchant_uid)
-		values(#{qnaWriter}, #{qnaCategory}, #{qnaTitle}, #{qnaContent}, #{qnaSecret}, #{qnaMerchantUid})
+		insert into qna(member_num, qna_writer, qna_category, qna_title, qna_content, qna_secret, qna_merchant_uid)
+		values(#{memberNum}, #{qnaWriter}, #{qnaCategory}, #{qnaTitle}, #{qnaContent}, #{qnaSecret}, #{qnaMerchantUid})
 	</insert>
 	
 	<select id="selectOneQnaNum" resultType="long">
@@ -94,5 +94,9 @@
 			</trim>
 		</if>
 	</sql>
+
+	<select id="getQnaInfo" resultType="long">
+		select member_num from qna where qna_num = #{qnaNum}
+	</select>
 
 </mapper>

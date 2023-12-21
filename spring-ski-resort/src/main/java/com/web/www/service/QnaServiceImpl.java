@@ -3,12 +3,15 @@ package com.web.www.service;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.web.www.domain.FileVO;
+import com.web.www.domain.alarm.AlarmVO;
 import com.web.www.domain.board.PagingVO;
 import com.web.www.domain.board.QnaAnsDTO;
-import com.web.www.domain.board.QnaVO;
 import com.web.www.domain.board.QnaDTO;
+import com.web.www.domain.board.QnaVO;
+import com.web.www.repository.AlarmDAO;
 import com.web.www.repository.FileDAO;
 import com.web.www.repository.QnaDAO;
 
@@ -22,11 +25,12 @@ public class QnaServiceImpl implements QnaService{
 	
 	private final QnaDAO qdao;
 	private final FileDAO fdao;
+	private final AlarmDAO adao;
 	
 	
 	
 ///// Q&A 등록 구간 //////
-	
+	@Transactional
 	@Override
 	public int qnaRegister(QnaDTO qdto) {
 		//제목 공백 등록 막기
@@ -89,7 +93,7 @@ public class QnaServiceImpl implements QnaService{
 	}
 
 
-
+	@Transactional
 	@Override
 	public int qnaFileModify(QnaDTO qdto) {
 		log.info(">>>>> Qna file modify service >> ");
@@ -139,12 +143,15 @@ public class QnaServiceImpl implements QnaService{
 	
 ///// Q&A 답변 등록 구간 //////	
 
+	@Transactional
 	@Override
 	public int qnaAnsRegister(QnaAnsDTO qadto) {
 		int isOk = qdao.ansInsert(qadto.getQavo());
 		isOk = qdao.qnaIsokUpdate(qadto.getQavo().getQnaNum()); //qnaIsok='Y'만들기
 		if(qadto.getFlist()==null) {
 			isOk*=1;
+			long memberNum = qdao.getQnaInfo(qadto.getQavo().getQnaNum());
+			adao.alarmSetting(new AlarmVO(memberNum, 7, "문의"));
 			return isOk;
 		}
 		if(isOk > 0 && qadto.getFlist().size() > 0) {
@@ -157,6 +164,8 @@ public class QnaServiceImpl implements QnaService{
 				isOk*=fdao.insertQnaAnsFile(fvo);
 			}
 		}
+		long memberNum = qdao.getQnaInfo(qadto.getQavo().getQnaNum());
+		adao.alarmSetting(new AlarmVO(memberNum, 7, "문의"));
 		return isOk;
 	}
 
@@ -170,7 +179,7 @@ public class QnaServiceImpl implements QnaService{
 	}
 
 
-
+	@Transactional
 	@Override
 	public int qnaAnsFileModify(QnaAnsDTO qadto) {
 		log.info(">>>>> Qna-ans file modify service >> ");
