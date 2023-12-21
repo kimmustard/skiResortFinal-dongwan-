@@ -19,6 +19,7 @@ import com.web.www.domain.member.ModifyMemberDTO;
 import com.web.www.domain.pay.ReceiptDTO;
 import com.web.www.repository.AlarmDAO;
 import com.web.www.repository.MemberDAO;
+import com.web.www.repository.RentalDAO;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -31,6 +32,7 @@ public class MemberServiceImpl implements MemberService {
 
 	private final MemberDAO mdao;
 	private final AlarmDAO adao;
+	private final RentalDAO rdao;
 
 	@Transactional
 	@Override
@@ -257,7 +259,9 @@ public class MemberServiceImpl implements MemberService {
 	            return liftReceipt;
 	        case "렌탈":
 	            ReceiptDTO rentalReceipt = mdao.getRentalReceipt(payMerChantUid);
-	            
+	            //장비종류 가져오기
+	            List<String> rentalReserveItemList = rdao.getRentalItemList(rentalReceipt.getRentalReserveNum());
+	            rentalReceipt.setRentalReserveList(rentalReserveItemList);
 	            // 필드 설정
 	            modelMapper.map(originalReceipt, rentalReceipt);
 	            return rentalReceipt;
