@@ -23,6 +23,8 @@ import com.web.www.domain.board.QnaAnsDTO;
 import com.web.www.domain.board.QnaAnsVO;
 import com.web.www.domain.board.QnaDTO;
 import com.web.www.domain.board.QnaVO;
+import com.web.www.domain.member.AuthUser;
+import com.web.www.domain.member.MemberVO;
 import com.web.www.handler.FileHandler;
 import com.web.www.handler.PagingHandler;
 import com.web.www.service.QnaService;
@@ -76,7 +78,7 @@ public class QnaController {
 	
 	@GetMapping("/list")
 	public void qnaList(HttpSession ses, Model m, PagingVO pgvo) {
-		String str = (String) ses.getAttribute("memberId");
+		String str = (String) ses.getAttribute("memberId");	
 		log.info("###### = {}", str);
 		m.addAttribute("list", qsv.qnaList(pgvo));
 		int totalCount = qsv.getTotalCount(pgvo);

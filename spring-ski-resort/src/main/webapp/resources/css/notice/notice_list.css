@@ -475,7 +475,7 @@ a{
 	max-width:100%;
 	margin:0 auto;
 	margin-top: 96px;
-	height: 70vh;
+	height: 50vh;
 	}
 .section .slidelist {
 	white-space:nowrap;
@@ -486,7 +486,7 @@ a{
 .section .slidelist > li {
 	display:inline-block;
 	vertical-align:middle;
-	height: 70vh;
+	height: 50vh;
 	width:100%;
 	transition:all .5s;
 	}
@@ -719,7 +719,7 @@ a{
 	font-weight: 500;
 	line-height: 1px;
 }
-.event-item-box{
+.notice-point-item-box{
 	position : relative;
 	height: 455px;
     box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.2);
@@ -729,7 +729,7 @@ a{
 	margin: 50px 0px 0px 0px;
 }
 
-.event-item-box>p{
+.notice-point-item-box>p{
 	margin: 15px 15px 0px 15px;
 	line-height:20px;
 	overflow: hidden;
@@ -739,15 +739,15 @@ a{
 	 transition: 0.5s;
 	 color: black;
 	}
-.event-image-box{
+.notice-point-image-box{
 	background-color:black;
 	height: 455px;
 	background-size: cover;
 }
-.event-image-box:hover{
+.notice-point-image-box:hover{
 	cursor: pointer;
 }
-.event-content-box{
+.notice-point-content-box{
   padding: 16px;
     padding-bottom: 0px;
     text-overflow: ellipsis;
@@ -978,7 +978,7 @@ a{
 }
 .index_move_text:hover {
 	cursor: pointer;
-}.event-filter-box{
+}.notice-point-filter-box{
 	width:300px;
 	height: 455px;
 	overflow : none;
@@ -991,8 +991,8 @@ a{
 	padding: 50px 15px;
 	
 }
-.event-filter-box:hover{background-color: rgba(0,0,0,0.5); color: white;}
-.event-content{
+.notice-point-filter-box:hover{background-color: rgba(0,0,0,0.5); color: white;}
+.notice-point-content{
 	margin-top: 30px;
     height: 100px;
     overflow: hidden;
@@ -1006,7 +1006,7 @@ a{
 	    background-color: transparent;
  }
  .event-dia:hover{cursor: pointer;}
- .event-filter-box:hover >.event-dia{
+ .notice-point-filter-box:hover >.event-dia{
  	background-color: #b36161;
  }
  .event-title{margin-bottom: 40px;}
