@@ -422,13 +422,12 @@
 
 .lift-name{
 	width: 800px;
-	height: 280px;
+	height: 300px;
 	margin-top: 10px;
 	background-image: url("/resources/etc/design/티켓.png");
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
 	margin-left: 150px;
-	box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.7);
 	z-index: 1;
 }
 
