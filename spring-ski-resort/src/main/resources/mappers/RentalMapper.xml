@@ -226,6 +226,10 @@
 		SELECT rental_list_item_num, rental_list_item_count
         FROM rental_items where rental_list_item_num = #{rentalItemNum}
 	</select>
+	
+	<select id="getRentalItemList" resultType="string">
+		select rental_reserve_item from rental_reserve_list where rental_reserve_num = #{rentalReserveNum}
+	</select>
 
 
 </mapper>

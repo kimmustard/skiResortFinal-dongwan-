@@ -50,6 +50,23 @@
  		]]>
  	</delete>
  	
+ 	<!-- 버스 리뉴얼 -->
+ 	<select id="busNumList" resultType="string">
+ 		<![CDATA[
+ 		select bus_num from bus where DATE_ADD(bus_start_date, INTERVAL 1 DAY) < CURRENT_DATE;
+ 		]]>
+ 	</select>
+ 	
+ 	<update id="busRenewal">
+ 		<![CDATA[
+ 		update bus set bus_cancel = 'Y'
+ 		where DATE_ADD(bus_start_date, INTERVAL 1 DAY) < CURRENT_DATE;
+ 		]]>
+ 	</update>
+ 	
+ 	<update id="busPeopleRenewal">
+ 		update busPeopleRenewal set bus_people_limit = bus_people_limit + 1 where bus_num = #{busNum} 
+ 	</update>
  	
  	
  	
