@@ -190,23 +190,30 @@ function initSlide(containerId) {
      let value = 0;
      let slideWidth = 400;
 
+     
      // 이미지 클론
-     function cloneSlides() {
-          let firstSlideClone = slides[0].cloneNode(true);
-          let lastSlideClone = slides[slides.length - 1].cloneNode(true);
-          container.appendChild(firstSlideClone);
-          container.appendChild(lastSlideClone);
-     }
+     // function cloneSlides() {
+     //      let firstSlideClone = slides[0].cloneNode(true);
+     //      let lastSlideClone = slides[slides.length - 1].cloneNode(true);
+     //      container.appendChild(firstSlideClone);
+     //      container.appendChild(lastSlideClone);
+     // }
 
      // 다음 이미지로 이동
      function next() {
           value -= slideWidth;
+          if (value < -((slides.length - 3) * slideWidth)) {
+               value = -((slides.length - 3) * slideWidth);
+          }
           transitionSlides();
      }
 
      // 이전 이미지로 이동
      function prev() {
           value += slideWidth;
+          if (value > 0) {
+               value = 0;
+          }
           transitionSlides();
      }
 
@@ -218,28 +225,28 @@ function initSlide(containerId) {
           });
 
           // 슬라이드가 끝에 도달하면 초기 위치로 이동
-          if (value <= -((slides.length - 2) * slideWidth)) {
-               resetSlides();
-          }
+          // if (value <= -((slides.length - 2) * slideWidth)) {
+          //      resetSlides();
+          // }
 
-          // 슬라이드가 처음으로 돌아갈 경우
-          if (value >= 0) {
-               resetSlides();
-          }
+          // // 슬라이드가 처음으로 돌아갈 경우
+          // if (value >= 0) {
+          //      resetSlides();
+          // }
      }
 
      // 슬라이드 초기 위치로 이동
-     function resetSlides() {
-          setTimeout(() => {
-               slides.forEach(slide => {
-                    slide.style.transition = '0s';
-                    value = 0;
-                    slide.style.transform = 'translateX(' + value + 'px)';
-               });
-          }, 300);
-     }
+     // function resetSlides() {
+     //      setTimeout(() => {
+     //           slides.forEach(slide => {
+     //                slide.style.transition = '0s';
+     //                value = 0;
+     //                slide.style.transform = 'translateX(' + value + 'px)';
+     //           });
+     //      }, 300);
+     // }
 
-     cloneSlides();
+     // cloneSlides();
 
      if (document.getElementById('slideNextBtn')) {
           document.getElementById('slideNextBtn').addEventListener('click', next);
