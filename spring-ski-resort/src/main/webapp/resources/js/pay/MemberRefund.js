@@ -50,6 +50,15 @@ document.querySelectorAll('.tr-div').forEach((row) => {
                 str += `<p>총 대여료 : ${result.rentalReserveTotalFee} 원 </p>`;
                 str += `<p>렌탈대여 시작일 : ${result.rentalReserveStart}</p>`;
                 str += `<p>반납여부 : ${result.rentalReserveReturn}</p>`;
+                str += `<p>-- 구매 목록 --</p>`;
+                if (result.rentalReserveList.length > 0) {
+                    for (let i = 0; i < result.rentalReserveList.length; i++) {
+                        str += `<span>${result.rentalReserveList[i]} </span>`;
+                        if (i == 1 || i == 3) {
+                            str += `<br>`
+                        }
+                    }
+                }
             }
 
             div.innerHTML = str;

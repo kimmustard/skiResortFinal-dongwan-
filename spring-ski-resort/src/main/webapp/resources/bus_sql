@@ -13,6 +13,7 @@ bus_isok varchar(1) default 'Y',
 bus_cancel varchar(1) default 'N',
 primary key(bus_reserve_num)
 );
+
 -- bus_info 테이블 생성 12/19
 create table bus_info(
 bus_num int,
