@@ -475,7 +475,7 @@ a{
 	max-width:100%;
 	margin:0 auto;
 	margin-top: 96px;
-	height: 70vh;
+	height: 50vh;
 	}
 .section .slidelist {
 	white-space:nowrap;
@@ -486,7 +486,7 @@ a{
 .section .slidelist > li {
 	display:inline-block;
 	vertical-align:middle;
-	height: 70vh;
+	height: 50vh;
 	width:100%;
 	transition:all .5s;
 	}

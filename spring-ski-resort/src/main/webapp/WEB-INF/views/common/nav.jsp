@@ -38,7 +38,7 @@
     		<span class="main-title-logo"><a href="/"><img alt="" width="110" height="90" src="/resources/etc/logo_white.png"></a> </span>
        <div class="ski-nav-link" id="ski-nav-link"><a href="/hotel/reservation"> RESERVATION <span class="nav-ani"></span></a></div>
        <div class="ski-nav-link" id="ski-nav-link"><a href="/qna/list"> SERVICE <span class="nav-ani"></span></a></div>
-       <div class="ski-nav-link" id="ski-nav-link"><a href="/bus/busMap"> BUS <span class="nav-ani"></span></a></div>
+       <div class="ski-nav-link" id="ski-nav-link"><a href="/bus/busReserve"> BUS <span class="nav-ani"></span></a></div>
        <!-- <div class="ski-nav-link" id="ski-nav-link"><a href="/pay/testForm"> 작업실 <span class="nav-ani"></span></a></div> -->
        <ul class="ski-side-navbar">
        	<sec:authorize access="isAnonymous()">

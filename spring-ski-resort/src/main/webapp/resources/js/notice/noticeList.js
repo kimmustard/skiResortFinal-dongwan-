@@ -37,29 +37,29 @@ async function getFiveEvent() {
 }
 
 
-// //이벤트 슬라이드에 이미지와 내용 추가
-// getFiveEvent().then(events => {
-//   for (let i = 0; i < events.length; i++) {
-//     let EventImageBoxes = document.querySelectorAll("#notice-point-image-box" + (i + 1));
-//     let EventContentBoxes = document.querySelectorAll("#notice-point-content-box" + (i + 1));
-//     let EventContent = document.querySelectorAll("#notice-point-content" + (i + 1));
+//이벤트 슬라이드에 이미지와 내용 추가
+getFiveEvent().then(events => {
+  for (let i = 0; i < events.length; i++) {
+    let EventImageBoxes = document.querySelectorAll("#notice-point-image-box" + (i + 1));
+    let EventContentBoxes = document.querySelectorAll("#notice-point-content-box" + (i + 1));
+    let EventContent = document.querySelectorAll("#notice-point-content" + (i + 1));
 
-//     EventImageBoxes.forEach(function (EventImageBox) {
-//       EventImageBox.style.backgroundImage = "url('" + events[i].noticeImageUrl + "')";
-//       EventImageBox.onclick = function () {
-//         moveEventSite(events[i].noticeNum);
-//       };
-//     });
-//     EventContentBoxes.forEach(function (EventContentBox) {
-//       EventContentBox.innerHTML = events[i].noticeTitle;
-//     });
-//     EventContent.forEach(function (EventContent) {
-//       EventContent.innerText = events[i].noticeContent;
-//     });
+    EventImageBoxes.forEach(function (EventImageBox) {
+      EventImageBox.style.backgroundImage = "url('" + events[i].noticeImageUrl + "')";
+      EventImageBox.onclick = function () {
+        moveEventSite(events[i].noticeNum);
+      };
+    });
+    EventContentBoxes.forEach(function (EventContentBox) {
+      EventContentBox.innerHTML = events[i].noticeTitle;
+    });
+    EventContent.forEach(function (EventContent) {
+      EventContent.innerText = events[i].noticeContent;
+    });
 
 
-//   }
-// })
+  }
+})
 
 
 
