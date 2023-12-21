@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+   <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +9,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+
+
 	<div class="category-profile">
 		<img alt="그림없음" width="230" height="200" src="/resources/etc/logo_white.png">
 		<span>회원님의 등급은 <span id="member-grade">${mvo.memberGrade} </span> 입니다.</span>
