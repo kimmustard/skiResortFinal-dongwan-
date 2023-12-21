@@ -92,7 +92,7 @@
 	
 	
 	<div class="back">
-		<img data-v-c62ee4ac="" src="https://cdn.shymbulak-dev.com/media-test/77032ae86d50f5d61c9cec8b2f30ae39.jpg" alt="" style="height: 100vh;">
+		<img data-v-c62ee4ac="" src="https://pbs.twimg.com/media/GAu6whlX0AA4qxA?format=jpg&name=4096x4096" alt="">
 		
 		<div class="box">
 			<p class="fs-3  rentalText"><a class="move-hotel" href="/hotel/reservation">호텔예약</a>/리프트권 예약</p>
@@ -189,12 +189,12 @@
 					</div>
 					
 					<div class="input-group mb-3">
-						<span class="input-group-text">요금(성인)</span>
-						<input type="text" class="form-control" id="showadultFee" value="0" readonly="readonly">
+						<span class="input-group-text" id="basic-addon1"><i class="bi bi-credit-card"></i></span>
+						<input type="text" class="form-control" id="showadultFee" readonly="readonly" placeholder="성인요금">
 					</div>
 					<div class="input-group mb-3">
-						<span class="input-group-text">요금(어린이)</span>
-						<input type="text" class="form-control" id="showkidFee" value="0" readonly="readonly">
+						<span class="input-group-text"><i class="bi bi-credit-card"></i></span>
+						<input type="text" class="form-control" id="showkidFee" readonly="readonly" placeholder="어린이요금">
 						
 					</div>
 					<!-- db로 보낼 hiddem input  -->
@@ -217,6 +217,7 @@
 			</form>
 		</div>
 	
+		
 	</div>
 	<script type="text/javascript">
 	
