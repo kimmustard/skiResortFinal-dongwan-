@@ -367,7 +367,7 @@ function shoppingBasket(itemNum, itemName, price, itemImageUrl) {
 
      if (shoppingBasketSwitch == -1) {
           shoppingBasket.style.right = '0px';
-          itemContainer.style.marginLeft = '250px';
+
           shoppingBasketSwitch = 1;
 
      }
@@ -432,7 +432,6 @@ function removeItem(index) {
 
      if (itemsArray.length == 0) {
           shoppingBasket.style.right = '-350px';
-          itemContainer.style.marginLeft = '350px';
           shoppingBasketSwitch = -1;
      }
 }
