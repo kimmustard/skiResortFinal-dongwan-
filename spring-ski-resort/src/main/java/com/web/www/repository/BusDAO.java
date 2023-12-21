@@ -22,12 +22,14 @@ public interface BusDAO {
 
 //	int busCancel();
 
-	BusVO busReserveInfo(@Param("busNum") int busNum, @Param("memberNum") long memberNum);
+	BusVO busReserveInfo(@Param("busReserveNum") long busReserveNum, @Param("memberNum") long memberNum);
 
 	void updateBusReserve(BusVO bvo);
 
-	BusInfoVO findBusInfo(int busNum);
+	BusInfoVO findBusInfo(long busReserveNum);
 
 	void updateBusInfo(BusInfoVO bivo);
+
+	int getMemberBusCheck(long memberNum);
 
 }

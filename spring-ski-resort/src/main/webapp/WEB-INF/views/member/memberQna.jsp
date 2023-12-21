@@ -34,7 +34,7 @@
 			<div class="mainViewBox3">
 				<div class="infoBox ibox6">
 					<div class="iboxList iboxList2">
-						<span>Q&A문의 내역 / 버스예약 내역</span>
+						<span>Q&A문의 내역</span>
 					</div>
 					<table class="table table-hover">
 						<thead>
@@ -112,18 +112,20 @@
 					<table class="table table-hover">
 						<thead>
 							<tr class="table-dark">
+								<th style="width: 5%; border-left: 1px solid;">NO</th>
 								<th style="width: 10%; border-left: 1px solid;">회원번호</th>
-								<th style="width: 18%; border-left: 1px solid;">차량번호</th>
-								<th style="width: 18%; border-left: 1px solid;">출발지역</th>
-								<th style="width: 18%; border-left: 1px solid;">인원수</th>
-								<th style="width: 18%; border-left: 1px solid;">예약상태</th>
-								<th style="width: 18%; border-left: 1px solid;">예약신청일</th>
+								<th style="width: 15%; border-left: 1px solid;">차량번호</th>
+								<th style="width: 15%; border-left: 1px solid;">출발지역</th>
+								<th style="width: 15%; border-left: 1px solid;">인원수</th>
+								<th style="width: 25%; border-left: 1px solid;">예약상태</th>
+								<th style="width: 15%; border-left: 1px solid;">예약신청일</th>
 							</tr>
 						</thead>
 						<tbody>
 							<c:forEach items="${blist}" var="bvo">
 								
 								<tr class="tr-div">
+									<td>${bvo.busReserveNum }</td>
 									<td>${bvo.memberNum }</td>
 									<td>${bvo.busNum }</td>
 									<td>${bvo.busRegion }</td>
@@ -131,7 +133,7 @@
 									<c:if test="${bvo.busCancel eq 'N' }">
 										<td>
 											예약완료
-											<a href="/bus/cancel?bus_num=${bvo.busNum}&member_num=${bvo.memberNum}"><button type="button" id="busCancelBtn">예약취소</button></a>
+											<a href="/bus/cancel?busReserveNum=${bvo.busReserveNum}"><button type="button" id="busCancelBtn">예약취소</button></a>
 										</td>
 									</c:if>
 									<c:if test="${bvo.busCancel eq 'Y' }">
@@ -158,5 +160,12 @@
 	</div>
 </div>
 
+
+<script type="text/javascript">
+	const isOk = `<c:out value="${isOk}"/>`;
+	if(isOk == 1){
+		alert("이미 예약하셨습니다");
+	}
+</script>
 </body>
 </html>

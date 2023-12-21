@@ -42,16 +42,23 @@ public class BusServiceImpl implements BusService{
 		return bdao.busReserveList(pgvo);
 	}
 
+	@Override
+	public int getMemberBusCheck(long memberNum) {
+		// TODO Auto-generated method stub
+		return bdao.getMemberBusCheck(memberNum);
+	}
+	
+	
 	@Transactional
 	@Override
-	public void busCancel(int busNum, long memberNum) {
-		BusVO bvo = bdao.busReserveInfo(busNum, memberNum);
+	public BusVO busCancel(long busReserveNum, long memberNum) {
+		BusVO bvo = bdao.busReserveInfo(busReserveNum, memberNum);
 		
 		if(bvo != null && "N".equals(bvo.getBusCancel())) {
 			bvo.setBusCancel("Y");
 			bdao.updateBusReserve(bvo);
 			
-			BusInfoVO bivo = bdao.findBusInfo(busNum);
+			BusInfoVO bivo = bdao.findBusInfo(busReserveNum);
 			
 			if(bivo != null) {
 				int newBusCount = bivo.getBusPeopleLimit() + bvo.getBusPeople();
@@ -60,6 +67,8 @@ public class BusServiceImpl implements BusService{
 			}
 		}
 		
+		return bvo;
 		
 	}
+
 }

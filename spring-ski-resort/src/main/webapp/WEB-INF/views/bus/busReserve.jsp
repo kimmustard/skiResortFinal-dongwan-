@@ -158,6 +158,7 @@
 	<script type="text/javascript">
 	const memberEmail= `<c:out value="${mvo.memberEmail}"/>`;
 	</script>
+	
 	<script type="text/javascript" src="/resources/js/bus/busReserve.js"></script>
 	<jsp:include page="../common/footer.jsp" />	
 </body>

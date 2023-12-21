@@ -15,6 +15,7 @@ document.getElementById('busReserveBtn').addEventListener('click', () => {
      } else if (busRegion === "") {
           alert('탑승하실 지역을 선택해주세요.');
      } else {
+          alert('예약이 완료되었습니다.');
           document.getElementById('busReserveForm').submit();
      }
 })
@@ -198,6 +199,6 @@ function textBus(region) {
                textBox.innerHTML = `<p class="fs-5">천안종합운동장 앞 -> 천안 터미널사거리 아라리오 갤러리 앞 -> 천안 성환문화회관앞 사거리 성환게이트볼장 맞은편 -> 평택 뉴코아 아울렛 맞은편</p>`;
                break;
           default:
-               textBox.innerHTML = `<p class="fs-5">버스 노선</p>`;
+               textBox.innerHTML = ``;
      }
 }

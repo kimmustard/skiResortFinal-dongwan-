@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.web.www.domain.bus.BusInfoVO;
 import com.web.www.domain.bus.BusVO;
@@ -42,27 +43,41 @@ public class BusController {
 	}
 
 	@GetMapping("/busReserve")
-	public String busReserveForm(@AuthUser MemberVO mvo, Model model, BusInfoVO bivo) {
+	public String busReserveForm(@AuthUser MemberVO mvo, Model model, BusInfoVO bivo, RedirectAttributes rttr) {
 		log.info("bus mvo = {}",mvo);
+
+		if(mvo != null) {
+			if (bsv.getMemberBusCheck(mvo.getMemberNum()) > 0) {
+				rttr.addFlashAttribute("isOk", 1);
+				return "redirect:/member/memberQna";
+			}
+		}
+		
 		model.addAttribute("mvo", mvo);
 		model.addAttribute("bivo", bivo);
 		return "/bus/busReserve";
 	}
 	
-	@PostMapping("busReserve")
+	@PostMapping("/busReserve")
 	public String busReservePost(BusVO bvo) {
-		log.info("BusVO bvo = {}",bvo);
+		
 		int isOk = bsv.busReserve(bvo);
-		log.info((isOk > 0)? "ok":"fail");
+		log.info("BusVO bvo = {}",bvo);
+		int isBus = 0;
+		log.info((isBus > 0)? "ok":"fail");
 		return "index";
 	}
 	
 	@GetMapping("/cancel")
-	public String busReserveCancel(@RequestParam("busNum") int busNum, @RequestParam("memberNum") long memberNum) {
+	public String busReserveCancel(@RequestParam("busReserveNum") long busReserveNum, @AuthUser MemberVO mvo, RedirectAttributes rttr) {
 		
-		bsv.busCancel(busNum, memberNum);
+		bsv.busCancel(busReserveNum, mvo.getMemberNum());
+//		if(bvo == null) {
+//			rttr.addFlashAttribute("isOk", 1);
+//			return "redirect:/member/memberQna";
+//		}
 		
-		return "redirect:/member/memberQna?busNum&memberNum";
+		return "redirect:/member/memberQna";
 	}
 	
 	@PostConstruct
