@@ -191,9 +191,41 @@
 
 	<!-- 렌탈 대여 정보 등록 -->
 	<insert id="itemsPayInfoRegister">
-		insert into(rental_reserve_start, rental_reserve_total_fee, member_num, pay_merchant_uid)
-		value(#{rentalReserveStart}, #{rentalReserveTotalFee}, #{member_num}, #{pay_merchant_uid})
+		insert into rental_reserve(rental_reserve_start, rental_reserve_total_fee, member_num, pay_merchant_uid)
+		value(#{rentalReserveStart}, #{rentalReserveTotalFee}, #{memberNum}, #{payMerchantUid})
 	</insert>
+	
+	<select id="itemsPayInfoPrimaryKeyGet" resultType="Long">
+		select rental_reserve_num from rental_reserve where pay_merchant_uid = #{payMerchantUid}
+	</select>
+
+	<insert id="itemsPayInfoListRegister">
+		insert into rental_reserve_list(rental_reserve_num, rental_list_item_num, rental_reserve_item, rental_reserve_fee, image_url)
+		value(#{rentalReserveNum}, #{rentalItemNum}, #{rentalItemName}, #{rentalItemPrice}, #{rentalItemUrl})
+	</insert>
+	
+	<!-- 렌탈 대여 정보 등록 토대로 개수 갱신 -->
+	<select id="getRentalItemNumList" resultType="Long">
+		select rental_list_item_num from rental_reserve_list where rental_reserve_num = #{rentalReserveNum}
+	</select>
+	
+	<update id="rentalItemListMinus">
+		update rental_items set rental_list_item_count = rental_list_item_count - 1 
+		where rental_list_item_num = #{itemListNum}
+	</update>
+	<update id="rentalItemListPlus">
+		update rental_items set rental_list_item_count = rental_list_item_count + 1 
+		where rental_list_item_num = #{itemListNum}
+	</update>
+	<update id="itemPayInfoReturnCheck">
+		update rental_reserve set rental_reserve_return = 'Y' 
+		where pay_merchant_uid = #{payMerchantUid}
+	</update>	
+	
+	<select id="getRentaiItemAmount" resultType="java.util.Map">
+		SELECT rental_list_item_num, rental_list_item_count
+        FROM rental_items where rental_list_item_num = #{rentalItemNum}
+	</select>
 
 
 </mapper>
