@@ -179,7 +179,7 @@ public class RentalController {
 	            	sum += temp.getRentalItemPrice();
 	            }
 	        } catch (IOException e) {
-	            log.info("에러발생", e);
+	            log.info("에러발생 = {}", e);
 	        }
 	    }
 	    

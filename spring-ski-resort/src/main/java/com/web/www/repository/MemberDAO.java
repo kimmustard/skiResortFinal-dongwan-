@@ -13,7 +13,6 @@ import com.web.www.domain.member.MemberPwdDTO;
 import com.web.www.domain.member.MemberVO;
 import com.web.www.domain.member.ModifyMemberDTO;
 import com.web.www.domain.pay.ReceiptDTO;
-import com.web.www.domain.pay.RefundReceiptDTO;
 import com.web.www.security.AuthVO;
 
 public interface MemberDAO {
