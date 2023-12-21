@@ -169,19 +169,7 @@
 				<div id="innerbox" class="reserveBox" style="display: none;">
 					<input id="memberGradeInput" type="hidden" value="${mvo.memberGrade }">
 					<p class="fs-2">리프트권 선택</p>
-					<div class="input-group mb-3">
-						<span class="input-group-text" id="basic-addon1"><i class="bi bi-cart2"></i></span>
-						<select class="form-select" id="rentalLiftTicket" onclick="updateFees()" aria-label="Default select example">
-						  <option selected>리프트권 선택</option>
-						  <option value="오전권" onclick="updateFees(40000,30000,'오전권')">오전권</option>
-						  <option value="오후권" onclick="updateFees(50000,40000,'오후권')">오후권</option>
-						  <option value="주간권" onclick="updateFees(60000,50000,'주간권')">주간권</option>
-						  <option value="야간권" onclick="updateFees(40000,30000,'야간권')">야간권</option>
-						  <option value="종일권" onclick="updateFees(75000,65000,'종일권')">종일권</option>
-						  <option value="시즌권" onclick="updateFees(380000,350000,'시즌권')">시즌권</option>
-						</select>
-					</div>
-					<!-- <div class="form-check">
+					<div class="form-check">
 					  <input class="form-check-input" onclick="updateFees(40000,30000,'오전권')" type="radio" name="rentalLiftTicket" value="오전권" id="morningTicket">오전권
 					</div>
 					<div class="form-check">
@@ -198,7 +186,7 @@
 					</div>
 					<div class="form-check">
 					  <input class="form-check-input" onclick="updateFees(380000,350000,'시즌권')" type="radio" name="rentalLiftTicket" value="시즌권" id="seasonTicket">시즌권
-					</div> -->
+					</div>
 					
 					<div class="input-group mb-3">
 						<span class="input-group-text" id="basic-addon1"><i class="bi bi-credit-card"></i></span>
@@ -229,6 +217,7 @@
 			</form>
 		</div>
 	
+		
 	</div>
 	<script type="text/javascript">
 	

@@ -98,6 +98,10 @@ function updateFees(audult, kid, itemName) {
     document.getElementById('userViewpay').innerText = totalfee.toLocaleString() + "원";
     console.log(itemName);
     document.getElementById('item-name').innerText = itemName;
+
+
+
+
     // rentalLiftAdultFeeInput.value.toLocaleString();
     // rentalLiftKidFeeInput.value.toLocaleString();
     // 오전권
