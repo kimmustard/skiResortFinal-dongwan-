@@ -76,7 +76,7 @@
 	      	</div>
 			
 			<div class="member-alarm-board" id="alarm-board">
-				<div class="alarm-board-title"><a href="/member/detail">자세히보기</a></div>
+				<div ><a class="alarm-board-title" id="alarm-board-title" href="/member/detail">자세히보기</a></div>
 				
 				<div class="alarm-board-body" id="alarm-spread">
 					
