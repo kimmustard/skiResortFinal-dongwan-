@@ -37,6 +37,8 @@ public interface QnaDAO {
 
 	int QnaAnsFileModify(QnaAnsVO qavo);
 
+	long getQnaInfo(long qnaNum);
+
 	
 
 	

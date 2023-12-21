@@ -212,7 +212,7 @@
 	</select>
 
 	<select id="getRentalReceipt" resultType="com.web.www.domain.pay.ReceiptDTO">
-		select hotel_reserve_stay_start, hotel_reserve_stay_end, hotel_reserve_people, hotel_reserve_child from room_info
+		select rental_reserve_start, rental_reserve_num, rental_reserve_total_fee, rental_reserve_return from rental_reserve
 		where pay_merchant_uid = #{payMerchantUid}
 	</select>
 

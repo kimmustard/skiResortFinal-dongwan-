@@ -5,9 +5,11 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.web.www.domain.alarm.AlarmVO;
 import com.web.www.domain.board.PagingVO;
 import com.web.www.domain.bus.BusInfoVO;
 import com.web.www.domain.bus.BusVO;
+import com.web.www.repository.AlarmDAO;
 import com.web.www.repository.BusDAO;
 
 import lombok.RequiredArgsConstructor;
@@ -15,12 +17,15 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class BusServiceImpl implements BusService{
+	
 	private final BusDAO bdao;
+	private final AlarmDAO adao;
 
 	@Transactional
 	@Override
 	public int busReserve(BusVO bvo) {
 		bdao.updateBusCount(bvo);
+		adao.alarmSetting(new AlarmVO(bvo.getMemberNum(), 8, "버스"));
 		return bdao.busReserve(bvo);
 	}
 
@@ -66,7 +71,7 @@ public class BusServiceImpl implements BusService{
 				bdao.updateBusInfo(bivo);
 			}
 		}
-		
+		adao.alarmSetting(new AlarmVO(memberNum, 9, "버스"));
 		return bvo;
 		
 	}

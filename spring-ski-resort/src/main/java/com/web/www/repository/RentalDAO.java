@@ -83,6 +83,10 @@ public interface RentalDAO {
 	void itemPayInfoReturnCheck(String payMerchantUid);
 
 	
+	//영수증에 들어갈 아이템 목록
+	List<String> getRentalItemList(String rentalReserveNum);
+
+	
 
 
 
