@@ -77,24 +77,24 @@
 					<br><br>
 					
 						
-					<!-- 페이징 라인 -->
+					<!-- 페이징 라인 -->				
 					<div class="qna-paging-container">
 					  <nav aria-label="Page navigation example">
 					  	<!-- 이전 -->
 					  	<ul class="pagination qna-paging-ul">
 					  		<li class="page-item ${(ph.prev eq false) ? 'disabled' : '' }">
-						  		<a class="page-link" href="/member/memberQna?pageNo=${ph.startPage - 1 }&qty=${ph.pgvo.qty}&type=${ph.pgvo.type}&keyword=${ph.pgvo.keyword}" aria-label="Previous">
+						  		<a class="page-link" href="/member/memberQna?pageNo=${ph.startPage - 1 }&qty=${ph.pgvo.qty}&type=${ph.pgvo.type='w'}&keyword=${authType eq 'normal' ? 'ph.pgvo.keyword=authId' : 'ph.pgvo.keyword=authEmail'}" aria-label="Previous">
 						  		<span aria-hidden="true">&laquo;</span>
 						  		</a>
 					  		</li>
 					  		<c:forEach begin="${ph.startPage }" end="${ph.endPage }" var="i">
 			  					<li>
-			  						<a class="page-link" href="/member/memberQna?pageNo=${i }&qty=${ph.pgvo.qty}&type=${ph.pgvo.type}&keyword=${ph.pgvo.keyword}">${i }</a>
+			  						<a class="page-link" href="/member/memberQna?pageNo=${i }&qty=${ph.pgvo.qty}&type=${ph.pgvo.type='w'}&keyword=${authType eq 'normal' ? 'ph.pgvo.keyword=authId' : 'ph.pgvo.keyword=authEmail'}">${i }</a>
 			  					</li>
 			  				</c:forEach>
 			  			<!-- 다음 -->
 			  				<li class="page-item ${(ph.next eq false) ? 'disabled' : ''}">
-			  					<a class="page-link" href="/member/memberQna?pageNo=${ph.endPage + 1 }&qty=${ph.pgvo.qty}&type=${ph.pgvo.type}&keyword=${ph.pgvo.keyword}" aria-label="Next">
+			  					<a class="page-link" href="/member/memberQna?pageNo=${ph.endPage + 1 }&qty=${ph.pgvo.qty}&type=${ph.pgvo.type='w'}&keyword=${authType eq 'normal' ? 'ph.pgvo.keyword=authId' : 'ph.pgvo.keyword=authEmail'}" aria-label="Next">
 			        			<span aria-hidden="true">&raquo;</span>
 			    				</a>
 			  				</li>	

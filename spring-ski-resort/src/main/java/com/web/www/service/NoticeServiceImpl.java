@@ -150,12 +150,31 @@ public class NoticeServiceImpl implements NoticeService{
 			isOk*=1;
 		}else {
 			if(isOk > 0 && ndto.getFlist().size() > 0) {
-				int cnt = 0;
+				int cnt = 1;
+				int cnt2 = 0;
+				int qty = 0;
 				long NoticeNum = ndto.getNvo().getNoticeNum();
-				for(FileVO fvo : ndto.getFlist()) {
+				//썸네일 중복등록 방지기능 라인
+				List<FileVO> firstFvo = fdao.selectNoticeListFirstFile(NoticeNum); 
+				String fileLog = String.valueOf(firstFvo);
+				log.info(">>>>fileLog>>>>"+fileLog);
+				for(FileVO ffvo : firstFvo) {
+					if(ffvo.getFileIsok().equals("Y")) {					
+						qty++;
+					}
+				}
+				for(FileVO ffvo : firstFvo) { //기존파일
+					if(ffvo.getFileAsc()==1) {
+						fdao.noticeRemoveFile(ffvo.getFileUuid()); //기존썸네일 삭제
+					}
+					ffvo.setFileAsc((qty+cnt));			
+					fdao.updateNoticeFile(ffvo);
 					cnt++;
+				}
+				for(FileVO fvo : ndto.getFlist()) { //신규파일
+					cnt2++;
 					fvo.setNoticeNum(NoticeNum);
-					fvo.setFileAsc(cnt);
+					fvo.setFileAsc(cnt2);
 					isOk *= fdao.insertNoticeFile(fvo);
 				}
 			}
@@ -163,6 +182,7 @@ public class NoticeServiceImpl implements NoticeService{
 		return isOk;
 	}
 
+	
 	@Override
 	public int noticeRemove(long noticeNum) {
 		log.info(">>>>> notice remove service >> ");

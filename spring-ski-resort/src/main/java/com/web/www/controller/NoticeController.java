@@ -132,6 +132,9 @@ public class NoticeController {
 		return isOk > 0 ? new ResponseEntity<String>("1", HttpStatus.OK)
 				: new ResponseEntity<String>("0", HttpStatus.INTERNAL_SERVER_ERROR);
 	}
+	
+	
+	
 	//공지 두 개 비동기로 보내기
 	@GetMapping(value="/getTwoNotice", produces = {MediaType.APPLICATION_JSON_VALUE} )
 	public ResponseEntity<List<NoticeVO>> getTwoNotice() {
