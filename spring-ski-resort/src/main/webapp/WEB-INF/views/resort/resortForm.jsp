@@ -10,11 +10,9 @@
 </head>
 <body>
 	<jsp:include page="../common/nav.jsp"></jsp:include>
-	<div>
-	테스트
-	</div>
 	<div class="resort-main-container">
-		
+		<div class="mainBackground">
+		</div>
 	
 	</div>
 	
