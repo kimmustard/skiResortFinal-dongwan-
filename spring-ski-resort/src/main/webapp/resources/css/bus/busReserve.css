@@ -187,6 +187,8 @@
 	display: flex;
 	margin-left: 55px;
 	flex-direction: column;
+	width: 400px;
+	border-right: 1px solid #ddd;
 }
 
 .input-box1 {
@@ -305,8 +307,8 @@
 
 .busReserveBtn{
 	position: absolute;
-	bottom: 30px;
-	left: 30px;
+	bottom: 0;
+	left: 0;
 	
 }
 
