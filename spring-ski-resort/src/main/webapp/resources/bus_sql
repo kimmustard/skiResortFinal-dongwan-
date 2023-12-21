@@ -1,12 +1,17 @@
+drop table bus;
+drop table bus_info;
+
 -- bus 테이블 생성 12/19
 create table bus(
+bus_reserve_num bigint not null auto_increment,
 bus_num int,
 member_num bigint,
 bus_region varchar(20),
 bus_start_date datetime,
 bus_people int,
 bus_isok varchar(1) default 'Y',
-bus_cancel varchar(1) default 'N'
+bus_cancel varchar(1) default 'N',
+primary key(bus_reserve_num)
 );
 -- bus_info 테이블 생성 12/19
 create table bus_info(

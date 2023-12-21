@@ -1,5 +1,8 @@
 package com.web.www.service;
 
+import java.util.List;
+
+import com.web.www.domain.board.PagingVO;
 import com.web.www.domain.bus.BusInfoVO;
 import com.web.www.domain.bus.BusVO;
 
@@ -11,4 +14,9 @@ public interface BusService {
 
 	void addBusInfo(BusInfoVO busInfoVO);
 
+	List<BusVO> busReserveList(PagingVO pgvo);
+
+	BusVO busCancel(long busReserveNum, long memberNum);
+
+	int getMemberBusCheck(long memberNum);
 }
