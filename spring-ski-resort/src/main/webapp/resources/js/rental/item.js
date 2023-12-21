@@ -188,6 +188,7 @@ function initSlide(containerId) {
      let container = document.getElementById(containerId);
      let slides = container.querySelectorAll('.slide');
      let value = 0;
+
      let slideWidth = 400;
 
      
@@ -202,8 +203,8 @@ function initSlide(containerId) {
      // 다음 이미지로 이동
      function next() {
           value -= slideWidth;
-          if (value < -((slides.length - 3) * slideWidth)) {
-               value = -((slides.length - 3) * slideWidth);
+          if (value < -((slides.length - 4) * slideWidth)) {
+               value = -((slides.length - 4) * slideWidth);
           }
           transitionSlides();
      }
@@ -367,7 +368,7 @@ function shoppingBasket(itemNum, itemName, price, itemImageUrl) {
 
      if (shoppingBasketSwitch == -1) {
           shoppingBasket.style.right = '0px';
-          itemContainer.style.marginLeft = '250px';
+
           shoppingBasketSwitch = 1;
 
      }
@@ -432,7 +433,6 @@ function removeItem(index) {
 
      if (itemsArray.length == 0) {
           shoppingBasket.style.right = '-350px';
-          itemContainer.style.marginLeft = '350px';
           shoppingBasketSwitch = -1;
      }
 }
