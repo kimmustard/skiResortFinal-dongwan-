@@ -1,5 +1,7 @@
 package com.web.www.domain.pay;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -46,9 +48,11 @@ public class ReceiptDTO {
 	private String rentalLiftAdult;
 	private String rentalLiftKid;
 	
-	private String rentalReserveAdult;
-	private String rentalReserveKid;
-	private String rentalReserveStart;
+	private String rentalReserveNum;	//장비 렌탈 고유번호
+	private String rentalReserveStart;	//
+	private String rentalReserveTotalFee;	//
+	private String rentalReserveReturn;
+	private List<String> rentalReserveList; 
 	
 	//환불정보
 	private String refundImpUid;

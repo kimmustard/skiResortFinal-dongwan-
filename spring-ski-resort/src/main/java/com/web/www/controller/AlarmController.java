@@ -67,6 +67,7 @@ public class AlarmController {
 		
 		
 		String alarmCheck = msv.getMemberMasCheck(mvo.getMemberNum());
+		log.info("테스트 = {}", alarmCheck);
 		if(alarmCheck.equals("N")) {
 			return ResponseEntity.noContent().build();
 		}
@@ -131,7 +132,10 @@ public class AlarmController {
 			alarmContentList.add(new AlarmContentVO(3,"시스템","환불 완료되었습니다.","/pay/memberPayList"));
 			alarmContentList.add(new AlarmContentVO(4,"시스템","결제가 취소되었습니다.","/pay/memberPayList"));
 			alarmContentList.add(new AlarmContentVO(5,"시스템","임시비밀번호를 발급하셨습니다. 비밀번호를 변경해주세요","/member/memberPwd"));
-			alarmContentList.add(new AlarmContentVO(6,"관리자","회원님 등급이 변경되었습니다.","/member/detail"));
+			alarmContentList.add(new AlarmContentVO(6,"시스템","회원님 등급이 변경되었습니다.","/member/detail"));
+			alarmContentList.add(new AlarmContentVO(7,"관리자","등록하신 문의글 답변이 등록되었습니다.","/member/memberQna"));
+			alarmContentList.add(new AlarmContentVO(8,"시스템","버스 예약이 완료되었습니다.","/member/memberQna"));
+			alarmContentList.add(new AlarmContentVO(9,"시스템","버스 예약이 취소되었습니다.","/member/memberQna"));
 		
 			for (int i = 0; i < alarmContentList.size(); i++) {
 				asv.addAlarmList(alarmContentList.get(i));

@@ -19,6 +19,7 @@
 <sec:authorize access="isAuthenticated()">
 	<sec:authentication property="principal.mvo.authList" var="auths"/>
 	<sec:authentication property="principal.mvo.memberId" var="authId"/>
+	<sec:authentication property="principal.mvo.memberNum" var="authNum"/>
 	<sec:authentication property="principal.mvo.memberEmail" var="authEmail"/>
 	<sec:authentication property="principal.mvo.memberType" var="authType"/>
 </sec:authorize>
@@ -38,6 +39,7 @@
 	
 	
 	<form action="/qna/register" method="post" enctype="multipart/form-data">
+	<input type="hidden" name="memberNum" value="${authNum}">
 		<table class="qna-table">
 			<colgroup>
 				<col style="width: 150px; background: #f8f8f8;">

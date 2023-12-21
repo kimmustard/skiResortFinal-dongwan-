@@ -36,8 +36,14 @@ public interface ProductRenewalDAO {
 	 */
 	void alarmRenewal();
 	
+	/**
+	 * 버스 리뉴얼
+	 */
+	List<String> busNumList();
+	void busRenewal();
+	void busPeopleRenewal(String busNum);
 	
-	
+	// 공용
 	void PayRenuwal(String payMerchantUid);
 	
 }

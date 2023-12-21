@@ -14,8 +14,8 @@ import lombok.ToString;
 public class BusVO {
 	private long busReserveNum; // 버스 예약번호
 	private int busNum; // 차량번호
-	private long memberNum; // 회원번호
 	private String busRegion; // 출발지역
+	private long memberNum; // 회원번호
 	private String busStartDate; // 출발날짜
 	private int busPeople; // 탑승인원
 	private String busIsok; // 버스 이용가능여부
