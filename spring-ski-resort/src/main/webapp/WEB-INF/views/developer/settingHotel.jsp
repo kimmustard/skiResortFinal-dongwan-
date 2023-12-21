@@ -39,7 +39,7 @@
 								<th>방면적</th>
 								<th>방요금</th>
 								<th>객실수</th>
-								<th>이미지주소</th>
+					
 								<th class="th-bottun"></th>
 							</tr>
 						</thead>
@@ -65,8 +65,7 @@
 									<th class="throomFee"><input class="form-control roomFee"
 										type="number" name="hotelRoomFee" value="${room.hotelRoomFee}"></th>
 									<th class="throomCount"><input class="form-control roomCount" type="number" name="hotelInitialCount" value="${room.hotelInitialCount}"></th>
-									
-									<th class=""> <input class="form-control" type="text" name="hotelImage" value="${room.hotelImage}"></th>
+								
 									<th>
 										<button class="btn btn-danger" type="submit">수정</button>
 										<a href="/developer/deleteRoom?hotelRoomNum=${room.hotelRoomNum}"><button class="btn btn-success" type="button">삭제</button></a>
@@ -91,7 +90,6 @@
                                     <th class="throomArea"><input class="form-control roomArea" type="text" name="hotelRoomArea"></th>
                                     <th class="throomFee"><input class="form-control roomFee" type="number" name="hotelRoomFee"></th>
                                     <th class="hotelInitialCount"><input class="form-control roomCount" type="number" name="hotelInitialCount"></th>
-                                    <th class="hotelImage"><input class="form-control" type="text" name="hotelImage"></th>
                                     <th>
                                         <button class="btn btn-success" type="submit">추가</button>
                                     </th>
