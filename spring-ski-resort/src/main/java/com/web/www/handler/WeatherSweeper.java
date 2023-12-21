@@ -29,8 +29,6 @@ public class WeatherSweeper {
 	
 	@Autowired
 	private WeatherDAO wdao;
-	boolean test = true;
-	
 	/**
 	 * 기상청 api 스케줄링 시간 3시간 쿨타임
 	 * @Scheduled는 default 싱글 스레드이기 때문에 실행시 작업속도 영향이 무조건 갑니다

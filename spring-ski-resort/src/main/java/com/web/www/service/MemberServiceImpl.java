@@ -17,7 +17,6 @@ import com.web.www.domain.member.MemberPwdDTO;
 import com.web.www.domain.member.MemberVO;
 import com.web.www.domain.member.ModifyMemberDTO;
 import com.web.www.domain.pay.ReceiptDTO;
-import com.web.www.domain.pay.RefundReceiptDTO;
 import com.web.www.repository.AlarmDAO;
 import com.web.www.repository.MemberDAO;
 
@@ -157,7 +156,7 @@ public class MemberServiceImpl implements MemberService {
 
 	    // 쿠폰의 시작일과 종료일을 설정합니다.
 	    cgDTO.setCouponStart(currentTime);
-	    cgDTO.setCouponEnd(currentTime.plusDays(day));
+	    cgDTO.setCouponEnd(currentTime.plusDays(day).toLocalDate().atTime(0, 0, 0));
 
 	    // 쿠폰을 추가합니다.
 	    return mdao.userCouponAdd(cgDTO);

@@ -65,9 +65,12 @@
 	<select id="getRoomDetailImageVO" resultType="com.web.www.domain.hotel.RoomDetailImageVO">
 		select * from room_detail_image where hotel_room_num = #{roomNum}
 	</select>
+	
 	<select id="getimageList"  resultType="com.web.www.domain.hotel.RoomDetailImageVO">
 		select * from room_detail_image
 	</select>
 	
 	
+
+		
   </mapper>
