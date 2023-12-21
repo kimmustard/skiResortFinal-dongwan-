@@ -8,12 +8,18 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+	<jsp:include page="../common/nav.jsp" />
 <link rel="stylesheet" href="/resources/css/rental/item_list.css">
 </head>
 
 
 <body style="overflow-x: hidden">
-	<jsp:include page="../common/nav.jsp" />
+<div class="ski_item_top_image">
+	<div>
+		<div class="ski_item_top_text"> Elevate Your Skiing Experience with Premium Rentals!</div>
+	</div>
+</div>
+	
 	<div class="bodyContainer">
 	
 	<!-- 장바구니 -->
@@ -31,32 +37,32 @@
 	</div>
 	
 		<div class="itemMenuContainer">
-			<ul class="nav nav-tabs justify-content-center">
+			<p class="menu_text">Tending Products</p>
+			<ul class="nav justify-content-center">
 			  <li class="nav-item">
-			    <a class="nav-link" id="skiItem" href="#">스키</a>
+			    <a class="nav-link top_menu" id="skiItem" >스키</a>
 			  </li>
 			  <li class="nav-item">
-			    <a class="nav-link" id="boardItem" href="#">스노우보드</a>
+			    <a class="nav-link top_menu" id="boardItem">스노우보드</a>
 			  </li>
 			  <li class="nav-item">
-			    <a class="nav-link" id="wearItem" href="#">의류/보호장비</a>
+			    <a class="nav-link top_menu" id="wearItem" >의류 보호장비</a>
 			  </li>  
 			</ul>
 		</div>
 		
-		<div class="menuCategory">
-			<div>
-				<nav class="nav flex-column nav-tabs">
-				  <a class="nav-link" id="lowItem" href="#">일반장비SET</a>
-				  <a class="nav-link" id="midItem" href="#">중급장비SET</a>
-				  <a class="nav-link" id="premiumItem" href="#">프리미엄장비SET</a>
-				</nav>
+		<div style="display: flex;">
+			<div class="menuCategory">
+				<div>
+					<nav class="nav flex-column">
+					  <a class="nav-link" id="lowItem">일반장비SET</a>
+					  <a class="nav-link" id="midItem">중급장비SET</a>
+					  <a class="nav-link" id="premiumItem">프리미엄장비SET</a>
+					</nav>
+				</div>
 			</div>
-		</div>
-		
-		
-		
-		<div class="itemContainer" id="itemContainer">
+			
+			<div class="itemContainer" id="itemContainer">
 		
 			<div class="skiItemList" id="skiItemList">
 				<div class="itemInfo">
@@ -83,7 +89,7 @@
 										<p class="fs-5">${lowItem.rentalListItemAdultFee }원</p>
 									</c:otherwise>
 								</c:choose>
-								<p class="fs-5">수량 : ${lowItem.rentalListItemCount }개</p>
+								
 							</div>
 						</c:forEach>
 					</div>
@@ -112,7 +118,7 @@
 										<p class="fs-5">${midItem.rentalListItemAdultFee }원</p>
 									</c:otherwise>
 								</c:choose>
-								<p class="fs-5">수량 : ${midItem.rentalListItemCount }개</p>
+							
 							</div>
 						</c:forEach>
 					</div>
@@ -143,7 +149,6 @@
 										<p class="fs-5">${premiumItem.rentalListItemAdultFee }원</p>
 									</c:otherwise>
 								</c:choose>
-								<p class="fs-5">수량 : ${premiumItem.rentalListItemCount }개</p>
 							</div>
 						</c:forEach>
 						
@@ -177,7 +182,6 @@
 										<p class="fs-5">${lowItem.rentalListItemAdultFee }원</p>
 									</c:otherwise>
 								</c:choose>
-								<p class="fs-5">수량 : ${lowItem.rentalListItemCount }개</p>
 							</div>
 						</c:forEach>
 					</div>
@@ -203,7 +207,6 @@
 										<p class="fs-5">${midItem.rentalListItemAdultFee }원</p>
 									</c:otherwise>
 								</c:choose>
-								<p class="fs-5">수량 : ${midItem.rentalListItemCount }개</p>
 							</div>
 						</c:forEach>
 						
@@ -230,7 +233,6 @@
 										<p class="fs-5">${premiumItem.rentalListItemAdultFee }원</p>
 									</c:otherwise>
 								</c:choose>
-								<p class="fs-5">수량 : ${premiumItem.rentalListItemCount }개</p>
 							</div>
 						</c:forEach>
 						
@@ -257,7 +259,6 @@
 								data-count="${lowItem.rentalListItemCount }">
 								<p class="fs-5">${lowItem.rentalListLowItem }</p>
 								<p class="fs-5">${lowItem.rentalListItemAdultFee }원</p>
-								<p class="fs-5">수량 : ${lowItem.rentalListItemCount }개</p>
 							</div>
 						</c:forEach>
 					</div>
@@ -275,7 +276,6 @@
 								data-count="${midItem.rentalListItemCount }">
 								<p class="fs-5">${midItem.rentalListMidItem }</p>
 								<p class="fs-5">${midItem.rentalListItemAdultFee }원</p>
-								<p class="fs-5">수량 : ${midItem.rentalListItemCount }개</p>
 							</div>
 						</c:forEach>
 						
@@ -294,7 +294,6 @@
 								data-count="${premiumItem.rentalListItemCount }">
 								<p class="fs-5">${premiumItem.rentalListPremiumItem }</p>
 								<p class="fs-5">${premiumItem.rentalListItemAdultFee }원</p>
-								<p class="fs-5">수량 : ${premiumItem.rentalListItemCount }개</p>
 							</div>
 						</c:forEach>
 						
@@ -324,8 +323,20 @@
 
 					
 				</div>
-			</div>
-
+		</div>
+		
+		
+		<div class="foot_image"> <div><div class="ski_item_top_text"> Ski in style, gear up for adventure!</div> </div> </div>
+		
+		
+		</div>
+		
+		
+		
+	
+	
+	
+	
 	
 	<script type="text/javascript">
 		const memberEmail= `<c:out value="${mvo.memberEmail}"/>`;

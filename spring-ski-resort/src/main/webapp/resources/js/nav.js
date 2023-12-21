@@ -138,12 +138,16 @@ let bellSwitch = 0;
 if (document.getElementById("alarm-bell")) {
     document.getElementById("alarm-bell").addEventListener('click', () => {
         let board = document.getElementById('alarm-board');
-        if (bellSwitch == 0) {
-            board.style.right = '-10px';
-            bellSwitch = 1;
-        } else if (bellSwitch == 1) {
-            board.style.right = '-500px';
+        let boardtitle = document.getElementById('alarm-board-title');
+        if (bellSwitch == 1) {
+            board.style.height = '0px';
             bellSwitch = 0;
+            setTimeout(()=>{board.style.color="transparent"; boardtitle.style.color="transparent";} ,400);
+
+        } else if (bellSwitch == 0) {
+            board.style.height = '400px';        
+            bellSwitch = 1;
+            board.style.color="white"; boardtitle.style.color="white";
         }
 
     })
