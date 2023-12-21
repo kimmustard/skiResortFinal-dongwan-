@@ -1,8 +1,8 @@
 
 
-document.getElementById("people").addEventListener('click', ()=>{
+document.getElementById("people").addEventListener('click', () => {
 
-    document.getElementById('peopleList').style.display="block";
+    document.getElementById('peopleList').style.display = "block";
 })
 
 document.getElementById("nextBtn").addEventListener('click', () => {
@@ -65,7 +65,7 @@ $(function () {
             document.getElementById('dateRangePicker').value = displayValue;
 
             // 여기에 '적용' 버튼을 클릭했을 때의 추가 동작을 넣으세요.
-          
+
         });
     }
 });
@@ -80,19 +80,19 @@ $(function () {
 // }
 
 
-  //요금 업데이트
-  function updateFees(audult,kid,itemName) {
-      let adultFee =0;
-      let kidFee =0;
-       
-    adultFee = audult*parseInt(rentalLiftAdult.value);
-    kidFee = kid*parseInt(rentalLiftKid.value);
-    document.getElementById("adultFee").value =adultFee;
-    document.getElementById("kidFee").value =kidFee;
-    document.getElementById("showadultFee").value =adultFee.toLocaleString()+"원";
-    document.getElementById("showkidFee").value =kidFee.toLocaleString()+"원"
-    let totalfee = adultFee+kidFee;
-    realAmount =totalfee;
+//요금 업데이트
+function updateFees(audult, kid, itemName) {
+    let adultFee = 0;
+    let kidFee = 0;
+
+    adultFee = audult * parseInt(rentalLiftAdult.value);
+    kidFee = kid * parseInt(rentalLiftKid.value);
+    document.getElementById("adultFee").value = adultFee;
+    document.getElementById("kidFee").value = kidFee;
+    document.getElementById("showadultFee").value = adultFee.toLocaleString() + "원";
+    document.getElementById("showkidFee").value = kidFee.toLocaleString() + "원"
+    let totalfee = adultFee + kidFee;
+    realAmount = totalfee;
     document.getElementById("realpayvalue").value = totalfee;
     document.getElementById("productPrice").value = totalfee;
     document.getElementById('userViewpay').innerText = totalfee.toLocaleString() + "원";
@@ -171,18 +171,18 @@ $(function () {
     // } else if (season.checked && parseInt(rentalLiftKid.value) >= 2) {
     //     kidFee = parseInt(350000 * rentalLiftKid.value);
     // }
-   
+
 
 }
 
 
 //성인 버튼 조작
-function addAudltCnt(int){
+function addAudltCnt(int) {
     let cnt = parseInt(document.getElementById('audlt-Count').innerText);
     if (cnt < 30) {
         cnt += int;
-        if(cnt == 0){
-            cnt =1;
+        if (cnt == 0) {
+            cnt = 1;
         }
     }
     document.getElementById('audlt-Count').innerText = cnt;
@@ -214,9 +214,9 @@ document.getElementById("child-Btn").addEventListener('click', () => {
 
 /**인원수 세주는거 */
 function AllPeopleCount() {
-    if(document.getElementById('child-Count').innerText!=0){
-    $('#people').attr('placeholder', `성인 ${document.getElementById('audlt-Count').innerText}명 · 아동 ${document.getElementById('child-Count').innerText}명 `);
-    }else{
+    if (document.getElementById('child-Count').innerText != 0) {
+        $('#people').attr('placeholder', `성인 ${document.getElementById('audlt-Count').innerText}명 · 아동 ${document.getElementById('child-Count').innerText}명 `);
+    } else {
         $('#people').attr('placeholder', `성인 ${document.getElementById('audlt-Count').innerText}명`);
     }
     document.getElementById('rentalLiftAdult').value = document.getElementById('audlt-Count').innerText;

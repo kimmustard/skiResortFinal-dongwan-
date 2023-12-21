@@ -92,7 +92,7 @@
 	
 	
 	<div class="back">
-		<img data-v-c62ee4ac="" src="https://cdn.shymbulak-dev.com/media-test/77032ae86d50f5d61c9cec8b2f30ae39.jpg" alt="" style="height: 100vh;">
+		<img data-v-c62ee4ac="" src="https://pbs.twimg.com/media/GAu6whlX0AA4qxA?format=jpg&name=4096x4096" alt="" style="height: 100vh;">
 		
 		<div class="box">
 			<p class="fs-3  rentalText"><a class="move-hotel" href="/hotel/reservation">호텔예약</a>/리프트권 예약</p>
@@ -169,7 +169,19 @@
 				<div id="innerbox" class="reserveBox" style="display: none;">
 					<input id="memberGradeInput" type="hidden" value="${mvo.memberGrade }">
 					<p class="fs-2">리프트권 선택</p>
-					<div class="form-check">
+					<div class="input-group mb-3">
+						<span class="input-group-text" id="basic-addon1"><i class="bi bi-cart2"></i></span>
+						<select class="form-select" id="rentalLiftTicket" onclick="updateFees()" aria-label="Default select example">
+						  <option selected>리프트권 선택</option>
+						  <option value="오전권" onclick="updateFees(40000,30000,'오전권')">오전권</option>
+						  <option value="오후권" onclick="updateFees(50000,40000,'오후권')">오후권</option>
+						  <option value="주간권" onclick="updateFees(60000,50000,'주간권')">주간권</option>
+						  <option value="야간권" onclick="updateFees(40000,30000,'야간권')">야간권</option>
+						  <option value="종일권" onclick="updateFees(75000,65000,'종일권')">종일권</option>
+						  <option value="시즌권" onclick="updateFees(380000,350000,'시즌권')">시즌권</option>
+						</select>
+					</div>
+					<!-- <div class="form-check">
 					  <input class="form-check-input" onclick="updateFees(40000,30000,'오전권')" type="radio" name="rentalLiftTicket" value="오전권" id="morningTicket">오전권
 					</div>
 					<div class="form-check">
@@ -186,15 +198,15 @@
 					</div>
 					<div class="form-check">
 					  <input class="form-check-input" onclick="updateFees(380000,350000,'시즌권')" type="radio" name="rentalLiftTicket" value="시즌권" id="seasonTicket">시즌권
-					</div>
+					</div> -->
 					
 					<div class="input-group mb-3">
-						<span class="input-group-text">요금(성인)</span>
-						<input type="text" class="form-control" id="showadultFee" value="0" readonly="readonly">
+						<span class="input-group-text" id="basic-addon1"><i class="bi bi-credit-card"></i></span>
+						<input type="text" class="form-control" id="showadultFee" readonly="readonly" placeholder="성인요금">
 					</div>
 					<div class="input-group mb-3">
-						<span class="input-group-text">요금(어린이)</span>
-						<input type="text" class="form-control" id="showkidFee" value="0" readonly="readonly">
+						<span class="input-group-text"><i class="bi bi-credit-card"></i></span>
+						<input type="text" class="form-control" id="showkidFee" readonly="readonly" placeholder="어린이요금">
 						
 					</div>
 					<!-- db로 보낼 hiddem input  -->
