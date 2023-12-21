@@ -161,6 +161,8 @@ document.getElementById('my_coupon_list').addEventListener('click', () => {
     })
 })
 
+
+
 async function myCouponListGet() {
     try {
         const url = "/member/check/couponList"

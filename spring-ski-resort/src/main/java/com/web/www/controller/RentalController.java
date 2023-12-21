@@ -144,14 +144,12 @@ public class RentalController {
 	
 	@GetMapping("/item-reserve")
 	public String itemsPayForm(@RequestParam(name = "data", required = false) String data, 
-			@AuthUser MemberVO mvo,RedirectAttributes rttr ,Model model) {
+			@AuthUser MemberVO mvo, RedirectAttributes rttr ,Model model) {
 		
 		//결제전 유저등급 갱신
 		mvo.setMemberGrade(msv.getMemberGrade(mvo.getMemberNum()));
 		
 		RentalLiftVO rlVO = rsv.getRentalLift(mvo.getMemberNum());
-		log.info("잘얻어졌나요 ? = {}", rlVO);
-		
 		if(rlVO == null) {
 			
 			rttr.addFlashAttribute("isOk", 1);

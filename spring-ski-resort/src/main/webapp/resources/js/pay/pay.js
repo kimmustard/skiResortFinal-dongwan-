@@ -31,7 +31,6 @@ function paymentGateway(pgName) {
 
     let coupon = document.getElementById('couponCode').value;
     IMP.init("imp70464277");
-    console.log("결제햐라12");
     IMP.request_pay({
         pg: pgName,
         pay_method: 'card', //card(신용카드), trans(실시간계좌이체), vbank(가상계좌), phone(휴대폰소액결제)

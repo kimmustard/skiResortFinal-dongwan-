@@ -35,13 +35,15 @@
 
 
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-	<link rel="stylesheet" href="/resources/css/coupon/coupon.css">
 	<link rel="stylesheet" href="/resources/css/rental/item_reserve.css">
 </head>
-<body>
+<body style="overflow-x: hidden">
 	<jsp:include page="../common/nav.jsp" />
 	
+	
+	
 	<div class="bodyContainer">
+	
 		<div class="back">
 			<div class="mainLogo">
 				<img alt="" width="180" height="160" src="/resources/etc/logo_white.png">
@@ -84,16 +86,32 @@
 					</div>
 				</div>
 				</c:forEach>
+				
+				<div class="snowVector">
+					<img alt="" src="/resources/etc/design/눈벡터3.png">
+				</div>
 			</div>
 			<div class="payContainer">
 				<div class="payBox1">
-
-					<h3>회원님이 구매하신 리프트 이용권은 "${rlVO.rentalLiftTicket } " 입니다</h3>
-					<div>
-						<p>리프트권 주문번호 : ${rlVO.payMerchantUid }</p>
-						<p>리프트권 시작일 : ${rlVO.rentalLiftStart }</p>
-						<p>인원 : 성인${rlVO.rentalLiftAdult}명 / 어린이 ${rlVO.rentalLiftKid}명</p>
-						<p>장비 렌탈기간은 리프트권 기간과 동일하게 설정됩니다.</p>
+					
+					 <div class="lift-name">
+						
+						 <div class="lift-name-box">
+							<h3>리프트 이용권은 <span style="color:red;">${rlVO.rentalLiftTicket}</span> 입니다</h3>
+							<p>리프트권 주문번호 : ${rlVO.payMerchantUid }</p>
+							<p>리프트권 시작일 : ${rlVO.rentalLiftStart }</p>
+							<p>인원 : 성인${rlVO.rentalLiftAdult}명 / 어린이 ${rlVO.rentalLiftKid}명</p>
+							<br>
+							<p style="color:red"><strong>※장비 렌탈기간은</strong></p>
+							<p style="color:red"><strong>리프트권 기간과 동일하게 설정됩니다.</strong></p>
+						 </div>
+						 
+					 </div>
+						
+						
+						
+						
+						
 						<form action="/rental/item-reserve" method="post" id="payform">
 							<input type="hidden" name="memberNum" value="${rlVO.memberNum }">
 							<input type="hidden" value="${rlVO.rentalLiftStart }">
@@ -111,12 +129,10 @@
 							<input type="hidden" name="payName" id="payName">
 						</form>
 					</div>
-				</div>
 				<div class="payBox2">
 	
 					<div class="pay-content">
 				      <div class="pay-header">
-				        <p class="payTitle">결제선택하기</p>
 				      </div>
 				      <div class="modal-body pay-info">
 				      	<div>상품명<div class="pay-value" id="item-name">${payName }</div></div>
@@ -130,21 +146,26 @@
 				            <button id="kakao_pay"  onclick="paymentGateway('kakaopay.TC0ONETIME')" type="button"> <span>카카오</span> </button>            
 				            <button id="toss_pay" onclick="paymentGateway('tosspay.tosstest')" type="button"> <span>토스페이 </span></button>           
 				            <button id="payco_pay" onclick="paymentGateway('payco.AUTOPAY')" type="button"><span>페이코</span></button>
-				            <button id="naver_pay" ><span>네이버페이</span></button>
 				            <hr>
-				            <button id="my_coupon_list" value="openWorld" type="button"> <span>쿠폰</span></button>
-				            
-							<div id="myCouponListBody" class="myCouponListBody">
-								 <div class="myCouponListTitle">
-								 	<span><i class="bi bi-envelope-paper-heart-fill"></i> 내 쿠폰함</span> 
-								 </div>
-								 <div class="myCouponList" id="myCouponList">
-								 	
-								 </div>
-							</div>
+				            <img alt="" src="/resources/etc/logo_detail.png" width="200" height="180">
 							
 				      </div>
+				      <div class="backImg1">
+					  </div>
+					  <div class="backTitle">
+					  </div>
+								      
+						
 				    </div>
+				    
+					<div id="myCouponListBody" class="myCouponListBody">
+						 <div class="myCouponListTitle">
+						 	<span>내 쿠폰함</span> 
+						 </div>
+						 <div class="myCouponList" id="myCouponList">
+						 	
+						 </div>
+					</div>
 
 				</div>
 			
@@ -152,7 +173,7 @@
 		
 		</div>
 		
-			
+				
 		
 		</div>
 		
@@ -186,7 +207,7 @@
 	
 	
 	<script type="text/javascript" src="/resources/js/pay/pay.js"></script>
-	<script type="text/javascript" src="/resources/js/coupon/coupon.js"></script>
+	<script type="text/javascript" src="/resources/js/coupon/static-coupon.js"></script>
 	<script type="text/javascript" src="/resources/js/rental/itemReserve.js"></script>
 	
 	
