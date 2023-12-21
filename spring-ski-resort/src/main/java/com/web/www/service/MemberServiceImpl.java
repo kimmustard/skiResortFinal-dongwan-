@@ -257,6 +257,8 @@ public class MemberServiceImpl implements MemberService {
 	            return liftReceipt;
 	        case "렌탈":
 	            ReceiptDTO rentalReceipt = mdao.getRentalReceipt(payMerChantUid);
+	            //장비종류 가져오기
+	            
 	            
 	            // 필드 설정
 	            modelMapper.map(originalReceipt, rentalReceipt);

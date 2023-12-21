@@ -46,9 +46,10 @@ public class ReceiptDTO {
 	private String rentalLiftAdult;
 	private String rentalLiftKid;
 	
-	private String rentalReserveAdult;
-	private String rentalReserveKid;
-	private String rentalReserveStart;
+	private String rentalReserveNum;	//장비 렌탈 고유번호
+	private String rentalReserveStart;	//
+	private String rentalReserveTotalFee;	//
+	private String rentalReserveReturn;
 	
 	//환불정보
 	private String refundImpUid;
