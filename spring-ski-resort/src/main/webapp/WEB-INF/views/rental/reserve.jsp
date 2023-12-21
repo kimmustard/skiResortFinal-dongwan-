@@ -92,7 +92,7 @@
 	
 	
 	<div class="back">
-		<img data-v-c62ee4ac="" src="https://pbs.twimg.com/media/GAu6whlX0AA4qxA?format=jpg&name=4096x4096" alt="" style="height: 100vh;">
+		<img data-v-c62ee4ac="" src="https://pbs.twimg.com/media/GAu6whlX0AA4qxA?format=jpg&name=4096x4096" alt="">
 		
 		<div class="box">
 			<p class="fs-3  rentalText"><a class="move-hotel" href="/hotel/reservation">호텔예약</a>/리프트권 예약</p>
