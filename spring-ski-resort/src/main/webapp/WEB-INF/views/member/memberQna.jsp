@@ -18,6 +18,7 @@
 			<sec:authentication property="principal.mvo.memberEmail" var="authEmail"/>
 			<sec:authentication property="principal.mvo.memberType" var="authType"/>
 			<sec:authentication property="principal.mvo.authList" var="auths"/>
+			<sec:authentication property="principal.mvo.memberNum" var="authNum"/>
 </sec:authorize>
 
 <div class="bodyContainer">
@@ -123,27 +124,27 @@
 						</thead>
 						<tbody>
 							<c:forEach items="${blist}" var="bvo">
-								
-								<tr class="tr-div">
-									<td>${bvo.busReserveNum }</td>
-									<td>${bvo.memberNum }</td>
-									<td>${bvo.busNum }</td>
-									<td>${bvo.busRegion }</td>
-									<td>${bvo.busPeople }</td>
-									<c:if test="${bvo.busCancel eq 'N' }">
-										<td>
-											예약완료
-											<a href="/bus/cancel?busReserveNum=${bvo.busReserveNum}"><button type="button" id="busCancelBtn">예약취소</button></a>
-										</td>
-									</c:if>
-									<c:if test="${bvo.busCancel eq 'Y' }">
-										<td>
-											예약취소
-										</td>
-									</c:if>
-									<td>${bvo.busStartDate }</td>									
-								</tr>
-								
+								<c:if test="${authNum eq bvo.memberNum }">
+									<tr class="tr-div">
+										<td>${bvo.busReserveNum }</td>
+										<td>${bvo.memberNum }</td>
+										<td>${bvo.busNum }</td>
+										<td>${bvo.busRegion }</td>
+										<td>${bvo.busPeople }</td>
+										<c:if test="${bvo.busCancel eq 'N' }">
+											<td>
+												예약완료
+												<a href="/bus/cancel?busReserveNum=${bvo.busReserveNum}"><button type="button" id="busCancelBtn">예약취소</button></a>
+											</td>
+										</c:if>
+										<c:if test="${bvo.busCancel eq 'Y' }">
+											<td>
+												예약취소
+											</td>
+										</c:if>
+										<td>${bvo.busStartDate }</td>									
+									</tr>
+								</c:if>
 							</c:forEach>
 						</tbody>
 					</table>
@@ -164,7 +165,7 @@
 <script type="text/javascript">
 	const isOk = `<c:out value="${isOk}"/>`;
 	if(isOk == 1){
-		alert("이미 예약하셨습니다");
+		alert("버스예약은 회원당 1회만 가능합니다.");
 	}
 </script>
 </body>
