@@ -400,6 +400,12 @@
 			alert('게시글이 등록 되었습니다.');
 		}
 </script>	
+<script type="text/javascript">
+		const isUp = `<c:out value="${isUp}"></c:out>`
+		if(isUp=="1"){
+			alert('게시글이 정상적으로 삭제 되었습니다.');
+		}
+</script>	
 <script type="text/javascript" src="/resources/js/notice/noticeList.js"></script>
 <jsp:include page="../common/footer.jsp" />
 </body>

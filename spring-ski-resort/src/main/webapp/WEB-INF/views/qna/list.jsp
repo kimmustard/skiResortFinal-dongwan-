@@ -287,6 +287,12 @@
 			alert('게시글이 등록 되었습니다.');
 		}
 </script>	
+<script type="text/javascript">
+		const isOk2 = `<c:out value="${isOk2}"></c:out>`
+		if(isOk2=="1"){
+			alert('게시글이 정상적으로 삭제 되었습니다.');
+		}
+</script>	
 
 
 <jsp:include page="../common/footer.jsp" />

@@ -206,9 +206,15 @@
 		}
 </script>
 <script type="text/javascript">
+		const isOk2 = `<c:out value="${isOk2}"></c:out>`
+		if(isOk2=="1"){
+			alert('답변이 등록 되었습니다.');
+		}
+</script>
+<script type="text/javascript">
 		const isUp = `<c:out value="${isUp}"></c:out>`
 		if(isUp=="1"){
-			alert('답변이 등록 되었습니다.');
+			alert('답변이 수정 되었습니다.');
 		}
 </script>
 <!--가져온 코드를 줄바꿈 해주는 코드  -->
