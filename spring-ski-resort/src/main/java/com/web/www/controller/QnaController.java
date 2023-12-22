@@ -126,9 +126,9 @@ public class QnaController {
 		
 		@GetMapping("/remove")
 		public String qnaRemove(@RequestParam("qnaNum")long qnaNum, RedirectAttributes re) {
-			int isOk = qsv.qnaRemove(qnaNum);
-			log.info(">>>>> qna remove >> "+(isOk > 0? "OK" : "Fail"));
-			re.addFlashAttribute("isOk", isOk);
+			int isOk2 = qsv.qnaRemove(qnaNum);
+			log.info(">>>>> qna remove >> "+(isOk2 > 0? "OK" : "Fail"));
+			re.addFlashAttribute("isOk2", isOk2);
 			return "redirect:/qna/list";
 		}
 		
@@ -158,8 +158,9 @@ public class QnaController {
 				String category ="qna";
 				flist = fh.uploadFiles(files,category);
 			}
-			int isOk = qsv.qnaAnsRegister(new QnaAnsDTO(qavo, flist));
-			log.info(">>>>> qna-ans register >> "+(isOk > 0? "OK" : "Fail"));
+			int isOk2 = qsv.qnaAnsRegister(new QnaAnsDTO(qavo, flist));
+			log.info(">>>>> qna-ans register >> "+(isOk2 > 0? "OK" : "Fail"));
+			re.addFlashAttribute("isOk2",isOk2);
 			return "redirect:/qna/detail?qnaNum="+qavo.getQnaNum();
 		}
 		
@@ -175,9 +176,9 @@ public class QnaController {
 				flist = fh.uploadFiles(files,category);
 			}
 			QnaAnsDTO qadto = new QnaAnsDTO(qavo, flist);
-			int isOk = qsv.qnaAnsFileModify(qadto);
-			log.info(">>>>> qna-ans modify >> "+(isOk > 0? "OK" : "Fail"));
-			re.addFlashAttribute("isOk",isOk);
+			int isUp = qsv.qnaAnsFileModify(qadto);
+			log.info(">>>>> qna-ans modify >> "+(isUp > 0? "OK" : "Fail"));
+			re.addFlashAttribute("isUp",isUp);
 			return "redirect:/qna/detail?qnaNum="+qavo.getQnaNum();
 		}
 		

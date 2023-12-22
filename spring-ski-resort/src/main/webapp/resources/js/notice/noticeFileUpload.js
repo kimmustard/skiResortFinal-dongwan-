@@ -37,7 +37,7 @@ document.addEventListener('change', (e)=>{
             isOk *= vaildResult;
             ul+=`<li class="list-group-item">`;
             ul+=`<div class="mb-3>`;
-            ul+=`${vaildResult ? '<div class="mb-3">업로드 가능</div>' : '<div class="mb-3 text-danger">업로드 불가능</div>'}`;
+            ul+=`${vaildResult ? '<div class="mb-3" style="color: blue;">업로드 가능</div>' : '<div class="mb-3 text-danger" style="color: red;">업로드 불가능</div>'}`;
             ul+=`${file.name}</div>`;
             ul+=`<div><span class="badge rounded-pill text-bg-${vaildResult ? 'success':'danger'}">${file.size}Bytes</span></div>`;
         }

@@ -199,7 +199,24 @@
 
 
 <jsp:include page="../common/footer.jsp" />	
-
+<script type="text/javascript">
+		const isOk = `<c:out value="${isOk}"></c:out>`
+		if(isOk=="1"){
+			alert('게시글이 수정 되었습니다.');
+		}
+</script>
+<script type="text/javascript">
+		const isOk2 = `<c:out value="${isOk2}"></c:out>`
+		if(isOk2=="1"){
+			alert('답변이 등록 되었습니다.');
+		}
+</script>
+<script type="text/javascript">
+		const isUp = `<c:out value="${isUp}"></c:out>`
+		if(isUp=="1"){
+			alert('답변이 수정 되었습니다.');
+		}
+</script>
 <!--가져온 코드를 줄바꿈 해주는 코드  -->
 <script type="text/javascript">
 //enter => <br>
