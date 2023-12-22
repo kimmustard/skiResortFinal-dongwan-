@@ -14,7 +14,39 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300&display=swap" rel="stylesheet">
+
+<c:forEach items="${plist }" var="pnvo" varStatus="status">
+<style type="text/css">
+	.section input[id="slide0${status.count}"]:checked ~ .slidewrap .slidelist > li {
+		transform:translateX(-${status.count-1}00%);
+		}
+	.section input[id="slide0${status.count}"]:checked ~ .slidewrap li:nth-child(${status.count}) .slide-text-title {
+		opacity:1;
+		transform:translateY(0);
+		transition-delay:.2s;
+		}
+	.section input[id="slide0${status.count}"]:checked ~ .slidewrap li:nth-child(${status.count}) .slide-main-text {
+		opacity:1;
+		transform:translateY(0);
+		transition-delay:.1s;
+		}
+	.section input[id="slide0${status.count}"]:checked ~ .slidewrap li:nth-child(${status.count}) .slide-text-subcontent {
+		opacity:1;
+		transform:translateY(0);
+		transition-delay:.4s;
+		}
+	.section input[id="slide0${status.count}"]:checked ~ .slidewrap .slide-control > div:nth-child(${status.count}) {
+		display:block;
+		}
+	.section input[id="slide0${status.count}"]:checked ~ .slidewrap .slide-pagelist > li:nth-child(${status.count}) > label > div > img{
+		filter: brightness(130%);
+		box-shadow: 3px 3px 10px 5px gray;
+		}
+</style>
+</c:forEach>
 </head>
+
+
 <body>
 <sec:authorize access="isAuthenticated()">
 	<sec:authentication property="principal.mvo.authList" var="auths"/>
@@ -27,63 +59,88 @@
 <!-- <div class="notice-img-container" style="background-image: url('https://www.wallpaperflare.com/static/303/362/478/snowboarding-trick-jump-snow-wallpaper.jpg')">	</div>
  -->
 <!-- 슬라이드 라인 -->
+<c:set value="${plist }" var="pnvo"></c:set>
  <div class="section">
-	<input type="radio" name="slide" id="slide01" checked>
-	<input type="radio" name="slide" id="slide02">
-	<input type="radio" name="slide" id="slide03">
-	<input type="radio" name="slide" id="slide04">
-	<input type="radio" name="slide" id="slide05">
+ 	<c:forEach items="${plist }" var="pnvo" varStatus="status">
+ 		<c:choose>
+ 			<c:when test="${status.count == 1 }">
+ 				<input type="radio" name="slide" id="slide01" checked>
+ 			</c:when>
+ 			<c:otherwise>
+ 				<input type="radio" name="slide" id="slide0${status.count}">
+ 			</c:otherwise>
+ 		</c:choose>
+ 	</c:forEach>
+ 	
 	<div class="slidewrap">
 		<ul class="slidelist">
-		  <c:forEach items="${Ifvo }" var="Ifvo">
-				<!-- 슬라이드 영역 -->
-				<li class="slideitem" style="background-image: url('https://www.wallpaperflare.com/static/303/362/478/snowboarding-trick-jump-snow-wallpaper.jpg');">
-					<a href="/notice/detail?noticeNum=${Ifvo.noticeNum }">
-						<div class="textbox">
-							<h3>첫번째 슬라이드</h3>
-							<p>첫번째 슬라이드 입니다.</p>
-						</div>
-						<img src="">
-					</a>
-				</li>
-		  </c:forEach>			
-				
-	
+			<!-- 슬라이드 영역 -->
+			<c:forEach items="${plist }" var="pnvo" varStatus="status">
+				<c:forEach items="${fvo }" var="fvo">					
+					<c:if test="${fvo.noticeNum == pnvo.noticeNum }">
+						<li class="slideitem">
+						<a class="notice-a-hover" href="/notice/detail?noticeNum=${pnvo.noticeNum }">
+							<img alt="그림이 없음." src="/upload/${fn: replace(fvo.fileSave,'\\','/')}/${fvo.fileUuid}_${fvo.fileName}">
+							<div class="slide-main-text">
+								<h1>2023-24<br>Winter Season</h1>
+							</div>
+							<div class="textbox">
+								<h3 class="slide-text-title">${pnvo.noticeTitle }</h3>
+								<div class="slide-text-subcontent">${pnvo.noticeSubcontent }
+<!-- 								<p class="slide-text-subcontent"></p> -->
+								</div>
+							</div>
+						</a>
+						</li>					
+					</c:if>
+				</c:forEach>
+			</c:forEach>
+
 				<!-- 좌,우 슬라이드 버튼 -->
 				<div class="slide-control">
-					<div>
-						<label for="slide05" class="left"></label>
-						<label for="slide02" class="right"></label>
-					</div>
-					<div>
-						<label for="slide01" class="left"></label>
-						<label for="slide03" class="right"></label>
-					</div>
-					<div>
-						<label for="slide02" class="left"></label>
-						<label for="slide04" class="right"></label>
-					</div>
-					<div>
-						<label for="slide03" class="left"></label>
-						<label for="slide05" class="right"></label>
-					</div>
-					<div>
-						<label for="slide04" class="left"></label>
-						<label for="slide01" class="right"></label>
-					</div>
+					<c:forEach items="${plist }" var="pnvo" varStatus="status">
+						<c:choose>
+							<c:when test="${status.count == 1 }">
+								<div>
+									<label for="slide0${fn:length(plist) }" class="left"></label>
+									<label for="slide0${(status.count)+1 }" class="right"></label>
+								</div>
+							</c:when>
+							<c:when test="${status.count eq fn:length(plist) }">
+								<div>
+									<label for="slide0${(status.count)-1 }" class="left"></label>
+									<label for="slide01" class="right"></label>
+								</div>
+							</c:when>
+							<c:otherwise>
+								<div>
+									<label for="slide0${(status.count)-1 }" class="left"></label>
+									<label for="slide0${(status.count)+1 }" class="right"></label>
+								</div>
+							</c:otherwise>	
+						</c:choose>	
+					</c:forEach>	
 				</div>
 		</ul>
 		
 		<!-- 페이징 -->
 		<ul class="slide-pagelist">
-				<li><label for="slide01"></label></li>
-				<li><label for="slide02"></label></li>
-				<li><label for="slide03"></label></li>	
-				<li><label for="slide04"></label></li>	
-				<li><label for="slide05"></label></li>	
+			<c:forEach items="${plist }" var="pnvo" varStatus="status">
+				<li><label for="slide0${status.count}">
+					<c:forEach items="${fvo }" var="fvo">					
+						<c:if test="${fvo.noticeNum == pnvo.noticeNum }">
+							<div class="slide-pagelist-img-box">
+								<img alt="그림이 없음." src="/upload/${fn: replace(fvo.fileSave,'\\','/')}/${fvo.fileUuid}_th_${fvo.fileName}">
+							</div>
+						</c:if>
+					</c:forEach>
+				</label></li>
+			</c:forEach>
 		</ul>	  	
 	</div>
 </div>
+
+
 
 
 
@@ -96,63 +153,10 @@
 	<div class="notice-menu-container">
 	  <div class="notice-menu-container-child">
 	  
+ 
 	  
 	  
-
-<!-- 	  <div class="event-box none-click"> -->
-<!-- 	  	<p class="box-title event-title">IMPORTANT NEWS</p> -->
-<!-- 			다이스키에서는 매월 다양한 이벤트를 개최합니다! 할인 혜택, 강의, 대회 등 다채로운 활동으로 여러분의 스키 체험을 특별하게 만들어봐요. 최신 정보는 웹사이트와 소셜 미디어를 통해 확인하세요. 흥미진진한 순간들이 기다리고 있습니다! -->
-<!-- 			<div class="contentBox"> -->
-<!-- 				<div class="slide_wrapper"> -->
-<!-- 					<ul class="slides" id="slides"> -->
-						
-<!-- 					</ul> -->
-<!-- 				</div> -->
-				
-				
-<!-- 				<p class="controls"> -->
-<!-- 					<span class="prev"><i class="bi bi-chevron-compact-left"></i></span> -->
-<!-- 						 <span class="next"><i -->
-<!-- 						class="bi bi-chevron-compact-right"></i></span> -->
-<!-- 				</p> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
-
-	  
-	  
-	  
-		<!-- 검색 라인  -->
-		<div class="notice-search-form">
-			<form action="/notice/list" method="get">
-			<div class="notice-search-container">
-				<div class="dropdown notice-search-category">
-				  <select class="notice-search-category dropdown-toggle" name="type" data-bs-toggle="dropdown" aria-expanded="false">
-				   	<option class="dropdown-item" value="tcw" ${typed eq 'tcw' ? 'selected' : '' }>전체</option>
-				   	<option class="dropdown-item" value="t" ${typed eq 't' ? 'selected' : '' }>제목</option>
-				   	<option class="dropdown-item" value="c" ${typed eq 'c' ? 'selected' : '' }>내용</option>
-				   	<option class="dropdown-item" value="w" ${typed eq 'w' ? 'selected' : '' }>작성자</option>
-				  </select>
-				  <!-- <button class="notice-search-category dropdown-toggle" name="type" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-				   		제목
-				  </button>
-				  <ul class="dropdown-menu">
-				    <li class="dropdown-item">제목</li>
-				    <li class="dropdown-item">내용</li>
-				    <li class="dropdown-item">전체</li>
-				  </ul> -->
-				</div>
-				<div class="notice-input-container">
-					<input placeholder="검색어를 입력해 주세요." name="keyword" type="search" value="" class="notice-search-input">
-					<input type="hidden" name="pageNo" value="1">
-					<input type="hidden" name="qty" value="${ph.pgvo.qty }">
-				</div>
-				<div class="notice-button-container">
-					<button class="notice-search-button" type="submit"><div><span class="material-symbols-outlined" style="color: white;">search</span>검색</div></button>
-				</div>
-			</div>
-			</form>
-		</div>
-
+		
 		
 
 		<!-- 카테고리 라인 -->
@@ -251,13 +255,7 @@
 		  </tbody>
 		</table>   --%>
 	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
+	  	
 	  
 	  
 	  
@@ -299,7 +297,7 @@
 						<span class="notice-list-regat">${fn:replace((fn:substring(nvo.noticeRegAt,0,10)),'-','.') }</span>
 						<span class="notice-list-count">View ${nvo.noticeCount }</span>
 					</div>
-					<div class="notice-list-textbox">
+					<div class="notice-list-text-box">
 						<h3>${nvo.noticeTitle }</h3>
 						<p>${nvo.noticeSubcontent }</p>
 					</div>
@@ -308,63 +306,45 @@
 			</section>		
 			</c:forEach>
 		</article>
+		<div style="padding: 20px; border-top: 1px solid #d8d8d8;"></div>
 		
 		
 		
 		
+		<!-- 검색 라인  -->
+		<div class="notice-search-form">
+			<form action="/notice/list" method="get">
+			<div class="notice-search-container">
+				<div class="dropdown notice-search-category">
+				  <select class="notice-search-category dropdown-toggle" name="type" data-bs-toggle="dropdown" aria-expanded="false">
+				   	<option class="dropdown-item" value="tcw" ${typed eq 'tcw' ? 'selected' : '' }>전체</option>
+				   	<option class="dropdown-item" value="t" ${typed eq 't' ? 'selected' : '' }>제목</option>
+				   	<option class="dropdown-item" value="c" ${typed eq 'c' ? 'selected' : '' }>내용</option>
+				   	<option class="dropdown-item" value="w" ${typed eq 'w' ? 'selected' : '' }>작성자</option>
+				  </select>
+				  <!-- <button class="notice-search-category dropdown-toggle" name="type" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+				   		제목
+				  </button>
+				  <ul class="dropdown-menu">
+				    <li class="dropdown-item">제목</li>
+				    <li class="dropdown-item">내용</li>
+				    <li class="dropdown-item">전체</li>
+				  </ul> -->
+				</div>
+				<div class="notice-input-container">
+					<input placeholder="검색어를 입력해 주세요." name="keyword" type="search" value="" class="notice-search-input">
+					<input type="hidden" name="pageNo" value="1">
+					<input type="hidden" name="qty" value="${ph.pgvo.qty }">
+				</div>
+				<div class="notice-button-container">
+					<button class="notice-search-button" type="submit"><div><span class="material-symbols-outlined" style="color: white;">search</span>검색</div></button>
+				</div>
+			</div>
+			</form>
+		</div>
 		
 		
-		<%-- <!-- 리스트 테이블 라인 -->
-		<table class="table notice-table"  >
-		  <thead class="table-light" >
-		    <tr class="notice-table-tr">
-		      <th scope="col" class="notice-table-th-no"><div class="notice-table-td-child">번호</div></th>
-		      <th scope="col" class="notice-table-th-cago"><div class="notice-table-td-child">카테고리</div></th>
-		      <th scope="col" class="notice-table-th-title"><div class="notice-table-td-child">제목</div></th>
-		      <th scope="col" class="notice-table-th-writer"><div class="notice-table-td-child">작성자</div></th>
-		      <th scope="col" class="notice-table-th-reg"><div class="notice-table-td-child">등록일</div></th>
-		      <th scope="col" class="notice-table-th-count"><div class="notice-table-td-child">조회</div></th>
-		    </tr>
-		  </thead>
-		  <tbody>
-		  <c:forEach items="${plist }" var="pvo">
-		  <c:if test="${ph.pgvo.keyword == '' || ph.pgvo.keyword == null || ph.pgvo.keyword == '공지사항' || ph.pgvo.keyword == '이벤트' || ph.pgvo.keyword == '보도자료' || ph.pgvo.keyword == '쇼핑몰' || ph.pgvo.keyword == '채용정보' || ph.pgvo.keyword == '기타' }">
-		    <tr class="notice-table-tr">
-		      <td class="notice-table-td"><div class="notice-table-td-child"><span class="material-symbols-outlined" style="color: red;">campaign</span></div></td>
-		      <td class="notice-table-td"><div class="notice-table-td-child">${pvo.noticeCategory }</div></td>
-		      <td class="notice-table-td"><div class="notice-table-td-child-title"><a href="/notice/detail?noticeNum=${pvo.noticeNum }">${pvo.noticeTitle }</a></div></td>
-		      <td class="notice-table-td"><div class="notice-table-td-child">${pvo.noticeWriter }</div></td>
-		      <td class="notice-table-td"><div class="notice-table-td-child">${fn:replace((fn:substring(pvo.noticeRegAt,0,10)),'-','.') }</div></td>
-		      <td class="notice-table-td"><div class="notice-table-td-child">${pvo.noticeCount }</div></td>
-		    </tr>
-		  </c:if>
-		  </c:forEach>  
-		  </tbody>
-		  <tbody>
-		  <c:forEach items="${list }" var="nvo">
-		    <tr class="notice-table-tr">
-		      <td class="notice-table-td"><div class="notice-table-td-child">${nvo.noticeNum }</div></td>
-		      <td class="notice-table-td"><div class="notice-table-td-child">${nvo.noticeCategory }</div></td>
-		      <td class="notice-table-td">
-		      	<div class="notice-table-td-child-title">
-			      	<a href="/notice/detail?noticeNum=${nvo.noticeNum }">
-			      	  <c:forEach items="${fvo }" var="fvo">
-			      		<c:if test="${fvo.noticeNum == nvo.noticeNum }">
-			      			<span><img alt="그림이 없음." src="/upload/${fn: replace(fvo.fileSave,'\\','/')}/${fvo.fileUuid}_th_${fvo.fileName}"></span>
-			      		</c:if>
-			      	  </c:forEach>
-			      		${nvo.noticeTitle }
-			      	</a>
-		      	</div>
-		      </td>
-		      <td class="notice-table-td"><div class="notice-table-td-child">${nvo.noticeWriter }</div></td>
-		      <td class="notice-table-td"><div class="notice-table-td-child">${fn:replace((fn:substring(nvo.noticeRegAt,0,10)),'-','.') }</div></td>
-		      <td class="notice-table-td"><div class="notice-table-td-child">${nvo.noticeCount }</div></td>
-		    </tr>
-		  </c:forEach>  
-		  </tbody>
-		</table> --%>
-		<br>
+		<br><br>
 		
 		<!-- 페이징 라인 -->
 		<div class="notice-paging-container">
