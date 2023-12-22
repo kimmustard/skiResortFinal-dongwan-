@@ -20,7 +20,7 @@
 			<div class="slope-box">
 				<div class="slope-manual">
 										
-					<h2>코스 설명</h2>
+					<h2>슬로프 설명</h2>
 					<ul class="slope-category">
 						<li id="slope-html" onclick="slopeMapAction('slope-html-map')">HTML</li>
 						<li id="slope-js" onclick="slopeMapAction('slope-js-map')">JAVASCRIPT</li>
