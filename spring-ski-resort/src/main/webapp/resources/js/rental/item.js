@@ -433,6 +433,8 @@ function removeItem(index) {
 
      let shoppingBasket = document.getElementById('shoppingBasket');
      let itemContainer = document.getElementById('itemContainer');
+     document.getElementById('shoppingbagNum').innerText =itemsArray.length;
+     
 
      if (itemsArray.length == 0) {
           shoppingBasket.style.right = '-350px';

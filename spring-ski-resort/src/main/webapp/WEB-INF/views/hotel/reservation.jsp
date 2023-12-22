@@ -258,7 +258,11 @@
 			
 			<!-- 방 이미지 링크는 여기 -->
 			<c:forEach items="${imageList}" var="room">
+			
 			<p class="hidden-info" id="image-src${room.hotelRoomNum}">
+			<c:if test="${room.hotelRoomImage1 eq null}">
+				https://post-phinf.pstatic.net/MjAxNzExMDZfMjYw/MDAxNTA5OTU4MzgwNzIy.QuBQriYOarr4YT8qxc_d9Kuoq9RY8uf0A821LiAyow8g.tgKFGE6MLlQpuXeand1QxrUUCJK6cZytJo39NVVbsiEg.JPEG/0.jpg
+			</c:if>
 				${room.hotelRoomImage1}
 			</p>
 		
