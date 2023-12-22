@@ -140,6 +140,11 @@ a{
     height: 180px;
     position: relative;
 }
+.notice-list-imgbox:hover{
+	width: 101%;
+    height: 181px;
+    position: relative;
+}
 .notice-list-imgbox>img{
 	position: absolute;
     top: 0;
@@ -572,10 +577,15 @@ a{
 .slide-text-title {
 	display: none;
     transition: opacity 0.3s ease;
+
 }
 .slide-text-subcontent{
 	display: none;
 	opacity: 1;
+	width: 1000px;
+    white-space: normal;
+    line-height: 35px;
+    text-align: left
 }
 .notice-a-hover:hover .slide-text-title {
 	display: block;

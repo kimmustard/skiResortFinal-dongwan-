@@ -71,7 +71,7 @@
 					</th>
 					<td class="notice-table-td">
 						<div class="mb-3 notice-table-td-child">
-						  <input type="text" class="form-control" name="noticeTitle" id="exampleFormControlInput1" placeholder="제목은 30자 이내로 작성해 주세요." style="width: 600px;" maxlength="30">
+						  <input type="text" class="form-control" name="noticeTitle" id="exampleFormControlInput1" placeholder="제목은 40자 이내로 작성해 주세요." style="width: 600px;" maxlength="40">
 						</div>  
 					</td>	
 				</tr>
@@ -144,7 +144,7 @@
 						  <!-- input button trigger 용도의 button -->
 						  <button type="button" id="trigger" class="btn btn-outline-primary">첨부파일</button>
 						  <span style="color: #ac0000;">※ 첫번째로 올린 이미지는 본문에 업로드 되지 않고 썸네일용으로 등록 됩니다.</span>
-						  <div style="color: #ac0000;">※ 첨부파일은 20MB 이하의 png, gif, jpg 형식의 파일만 등록이 가능.</div>
+						  <div style="color: #ac0000; padding-left: 95px;">※ 첨부파일은 20MB 이하의 png, gif, jpg 형식의 파일만 등록이 가능.</div>
 						  <div class="mb-3" id="fileZone">
 						  <!-- 첨부파일 표시 영역 -->
 						  </div>

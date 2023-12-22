@@ -295,6 +295,9 @@
 							</c:if>
 						</span>
 						<span class="notice-list-regat">${fn:replace((fn:substring(nvo.noticeRegAt,0,10)),'-','.') }</span>
+						<c:if test="${nvo.noticePoint eq 'Y' }">
+						<span class="material-symbols-outlined" style="color: red;">campaign</span>
+						</c:if>
 						<span class="notice-list-count">View ${nvo.noticeCount }</span>
 					</div>
 					<div class="notice-list-text-box">
@@ -392,8 +395,11 @@
 
 <!-- 스크립트 라인  -->
 <script type="text/javascript">
-
-</script>
+		const isOk = `<c:out value="${isOk}"></c:out>`
+		if(isOk=="1"){
+			alert('게시글이 등록 되었습니다.');
+		}
+</script>	
 <script type="text/javascript" src="/resources/js/notice/noticeList.js"></script>
 <jsp:include page="../common/footer.jsp" />
 </body>

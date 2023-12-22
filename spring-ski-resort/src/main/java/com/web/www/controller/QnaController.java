@@ -175,9 +175,9 @@ public class QnaController {
 				flist = fh.uploadFiles(files,category);
 			}
 			QnaAnsDTO qadto = new QnaAnsDTO(qavo, flist);
-			int isOk = qsv.qnaAnsFileModify(qadto);
-			log.info(">>>>> qna-ans modify >> "+(isOk > 0? "OK" : "Fail"));
-			re.addFlashAttribute("isOk",isOk);
+			int isUp = qsv.qnaAnsFileModify(qadto);
+			log.info(">>>>> qna-ans modify >> "+(isUp > 0? "OK" : "Fail"));
+			re.addFlashAttribute("isUp",isUp);
 			return "redirect:/qna/detail?qnaNum="+qavo.getQnaNum();
 		}
 		
