@@ -132,10 +132,14 @@ function updateRegion() {
 
      let busText = textBus(selectRegion);
 
+
+
      document.getElementById("regionImage").src = imagePath;
      document.getElementById('textBox').value = busText;
 
      document.getElementById('busNum').value = busNum;
+
+     document.getElementById("regionImage").style.display = "block";
 
      function updateBusNum(region) {
           switch (region) {
@@ -152,6 +156,7 @@ function updateRegion() {
                case '천안-평택선':
                     return 1006;
           }
+
      }
 }
 

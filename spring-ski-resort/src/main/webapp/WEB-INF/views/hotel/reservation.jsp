@@ -104,7 +104,7 @@
 
 
 	<div class="back">
-		<img alt="" src="https://www.chamonix.com/sites/default/files/styles/full_screen/public/media/images/%C2%A9%20Daniel_Ronnback.webp?h=ea95bb15&itok=9owM8byS">
+		<img alt="" src="https://i.imgur.com/sIUwKBg.jpg">
 		<!-- <div class="selector">
 			<div>
 				<a href="/rental/reserve">스키/리프트권</a>
@@ -269,6 +269,11 @@
 			
 	</form>
 		
+		</div>
+		
+		
+		<div class="contentContainer">
+			
 		</div>
 	</div>
 
