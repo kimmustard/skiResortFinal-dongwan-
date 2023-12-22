@@ -69,6 +69,7 @@ public class NoticeController {
 		}
 		int isOk = nsv.noticeRegister(new NoticeDTO(nvo, flist));
 		log.info(">>>>> notice register >> "+(isOk > 0? "OK" : "Fail"));
+		re.addFlashAttribute("isOk", isOk);
 		return "redirect:/notice/list";
 	}
 	

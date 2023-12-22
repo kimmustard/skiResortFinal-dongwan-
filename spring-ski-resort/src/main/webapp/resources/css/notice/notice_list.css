@@ -560,6 +560,7 @@ a{
 	cursor:pointer;
 	height: 60px;
 	width: 60px;
+	border: 2px solid;
 	}
 .slide-pagelist-img-box{
 	width: 60px;

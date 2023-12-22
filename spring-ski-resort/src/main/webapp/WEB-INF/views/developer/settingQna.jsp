@@ -278,6 +278,13 @@
 		</div>
 	</div>
 </div>	
-	<script type="text/javascript" src="/resources/js/developer/setting.js"></script>
+
+<script type="text/javascript">
+		const isOk = `<c:out value="${isOk}"></c:out>`
+		if(isOk=="1"){
+			alert('게시글이 정상적으로 삭제 되었습니다.');
+		}
+</script>	
+<script type="text/javascript" src="/resources/js/developer/setting.js"></script>
 </body>
 </html>

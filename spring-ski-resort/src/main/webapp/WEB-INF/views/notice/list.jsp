@@ -39,8 +39,8 @@
 		display:block;
 		}
 	.section input[id="slide0${status.count}"]:checked ~ .slidewrap .slide-pagelist > li:nth-child(${status.count}) > label > div > img{
-		filter: brightness(130%);
-		box-shadow: 3px 3px 10px 5px gray;
+		filter: brightness(150%);
+		box-shadow: 3px 3px 9px 6px #5b5b5b;
 		}
 </style>
 </c:forEach>
