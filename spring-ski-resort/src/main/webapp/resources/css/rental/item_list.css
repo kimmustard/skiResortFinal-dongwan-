@@ -116,7 +116,8 @@ position: absolute;
 
 
 .shoppingBasket{
-	position: absolute;
+	top:100px;
+	position: fixed;
 	background-color: white;
 	border-radius: 5px;
 	width: 350px;
@@ -223,10 +224,14 @@ position: absolute;
 	position: fixed;
 	bottom: 15px;
 	left: 15px;
-	width: 50px;
-	height: 50px;
+	width: 100px;
+	height: 100px;
 	border-radius: 100px;
-	background-color: white;
+	background-color: black;
+	
+}
+#shoppingbag:hover{
+	cursor: pointer;
 }
 
 #shoppingbag>i{
@@ -234,6 +239,15 @@ position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+	color: white;
+	font-size: 50px;
 }
 
+#shoppingbagNum{
+	background-color:red;
+	color: white;
+	border-radius: 100px;
+	width: 20px;
+	height: 20px;
+	padding:2px 5px;
 }

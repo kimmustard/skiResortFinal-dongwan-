@@ -24,7 +24,7 @@
 	
 	<!-- 장바구니 -->
 	<div class="shopContainer">
-		<div class="shoppingBasket" id="shoppingBasket">
+		<div class="shoppingBasket" id="shoppingBasket" style="right: -350px">
 			<div class="shoppingBasketTitle">
 				<p class="fs-4">장바구니</p>
 				<p><button class="btn btn-outline-info reserveBtn" onclick="reservationBtn()">예약신청하기</button></p>
@@ -332,7 +332,7 @@
 		</div>
 		
 		
-		<div id="shoppingbag"><i class="bi bi-bag"></i></div>
+		<div id="shoppingbag"> <div id="shoppingbagNum"></div> <i class="bi bi-bag"></i></div>
 	
 	
 	
