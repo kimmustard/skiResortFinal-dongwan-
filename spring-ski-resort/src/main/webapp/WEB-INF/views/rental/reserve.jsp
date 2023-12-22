@@ -92,7 +92,7 @@
 	
 	
 	<div class="back">
-		<img data-v-c62ee4ac="" src="https://pbs.twimg.com/media/GAu6whlX0AA4qxA?format=jpg&name=4096x4096" alt="">
+		<img data-v-c62ee4ac="" src="https://i.imgur.com/pclh9Jp.jpg" alt="">
 		
 		<div class="box">
 			<p class="fs-3  rentalText"><a class="move-hotel" href="/hotel/reservation">호텔예약</a>/리프트권 예약</p>
@@ -226,41 +226,36 @@
 			</form>
 		</div>
 		
-		<div class="skiSlopeContainer">
-			<div>
-				<h1>슬로프 안내</h1>
-				<img alt="" src="https://i.imgur.com/ecmOiSx.png">
-			</div>
-		</div>
-		
 		<div class="contentContainer">
+			
+			<div class="content1">
 			
 			<div class="contentBox">
 				<p class="fs-1 rentalText">DAISUSKI Lift Reserve</p>
 				<div class="liftTicketInfo">
 					<div>
-						<img src="https://i.imgur.com/VtvwhXM.jpg" style="width: 100px; height: 100px;">
-						<p class="fs-4">리프트 오전권<br>Adult 40,000 Kid 30,000</p>
+						<img src="https://i.imgur.com/gvc8s1d.png" style="width: 500px; height: 200px;">
+						<p class="fs-4">리프트 오전권<br>Adult 40,000<br> Kid 30,000</p>
 					</div>
 					<div>
-						<img src="https://i.imgur.com/VtvwhXM.jpg" style="width: 100px; height: 100px;">
-						<p class="fs-4">리프트 오후권<br>Adult 50,000 Kid 40,000</p>
+						<img src="https://i.imgur.com/gvc8s1d.png" style="width: 500px; height: 200px;">
+					<p class="fs-4">리프트 오후권<br>Adult 50,000<br> Kid 40,000</p>
 					</div>
 					<div>
-						<img src="https://i.imgur.com/VtvwhXM.jpg" style="width: 100px; height: 100px;">
-						<p class="fs-4">리프트 주간권<br>Adult 60,000 Kid 50,000</p>
+						<img src="https://i.imgur.com/gvc8s1d.png" style="width: 500px; height: 200px;">
+					<p class="fs-4">리프트 주간권<br>Adult 60,000<br> Kid 50,000</p>
 					</div>
 					<div>
-						<img src="https://i.imgur.com/VtvwhXM.jpg" style="width: 100px; height: 100px;">
-						<p class="fs-4">리프트 야간권<br>Adult 40,000 Kid 30,000</p>
+						<img src="https://i.imgur.com/gvc8s1d.png" style="width: 500px; height: 200px;">
+					<p class="fs-4">리프트 야간권<br>Adult 40,000<br> Kid 30,000</p>
 					</div>
 					<div>
-						<img src="https://i.imgur.com/VtvwhXM.jpg" style="width: 100px; height: 100px;">
-						<p class="fs-4">리프트 종일권<br>Adult 75,000 Kid 65,000</p>
+						<img src="https://i.imgur.com/gvc8s1d.png" style="width: 500px; height: 200px;">
+					<p class="fs-4">리프트 종일권<br>Adult 75,000<br> Kid 65,000</p>
 					</div>
 					<div>
-						<img src="https://i.imgur.com/VtvwhXM.jpg" style="width: 100px; height: 100px;">
-						<p class="fs-4">리프트 시즌권<br>Adult 380,000 Kid 350,000</p>
+						<img src="https://i.imgur.com/gvc8s1d.png" style="width: 500px; height: 200px;">
+					<p class="fs-4">리프트 시즌권<br>Adult 380,000<br> Kid 350,000</p>
 					</div>
 				</div>
 			</div>
@@ -279,7 +274,16 @@
 				</div>
 			</div>
 			
+			</div>
 		</div>
+		
+		<div class="skiSlopeContainer">
+			<div>
+				<h1>슬로프 안내</h1>
+				<img alt="" src="https://i.imgur.com/ecmOiSx.png">
+			</div>
+		</div>
+		
 		
 	</div>
 	<script type="text/javascript">
