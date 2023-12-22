@@ -140,6 +140,8 @@ function updateRegion() {
      document.getElementById('busNum').value = busNum;
 
      document.getElementById("regionImage").style.display = "block";
+     document.getElementById("busInfoBox").style.display = "none";
+     document.getElementById("busP").style.display = "none";
 
      function updateBusNum(region) {
           switch (region) {

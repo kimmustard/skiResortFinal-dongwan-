@@ -92,7 +92,7 @@
 	
 	
 	<div class="back">
-		<img data-v-c62ee4ac="" src="https://pbs.twimg.com/media/GAu6whlX0AA4qxA?format=jpg&name=4096x4096" alt="">
+		<img data-v-c62ee4ac="" src="https://i.imgur.com/pclh9Jp.jpg" alt="">
 		
 		<div class="box">
 			<p class="fs-3  rentalText"><a class="move-hotel" href="/hotel/reservation">호텔예약</a>/리프트권 예약</p>
@@ -102,6 +102,7 @@
 					<input name="rentalLiftAdult" id="rentalLiftAdult" value="0" placeholder="성인인원" type="hidden">
 					<input name="rentalLiftKid" id="rentalLiftKid" value="0" placeholder="어린이인원" type="hidden">
 					
+					
 					<div class="date-group">
 						<div class="input-group calendar">
 		              	 	<div class="input-group-prepend">
@@ -110,6 +111,8 @@
 							<input type="text" class="form-control" id="dateRangePicker" placeholder="날짜를 선택하세요" readonly="readonly">
 						</div>
 					</div>
+					
+					
 					<div class="input-box1">
 						<div class="input-group mb-3">
 							<span class="input-group-text" id="basic-addon1"><i class="bi bi-person-fill"></i></span>
@@ -222,41 +225,65 @@
 				</div>
 			</form>
 		</div>
+		
 		<div class="contentContainer">
+			
+			<div class="content1">
 			
 			<div class="contentBox">
 				<p class="fs-1 rentalText">DAISUSKI Lift Reserve</p>
 				<div class="liftTicketInfo">
 					<div>
-						<img src="https://i.imgur.com/VtvwhXM.jpg" style="width: 100px; height: 100px;">
-						<p class="fs-4">a Lift Morning Ticket<br>Adult 40,000 Kid 30,000</p>
+						<img src="https://i.imgur.com/gvc8s1d.png" style="width: 500px; height: 200px;">
+						<p class="fs-4">리프트 오전권<br>Adult 40,000<br> Kid 30,000</p>
 					</div>
 					<div>
-						<img src="https://i.imgur.com/VtvwhXM.jpg" style="width: 100px; height: 100px;">
-						<p class="fs-4">a Lift Afternoon Ticket<br>Adult 50,000 Kid 40,000</p>
+						<img src="https://i.imgur.com/gvc8s1d.png" style="width: 500px; height: 200px;">
+					<p class="fs-4">리프트 오후권<br>Adult 50,000<br> Kid 40,000</p>
 					</div>
 					<div>
-						<img src="https://i.imgur.com/VtvwhXM.jpg" style="width: 100px; height: 100px;">
-						<p class="fs-4">a Weekly Lift Ticket<br>Adult 60,000 Kid 50,000</p>
+						<img src="https://i.imgur.com/gvc8s1d.png" style="width: 500px; height: 200px;">
+					<p class="fs-4">리프트 주간권<br>Adult 60,000<br> Kid 50,000</p>
 					</div>
 					<div>
-						<img src="https://i.imgur.com/VtvwhXM.jpg" style="width: 100px; height: 100px;">
-						<p class="fs-4">a Lift Night Ticket<br>Adult 40,000 Kid 30,000</p>
+						<img src="https://i.imgur.com/gvc8s1d.png" style="width: 500px; height: 200px;">
+					<p class="fs-4">리프트 야간권<br>Adult 40,000<br> Kid 30,000</p>
 					</div>
 					<div>
-						<img src="https://i.imgur.com/VtvwhXM.jpg" style="width: 100px; height: 100px;">
-						<p class="fs-4">a Lift All Day Ticket<br>Adult 75,000 Kid 65,000</p>
+						<img src="https://i.imgur.com/gvc8s1d.png" style="width: 500px; height: 200px;">
+					<p class="fs-4">리프트 종일권<br>Adult 75,000<br> Kid 65,000</p>
 					</div>
 					<div>
-						<img src="https://i.imgur.com/VtvwhXM.jpg" style="width: 100px; height: 100px;">
-						<p class="fs-4">a Lift Season Ticket<br>Adult 380,000 Kid 350,000</p>
+						<img src="https://i.imgur.com/gvc8s1d.png" style="width: 500px; height: 200px;">
+					<p class="fs-4">리프트 시즌권<br>Adult 380,000<br> Kid 350,000</p>
 					</div>
 				</div>
 			</div>
-			<div class="contentImg">
-				<img alt="" src="https://www.yongpyong.co.kr/images/kor/skiNboard/img_slope01.png" style="height: 650px;">
+			<div class="liftInfo">
+				<p class="fs-1 rentalText">리프트권 유의사항</p>
+				<div>
+					<ul>
+						<li>1. 리프트권은 장비렌탈이 포함되지 않습니다.</li>
+						<li>2. 리프트권은 회원당 1회만 구매 가능합니다.</li>
+						<li>3. 회차당 일괄 발권만 가능하며 부분 발권 및 교환, 환불은 불가합니다</li>
+						<li>4. 리프트권은 미사용 시 환불 처리되지 않습니다.</li>
+						<li>5. 23/24 스노우 시즌 셔틀버스는 별도 예약이 필요합니다.</li>
+						<li>6. 발권된 티켓은 당일 사용만 가능하며, 미사용 티켓에 한하여 30분내에 환불 또는 교환 가능합니다.</li>
+						<li>7. 사용하신 리프트권은 티켓 수거함에 넣어주세요.</li>
+					</ul>
+				</div>
+			</div>
+			
 			</div>
 		</div>
+		
+		<div class="skiSlopeContainer">
+			<div>
+				<h1>슬로프 안내</h1>
+				<img alt="" src="https://i.imgur.com/ecmOiSx.png">
+			</div>
+		</div>
+		
 		
 	</div>
 	<script type="text/javascript">

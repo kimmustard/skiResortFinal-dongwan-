@@ -134,8 +134,16 @@
 									</div>
 								</div>
 								<div class="regionImgBox" id="regionImgBox">
-									<div class="busInfoBox">
-										
+									<p class="fs-1 rentalText" id="busP">버스예약 유의사항</p>
+									<div class="busInfoBox" id="busInfoBox">
+										<ul>
+											<li>1. 노선별 운행일정 안내를 꼭 참고해주세요.</li>
+											<li>2. 셔틀버스 예약은 당일 왕복 예약이며, 스키장에서 출발시간은 주간선 17:30 입니다.</li>
+											<li>3. 셔틀버스 예약은 회원당 1번만 가능합니다.</li>
+											<li>4. 셔틀버스 예약은 이용하시는 날짜 일주일 전부터 전날 6시까지 예약가능합니다.</li>
+											<li>5. 다이스키에서 출발하는 차량이용을 원하시는 고객은 셔틀사무실을 통해 잔여좌석을 확인 후 이용해 주십시오.</li>
+											<li>6. 예약하시려는 날짜를 한번 더 확인하신 후 예약해주세요.</li>
+										</ul>
 									</div>
 									<img src="" alt="지역 이미지" id="regionImage" class="img-fluid" style="width: 100%; height: 100%; display: none;">
 									<div class="textBox" id="textBox">
