@@ -7,8 +7,8 @@
 .myCouponListBody{
 	display: none;
 	position: absolute;
-	top: 00px;
-	right: 0px;
+	top: 100px;
+	right: -420px;
 	border-top-left-radius: 20px;
 	border-bottom-left-radius: 20px;
 	width: 420px;

@@ -33,11 +33,11 @@
 	boar
 }
 .pay-method>button>span{
-		position: absolute;
-		bottom: -20px;
-		 white-space: nowrap;
-		left: 50%;
-		transform: translateX(-50%);
+	position: absolute;
+	bottom: -20px;
+	 white-space: nowrap;
+	left: 50%;
+	transform: translateX(-50%);
 	}
 #inicis_pay{
 	background-image: url("/resources/etc/pay_icon.png");

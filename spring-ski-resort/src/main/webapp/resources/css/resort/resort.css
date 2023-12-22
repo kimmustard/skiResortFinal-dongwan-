@@ -1,8 +1,9 @@
 @charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Jua&family=Nanum+Gothic&display=swap');
 
 .resort-main-container{
 	width: 100%;
-	height: 2000px;
+	height: 3000px;
 }
 
 .mainBackground{
@@ -11,4 +12,72 @@
 	background-image: url("https://i.imgur.com/EqAJsqx.jpg");
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
+}
+
+.slope{
+	
+}
+
+.slope>h2{
+	font-family: 'Nanum Gothic', sans-serif;
+	margin-top: 100px;
+	margin-bottom: 100px;
+	text-align: center;
+	font-size: 35px;
+	font-weight: 500;
+}
+
+.slope>.slope-box{
+	display: flex;
+	justify-content: space-around;
+	
+}
+
+.slope>.slope-box>.slope-map{
+	position: relative;
+	width: 1000px;
+	height: 1000px;
+	background-image: url("https://i.imgur.com/BijLhrt.png");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	box-shadow: 0 15px 15px rgba(0, 0, 0, 0.7);
+}
+
+.slope-map{
+	
+}
+
+.slope-map>img {
+    position: absolute;
+    width: 1000px;
+    height: 1000px;
+    opacity: 0; /* 초기에는 투명하게 설정 */
+    visibility: hidden; /* 추가된 부분 */
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out; /* 변경된 부분 */
+}
+
+.slope-map>img.active {
+    opacity: 1;
+    visibility: visible; /* 추가된 부분 */
+}
+
+.slope-manual{
+	margin-left: 300px;
+}
+
+.slope-manual>h2{
+	font-family: 'Nanum Gothic', sans-serif;
+	font-size: 25px;
+	margin-bottom: 30px;
+}
+
+.slope-category{
+
+	font-family: 'Nanum Gothic', sans-serif;
+	font-size: 20px;
+}
+
+.slope-category>li{
+	margin-bottom: 30px;
+	cursor: pointer;
 }

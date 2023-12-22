@@ -14,6 +14,32 @@
 		<div class="mainBackground">
 		</div>
 	
+		<div class="slope">
+			<h2> 슬로프 안내 </h2>
+			
+			<div class="slope-box">
+				<div class="slope-manual">
+										
+					<h2>코스 설명</h2>
+					<ul class="slope-category">
+						<li id="slope-html" onclick="slopeMapAction('slope-html-map')">HTML</li>
+						<li id="slope-js" onclick="slopeMapAction('slope-js-map')">JAVASCRIPT</li>
+						<li id="slope-python" onclick="slopeMapAction('slope-python-map')">PYTHON</li>
+						<li id="slope-java" onclick="slopeMapAction('slope-java-map')">JAVA</li>
+						<li id="slope-spring" onclick="slopeMapAction('slope-spring-map')">SPRING</li>
+					</ul>
+					
+				</div>
+				<div class="slope-map">
+					<img id="slope-html-map" alt="" src="https://i.imgur.com/UIsywju.png">
+					<img id="slope-js-map" alt="" src="https://i.imgur.com/w8tyHfz.png">
+					<img id="slope-python-map" alt="" src="https://i.imgur.com/ykTy5wo.png">
+					<img id="slope-java-map" alt="" src="https://i.imgur.com/N41QgCe.png">
+					<img id="slope-spring-map" alt="" src="https://i.imgur.com/EgRaUPB.png">
+				</div>
+			</div>
+		</div>
+	
 	</div>
 	
 	
@@ -21,6 +47,6 @@
 	
 	
 	
-	<script type="text/javascript"></script>
+	<script type="text/javascript" src="/resources/js/resort/resort.js"></script>
 </body>
 </html>
