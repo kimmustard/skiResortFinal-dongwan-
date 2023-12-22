@@ -27,6 +27,7 @@
 }
 .people {
     caret-color: transparent;
+   
 }
 .peoplelist{
 	position : relative;
@@ -255,7 +256,7 @@
    	width: 300px;
 }
 .room-info-box{
-	
+		border: 1px solid black;		
 	 position: absolute;
     top: 30px;
     right: 20px;
@@ -343,6 +344,4 @@
    
 	
 }
-.content1>div>img:hover{
-	opacity: 0.8;
-}
+

@@ -5,7 +5,7 @@ makeSlides();
 function makeSlides() {
   Eventslides = "";
   for (let i = 1; i <= 5; i++) {
-    Eventslides += `<li class="event-li"><div class="event-item-box" id="event-item-box${i}"> <div class="event-image-box"  id="event-image-box${i}"></div><div  class="event-filter-box"><div class="event-content-box" id="event-content-box${i}">이벤트 1</div><p id="event-content${i}" class="event-content"><div></div><span class="diamond event-dia"><i
+    Eventslides += `<li class="event-li"><div class="event-item-box" id="event-item-box${i}"> <div class="event-image-box"  id="event-image-box${i}"></div><div  class="event-filter-box"><div class="event-content-box" id="event-content-box${i}">이벤트 1</div><p id="event-content${i}" class="event-content"><div></div><span id="event-dia${i}" class="diamond event-dia"><i
     class="bi bi-chevron-right "></i> </span></li>`;
   }
 
@@ -67,7 +67,13 @@ async function getFiveEvent(){
           let EventImageBoxes = document.querySelectorAll("#event-image-box" + (i + 1));
           let EventContentBoxes = document.querySelectorAll("#event-content-box" + (i + 1));
           let EventContent = document.querySelectorAll("#event-content" + (i + 1));
+          let Eventdias = document.querySelectorAll("#event-dia" + (i + 1));
       
+          Eventdias.forEach(function (Eventdia) {
+            Eventdia.onclick = function () {
+              moveEventSite(events[i].noticeNum);
+          };
+        });
           EventImageBoxes.forEach(function (EventImageBox) {
               EventImageBox.style.backgroundImage = "url('" + events[i].noticeImageUrl + "')";
               EventImageBox.onclick = function () {
