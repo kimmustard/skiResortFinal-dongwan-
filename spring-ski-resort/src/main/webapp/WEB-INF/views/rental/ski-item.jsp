@@ -332,7 +332,7 @@
 		</div>
 		
 		
-		
+		<div id="shoppingbag"><i class="bi bi-bag"></i></div>
 	
 	
 	

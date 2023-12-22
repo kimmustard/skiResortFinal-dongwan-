@@ -104,7 +104,7 @@
 
 
 	<div class="back">
-		<img alt="" src="https://i.imgur.com/sIUwKBg.jpg">
+		<img alt="" src="https://www.promojay.fr/wp-content/uploads/2018/06/5-1780x1000.jpg">
 		<!-- <div class="selector">
 			<div>
 				<a href="/rental/reserve">스키/리프트권</a>
@@ -273,7 +273,23 @@
 		
 		
 		<div class="contentContainer">
-			
+					<div class="textarea">
+					<p class="title"> hotel DAISUKI</p>
+<!-- 					<p class="fs-4">호텔에서 편안한 시간을 보내세요</p> -->
+<!-- 					<p class="content">DAISUKI Hotel에서는 탁 트인 바다 전망과 함께 편안하고 고급스러운 휴식을 제공합니다. 우리의 현대적이고 세련된 객실에서 여행의 피로를 풀고, 특별한 순간들을 경험하세요."</p> -->
+					</div>
+					<div class="imgarea">
+					
+			<div class="content1">
+			<div >
+					<img alt="" src="https://www.promojay.fr/wp-content/uploads/2018/06/32-687x460.jpg">
+					<img alt="" src="https://www.promojay.fr/wp-content/uploads/2018/06/1-687x460.jpg"> 
+			</div>
+			<div >
+					<img alt="" src="https://www.promojay.fr/wp-content/uploads/2018/06/4-687x460.jpg">
+					<img src="https://www.promojay.fr/wp-content/uploads/2018/06/ferme-3-compress-687x460.jpg"> </div>
+			</div>			
+			</div>
 		</div>
 	</div>
 
