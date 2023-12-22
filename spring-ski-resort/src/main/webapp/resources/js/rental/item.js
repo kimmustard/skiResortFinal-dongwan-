@@ -353,7 +353,14 @@ let itemsArray = [];
 let itemSum = 0;
 let localStorageCnt = 0;
 let localStorageSwitch = -1;
-
+document.getElementById('shoppingbag').addEventListener('click',()=>{ 
+     let shoppingBasket = document.getElementById('shoppingBasket');
+     if(shoppingBasket.style.right == '-350px'){
+          shoppingBasket.style.right = 0;
+     }else{
+          shoppingBasket.style.right = '-350px';
+     }
+})
 function shoppingBasket(itemNum, itemName, price, itemImageUrl) {
 
 
@@ -363,21 +370,17 @@ function shoppingBasket(itemNum, itemName, price, itemImageUrl) {
           return;
      }
 
-     let shoppingBasket = document.getElementById('shoppingBasket');
-     let itemContainer = document.getElementById('itemContainer');
-
-     if (shoppingBasketSwitch == -1) {
-          shoppingBasket.style.right = '0px';
-
-          shoppingBasketSwitch = 1;
-
-     }
+  
 
 
+   
+     
      if (itemsArray.length >= 5) {
           alert("최대 5개만 예약 가능합니다");
+          
           return;
      }
+     document.getElementById('shoppingbagNum').innerText=itemsArray.length+1;
 
      let itemsConfig = {
           rentalItemNum: itemNum,
