@@ -332,7 +332,7 @@
 		</div>
 		
 		
-		<div id="shoppingbag"> <div id="shoppingbagNum"></div> <i class="bi bi-bag"></i></div>
+		<div id="shoppingbag"> <div id="shoppingbagNum">0</div> <i class="bi bi-bag"></i></div>
 	
 	
 	

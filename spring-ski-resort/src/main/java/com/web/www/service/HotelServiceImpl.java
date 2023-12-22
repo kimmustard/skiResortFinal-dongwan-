@@ -34,6 +34,7 @@ public class HotelServiceImpl implements HotelService{
 	@Override
 	public int addRoom(RoomVO rvo) {
 		// TODO Auto-generated method stub
+		
 		return hdao.addRoom(rvo);
 	}
 

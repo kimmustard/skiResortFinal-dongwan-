@@ -141,10 +141,12 @@ if (document.getElementById("alarm-bell")) {
         let boardtitle = document.getElementById('alarm-board-title');
         if (bellSwitch == 1) {
             board.style.height = '0px';
+          
             bellSwitch = 0;
-            setTimeout(()=>{board.style.color="transparent"; boardtitle.style.color="transparent";} ,400);
+            setTimeout(()=>{  document.getElementById('alarm-spread').style.display="none"; board.style.color="transparent"; boardtitle.style.color="transparent";} ,200);
 
         } else if (bellSwitch == 0) {
+            document.getElementById('alarm-spread').style.display="block";
             board.style.height = '400px';        
             bellSwitch = 1;
             board.style.color="white"; boardtitle.style.color="white";
@@ -160,8 +162,10 @@ async function memberAlarmSpread() {
         let div = document.getElementById('alarm-spread');
         div.innerHTML = '';
 
+	
         if (result == null) {
             let str = `<ul><li>알람 기능 OFF 상태입니다.</li></ul>`;
+         
             div.innerHTML += str;
             return;
         }
