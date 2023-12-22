@@ -248,10 +248,10 @@ function roomSelectEvent(num) {
 
 
     //요금표시
-    realAmount = roomprice;
-    document.getElementById('productPrice').value = roomprice;
-    document.getElementById('pay1').value = roomprice.toLocaleString() + "원";
-    document.getElementById('realpayvalue').value = roomprice;
+    realAmount =  Math.floor(roomprice);
+    document.getElementById('productPrice').value = Math.floor(roomprice);
+    document.getElementById('pay1').value = Math.floor(roomprice).toLocaleString() + "원";
+    document.getElementById('realpayvalue').value = Math.floor(roomprice);
 
     //상품명
     if (StayDate == 1) {
