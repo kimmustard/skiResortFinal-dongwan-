@@ -316,10 +316,19 @@
 	width: 550px;
 	height: 350px;
 	margin-top: 10px;
-	margin-right: 110px;
+	margin-right: 60px;
 }
 
 .regionImgBox .textBox{
 	height: 100px;
 	margin-top: 25px;
+}
+
+.busInfoBox{
+	border-top: 3px solid black;
+	margin-top: 20px;
+}
+
+.busInfoBox ul li{
+	margin: 20px;
 }
