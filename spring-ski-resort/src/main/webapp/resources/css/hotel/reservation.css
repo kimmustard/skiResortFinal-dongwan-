@@ -4,7 +4,7 @@
 
 .back{
     width: 100%;  
-
+	object-fit:cover;
 }
 .back>img{
 	width: 100%;
@@ -76,13 +76,11 @@
     padding: 5px;
     position: relative;
     height: 200px;
-    border-radius: 10px;
     left: 50%;
    	transform: translateX(-50%);
    	top:76%;
    	position: absolute;
-   	background-color:rgba(255,255, 255, 0.9);
-   	    box-shadow: 0px 0px 5px black;
+   	background-color:rgba(255,255, 255);
    
    	 
 }
@@ -105,9 +103,7 @@
     top: -100%;
     width: 100%;
     height: 600px;
-    background-color:rgba(255,255, 255, 0.9);
-    border-radius: 10px;
-	box-shadow: 0 0 5px black;
+    background-color:rgba(255,255, 255);
 }
 
 .daterangepicker {
@@ -265,7 +261,6 @@
     right: 20px;
     width: 680px;
     height: 480px;
-    box-shadow: 0px 0px 5px black;
     user-select: none;
     
 }.room-image{
@@ -309,7 +304,45 @@
 }
 
 .contentContainer{
+	padding-top:130px;
 	width: 100%;
-	height: 1000px;
+	background-color: #f0f0f0;
 }
+.content1{
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	 padding: 0 300px 100px;
+	}
+	
+.content1>.textarea{
+	width: 100%;
+	text-align: center;
+}
+.content1>.imgarea{
+	width: 100%;
+}
+.textarea > .title{
+	padding:30px 0;
+	width: 1374px;
+	margin: auto;
+	font-family: 'Bebas Neue', sans-serif;
+	font-size: 50px;
+	text-align: left;
+	
+}
+.textarea > .fs-4{
+	    padding: 20px;
+}
+.textarea > .content{
 
+	color: #666;
+    text-wrap: balance;
+    margin: auto;
+    width: 500px;;
+   
+	
+}
+.content1>div>img:hover{
+	opacity: 0.8;
+}
