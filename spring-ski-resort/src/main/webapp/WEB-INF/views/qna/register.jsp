@@ -181,6 +181,8 @@
 			alert('제목을 입력해 주세요.');
 		}
 </script>
+
+
 <jsp:include page="../common/footer.jsp" />
 </body>
 </html>
