@@ -10,9 +10,12 @@ document.getElementById("nextBtn").addEventListener('click', () => {
     let rentalLiftAdult = document.getElementById('rentalLiftAdult').value;
 
     if (rentalLiftAdult == "0") {
-        alert('인원수를 입력해주세요!');
+        alert('인원수를 입력해주세요.');
     } else if (rentalLiftStart == "") {
-        alert('날짜를 선택해주세요!');
+        alert('날짜를 선택해주세요.');
+    } else if (memberEmail == "") {
+        alert('로그인 후 예약 가능합니다.');
+        location.href = '/member/login';
     } else {
         document.getElementById("innerbox").style.display = "block";
         document.getElementById('nextBtn').style.display = 'none';
