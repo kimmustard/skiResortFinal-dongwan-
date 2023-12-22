@@ -168,23 +168,29 @@
 				
 				<div id="innerbox" class="reserveBox" style="display: none;">
 					<input id="memberGradeInput" type="hidden" value="${mvo.memberGrade }">
-					<p class="fs-2">리프트권 선택</p>
+					
 					<div class="form-check">
+						<img alt="" onclick="updateFees(40000,30000,'오전권')" src="https://media.istockphoto.com/id/909307378/photo/winter-mountains-panorama-with-ski-slopes-and-ski-lifts.jpg?s=612x612&w=0&k=20&c=t3nSo1TuseE4gLDNtdoW46sqrD9XRDwKzPwijiIay-0=" style="width: 80px; height: 80px;">
 					  <input class="form-check-input" onclick="updateFees(40000,30000,'오전권')" type="radio" name="rentalLiftTicket" value="오전권" id="morningTicket">오전권
 					</div>
 					<div class="form-check">
+						<img alt="" onclick="updateFees(50000,40000,'오후권')" src="https://media.istockphoto.com/id/909307378/photo/winter-mountains-panorama-with-ski-slopes-and-ski-lifts.jpg?s=612x612&w=0&k=20&c=t3nSo1TuseE4gLDNtdoW46sqrD9XRDwKzPwijiIay-0=" style="width: 80px; height: 80px;">
 					  <input class="form-check-input" onclick="updateFees(50000,40000,'오후권')" type="radio" name="rentalLiftTicket" value="오후권" id="afternoonTicket">오후권
 					</div>
 					<div class="form-check">
+						<img alt="" onclick="updateFees(60000,50000,'주간권')" src="https://media.istockphoto.com/id/909307378/photo/winter-mountains-panorama-with-ski-slopes-and-ski-lifts.jpg?s=612x612&w=0&k=20&c=t3nSo1TuseE4gLDNtdoW46sqrD9XRDwKzPwijiIay-0=" style="width: 80px; height: 80px;">
 					  <input class="form-check-input" onclick="updateFees(60000,50000,'주간권')" type="radio" name="rentalLiftTicket" value="주간권" id="dayTimeTicket">주간권
 					</div>
 					<div class="form-check">
+						<img alt="" onclick="updateFees(40000,30000,'야간권')" src="https://media.istockphoto.com/id/909307378/photo/winter-mountains-panorama-with-ski-slopes-and-ski-lifts.jpg?s=612x612&w=0&k=20&c=t3nSo1TuseE4gLDNtdoW46sqrD9XRDwKzPwijiIay-0=" style="width: 80px; height: 80px;">
 					  <input class="form-check-input" onclick="updateFees(40000,30000,'야간권')" type="radio" name="rentalLiftTicket" value="야간권" id="nightTimeTicket">야간권
 					</div>
 					<div class="form-check">
+						<img alt="" onclick="updateFees(75000,65000,'종일권')" src="https://media.istockphoto.com/id/909307378/photo/winter-mountains-panorama-with-ski-slopes-and-ski-lifts.jpg?s=612x612&w=0&k=20&c=t3nSo1TuseE4gLDNtdoW46sqrD9XRDwKzPwijiIay-0=" style="width: 80px; height: 80px;">
 					  <input class="form-check-input" onclick="updateFees(75000,65000,'종일권')" type="radio" name="rentalLiftTicket" value="종일권" id="allDayTicket">종일권
 					</div>
 					<div class="form-check">
+						<img alt="" onclick="updateFees(380000,350000,'시즌권')" src="https://media.istockphoto.com/id/909307378/photo/winter-mountains-panorama-with-ski-slopes-and-ski-lifts.jpg?s=612x612&w=0&k=20&c=t3nSo1TuseE4gLDNtdoW46sqrD9XRDwKzPwijiIay-0=" style="width: 80px; height: 80px;">
 					  <input class="form-check-input" onclick="updateFees(380000,350000,'시즌권')" type="radio" name="rentalLiftTicket" value="시즌권" id="seasonTicket">시즌권
 					</div>
 					
@@ -216,7 +222,41 @@
 				</div>
 			</form>
 		</div>
-	
+		<div class="contentContainer">
+			
+			<div class="contentBox">
+				<p class="fs-1 rentalText">DAISUSKI Lift Reserve</p>
+				<div class="liftTicketInfo">
+					<div>
+						<img src="https://i.imgur.com/VtvwhXM.jpg" style="width: 100px; height: 100px;">
+						<p class="fs-4">a Lift Morning Ticket<br>Adult 40,000 Kid 30,000</p>
+					</div>
+					<div>
+						<img src="https://i.imgur.com/VtvwhXM.jpg" style="width: 100px; height: 100px;">
+						<p class="fs-4">a Lift Afternoon Ticket<br>Adult 50,000 Kid 40,000</p>
+					</div>
+					<div>
+						<img src="https://i.imgur.com/VtvwhXM.jpg" style="width: 100px; height: 100px;">
+						<p class="fs-4">a Weekly Lift Ticket<br>Adult 60,000 Kid 50,000</p>
+					</div>
+					<div>
+						<img src="https://i.imgur.com/VtvwhXM.jpg" style="width: 100px; height: 100px;">
+						<p class="fs-4">a Lift Night Ticket<br>Adult 40,000 Kid 30,000</p>
+					</div>
+					<div>
+						<img src="https://i.imgur.com/VtvwhXM.jpg" style="width: 100px; height: 100px;">
+						<p class="fs-4">a Lift All Day Ticket<br>Adult 75,000 Kid 65,000</p>
+					</div>
+					<div>
+						<img src="https://i.imgur.com/VtvwhXM.jpg" style="width: 100px; height: 100px;">
+						<p class="fs-4">a Lift Season Ticket<br>Adult 380,000 Kid 350,000</p>
+					</div>
+				</div>
+			</div>
+			<div class="contentImg">
+				<img alt="" src="https://www.yongpyong.co.kr/images/kor/skiNboard/img_slope01.png" style="height: 650px;">
+			</div>
+		</div>
 		
 	</div>
 	<script type="text/javascript">

@@ -134,7 +134,10 @@
 									</div>
 								</div>
 								<div class="regionImgBox" id="regionImgBox">
-									<img src="https://rusutsu.com/wp-content/uploads/rusutsu-powder-day-trip_sp.jpg" alt="지역 이미지" id="regionImage" class="img-fluid" style="width: 100%; height: 100%;">
+									<div class="busInfoBox">
+										
+									</div>
+									<img src="" alt="지역 이미지" id="regionImage" class="img-fluid" style="width: 100%; height: 100%; display: none;">
 									<div class="textBox" id="textBox">
 										
 									</div>
