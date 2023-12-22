@@ -14,8 +14,6 @@
 
 </head>
 <body>
-<!-- <div class="qna-img-container" style="background-image: url('https://www.princehotels.com/shinfurano/wp-content/uploads/sites/40/2022/11/2022_11_1920_ski_2-1.jpg')">	</div>
- -->
  <sec:authorize access="isAuthenticated()"> <!-- 로그인 시 -->
 			<sec:authentication property="principal.mvo.memberId" var="authId"/>
 			<sec:authentication property="principal.mvo.memberEmail" var="authEmail"/>
@@ -284,8 +282,17 @@
 
 <!-- 스크립트 라인  -->
 <script type="text/javascript">
-	
-</script>
+		const isOk = `<c:out value="${isOk}"></c:out>`
+		if(isOk=="1"){
+			alert('게시글이 등록 되었습니다.');
+		}
+</script>	
+<script type="text/javascript">
+		const isOk2 = `<c:out value="${isOk2}"></c:out>`
+		if(isOk2=="1"){
+			alert('게시글이 정상적으로 삭제 되었습니다.');
+		}
+</script>	
 
 
 <jsp:include page="../common/footer.jsp" />
