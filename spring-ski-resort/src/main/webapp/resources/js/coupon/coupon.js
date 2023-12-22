@@ -204,10 +204,11 @@ function usecoupon(discountRate, couponInt, couponrate) {
 
     // 나머지 할인 및 쿠폰 적용
     let totalprice = productPrice - discountAmount - couponInt - (productPrice * (couponrate / 100));
+
     console.log(productPrice, totalprice);
 
-    document.getElementById('realpayvalue').value = totalprice;
-    document.getElementById('userViewpay').innerHTML = `${totalprice.toLocaleString()}원 <del>${productPrice.toLocaleString()}</del>원`;
+    document.getElementById('realpayvalue').value =     Math.floor(totalprice);
+    document.getElementById('userViewpay').innerHTML = `${ Math.floor(totalprice).toLocaleString()}원 <del>${Math.floor(productPrice).toLocaleString()}</del>원`;
     realAmount = totalprice;
 }
 
