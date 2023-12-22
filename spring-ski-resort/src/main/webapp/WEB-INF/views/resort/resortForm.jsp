@@ -19,8 +19,8 @@
 			
 			<div class="slope-box">
 				<div class="slope-manual">
-										
-					<h2>슬로프 설명</h2>
+									
+					<h2>Slope Category</h2>
 					<ul class="slope-category">
 						<li id="slope-html" onclick="slopeMapAction('slope-html-map')">HTML</li>
 						<li id="slope-js" onclick="slopeMapAction('slope-js-map')">JAVASCRIPT</li>
@@ -38,8 +38,18 @@
 					<img id="slope-spring-map" alt="" src="https://i.imgur.com/EgRaUPB.png">
 				</div>
 			</div>
+			
+			
 		</div>
-	
+		
+		<div class="newContent">
+			<img alt="" src="https://i.imgur.com/r0xroWO.png" height="300">
+		</div>
+		
+		<div class="newItemContent">
+			<h2> SKI ITEM SERVICE</h2>
+			<img alt="" src="https://i.imgur.com/83DLkwE.jpg">
+		</div>
 	</div>
 	
 	
