@@ -1,12 +1,3 @@
-//2023-11-30 삭제할 테이블
-CREATE TABLE hotel (
-	hotel_main_num bigint,
-	member_num bigint NOT NULL,
-	primary key(hotel_main_num)
-);
-//삭제구문
-    drop table hotel;
-
 //2023-12-15 수정
 	 drop table room; 삭제후 아래구문 입력
 
@@ -24,8 +15,8 @@ hotel_initial_count int,
  primary key(hotel_room_num)	
 );
 
+drop table room_detail_image;
 //2023-12-15생성
-
 CREATE TABLE room_detail_image(
 hotel_room_num int,
 hotel_room_image1 varchar(1000),
