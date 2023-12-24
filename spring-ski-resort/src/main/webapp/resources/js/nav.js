@@ -11,6 +11,7 @@ window.onload = function () {
 
 
 const timer = ms => new Promise(res => setTimeout(res, ms))
+const timer2 = ms => new Promise(res => setTimeout(res, ms))
 async function load() {
     for (let i = 0; ; i++) {
         if (i == 10) {
@@ -450,6 +451,6 @@ async function sideLoad() {
 
         });
 
-        await timer(9000);
+        await timer2(9000);
     }
 }
