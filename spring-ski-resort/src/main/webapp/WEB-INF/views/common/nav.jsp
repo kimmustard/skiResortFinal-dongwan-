@@ -24,6 +24,16 @@
 </head>
 <body>
 <div class="navContainer">
+	
+	<div class="weatherContainer">
+		<div class="weatherBox" id="weatherBox">
+			<button class="half-moon-btn" id="half-moon-btn" onclick="weatherBtn()"> <img alt="" src="/resources/etc/눈사람.png" width="40" height="65"> </button>
+			<div class="weatherList" id="weatherList">
+				
+			</div>
+		
+		</div>
+	</div>
 
 	<nav class="ski-navbar" id="ski-navbar">
 	<nav id="hide"></nav>
