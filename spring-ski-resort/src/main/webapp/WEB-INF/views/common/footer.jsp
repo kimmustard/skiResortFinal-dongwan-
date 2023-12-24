@@ -40,13 +40,11 @@ sing up for our newsletter and stay up-to-date!
 	<div>
 	<div class="footer_right"> <img width="180" height="" alt="" src="https://i.imgur.com/r6FAInl.png"></div>
 	<ul class="footer_email">
-			<li><a href="https://github.com/kimmustard">김동완</a></li>
-			<li><a href="https://github.com/ffinky99">박한결</a></li>
-			<li><a href="https://github.com/robustarJJ">장우호</a></li>
-			<li><a href="https://github.com/JeonHyeSeong">전혜성</a></li>
-			<li>rugged gear</li>
-			<li>stories</li>
-			<li>skier profiles</li>
+			<li>제작자들의 깃허브</li>
+			<li><a href="https://github.com/kimmustard">★김동완</a></li>
+			<li><a href="https://github.com/robustarJJ">★장우호</a></li>
+			<li><a href="https://github.com/JeonHyeSeong">★전혜성</a></li>
+			<li><a href="https://github.com/ffinky99">★박한결</a></li>
 	</ul>
 	</div>
 	</div>
