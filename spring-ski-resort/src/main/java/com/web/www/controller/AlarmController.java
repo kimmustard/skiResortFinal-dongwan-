@@ -58,6 +58,23 @@ public class AlarmController {
 		return "redirect:/";
 	}
 	
+	//클릭형 쿠폰 지급
+	@GetMapping("/clickEvent")
+	public String clickAndCouponGet(@RequestParam("code")String code, @AuthUser MemberVO mvo, RedirectAttributes rttr){
+		CouponGetDTO cgDTO = new CouponGetDTO();
+		cgDTO.setMemberNum(mvo.getMemberNum());
+		cgDTO.setCouponCode(code);
+		
+		int isOk = msv.userCouponAdd(cgDTO);
+		if(isOk == 0) {
+			rttr.addFlashAttribute("isOk", 2);
+			return "redirect:/";
+		}
+		
+		rttr.addFlashAttribute("isOk", isOk);
+		return "redirect:/";
+	}
+	
 	//nav에 표현되는 간이 리스트입니다 (최신 10개만 표시)
 	@GetMapping(value = "/alarmList", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<AlarmDTO>> alarmListTen(@AuthUser MemberVO mvo) {

@@ -70,6 +70,7 @@ public class OauthLogout {
 	          case "kakao":
 	              revokeUrl = kakaoRevokeUrl;
 	              headers.setBearerAuth(accessToken);
+	              log.info("#### 테스트 = {}", revokeUrl);
 	              break;
           }
           

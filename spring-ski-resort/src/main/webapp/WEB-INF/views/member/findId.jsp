@@ -56,7 +56,7 @@
 		  <div class="modal-dialog" tabindex="-1">
 		    <div class="modal-content" tabindex="-1">
 		      <div class="modal-header" tabindex="-1">
-		        <h1 class="modal-title fs-5" id="staticBackdropLabel" tabindex="-1">이메일 변경하기</h1>
+		        <h1 class="modal-title fs-5" id="staticBackdropLabel" tabindex="-1">아이디 찾기</h1>
 		        <button type="button" class="btn-close" id="modalClose" data-bs-dismiss="modal" aria-label="Close" tabindex="-1"></button>
 		      </div>
 		      <div class="modal-body" tabindex="-1">

@@ -27,7 +27,7 @@
 		values(#{rentalListItemNum}, #{fileName}, #{imageUrl})
 	</insert>
 	<insert id="updateRentalLift">
-		INSERT INTO rental_lift
+		INSERT INTO rental_lift()
 		VALUES (#{rentalLiftNum},#{rentalLiftTicket},#{rentalLiftAdultFee},#{rentalLiftKidFee},
 		#{rentalLiftTotalFee},#{rentalLiftAdult},#{rentalLiftKid},#{rentalLiftStart},#{payMerchantUid},#{memberNum});
 	</insert>
