@@ -109,7 +109,6 @@ public class AlarmController {
 	public String memberAlarmListForm(@AuthUser MemberVO mvo, Model model) {
 		List<AlarmDTO> alarmList = asv.getMemberAlarmList(mvo.getMemberNum());
 		mvo.setMemberAlarmSystem(msv.getMemberMasCheck(mvo.getMemberNum()));
-		log.info("test");
 		model.addAttribute("mvo", mvo);
 		model.addAttribute("alarmList", alarmList);
 		return "/member/memberAlarmList";
