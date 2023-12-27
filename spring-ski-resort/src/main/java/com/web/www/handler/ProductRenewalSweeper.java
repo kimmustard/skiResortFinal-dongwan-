@@ -40,30 +40,24 @@ public class ProductRenewalSweeper {
 			)
 	@Scheduled(cron = "0 0 0/24 * * *")
 	public void productRenewal() {
-		log.info("product 스케줄러 체크합니다");
-		
+		log.info("===product 스케줄러 체크합니다===");
 		//갱신 대상 모든 payMerchantUid 스캔
 		List<String> uidList = new ArrayList<>();
 		uidList.addAll(prdao.hotelRenewalScan());
 		uidList.addAll(prdao.liftRenewalScan());
 		uidList.addAll(prdao.rentalRenewalScan());
-		
 		//만료된 객실 인포 삭제
 		prdao.hotelRenewal();
-		
 		//쿠폰 갱신
 		prdao.couponRenewal();
-		
 		//버스 좌석 갱신
 		List<String> busList = prdao.busNumList();
 		prdao.busRenewal();
 		for (String busNum : busList) {
 			prdao.busPeopleRenewal(busNum);
 		}
-		
 		//알람 테이블 청소
 		prdao.alarmRenewal();
-		
 		//결제 테이블 한번에 정리
 		for (String payMerchantUid : uidList) {
 			
@@ -74,11 +68,9 @@ public class ProductRenewalSweeper {
 				rdao.rentalItemListPlus(itemListNum);
 			}
 			rdao.itemPayInfoReturnCheck(payMerchantUid);
-			
-			
 			prdao.PayRenuwal(payMerchantUid);
 		}
 
-
+		log.info("===product 스케줄러 종료합니다===");
 	}
 }

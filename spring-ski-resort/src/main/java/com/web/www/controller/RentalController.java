@@ -73,6 +73,7 @@ public class RentalController {
 	@PostMapping("/reserve")
 	public String liftReservePost(RentalLiftVO rlivo, @AuthUser MemberVO mvo , PayInfoVO pivo, RedirectAttributes attributes) {
 		log.info("rlivo>>>>>>>>>>>>>>>>>>>>>"+rlivo);
+		rlivo.setRentalLiftTicket(pivo.getPayName());
 		String paySuccessUrl;
 		//결제 db
 		int isOk = rsv.updateRentalLift(rlivo ,mvo);;
@@ -145,7 +146,6 @@ public class RentalController {
 	@GetMapping("/item-reserve")
 	public String itemsPayForm(@RequestParam(name = "data", required = false) String data, 
 			@AuthUser MemberVO mvo, RedirectAttributes rttr ,Model model) {
-		
 		//결제전 유저등급 갱신
 		mvo.setMemberGrade(msv.getMemberGrade(mvo.getMemberNum()));
 		
@@ -180,7 +180,7 @@ public class RentalController {
 	            log.info("에러발생 = {}", e);
 	        }
 	    }
-	    
+	   
 	    model.addAttribute("rlVO", rlVO);
 	    model.addAttribute("mvo", mvo);
 	    model.addAttribute("sum", sum);

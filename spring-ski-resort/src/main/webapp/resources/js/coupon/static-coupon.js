@@ -148,7 +148,7 @@ myCouponListGet().then(result => {
             }
         });
     } else {
-        alert("사용가능한 쿠폰이 없습니다.")
+        
     }
 })
 

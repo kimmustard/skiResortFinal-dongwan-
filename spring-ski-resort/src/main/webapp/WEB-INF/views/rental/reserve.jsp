@@ -172,29 +172,29 @@
 				<div id="innerbox" class="reserveBox" style="display: none;">
 					<input id="memberGradeInput" type="hidden" value="${mvo.memberGrade }">
 					
-					<div class="form-check" id="tiketImg1" onclick="getDivId(this)">
-						<img alt="" onclick="updateFees(40000,30000,'오전권')" src="/resources/etc/티켓.png" style="width: 270px; height: 80px;"><span>오전권</span>
-					  <input class="form-check-input" onclick="updateFees(40000,30000,'오전권')" type="radio" name="rentalLiftTicket" value="오전권" id="morningTicket">
+					<div class="form-check" id="tiketImg1" onclick="updateFees(40000,30000,'오전권',this)">
+						<img alt="" onclick="updateFees(40000,30000,'오전권',this)" src="/resources/etc/티켓.png" style="width: 270px; height: 80px;"><span>오전권</span>
+					  <input class="form-check-input" onclick="updateFees(40000,30000,'오전권',this)" type="radio" name="rentalLiftTicket" value="오전권" id="morningTicket">
 					</div>
-					<div class="form-check" id="tiketImg2" onclick="getDivId(this)">
-						<img alt="" onclick="updateFees(50000,40000,'오후권')" src="/resources/etc/티켓.png" style="width: 270px; height: 80px;"><span>오후권</span>
-					  <input class="form-check-input" onclick="updateFees(50000,40000,'오후권')" type="radio" name="rentalLiftTicket" value="오후권" id="afternoonTicket">
+					<div class="form-check" id="tiketImg2" onclick="updateFees(50000,40000,'오후권',this)">
+						<img alt="" src="/resources/etc/티켓.png" onclick="updateFees(50000,40000,'오후권',this)" style="width: 270px; height: 80px;"><span>오후권</span>
+					  <input class="form-check-input" type="radio" onclick="updateFees(50000,40000,'오후권',this)" name="rentalLiftTicket" value="오후권" id="afternoonTicket">
 					</div>
-					<div class="form-check" id="tiketImg3" onclick="getDivId(this)">
-						<img alt="" onclick="updateFees(60000,50000,'주간권')" src="/resources/etc/티켓.png" style="width: 270px; height: 80px;"><span>주간권</span>
-					  <input class="form-check-input" onclick="updateFees(60000,50000,'주간권')" type="radio" name="rentalLiftTicket" value="주간권" id="dayTimeTicket">
+					<div class="form-check" id="tiketImg3" onclick="updateFees(60000,50000,'주간권',this)">
+						<img alt="" src="/resources/etc/티켓.png" onclick="updateFees(60000,50000,'주간권',this)" style="width: 270px; height: 80px;"><span>주간권</span>
+					  <input class="form-check-input" type="radio" onclick="updateFees(60000,50000,'주간권',this)" name="rentalLiftTicket" value="주간권" id="dayTimeTicket">
 					</div>
-					<div class="form-check" id="tiketImg4" onclick="getDivId(this)">
-						<img alt="" onclick="updateFees(40000,30000,'야간권')" src="/resources/etc/티켓.png" style="width: 270px; height: 80px;"><span>야간권</span>
-					  <input class="form-check-input" onclick="updateFees(40000,30000,'야간권')" type="radio" name="rentalLiftTicket" value="야간권" id="nightTimeTicket">
+					<div class="form-check" id="tiketImg4" onclick="updateFees(40000,30000,'야간권',this)">
+						<img alt="" src="/resources/etc/티켓.png" onclick="updateFees(40000,30000,'야간권',this)" style="width: 270px; height: 80px;"><span>야간권</span>
+					  <input class="form-check-input" type="radio" onclick="updateFees(40000,30000,'야간권',this)" name="rentalLiftTicket" value="야간권" id="nightTimeTicket">
 					</div>
-					<div class="form-check" id="tiketImg5" onclick="getDivId(this)">
-						<img alt="" onclick="updateFees(75000,65000,'종일권')" src="/resources/etc/티켓.png" style="width: 270px; height: 80px;"><span>종일권</span>
-					  <input class="form-check-input" onclick="updateFees(75000,65000,'종일권')" type="radio" name="rentalLiftTicket" value="종일권" id="allDayTicket">
+					<div class="form-check" id="tiketImg5" onclick="updateFees(75000,65000,'종일권',this)">
+						<img alt="" src="/resources/etc/티켓.png" onclick="updateFees(75000,65000,'종일권',this)" style="width: 270px; height: 80px;"><span>종일권</span>
+					  <input class="form-check-input" type="radio" onclick="updateFees(75000,65000,'종일권',this)" name="rentalLiftTicket" value="종일권" id="allDayTicket">
 					</div>
-					<div class="form-check" id="tiketImg6" onclick="getDivId(this)">
-						<img alt="" onclick="updateFees(380000,350000,'시즌권')" src="/resources/etc/티켓.png" style="width: 270px; height: 80px;"><span>시즌권</span>
-					  <input class="form-check-input" onclick="updateFees(380000,350000,'시즌권')" type="radio" name="rentalLiftTicket" value="시즌권" id="seasonTicket">
+					<div class="form-check" id="tiketImg6" onclick="updateFees(380000,350000,'시즌권',this)">
+						<img alt="" src="/resources/etc/티켓.png" onclick="updateFees(380000,350000,'시즌권',this)" style="width: 270px; height: 80px;"><span>시즌권</span>
+					  <input class="form-check-input" type="radio" onclick="updateFees(380000,350000,'시즌권',this)" name="rentalLiftTicket" value="시즌권" id="seasonTicket">
 					</div>
 					
 					<div class="input-group mb-3">

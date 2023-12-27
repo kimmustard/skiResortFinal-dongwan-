@@ -53,6 +53,7 @@ public class MemberServiceImpl implements MemberService {
 		int isOk = mdao.insertAuthInit(mvo.getMemberId());
 		//알람 발송
 		long memberNum = mdao.recentMember();
+		log.info("###### = {}",memberNum);
 		adao.alarmSetting(new AlarmVO(memberNum , 1, "쿠폰"));
 		return isOk;
 	}

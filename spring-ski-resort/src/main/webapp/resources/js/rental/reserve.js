@@ -108,9 +108,8 @@ function getDivId(element) {
 
 
 //요금 업데이트
-function updateFees(audult, kid, itemName) {
-    
-
+function updateFees(audult, kid, itemName, element) {
+    getDivId(element);
 
     let adultFee = 0;
     let kidFee = 0;
